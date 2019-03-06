@@ -44,7 +44,7 @@ Follow the installation instructions below to compile from the source and you ca
 
 4. **How can I create my own watch hands?**
 
-  Currently the watch hands are using UIKit paths and has support for PNGs.  See the example **SecondHandTypes.SecondHandTypeFancyRed** in Shared/Nodes/MinuteHand.swift.  The code will attempt to tint the PNG pixels with the chosen hand color.  White pixels will colorize to the chosen color, and black wil not tint at all.  Colors in between will blend. 
+  Currently the watch hands are using UIKit paths and has support for PNGs.  See the example **SecondHandTypes.SecondHandTypeFancyRed** in Shared/Nodes/MinuteHand.swift.  The code will attempt to tint the PNG pixels with the chosen hand color.  White pixels will colorize to the chosen color, and black will not tint at all.  Colors in between will blend.  Import your PNG assets into the /Shared/Media.xcassets folder. 
   
 5. **Can I use my own background images from my phone in the app?**
 
