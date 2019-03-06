@@ -38,6 +38,7 @@
 		310BA1D221B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1D021B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift */; };
 		310CDC5F222CCAA700AF3B8D /* UIImage+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CDC5E222CCAA700AF3B8D /* UIImage+Gradient.swift */; };
 		310CDC69222CD2EF00AF3B8D /* UIImage+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CDC5E222CCAA700AF3B8D /* UIImage+Gradient.swift */; };
+		310CDCB3222EABB400AF3B8D /* Face Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 318808F02178166B00585AB1 /* Face Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		310D4A4F21BD6BD600082A62 /* HandOptionsSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D4A4E21BD6BD600082A62 /* HandOptionsSettingTableViewCell.swift */; };
 		310D4A5121BD90D100082A62 /* HandOutlineColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D4A5021BD90D100082A62 /* HandOutlineColorSettingTableViewCell.swift */; };
 		310D4A5921C0AA9000082A62 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D4A5821C0AA9000082A62 /* Collection+Safe.swift */; };
@@ -75,10 +76,8 @@
 		318808DB217815E700585AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808D9217815E700585AB1 /* LaunchScreen.storyboard */; };
 		318808E82178166A00585AB1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808E62178166A00585AB1 /* Interface.storyboard */; };
 		318808EA2178166B00585AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 318808E92178166B00585AB1 /* Assets.xcassets */; };
-		318808F12178166B00585AB1 /* Face Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 318808F02178166B00585AB1 /* Face Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		318808F82178166B00585AB1 /* SKWatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 318808F72178166B00585AB1 /* SKWatchScene.sks */; };
 		318808FC2178166B00585AB1 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808FB2178166B00585AB1 /* ExtensionDelegate.swift */; };
-		318808FE2178166B00585AB1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808FD2178166B00585AB1 /* NotificationController.swift */; };
 		318809002178166B00585AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 318808FF2178166B00585AB1 /* Assets.xcassets */; };
 		318809052178166B00585AB1 /* Face.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 318808E42178166A00585AB1 /* Face.app */; };
 		318809102178172600585AB1 /* faceBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3188090F2178172600585AB1 /* faceBackground.png */; };
@@ -181,7 +180,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		318808F22178166B00585AB1 /* PBXContainerItemProxy */ = {
+		310CDCB4222EABB400AF3B8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 318808C5217815E600585AB1 /* Project object */;
 			proxyType = 1;
@@ -198,13 +197,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		318809092178166B00585AB1 /* Embed App Extensions */ = {
+		310CDCB6222EABB400AF3B8D /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				318808F12178166B00585AB1 /* Face Extension.appex in Embed App Extensions */,
+				310CDCB3222EABB400AF3B8D /* Face Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,9 +257,6 @@
 		312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = LCDPHONE.TTF; sourceTree = "<group>"; };
 		312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimer.swift; sourceTree = "<group>"; };
 		312E853722239740001C450B /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
-		312E853B22264F67001C450B /* AppleWatchFaces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleWatchFaces.entitlements; sourceTree = "<group>"; };
-		312E853C22264F6F001C450B /* Face.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Face.entitlements; sourceTree = "<group>"; };
-		312E853D22264F73001C450B /* Face Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Face Extension.entitlements"; sourceTree = "<group>"; };
 		313AE3DC221A76DA00C02462 /* JOYSTIX.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = JOYSTIX.TTF; sourceTree = "<group>"; };
 		313AE3DF221A777E00C02462 /* DotsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsNode.swift; sourceTree = "<group>"; };
 		314A010921960409009BCE3C /* UserClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClockSetting.swift; sourceTree = "<group>"; };
@@ -273,6 +269,9 @@
 		3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		3153880621CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		3158C060222EB9A600BEA331 /* AppleWatchFaces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleWatchFaces.entitlements; sourceTree = "<group>"; };
+		3158C061222EB9AA00BEA331 /* Face.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Face.entitlements; sourceTree = "<group>"; };
+		3158C062222EB9AF00BEA331 /* Face Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Face Extension.entitlements"; sourceTree = "<group>"; };
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -290,10 +289,8 @@
 		318808F72178166B00585AB1 /* SKWatchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SKWatchScene.sks; sourceTree = "<group>"; };
 		318808F92178166B00585AB1 /* SKWatchScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWatchScene.swift; sourceTree = "<group>"; };
 		318808FB2178166B00585AB1 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		318808FD2178166B00585AB1 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		318808FF2178166B00585AB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		318809012178166B00585AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		318809022178166B00585AB1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		3188090F2178172600585AB1 /* faceBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceBackground.png; sourceTree = "<group>"; };
 		318A928621CDABA20060D89B /* FaceShapeSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceShapeSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceShapeSettingSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -462,6 +459,7 @@
 		318808CF217815E600585AB1 /* AppleWatchFaces */ = {
 			isa = PBXGroup;
 			children = (
+				3158C060222EB9A600BEA331 /* AppleWatchFaces.entitlements */,
 				318808D0217815E600585AB1 /* AppDelegate.swift */,
 				31F4F1D8219D08890050177A /* FaceChooserViewController.swift */,
 				31EF99A021A2046100BB54E7 /* ChooserView */,
@@ -479,7 +477,6 @@
 				318808D7217815E700585AB1 /* Assets.xcassets */,
 				31061F2F2192657200EF511B /* Colors.plist */,
 				318808DC217815E700585AB1 /* Info.plist */,
-				312E853B22264F67001C450B /* AppleWatchFaces.entitlements */,
 			);
 			path = AppleWatchFaces;
 			sourceTree = "<group>";
@@ -487,10 +484,10 @@
 		318808E52178166A00585AB1 /* Face */ = {
 			isa = PBXGroup;
 			children = (
+				3158C061222EB9AA00BEA331 /* Face.entitlements */,
 				318808E62178166A00585AB1 /* Interface.storyboard */,
 				318808E92178166B00585AB1 /* Assets.xcassets */,
 				318808EB2178166B00585AB1 /* Info.plist */,
-				312E853C22264F6F001C450B /* Face.entitlements */,
 			);
 			path = Face;
 			sourceTree = "<group>";
@@ -498,15 +495,13 @@
 		318808F42178166B00585AB1 /* Face Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3158C062222EB9AF00BEA331 /* Face Extension.entitlements */,
 				3188090E2178170C00585AB1 /* Assets */,
 				318808F52178166B00585AB1 /* InterfaceController.swift */,
 				31056B612218DC1700D0E15C /* ComplicationController.swift */,
 				318808FB2178166B00585AB1 /* ExtensionDelegate.swift */,
-				318808FD2178166B00585AB1 /* NotificationController.swift */,
 				318808FF2178166B00585AB1 /* Assets.xcassets */,
 				318809012178166B00585AB1 /* Info.plist */,
-				312E853D22264F73001C450B /* Face Extension.entitlements */,
-				318809022178166B00585AB1 /* PushNotificationPayload.apns */,
 			);
 			path = "Face Extension";
 			sourceTree = "<group>";
@@ -673,12 +668,12 @@
 			buildConfigurationList = 3188090A2178166B00585AB1 /* Build configuration list for PBXNativeTarget "Face" */;
 			buildPhases = (
 				318808E22178166A00585AB1 /* Resources */,
-				318809092178166B00585AB1 /* Embed App Extensions */,
+				310CDCB6222EABB400AF3B8D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				318808F32178166B00585AB1 /* PBXTargetDependency */,
+				310CDCB5222EABB400AF3B8D /* PBXTargetDependency */,
 			);
 			name = Face;
 			productName = Face;
@@ -716,6 +711,12 @@
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
+								enabled = 0;
+							};
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.HealthKit = {
 								enabled = 0;
 							};
 						};
@@ -955,7 +956,6 @@
 				31056B622218DC1700D0E15C /* ComplicationController.swift in Sources */,
 				31B5E8E1218CE03500DE6429 /* HourHandNode.swift in Sources */,
 				31B5E8DB218CE01600DE6429 /* ClockRingSetting.swift in Sources */,
-				318808FE2178166B00585AB1 /* NotificationController.swift in Sources */,
 				312E2D6A21F2D69F00C2F17F /* SKWatchScene.swift in Sources */,
 				318808FC2178166B00585AB1 /* ExtensionDelegate.swift in Sources */,
 				31B5E8DA218CE01300DE6429 /* ClockFaceSetting.swift in Sources */,
@@ -971,10 +971,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		318808F32178166B00585AB1 /* PBXTargetDependency */ = {
+		310CDCB5222EABB400AF3B8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 318808EF2178166B00585AB1 /* Face Extension */;
-			targetProxy = 318808F22178166B00585AB1 /* PBXContainerItemProxy */;
+			targetProxy = 310CDCB4222EABB400AF3B8D /* PBXContainerItemProxy */;
 		};
 		318809042178166B00585AB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1147,6 +1147,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4345F4RV9N;
 				INFOPLIST_FILE = AppleWatchFaces/Info.plist;
@@ -1157,6 +1158,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.MHapplewatchfaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1166,6 +1168,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4345F4RV9N;
 				INFOPLIST_FILE = AppleWatchFaces/Info.plist;
@@ -1176,6 +1179,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.MHapplewatchfaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
