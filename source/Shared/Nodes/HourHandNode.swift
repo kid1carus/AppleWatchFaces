@@ -9,11 +9,11 @@
 import SpriteKit
 
 enum HourHandTypes: String {
-    case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeFlatDial, HourHandTypeThinDial,
+    case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial,
     HourHandTypePacMan, HourHandTypeMsPacMan, HourHandTypeNone
     
-    static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeImageFancyWhite, HourHandTypeThinDial, HourHandTypeNone]
-    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypePacMan, HourHandTypeMsPacMan,
+    static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeThinDial, HourHandTypeNone]
+    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypePacMan, HourHandTypeMsPacMan,
                                        HourHandTypeNone]
     
     static func random() -> HourHandTypes {
@@ -66,6 +66,7 @@ class HourHandNode: SKSpriteNode {
         
         //image ex
         if (nodeType == HourHandTypes.HourHandTypeCutout)  { typeDescription = "Image: Fancy White" }
+        if (nodeType == HourHandTypes.HourHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
         
         return typeDescription
     }
@@ -193,6 +194,22 @@ class HourHandNode: SKSpriteNode {
                 textureNode.setScale(0.165)
                 //position it to center in for rotation with time
                 textureNode.position = CGPoint.init(x: 0, y: 42.0)
+                textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                self.addChild(textureNode)
+            }
+        }
+        
+        if (hourHandType == HourHandTypes.HourHandTypeImageLightSaber) {
+            let im = UIImage.init(named: "hourHand-lightSaberWhiteShort.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                
+                //this one is generated too big, scale it down
+                textureNode.setScale(0.65)
+                //position it to center in for rotation with time
+                textureNode.position = CGPoint.init(x: 0, y: 40.0)
                 textureNode.color = SKColor.init(hexString: material)
                 textureNode.colorBlendFactor = 1.0
                 self.addChild(textureNode)

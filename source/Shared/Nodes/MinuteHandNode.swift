@@ -11,11 +11,12 @@ import UIKit
 import SpriteKit
 
 enum MinuteHandTypes: String {
-    case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeFlatDial,
-    MinuteHandTypeThinDial, MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone
+    case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeSphere,
+        MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial,
+        MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -77,6 +78,8 @@ class MinuteHandNode: SKSpriteNode {
         
         //image based example
         if (nodeType == MinuteHandTypes.MinuteHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
+        if (nodeType == MinuteHandTypes.MinuteHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
+        
         
         return typeDescription
     }
@@ -228,6 +231,23 @@ class MinuteHandNode: SKSpriteNode {
                 self.addChild(textureNode)
             }
         }
+        
+        if (minuteHandType == MinuteHandTypes.MinuteHandTypeImageLightSaber) {
+            let im = UIImage.init(named: "minuteHand-lightSaberWhite.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                
+                //this one is generated too big, scale it down
+                textureNode.setScale(0.65)
+                //position it to center in for rotation with time
+                textureNode.position = CGPoint.init(x: 0, y: 40.0)
+                textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                self.addChild(textureNode)
+            }
+        }
+
         
         if (minuteHandType == MinuteHandTypes.MinuteHandTypeSphere) {
             
