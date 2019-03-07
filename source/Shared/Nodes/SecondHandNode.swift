@@ -11,10 +11,10 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan,
+    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter,
     SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandNodeTypeNone ]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
     
@@ -72,6 +72,7 @@ class SecondHandNode: SKSpriteNode {
         
         // IMAGE BASED EXAMPLES
         if (nodeType == SecondHandTypes.SecondHandTypeFancyRed)  { typeDescription = "Image: Fancy Red" }
+        if (nodeType == SecondHandTypes.SecondHandTieFighter)  { typeDescription = "Image: Tie Fighter" }
         
         return typeDescription
     }
@@ -273,6 +274,22 @@ class SecondHandNode: SKSpriteNode {
                 let textureNode = SKSpriteNode.init(texture: texture)
                 textureNode.setScale(0.75)
                 textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                self.addChild(textureNode)
+            }
+            
+        }
+        
+        if (secondHandType == SecondHandTypes.SecondHandTieFighter) {
+            let im = UIImage.init(named: "secondHand-TIEfighter.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                
+                textureNode.anchorPoint = CGPoint.init(x: 0, y: -1.65)   //how far from center of image
+                textureNode.setScale(0.15)                              //resize
+                
+                textureNode.color = SKColor.init(hexString: material) //tint it ( white == color )
                 textureNode.colorBlendFactor = 1.0
                 self.addChild(textureNode)
             }
