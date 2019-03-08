@@ -184,6 +184,9 @@ class DigitalTimeNode: SKNode {
         case .HHMM:
             dateFormatterTime.timeStyle = .short
             timeString = timeStringWithoutAMPM(dateFormatterTime: dateFormatterTime)
+        case .HHMMPM:
+            dateFormatterTime.timeStyle = .short
+            timeString = dateFormatterTime.string(from: ClockTimer.currentDate)
         case .HHMMSS:
             dateFormatterTime.timeStyle = .medium
             timeString = timeStringWithoutAMPM(dateFormatterTime: dateFormatterTime)
@@ -427,7 +430,7 @@ class DigitalTimeNode: SKNode {
         case .HHMM:
             description = "HH:MM"
         case .HHMMPM:
-            description = "HH:MMpm"
+            description = "HH:MM pm"
         case .HHMMSS:
             description = "HH:MM:SS"
         case .HH:
