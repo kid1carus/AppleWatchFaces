@@ -24,6 +24,38 @@
 		3107B5D821B47437005BD26D /* DecotatorShapeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5D721B47437005BD26D /* DecotatorShapeTableViewCell.swift */; };
 		3107B5DA21B47634005BD26D /* DecoratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5D921B47634005BD26D /* DecoratorTableViewCell.swift */; };
 		3107B5DC21B47857005BD26D /* DecotatorTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5DB21B47857005BD26D /* DecotatorTextTableViewCell.swift */; };
+		31090FBC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */; };
+		31090FBD2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */; };
+		31090FBE2233277C00D6CAA7 /* GERMANICA.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAD2233277C00D6CAA7 /* GERMANICA.TTF */; };
+		31090FBF2233277C00D6CAA7 /* GERMANICA.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAD2233277C00D6CAA7 /* GERMANICA.TTF */; };
+		31090FC02233277C00D6CAA7 /* LCDPHONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAE2233277C00D6CAA7 /* LCDPHONE.TTF */; };
+		31090FC12233277C00D6CAA7 /* LCDPHONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAE2233277C00D6CAA7 /* LCDPHONE.TTF */; };
+		31090FC22233277C00D6CAA7 /* IRONLOUNGE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAF2233277C00D6CAA7 /* IRONLOUNGE.TTF */; };
+		31090FC32233277C00D6CAA7 /* IRONLOUNGE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAF2233277C00D6CAA7 /* IRONLOUNGE.TTF */; };
+		31090FC42233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB02233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF */; };
+		31090FC52233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB02233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF */; };
+		31090FC62233277C00D6CAA7 /* DIGITAL-7-MONO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB12233277C00D6CAA7 /* DIGITAL-7-MONO.TTF */; };
+		31090FC72233277C00D6CAA7 /* DIGITAL-7-MONO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB12233277C00D6CAA7 /* DIGITAL-7-MONO.TTF */; };
+		31090FC82233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB22233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF */; };
+		31090FC92233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB22233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF */; };
+		31090FCA2233277C00D6CAA7 /* RATIONALINT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB32233277C00D6CAA7 /* RATIONALINT.TTF */; };
+		31090FCB2233277C00D6CAA7 /* RATIONALINT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB32233277C00D6CAA7 /* RATIONALINT.TTF */; };
+		31090FCC2233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB42233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF */; };
+		31090FCD2233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB42233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF */; };
+		31090FCE2233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB52233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF */; };
+		31090FCF2233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB52233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF */; };
+		31090FD02233277C00D6CAA7 /* BLACKROSE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB62233277C00D6CAA7 /* BLACKROSE.TTF */; };
+		31090FD12233277C00D6CAA7 /* BLACKROSE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB62233277C00D6CAA7 /* BLACKROSE.TTF */; };
+		31090FD22233277C00D6CAA7 /* CONERIASCRIPT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB72233277C00D6CAA7 /* CONERIASCRIPT.TTF */; };
+		31090FD32233277C00D6CAA7 /* CONERIASCRIPT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB72233277C00D6CAA7 /* CONERIASCRIPT.TTF */; };
+		31090FD42233277C00D6CAA7 /* DINPRO-LIGHT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB82233277C00D6CAA7 /* DINPRO-LIGHT.TTF */; };
+		31090FD52233277C00D6CAA7 /* DINPRO-LIGHT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB82233277C00D6CAA7 /* DINPRO-LIGHT.TTF */; };
+		31090FD62233277C00D6CAA7 /* JOYSTIX.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB92233277C00D6CAA7 /* JOYSTIX.TTF */; };
+		31090FD72233277C00D6CAA7 /* JOYSTIX.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB92233277C00D6CAA7 /* JOYSTIX.TTF */; };
+		31090FD82233277C00D6CAA7 /* KINGTHINGS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FBA2233277C00D6CAA7 /* KINGTHINGS.TTF */; };
+		31090FD92233277C00D6CAA7 /* KINGTHINGS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FBA2233277C00D6CAA7 /* KINGTHINGS.TTF */; };
+		31090FDA2233277C00D6CAA7 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FBB2233277C00D6CAA7 /* NIXIEONE.TTF */; };
+		31090FDB2233277C00D6CAA7 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FBB2233277C00D6CAA7 /* NIXIEONE.TTF */; };
 		3109D1DD21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */; };
 		3109D1DF21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */; };
 		3109D1E121A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */; };
@@ -207,6 +239,22 @@
 		3107B5D721B47437005BD26D /* DecotatorShapeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecotatorShapeTableViewCell.swift; sourceTree = "<group>"; };
 		3107B5D921B47634005BD26D /* DecoratorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorTableViewCell.swift; sourceTree = "<group>"; };
 		3107B5DB21B47857005BD26D /* DecotatorTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecotatorTextTableViewCell.swift; sourceTree = "<group>"; };
+		31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ROMAN-TRAJAN-PRO.TTF"; sourceTree = "<group>"; };
+		31090FAD2233277C00D6CAA7 /* GERMANICA.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GERMANICA.TTF; sourceTree = "<group>"; };
+		31090FAE2233277C00D6CAA7 /* LCDPHONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = LCDPHONE.TTF; sourceTree = "<group>"; };
+		31090FAF2233277C00D6CAA7 /* IRONLOUNGE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRONLOUNGE.TTF; sourceTree = "<group>"; };
+		31090FB02233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIGITAL-7-MONO-ITALICS.TTF"; sourceTree = "<group>"; };
+		31090FB12233277C00D6CAA7 /* DIGITAL-7-MONO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIGITAL-7-MONO.TTF"; sourceTree = "<group>"; };
+		31090FB22233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF */ = {isa = PBXFileReference; lastKnownFileType = file; path = PIXEL_MILLENNIUM.TFF; sourceTree = "<group>"; };
+		31090FB32233277C00D6CAA7 /* RATIONALINT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = RATIONALINT.TTF; sourceTree = "<group>"; };
+		31090FB42233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ULTRACONDENSEDSARIF.TTF; sourceTree = "<group>"; };
+		31090FB52233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ROTHERNBURGDECORATIVE.TTF; sourceTree = "<group>"; };
+		31090FB62233277C00D6CAA7 /* BLACKROSE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = BLACKROSE.TTF; sourceTree = "<group>"; };
+		31090FB72233277C00D6CAA7 /* CONERIASCRIPT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CONERIASCRIPT.TTF; sourceTree = "<group>"; };
+		31090FB82233277C00D6CAA7 /* DINPRO-LIGHT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPRO-LIGHT.TTF"; sourceTree = "<group>"; };
+		31090FB92233277C00D6CAA7 /* JOYSTIX.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = JOYSTIX.TTF; sourceTree = "<group>"; };
+		31090FBA2233277C00D6CAA7 /* KINGTHINGS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = KINGTHINGS.TTF; sourceTree = "<group>"; };
+		31090FBB2233277C00D6CAA7 /* NIXIEONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = NIXIEONE.TTF; sourceTree = "<group>"; };
 		3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsMainColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsSecondaryColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsThirdColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -346,6 +394,29 @@
 			path = DecoratorView;
 			sourceTree = "<group>";
 		};
+		31090FAB2233277C00D6CAA7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */,
+				31090FAD2233277C00D6CAA7 /* GERMANICA.TTF */,
+				31090FAE2233277C00D6CAA7 /* LCDPHONE.TTF */,
+				31090FAF2233277C00D6CAA7 /* IRONLOUNGE.TTF */,
+				31090FB02233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF */,
+				31090FB12233277C00D6CAA7 /* DIGITAL-7-MONO.TTF */,
+				31090FB22233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF */,
+				31090FB32233277C00D6CAA7 /* RATIONALINT.TTF */,
+				31090FB42233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF */,
+				31090FB52233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF */,
+				31090FB62233277C00D6CAA7 /* BLACKROSE.TTF */,
+				31090FB72233277C00D6CAA7 /* CONERIASCRIPT.TTF */,
+				31090FB82233277C00D6CAA7 /* DINPRO-LIGHT.TTF */,
+				31090FB92233277C00D6CAA7 /* JOYSTIX.TTF */,
+				31090FBA2233277C00D6CAA7 /* KINGTHINGS.TTF */,
+				31090FBB2233277C00D6CAA7 /* NIXIEONE.TTF */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		310CDC61222CCC3C00AF3B8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +546,7 @@
 		31A5F7EA2196692B000F1677 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				31090FAB2233277C00D6CAA7 /* Fonts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -701,17 +773,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31090FBC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
 				31061F302192657200EF511B /* Colors.plist in Resources */,
+				31090FC62233277C00D6CAA7 /* DIGITAL-7-MONO.TTF in Resources */,
+				31090FD02233277C00D6CAA7 /* BLACKROSE.TTF in Resources */,
+				31090FCE2233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
+				31090FBE2233277C00D6CAA7 /* GERMANICA.TTF in Resources */,
+				31090FC02233277C00D6CAA7 /* LCDPHONE.TTF in Resources */,
+				31090FDA2233277C00D6CAA7 /* NIXIEONE.TTF in Resources */,
+				31090FCC2233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF in Resources */,
 				31056B5F2218D2CE00D0E15C /* Media.xcassets in Resources */,
+				31090FC82233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF in Resources */,
 				31F4F1B6219899420050177A /* SettingsTableHeaderView.xib in Resources */,
+				31090FD22233277C00D6CAA7 /* CONERIASCRIPT.TTF in Resources */,
+				31090FCA2233277C00D6CAA7 /* RATIONALINT.TTF in Resources */,
+				31090FD62233277C00D6CAA7 /* JOYSTIX.TTF in Resources */,
 				318A92AB21D3C2840060D89B /* Decorators.storyboard in Resources */,
 				314A010E219605AA009BCE3C /* Themes.json in Resources */,
+				31090FD82233277C00D6CAA7 /* KINGTHINGS.TTF in Resources */,
 				314A010D219605AA009BCE3C /* Settings.json in Resources */,
 				31F56FA62185817E00455FC6 /* SKWatchScene.sks in Resources */,
 				318808DB217815E700585AB1 /* LaunchScreen.storyboard in Resources */,
 				318808D8217815E700585AB1 /* Assets.xcassets in Resources */,
+				31090FC22233277C00D6CAA7 /* IRONLOUNGE.TTF in Resources */,
 				3196401E22076439005CF169 /* readme.md in Resources */,
+				31090FD42233277C00D6CAA7 /* DINPRO-LIGHT.TTF in Resources */,
 				318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */,
+				31090FC42233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */,
 				310044C621D3C5DF0019794A /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,12 +817,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31090FC92233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF in Resources */,
+				31090FD92233277C00D6CAA7 /* KINGTHINGS.TTF in Resources */,
+				31090FD72233277C00D6CAA7 /* JOYSTIX.TTF in Resources */,
+				31090FC12233277C00D6CAA7 /* LCDPHONE.TTF in Resources */,
+				31090FCB2233277C00D6CAA7 /* RATIONALINT.TTF in Resources */,
+				31090FBF2233277C00D6CAA7 /* GERMANICA.TTF in Resources */,
+				31090FC72233277C00D6CAA7 /* DIGITAL-7-MONO.TTF in Resources */,
 				31EF99A621A21A2200BB54E7 /* Themes.json in Resources */,
 				318809102178172600585AB1 /* faceBackground.png in Resources */,
 				318809002178166B00585AB1 /* Assets.xcassets in Resources */,
 				31056B602218D2CE00D0E15C /* Media.xcassets in Resources */,
+				31090FC32233277C00D6CAA7 /* IRONLOUNGE.TTF in Resources */,
 				31EF99A521A21A1300BB54E7 /* Settings.json in Resources */,
+				31090FD32233277C00D6CAA7 /* CONERIASCRIPT.TTF in Resources */,
 				318808F82178166B00585AB1 /* SKWatchScene.sks in Resources */,
+				31090FC52233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */,
+				31090FD12233277C00D6CAA7 /* BLACKROSE.TTF in Resources */,
+				31090FDB2233277C00D6CAA7 /* NIXIEONE.TTF in Resources */,
+				31090FD52233277C00D6CAA7 /* DINPRO-LIGHT.TTF in Resources */,
+				31090FCF2233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
+				31090FBD2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
+				31090FCD2233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
