@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		310044C621D3C5DF0019794A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310044C421D3C5DF0019794A /* Settings.storyboard */; };
-		3100DC9C21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */; };
-		3100DC9D21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */; };
 		3100DC9E21EC26A3007423A5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
 		3105674621F77E6D0078F3C6 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */; };
 		3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
@@ -45,14 +43,10 @@
 		312D4C05218BCBF0008504D2 /* ClockDecoratorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */; };
 		312D4C08218BCDDB008504D2 /* HourHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C07218BCDDB008504D2 /* HourHandNode.swift */; };
 		312E2D6A21F2D69F00C2F17F /* SKWatchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F92178166B00585AB1 /* SKWatchScene.swift */; };
-		312E2D6C21F3D72800C2F17F /* LCDPHONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */; };
-		312E2D6D21F3D72800C2F17F /* LCDPHONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */; };
 		312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
 		312E2D7021F3E16A00C2F17F /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
 		312E853822239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		312E853922239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
-		313AE3DD221A770C00C02462 /* JOYSTIX.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 313AE3DC221A76DA00C02462 /* JOYSTIX.TTF */; };
-		313AE3DE221A770D00C02462 /* JOYSTIX.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 313AE3DC221A76DA00C02462 /* JOYSTIX.TTF */; };
 		313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
 		313AE3E1221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
 		314A010A21960409009BCE3C /* UserClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010921960409009BCE3C /* UserClockSetting.swift */; };
@@ -87,34 +81,12 @@
 		318A928921CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */; };
 		318A928B21D059120060D89B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928A21D059120060D89B /* UserDefaults.swift */; };
 		318A928D21D05F660060D89B /* SettingsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */; };
-		318A928F21D34C6D0060D89B /* DIGITAL-7-MONO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */; };
-		318A929021D34C6D0060D89B /* DIGITAL-7-MONO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */; };
 		318A92AB21D3C2840060D89B /* Decorators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318A92A921D3C2840060D89B /* Decorators.storyboard */; };
 		319095FB21CC898200F71BC6 /* BezierPath+Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095F921CC898100F71BC6 /* BezierPath+Length.swift */; };
 		319095FC21CC898200F71BC6 /* PathElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095FA21CC898100F71BC6 /* PathElement.swift */; };
 		3196401E22076439005CF169 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 3196401D22076439005CF169 /* readme.md */; };
 		31A5F7EF21966CED000F1677 /* MathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5F7EE21966CED000F1677 /* MathFunctions.swift */; };
 		31A5F7F021966CED000F1677 /* MathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5F7EE21966CED000F1677 /* MathFunctions.swift */; };
-		31A5F7FC21968223000F1677 /* BLACKROSE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F221968221000F1677 /* BLACKROSE.TTF */; };
-		31A5F7FD21968223000F1677 /* BLACKROSE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F221968221000F1677 /* BLACKROSE.TTF */; };
-		31A5F7FE21968223000F1677 /* ROTHERNBURGDECORATIVE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F321968221000F1677 /* ROTHERNBURGDECORATIVE.TTF */; };
-		31A5F7FF21968223000F1677 /* ROTHERNBURGDECORATIVE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F321968221000F1677 /* ROTHERNBURGDECORATIVE.TTF */; };
-		31A5F80021968223000F1677 /* ULTRACONDENSEDSARIF.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F421968221000F1677 /* ULTRACONDENSEDSARIF.TTF */; };
-		31A5F80121968223000F1677 /* ULTRACONDENSEDSARIF.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F421968221000F1677 /* ULTRACONDENSEDSARIF.TTF */; };
-		31A5F80221968223000F1677 /* RATIONALINT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F521968222000F1677 /* RATIONALINT.TTF */; };
-		31A5F80321968223000F1677 /* RATIONALINT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F521968222000F1677 /* RATIONALINT.TTF */; };
-		31A5F80421968223000F1677 /* GERMANICA.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F621968222000F1677 /* GERMANICA.TTF */; };
-		31A5F80521968223000F1677 /* GERMANICA.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F621968222000F1677 /* GERMANICA.TTF */; };
-		31A5F80621968223000F1677 /* KINGTHINGS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F721968222000F1677 /* KINGTHINGS.TTF */; };
-		31A5F80721968223000F1677 /* KINGTHINGS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F721968222000F1677 /* KINGTHINGS.TTF */; };
-		31A5F80821968223000F1677 /* DINPRO-LIGHT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F821968222000F1677 /* DINPRO-LIGHT.TTF */; };
-		31A5F80921968223000F1677 /* DINPRO-LIGHT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F821968222000F1677 /* DINPRO-LIGHT.TTF */; };
-		31A5F80A21968223000F1677 /* IRONLOUNGE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F921968222000F1677 /* IRONLOUNGE.TTF */; };
-		31A5F80B21968223000F1677 /* IRONLOUNGE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F921968222000F1677 /* IRONLOUNGE.TTF */; };
-		31A5F80C21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7FA21968222000F1677 /* ROMAN-TRAJAN-PRO.TTF */; };
-		31A5F80D21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7FA21968222000F1677 /* ROMAN-TRAJAN-PRO.TTF */; };
-		31A5F80E21968223000F1677 /* CONERIASCRIPT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7FB21968223000F1677 /* CONERIASCRIPT.TTF */; };
-		31A5F80F21968223000F1677 /* CONERIASCRIPT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7FB21968223000F1677 /* CONERIASCRIPT.TTF */; };
 		31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8C6218F22EF00AD22A5 /* RoundedButton.swift */; };
 		31B3F8CC218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8CB218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift */; };
 		31B3F8CE218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8CD218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift */; };
@@ -223,7 +195,6 @@
 
 /* Begin PBXFileReference section */
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
-		3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = NIXIEONE.TTF; sourceTree = "<group>"; };
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		31056B5E2218D2CE00D0E15C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		31056B612218DC1700D0E15C /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -254,10 +225,8 @@
 		310D4A5821C0AA9000082A62 /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockDecoratorTheme.swift; sourceTree = "<group>"; };
 		312D4C07218BCDDB008504D2 /* HourHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourHandNode.swift; sourceTree = "<group>"; };
-		312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = LCDPHONE.TTF; sourceTree = "<group>"; };
 		312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimer.swift; sourceTree = "<group>"; };
 		312E853722239740001C450B /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
-		313AE3DC221A76DA00C02462 /* JOYSTIX.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = JOYSTIX.TTF; sourceTree = "<group>"; };
 		313AE3DF221A777E00C02462 /* DotsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsNode.swift; sourceTree = "<group>"; };
 		314A010921960409009BCE3C /* UserClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClockSetting.swift; sourceTree = "<group>"; };
 		314A010B219605AA009BCE3C /* Settings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Settings.json; sourceTree = "<group>"; };
@@ -296,22 +265,11 @@
 		318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceShapeSettingSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		318A928A21D059120060D89B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionsViewController.swift; sourceTree = "<group>"; };
-		318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIGITAL-7-MONO.TTF"; sourceTree = "<group>"; };
 		318A92AA21D3C2840060D89B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Decorators.storyboard; sourceTree = "<group>"; };
 		319095F921CC898100F71BC6 /* BezierPath+Length.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Length.swift"; sourceTree = "<group>"; };
 		319095FA21CC898100F71BC6 /* PathElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathElement.swift; sourceTree = "<group>"; };
 		3196401D22076439005CF169 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = readme.md; path = ../readme.md; sourceTree = "<group>"; };
 		31A5F7EE21966CED000F1677 /* MathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathFunctions.swift; sourceTree = "<group>"; };
-		31A5F7F221968221000F1677 /* BLACKROSE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = BLACKROSE.TTF; sourceTree = "<group>"; };
-		31A5F7F321968221000F1677 /* ROTHERNBURGDECORATIVE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ROTHERNBURGDECORATIVE.TTF; sourceTree = "<group>"; };
-		31A5F7F421968221000F1677 /* ULTRACONDENSEDSARIF.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ULTRACONDENSEDSARIF.TTF; sourceTree = "<group>"; };
-		31A5F7F521968222000F1677 /* RATIONALINT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = RATIONALINT.TTF; sourceTree = "<group>"; };
-		31A5F7F621968222000F1677 /* GERMANICA.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GERMANICA.TTF; sourceTree = "<group>"; };
-		31A5F7F721968222000F1677 /* KINGTHINGS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = KINGTHINGS.TTF; sourceTree = "<group>"; };
-		31A5F7F821968222000F1677 /* DINPRO-LIGHT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPRO-LIGHT.TTF"; sourceTree = "<group>"; };
-		31A5F7F921968222000F1677 /* IRONLOUNGE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRONLOUNGE.TTF; sourceTree = "<group>"; };
-		31A5F7FA21968222000F1677 /* ROMAN-TRAJAN-PRO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ROMAN-TRAJAN-PRO.TTF"; sourceTree = "<group>"; };
-		31A5F7FB21968223000F1677 /* CONERIASCRIPT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CONERIASCRIPT.TTF; sourceTree = "<group>"; };
 		31B3F8C6218F22EF00AD22A5 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		31B3F8CB218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableHeaderViewCell.swift; sourceTree = "<group>"; };
 		31B3F8CD218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -517,31 +475,8 @@
 		31A5F7EA2196692B000F1677 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				31A5F7F12196820D000F1677 /* Fonts */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		31A5F7F12196820D000F1677 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				313AE3DC221A76DA00C02462 /* JOYSTIX.TTF */,
-				312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */,
-				3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */,
-				318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */,
-				31A5F7F221968221000F1677 /* BLACKROSE.TTF */,
-				31A5F7FB21968223000F1677 /* CONERIASCRIPT.TTF */,
-				31A5F7F821968222000F1677 /* DINPRO-LIGHT.TTF */,
-				31A5F7F621968222000F1677 /* GERMANICA.TTF */,
-				31A5F7F921968222000F1677 /* IRONLOUNGE.TTF */,
-				31A5F7F721968222000F1677 /* KINGTHINGS.TTF */,
-				31A5F7F521968222000F1677 /* RATIONALINT.TTF */,
-				31A5F7FA21968222000F1677 /* ROMAN-TRAJAN-PRO.TTF */,
-				31A5F7F321968221000F1677 /* ROTHERNBURGDECORATIVE.TTF */,
-				31A5F7F421968221000F1677 /* ULTRACONDENSEDSARIF.TTF */,
-			);
-			name = Fonts;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		31B3F8C8218F283000AD22A5 /* CustomClasses */ = {
@@ -766,32 +701,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31A5F80221968223000F1677 /* RATIONALINT.TTF in Resources */,
 				31061F302192657200EF511B /* Colors.plist in Resources */,
 				31056B5F2218D2CE00D0E15C /* Media.xcassets in Resources */,
 				31F4F1B6219899420050177A /* SettingsTableHeaderView.xib in Resources */,
 				318A92AB21D3C2840060D89B /* Decorators.storyboard in Resources */,
 				314A010E219605AA009BCE3C /* Themes.json in Resources */,
-				312E2D6C21F3D72800C2F17F /* LCDPHONE.TTF in Resources */,
 				314A010D219605AA009BCE3C /* Settings.json in Resources */,
-				31A5F7FE21968223000F1677 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
 				31F56FA62185817E00455FC6 /* SKWatchScene.sks in Resources */,
 				318808DB217815E700585AB1 /* LaunchScreen.storyboard in Resources */,
 				318808D8217815E700585AB1 /* Assets.xcassets in Resources */,
-				31A5F80E21968223000F1677 /* CONERIASCRIPT.TTF in Resources */,
-				313AE3DD221A770C00C02462 /* JOYSTIX.TTF in Resources */,
 				3196401E22076439005CF169 /* readme.md in Resources */,
-				31A5F80A21968223000F1677 /* IRONLOUNGE.TTF in Resources */,
-				31A5F80421968223000F1677 /* GERMANICA.TTF in Resources */,
-				31A5F80C21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
-				31A5F80621968223000F1677 /* KINGTHINGS.TTF in Resources */,
 				318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */,
 				310044C621D3C5DF0019794A /* Settings.storyboard in Resources */,
-				3100DC9C21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */,
-				31A5F80821968223000F1677 /* DINPRO-LIGHT.TTF in Resources */,
-				318A928F21D34C6D0060D89B /* DIGITAL-7-MONO.TTF in Resources */,
-				31A5F7FC21968223000F1677 /* BLACKROSE.TTF in Resources */,
-				31A5F80021968223000F1677 /* ULTRACONDENSEDSARIF.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,26 +729,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31A5F80D21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
-				313AE3DE221A770D00C02462 /* JOYSTIX.TTF in Resources */,
-				31A5F80321968223000F1677 /* RATIONALINT.TTF in Resources */,
 				31EF99A621A21A2200BB54E7 /* Themes.json in Resources */,
-				3100DC9D21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */,
 				318809102178172600585AB1 /* faceBackground.png in Resources */,
-				31A5F80F21968223000F1677 /* CONERIASCRIPT.TTF in Resources */,
 				318809002178166B00585AB1 /* Assets.xcassets in Resources */,
-				31A5F80921968223000F1677 /* DINPRO-LIGHT.TTF in Resources */,
 				31056B602218D2CE00D0E15C /* Media.xcassets in Resources */,
 				31EF99A521A21A1300BB54E7 /* Settings.json in Resources */,
 				318808F82178166B00585AB1 /* SKWatchScene.sks in Resources */,
-				31A5F7FF21968223000F1677 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
-				312E2D6D21F3D72800C2F17F /* LCDPHONE.TTF in Resources */,
-				31A5F80721968223000F1677 /* KINGTHINGS.TTF in Resources */,
-				318A929021D34C6D0060D89B /* DIGITAL-7-MONO.TTF in Resources */,
-				31A5F80B21968223000F1677 /* IRONLOUNGE.TTF in Resources */,
-				31A5F80521968223000F1677 /* GERMANICA.TTF in Resources */,
-				31A5F80121968223000F1677 /* ULTRACONDENSEDSARIF.TTF in Resources */,
-				31A5F7FD21968223000F1677 /* BLACKROSE.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

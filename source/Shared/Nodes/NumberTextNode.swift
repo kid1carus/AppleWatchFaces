@@ -26,30 +26,17 @@ enum NumberTextTypes: String {
     NumberTextTypeSystem,
     NumberTextTypeIronLounge,
     NumberTextTypeDigitalMono,
+    NumberTextTypeDigitalMonoItalics,
     NumberTextTypeNixie,
     NumberTextLCDPhone,
-    NumberTextJoystix
+    NumberTextJoystix,
+    NumberTextPixellated
     
-    static let randomizableValues = [NumberTextTypeModernInteger,
-                                     NumberTextTypeBlackRose,
-                                     NumberTextTypeCorneriaScript,
-                                     NumberTextTypeGermanica,
-                                     NumberTextTypeKingThings,
-                                     NumberTextTypeRothernburgDecorative,
-                                     NumberTextTypeHelvica,
-                                     NumberTextTypeHelvicaNeueBold,
-                                     NumberTextTypeNumeralTrajan,
-                                     NumberTextTypeDINPro,
-                                     NumberTextTypeSystem,
-                                     NumberTextTypeIronLounge,
-                                     NumberTextTypeDigitalMono,
-                                     NumberTextLCDPhone,
-                                     NumberTextJoystix
-    ]
     static let userSelectableValues = [NumberTextTypeModernInteger,
                                        NumberTextTypeNixie,
                                        NumberTextTypeDINPro,
                                        NumberTextTypeDigitalMono,
+                                       NumberTextTypeDigitalMonoItalics,
                                        NumberTextLCDPhone,
                                        NumberTextJoystix,
                                        NumberTextTypeBlackRose,
@@ -62,7 +49,10 @@ enum NumberTextTypes: String {
                                        NumberTextTypeNumeralTrajan,
                                        NumberTextTypeUltraCondensedSerif,
                                        NumberTextTypeSystem,
-                                       NumberTextTypeIronLounge]
+                                       NumberTextTypeIronLounge,
+                                       NumberTextPixellated]
+    
+    static let randomizableValues = userSelectableValues
     
     static func random() -> NumberTextTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -108,10 +98,12 @@ class NumberTextNode: SKNode {
         if (nodeType == NumberTextTypes.NumberTextTypeSystem) { typeDescription = "System / San Fransisco" }
         if (nodeType == NumberTextTypes.NumberTextTypeIronLounge) { typeDescription = "Iron Lounge" }
         if (nodeType == NumberTextTypes.NumberTextTypeDigitalMono) { typeDescription = "Digital MonoSpaced" }
+        if (nodeType == NumberTextTypes.NumberTextTypeDigitalMonoItalics) { typeDescription = "Digital Italics" }
         if (nodeType == NumberTextTypes.NumberTextTypeNixie) { typeDescription = "Nixie Tube" }
         if (nodeType == NumberTextTypes.NumberTextLCDPhone) { typeDescription = "LCD Phone" }
         if (nodeType == NumberTextTypes.NumberTextJoystix) { typeDescription = "Joystix" }
-        
+        if (nodeType == NumberTextTypes.NumberTextPixellated) { typeDescription = "Pixellated" }
+    
         return typeDescription
     }
     
@@ -133,9 +125,12 @@ class NumberTextNode: SKNode {
         if (textType == .NumberTextTypeIronLounge) { fontName = "IronLounge2" }
         
         if (textType == .NumberTextTypeDigitalMono) { fontName = "Digital-7Mono" }
+        if (textType == .NumberTextTypeDigitalMonoItalics) { fontName = "Digital-7MonoItalic" }
+        
         if (textType == .NumberTextTypeNixie) { fontName = "NixieOne" }
         if (textType == .NumberTextLCDPhone) { fontName = "Lcdphone" }
         if (textType == .NumberTextJoystix) { fontName = "Joystix" }
+        if (textType == .NumberTextPixellated) { fontName = "PixelMillennium" }
         
         if (textType == .NumberTextTypeSystem) {
             fontName = UIFont.systemFont(ofSize: 18.0).familyName

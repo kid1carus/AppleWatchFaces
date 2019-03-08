@@ -321,7 +321,7 @@ class DigitalTimeNode: SKNode {
                 digital8Node.attributedText = NSAttributedString(string: digital8String, attributes: attributes)
                 digital8Node.zPosition = -0.5
                 //let shadowOffset:CGFloat = 0
-                digital8Node.position = CGPoint.init(x: timeText.position.x+shadowOffset, y: timeText.position.y-shadowOffset)
+                digital8Node.position = CGPoint.init(x: timeText.position.x, y: timeText.position.y)
                 digital8Node.isHidden = false
                 self.addChild(digital8Node)
             }

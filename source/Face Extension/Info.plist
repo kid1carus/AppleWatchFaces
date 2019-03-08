@@ -46,12 +46,16 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
+	<key>WKExtensionDelegateClassName</key>
+	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>PIXEL_MILLENNIUM.TFF</string>
 		<string>JOYSTIX.TTF</string>
 		<string>LCDPHONE.TTF</string>
 		<string>NIXIEONE.TTF</string>
 		<string>DIGITAL-7-MONO.TTF</string>
+		<string>DIGITAL-7-MONO-ITALICS.TTF</string>
 		<string>IRONLOUNGE.TTF</string>
 		<string>ULTRACONDENSEDSARIF.TTF</string>
 		<string>RATIONALINT.TTF</string>
@@ -63,7 +67,5 @@
 		<string>GERMANICA.TTF</string>
 		<string>BLACKROSE.TTF</string>
 	</array>
-	<key>WKExtensionDelegateClassName</key>
-	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 </dict>
 </plist>

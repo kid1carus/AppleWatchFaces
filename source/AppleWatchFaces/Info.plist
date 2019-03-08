@@ -28,10 +28,12 @@
 	<string>App needs access to photo library to same images of watch faces </string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>PIXEL_MILLENNIUM.TFF</string>
 		<string>JOYSTIX.TTF</string>
 		<string>LCDPHONE.TTF</string>
 		<string>NIXIEONE.TTF</string>
 		<string>DIGITAL-7-MONO.TTF</string>
+		<string>DIGITAL-7-MONO-ITALICS.TTF</string>
 		<string>IRONLOUNGE.TTF</string>
 		<string>ULTRACONDENSEDSARIF.TTF</string>
 		<string>RATIONALINT.TTF</string>
