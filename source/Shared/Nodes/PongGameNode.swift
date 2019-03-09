@@ -134,6 +134,7 @@ class PongGameNode: SKSpriteNode {
         
         let ball = SKShapeNode.init(rectOf: ballSize)
         ball.fillColor = color
+        ball.lineWidth = 0.0
         ball.name = "ball"
         ball.physicsBody = getPhysicBody(size: ballSize)
         //ball.physicsBody!.categoryBitMask = PhysicsCategory.Ball

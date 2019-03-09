@@ -104,6 +104,7 @@ class FaceBackgroundNode: SKSpriteNode {
             if force {
                 if let pongNode = self.childNode(withName: "pongGameNode") as? PongGameNode {
                     pongNode.positionHands( hour: hour, min: min )
+                    pongNode.resetLevel() // makes it jiggle in time travelling
                 }
             }
         }
