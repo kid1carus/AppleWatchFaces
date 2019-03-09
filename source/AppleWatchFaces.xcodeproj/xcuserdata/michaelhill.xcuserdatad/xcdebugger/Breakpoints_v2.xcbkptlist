@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/DigitalTimeNode.swift"
-            timestampString = "573777379.730311"
+            timestampString = "573844697.739674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "init(digitalTimeTextType:timeFormat:textSize:effect:horizontalPosition:fillColor:strokeColor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/DotsNode.swift"
-            timestampString = "573104638.512168"
+            timestampString = "573777994.415072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -496,6 +496,22 @@
             startingLineNumber = "485"
             endingLineNumber = "485"
             landmarkName = "getBackgroundImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Nodes/PongGameNode.swift"
+            timestampString = "573844697.7398601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "updateOffsets(clampL:clampR:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

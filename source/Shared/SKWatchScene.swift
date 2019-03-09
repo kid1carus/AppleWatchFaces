@@ -12,6 +12,7 @@ class SKWatchScene: SKScene {
     static let sizeMulitplier:CGFloat = 100.0 //in pixels
     
     static let timeForceUpdateNotificationName = Notification.Name("timeForceUpdate")
+    static let sceneSlowFrameUpdateNotificationName = Notification.Name("sceneSlowFrameUpdate")
     
     func redraw(clockSetting: ClockSetting) {
         
@@ -42,9 +43,27 @@ class SKWatchScene: SKScene {
     }
     
     override func sceneDidLoad() {
+        
+        //need for PONG
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
+        //for now add physics to the edges
+        let borderBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        //borderBody.categoryBitMask = PhysicsCategory.Wall
+        borderBody.friction = 0.0
+        borderBody.restitution = 1.0
+        self.physicsBody = borderBody
+        
         //redraw( clockSetting: ClockSetting.defaults() )
         //check to see if we need to update time every second
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: ClockTimer.timeChangedSecondNotificationName, object: nil)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        //debugPrint("frame" + currentTime.truncatingRemainder(dividingBy: 0.1).debugDescription)
+        if currentTime.truncatingRemainder(dividingBy: 0.1) < 0.02 {
+            //slow update ping
+            NotificationCenter.default.post(name: SKWatchScene.sceneSlowFrameUpdateNotificationName, object: nil, userInfo:nil)
+        }
     }
     
     @objc func onNotificationForSecondsChanged(notification:Notification) {

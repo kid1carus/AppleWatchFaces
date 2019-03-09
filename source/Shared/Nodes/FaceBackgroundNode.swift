@@ -12,12 +12,17 @@ import WatchKit
 
 enum FaceBackgroundTypes: String {
     case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient,
-        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeNone
+        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceBackgroundTypeNone
     
     static let userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
-                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeNone]
+                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
+                                     FaceBackgroundTypeAnimatedPong,
+                                     
+                                     FaceBackgroundTypeNone]
     
-    static let randomizableValues = userSelectableValues
+    static let randomizableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
+                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
+                                     FaceBackgroundTypeNone]
     
     static func random() -> FaceBackgroundTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -39,6 +44,8 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalGradient)  { typeDescription = "Vertical Gradient" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalGradient)  { typeDescription = "Horizonal Gradient" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalGradient)  { typeDescription = "Diagonal Gradient" }
+        
+        if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong)  { typeDescription = "Animated: Pong Game" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
@@ -105,6 +112,11 @@ class FaceBackgroundNode: SKSpriteNode {
         let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
         let xBounds = FaceBackgroundNode.getScreenBoundsForImages().width / 2.0
         let yBounds = FaceBackgroundNode.getScreenBoundsForImages().height / 2.0
+        
+        if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong) {
+            let pongGameNode = PongGameNode.init(size: FaceBackgroundNode.getScreenBoundsForImages(), material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+            self.addChild(pongGameNode)
+        }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {
             

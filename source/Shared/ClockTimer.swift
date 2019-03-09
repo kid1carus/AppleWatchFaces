@@ -14,6 +14,7 @@ class ClockTimer {
     var secondHandTimer = Timer()
     static let timeChangedSecondNotificationName = Notification.Name("timeChangedSecond")
     static let timeChangedMinuteNotificationName = Notification.Name("timeChangedMinute")
+    static let timeChangedHourNotificationName = Notification.Name("timeChangedHour")
     static var currentDate = Date()
     
     func stopTimer() {
@@ -32,12 +33,17 @@ class ClockTimer {
         
         let calendar = Calendar.current
         let seconds = Int(calendar.component(.second, from: date))
+        let minute = Int(calendar.component(.minute, from: date))
         
         if (self.currentSecond != seconds) {
             ClockTimer.currentDate = Date()
             NotificationCenter.default.post(name: ClockTimer.timeChangedSecondNotificationName, object: nil, userInfo:nil)
             if (seconds == 0) {
                 NotificationCenter.default.post(name: ClockTimer.timeChangedMinuteNotificationName, object: nil, userInfo:nil)
+                
+                if (minute == 0) {
+                    NotificationCenter.default.post(name: ClockTimer.timeChangedHourNotificationName, object: nil, userInfo:nil)
+                }
             }
             self.currentSecond = seconds
         }
