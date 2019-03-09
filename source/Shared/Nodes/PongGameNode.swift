@@ -10,15 +10,15 @@ import UIKit
 import SpriteKit
 
 enum PongModes: String {
-    case Normal, ScoringLeft, ScoringRight, GameOver
+    case Normal, Paused, ScoringLeft, ScoringRight, GameOver
 }
 
 class PongGameNode: SKSpriteNode {
     
     //defines
-    let ballSize = CGSize.init(width: 10, height: 10)
-    let paddleSize = CGSize.init(width: 10, height: 80)
-    let paddlePaddingFromEdges:CGFloat = 30.0
+    let ballSize = CGSize.init(width: 7, height: 10)
+    let paddleSize = CGSize.init(width: 7, height: 50)
+    let paddlePaddingFromEdges:CGFloat = 20.0
     let globalFriction:CGFloat = 0.0
     let globalRestitution:CGFloat = 1.0
     let linerDamping:CGFloat = 0.0
@@ -27,7 +27,7 @@ class PongGameNode: SKSpriteNode {
     var rightPaddleOffset:CGFloat = 0.0
     
     //game vars
-    var gameMode:PongModes = .Normal
+    var gameMode:PongModes = .Paused
     
     func positionHands( hour: CGFloat, min: CGFloat ) {
         //          debugPrint("position hour")
@@ -100,9 +100,9 @@ class PongGameNode: SKSpriteNode {
         //self.frame = CGRect.init(x: 0, y: 0, width: size.width, height: size.height)
     
         //draw line
-        let lineText = "---------------------"
-        let line = SKLabelNode.init(text: lineText)
-        line.fontSize = 200.0
+        let line = SKLabelNode.init(fontNamed: "PixelMillennium")
+        line.text = "---------------------"
+        line.fontSize = 50.0
         line.zRotation = CGFloat(Double.pi/2)
         line.verticalAlignmentMode = .center
         line.zPosition = -1.0
@@ -111,22 +111,24 @@ class PongGameNode: SKSpriteNode {
         self.addChild(line)
         
         //draw score L
-        let scoreLeft = SKLabelNode.init(text: "00")
-        scoreLeft.fontSize = 40.0
+        let scoreLeft = SKLabelNode.init(fontNamed: "PixelMillennium")
+        scoreLeft.text = "00"
+        scoreLeft.fontSize = 60.0
         scoreLeft.zPosition = -1.0
         scoreLeft.fontColor = color
         scoreLeft.name = "scoreLeft"
-        scoreLeft.position = CGPoint.init(x: -size.width/4, y: size.height/2 - 30)
+        scoreLeft.position = CGPoint.init(x: -size.width/4, y: size.height/2 - 50)
         
         self.addChild(scoreLeft)
         
         //draw score R
-        let scoreRight = SKLabelNode.init(text: "00")
-        scoreRight.fontSize = 40.0
+        let scoreRight = SKLabelNode.init(fontNamed: "PixelMillennium")
+        scoreRight.text = "00"
+        scoreRight.fontSize = 60.0
         scoreRight.zPosition = -1.0
         scoreRight.fontColor = color
         scoreRight.name = "scoreRight"
-        scoreRight.position = CGPoint.init(x: size.width/4, y: size.height/2 - 30)
+        scoreRight.position = CGPoint.init(x: size.width/4, y: size.height/2 - 50)
         
         self.addChild(scoreRight)
         
@@ -141,6 +143,7 @@ class PongGameNode: SKSpriteNode {
         
         let leftPaddle = SKShapeNode.init(rectOf: paddleSize)
         leftPaddle.fillColor = color
+        leftPaddle.lineWidth = 0.0
         leftPaddle.name = "leftPaddle"
         leftPaddle.physicsBody = getPhysicBody(size: paddleSize)
         leftPaddle.physicsBody!.isDynamic = false
@@ -149,6 +152,7 @@ class PongGameNode: SKSpriteNode {
         
         let rightPaddle = SKShapeNode.init(rectOf: paddleSize)
         rightPaddle.fillColor = color
+        rightPaddle.lineWidth = 0.0
         rightPaddle.name = "rightPaddle"
         rightPaddle.physicsBody = getPhysicBody(size: paddleSize)
         rightPaddle.physicsBody!.isDynamic = false
@@ -179,7 +183,7 @@ class PongGameNode: SKSpriteNode {
         }
         
         //time to lose !!
-        let deadManSpeed:CGFloat = 10.0
+        let deadManSpeed:CGFloat = 3.0
         if gameMode == .ScoringLeft {
             if leftPaddleOffset>0 {
                 leftPaddleOffset += deadManSpeed
@@ -197,7 +201,7 @@ class PongGameNode: SKSpriteNode {
         
         //clamp
         let bumpBackAmt = paddleSize.height/10
-        let edge = paddleSize.height/2.5
+        let edge = paddleSize.height/2.75
         
         if (clampL && gameMode == .Normal) {
             if leftPaddleOffset > edge { leftPaddleOffset -= bumpBackAmt }
@@ -211,6 +215,8 @@ class PongGameNode: SKSpriteNode {
     }
     
     @objc func onNotificationFrameUpdate(notification:Notification) {
+        
+        if gameMode == .Paused { return }
         
         // Called before each frame is rendered
         guard let ball = self.childNode(withName: "ball") else { return }
