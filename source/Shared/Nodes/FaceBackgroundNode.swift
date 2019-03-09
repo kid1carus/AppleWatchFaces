@@ -32,6 +32,8 @@ enum FaceBackgroundTypes: String {
 
 class FaceBackgroundNode: SKSpriteNode {
     
+    var backgroundType:FaceBackgroundTypes = .FaceBackgroundTypeNone
+    
     static func descriptionForType(_ nodeType: FaceBackgroundTypes) -> String {
         var typeDescription = ""
         
@@ -96,6 +98,17 @@ class FaceBackgroundNode: SKSpriteNode {
         return shape
     }
     
+    func positionHands( min: CGFloat, hour: CGFloat, force: Bool ) {
+        
+        if self.backgroundType == .FaceBackgroundTypeAnimatedPong {
+            if force {
+                if let pongNode = self.childNode(withName: "pongGameNode") as? PongGameNode {
+                    pongNode.positionHands( hour: hour, min: min )
+                }
+            }
+        }
+    }
+    
     convenience init(backgroundType: FaceBackgroundTypes, material: String) {
         self.init(backgroundType: backgroundType, material: material, material2: "", strokeColor: SKColor.clear, lineWidth: 1.0)
     }
@@ -108,6 +121,7 @@ class FaceBackgroundNode: SKSpriteNode {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize.init())
         
+        self.backgroundType = backgroundType
         self.name = "FaceBackground"
         let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
         let xBounds = FaceBackgroundNode.getScreenBoundsForImages().width / 2.0
@@ -115,6 +129,7 @@ class FaceBackgroundNode: SKSpriteNode {
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong) {
             let pongGameNode = PongGameNode.init(size: FaceBackgroundNode.getScreenBoundsForImages(), material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+            pongGameNode.name = "pongGameNode"
             self.addChild(pongGameNode)
         }
         
