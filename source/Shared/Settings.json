@@ -1,6 +1,35 @@
 {
     "clockSettings" : [
         {
+            "clockFaceMaterialName" : "#ffffffff",
+            "faceBackgroundType" : "FaceBackgroundTypeAnimatedPong",
+            "clockFaceSettings" : {
+                "shouldShowHandOutlines" : false,
+                "secondHandMaterialName" : "#FF0000FF",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "shouldShowRomanNumeralText" : false,
+                "ringMaterials" : [
+                    "#FFFFFFFF",
+                    "#e2e2e2ff",
+                    "#c6c6c6ff"
+                ],
+                "secondHandMovement" : "SecondHandMovementStep",
+                "minuteHandType" : "MinuteHandTypeNone",
+                "minuteHandMaterialName" : "#FFFFFFFF",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "hourHandType" : "HourHandTypeNone",
+                "secondHandType" : "SecondHandNodeTypeNone",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "ringSettings" : [
+                    
+                ]
+            },
+            "clockCasingMaterialName" : "#000000ff",
+            "title" : "PONG",
+            "uniqueID" : "4A3E8137-3110-47F5-9237-763908951EB8"
+        },
+        {
             "faceBackgroundType" : "FaceBackgroundTypeFilled",
             "title" : "Orange Bold LCD",
             "clockCasingMaterialName" : "#111111ff",
