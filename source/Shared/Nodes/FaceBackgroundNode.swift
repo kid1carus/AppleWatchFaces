@@ -9,14 +9,15 @@
 import SpriteKit
 import SceneKit
 import WatchKit
+import UIKit
 
 enum FaceBackgroundTypes: String {
     case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient,
-        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceBackgroundTypeNone
+        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceBackgroundTypeNone
     
     static let userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
                                      FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
-                                     FaceBackgroundTypeAnimatedPong,
+                                     FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField,
                                      
                                      FaceBackgroundTypeNone]
     
@@ -48,6 +49,8 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalGradient)  { typeDescription = "Diagonal Gradient" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong)  { typeDescription = "Animated: Pong Game" }
+        if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedStarField)  { typeDescription = "Animated: Starfield" }
+        
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
@@ -127,6 +130,28 @@ class FaceBackgroundNode: SKSpriteNode {
         let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
         let xBounds = FaceBackgroundNode.getScreenBoundsForImages().width / 2.0
         let yBounds = FaceBackgroundNode.getScreenBoundsForImages().height / 2.0
+        
+        let mainColor = SKColor.init(hexString: material)
+        let medColor = mainColor.withAlphaComponent(0.7)
+        let darkColor = mainColor.withAlphaComponent(0.3)
+        
+        if (backgroundType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedStarField) {
+            //A layer of a star field
+            let starfieldNode = SKNode()
+            starfieldNode.name = "starfieldNode"
+            starfieldNode.addChild(starfieldEmitterNode(speed: -48, lifetime: yBounds / 10, scale: 0.2, birthRate: 2, color: mainColor))
+            
+            //A second layer of stars
+            var emitterNode = starfieldEmitterNode(speed: -32, lifetime: yBounds / 5, scale: 0.14, birthRate: 5, color: medColor)
+            emitterNode.zPosition = -10
+            starfieldNode.addChild(emitterNode)
+            
+            //A third layer
+            emitterNode = starfieldEmitterNode(speed: -20, lifetime: yBounds / 2, scale: 0.1, birthRate: 10, color: darkColor)
+            starfieldNode.addChild(emitterNode)
+            
+            self.addChild(starfieldNode)
+        }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong) {
             let pongGameNode = PongGameNode.init(size: FaceBackgroundNode.getScreenBoundsForImages(), material: material, strokeColor: strokeColor, lineWidth: lineWidth)
@@ -307,6 +332,46 @@ class FaceBackgroundNode: SKSpriteNode {
         }
         
         
+    }
+    
+    //Creates a new star field
+    func starfieldEmitterNode(speed: CGFloat, lifetime: CGFloat, scale: CGFloat, birthRate: CGFloat, color: SKColor) -> SKEmitterNode {
+
+        let size = FaceBackgroundNode.getScreenBoundsForImages()
+        let starImage = UIImage.init(named: "StarForEmitter.png")!
+        
+        let texture = SKTexture.init(image: starImage)
+        texture.filteringMode = .nearest
+        
+        let emitterNode = SKEmitterNode()
+        emitterNode.particleTexture = texture
+        emitterNode.particleBirthRate = birthRate
+        emitterNode.particleColor = color
+        emitterNode.particleLifetime = lifetime
+        emitterNode.particleSpeed = speed
+        emitterNode.particleScale = scale
+        emitterNode.particleColorBlendFactor = 1
+        emitterNode.position = CGPoint(x: 0, y: size.height)
+        emitterNode.particlePositionRange = CGVector(dx: size.width, dy: 0)
+        emitterNode.particleSpeedRange = 16.0
+        
+        //Rotates the stars
+        emitterNode.particleAction = SKAction.repeatForever(SKAction.sequence([
+            SKAction.rotate(byAngle: CGFloat(-Double.pi/4), duration: 1),
+            SKAction.rotate(byAngle: CGFloat(Double.pi/4), duration: 1)]))
+        
+        //Causes the stars to twinkle
+        let twinkles = 20
+        let colorSequence = SKKeyframeSequence(capacity: twinkles*2)
+        let twinkleTime:CGFloat = 0.25
+        for i in 0..<twinkles {
+            colorSequence.addKeyframeValue(color,time: CGFloat(i) * 2 * twinkleTime / 2)
+            colorSequence.addKeyframeValue(color.withAlphaComponent(0.7), time: (CGFloat(i) * 2 + 1) * twinkleTime / 2)
+        }
+        emitterNode.particleColorSequence = colorSequence
+        
+        emitterNode.advanceSimulationTime(TimeInterval(lifetime))
+        return emitterNode
     }
     
     required init?(coder aDecoder: NSCoder) {
