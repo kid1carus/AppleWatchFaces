@@ -40,7 +40,9 @@ class PongGameNode: SKSpriteNode {
     
     func updateTime() {
         let date = ClockTimer.currentDate
-        let calendar = Calendar.current
+        var calendar = Calendar.current
+        calendar.locale = NSLocale.current
+        
         let minutes = CGFloat(calendar.component(.minute, from: date))
         let hours = CGFloat(calendar.component(.hour, from: date))
         
@@ -202,7 +204,7 @@ class PongGameNode: SKSpriteNode {
         
         //clamp
         let bumpBackAmt = paddleSize.height/10
-        let edge = paddleSize.height/2.75
+        let edge = paddleSize.height/3
         
         if (clampL && gameMode == .Normal) {
             if leftPaddleOffset > edge { leftPaddleOffset -= bumpBackAmt }
