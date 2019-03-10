@@ -103,7 +103,7 @@ class PongGameNode: SKSpriteNode {
     
         //draw line
         let line = SKLabelNode.init(fontNamed: "PixelMillennium")
-        line.text = "---------------------"
+        line.text = "------------"
         line.fontSize = 50.0
         line.zRotation = CGFloat(Double.pi/2)
         line.verticalAlignmentMode = .center

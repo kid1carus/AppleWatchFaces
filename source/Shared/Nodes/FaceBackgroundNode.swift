@@ -150,12 +150,48 @@ class FaceBackgroundNode: SKSpriteNode {
             emitterNode = starfieldEmitterNode(speed: -20, lifetime: yBounds / 2, scale: 0.1, birthRate: 10, color: darkColor)
             starfieldNode.addChild(emitterNode)
             
+            if (lineWidth>0) {
+                let size = FaceBackgroundNode.getScreenBoundsForImages()
+                let width = size.width+lineWidth
+                let height = size.height+lineWidth
+                let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
+                let frameNode = SKShapeNode.init(rect:frameNodeRect)
+                
+                //draw it as a shape, no background!
+                frameNode.fillColor = SKColor.black
+                frameNode.strokeColor = strokeColor
+                frameNode.lineWidth = lineWidth
+                frameNode.zPosition = -2.0
+                
+                starfieldNode.addChild(frameNode)
+            }
+            
             self.addChild(starfieldNode)
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong) {
+            
+            
+            
             let pongGameNode = PongGameNode.init(size: FaceBackgroundNode.getScreenBoundsForImages(), material: material, strokeColor: strokeColor, lineWidth: lineWidth)
             pongGameNode.name = "pongGameNode"
+            
+            if (lineWidth>0) {
+                let size = FaceBackgroundNode.getScreenBoundsForImages()
+                let width = size.width+lineWidth
+                let height = size.height+lineWidth
+                let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
+                let frameNode = SKShapeNode.init(rect:frameNodeRect)
+                
+                //draw it as a shape, no background!
+                frameNode.fillColor = SKColor.black
+                frameNode.strokeColor = strokeColor
+                frameNode.lineWidth = lineWidth
+                frameNode.zPosition = -2.0
+                
+                pongGameNode.addChild(frameNode)
+            }
+            
             self.addChild(pongGameNode)
         }
         
