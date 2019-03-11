@@ -137,7 +137,7 @@ class FaceBackgroundNode: SKSpriteNode {
         
         if (backgroundType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedStarField) {
             //A layer of a star field
-            let starfieldNode = SKNode()
+            let starfieldNode = SKCropNode()
             starfieldNode.name = "starfieldNode"
             starfieldNode.addChild(starfieldEmitterNode(speed: -28, lifetime: yBounds / 10, scale: 0.17, birthRate: 2, color: mainColor))
             
@@ -150,14 +150,14 @@ class FaceBackgroundNode: SKSpriteNode {
             emitterNode = starfieldEmitterNode(speed: -13, lifetime: yBounds / 2, scale: 0.09, birthRate: 12, color: darkColor)
             starfieldNode.addChild(emitterNode)
             
+            let size = FaceBackgroundNode.getScreenBoundsForImages()
+            let width = size.width+lineWidth
+            let height = size.height+lineWidth
+            let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
+            let frameNode = SKShapeNode.init(rect:frameNodeRect)
+            
             //green frame for settings UI
             if (lineWidth>0) {
-                let size = FaceBackgroundNode.getScreenBoundsForImages()
-                let width = size.width+lineWidth
-                let height = size.height+lineWidth
-                let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
-                let frameNode = SKShapeNode.init(rect:frameNodeRect)
-                
                 //draw it as a shape, no background!
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
@@ -166,6 +166,8 @@ class FaceBackgroundNode: SKSpriteNode {
                 
                 starfieldNode.addChild(frameNode)
             }
+            
+            starfieldNode.maskNode = frameNode
             
             self.addChild(starfieldNode)
         }
@@ -388,7 +390,7 @@ class FaceBackgroundNode: SKSpriteNode {
         emitterNode.particleSpeed = speed
         emitterNode.particleScale = scale
         emitterNode.particleColorBlendFactor = 1
-        emitterNode.position = CGPoint(x: -size.width, y: 0)
+        emitterNode.position = CGPoint(x: -size.width/2, y: 0)
         emitterNode.particlePositionRange = CGVector(dx: size.height, dy: 0)
         emitterNode.particleSpeedRange = 16.0
         
