@@ -13,11 +13,12 @@ import UIKit
 
 enum FaceBackgroundTypes: String {
     case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient,
-        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceBackgroundTypeNone
+        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedSnowField,
+        FaceBackgroundTypeNone
     
     static let userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
                                      FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
-                                     FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField,
+                                     FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedSnowField,
                                      
                                      FaceBackgroundTypeNone]
     
@@ -50,7 +51,7 @@ class FaceBackgroundNode: SKSpriteNode {
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong)  { typeDescription = "Animated: Pong Game" }
         if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedStarField)  { typeDescription = "Animated: Starfield" }
-        
+        if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedSnowField)  { typeDescription = "Animated: Snow Falling" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
@@ -114,11 +115,11 @@ class FaceBackgroundNode: SKSpriteNode {
     }
     
     convenience init(backgroundType: FaceBackgroundTypes, material: String) {
-        self.init(backgroundType: backgroundType, material: material, material2: "", strokeColor: SKColor.clear, lineWidth: 1.0)
+        self.init(backgroundType: backgroundType, material: material, material2: "", strokeColor: SKColor.clear, lineWidth: 0.0)
     }
     
     convenience init(backgroundType: FaceBackgroundTypes, material: String, material2: String) {
-        self.init(backgroundType: backgroundType, material: material, material2: material2, strokeColor: SKColor.clear, lineWidth: 1.0)
+        self.init(backgroundType: backgroundType, material: material, material2: material2, strokeColor: SKColor.clear, lineWidth: 0.0)
     }
     
     init(backgroundType: FaceBackgroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat ) {
@@ -153,6 +154,7 @@ class FaceBackgroundNode: SKSpriteNode {
             let size = FaceBackgroundNode.getScreenBoundsForImages()
             let width = size.width+lineWidth
             let height = size.height+lineWidth
+            
             let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
             let frameNode = SKShapeNode.init(rect:frameNodeRect)
             
@@ -165,11 +167,47 @@ class FaceBackgroundNode: SKSpriteNode {
                 frameNode.zPosition = -2.0
                 
                 starfieldNode.addChild(frameNode)
+                
+                starfieldNode.maskNode = frameNode
+            }
+
+            self.addChild(starfieldNode)
+        }
+        
+        if (backgroundType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedSnowField) {
+            //A layer of a snow
+            let fieldNode = SKCropNode()
+            fieldNode.name = "snowfieldNode"
+            fieldNode.addChild(snowfieldEmitterNode(speed: -35, lifetime: yBounds / 10, scale: 0.17, birthRate: 4, color: mainColor))
+            
+            //A second layer of stars
+            var emitterNode = snowfieldEmitterNode(speed: -30, lifetime: yBounds / 5, scale: 0.12, birthRate: 8, color: medColor)
+            emitterNode.zPosition = -10
+            fieldNode.addChild(emitterNode)
+            
+            //A third layer
+            emitterNode = snowfieldEmitterNode(speed: -19, lifetime: yBounds / 2, scale: 0.09, birthRate: 16, color: darkColor)
+            fieldNode.addChild(emitterNode)
+            
+            let size = FaceBackgroundNode.getScreenBoundsForImages()
+            let width = size.width+lineWidth
+            let height = size.height+lineWidth
+            let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
+            let frameNode = SKShapeNode.init(rect:frameNodeRect)
+            
+            //green frame for settings UI
+            if (lineWidth>0) {
+                //draw it as a shape, no background!
+                frameNode.fillColor = SKColor.black
+                frameNode.strokeColor = strokeColor
+                frameNode.lineWidth = lineWidth
+                frameNode.zPosition = -2.0
+                
+                fieldNode.maskNode = frameNode //TODO: this works ouside of this if block but stops backgrounds
+                fieldNode.addChild(frameNode)
             }
             
-            starfieldNode.maskNode = frameNode
-            
-            self.addChild(starfieldNode)
+            self.addChild(fieldNode)
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong) {
@@ -304,7 +342,7 @@ class FaceBackgroundNode: SKSpriteNode {
                 //draw it as a shape, no background!
                 circleNode.fillColor = SKColor.init(hexString: material)
                 circleNode.strokeColor = strokeColor
-                circleNode.lineWidth = lineWidth
+                circleNode.lineWidth = lineWidth + 1.0
                 self.addChild(circleNode)
             } else {
                 //has image, mask into shape!
@@ -375,7 +413,7 @@ class FaceBackgroundNode: SKSpriteNode {
     
     //Creates a new star field
     func starfieldEmitterNode(speed: CGFloat, lifetime: CGFloat, scale: CGFloat, birthRate: CGFloat, color: SKColor) -> SKEmitterNode {
-
+        
         let size = FaceBackgroundNode.getScreenBoundsForImages()
         let starImage = UIImage.init(named: "StarForEmitter.png")!
         
@@ -411,6 +449,32 @@ class FaceBackgroundNode: SKSpriteNode {
         
         emitterNode.advanceSimulationTime(TimeInterval(lifetime))
         emitterNode.zRotation = CGFloat(Double.pi/2)
+        return emitterNode
+    }
+    
+    //Creates a new snow field
+    func snowfieldEmitterNode(speed: CGFloat, lifetime: CGFloat, scale: CGFloat, birthRate: CGFloat, color: SKColor) -> SKEmitterNode {
+        
+        let size = FaceBackgroundNode.getScreenBoundsForImages()
+        let starImage = UIImage.init(named: "SnowForEmitter.png")!
+        
+        let texture = SKTexture.init(image: starImage)
+        texture.filteringMode = .nearest
+        
+        let emitterNode = SKEmitterNode()
+        emitterNode.particleTexture = texture
+        emitterNode.particleBirthRate = birthRate
+        emitterNode.particleColor = color
+        emitterNode.particleLifetime = lifetime
+        emitterNode.particleSpeed = speed
+        emitterNode.emissionAngleRange = 4.0 // causes it to fall side-to-side
+        emitterNode.particleScale = scale
+        emitterNode.particleColorBlendFactor = 1
+        emitterNode.position = CGPoint(x: 0, y: size.height/2)
+        emitterNode.particlePositionRange = CGVector(dx: size.width, dy: 0)
+        emitterNode.particleSpeedRange = 16.0
+        
+        emitterNode.advanceSimulationTime(TimeInterval(lifetime))
         return emitterNode
     }
     
