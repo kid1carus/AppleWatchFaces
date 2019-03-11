@@ -132,24 +132,25 @@ class FaceBackgroundNode: SKSpriteNode {
         let yBounds = FaceBackgroundNode.getScreenBoundsForImages().height / 2.0
         
         let mainColor = SKColor.init(hexString: material)
-        let medColor = mainColor.withAlphaComponent(0.7)
+        let medColor = mainColor.withAlphaComponent(0.65)
         let darkColor = mainColor.withAlphaComponent(0.3)
         
         if (backgroundType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedStarField) {
             //A layer of a star field
             let starfieldNode = SKNode()
             starfieldNode.name = "starfieldNode"
-            starfieldNode.addChild(starfieldEmitterNode(speed: -48, lifetime: yBounds / 10, scale: 0.2, birthRate: 2, color: mainColor))
+            starfieldNode.addChild(starfieldEmitterNode(speed: -28, lifetime: yBounds / 10, scale: 0.17, birthRate: 2, color: mainColor))
             
             //A second layer of stars
-            var emitterNode = starfieldEmitterNode(speed: -32, lifetime: yBounds / 5, scale: 0.14, birthRate: 5, color: medColor)
+            var emitterNode = starfieldEmitterNode(speed: -22, lifetime: yBounds / 5, scale: 0.12, birthRate: 4, color: medColor)
             emitterNode.zPosition = -10
             starfieldNode.addChild(emitterNode)
             
             //A third layer
-            emitterNode = starfieldEmitterNode(speed: -20, lifetime: yBounds / 2, scale: 0.1, birthRate: 10, color: darkColor)
+            emitterNode = starfieldEmitterNode(speed: -13, lifetime: yBounds / 2, scale: 0.09, birthRate: 12, color: darkColor)
             starfieldNode.addChild(emitterNode)
             
+            //green frame for settings UI
             if (lineWidth>0) {
                 let size = FaceBackgroundNode.getScreenBoundsForImages()
                 let width = size.width+lineWidth
@@ -387,8 +388,8 @@ class FaceBackgroundNode: SKSpriteNode {
         emitterNode.particleSpeed = speed
         emitterNode.particleScale = scale
         emitterNode.particleColorBlendFactor = 1
-        emitterNode.position = CGPoint(x: 0, y: size.height)
-        emitterNode.particlePositionRange = CGVector(dx: size.width, dy: 0)
+        emitterNode.position = CGPoint(x: -size.width, y: 0)
+        emitterNode.particlePositionRange = CGVector(dx: size.height, dy: 0)
         emitterNode.particleSpeedRange = 16.0
         
         //Rotates the stars
@@ -407,6 +408,7 @@ class FaceBackgroundNode: SKSpriteNode {
         emitterNode.particleColorSequence = colorSequence
         
         emitterNode.advanceSimulationTime(TimeInterval(lifetime))
+        emitterNode.zRotation = CGFloat(Double.pi/2)
         return emitterNode
     }
     
