@@ -40,21 +40,35 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="rTE-4Y-uoL" appends="YES" id="31Q-Ro-68w"/>
                             <outletCollection property="gestureRecognizers" destination="ofx-xK-rVa" appends="YES" id="Obl-x9-0ht"/>
+                            <outletCollection property="gestureRecognizers" destination="tgr-ul-lmx" appends="YES" id="zgR-cw-lpi"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="HS1-c2-IaH"/>
+                    <connections>
+                        <outlet property="panGesture" destination="tgr-ul-lmx" id="VB8-P0-ynC"/>
+                        <outlet property="swipeGestureLeft" destination="ofx-xK-rVa" id="3RN-jg-72e"/>
+                        <outlet property="swipeGestureRight" destination="rTE-4Y-uoL" id="yzw-WI-eqH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="rTE-4Y-uoL">
                     <connections>
                         <action selector="nextClock" destination="BYZ-38-t0r" id="ud0-bV-mNv"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="Uef-tg-Drj"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="ofx-xK-rVa">
                     <connections>
                         <action selector="prevClock" destination="BYZ-38-t0r" id="hkd-Ws-xZ0"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="rYX-K2-fBW"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="tgr-ul-lmx">
+                    <connections>
+                        <action selector="respondToPanGestureWithGesture:" destination="BYZ-38-t0r" id="gBX-RC-BM4"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="zsv-nd-kgm"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="948" y="-608"/>
         </scene>

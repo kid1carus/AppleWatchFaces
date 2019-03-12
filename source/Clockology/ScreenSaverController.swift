@@ -8,11 +8,56 @@
 
 import UIKit
 
-class ScreenSaverController: UIViewController {
+class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
 
     var currentClockIndex = 0
     
     weak var previewViewController:PreviewViewController?
+    @IBOutlet var panGesture:UIPanGestureRecognizer?
+    @IBOutlet var swipeGestureLeft:UISwipeGestureRecognizer?
+    @IBOutlet var swipeGestureRight:UISwipeGestureRecognizer?
+    
+    //allow for both gestures at the same time
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == self.panGesture &&
+            (otherGestureRecognizer == self.swipeGestureLeft || otherGestureRecognizer == self.swipeGestureRight) {
+            return true
+        }
+        return false
+    }
+    
+    func setBrightness( bright:CGFloat) {
+        var level:CGFloat = bright
+        if bright>1.0 {
+            level = 1.0
+        }
+        if bright<0 {
+            level = 0.0
+        }
+        debugPrint("bright:" + level.description)
+        UIScreen.main.brightness = level
+    }
+    
+    //get brightness offset from PAN
+    @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        
+        let mult:CGFloat = self.view.frame.size.height / 4
+        
+        if gesture.state == .began {
+            
+        }
+        if gesture.state == .changed {
+            let translationPoint = gesture.translation(in: self.view)
+            let brightness = 1.0 - translationPoint.y / mult
+            setBrightness(bright: brightness)
+        }
+        if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
+            let translationPoint = gesture.translation(in: self.view)
+            let brightness = 1.0 - translationPoint.y / mult
+            setBrightness(bright: brightness)
+        }
+    }
     
     @IBAction func nextClock() {
         currentClockIndex = currentClockIndex + 1
