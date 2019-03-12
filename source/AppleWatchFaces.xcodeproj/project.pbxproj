@@ -462,6 +462,7 @@
 		31C86AF12237493700EF4186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31C86AF32237493700EF4186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31C86AF722374B0300EF4186 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		31C86B682237604800EF4186 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorDigitalTimeTableViewCell.swift; sourceTree = "<group>"; };
 		31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalTimeNode.swift; sourceTree = "<group>"; };
 		31D8633A21E5954B005BCB6F /* NumberTextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextNode.swift; sourceTree = "<group>"; };
@@ -698,6 +699,7 @@
 		31C86AE62237493600EF4186 /* Clockology */ = {
 			isa = PBXGroup;
 			children = (
+				31C86B682237604800EF4186 /* README.md */,
 				31C86AE72237493600EF4186 /* AppDelegate.swift */,
 				31C86AE92237493600EF4186 /* ScreenSaverController.swift */,
 				31C86AEB2237493600EF4186 /* ClockologyMain.storyboard */,
