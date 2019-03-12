@@ -13,7 +13,6 @@ class PreviewViewController: UIViewController {
     
     @IBOutlet var skView: SKView!
 
-    
     func redraw() {
         if let watchScene = skView.scene as? SKWatchScene {
             watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)

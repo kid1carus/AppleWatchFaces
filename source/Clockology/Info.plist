@@ -43,5 +43,24 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PIXEL_MILLENNIUM.TFF</string>
+		<string>JOYSTIX.TTF</string>
+		<string>LCDPHONE.TTF</string>
+		<string>NIXIEONE.TTF</string>
+		<string>DIGITAL-7-MONO.TTF</string>
+		<string>DIGITAL-7-MONO-ITALICS.TTF</string>
+		<string>IRONLOUNGE.TTF</string>
+		<string>ULTRACONDENSEDSARIF.TTF</string>
+		<string>RATIONALINT.TTF</string>
+		<string>ROMAN-TRAJAN-PRO.TTF</string>
+		<string>DINPRO-LIGHT.TTF</string>
+		<string>CONERIASCRIPT.TTF</string>
+		<string>KINGTHINGS.TTF</string>
+		<string>ROTHERNBURGDECORATIVE.TTF</string>
+		<string>GERMANICA.TTF</string>
+		<string>BLACKROSE.TTF</string>
+	</array>
 </dict>
 </plist>

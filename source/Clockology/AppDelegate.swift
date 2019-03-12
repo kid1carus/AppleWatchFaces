@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TODO: do this only once on initial launch ( save a pref to skip it )
         AppUISettings.createFolders()
         
+        UserClockSetting.loadFromFile()
+        
         return true
     }
 
