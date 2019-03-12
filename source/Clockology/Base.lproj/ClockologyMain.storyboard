@@ -29,6 +29,7 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="oQp-9E-cPa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BBz-L7-rUm"/>
                             <constraint firstItem="oQp-9E-cPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iPV-9d-Zwu"/>
@@ -36,12 +37,26 @@
                             <constraint firstItem="oQp-9E-cPa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zUZ-I0-oLA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="rTE-4Y-uoL" appends="YES" id="31Q-Ro-68w"/>
+                            <outletCollection property="gestureRecognizers" destination="ofx-xK-rVa" appends="YES" id="Obl-x9-0ht"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="HS1-c2-IaH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="rTE-4Y-uoL">
+                    <connections>
+                        <action selector="nextClock" destination="BYZ-38-t0r" id="ud0-bV-mNv"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="ofx-xK-rVa">
+                    <connections>
+                        <action selector="prevClock" destination="BYZ-38-t0r" id="hkd-Ws-xZ0"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="348" y="-606.74662668665667"/>
+            <point key="canvasLocation" x="948" y="-608"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iHA-lx-j31">
@@ -60,7 +75,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzS-Zp-nT8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-460" y="-607"/>
+            <point key="canvasLocation" x="201" y="-609"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="Zmd-UZ-NLi">
@@ -89,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9s-gF-0jm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1172" y="-607.1964017991005"/>
+            <point key="canvasLocation" x="1735" y="-608"/>
         </scene>
     </scenes>
 </document>

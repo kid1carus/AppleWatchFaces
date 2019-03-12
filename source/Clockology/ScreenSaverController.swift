@@ -14,6 +14,26 @@ class ScreenSaverController: UIViewController {
     
     weak var previewViewController:PreviewViewController?
     
+    @IBAction func nextClock() {
+        currentClockIndex = currentClockIndex + 1
+        if (UserClockSetting.sharedClockSettings.count <= currentClockIndex) {
+            currentClockIndex = 0
+        }
+        
+        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
+        redrawPreviewClock()
+    }
+    
+    @IBAction func prevClock() {
+        currentClockIndex = currentClockIndex - 1
+        if (currentClockIndex<0) {
+            currentClockIndex = UserClockSetting.sharedClockSettings.count - 1
+        }
+        
+        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
+        redrawPreviewClock()
+    }
+    
     func redrawPreviewClock() {
         //tell preview to reload
         if previewViewController != nil {
