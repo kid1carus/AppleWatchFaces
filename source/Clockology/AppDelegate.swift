@@ -12,10 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var clockTimer =  ClockTimer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        clockTimer.startTimer()
+        
+        //TODO: do this only once on initial launch ( save a pref to skip it )
+        AppUISettings.createFolders()
+        
         return true
     }
 
@@ -40,6 +45,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func stopTimerForScreenShot() {
+        clockTimer.stopTimer()
+        //set time to screenShotime
+        let calendar = NSCalendar.current
+        if let screenshotDate = calendar.date(bySettingHour: Int(AppUISettings.screenShotHour), minute: Int(AppUISettings.screenShotMinutes), second: Int(AppUISettings.screenShotSeconds), of: Date()) {
+            ClockTimer.currentDate = screenshotDate
+        }
+    }
+    
+    func stopTimerForThemeShots() {
+        clockTimer.stopTimer()
+        //set time to theme time, this time works well to put hands in upper right
+        let calendar = NSCalendar.current
+        if let screenshotDate = calendar.date(bySettingHour: Int(12), minute: Int(7), second: Int(4), of: Date()) {
+            ClockTimer.currentDate = screenshotDate
+        }
+    }
+    
+    func resumeTimer() {
+        clockTimer.startTimer()
+    }
+    
+    func printFonts() {
+        let fontFamilyNames = UIFont.familyNames
+        for familyName in fontFamilyNames {
+            print("------------------------------")
+            print("Font Family Name = [\(familyName)]")
+            let names = UIFont.fontNames(forFamilyName: familyName)
+            print("Font Names = [\(names)]")
+        }
+    }
+
 
 
 }
