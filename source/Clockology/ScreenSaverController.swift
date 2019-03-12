@@ -64,6 +64,11 @@ class ScreenSaverController: UIViewController {
         }
         
     }
+    
+    //hide the home indicator
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
 
 }
 
