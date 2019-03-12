@@ -149,6 +149,11 @@
 		31BC68EE2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68ED2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift */; };
 		31BC68F02193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */; };
 		31C05DA521A712BD0021AEAB /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */; };
+		31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AE72237493600EF4186 /* AppDelegate.swift */; };
+		31C86AEA2237493600EF4186 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AE92237493600EF4186 /* ViewController.swift */; };
+		31C86AED2237493600EF4186 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C86AEB2237493600EF4186 /* Main.storyboard */; };
+		31C86AEF2237493700EF4186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31C86AEE2237493700EF4186 /* Assets.xcassets */; };
+		31C86AF22237493700EF4186 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C86AF02237493700EF4186 /* LaunchScreen.storyboard */; };
 		31D8633821E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */; };
 		31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
@@ -339,6 +344,13 @@
 		31BC68ED2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourHandColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBackgroundColorSettingTableViewCell.swift; sourceTree = "<group>"; };
 		31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
+		31C86AE52237493600EF4186 /* Clockology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clockology.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		31C86AE72237493600EF4186 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		31C86AE92237493600EF4186 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		31C86AEC2237493600EF4186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		31C86AEE2237493700EF4186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31C86AF12237493700EF4186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		31C86AF32237493700EF4186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorDigitalTimeTableViewCell.swift; sourceTree = "<group>"; };
 		31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalTimeNode.swift; sourceTree = "<group>"; };
 		31D8633A21E5954B005BCB6F /* NumberTextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextNode.swift; sourceTree = "<group>"; };
@@ -374,6 +386,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		318808ED2178166B00585AB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31C86AE22237493600EF4186 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -474,6 +493,7 @@
 				318808CF217815E600585AB1 /* AppleWatchFaces */,
 				318808E52178166A00585AB1 /* Face */,
 				318808F42178166B00585AB1 /* Face Extension */,
+				31C86AE62237493600EF4186 /* Clockology */,
 				318808CE217815E600585AB1 /* Products */,
 				310CDC61222CCC3C00AF3B8D /* Frameworks */,
 			);
@@ -485,6 +505,7 @@
 				318808CD217815E600585AB1 /* AppleWatchFaces.app */,
 				318808E42178166A00585AB1 /* Face.app */,
 				318808F02178166B00585AB1 /* Face Extension.appex */,
+				31C86AE52237493600EF4186 /* Clockology.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -561,6 +582,19 @@
 				31B3F8C6218F22EF00AD22A5 /* RoundedButton.swift */,
 			);
 			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		31C86AE62237493600EF4186 /* Clockology */ = {
+			isa = PBXGroup;
+			children = (
+				31C86AE72237493600EF4186 /* AppDelegate.swift */,
+				31C86AE92237493600EF4186 /* ViewController.swift */,
+				31C86AEB2237493600EF4186 /* Main.storyboard */,
+				31C86AEE2237493700EF4186 /* Assets.xcassets */,
+				31C86AF02237493700EF4186 /* LaunchScreen.storyboard */,
+				31C86AF32237493700EF4186 /* Info.plist */,
+			);
+			path = Clockology;
 			sourceTree = "<group>";
 		};
 		31EF9991219E602D00BB54E7 /* SettingsView */ = {
@@ -708,13 +742,30 @@
 			productReference = 318808F02178166B00585AB1 /* Face Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		31C86AE42237493600EF4186 /* Clockology */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31C86AF42237493700EF4186 /* Build configuration list for PBXNativeTarget "Clockology" */;
+			buildPhases = (
+				31C86AE12237493600EF4186 /* Sources */,
+				31C86AE22237493600EF4186 /* Frameworks */,
+				31C86AE32237493600EF4186 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clockology;
+			productName = Clockology;
+			productReference = 31C86AE52237493600EF4186 /* Clockology.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		318808C5217815E600585AB1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Michael Hill";
 				TargetAttributes = {
@@ -750,6 +801,9 @@
 							};
 						};
 					};
+					31C86AE42237493600EF4186 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = 318808C8217815E600585AB1 /* Build configuration list for PBXProject "AppleWatchFaces" */;
@@ -768,6 +822,7 @@
 				318808CC217815E600585AB1 /* AppleWatchFaces */,
 				318808E32178166A00585AB1 /* Face */,
 				318808EF2178166B00585AB1 /* Face Extension */,
+				31C86AE42237493600EF4186 /* Clockology */,
 			);
 		};
 /* End PBXProject section */
@@ -843,6 +898,16 @@
 				31090FCF2233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
 				31090FBD2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
 				31090FCD2233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31C86AE32237493600EF4186 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31C86AF22237493700EF4186 /* LaunchScreen.storyboard in Resources */,
+				31C86AEF2237493700EF4186 /* Assets.xcassets in Resources */,
+				31C86AED2237493600EF4186 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +1050,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		31C86AE12237493600EF4186 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31C86AEA2237493600EF4186 /* ViewController.swift in Sources */,
+				31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1039,6 +1113,22 @@
 				318A92AA21D3C2840060D89B /* Base */,
 			);
 			name = Decorators.storyboard;
+			sourceTree = "<group>";
+		};
+		31C86AEB2237493600EF4186 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31C86AEC2237493600EF4186 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		31C86AF02237493700EF4186 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31C86AF12237493700EF4186 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1302,6 +1392,44 @@
 			};
 			name = Release;
 		};
+		31C86AF52237493700EF4186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4345F4RV9N;
+				INFOPLIST_FILE = Clockology/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockology.Clockology;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		31C86AF62237493700EF4186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4345F4RV9N;
+				INFOPLIST_FILE = Clockology/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockology.Clockology;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1337,6 +1465,15 @@
 			buildConfigurations = (
 				3188090B2178166B00585AB1 /* Debug */,
 				3188090C2178166B00585AB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31C86AF42237493700EF4186 /* Build configuration list for PBXNativeTarget "Clockology" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31C86AF52237493700EF4186 /* Debug */,
+				31C86AF62237493700EF4186 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
