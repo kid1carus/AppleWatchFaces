@@ -18,7 +18,7 @@ class PreviewViewController: UIViewController {
         if transition {
             if let watchScene = SKWatchScene(fileNamed: "SKWatchScene") {
                 watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)
-                skView.presentScene(watchScene, transition: SKTransition.push(with: direction, duration: 0.5))
+                skView.presentScene(watchScene, transition: SKTransition.push(with: direction, duration: 0.35))
             }
         } else {
             if let watchScene = skView.scene as? SKWatchScene {
