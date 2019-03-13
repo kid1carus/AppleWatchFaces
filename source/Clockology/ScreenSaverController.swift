@@ -12,8 +12,8 @@ import SpriteKit
 class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
 
     var currentClockIndex = 0
-    private var usersBrightness = UIScreen.main.brightness
-    private var clockBrightness = UIScreen.main.brightness
+    private var usersBrightness = UIScreen.main.brightness // save user brightness when we enter to restore on exit
+    private var clockBrightness = UIScreen.main.brightness // save temp brightness when lighting up for settings
     
     weak var previewViewController:PreviewViewController?
     @IBOutlet var panGesture:UIPanGestureRecognizer?
