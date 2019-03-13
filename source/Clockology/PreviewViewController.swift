@@ -13,10 +13,20 @@ class PreviewViewController: UIViewController {
     
     @IBOutlet var skView: SKView!
 
-    func redraw() {
-        if let watchScene = skView.scene as? SKWatchScene {
-            watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)
+    func redraw(transition: Bool, direction: SKTransitionDirection) {
+    
+        if transition {
+            if let watchScene = SKWatchScene(fileNamed: "SKWatchScene") {
+                watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)
+                skView.presentScene(watchScene, transition: SKTransition.push(with: direction, duration: 0.5))
+            }
+        } else {
+            if let watchScene = skView.scene as? SKWatchScene {
+                watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)
+            }
         }
+        
+
     }
     
     override func viewDidLoad() {
@@ -30,7 +40,7 @@ class PreviewViewController: UIViewController {
             // Present the scene
             skView.presentScene(watchScene)
             
-            redraw()
+            redraw(transition: false, direction: .left)
         }
     }
     

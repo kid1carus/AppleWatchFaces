@@ -18,23 +18,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQp-9E-cPa">
-                                <rect key="frame" x="0.0" y="98.5" width="375" height="470"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4T-6U-EIy">
+                                <rect key="frame" x="0.0" y="98" width="375" height="471"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQp-9E-cPa">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="471"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <segue destination="qFT-CT-yhl" kind="embed" id="ADz-8Z-2Y1"/>
+                                        </connections>
+                                    </containerView>
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itq-GH-ft3" userLabel="Button Containter">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="471"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vZ-55-zPm">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="TBI-LK-cn6"/>
+                                                    <constraint firstAttribute="width" constant="75" id="wEk-gG-xab"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRf-QY-gHr">
+                                                <rect key="frame" x="300" y="0.0" width="75" height="50"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="0eF-Kl-bwP"/>
+                                                    <constraint firstAttribute="width" constant="75" id="dRP-9G-h7u"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PJ-vv-4P3">
+                                                <rect key="frame" x="0.0" y="421" width="75" height="50"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="75" id="aEC-ak-iRq"/>
+                                                    <constraint firstAttribute="height" constant="50" id="tiA-Mu-Jrf"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqm-1I-m0P">
+                                                <rect key="frame" x="300" y="421" width="75" height="50"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="75" id="AeM-BC-z8D"/>
+                                                    <constraint firstAttribute="height" constant="50" id="gtD-Eu-aLG"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="0vZ-55-zPm" firstAttribute="leading" secondItem="Itq-GH-ft3" secondAttribute="leading" id="4l9-Cw-vGw"/>
+                                            <constraint firstAttribute="bottom" secondItem="dqm-1I-m0P" secondAttribute="bottom" id="IlQ-7H-lbB"/>
+                                            <constraint firstAttribute="trailing" secondItem="dqm-1I-m0P" secondAttribute="trailing" id="OvE-fU-stP"/>
+                                            <constraint firstItem="0vZ-55-zPm" firstAttribute="top" secondItem="Itq-GH-ft3" secondAttribute="top" id="Wht-e1-dFi"/>
+                                            <constraint firstAttribute="trailing" secondItem="FRf-QY-gHr" secondAttribute="trailing" id="ceZ-b8-mMQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="1PJ-vv-4P3" secondAttribute="bottom" id="iFq-Ds-WX4"/>
+                                            <constraint firstItem="FRf-QY-gHr" firstAttribute="top" secondItem="Itq-GH-ft3" secondAttribute="top" id="z0U-OE-k0u"/>
+                                            <constraint firstItem="1PJ-vv-4P3" firstAttribute="leading" secondItem="Itq-GH-ft3" secondAttribute="leading" id="zgm-6G-hW6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="oQp-9E-cPa" secondAttribute="height" multiplier="75:94" id="bJE-uy-soV"/>
+                                    <constraint firstItem="Itq-GH-ft3" firstAttribute="top" secondItem="b4T-6U-EIy" secondAttribute="top" id="6R5-6H-ELJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Itq-GH-ft3" secondAttribute="bottom" id="FPL-RJ-h0f"/>
+                                    <constraint firstItem="Itq-GH-ft3" firstAttribute="leading" secondItem="b4T-6U-EIy" secondAttribute="leading" id="GXz-RO-GAr"/>
+                                    <constraint firstAttribute="bottom" secondItem="oQp-9E-cPa" secondAttribute="bottom" id="H5E-uV-8tI"/>
+                                    <constraint firstAttribute="trailing" secondItem="oQp-9E-cPa" secondAttribute="trailing" id="LmO-so-Iun"/>
+                                    <constraint firstAttribute="trailing" secondItem="Itq-GH-ft3" secondAttribute="trailing" id="ki8-nG-b4t"/>
+                                    <constraint firstAttribute="width" secondItem="b4T-6U-EIy" secondAttribute="height" multiplier="125:157" id="sQ1-Mb-XyF"/>
+                                    <constraint firstItem="oQp-9E-cPa" firstAttribute="leading" secondItem="b4T-6U-EIy" secondAttribute="leading" id="wiF-gT-fg7"/>
+                                    <constraint firstItem="oQp-9E-cPa" firstAttribute="top" secondItem="b4T-6U-EIy" secondAttribute="top" id="yIC-Gk-RIe"/>
                                 </constraints>
-                                <connections>
-                                    <segue destination="qFT-CT-yhl" kind="embed" id="ADz-8Z-2Y1"/>
-                                </connections>
-                            </containerView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="oQp-9E-cPa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BBz-L7-rUm"/>
-                            <constraint firstItem="oQp-9E-cPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iPV-9d-Zwu"/>
-                            <constraint firstItem="oQp-9E-cPa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kg8-GV-bTv"/>
-                            <constraint firstItem="oQp-9E-cPa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zUZ-I0-oLA"/>
+                            <constraint firstItem="b4T-6U-EIy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Het-pM-Ita"/>
+                            <constraint firstItem="b4T-6U-EIy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="K1Z-3y-Jya"/>
+                            <constraint firstItem="b4T-6U-EIy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Trn-tm-I1J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
@@ -45,22 +112,23 @@
                     </view>
                     <navigationItem key="navigationItem" id="HS1-c2-IaH"/>
                     <connections>
+                        <outlet property="buttonContainerView" destination="Itq-GH-ft3" id="wy6-UM-Rph"/>
                         <outlet property="panGesture" destination="tgr-ul-lmx" id="VB8-P0-ynC"/>
                         <outlet property="swipeGestureLeft" destination="ofx-xK-rVa" id="3RN-jg-72e"/>
                         <outlet property="swipeGestureRight" destination="rTE-4Y-uoL" id="yzw-WI-eqH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="rTE-4Y-uoL">
-                    <connections>
-                        <action selector="nextClock" destination="BYZ-38-t0r" id="ud0-bV-mNv"/>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="Uef-tg-Drj"/>
-                    </connections>
-                </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="ofx-xK-rVa">
                     <connections>
                         <action selector="prevClock" destination="BYZ-38-t0r" id="hkd-Ws-xZ0"/>
                         <outlet property="delegate" destination="BYZ-38-t0r" id="rYX-K2-fBW"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="rTE-4Y-uoL">
+                    <connections>
+                        <action selector="nextClock" destination="BYZ-38-t0r" id="ud0-bV-mNv"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="Uef-tg-Drj"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="tgr-ul-lmx">
@@ -70,7 +138,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="948" y="-608"/>
+            <point key="canvasLocation" x="948" y="-608.54572713643188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iHA-lx-j31">
@@ -96,11 +164,11 @@
             <objects>
                 <viewController id="qFT-CT-yhl" customClass="PreviewViewController" customModule="Clockology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Wr-du-jr1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="470"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="471"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccF-Ce-hsg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="470"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="471"/>
                             </skView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

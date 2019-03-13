@@ -702,11 +702,11 @@
 				31C86B682237604800EF4186 /* README.md */,
 				31C86AE72237493600EF4186 /* AppDelegate.swift */,
 				31C86AE92237493600EF4186 /* ScreenSaverController.swift */,
+				31C86AF722374B0300EF4186 /* PreviewViewController.swift */,
 				31C86AEB2237493600EF4186 /* ClockologyMain.storyboard */,
 				31C86AEE2237493700EF4186 /* Assets.xcassets */,
 				31C86AF02237493700EF4186 /* LaunchScreen.storyboard */,
 				31C86AF32237493700EF4186 /* Info.plist */,
-				31C86AF722374B0300EF4186 /* PreviewViewController.swift */,
 			);
 			path = Clockology;
 			sourceTree = "<group>";

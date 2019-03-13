@@ -7,15 +7,103 @@
 //
 
 import UIKit
+import SpriteKit
 
 class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
 
     var currentClockIndex = 0
+    private var usersBrightness = UIScreen.main.brightness
+    private var clockBrightness = UIScreen.main.brightness
     
     weak var previewViewController:PreviewViewController?
     @IBOutlet var panGesture:UIPanGestureRecognizer?
     @IBOutlet var swipeGestureLeft:UISwipeGestureRecognizer?
     @IBOutlet var swipeGestureRight:UISwipeGestureRecognizer?
+    
+    @IBOutlet var buttonContainerView: UIView!
+    
+    @IBAction func showButtons() {
+        if self.buttonContainerView.alpha < 1.0 {
+            //showing button interface
+            self.clockBrightness = UIScreen.main.brightness
+            restoreBrightness(level: usersBrightness)
+            UIView.animate(withDuration: 0.5) {
+                self.buttonContainerView.alpha = 1.0
+            }
+        } else {
+            //hiding button interface
+            restoreBrightness(level: clockBrightness)
+            UIView.animate(withDuration: 0.5) {
+                self.buttonContainerView.alpha = 0.0
+            }
+        }
+    }
+    
+    @IBAction func nextClock() {
+        currentClockIndex = currentClockIndex + 1
+        if (UserClockSetting.sharedClockSettings.count <= currentClockIndex) {
+            currentClockIndex = 0
+        }
+        
+        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
+        redrawPreviewClock(transition: true, direction: .right)
+    }
+    
+    @IBAction func prevClock() {
+        currentClockIndex = currentClockIndex - 1
+        if (currentClockIndex<0) {
+            currentClockIndex = UserClockSetting.sharedClockSettings.count - 1
+        }
+        
+        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
+        redrawPreviewClock(transition: true, direction: .left)
+    }
+    
+    func redrawPreviewClock(transition: Bool, direction: SKTransitionDirection) {
+        //tell preview to reload
+        if previewViewController != nil {
+            previewViewController?.redraw(transition: transition, direction: direction)
+            //self.showMessage( message: SettingsViewController.currentClockSetting.title)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        storeBrightness()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        restoreBrightness(level: usersBrightness)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        storeBrightness()
+        buttonContainerView?.alpha = 0.0
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ScreenSaverController.showButtons)))
+        
+        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
+        redrawPreviewClock(transition: false, direction: .up)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is PreviewViewController {
+            let vc = segue.destination as? PreviewViewController
+            previewViewController = vc
+        }
+        
+    }
+    
+    //hide the home indicator
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
     
     //allow for both gestures at the same time
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
@@ -42,77 +130,60 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
     //get brightness offset from PAN
     @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
         
-        let mult:CGFloat = self.view.frame.size.height / 4
+        //dont adjust levels when buttons are up
+        guard buttonContainerView.alpha == 0 else { return }
+        
+        let mult:CGFloat = self.view.frame.size.height / 0.75
+        let current = UIScreen.main.brightness
         
         if gesture.state == .began {
             
         }
         if gesture.state == .changed {
             let translationPoint = gesture.translation(in: self.view)
-            let brightness = 1.0 - translationPoint.y / mult
-            setBrightness(bright: brightness)
+            let desiredBrightness = current - (translationPoint.y / mult)
+            setBrightness(bright: desiredBrightness)
         }
         if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
             let translationPoint = gesture.translation(in: self.view)
-            let brightness = 1.0 - translationPoint.y / mult
-            setBrightness(bright: brightness)
+            let desiredBrightness = current - (translationPoint.y / mult)
+            setBrightness(bright: desiredBrightness)
         }
     }
     
-    @IBAction func nextClock() {
-        currentClockIndex = currentClockIndex + 1
-        if (UserClockSetting.sharedClockSettings.count <= currentClockIndex) {
-            currentClockIndex = 0
-        }
-        
-        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
-        redrawPreviewClock()
+    func storeBrightness() {
+        debugPrint("storeBrightness")
+        usersBrightness = UIScreen.main.brightness
     }
     
-    @IBAction func prevClock() {
-        currentClockIndex = currentClockIndex - 1
-        if (currentClockIndex<0) {
-            currentClockIndex = UserClockSetting.sharedClockSettings.count - 1
-        }
-        
-        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
-        redrawPreviewClock()
+    func restoreBrightness(level: CGFloat) {
+        debugPrint("REstoreBrightness")
+        UIScreen.main.animateBrightness(to: level)
+        //UIScreen.main.brightness = usersBrightness
     }
     
-    func redrawPreviewClock() {
-        //tell preview to reload
-        if previewViewController != nil {
-            previewViewController?.redraw()
-            //self.showMessage( message: SettingsViewController.currentClockSetting.title)
-        }
+    @objc private func applicationWillEnterForeground() {
+        storeBrightness()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
-        redrawPreviewClock()
-        
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    @objc private func applicationWillResignActive() {
+        restoreBrightness(level: usersBrightness)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is PreviewViewController {
-            let vc = segue.destination as? PreviewViewController
-            previewViewController = vc
-        }
-        
-    }
-    
-    //hide the home indicator
-    override var prefersHomeIndicatorAutoHidden: Bool {
-        return true
-    }
+}
 
+extension UIScreen {
+    
+    public func animateBrightness(to value: CGFloat) {
+        let step: CGFloat = 0.1
+
+        guard abs(UIScreen.main.brightness - value) > step else { return }
+        
+        let delta = UIScreen.main.brightness > value ? -step : step
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            UIScreen.main.brightness += delta
+            self.animateBrightness(to: value)
+        }
+    }
 }
