@@ -144,12 +144,15 @@ class GenerateThumbnailsViewController: UIViewController {
         } else {
             timer.invalidate()
             
-            //self.showMessage( message: "finished screenshots.")
-            self.dismiss(animated: true) {
-                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appDelegate.resumeTimer()
+            //needs some time to save this so next screen can load it
+            delay(0.5) {
+                self.dismiss(animated: false) {
+                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appDelegate.resumeTimer()
+                    }
                 }
             }
+            
         }
         
         
