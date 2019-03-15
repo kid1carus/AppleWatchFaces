@@ -312,9 +312,16 @@ class DigitalTimeNode: SKNode {
                 
                 let digital8Node = timeText.copy() as! SKLabelNode
                 digital8Node.name = "textDigital8"
-                let shadowColor = SKColor.black.withAlphaComponent(0.2)
+                let darkMult:CGFloat = 0.4
+                var fillRed:CGFloat = 0.0
+                var fillGreen:CGFloat = 0.0
+                var fillBlue:CGFloat = 0.0
+                var fillAlpha:CGFloat = 0.0
+                fillColor.getRed(&fillRed, green: &fillGreen, blue: &fillBlue, alpha: &fillAlpha)
+                let darkColor = SKColor.init(red: fillRed*darkMult, green: fillRed*darkMult, blue: fillRed*darkMult, alpha: fillAlpha*darkMult)
+                
                 var attributes: [NSAttributedString.Key : Any] = [
-                    .foregroundColor: shadowColor,
+                    .foregroundColor: darkColor,
                     .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
                 ]
                 if strokeColor != nil {
@@ -498,4 +505,138 @@ class DigitalTimeNode: SKNode {
         return typeDescriptionsArray
     }
 
+}
+
+public extension CGRect {
+    
+    public enum Edge {
+        case Bottom
+        case Left
+        case Right
+        case Top
+        
+        func toCGRectEdge() -> CGRectEdge {
+            switch self {
+            case .Bottom: return .maxYEdge
+            case .Left: return .minXEdge
+            case .Right: return .maxXEdge
+            case .Top: return .minYEdge
+            }
+        }
+    }
+    
+    /**
+     This method creates a new CGRect by strecting the specified `edge` to align with the `toEdge`.
+     
+     The result can end up with a negative width/height.
+     
+     - Note: This method DOES mutate the size of the rect.
+     - SeeAlso: `algin(edge:toEdge:ofRect:withOffset:)`
+     */
+    public func pin(edge: Edge, toEdge: Edge, ofRect rect: CGRect, withOffset offset: CGFloat = 0) -> CGRect {
+        switch (edge, toEdge) {
+        case (.Left, .Left):
+            return CGRect(x: rect.minX - offset, y: minY, width: width + (minX - rect.minX) + offset, height: height)
+        case (.Left, .Right):
+            return CGRect(x: rect.maxX + offset, y: minY, width: width + (minX - rect.maxX) - offset, height: height)
+        case (.Top, .Top):
+            return CGRect(x: minX, y: rect.minY - offset, width: width, height: height + (minY - rect.minY) + offset)
+        case (.Top, .Bottom):
+            return CGRect(x: minX, y: rect.maxY + offset, width: width, height: height + (minY - rect.maxY) - offset)
+        case (.Right, .Left):
+            return CGRect(x: rect.minX, y: minY, width: width - (maxX - rect.minX) + offset, height: height)
+        case (.Right, .Right):
+            return CGRect(x: minX, y: minY, width: width - (maxX - rect.maxX) - offset, height: height)
+        case (.Bottom, .Top):
+            return CGRect(x: minX, y: minY, width: width, height: height - (maxY - rect.minY) + offset)
+        case (.Bottom, .Bottom):
+            return CGRect(x: minX, y: minY, width: width, height: height - (maxY - rect.maxY) - offset)
+        default:
+            preconditionFailure("Cannot align to this combination of edges")
+        }
+    }
+    
+    /**
+     This method creates a new CGRect by aligning the specified `edge` to the `toEdge`.
+     
+     - SeeAlso: `pin(edge:toEdge:ofRect:withOffset:)`
+     */
+    public func align(edge: Edge, toEdge: Edge, ofRect rect: CGRect, withOffset offset: CGFloat = 0) -> CGRect {
+        return CGRect(origin: alignOrigin(edge: edge, toEdge: toEdge, ofRect: rect, withOffset: offset), size: size)
+    }
+    
+    private func alignOrigin(edge: Edge, toEdge: Edge, ofRect rect: CGRect, withOffset offset: CGFloat) -> CGPoint {
+        switch (edge, toEdge) {
+        case (.Left, .Left):
+            return CGPoint(x: rect.minX + offset, y: minY)
+        case (.Left, .Right):
+            return CGPoint(x: rect.maxX + offset, y: minY)
+        case (.Top, .Top):
+            return CGPoint(x: minX, y: rect.minY + offset)
+        case (.Top, .Bottom):
+            return CGPoint(x: minX, y: rect.maxY + offset)
+        case (.Right, .Left):
+            return CGPoint(x: rect.minX - width - offset, y: minY)
+        case (.Right, .Right):
+            return CGPoint(x: rect.maxX - width - offset, y: minY)
+        case (.Bottom, .Top):
+            return CGPoint(x: minX, y: rect.minY - height - offset)
+        case (.Bottom, .Bottom):
+            return CGPoint(x: minX, y: rect.maxY - height - offset)
+        default:
+            preconditionFailure("Cannot align to this combination of edges")
+        }
+    }
+    
+}
+
+
+
+
+extension CGRect {
+    
+    public enum Direction {
+        case Up
+        case Down
+        case Left
+        case Right
+    }
+    
+    public func move(direction: Direction, amount: CGFloat) -> CGRect {
+        switch direction {
+        case .Up: return CGRect.init(x: minX, y: minY - amount, width: width, height: height)
+        case .Down: return CGRect.init(x: minX, y: minY + amount, width: width, height: height)
+        case .Left: return CGRect.init(x: minX - amount, y: minY, width: width, height: height)
+        case .Right: return CGRect.init(x: minX + amount, y: minY, width: width, height: height)
+        }
+    }
+    
+    public func expand(direction: Direction, amount: CGFloat) -> CGRect {
+        switch direction {
+        case .Up: return CGRect.init(x: minX, y: minY - amount, width: width, height: height + amount)
+        case .Down: return CGRect.init(x: minX, y: minY, width: width, height: height + amount)
+        case .Left: return CGRect.init(x: minX - amount, y: minY, width: width + amount, height: height)
+        case .Right: return CGRect.init(x: minX, y: minY, width: width + amount, height: height)
+        }
+    }
+    
+}
+
+
+
+
+extension CGRect {
+    
+    public enum Dimension {
+        case Height
+        case Width
+    }
+    
+    public func setDimension(dimension: Dimension, toSize size: CGFloat) -> CGRect {
+        switch dimension {
+        case .Height: return CGRect.init(x: minX, y: minY, width: width, height: size)
+        case .Width: return CGRect.init(x: minX,y:  minY, width: size, height: height)
+        }
+    }
+    
 }
