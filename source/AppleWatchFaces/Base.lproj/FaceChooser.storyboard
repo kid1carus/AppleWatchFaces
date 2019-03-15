@@ -117,7 +117,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="iTd-pE-BHn" kind="popoverPresentation" identifier="callMissingThumbsGeneratorID" popoverAnchorView="vOa-yd-cQO" id="SlZ-pB-i5y">
+                                    <segue destination="iTd-pE-BHn" kind="popoverPresentation" identifier="callMissingThumbsGeneratorID" animates="NO" popoverAnchorView="vOa-yd-cQO" id="SlZ-pB-i5y">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -529,7 +529,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Z7X-CE-KUa"/>
+        <segue reference="SlZ-pB-i5y"/>
         <segue reference="k1T-5T-jKT"/>
     </inferredMetricsTieBreakers>
 </document>
