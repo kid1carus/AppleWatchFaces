@@ -83,11 +83,11 @@ class FaceBackgroundNode: SKSpriteNode {
             let overscan:CGFloat = 1.17
             let mult = (390/(screenBounds.height*2)) * overscan
             let ratio = screenBounds.size.height / screenBounds.size.width
-            let w = screenBounds.size.width * mult * ratio
-            let h = screenBounds.size.height * mult * ratio
+            let w = (screenBounds.size.width * mult * ratio).rounded()
+            let h = (screenBounds.size.height * mult * ratio).rounded()
         #else
-            let w = CGFloat( CGFloat(320) / 1.42 ) // 1.42
-            let h = CGFloat( CGFloat(390) / 1.42 ) // 1.42
+            let w = CGFloat( CGFloat(320) / 1.42 ).rounded()
+            let h = CGFloat( CGFloat(390) / 1.42 ).rounded()
         #endif
         
         return CGSize.init(width: w, height: h)
