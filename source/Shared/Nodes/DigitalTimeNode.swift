@@ -280,7 +280,7 @@ class DigitalTimeNode: SKNode {
             self.addChild(frameNode)
         }
         
-        if (effect == .dropShadow || effect == .digital8) {
+        if (effect == .dropShadow) {
             let shadowNode = timeText.copy() as! SKLabelNode
             shadowNode.name = "textShadow"
             let shadowColor = SKColor.black.withAlphaComponent(0.3)
@@ -297,45 +297,50 @@ class DigitalTimeNode: SKNode {
             let shadowOffset = CGFloat(labelRect.size.height/15)
             shadowNode.position = CGPoint.init(x: timeText.position.x+shadowOffset, y: timeText.position.y-shadowOffset)
             self.addChild(shadowNode)
-            
-            if (effect == .digital8) {
-                var digital8String = ""
-                for i in 0..<hourString.count {
-                    let index = hourString.index(hourString.startIndex, offsetBy: i)
-                    let char = hourString[index]
-                    if char == ":" || char == " " {
-                        digital8String.append(contentsOf: char.description)
-                    } else {
-                        digital8String.append(contentsOf: "8")
-                    }
+        }
+        
+        if (effect == .digital8) {
+            var digital8String = ""
+            for i in 0..<hourString.count {
+                let index = hourString.index(hourString.startIndex, offsetBy: i)
+                let char = hourString[index]
+                if char == ":" || char == " " {
+                    digital8String.append(contentsOf: char.description)
+                } else {
+                    digital8String.append(contentsOf: "8")
                 }
-                
-                let digital8Node = timeText.copy() as! SKLabelNode
-                digital8Node.name = "textDigital8"
-                let darkMult:CGFloat = 0.4
-                var fillRed:CGFloat = 0.0
-                var fillGreen:CGFloat = 0.0
-                var fillBlue:CGFloat = 0.0
-                var fillAlpha:CGFloat = 0.0
-                fillColor.getRed(&fillRed, green: &fillGreen, blue: &fillBlue, alpha: &fillAlpha)
-                let darkColor = SKColor.init(red: fillRed*darkMult, green: fillRed*darkMult, blue: fillRed*darkMult, alpha: fillAlpha*darkMult)
-                
-                var attributes: [NSAttributedString.Key : Any] = [
-                    .foregroundColor: darkColor,
-                    .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
-                ]
-                if strokeColor != nil {
-                    attributes[.strokeWidth] = round(strokeWidth)
-                    attributes[.strokeColor] = strokeColor
-                }
-                digital8Node.attributedText = NSAttributedString(string: digital8String, attributes: attributes)
-                digital8Node.zPosition = -0.5
-                //let shadowOffset:CGFloat = 0
-                digital8Node.position = CGPoint.init(x: timeText.position.x, y: timeText.position.y)
-                digital8Node.isHidden = false
-                self.addChild(digital8Node)
             }
-         }
+            
+            let digital8Node = timeText.copy() as! SKLabelNode
+            digital8Node.name = "textDigital8"
+            let darkMult:CGFloat = 0.4
+            var fillRed:CGFloat = 0.0
+            var fillGreen:CGFloat = 0.0
+            var fillBlue:CGFloat = 0.0
+            var fillAlpha:CGFloat = 0.0
+            fillColor.getRed(&fillRed, green: &fillGreen, blue: &fillBlue, alpha: &fillAlpha)
+            let darkColor = SKColor.init(red: fillRed*darkMult, green: fillRed*darkMult, blue: fillRed*darkMult, alpha: fillAlpha*darkMult)
+            
+            var attributes: [NSAttributedString.Key : Any] = [
+                .foregroundColor: darkColor,
+                .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
+            ]
+            if strokeColor != nil {
+                attributes[.strokeWidth] = round(strokeWidth)
+                attributes[.strokeColor] = strokeColor
+            }
+            digital8Node.attributedText = NSAttributedString(string: digital8String, attributes: attributes)
+            digital8Node.zPosition = -0.5
+            //let shadowOffset:CGFloat = 0
+            digital8Node.isHidden = false
+            digital8Node.horizontalAlignmentMode = .right
+            
+            //reposition for always right just
+            let parentRect = timeText.calculateAccumulatedFrame()
+            digital8Node.position = CGPoint.init(x: parentRect.origin.x + parentRect.size.width, y: timeText.position.y)
+            
+            self.addChild(digital8Node)
+        }
         
         if (effect == .innerShadow || effect == .darkInnerShadow || effect == .lightInnerShadow) {
             let shadowNode = SKNode.init()
