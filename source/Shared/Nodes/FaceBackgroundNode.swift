@@ -94,11 +94,23 @@ class FaceBackgroundNode: SKSpriteNode {
     }
     
     static func filledShapeNode(material: String) -> SKShapeNode {
-        let size = getScreenBoundsForImages()
-        let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: size.width, height: size.height))
+        let screenSize = FaceBackgroundNode.getScreenBoundsForImages()
+        let xBounds = (screenSize.width / 2.0).rounded()
+        let yBounds = (screenSize.height / 2.0).rounded()
+        
+        //rect != shape from path, so draw it from path
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: -xBounds, y: yBounds))
+        bezierPath.addLine(to: CGPoint(x: xBounds, y: yBounds))
+        bezierPath.addLine(to: CGPoint(x: xBounds, y: -yBounds))
+        bezierPath.addLine(to: CGPoint(x: -xBounds, y: -yBounds))
+        bezierPath.close()
+        
+        let shape = SKShapeNode.init(path: bezierPath.cgPath)
+        
+        //let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: size.width, height: size.height))
         shape.lineWidth = 0.0
         shape.setMaterial(material: material)
-        shape.position = CGPoint.init(x: -size.width/2, y: -size.height/2)
         return shape
     }
     
@@ -129,8 +141,9 @@ class FaceBackgroundNode: SKSpriteNode {
         self.backgroundType = backgroundType
         self.name = "FaceBackground"
         let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
-        let xBounds = FaceBackgroundNode.getScreenBoundsForImages().width / 2.0
-        let yBounds = FaceBackgroundNode.getScreenBoundsForImages().height / 2.0
+        let screenSize = FaceBackgroundNode.getScreenBoundsForImages()
+        let xBounds = (screenSize.width / 2.0).rounded()
+        let yBounds = (screenSize.height / 2.0).rounded()
         
         let mainColor = SKColor.init(hexString: material)
         let medColor = mainColor.withAlphaComponent(0.65)
@@ -150,10 +163,9 @@ class FaceBackgroundNode: SKSpriteNode {
             //A third layer
             emitterNode = starfieldEmitterNode(speed: -13, lifetime: yBounds / 2, scale: 0.09, birthRate: 12, color: darkColor)
             starfieldNode.addChild(emitterNode)
-            
-            let size = FaceBackgroundNode.getScreenBoundsForImages()
-            let width = size.width+lineWidth
-            let height = size.height+lineWidth
+        
+            let width = screenSize.width+lineWidth
+            let height = screenSize.height+lineWidth
             
             let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
             let frameNode = SKShapeNode.init(rect:frameNodeRect)
@@ -188,10 +200,9 @@ class FaceBackgroundNode: SKSpriteNode {
             //A third layer
             emitterNode = snowfieldEmitterNode(speed: -19, lifetime: yBounds / 2, scale: 0.09, birthRate: 16, color: darkColor)
             fieldNode.addChild(emitterNode)
-            
-            let size = FaceBackgroundNode.getScreenBoundsForImages()
-            let width = size.width+lineWidth
-            let height = size.height+lineWidth
+
+            let width = screenSize.width+lineWidth
+            let height = screenSize.height+lineWidth
             let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
             let frameNode = SKShapeNode.init(rect:frameNodeRect)
             
@@ -211,8 +222,6 @@ class FaceBackgroundNode: SKSpriteNode {
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong) {
-            
-            
             
             let pongGameNode = PongGameNode.init(size: FaceBackgroundNode.getScreenBoundsForImages(), material: material, strokeColor: strokeColor, lineWidth: lineWidth)
             pongGameNode.name = "pongGameNode"
@@ -241,16 +250,15 @@ class FaceBackgroundNode: SKSpriteNode {
             let effectsNode = SKEffectNode.init()
             
             if (lineWidth>0) {
-                let size = FaceBackgroundNode.getScreenBoundsForImages()
-                let width = size.width+lineWidth
-                let height = size.height+lineWidth
+                let width = screenSize.width //+lineWidth
+                let height = screenSize.height  //+lineWidth
                 let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
                 let frameNode = SKShapeNode.init(rect:frameNodeRect)
                 
                 //draw it as a shape, no background!
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
-                frameNode.lineWidth = lineWidth
+                //frameNode.lineWidth = lineWidth
                 
                 effectsNode.addChild(frameNode)
             }
@@ -273,7 +281,7 @@ class FaceBackgroundNode: SKSpriteNode {
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
+            shape.lineWidth = 0.0
             
             self.addChild(shape)
         }
@@ -291,7 +299,7 @@ class FaceBackgroundNode: SKSpriteNode {
             if AppUISettings.materialIsColor(materialName: material) {
                 shape.fillColor = SKColor.init(hexString: material)
                 shape.strokeColor = strokeColor
-                shape.lineWidth = lineWidth
+                shape.lineWidth = 0.0
                 self.addChild(shape)
             } else {
                 //has image, mask into shape!
@@ -318,7 +326,7 @@ class FaceBackgroundNode: SKSpriteNode {
             if AppUISettings.materialIsColor(materialName: material) {
                 shape.fillColor = SKColor.init(hexString: material)
                 shape.strokeColor = strokeColor
-                shape.lineWidth = lineWidth
+                shape.lineWidth = 0.0
                 self.addChild(shape)
             } else {
                 //has image, mask into shape!
