@@ -35,9 +35,9 @@ class WatchSettingsTableViewController: UITableViewController {
             ["title":"Items Theme",                 "category":"normal",      "rowHeight":"130.0","cellID":"decoratorThemeSettingsTableViewCellID"]
         ],
         [
-            ["title":"Face Background Type",        "category":"normal",      "rowHeight":"80.0","cellID":"faceBackgroundTypeTableViewCell"],
-            ["title":"Face Background Color",       "category":"normal",      "rowHeight":"100.0","cellID":"faceBackgroundColorsTableViewCell"],
-            ["title":"Main Background Color",       "category":"normal",      "rowHeight":"100.0","cellID":"mainBackgroundColorsTableViewCell"]
+            ["title":"Background Type",             "category":"normal",      "rowHeight":"80.0","cellID":"faceBackgroundTypeTableViewCell"],
+            ["title":"Top Layer Texture",           "category":"normal",      "rowHeight":"100.0","cellID":"faceBackgroundColorsTableViewCell"],
+            ["title":"Bottom Layer Texture",       "category":"normal",      "rowHeight":"100.0","cellID":"mainBackgroundColorsTableViewCell"]
         ],
         [
             ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],

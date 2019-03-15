@@ -38,13 +38,16 @@ class WatchFaceNode: SKShapeNode {
         shadowColor = shadowColor.withAlphaComponent(0.4)
         let shadowLineWidth:CGFloat = 2.0
         
-        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: clockSetting.clockCasingMaterialName)
+        let filledMaterial = clockSetting.clockCasingMaterialName
+        let overlayMaterial = clockSetting.clockFaceMaterialName
+        
+        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: filledMaterial)
         backgroundNode.name = "background"
         backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
         
         self.addChild(backgroundNode)
         
-        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: clockSetting.clockFaceMaterialName, material2: clockSetting.clockCasingMaterialName)
+        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: overlayMaterial, material2: filledMaterial)
         backgroundShapeNode.name = "backgroundShape"
         backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
         

@@ -133,18 +133,29 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         }
     }
     
-    @IBAction func resetAllSettingAction(sender: UIButton) {
+    func doResetAllAction() {
         UserClockSetting.resetToDefaults()
         
         AppUISettings.deleteAllFolders()
         AppUISettings.createFolders()
         AppUISettings.copyFolders()
-    
-        if let faceChooserTableVC  = faceChooserTableViewController  {
-            faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
-        }
+        
+        faceListReloadType = .full
+        
+        _ = self.shouldRegenerateThumbNailsAndExit()
         
         self.showMessage(message: "All faces reset to defaults")
+    }
+    
+    @IBAction func resetAllSettingAction(sender: UIButton) {
+        let alert = UIAlertController(title: "Do full reset?", message: "This will remove all your custom settings.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+            self.doResetAllAction()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
