@@ -77,7 +77,7 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         storeBrightness()
         buttonContainerView?.alpha = 0.0
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ScreenSaverController.showButtons)))
@@ -142,7 +142,11 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
         if gesture.state == .changed {
             let translationPoint = gesture.translation(in: self.view)
             let desiredBrightness = current - (translationPoint.y / mult)
-            setBrightness(bright: desiredBrightness)
+            let diff = desiredBrightness-current
+            let threshHold:CGFloat = 0.05
+            if diff>threshHold || diff<threshHold {
+                setBrightness(bright: desiredBrightness)
+            }
         }
         if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
             let translationPoint = gesture.translation(in: self.view)
