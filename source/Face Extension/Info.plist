@@ -41,7 +41,7 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>WKAppBundleIdentifier</key>
-			<string>com.mikehill.MHapplewatchfaces.watchkit</string>
+			<string>com.mikehill.clockologyios.watchkit</string>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>

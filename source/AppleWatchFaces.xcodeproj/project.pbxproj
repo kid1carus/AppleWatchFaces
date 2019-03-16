@@ -289,9 +289,6 @@
 		3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		3153880621CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
-		3158C060222EB9A600BEA331 /* AppleWatchFaces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleWatchFaces.entitlements; sourceTree = "<group>"; };
-		3158C061222EB9AA00BEA331 /* Face.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Face.entitlements; sourceTree = "<group>"; };
-		3158C062222EB9AF00BEA331 /* Face Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Face Extension.entitlements"; sourceTree = "<group>"; };
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -492,7 +489,6 @@
 		318808CF217815E600585AB1 /* AppleWatchFaces */ = {
 			isa = PBXGroup;
 			children = (
-				3158C060222EB9A600BEA331 /* AppleWatchFaces.entitlements */,
 				318808D0217815E600585AB1 /* AppDelegate.swift */,
 				31F4F1D8219D08890050177A /* FaceChooserViewController.swift */,
 				31EF99A021A2046100BB54E7 /* ChooserView */,
@@ -517,7 +513,6 @@
 		318808E52178166A00585AB1 /* Face */ = {
 			isa = PBXGroup;
 			children = (
-				3158C061222EB9AA00BEA331 /* Face.entitlements */,
 				318808E62178166A00585AB1 /* Interface.storyboard */,
 				318808E92178166B00585AB1 /* Assets.xcassets */,
 				318808EB2178166B00585AB1 /* Info.plist */,
@@ -528,7 +523,6 @@
 		318808F42178166B00585AB1 /* Face Extension */ = {
 			isa = PBXGroup;
 			children = (
-				3158C062222EB9AF00BEA331 /* Face Extension.entitlements */,
 				3188090E2178170C00585AB1 /* Assets */,
 				318808F52178166B00585AB1 /* InterfaceController.swift */,
 				31056B612218DC1700D0E15C /* ComplicationController.swift */,
@@ -1173,7 +1167,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.MHapplewatchfaces;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockologyios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -1194,7 +1188,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.MHapplewatchfaces;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockologyios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -1215,7 +1209,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.MHapplewatchfaces.watchkit.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockologyios.watchkit.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1240,7 +1234,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.MHapplewatchfaces.watchkit.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockologyios.watchkit.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1266,7 +1260,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.MHapplewatchfaces.watchkit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockologyios.watchkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1292,7 +1286,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.MHapplewatchfaces.watchkit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockologyios.watchkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

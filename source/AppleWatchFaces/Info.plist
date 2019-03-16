@@ -78,7 +78,7 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeIdentifier</key>
-			<string>com.mikehill.MHapplewatchfaces.awf</string>
+			<string>com.mikehill.clockologyios.awf</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
@@ -93,7 +93,7 @@
 		<dict>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.mikehill.MHapplewatchfaces.awf</string>
+				<string>com.mikehill.clockologyios.awf</string>
 			</array>
 			<key>CFBundleTypeExtensions</key>
 			<array>
