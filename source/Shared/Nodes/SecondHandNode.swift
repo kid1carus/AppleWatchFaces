@@ -388,8 +388,12 @@ class SecondHandNode: SKSpriteNode {
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeRail) {
+            let shapeRect = CGRect.init(x: 0, y: 0, width: 1, height: 90)
+            let shape = SKShapeNode.init(rect: shapeRect)
+            let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
             
-            let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: 1, height: 90))
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth

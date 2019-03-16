@@ -586,12 +586,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/FaceBackgroundNode.swift"
-            timestampString = "573882392.088289"
+            timestampString = "574454719.1496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
-            landmarkName = "starfieldEmitterNode(speed:lifetime:scale:birthRate:color:)"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "init(backgroundType:material:material2:strokeColor:lineWidth:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -602,12 +602,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/FaceBackgroundNode.swift"
-            timestampString = "573882392.088347"
+            timestampString = "574454719.149655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
-            landmarkName = "starfieldEmitterNode(speed:lifetime:scale:birthRate:color:)"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
+            landmarkName = "init(backgroundType:material:material2:strokeColor:lineWidth:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -618,12 +618,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/FaceBackgroundNode.swift"
-            timestampString = "573882392.088403"
+            timestampString = "574454719.149691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "starfieldEmitterNode(speed:lifetime:scale:birthRate:color:)"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
+            landmarkName = "init(backgroundType:material:material2:strokeColor:lineWidth:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

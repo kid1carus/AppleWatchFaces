@@ -352,6 +352,14 @@ class MinuteHandNode: SKSpriteNode {
             minuteHandPath.close()
             
             let shape = SKShapeNode.init(path: minuteHandPath.cgPath)
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: minuteHandPath.cgPath)
+            physicsBody.restitution = 2.0
+            physicsBody.mass = 1000.0
+            physicsBody.friction = 1.0
+            //physicsBody?.isDynamic = false
+
+            shape.physicsBody = physicsBody
+            
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
