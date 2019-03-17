@@ -145,9 +145,12 @@ class FaceIndicatorNode: SKSpriteNode {
             shapeNode.strokeColor = fillColor
             shapeNode.lineWidth = 1.0
             
-            let phy = SKPhysicsBody.init(circleOfRadius: r * sizeMultiplier)
-            phy.isDynamic = false
-            shapeNode.physicsBody = phy
+            let rad = r * sizeMultiplier
+            if r > 0 {
+                let phy = SKPhysicsBody.init(circleOfRadius: rad)
+                phy.isDynamic = false
+                shapeNode.physicsBody = phy
+            }
             
             self.addChild(shapeNode)
                 

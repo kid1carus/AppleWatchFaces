@@ -38,12 +38,12 @@ class PhysicsNode: SKSpriteNode {
             self.addChild(newShape)
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationFrameUpdate(notification:)), name: SKWatchScene.sceneSlowFrameUpdateNotificationName, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationFrameUpdate(notification:)), name: SKWatchScene.sceneSlowFrameUpdateNotificationName, object: nil)
         
     }
     
-    @objc func onNotificationFrameUpdate(notification:Notification) {
-    }
+//    @objc func onNotificationFrameUpdate(notification:Notification) {
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
