@@ -303,6 +303,15 @@ class SecondHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
+            let phy = SKPhysicsBody.init(circleOfRadius: 4)
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
+            let field = SKFieldNode.springField()
+            field.strength = 0.001
+            field.position = CGPoint.init(x: 0, y: 0)
+            shape.addChild(field)
+            
             self.addChild(shape)
             //self.pivot = SCNMatrix4MakeTranslation(0.0, -0.89, 0)
         }
@@ -313,6 +322,15 @@ class SecondHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             //self.pivot = SCNMatrix4MakeTranslation(Float(-0.0125), Float(-0.4), Float(0))
+            
+            let phy = SKPhysicsBody.init(edgeLoopFrom: CGRect.init(x: 0, y: 0, width: 2.5, height: 90))
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
+            let field = SKFieldNode.springField()
+            field.strength = 0.0001
+            field.position = CGPoint.init(x: 0, y: 85)
+            shape.addChild(field)
             
             self.addChild(shape)
         }
@@ -390,9 +408,14 @@ class SecondHandNode: SKSpriteNode {
         if (secondHandType == SecondHandTypes.SecondHandTypeRail) {
             let shapeRect = CGRect.init(x: 0, y: 0, width: 1, height: 90)
             let shape = SKShapeNode.init(rect: shapeRect)
-            let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
-            physicsBody.isDynamic = false
-            shape.physicsBody = physicsBody
+//            let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+//            physicsBody.isDynamic = false
+//            shape.physicsBody = physicsBody
+            
+            let field = SKFieldNode.linearGravityField(withVector: vector_float3.init(x: 0, y: 5, z: 2))
+            field.position = CGPoint.init(x: 0, y: 85)
+            
+            self.addChild(field)
             
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor

@@ -17,14 +17,17 @@ class PhysicsNode: SKSpriteNode {
         let size = FaceBackgroundNode.getScreenBoundsForImages()
         
         //draw shapes
-        for _ in 0 ... 100 {
+        for _ in 0 ... 150 {
             let r = CGFloat(Double(arc4random()) / 0xFFFFFFFF)
             let xPos = r * size.width
             let r2 = CGFloat(Double(arc4random()) / 0xFFFFFFFF)
             let yPos = r2 * size.height
             
-            let newShape = SKShapeNode.init(rectOf: CGSize.init(width: 8.0, height: 8.0))
-            let physicsBody = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 10.0, height: 10.0))
+            let newShape = SKShapeNode.init(circleOfRadius: 2.5)
+            newShape.fillColor = SKColor.init(hexString: material)
+            newShape.lineWidth = 0.0
+            
+            let physicsBody = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 4.0, height: 4.0))
             physicsBody.restitution = 1.0
             
             newShape.physicsBody = physicsBody
