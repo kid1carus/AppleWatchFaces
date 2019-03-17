@@ -39,7 +39,8 @@ class FaceBackgroundSettingCollectionViewCell: UICollectionViewCell, SKViewDeleg
             let scaleMultiplier:CGFloat = 0.0020
         
             if !self.isSelected {
-                let handNode = FaceBackgroundNode.init(backgroundType: faceBackgroundType, material: "#ddddddff")
+                //use linewidt > 0 to cause it to clip
+                let handNode = FaceBackgroundNode.init(backgroundType: faceBackgroundType, material: "#ddddddff", material2: "", strokeColor: SKColor.clear, lineWidth: 1.0)
                 handNode.setScale(scaleMultiplier)
                 handNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/2)
                 scene.addChild(handNode)
