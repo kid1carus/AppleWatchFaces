@@ -193,7 +193,7 @@ class NumberTextNode: SKNode {
         //        hourText.color = fillColor
         
         let shapeRect = hourText.calculateAccumulatedFrame()
-        let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+        let physicsBody = SKPhysicsBody.init(rectangleOf: shapeRect.size, center: CGPoint.zero)
         physicsBody.isDynamic = false
         hourText.physicsBody = physicsBody
         

@@ -323,7 +323,7 @@ class SecondHandNode: SKSpriteNode {
             shape.lineWidth = lineWidth
             //self.pivot = SCNMatrix4MakeTranslation(Float(-0.0125), Float(-0.4), Float(0))
             
-            let phy = SKPhysicsBody.init(edgeLoopFrom: CGRect.init(x: 0, y: 0, width: 2.5, height: 90))
+            let phy = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 2.5, height: 90))
             phy.isDynamic = false
             shape.physicsBody = phy
             
@@ -357,7 +357,7 @@ class SecondHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
-            let phy = SKPhysicsBody.init(edgeLoopFrom: CGRect.init(x: 0, y: 0, width: 2.5, height: 90))
+            let phy =  SKPhysicsBody.init(rectangleOf: CGSize.init(width: 2.5, height: 90))
             phy.isDynamic = false
             shape.physicsBody = phy
             
@@ -381,7 +381,7 @@ class SecondHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
-            let phy = SKPhysicsBody.init(edgeLoopFrom: rect)
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size)
             phy.isDynamic = false
             shape.physicsBody = phy
             
@@ -422,7 +422,7 @@ class SecondHandNode: SKSpriteNode {
             shape.lineWidth = lineWidth
             
             let shapeRect = CGRect.init(x: 0, y: 0, width: 2, height: 95)
-            let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+            let physicsBody = SKPhysicsBody.init(rectangleOf: shapeRect.size)
             physicsBody.isDynamic = false
             shape.physicsBody = physicsBody
             
@@ -439,7 +439,7 @@ class SecondHandNode: SKSpriteNode {
             let shapeRect = CGRect.init(x: 0, y: 0, width: 1, height: 90)
             let shape = SKShapeNode.init(rect: shapeRect)
             
-            let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+            let physicsBody = SKPhysicsBody.init(rectangleOf: shapeRect.size)
             physicsBody.isDynamic = false
             shape.physicsBody = physicsBody
             

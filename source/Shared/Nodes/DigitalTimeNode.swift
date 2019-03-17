@@ -247,7 +247,7 @@ class DigitalTimeNode: SKNode {
         setToTime(force: true) //update to latest time to start
         
         let shapeRect = timeText.calculateAccumulatedFrame()
-        let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+        let physicsBody = SKPhysicsBody.init(rectangleOf: shapeRect.size, center: CGPoint.zero)
         physicsBody.isDynamic = false
         timeText.physicsBody = physicsBody
         
