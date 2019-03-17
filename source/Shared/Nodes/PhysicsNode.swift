@@ -17,7 +17,7 @@ class PhysicsNode: SKSpriteNode {
         let size = FaceBackgroundNode.getScreenBoundsForImages()
         
         //draw shapes
-        for _ in 0 ... 150 {
+        for _ in 0 ... 100 {
             let r = CGFloat(Double(arc4random()) / 0xFFFFFFFF)
             let xPos = r * size.width
             let r2 = CGFloat(Double(arc4random()) / 0xFFFFFFFF)
