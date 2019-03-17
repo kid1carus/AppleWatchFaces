@@ -100,10 +100,10 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="b4T-6U-EIy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="83n-as-1D8"/>
-                            <constraint firstItem="b4T-6U-EIy" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" id="KnX-6f-nrL"/>
+                            <constraint firstItem="b4T-6U-EIy" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="900" id="KnX-6f-nrL"/>
                             <constraint firstItem="b4T-6U-EIy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TTk-sp-i6o"/>
                             <constraint firstItem="b4T-6U-EIy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="750" id="fM0-9X-pWU"/>
-                            <constraint firstItem="b4T-6U-EIy" firstAttribute="width" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="width" id="wej-nh-3Kq"/>
+                            <constraint firstItem="b4T-6U-EIy" firstAttribute="width" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="900" id="wej-nh-3Kq"/>
                             <constraint firstAttribute="bottom" secondItem="b4T-6U-EIy" secondAttribute="bottom" priority="750" id="zoH-36-HLU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
