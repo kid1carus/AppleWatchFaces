@@ -512,7 +512,7 @@ class HourHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
-            let physicsBody = SKPhysicsBody.init(edgeChainFrom: bezierPath.cgPath)
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: hourHandPath.cgPath)
             physicsBody.isDynamic = false
             shape.physicsBody = physicsBody
             
