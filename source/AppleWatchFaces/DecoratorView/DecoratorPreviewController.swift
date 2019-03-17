@@ -241,6 +241,7 @@ class DecoratorPreviewController: UIViewController {
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
         // Present the scene
+        scene.isPaused = true //dont animate physics
         skView.presentScene(scene)
         
         redraw(clockSetting: SettingsViewController.currentClockSetting)
