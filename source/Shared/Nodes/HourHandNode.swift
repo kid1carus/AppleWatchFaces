@@ -251,6 +251,10 @@ class HourHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: bezierPath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
+            
             self.addChild(shape)
         }
         
@@ -264,6 +268,10 @@ class HourHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: rectanglePath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
+            
             self.addChild(shape)
         }
         
@@ -275,6 +283,10 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: rectanglePath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
             
             self.addChild(shape)
         }
@@ -301,6 +313,10 @@ class HourHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: bezierPath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
+            
             self.addChild(shape)
         }
         
@@ -318,6 +334,10 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: bezierPath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
             
             self.addChild(shape)
         }
@@ -342,6 +362,10 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: bezierPath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
             
             self.addChild(shape)
         }
@@ -487,6 +511,10 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let physicsBody = SKPhysicsBody.init(edgeChainFrom: hourHandPath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
             
             self.addChild(shape)
         }

@@ -68,11 +68,17 @@ class FaceIndicatorNode: SKSpriteNode {
         if (indicatorType == FaceIndicatorTypes.FaceIndicatorTypeBox) {
             let w = CGFloat( size * Float(0.1) )
             let h = CGFloat( size * Float(0.7) )
-            let shapeNode = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
+            let rect = CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier)
+            let shapeNode = SKShapeNode.init(rect: rect)
             shapeNode.fillColor = fillColor
             shapeNode.strokeColor = fillColor
             shapeNode.lineWidth = 1.0
             shapeNode.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
+            
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size)
+            phy.isDynamic = false
+            shapeNode.physicsBody = phy
+            
             self.addChild(shapeNode)
             
             //self.geometry = SCNBox.init(width: w, height: h, length: 0.002, chamferRadius: 0)
@@ -81,11 +87,17 @@ class FaceIndicatorNode: SKSpriteNode {
         if (indicatorType == FaceIndicatorTypes.FaceIndicatorTypeMediumBox) {
             let w = CGFloat( size * Float(0.2) )
             let h = CGFloat( size * Float(0.7) )
-            let shapeNode = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
+            let rect = CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier)
+            let shapeNode = SKShapeNode.init(rect: rect)
             shapeNode.fillColor = fillColor
             shapeNode.strokeColor = fillColor
             shapeNode.lineWidth = 1.0
             shapeNode.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
+            
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size)
+            phy.isDynamic = false
+            shapeNode.physicsBody = phy
+            
             self.addChild(shapeNode)
             
             //self.geometry = SCNBox.init(width: w, height: h, length: 0.002, chamferRadius: 0)
@@ -94,11 +106,17 @@ class FaceIndicatorNode: SKSpriteNode {
         if (indicatorType == FaceIndicatorTypes.FaceIndicatorTypeFatBox) {
             let w = CGFloat( size * Float(0.25) )
             let h = CGFloat( size * Float(0.7) )
-            let shapeNode = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
+            let rect = CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier)
+            let shapeNode = SKShapeNode.init(rect: rect)
             shapeNode.fillColor = fillColor
             shapeNode.strokeColor = fillColor
             shapeNode.lineWidth = 1.0
             shapeNode.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
+            
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size)
+            phy.isDynamic = false
+            shapeNode.physicsBody = phy
+            
             self.addChild(shapeNode)
             
             //self.geometry = SCNBox.init(width: w, height: h, length: 0.002, chamferRadius: 0)
@@ -126,6 +144,14 @@ class FaceIndicatorNode: SKSpriteNode {
             shapeNode.fillColor = fillColor
             shapeNode.strokeColor = fillColor
             shapeNode.lineWidth = 1.0
+            
+            let rad = r * sizeMultiplier
+            if r > 0 {
+                let phy = SKPhysicsBody.init(circleOfRadius: rad)
+                phy.isDynamic = false
+                shapeNode.physicsBody = phy
+            }
+            
             self.addChild(shapeNode)
                 
             //self.geometry = SCNSphere.init(radius: r)

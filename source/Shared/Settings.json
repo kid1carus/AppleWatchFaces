@@ -1,6 +1,110 @@
 {
     "clockSettings" : [
         {
+            "uniqueID" : "C9D89593-37A9-4236-B2E5-08A99AD18DCA",
+            "title" : "Gravity",
+            "clockFaceSettings" : {
+                "minuteHandType" : "MinuteHandTypeBoxy",
+                "secondHandMaterialName" : "#2b71ffff",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "hourHandType" : "HourHandTypeBoxy",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringSettings" : [
+                    {
+                        "ringPatternTotal" : "12",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringType" : "RingTypeSpacer",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringWidth" : "0.08",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticTimeFormat" : "None",
+                        "textSize" : "0.2",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "ringPatternTotal" : "12",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringType" : "RingTypeTextRotatingNode",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringWidth" : "0.075",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticTimeFormat" : "None",
+                        "textSize" : "0.48",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeNixie"
+                    },
+                    {
+                        "ringPatternTotal" : "12",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringType" : "RingTypeSpacer",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringWidth" : "0.38",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticTimeFormat" : "None",
+                        "textSize" : "0.2",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "ringPatternTotal" : "0",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticEffects" : "None",
+                        "ringWidth" : "0.0",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticTimeFormat" : "DADD",
+                        "textSize" : "0.3",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeNixie"
+                    }
+                ],
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "ringMaterials" : [
+                    "#ffffffff",
+                    "#e2e2e2ff",
+                    "#c6c6c6ff"
+                ],
+                "shouldShowRomanNumeralText" : false,
+                "secondHandType" : "SecondHandTypeSphere",
+                "minuteHandMaterialName" : "#FFFFFFFF",
+                "shouldShowHandOutlines" : false,
+                "secondHandMovement" : "SecondHandMovementOscillate"
+            },
+            "faceBackgroundType" : "FaceIndicatorTypeAnimatedPhysicsField",
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "clockFaceMaterialName" : "#003d5bff"
+        },
+        {
             "clockFaceMaterialName" : "#ffffffff",
             "faceBackgroundType" : "FaceBackgroundTypeAnimatedPong",
             "clockFaceSettings" : {

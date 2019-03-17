@@ -246,6 +246,11 @@ class DigitalTimeNode: SKNode {
         //needs to always come BEFORE calculateAccumulatedFrame since it will adjust the width
         setToTime(force: true) //update to latest time to start
         
+        let shapeRect = timeText.calculateAccumulatedFrame()
+        let physicsBody = SKPhysicsBody.init(rectangleOf: shapeRect.size, center: CGPoint.zero)
+        physicsBody.isDynamic = false
+        timeText.physicsBody = physicsBody
+        
         //get boudary for adding frames
         let labelRect = timeText.calculateAccumulatedFrame()
         //re-use "dark color" for backgrounds

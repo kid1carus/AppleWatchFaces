@@ -76,34 +76,11 @@ class FaceBackgroundSettingsTableViewCell: WatchSettingsSelectableTableViewCell,
             
             // Present the scene
             cell.skView.presentScene(previewScene)
+            cell.skView.delegate = cell
         }
         
-        if let scene = cell.skView.scene {
-            //debugPrint("old scene")
-            scene.backgroundColor = SKColor.black
-            scene.removeAllChildren()
-            
-            cell.faceBackgroundType = FaceBackgroundTypes.userSelectableValues[indexPath.row]
-            
-            let scaleMultiplier:CGFloat = 0.0020
-            
-            let handNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.userSelectableValues[indexPath.row], material: "#ddddddff")
-            handNode.setScale(scaleMultiplier)
-            handNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/2)
-            scene.addChild(handNode)
-            
-            let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 5.0
-            let strokeColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
-            let selectedHandNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.userSelectableValues[indexPath.row], material: "#ddddddff", material2: "", strokeColor: strokeColor, lineWidth: highlightLineWidth)
-            
-            selectedHandNode.name = "selectedNode"
-            selectedHandNode.setScale(scaleMultiplier)
-            selectedHandNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/2)
-            
-            selectedHandNode.isHidden = !cell.isSelected
-            
-            scene.addChild(selectedHandNode)
-        }
+        cell.faceBackgroundType = FaceBackgroundTypes.userSelectableValues[indexPath.row]
+        cell.redrawScene()
         
         return cell
     }

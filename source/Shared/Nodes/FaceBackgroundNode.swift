@@ -13,12 +13,12 @@ import UIKit
 
 enum FaceBackgroundTypes: String {
     case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient,
-        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedSnowField,
+        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedPhysicsField, FaceIndicatorTypeAnimatedSnowField,
         FaceBackgroundTypeNone
     
     static let userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
                                      FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
-                                     FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedSnowField,
+                                     FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedSnowField, FaceIndicatorTypeAnimatedPhysicsField,
                                      
                                      FaceBackgroundTypeNone]
     
@@ -52,6 +52,7 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong)  { typeDescription = "Animated: Pong Game" }
         if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedStarField)  { typeDescription = "Animated: Starfield" }
         if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedSnowField)  { typeDescription = "Animated: Snow Falling" }
+        if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedPhysicsField)  { typeDescription = "Animated: Physics Field" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
@@ -148,6 +149,32 @@ class FaceBackgroundNode: SKSpriteNode {
         let mainColor = SKColor.init(hexString: material)
         let medColor = mainColor.withAlphaComponent(0.65)
         let darkColor = mainColor.withAlphaComponent(0.3)
+        
+        if (backgroundType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedPhysicsField) {
+            //A layer of a snow
+            let fieldNode = SKCropNode()
+            fieldNode.name = "physicsFieldNode"
+            fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth))
+            
+            let width = screenSize.width+lineWidth
+            let height = screenSize.height+lineWidth
+            let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
+            let frameNode = SKShapeNode.init(rect:frameNodeRect)
+            
+            //green frame for settings UI
+            if (lineWidth>0) {
+                //draw it as a shape, no background!
+                frameNode.fillColor = SKColor.black
+                frameNode.strokeColor = strokeColor
+                frameNode.lineWidth = lineWidth
+                frameNode.zPosition = -2.0
+                
+                fieldNode.maskNode = frameNode //TODO: this works ouside of this if block but stops backgrounds
+                fieldNode.addChild(frameNode)
+            }
+            
+            self.addChild(fieldNode)
+        }
         
         if (backgroundType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedStarField) {
             //A layer of a star field
@@ -258,7 +285,7 @@ class FaceBackgroundNode: SKSpriteNode {
                 //draw it as a shape, no background!
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
-                //frameNode.lineWidth = lineWidth
+                frameNode.lineWidth = lineWidth*2
                 
                 effectsNode.addChild(frameNode)
             }
@@ -281,7 +308,7 @@ class FaceBackgroundNode: SKSpriteNode {
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
-            shape.lineWidth = 0.0
+            shape.lineWidth = lineWidth
             
             self.addChild(shape)
         }
@@ -299,7 +326,7 @@ class FaceBackgroundNode: SKSpriteNode {
             if AppUISettings.materialIsColor(materialName: material) {
                 shape.fillColor = SKColor.init(hexString: material)
                 shape.strokeColor = strokeColor
-                shape.lineWidth = 0.0
+                shape.lineWidth = lineWidth
                 self.addChild(shape)
             } else {
                 //has image, mask into shape!
@@ -326,7 +353,7 @@ class FaceBackgroundNode: SKSpriteNode {
             if AppUISettings.materialIsColor(materialName: material) {
                 shape.fillColor = SKColor.init(hexString: material)
                 shape.strokeColor = strokeColor
-                shape.lineWidth = 0.0
+                shape.lineWidth = lineWidth
                 self.addChild(shape)
             } else {
                 //has image, mask into shape!

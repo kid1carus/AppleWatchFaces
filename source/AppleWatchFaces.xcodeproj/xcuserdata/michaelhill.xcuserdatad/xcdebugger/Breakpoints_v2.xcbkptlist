@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/DigitalTimeNode.swift"
-            timestampString = "574317012.0357749"
+            timestampString = "574487316.976681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "init(digitalTimeTextType:timeFormat:textSize:effect:horizontalPosition:fillColor:strokeColor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/HourHandNode.swift"
-            timestampString = "573847094.547027"
+            timestampString = "574487316.977129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -585,28 +585,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shared/Nodes/MinuteHandNode.swift"
-            timestampString = "573974921.319476"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
-            landmarkName = "init(minuteHandType:material:strokeColor:lineWidth:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/FaceBackgroundNode.swift"
-            timestampString = "574048594.5806119"
+            timestampString = "574454719.1496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "init(backgroundType:material:material2:strokeColor:lineWidth:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -617,13 +601,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clockology/ScreenSaverController.swift"
-            timestampString = "574137671.46659"
+            filePath = "Shared/Nodes/FaceBackgroundNode.swift"
+            timestampString = "574454719.149655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "showButtons()"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
+            landmarkName = "init(backgroundType:material:material2:strokeColor:lineWidth:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Nodes/FaceBackgroundNode.swift"
+            timestampString = "574454719.149691"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
+            landmarkName = "init(backgroundType:material:material2:strokeColor:lineWidth:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
