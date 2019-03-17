@@ -46,7 +46,7 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
-        redrawPreviewClock(transition: true, direction: .right)
+        redrawPreviewClock(transition: true, direction: .left)
     }
     
     @IBAction func prevClock() {
@@ -56,7 +56,7 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
-        redrawPreviewClock(transition: true, direction: .left)
+        redrawPreviewClock(transition: true, direction: .right)
     }
     
     func redrawPreviewClock(transition: Bool, direction: SKTransitionDirection) {

@@ -119,13 +119,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="ofx-xK-rVa">
+                <swipeGestureRecognizer direction="right" id="ofx-xK-rVa" userLabel="Swipe Gesture Right">
                     <connections>
                         <action selector="prevClock" destination="BYZ-38-t0r" id="hkd-Ws-xZ0"/>
                         <outlet property="delegate" destination="BYZ-38-t0r" id="rYX-K2-fBW"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="rTE-4Y-uoL">
+                <swipeGestureRecognizer direction="left" id="rTE-4Y-uoL" userLabel="Swipe Gesture Left">
                     <connections>
                         <action selector="nextClock" destination="BYZ-38-t0r" id="ud0-bV-mNv"/>
                         <outlet property="delegate" destination="BYZ-38-t0r" id="Uef-tg-Drj"/>
