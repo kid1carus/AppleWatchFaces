@@ -9,24 +9,62 @@
 import UIKit
 import SpriteKit
 
-class FaceBackgroundSettingCollectionViewCell: UICollectionViewCell {
+class FaceBackgroundSettingCollectionViewCell: UICollectionViewCell, SKViewDelegate {
     
     @IBOutlet weak var skView : SKView!
     var faceBackgroundType: FaceBackgroundTypes = FaceBackgroundTypes.FaceBackgroundTypeFilled
     
+    var lastRenderTime: TimeInterval = 0
+    
+    let fps: TimeInterval = 5
+    
+    public func view(_ view: SKView, shouldRenderAtTime time: TimeInterval) -> Bool {
+        
+        if time - lastRenderTime >= 1 / fps {
+            lastRenderTime = time
+            return true
+        }
+        else {
+            return false
+        }
+        
+    }
+    
+    func redrawScene() {
+        if let scene = skView.scene {
+            //debugPrint("old scene")
+            scene.backgroundColor = SKColor.black
+            scene.removeAllChildren()
+            
+            let scaleMultiplier:CGFloat = 0.0020
+        
+            if !self.isSelected {
+                let handNode = FaceBackgroundNode.init(backgroundType: faceBackgroundType, material: "#ddddddff")
+                handNode.setScale(scaleMultiplier)
+                handNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/2)
+                scene.addChild(handNode)
+            } else {
+                let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 5.0
+                let strokeColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
+                let selectedHandNode = FaceBackgroundNode.init(backgroundType: faceBackgroundType, material: "#ddddddff", material2: "", strokeColor: strokeColor, lineWidth: highlightLineWidth)
+                
+                selectedHandNode.name = "selectedNode"
+                selectedHandNode.setScale(scaleMultiplier)
+                selectedHandNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/2)
+                scene.addChild(selectedHandNode)
+            }
+        
+            //selectedHandNode.isHidden = !cell.isSelected
+        
+            //try to prevent these from running any simultation
+            scene.physicsWorld.speed = 0.0
+            scene.isPaused = true
+        }
+    }
+    
     override var isSelected: Bool {
         didSet {
-            if let scene = skView.scene, let selectedNode = scene.childNode(withName: "selectedNode") {
-                
-                if self.isSelected {
-                    selectedNode.isHidden = false
-                }
-                else {
-                    selectedNode.isHidden = true
-                }
-                
-            }
-            
+            redrawScene()
         }
     }
     
