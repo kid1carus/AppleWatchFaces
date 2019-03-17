@@ -285,7 +285,7 @@ class FaceBackgroundNode: SKSpriteNode {
                 //draw it as a shape, no background!
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
-                //frameNode.lineWidth = lineWidth
+                frameNode.lineWidth = lineWidth*2
                 
                 effectsNode.addChild(frameNode)
             }
@@ -308,7 +308,7 @@ class FaceBackgroundNode: SKSpriteNode {
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
-            shape.lineWidth = 0.0
+            shape.lineWidth = lineWidth
             
             self.addChild(shape)
         }
@@ -326,7 +326,7 @@ class FaceBackgroundNode: SKSpriteNode {
             if AppUISettings.materialIsColor(materialName: material) {
                 shape.fillColor = SKColor.init(hexString: material)
                 shape.strokeColor = strokeColor
-                shape.lineWidth = 0.0
+                shape.lineWidth = lineWidth
                 self.addChild(shape)
             } else {
                 //has image, mask into shape!
@@ -353,7 +353,7 @@ class FaceBackgroundNode: SKSpriteNode {
             if AppUISettings.materialIsColor(materialName: material) {
                 shape.fillColor = SKColor.init(hexString: material)
                 shape.strokeColor = strokeColor
-                shape.lineWidth = 0.0
+                shape.lineWidth = lineWidth
                 self.addChild(shape)
             } else {
                 //has image, mask into shape!
