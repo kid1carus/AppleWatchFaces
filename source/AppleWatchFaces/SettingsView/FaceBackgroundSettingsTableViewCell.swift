@@ -79,6 +79,7 @@ class FaceBackgroundSettingsTableViewCell: WatchSettingsSelectableTableViewCell,
         }
         
         if let scene = cell.skView.scene {
+            scene.isPaused = true
             //debugPrint("old scene")
             scene.backgroundColor = SKColor.black
             scene.removeAllChildren()
