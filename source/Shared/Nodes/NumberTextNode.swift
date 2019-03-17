@@ -192,6 +192,11 @@ class NumberTextNode: SKNode {
         //        hourText.fontColor = fillColor
         //        hourText.color = fillColor
         
+        let shapeRect = hourText.calculateAccumulatedFrame()
+        let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+        physicsBody.isDynamic = false
+        hourText.physicsBody = physicsBody
+        
         self.addChild(hourText)
     }
     

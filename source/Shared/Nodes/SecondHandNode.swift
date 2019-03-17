@@ -352,25 +352,44 @@ class SecondHandNode: SKSpriteNode {
             bezierPath.addLine(to: CGPoint(x: 0.5, y: 93))
             bezierPath.close()
             
-            bezierPath.flatness = 0.2
-            
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let phy = SKPhysicsBody.init(edgeLoopFrom: CGRect.init(x: 0, y: 0, width: 2.5, height: 90))
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
+            let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.25)
+            field.falloff = 0.001
+            field.strength = 0.001
+            field.position = CGPoint.init(x: 0, y: 85)
+            shape.addChild(field)
             
             self.addChild(shape)
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeSwiss) {
             
-            let bezierPath = UIBezierPath(rect: CGRect(x: -2, y: -20, width: 4, height: 104))
+            let rect = CGRect(x: -2, y: -20, width: 4, height: 104)
+            let bezierPath = UIBezierPath(rect: rect)
             bezierPath.flatness = 0.1
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let phy = SKPhysicsBody.init(edgeLoopFrom: rect)
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
+            let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.25)
+            field.falloff = 0.01
+            field.strength = 0.001
+            field.position = CGPoint.init(x: 0, y: 85)
+            shape.addChild(field)
             
             self.addChild(shape)
         }
@@ -402,19 +421,31 @@ class SecondHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
+            let shapeRect = CGRect.init(x: 0, y: 0, width: 2, height: 95)
+            let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
+            
+            let field = SKFieldNode.radialGravityField()
+            field.falloff = 0.1
+            field.strength = 0.05
+            field.position = CGPoint.init(x: 0, y: 90)
+            self.addChild(field)
+            
             self.addChild(shape)
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeRail) {
             let shapeRect = CGRect.init(x: 0, y: 0, width: 1, height: 90)
             let shape = SKShapeNode.init(rect: shapeRect)
-//            let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
-//            physicsBody.isDynamic = false
-//            shape.physicsBody = physicsBody
+            
+            let physicsBody = SKPhysicsBody.init(edgeLoopFrom: shapeRect)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
             
             let field = SKFieldNode.linearGravityField(withVector: vector_float3.init(x: 0, y: 5, z: 2))
+            field.strength = 0.1
             field.position = CGPoint.init(x: 0, y: 85)
-            
             self.addChild(field)
             
             shape.setMaterial(material: material)

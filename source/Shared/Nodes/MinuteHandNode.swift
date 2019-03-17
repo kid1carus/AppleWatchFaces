@@ -283,6 +283,10 @@ class MinuteHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
+            let phy = SKPhysicsBody.init(edgeLoopFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
             self.addChild(shape)
         }
         
@@ -309,6 +313,10 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let phy = SKPhysicsBody.init(edgeLoopFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shape.physicsBody = phy
             
             self.addChild(shape)
             
@@ -338,6 +346,10 @@ class MinuteHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
+            let phy = SKPhysicsBody.init(edgeLoopFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
             self.addChild(shape)
         }
         
@@ -354,7 +366,9 @@ class MinuteHandNode: SKSpriteNode {
             let shape = SKShapeNode.init(path: minuteHandPath.cgPath)
             
             let physicsBody = SKPhysicsBody.init(edgeChainFrom: minuteHandPath.cgPath)
+            physicsBody.isDynamic = false
             shape.physicsBody = physicsBody
+            
             
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor

@@ -23,11 +23,11 @@ class PhysicsNode: SKSpriteNode {
             let r2 = CGFloat(Double(arc4random()) / 0xFFFFFFFF)
             let yPos = r2 * size.height
             
-            let newShape = SKShapeNode.init(circleOfRadius: 2.5)
+            let newShape = SKShapeNode.init(circleOfRadius: 2.0)
             newShape.fillColor = SKColor.init(hexString: material)
             newShape.lineWidth = 0.0
             
-            let physicsBody = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 4.0, height: 4.0))
+            let physicsBody = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 3.0, height: 3.0))
             physicsBody.restitution = 1.0
             
             newShape.physicsBody = physicsBody
