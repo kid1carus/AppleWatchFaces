@@ -124,7 +124,7 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
         if bright<0 {
             level = 0.0
         }
-        debugPrint("bright:" + level.description)
+        //debugPrint("bright:" + level.description)
         UIScreen.main.brightness = level
     }
     
