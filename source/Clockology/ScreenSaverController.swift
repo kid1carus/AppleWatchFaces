@@ -12,6 +12,7 @@ import SpriteKit
 class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
 
     var currentClockIndex = 0
+    var timeSinceLastBrightNessUpdate:UInt64 = DispatchTime.now().uptimeNanoseconds
     private var usersBrightness = UIScreen.main.brightness // save user brightness when we enter to restore on exit
     private var clockBrightness = UIScreen.main.brightness // save temp brightness when lighting up for settings
     
@@ -133,24 +134,23 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
         //dont adjust levels when buttons are up
         guard buttonContainerView.alpha == 0 else { return }
         
-        let mult:CGFloat = self.view.frame.size.height / 0.75
+        let mult:CGFloat = self.view.frame.size.height / 0.3 //larger number makes swipes change brightness faster
         let current = UIScreen.main.brightness
+        let translationPoint = gesture.translation(in: self.view)
+        let desiredBrightness = current - (translationPoint.y / mult)
         
         if gesture.state == .began {
-            
+            setBrightness(bright: desiredBrightness)
         }
         if gesture.state == .changed {
-            let translationPoint = gesture.translation(in: self.view)
-            let desiredBrightness = current - (translationPoint.y / mult)
-            let diff = desiredBrightness-current
-            let threshHold:CGFloat = 0.05
-            if diff>threshHold || diff<threshHold {
+            //debugPrint("tr y:" + translationPoint.y.description + "m:" + (translationPoint.y / mult).description )
+            //debugPrint("now:" + (DispatchTime.now().uptimeNanoseconds - timeSinceLastBrightNessUpdate).description)
+            if DispatchTime.now().uptimeNanoseconds - timeSinceLastBrightNessUpdate > 20000000 {
+                timeSinceLastBrightNessUpdate = DispatchTime.now().uptimeNanoseconds
                 setBrightness(bright: desiredBrightness)
             }
         }
         if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
-            let translationPoint = gesture.translation(in: self.view)
-            let desiredBrightness = current - (translationPoint.y / mult)
             setBrightness(bright: desiredBrightness)
         }
     }
