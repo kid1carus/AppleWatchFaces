@@ -11,7 +11,7 @@ import SpriteKit
 
 class PhysicsNode: SKSpriteNode {
 
-    init(size: CGSize, material: String, strokeColor: SKColor, lineWidth: CGFloat) {
+    init(size: CGSize, material: String, strokeColor: SKColor, lineWidth: CGFloat, shapeRadius: CGFloat, physicsShapeSize: CGSize) {
         super.init(texture: nil, color: SKColor.clear, size: size)
         
         let size = FaceBackgroundNode.getScreenBoundsForImages()
@@ -23,11 +23,12 @@ class PhysicsNode: SKSpriteNode {
             let r2 = CGFloat(Double(arc4random()) / 0xFFFFFFFF)
             let yPos = r2 * size.height
             
-            let newShape = SKShapeNode.init(circleOfRadius: 2.0)
+            let newShape = SKShapeNode.init(circleOfRadius: shapeRadius)
             newShape.fillColor = SKColor.init(hexString: material)
             newShape.lineWidth = 0.0
             
-            let physicsBody = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 3.0, height: 3.0))
+            let physicsBody = SKPhysicsBody.init(rectangleOf: physicsShapeSize)
+            //physicsBody.mass = 2.0
             physicsBody.restitution = 1.0
             
             newShape.physicsBody = physicsBody

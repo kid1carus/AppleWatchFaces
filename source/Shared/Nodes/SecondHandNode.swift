@@ -361,9 +361,9 @@ class SecondHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = phy
             
-            let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.25)
-            field.falloff = 0.001
-            field.strength = 0.001
+            let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.005)
+            field.falloff = 0.0001
+            field.strength = 0.0001
             field.position = CGPoint.init(x: 0, y: 85)
             shape.addChild(field)
             
@@ -385,10 +385,10 @@ class SecondHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = phy
             
-            let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.25)
-            field.falloff = 0.01
-            field.strength = 0.001
-            field.position = CGPoint.init(x: 0, y: 85)
+            let field = SKFieldNode.linearGravityField(withVector: vector_float3.init(x: 0, y: 0.5, z: 0))
+            field.falloff = 0.0000000001
+            field.strength = 0.1
+            field.position = CGPoint.init(x: 0, y: 0)
             shape.addChild(field)
             
             self.addChild(shape)
