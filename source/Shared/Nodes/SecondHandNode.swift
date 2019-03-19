@@ -129,6 +129,7 @@ class SecondHandNode: SKSpriteNode {
         let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
                                    endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
         newNode.name = "arcNode"
+        
         self.addChild(newNode)
     }
     

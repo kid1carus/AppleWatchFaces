@@ -40,6 +40,21 @@ class ArcNode: SKNode {
         shape.name = "arcShape"
         shape.position = CGPoint.init(x: 0, y: 0.0)
         
+        let physicsBody = SKPhysicsBody.init(polygonFrom: circlePath.cgPath)
+        physicsBody.isDynamic = false
+        shape.physicsBody = physicsBody
+        
+        let field = SKFieldNode.linearGravityField(withVector: vector_float3.init(x: Float(sin(endAngle)), y: Float(cos(endAngle)), z: 0))
+        field.falloff = 0.0000000001
+        field.strength = 0.1
+        field.position = CGPoint.init(x: 0, y: 0)
+        shape.addChild(field)
+        
+//        let field = SKFieldNode.springField()
+//        field.strength = 0.0001
+//        field.position = circlePath.point(at: 1.0)!
+//        shape.addChild(field)
+        
         if AppUISettings.materialIsColor(materialName: material) {
             shape.fillColor = SKColor.init(hexString: material)
             shape.strokeColor = strokeColor
