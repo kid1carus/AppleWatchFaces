@@ -75,7 +75,7 @@ class FaceIndicatorNode: SKSpriteNode {
             shapeNode.lineWidth = 1.0
             shapeNode.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
             
-            let phy = SKPhysicsBody.init(rectangleOf: rect.size)
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
             phy.isDynamic = false
             shapeNode.physicsBody = phy
             
@@ -94,7 +94,7 @@ class FaceIndicatorNode: SKSpriteNode {
             shapeNode.lineWidth = 1.0
             shapeNode.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
             
-            let phy = SKPhysicsBody.init(rectangleOf: rect.size)
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
             phy.isDynamic = false
             shapeNode.physicsBody = phy
             
@@ -113,7 +113,7 @@ class FaceIndicatorNode: SKSpriteNode {
             shapeNode.lineWidth = 1.0
             shapeNode.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
             
-            let phy = SKPhysicsBody.init(rectangleOf: rect.size)
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
             phy.isDynamic = false
             shapeNode.physicsBody = phy
             

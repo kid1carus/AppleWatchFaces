@@ -257,6 +257,10 @@ class MinuteHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
+            let phy = SKPhysicsBody.init(circleOfRadius: 5)
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
             self.addChild(shape)
         }
         
@@ -355,19 +359,19 @@ class MinuteHandNode: SKSpriteNode {
         
         if (minuteHandType == MinuteHandTypes.MinuteHandTypeSwiss) {
             
-            let minuteHandPath = UIBezierPath()
-            minuteHandPath.move(to: CGPoint(x: -4, y: -12))
-            minuteHandPath.addLine(to: CGPoint(x: 4, y: -12))
-            minuteHandPath.addLine(to: CGPoint(x: 2, y: 81))
-            minuteHandPath.addLine(to: CGPoint(x: -2, y: 81))
-            minuteHandPath.addLine(to: CGPoint(x: -4, y: -12))
-            minuteHandPath.close()
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: -4, y: -12))
+            bezierPath.addLine(to: CGPoint(x: 4, y: -12))
+            bezierPath.addLine(to: CGPoint(x: 2, y: 81))
+            bezierPath.addLine(to: CGPoint(x: -2, y: 81))
+            bezierPath.addLine(to: CGPoint(x: -4, y: -12))
+            bezierPath.close()
             
-            let shape = SKShapeNode.init(path: minuteHandPath.cgPath)
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
             
-            let physicsBody = SKPhysicsBody.init(edgeChainFrom: minuteHandPath.cgPath)
-            physicsBody.isDynamic = false
-            shape.physicsBody = physicsBody
+            let phy = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shape.physicsBody = phy
             
             
             shape.setMaterial(material: material)
@@ -391,12 +395,14 @@ class MinuteHandNode: SKSpriteNode {
             bezierPath.addCurve(to: CGPoint(x: 3, y: 79.5), controlPoint1: CGPoint(x: 1.66, y: 82.5), controlPoint2: CGPoint(x: 3, y: 81.16))
             bezierPath.close()
             
-            bezierPath.flatness = 0.1
-            
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let phy = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shape.physicsBody = phy
             
             self.addChild(shape)
         }
@@ -590,6 +596,10 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            
+            let phy = SKPhysicsBody.init(polygonFrom: minuteHandPath.cgPath)
+            phy.isDynamic = false
+            shape.physicsBody = phy
             
             self.addChild(shape)
         }
