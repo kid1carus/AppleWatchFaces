@@ -129,6 +129,7 @@ class SecondHandNode: SKSpriteNode {
         let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
                                    endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
         newNode.name = "arcNode"
+        
         self.addChild(newNode)
     }
     
@@ -317,13 +318,13 @@ class SecondHandNode: SKSpriteNode {
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeSquaredHole) {
-            let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: 2.5, height: 90))
+            let rect = CGRect.init(x: 0, y: 0, width: 2.5, height: 90)
+            let shape = SKShapeNode.init(rect: rect)
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            //self.pivot = SCNMatrix4MakeTranslation(Float(-0.0125), Float(-0.4), Float(0))
             
-            let phy = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 2.5, height: 90))
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
             phy.isDynamic = false
             shape.physicsBody = phy
             
@@ -356,14 +357,14 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            
-            let phy =  SKPhysicsBody.init(rectangleOf: CGSize.init(width: 2.5, height: 90))
+        
+            let phy =  SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             phy.isDynamic = false
             shape.physicsBody = phy
             
-            let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.25)
-            field.falloff = 0.001
-            field.strength = 0.001
+            let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.005)
+            field.falloff = 0.0001
+            field.strength = 0.0001
             field.position = CGPoint.init(x: 0, y: 85)
             shape.addChild(field)
             
@@ -381,14 +382,14 @@ class SecondHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
-            let phy = SKPhysicsBody.init(rectangleOf: rect.size)
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
             phy.isDynamic = false
             shape.physicsBody = phy
             
-            let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.25)
-            field.falloff = 0.01
-            field.strength = 0.001
-            field.position = CGPoint.init(x: 0, y: 85)
+            let field = SKFieldNode.linearGravityField(withVector: vector_float3.init(x: 0, y: 0.5, z: 0))
+            field.falloff = 0.0000000001
+            field.strength = 0.1
+            field.position = CGPoint.init(x: 0, y: 0)
             shape.addChild(field)
             
             self.addChild(shape)
@@ -421,9 +422,9 @@ class SecondHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             
-            let shapeRect = CGRect.init(x: 0, y: 0, width: 2, height: 95)
-            let physicsBody = SKPhysicsBody.init(rectangleOf: shapeRect.size)
-            physicsBody.isDynamic = false
+            let rect = CGRect.init(x: 0, y: 0, width: 2, height: 95)
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
+            phy.isDynamic = false
             shape.physicsBody = physicsBody
             
             let field = SKFieldNode.radialGravityField()
@@ -436,11 +437,11 @@ class SecondHandNode: SKSpriteNode {
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeRail) {
-            let shapeRect = CGRect.init(x: 0, y: 0, width: 1, height: 90)
-            let shape = SKShapeNode.init(rect: shapeRect)
+            let rect = CGRect.init(x: 0, y: 0, width: 1, height: 90)
+            let shape = SKShapeNode.init(rect: rect)
             
-            let physicsBody = SKPhysicsBody.init(rectangleOf: shapeRect.size)
-            physicsBody.isDynamic = false
+            let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
+            phy.isDynamic = false
             shape.physicsBody = physicsBody
             
             let field = SKFieldNode.linearGravityField(withVector: vector_float3.init(x: 0, y: 5, z: 2))

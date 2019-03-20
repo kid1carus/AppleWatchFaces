@@ -60,7 +60,7 @@ class SKWatchScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         //debugPrint("frame" + currentTime.truncatingRemainder(dividingBy: 0.1).debugDescription)
-        if currentTime.truncatingRemainder(dividingBy: 0.1) < 0.05 {
+        if currentTime.truncatingRemainder(dividingBy: 0.1) < 0.075 {
             //slow update ping
             NotificationCenter.default.post(name: SKWatchScene.sceneSlowFrameUpdateNotificationName, object: nil, userInfo:nil)
         }

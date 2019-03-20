@@ -13,12 +13,13 @@ import UIKit
 
 enum FaceBackgroundTypes: String {
     case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient,
-        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedPhysicsField, FaceIndicatorTypeAnimatedSnowField,
+    FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedPhysicsFieldSmall, FaceIndicatorTypeAnimatedPhysicsField, FaceIndicatorTypeAnimatedPhysicsFieldLarge, FaceIndicatorTypeAnimatedSnowField,
         FaceBackgroundTypeNone
     
     static let userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
                                      FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
-                                     FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedSnowField, FaceIndicatorTypeAnimatedPhysicsField,
+                                     FaceBackgroundTypeAnimatedPong, FaceIndicatorTypeAnimatedStarField, FaceIndicatorTypeAnimatedSnowField, FaceIndicatorTypeAnimatedPhysicsFieldSmall, FaceIndicatorTypeAnimatedPhysicsField,
+                                     FaceIndicatorTypeAnimatedPhysicsFieldLarge,
                                      
                                      FaceBackgroundTypeNone]
     
@@ -52,7 +53,9 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeAnimatedPong)  { typeDescription = "Animated: Pong Game" }
         if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedStarField)  { typeDescription = "Animated: Starfield" }
         if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedSnowField)  { typeDescription = "Animated: Snow Falling" }
-        if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedPhysicsField)  { typeDescription = "Animated: Physics Field" }
+        if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedPhysicsFieldSmall)  { typeDescription = "Animated: Physics Field Small" }
+        if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedPhysicsField)  { typeDescription = "Animated: Physics Field Medium" }
+        if (nodeType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedPhysicsFieldLarge)  { typeDescription = "Animated: Physics Field Large" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
@@ -127,6 +130,10 @@ class FaceBackgroundNode: SKSpriteNode {
         }
     }
     
+    func isPhysicsField(type : FaceBackgroundTypes) -> Bool {
+        return (type == .FaceIndicatorTypeAnimatedPhysicsFieldSmall || type == .FaceIndicatorTypeAnimatedPhysicsField || type == .FaceIndicatorTypeAnimatedPhysicsFieldLarge)
+    }
+    
     convenience init(backgroundType: FaceBackgroundTypes, material: String) {
         self.init(backgroundType: backgroundType, material: material, material2: "", strokeColor: SKColor.clear, lineWidth: 0.0)
     }
@@ -150,11 +157,21 @@ class FaceBackgroundNode: SKSpriteNode {
         let medColor = mainColor.withAlphaComponent(0.65)
         let darkColor = mainColor.withAlphaComponent(0.3)
         
-        if (backgroundType == FaceBackgroundTypes.FaceIndicatorTypeAnimatedPhysicsField) {
-            //A layer of a snow
+        if (isPhysicsField(type: backgroundType)) {
+            //A layer of a physic blobs
             let fieldNode = SKCropNode()
             fieldNode.name = "physicsFieldNode"
-            fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth))
+            var shapeRadius:CGFloat = 2.0
+            var physicsShapeSize:CGSize = CGSize.init(width: 3.0, height: 3.0)
+            if (backgroundType == .FaceIndicatorTypeAnimatedPhysicsFieldSmall) {
+                shapeRadius = 1.0
+                physicsShapeSize = CGSize.init(width: 1.5, height: 1.5)
+            }
+            if (backgroundType == .FaceIndicatorTypeAnimatedPhysicsFieldLarge) {
+                shapeRadius = 4.0
+                physicsShapeSize = CGSize.init(width: 5.0, height: 5.0)
+            }
+            fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, shapeRadius: shapeRadius, physicsShapeSize: physicsShapeSize))
             
             let width = screenSize.width+lineWidth
             let height = screenSize.height+lineWidth
