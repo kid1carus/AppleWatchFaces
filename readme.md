@@ -36,7 +36,7 @@ We encourage you to review your Apple Watch app concept and incorporate differen
 
 2. **Can I join your testFlight and help you beta test?**
 
-Yes, I am accepting testers for beta testing.  DM your email to [@orffy](https://twitter.com/orffy) for a testFlgiht invite.
+Yes, I am accepting testers for beta testing.  DM your email to [@orffy](https://twitter.com/orffy) for a testFlight invite.
 
 3. **How do I get this on my phone / watch?**
 
