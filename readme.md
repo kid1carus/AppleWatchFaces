@@ -36,11 +36,11 @@ We encourage you to review your Apple Watch app concept and incorporate differen
 
 2. **Can I join your testFlight and help you beta test?**
 
-No. Apple also will block developers from *external* beta testing because of the H.I.G. ( see FAQ 1 ). If you have a large developer team ( which I do not ), then you might be able to do an *internal* beta test on testflight.
+Yes, I am accepting testers for beta testing.  DM your email to [@orffy](https://twitter.com/orffy) for a testFlgiht invite.
 
 3. **How do I get this on my phone / watch?**
 
-Follow the installation instructions below to compile from the source and you can *side load* this application onto your phone and watch.
+Join the beta test or follow the installation instructions below to compile from the source and you can *side load* this application onto your phone and watch.
 
 4. **How can I create my own watch hands?**
 
@@ -58,7 +58,7 @@ Follow the installation instructions below to compile from the source and you ca
     
 7. **Which versions of apple watches does this work with ?**
 
-Any watchOS that can run spriteKit should be fine.
+Any watchOS that can run spriteKit should be fine. Tested with watchOS 5.
 
 8. **Are you planning to do complications ?**
 
