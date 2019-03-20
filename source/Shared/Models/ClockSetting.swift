@@ -95,8 +95,9 @@ class ClockSetting: NSObject {
         return nil
     }
     
-    // background type
+    // background types
     var faceBackgroundType:FaceBackgroundTypes
+    var faceForegroundType:FaceForegroundTypes
     
     // face settings
     var clockFaceSettings:ClockFaceSetting?
@@ -110,23 +111,9 @@ class ClockSetting: NSObject {
     
     var uniqueID:String
     
-    //no uniqueID ( generate one )
-    convenience init(clockFaceMaterialName: String,
-                     faceBackgroundType: FaceBackgroundTypes,
-                     clockCasingMaterialName: String,
-                     clockFaceSettings: ClockFaceSetting,
-                     title: String) {
-        
-        self.init(clockFaceMaterialName: clockFaceMaterialName,
-                  faceBackgroundType: faceBackgroundType,
-                  clockCasingMaterialName: clockCasingMaterialName,
-                  clockFaceSettings: clockFaceSettings,
-                  title: title ,
-                  uniqueID: UUID().uuidString)
-    }
-    
     init(clockFaceMaterialName: String,
         faceBackgroundType: FaceBackgroundTypes,
+        faceForegroundType: FaceForegroundTypes,
         
         clockCasingMaterialName: String,
         
@@ -136,6 +123,7 @@ class ClockSetting: NSObject {
     {
         self.clockFaceMaterialName = clockFaceMaterialName
         self.faceBackgroundType = faceBackgroundType
+        self.faceForegroundType = faceForegroundType
         self.clockFaceSettings = clockFaceSettings
         self.title = title
         self.clockCasingMaterialName = clockCasingMaterialName
@@ -165,6 +153,7 @@ class ClockSetting: NSObject {
         return ClockSetting.init(
             clockFaceMaterialName: "#000000FF",
             faceBackgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled,
+            faceForegroundType: FaceForegroundTypes.None,
             
             clockCasingMaterialName: "#1c1c1cff",
             
@@ -193,6 +182,7 @@ class ClockSetting: NSObject {
         let clockSetting = ClockSetting.init(
             clockFaceMaterialName: "#FFFFFFFF",
             faceBackgroundType: faceBackgroundType,
+            faceForegroundType: .None,
 
             clockCasingMaterialName: "#FF0000FF",
 
@@ -213,14 +203,61 @@ class ClockSetting: NSObject {
         return clockSetting
     }
     
+    //no uniqueID ( generate one )
+    convenience init(clockFaceMaterialName: String,
+                     faceBackgroundType: FaceBackgroundTypes,
+                     faceForegroundType: FaceForegroundTypes,
+                     clockCasingMaterialName: String,
+                     clockFaceSettings: ClockFaceSetting,
+                     title: String) {
+        
+        self.init(clockFaceMaterialName: clockFaceMaterialName,
+                  faceBackgroundType: faceBackgroundType,
+                  faceForegroundType: faceForegroundType,
+                  clockCasingMaterialName: clockCasingMaterialName,
+                  clockFaceSettings: clockFaceSettings,
+                  title: title ,
+                  uniqueID: UUID().uuidString)
+    }
+    
     //init from serialized
     convenience init( jsonObj: JSON ) {
         
-        let faceBackgroundType = FaceBackgroundTypes(rawValue: jsonObj["faceBackgroundType"].stringValue)!
+        var faceForegroundTypeTmp:FaceForegroundTypes = .None
+        var faceBackgroundTypeTmp:FaceBackgroundTypes = FaceBackgroundTypes.FaceBackgroundTypeNone
+        
+        let faceForegroundTypeString = jsonObj["faceForegroundType"].stringValue
+        if let faceForegroundTypeFound = FaceForegroundTypes(rawValue: faceForegroundTypeString) {
+            faceForegroundTypeTmp = faceForegroundTypeFound
+        }
+        
+        let faceBackgroundTypeString = jsonObj["faceBackgroundType"].stringValue
+        if let faceBackgroundTypeFound = FaceBackgroundTypes(rawValue: faceBackgroundTypeString) {
+            faceBackgroundTypeTmp = faceBackgroundTypeFound
+        } else {
+            //import old types into foreground
+            switch faceBackgroundTypeString {
+            case "FaceBackgroundTypeAnimatedPhysicsField":
+                faceForegroundTypeTmp = .AnimatedPhysicsField
+            case "FaceIndicatorTypeAnimatedPhysicsFieldSmall":
+                faceForegroundTypeTmp = .AnimatedPhysicsFieldSmall
+            case "FaceIndicatorTypeAnimatedPhysicsFieldLarge":
+                faceForegroundTypeTmp = .AnimatedPhysicsFieldLarge
+            case "FaceBackgroundTypeAnimatedPong":
+                faceForegroundTypeTmp = .AnimatedPong
+            case "FaceBackgroundTypeAnimatedSnowField":
+                faceForegroundTypeTmp = .AnimatedSnowField
+            case "FaceBackgroundTypeAnimatedStarField":
+                faceForegroundTypeTmp = .AnimatedStarField
+            default:
+                faceForegroundTypeTmp = .None
+            }
+        }
         
         self.init(
             clockFaceMaterialName: jsonObj["clockFaceMaterialName"].stringValue,
-            faceBackgroundType: faceBackgroundType,
+            faceBackgroundType: faceBackgroundTypeTmp,
+            faceForegroundType: faceForegroundTypeTmp,
             
             clockCasingMaterialName: jsonObj["clockCasingMaterialName"].stringValue,
             
@@ -252,6 +289,7 @@ class ClockSetting: NSObject {
         serializedDict[ "uniqueID" ] = self.uniqueID as AnyObject
         serializedDict[ "clockFaceMaterialName" ] = self.clockFaceMaterialName as AnyObject
         serializedDict[ "faceBackgroundType" ] = self.faceBackgroundType.rawValue as AnyObject
+        serializedDict[ "faceForegroundType" ] = self.faceForegroundType.rawValue as AnyObject
         serializedDict[ "clockFaceSettings" ] = self.clockFaceSettings!.serializedSettings()
         
         serializedDict[ "clockCasingMaterialName" ] = self.clockCasingMaterialName as AnyObject

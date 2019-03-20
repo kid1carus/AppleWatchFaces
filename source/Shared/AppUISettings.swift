@@ -8,6 +8,7 @@
 
 import Foundation
 
+import WatchKit
 import SpriteKit
 
 class AppUISettings: NSObject {
@@ -127,6 +128,23 @@ class AppUISettings: NSObject {
         } catch {
             print("\nError\n")
         }
+    }
+    
+    static func getScreenBoundsForImages() -> CGSize {
+        #if os(watchOS)
+        let screenBounds = WKInterfaceDevice.current().screenBounds
+        //this is needed * ratio to fit 320x390 images to 42 & 44mm
+        let overscan:CGFloat = 1.17
+        let mult = (390/(screenBounds.height*2)) * overscan
+        let ratio = screenBounds.size.height / screenBounds.size.width
+        let w = (screenBounds.size.width * mult * ratio).rounded()
+        let h = (screenBounds.size.height * mult * ratio).rounded()
+        #else
+        let w = CGFloat( CGFloat(320) / 1.42 ).rounded()
+        let h = CGFloat( CGFloat(390) / 1.42 ).rounded()
+        #endif
+        
+        return CGSize.init(width: w, height: h)
     }
     
     static func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
