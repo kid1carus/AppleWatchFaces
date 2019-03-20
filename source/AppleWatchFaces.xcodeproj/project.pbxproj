@@ -82,6 +82,7 @@
 		312E2D6A21F2D69F00C2F17F /* SKWatchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F92178166B00585AB1 /* SKWatchScene.swift */; };
 		312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
 		312E2D7021F3E16A00C2F17F /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
+		312E6B6B2241C7A400BB0D05 /* PhysicsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310725DE223D7083008030A2 /* PhysicsNode.swift */; };
 		312E853822239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		312E853922239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
@@ -1190,6 +1191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31C86B3522374DE500EF4186 /* ColorThemeSettingsTableViewCell.swift in Sources */,
+				312E6B6B2241C7A400BB0D05 /* PhysicsNode.swift in Sources */,
 				31C86B5B22374DEE00EF4186 /* DecotatorShapeTableViewCell.swift in Sources */,
 				31C86B2922374DA000EF4186 /* UIImage+Loading.swift in Sources */,
 				31C86B0022374CEA00EF4186 /* FaceIndicatorNode.swift in Sources */,
