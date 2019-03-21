@@ -78,9 +78,11 @@ class FaceForegroundNode: SKSpriteNode {
         }
     }
     
-    init(backgroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat ) {
+    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat ) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize.init())
+        
+        self.foregroundType = foregroundType
         
         let screenSize = AppUISettings.getScreenBoundsForImages()
         //let xBounds = (screenSize.width / 2.0).rounded()
@@ -90,17 +92,17 @@ class FaceForegroundNode: SKSpriteNode {
         let medColor = mainColor.withAlphaComponent(0.65)
         let darkColor = mainColor.withAlphaComponent(0.3)
         
-        if (isPhysicsField(type: backgroundType)) {
+        if (isPhysicsField(type: foregroundType)) {
             //A layer of a physic blobs
             let fieldNode = SKCropNode()
             fieldNode.name = "physicsFieldNode"
             var shapeRadius:CGFloat = 2.0
             var physicsShapeSize:CGSize = CGSize.init(width: 3.0, height: 3.0)
-            if (backgroundType == .AnimatedPhysicsFieldSmall) {
+            if (foregroundType == .AnimatedPhysicsFieldSmall) {
                 shapeRadius = 1.0
                 physicsShapeSize = CGSize.init(width: 1.5, height: 1.5)
             }
-            if (backgroundType == .AnimatedPhysicsFieldLarge) {
+            if (foregroundType == .AnimatedPhysicsFieldLarge) {
                 shapeRadius = 4.0
                 physicsShapeSize = CGSize.init(width: 5.0, height: 5.0)
             }
@@ -126,7 +128,7 @@ class FaceForegroundNode: SKSpriteNode {
             self.addChild(fieldNode)
         }
         
-        if (backgroundType == .AnimatedStarField) {
+        if (foregroundType == .AnimatedStarField) {
             //A layer of a star field
             let starfieldNode = SKCropNode()
             starfieldNode.name = "starfieldNode"
@@ -163,7 +165,7 @@ class FaceForegroundNode: SKSpriteNode {
             self.addChild(starfieldNode)
         }
         
-        if (backgroundType == .AnimatedSnowField) {
+        if (foregroundType == .AnimatedSnowField) {
             //A layer of a snow
             let fieldNode = SKCropNode()
             fieldNode.name = "snowfieldNode"
@@ -198,7 +200,7 @@ class FaceForegroundNode: SKSpriteNode {
             self.addChild(fieldNode)
         }
         
-        if (backgroundType == .AnimatedPong) {
+        if (foregroundType == .AnimatedPong) {
             
             let pongGameNode = PongGameNode.init(size: AppUISettings.getScreenBoundsForImages(), material: material, strokeColor: strokeColor, lineWidth: lineWidth)
             pongGameNode.name = "pongGameNode"

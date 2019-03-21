@@ -235,9 +235,9 @@ class ClockSetting: NSObject {
         if let faceBackgroundTypeFound = FaceBackgroundTypes(rawValue: faceBackgroundTypeString) {
             faceBackgroundTypeTmp = faceBackgroundTypeFound
         } else {
-            //import old types into foreground
+            //import old (messy) types into foreground
             switch faceBackgroundTypeString {
-            case "FaceBackgroundTypeAnimatedPhysicsField":
+            case "FaceIndicatorTypeAnimatedPhysicsField":
                 faceForegroundTypeTmp = .AnimatedPhysicsField
             case "FaceIndicatorTypeAnimatedPhysicsFieldSmall":
                 faceForegroundTypeTmp = .AnimatedPhysicsFieldSmall
@@ -245,9 +245,9 @@ class ClockSetting: NSObject {
                 faceForegroundTypeTmp = .AnimatedPhysicsFieldLarge
             case "FaceBackgroundTypeAnimatedPong":
                 faceForegroundTypeTmp = .AnimatedPong
-            case "FaceBackgroundTypeAnimatedSnowField":
+            case "FaceIndicatorTypeAnimatedSnowField":
                 faceForegroundTypeTmp = .AnimatedSnowField
-            case "FaceBackgroundTypeAnimatedStarField":
+            case "FaceIndicatorTypeAnimatedStarField":
                 faceForegroundTypeTmp = .AnimatedStarField
             default:
                 faceForegroundTypeTmp = .None
