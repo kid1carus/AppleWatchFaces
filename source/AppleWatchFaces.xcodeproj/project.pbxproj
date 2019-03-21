@@ -86,6 +86,7 @@
 		312E6B6E2243015500BB0D05 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B6C2243015500BB0D05 /* FaceForegroundNode.swift */; };
 		312E6B71224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B6F224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift */; };
 		312E6B72224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B70224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift */; };
+		312E6B7322431F8F00BB0D05 /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		312E853822239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		312E853922239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
@@ -156,7 +157,6 @@
 		31BC68F02193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */; };
 		31C05DA521A712BD0021AEAB /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */; };
 		31D8633821E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */; };
-		31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
 		31D8633E21E5954B005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
 		31E5BC4B21A39DAF00C1B35E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
@@ -991,7 +991,7 @@
 				31B5E8DA218CE01300DE6429 /* ClockFaceSetting.swift in Sources */,
 				31EF999721A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
 				312E6B6E2243015500BB0D05 /* FaceForegroundNode.swift in Sources */,
-				31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */,
+				312E6B7322431F8F00BB0D05 /* DigitalTimeNode.swift in Sources */,
 				31B5E8DC218CE01800DE6429 /* ClockDecoratorTheme.swift in Sources */,
 				31F56FA221857AC300455FC6 /* SecondHandNode.swift in Sources */,
 				3188AC1221CC962B00C90783 /* PathElement.swift in Sources */,

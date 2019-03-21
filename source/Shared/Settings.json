@@ -1,6 +1,122 @@
 {
     "clockSettings" : [
         {
+            "faceForegroundType" : "None",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockFaceSettings" : {
+                "ringSettings" : [
+                    
+                ],
+                "shouldShowRomanNumeralText" : false,
+                "ringMaterials" : [
+                    "#FFFFFFFF",
+                    "#e2e2e2ff",
+                    "#c6c6c6ff"
+                ],
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "hourHandType" : "HourHandTypeRounded",
+                "minuteHandMaterialName" : "#FFFFFFFF",
+                "minuteHandType" : "MinuteHandTypeRounded",
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
+                "secondHandMovement" : "SecondHandMovementSmooth",
+                "secondHandMaterialName" : "#FF0000FF",
+                "shouldShowHandOutlines" : false,
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "secondHandType" : "SecondHandTypeRail"
+            },
+            "uniqueID" : "628CD0C1-55B5-4F91-B2BE-73C325FF9B4E",
+            "title" : "Bits N Bytes",
+            "clockFaceMaterialName" : "watchInnards.jpg",
+            "clockCasingMaterialName" : "#545454ff"
+        },
+        {
+            "faceForegroundType" : "AnimatedPong",
+            "faceBackgroundType" : "FaceBackgroundTypeNone",
+            "clockFaceSettings" : {
+                "ringSettings" : [
+                    {
+                        "ringWidth" : "0.075",
+                        "ringType" : "RingTypeSpacer",
+                        "ringStaticTimeFormat" : "None",
+                        "textSize" : "0.2",
+                        "ringStaticEffects" : "None",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "indicatorSize" : "0.15",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringPatternTotal" : "12",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "None",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "ringWidth" : "0.0",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticTimeFormat" : "DA",
+                        "textSize" : "0.64",
+                        "ringStaticEffects" : "None",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "indicatorSize" : "0.15",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringPatternTotal" : "0",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "textType" : "NumberTextPixellated"
+                    },
+                    {
+                        "ringWidth" : "0.0",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticTimeFormat" : "DD",
+                        "textSize" : "0.66",
+                        "ringStaticEffects" : "innerShadow",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "indicatorSize" : "0.15",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringPatternTotal" : "0",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "textType" : "NumberTextPixellated"
+                    }
+                ],
+                "shouldShowRomanNumeralText" : false,
+                "ringMaterials" : [
+                    "#00ff00ff",
+                    "#ffffffff",
+                    "#008ed6ff"
+                ],
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "hourHandType" : "HourHandTypeNone",
+                "minuteHandMaterialName" : "#ff7f00ff",
+                "minuteHandType" : "MinuteHandTypeNone",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "secondHandMovement" : "SecondHandMovementStep",
+                "secondHandMaterialName" : "#FFD700FF",
+                "shouldShowHandOutlines" : false,
+                "hourHandMaterialName" : "#ff7f00ff",
+                "secondHandType" : "SecondHandNodeTypeNone"
+            },
+            "uniqueID" : "CFC250CB-AFEE-40A1-9C10-CBD304449F57",
+            "title" : "PONG II",
+            "clockFaceMaterialName" : "#00ff00ff",
+            "clockCasingMaterialName" : "#000000ff"
+        },
+        {
         "uniqueID" : "52581702-0CAE-4CEA-AADD-BCF6609B72BC",
         "clockFaceSettings" : {
             "secondHandMaterialName" : "#A00000FF",
