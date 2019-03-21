@@ -149,6 +149,13 @@ If you need to re-install, or just want to manually edit the settings file. Use 
 
 - Mike Hill - [@orffy](https://twitter.com/orffy)
 
+## Special thanks
+
+[@jonandrews74](https://twitter.com/jonandrews74) for creating awesome faces
+[@nimbus12_](https://twitter.com/nimbus12_) for all around project support, photography, and designs
+and
+[@foz](https://twitter.com/foz) for helping me to kick off the idea
+
 ## License
 
 `AppleWatchFaces` is released under the GPL-3 license. See [LICENSE](https://github.com/orff/AppleWatchFaces/blob/master/LICENSE) for details.
