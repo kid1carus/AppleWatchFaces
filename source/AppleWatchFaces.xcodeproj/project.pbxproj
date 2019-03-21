@@ -84,6 +84,8 @@
 		312E2D7021F3E16A00C2F17F /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
 		312E6B6D2243015500BB0D05 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B6C2243015500BB0D05 /* FaceForegroundNode.swift */; };
 		312E6B6E2243015500BB0D05 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B6C2243015500BB0D05 /* FaceForegroundNode.swift */; };
+		312E6B71224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B6F224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift */; };
+		312E6B72224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B70224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift */; };
 		312E853822239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		312E853922239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
@@ -283,6 +285,8 @@
 		312D4C07218BCDDB008504D2 /* HourHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourHandNode.swift; sourceTree = "<group>"; };
 		312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimer.swift; sourceTree = "<group>"; };
 		312E6B6C2243015500BB0D05 /* FaceForegroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceForegroundNode.swift; sourceTree = "<group>"; };
+		312E6B6F224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		312E6B70224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		312E853722239740001C450B /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
 		313AE3DF221A777E00C02462 /* DotsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsNode.swift; sourceTree = "<group>"; };
 		314A010921960409009BCE3C /* UserClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClockSetting.swift; sourceTree = "<group>"; };
@@ -578,6 +582,8 @@
 				31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */,
 				31EF999821A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift */,
 				31EF999A21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift */,
+				312E6B70224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift */,
+				312E6B6F224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift */,
 				318A928621CDABA20060D89B /* FaceShapeSettingCollectionViewCell.swift */,
 				318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */,
 				31B5E8E7218CF6E300DE6429 /* HourHandSettingsTableViewCell.swift */,
@@ -869,6 +875,7 @@
 				31BC68EC2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift in Sources */,
 				31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */,
 				310BA1CA21AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift in Sources */,
+				312E6B71224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift in Sources */,
 				31BC68F02193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift in Sources */,
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
 				3109D1E321A9A2C600561F13 /* FaceChooserEditTableViewController.swift in Sources */,
@@ -891,6 +898,7 @@
 				31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */,
 				3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */,
 				314AFC1021D51A7000C1208E /* CameraHandler.swift in Sources */,
+				312E6B72224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift in Sources */,
 				31EF999F21A2045B00BB54E7 /* FaceChooserTableViewController.swift in Sources */,
 				31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */,
 				31EF999B21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift in Sources */,
