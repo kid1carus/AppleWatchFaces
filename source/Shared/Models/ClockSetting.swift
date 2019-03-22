@@ -108,6 +108,7 @@ class ClockSetting: NSObject {
     
     var clockFaceMaterialName:String
     var clockCasingMaterialName:String
+    var clockForegroundMaterialName:String
     
     var uniqueID:String
     
@@ -116,6 +117,7 @@ class ClockSetting: NSObject {
         faceForegroundType: FaceForegroundTypes,
         
         clockCasingMaterialName: String,
+        clockForegroundMaterialName: String,
         
         clockFaceSettings: ClockFaceSetting,
         title: String,
@@ -127,6 +129,7 @@ class ClockSetting: NSObject {
         self.clockFaceSettings = clockFaceSettings
         self.title = title
         self.clockCasingMaterialName = clockCasingMaterialName
+        self.clockForegroundMaterialName = clockForegroundMaterialName
         self.themeTitle = ""
         self.decoratorThemeTitle = ""
         
@@ -156,6 +159,7 @@ class ClockSetting: NSObject {
             faceForegroundType: FaceForegroundTypes.None,
             
             clockCasingMaterialName: "#1c1c1cff",
+            clockForegroundMaterialName: "",
             
             clockFaceSettings: ClockFaceSetting.defaults(),
             title: "Untitled"
@@ -185,6 +189,7 @@ class ClockSetting: NSObject {
             faceForegroundType: .None,
 
             clockCasingMaterialName: "#FF0000FF",
+            clockForegroundMaterialName: "",
 
             clockFaceSettings: ClockFaceSetting.random(),
             title: "random"
@@ -208,6 +213,7 @@ class ClockSetting: NSObject {
                      faceBackgroundType: FaceBackgroundTypes,
                      faceForegroundType: FaceForegroundTypes,
                      clockCasingMaterialName: String,
+                     clockForegroundMaterialName: String,
                      clockFaceSettings: ClockFaceSetting,
                      title: String) {
         
@@ -215,6 +221,7 @@ class ClockSetting: NSObject {
                   faceBackgroundType: faceBackgroundType,
                   faceForegroundType: faceForegroundType,
                   clockCasingMaterialName: clockCasingMaterialName,
+                  clockForegroundMaterialName: clockForegroundMaterialName,
                   clockFaceSettings: clockFaceSettings,
                   title: title ,
                   uniqueID: UUID().uuidString)
@@ -260,6 +267,7 @@ class ClockSetting: NSObject {
             faceForegroundType: faceForegroundTypeTmp,
             
             clockCasingMaterialName: jsonObj["clockCasingMaterialName"].stringValue,
+            clockForegroundMaterialName: jsonObj["clockForegroundMaterialName"].stringValue,
             
             clockFaceSettings: ClockFaceSetting.init(jsonObj: jsonObj["clockFaceSettings"]),
             title: jsonObj["title"].stringValue,
@@ -293,7 +301,7 @@ class ClockSetting: NSObject {
         serializedDict[ "clockFaceSettings" ] = self.clockFaceSettings!.serializedSettings()
         
         serializedDict[ "clockCasingMaterialName" ] = self.clockCasingMaterialName as AnyObject
-        
+        serializedDict[ "clockForegroundMaterialName" ] = self.clockForegroundMaterialName as AnyObject
         
         return serializedDict as NSDictionary
     }
