@@ -39,22 +39,23 @@ class WatchFaceNode: SKShapeNode {
         shadowColor = shadowColor.withAlphaComponent(0.4)
         let shadowLineWidth:CGFloat = 2.0
         
-        let filledMaterial = clockSetting.clockCasingMaterialName
-        let overlayMaterial = clockSetting.clockFaceMaterialName
+        let bottomLayerMaterial = clockSetting.clockCasingMaterialName
+        let topLayerMaterial = clockSetting.clockFaceMaterialName
+        let overlayMaterial = clockSetting.clockForegroundMaterialName
         
-        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: filledMaterial)
+        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)
         backgroundNode.name = "background"
         backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
         
         self.addChild(backgroundNode)
         
-        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: overlayMaterial, material2: filledMaterial)
+        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: topLayerMaterial, material2: bottomLayerMaterial)
         backgroundShapeNode.name = "backgroundShape"
         backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
         
         self.addChild(backgroundShapeNode)
         
-        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: filledMaterial, strokeColor: SKColor.clear, lineWidth: 0.0)
+        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0)
         foregroundNode.name = "foregroundNode"
         foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
         

@@ -13,6 +13,13 @@ class FaceOverlayColorSettingTableViewCell: ColorSettingsTableViewCell {
     
     @IBOutlet var faceOverlayColorSelectionCollectionView: UICollectionView!
     
+    //dont show images
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        loadColorList(addImages: false)
+    }
+    
     // called after a new setting should be selected ( IE a new design is loaded )
     override func chooseSetting( animated: Bool ) {
         //debugPrint("** FaceBackgroundColorSettingTableViewCell called **" + SettingsViewController.currentClockSetting.clockFaceMaterialName)
