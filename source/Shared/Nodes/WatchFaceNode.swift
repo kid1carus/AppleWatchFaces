@@ -298,6 +298,10 @@ class WatchFaceNode: SKShapeNode {
             background.positionHands(min: min, hour: hour, force: force)
         }
         
+        if let foreground = self.childNode(withName: "foregroundNode") as? FaceForegroundNode {
+            foreground.positionHands(min: min, hour: hour, force: force)
+        }
+        
         if let secondHand = self.childNode(withName: "secondHand") as? SecondHandNode {
             secondHand.positionHands(sec: sec, secondHandMovement: clockFaceSettings.secondHandMovement, force: force)
         }
