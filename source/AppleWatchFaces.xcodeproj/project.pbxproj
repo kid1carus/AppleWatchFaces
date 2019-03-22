@@ -66,6 +66,14 @@
 		3109D1E121A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */; };
 		3109D1E321A9A2C600561F13 /* FaceChooserEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E221A9A2C600561F13 /* FaceChooserEditTableViewController.swift */; };
 		3109D1E521A9A37B00561F13 /* FaceChooserEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E421A9A37B00561F13 /* FaceChooserEditTableViewCell.swift */; };
+		310B1BB02245A25B00EA1827 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */; };
+		310B1BB12245A25B00EA1827 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */; };
+		310B1BB52245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */; };
+		310B1BB62245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */; };
+		310B1BB72245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */; };
+		310B1BB82245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */; };
+		310B1BB92245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */; };
+		310B1BBA2245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */; };
 		310BA1C621AF736400A146B7 /* TitleSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */; };
 		310BA1C821AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */; };
 		310BA1CA21AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */; };
@@ -382,6 +390,10 @@
 		3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsThirdColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1E221A9A2C600561F13 /* FaceChooserEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceChooserEditTableViewController.swift; sourceTree = "<group>"; };
 		3109D1E421A9A37B00561F13 /* FaceChooserEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceChooserEditTableViewCell.swift; sourceTree = "<group>"; };
+		310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundNode.swift; sourceTree = "<group>"; };
+		310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOverlayColorSettingTableViewCell.swift; sourceTree = "<group>"; };
+		310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundSettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -583,6 +595,7 @@
 		312D4C06218BCDB5008504D2 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */,
 				310725DE223D7083008030A2 /* PhysicsNode.swift */,
 				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
 				313AE3DF221A777E00C02462 /* DotsNode.swift */,
@@ -723,6 +736,9 @@
 				31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */,
 				31EF999821A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift */,
 				31EF999A21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift */,
+				310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */,
+				310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */,
+				310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */,
 				318A928621CDABA20060D89B /* FaceShapeSettingCollectionViewCell.swift */,
 				318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */,
 				31B5E8E7218CF6E300DE6429 /* HourHandSettingsTableViewCell.swift */,
@@ -1060,6 +1076,7 @@
 				31F56FA52185816F00455FC6 /* SKWatchScene.swift in Sources */,
 				31BC68EE2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift in Sources */,
 				31061F322192716C00EF511B /* SKColor.swift in Sources */,
+				310B1BB02245A25B00EA1827 /* FaceForegroundNode.swift in Sources */,
 				31B5E8CF218BD5A900DE6429 /* ClockRingSetting.swift in Sources */,
 				31B5E8D5218BD81800DE6429 /* ClockSetting.swift in Sources */,
 				31BC68EC2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift in Sources */,
@@ -1073,6 +1090,7 @@
 				31BC68EA21931F1400DD8CD6 /* ColorSettingsTableViewCell.swift in Sources */,
 				31B5E8CD218BD26B00DE6429 /* MinuteHandNode.swift in Sources */,
 				310BA1C621AF736400A146B7 /* TitleSettingsTableViewCell.swift in Sources */,
+				310B1BB92245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */,
 				318808D3217815E600585AB1 /* SettingsViewController.swift in Sources */,
 				310D4A5121BD90D100082A62 /* HandOutlineColorSettingTableViewCell.swift in Sources */,
 				31F8ABAB2187E8DB0014E2ED /* WatchSettingsTableViewController.swift in Sources */,
@@ -1081,12 +1099,14 @@
 				31F4F1D9219D08890050177A /* FaceChooserViewController.swift in Sources */,
 				31F8ABCD2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift in Sources */,
 				31B3F8D0218F4BAE00AD22A5 /* SecondHandColorSettingsTableViewCell.swift in Sources */,
+				310B1BB52245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift in Sources */,
 				319095FB21CC898200F71BC6 /* BezierPath+Length.swift in Sources */,
 				3107B5D621B406C8005BD26D /* DecoratorSpacerTableViewCell.swift in Sources */,
 				318A928B21D059120060D89B /* UserDefaults.swift in Sources */,
 				31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */,
 				3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */,
 				314AFC1021D51A7000C1208E /* CameraHandler.swift in Sources */,
+				310B1BB72245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift in Sources */,
 				31EF999F21A2045B00BB54E7 /* FaceChooserTableViewController.swift in Sources */,
 				31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */,
 				31EF999B21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift in Sources */,
@@ -1199,6 +1219,7 @@
 				31C86B2222374DA000EF4186 /* BezierPath+Length.swift in Sources */,
 				31C86B0722374CEF00EF4186 /* ClockSetting.swift in Sources */,
 				31C86B2622374DA000EF4186 /* SwiftyJSON.swift in Sources */,
+				310B1BB12245A25B00EA1827 /* FaceForegroundNode.swift in Sources */,
 				31C86B3622374DE500EF4186 /* ColorThemeSettingCollectionViewCell.swift in Sources */,
 				31C86B0F22374CF400EF4186 /* AppUISettings.swift in Sources */,
 				31C86AEA2237493600EF4186 /* ScreenSaverController.swift in Sources */,
@@ -1223,6 +1244,7 @@
 				31C86B0922374CEF00EF4186 /* ClockDecoratorTheme.swift in Sources */,
 				31C86B4E22374DE500EF4186 /* SecondHandAnimationSettingsTableViewCell.swift in Sources */,
 				31C86B2F22374DA000EF4186 /* UIViewController+Toast.swift in Sources */,
+				310B1BBA2245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */,
 				31C86B2B22374DA000EF4186 /* Collection+Safe.swift in Sources */,
 				31C86B5722374DEE00EF4186 /* DecoratorPreviewController.swift in Sources */,
 				31C86B2D22374DA000EF4186 /* CameraHandler.swift in Sources */,
@@ -1241,6 +1263,7 @@
 				31C86B4322374DE500EF4186 /* HandOutlineColorSettingTableViewCell.swift in Sources */,
 				31C86B3D22374DE500EF4186 /* FaceShapeSettingCollectionViewCell.swift in Sources */,
 				31C86B4D22374DE500EF4186 /* SecondHandAnimationSettingCollectionViewCell.swift in Sources */,
+				310B1BB82245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift in Sources */,
 				31C86B5622374DEE00EF4186 /* DecoratorDigitalTimeTableViewCell.swift in Sources */,
 				31C86B4022374DE500EF4186 /* HourHandColorSettingsTableViewCell.swift in Sources */,
 				31C86B5A22374DEE00EF4186 /* DecoratorSpacerTableViewCell.swift in Sources */,
@@ -1273,6 +1296,7 @@
 				31C86B4922374DE500EF4186 /* MinuteHandAnimationSettingCollectionViewCell.swift in Sources */,
 				31C86B4C22374DE500EF4186 /* MinuteHandSettingsTableViewCell.swift in Sources */,
 				31C86B3F22374DE500EF4186 /* HourHandSettingsTableViewCell.swift in Sources */,
+				310B1BB62245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift in Sources */,
 				31C86B5022374DE500EF4186 /* SettingsTableHeaderViewCell.swift in Sources */,
 				31C86B3A22374DE500EF4186 /* FaceBackgroundColorSettingTableViewCell.swift in Sources */,
 				31C86B3722374DE500EF4186 /* DecoratorRingsSettingsTableViewCell.swift in Sources */,
