@@ -16,6 +16,7 @@ class WatchFaceNode: SKShapeNode {
     enum PartsZPositions: Int {
         case background = 0,
         backgroundShape,
+        foreground,
         complications,
         hourHand,
         minuteHand,
@@ -38,20 +39,27 @@ class WatchFaceNode: SKShapeNode {
         shadowColor = shadowColor.withAlphaComponent(0.4)
         let shadowLineWidth:CGFloat = 2.0
         
-        let filledMaterial = clockSetting.clockCasingMaterialName
-        let overlayMaterial = clockSetting.clockFaceMaterialName
+        let bottomLayerMaterial = clockSetting.clockCasingMaterialName
+        let topLayerMaterial = clockSetting.clockFaceMaterialName
+        let overlayMaterial = clockSetting.clockForegroundMaterialName
         
-        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: filledMaterial)
+        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)
         backgroundNode.name = "background"
         backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
         
         self.addChild(backgroundNode)
         
-        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: overlayMaterial, material2: filledMaterial)
+        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: topLayerMaterial, material2: bottomLayerMaterial)
         backgroundShapeNode.name = "backgroundShape"
         backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
         
         self.addChild(backgroundShapeNode)
+        
+        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0)
+        foregroundNode.name = "foregroundNode"
+        foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
+        
+        self.addChild(foregroundNode)
         
         var secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.secondHandMaterialName)
         //allow for dials to have outlines
@@ -289,6 +297,10 @@ class WatchFaceNode: SKShapeNode {
         
         if let background = self.childNode(withName: "backgroundShape") as? FaceBackgroundNode {
             background.positionHands(min: min, hour: hour, force: force)
+        }
+        
+        if let foreground = self.childNode(withName: "foregroundNode") as? FaceForegroundNode {
+            foreground.positionHands(min: min, hour: hour, force: force)
         }
         
         if let secondHand = self.childNode(withName: "secondHand") as? SecondHandNode {

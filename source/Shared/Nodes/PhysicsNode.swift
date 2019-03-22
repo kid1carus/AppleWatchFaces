@@ -14,7 +14,7 @@ class PhysicsNode: SKSpriteNode {
     init(size: CGSize, material: String, strokeColor: SKColor, lineWidth: CGFloat, shapeRadius: CGFloat, physicsShapeSize: CGSize) {
         super.init(texture: nil, color: SKColor.clear, size: size)
         
-        let size = FaceBackgroundNode.getScreenBoundsForImages()
+        let size = AppUISettings.getScreenBoundsForImages()
         
         //draw shapes
         for _ in 0 ... 100 {

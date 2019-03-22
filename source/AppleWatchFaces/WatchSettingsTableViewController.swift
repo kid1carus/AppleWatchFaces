@@ -36,8 +36,10 @@ class WatchSettingsTableViewController: UITableViewController {
         ],
         [
             ["title":"Background Type",             "category":"normal",      "rowHeight":"80.0","cellID":"faceBackgroundTypeTableViewCell"],
+            ["title":"Bottom Layer Texture",        "category":"normal",      "rowHeight":"100.0","cellID":"mainBackgroundColorsTableViewCell"],
             ["title":"Top Layer Texture",           "category":"normal",      "rowHeight":"100.0","cellID":"faceBackgroundColorsTableViewCell"],
-            ["title":"Bottom Layer Texture",       "category":"normal",      "rowHeight":"100.0","cellID":"mainBackgroundColorsTableViewCell"]
+            ["title":"Overlay Type",                "category":"advanced",    "rowHeight":"80.0","cellID":"faceForegroundTypeTableViewCell"],
+            ["title":"Overlay Color",               "category":"advanced",    "rowHeight":"100.0","cellID":"faceOverlayColorsTableViewCell"]
         ],
         [
             ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
@@ -81,6 +83,9 @@ class WatchSettingsTableViewController: UITableViewController {
         
         case "faceBackgroundTypeTableViewCell":
             settingText = FaceBackgroundNode.descriptionForType(SettingsViewController.currentClockSetting.faceBackgroundType)
+        case "faceForegroundTypeTableViewCell":
+            settingText = FaceForegroundNode.descriptionForType(SettingsViewController.currentClockSetting.faceForegroundType)
+            
         case "faceBackgroundColorsTableViewCell":
             settingText = SettingsViewController.currentClockSetting.clockFaceMaterialName
         case "mainBackgroundColorsTableViewCell":

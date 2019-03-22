@@ -18,7 +18,7 @@ class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollec
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        loadColorList()
+        loadColorList(addImages: true)
     }
     
     func colorListVersion( unfilteredColor: String ) -> String {
@@ -77,7 +77,7 @@ class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollec
     // MARK: - Utility functions
     
     // load colors from Colors.plist and save to colorList array.
-    private func loadColorList() {
+    func loadColorList(addImages:Bool) {
         // create path for Colors.plist resource file.
         let colorFilePath = Bundle.main.path(forResource: "Colors", ofType: "plist")
         
@@ -87,8 +87,10 @@ class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollec
         // Cast NSArray to string array.
         colorList = colorNSArray as! [String]
         
-        //add in the materials
-        colorList.insert(contentsOf: AppUISettings.materialFiles, at: 0)
+        if addImages {
+            //add in the materials
+            colorList.insert(contentsOf: AppUISettings.materialFiles, at: 0)
+        }
     }
     
     override func awakeFromNib() {
