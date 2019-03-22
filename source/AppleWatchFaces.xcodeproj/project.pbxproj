@@ -66,6 +66,14 @@
 		3109D1E121A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */; };
 		3109D1E321A9A2C600561F13 /* FaceChooserEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E221A9A2C600561F13 /* FaceChooserEditTableViewController.swift */; };
 		3109D1E521A9A37B00561F13 /* FaceChooserEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E421A9A37B00561F13 /* FaceChooserEditTableViewCell.swift */; };
+		310B1BB02245A25B00EA1827 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */; };
+		310B1BB12245A25B00EA1827 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */; };
+		310B1BB52245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */; };
+		310B1BB62245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */; };
+		310B1BB72245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */; };
+		310B1BB82245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */; };
+		310B1BB92245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */; };
+		310B1BBA2245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */; };
 		310BA1C621AF736400A146B7 /* TitleSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */; };
 		310BA1C821AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */; };
 		310BA1CA21AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */; };
@@ -82,11 +90,7 @@
 		312E2D6A21F2D69F00C2F17F /* SKWatchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F92178166B00585AB1 /* SKWatchScene.swift */; };
 		312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
 		312E2D7021F3E16A00C2F17F /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
-		312E6B6D2243015500BB0D05 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B6C2243015500BB0D05 /* FaceForegroundNode.swift */; };
-		312E6B6E2243015500BB0D05 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B6C2243015500BB0D05 /* FaceForegroundNode.swift */; };
-		312E6B71224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B6F224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift */; };
-		312E6B72224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E6B70224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift */; };
-		312E6B7322431F8F00BB0D05 /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
+		312E6B6B2241C7A400BB0D05 /* PhysicsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310725DE223D7083008030A2 /* PhysicsNode.swift */; };
 		312E853822239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		312E853922239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
@@ -155,9 +159,124 @@
 		31BC68EC2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68EB2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift */; };
 		31BC68EE2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68ED2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift */; };
 		31BC68F02193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */; };
-		31BDC0932244682200A03529 /* FaceOverlayColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BDC0922244682200A03529 /* FaceOverlayColorSettingTableViewCell.swift */; };
 		31C05DA521A712BD0021AEAB /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */; };
+		31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AE72237493600EF4186 /* AppDelegate.swift */; };
+		31C86AEA2237493600EF4186 /* ScreenSaverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AE92237493600EF4186 /* ScreenSaverController.swift */; };
+		31C86AED2237493600EF4186 /* ClockologyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C86AEB2237493600EF4186 /* ClockologyMain.storyboard */; };
+		31C86AEF2237493700EF4186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31C86AEE2237493700EF4186 /* Assets.xcassets */; };
+		31C86AF22237493700EF4186 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C86AF02237493700EF4186 /* LaunchScreen.storyboard */; };
+		31C86AF822374B0300EF4186 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AF722374B0300EF4186 /* PreviewViewController.swift */; };
+		31C86AF922374CB700EF4186 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D2217815E600585AB1 /* SettingsViewController.swift */; };
+		31C86AFA22374CEA00EF4186 /* PongGameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31090FDC223421AA00D6CAA7 /* PongGameNode.swift */; };
+		31C86AFB22374CEA00EF4186 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
+		31C86AFC22374CEA00EF4186 /* WatchFaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010F21962FF4009BCE3C /* WatchFaceNode.swift */; };
+		31C86AFD22374CEA00EF4186 /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
+		31C86AFE22374CEA00EF4186 /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
+		31C86AFF22374CEA00EF4186 /* FaceBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */; };
+		31C86B0022374CEA00EF4186 /* FaceIndicatorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D1218BD63E00DE6429 /* FaceIndicatorNode.swift */; };
+		31C86B0122374CEA00EF4186 /* MinuteHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8CC218BD26B00DE6429 /* MinuteHandNode.swift */; };
+		31C86B0222374CEA00EF4186 /* HourHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C07218BCDDB008504D2 /* HourHandNode.swift */; };
+		31C86B0322374CEA00EF4186 /* SecondHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F56F9C21857A2000455FC6 /* SecondHandNode.swift */; };
+		31C86B0422374CEA00EF4186 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
+		31C86B0522374CEF00EF4186 /* UserClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010921960409009BCE3C /* UserClockSetting.swift */; };
+		31C86B0622374CEF00EF4186 /* ClockFaceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D6218BD91400DE6429 /* ClockFaceSetting.swift */; };
+		31C86B0722374CEF00EF4186 /* ClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D4218BD81800DE6429 /* ClockSetting.swift */; };
+		31C86B0822374CEF00EF4186 /* ClockRingSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8CE218BD5A900DE6429 /* ClockRingSetting.swift */; };
+		31C86B0922374CEF00EF4186 /* ClockDecoratorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */; };
+		31C86B0A22374CEF00EF4186 /* ClockColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */; };
+		31C86B0B22374CF400EF4186 /* SKWatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 318808F72178166B00585AB1 /* SKWatchScene.sks */; };
+		31C86B0C22374CF400EF4186 /* SKWatchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F92178166B00585AB1 /* SKWatchScene.swift */; };
+		31C86B0D22374CF400EF4186 /* Settings.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010B219605AA009BCE3C /* Settings.json */; };
+		31C86B0E22374CF400EF4186 /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010C219605AA009BCE3C /* Themes.json */; };
+		31C86B0F22374CF400EF4186 /* AppUISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4F1B72198ACB50050177A /* AppUISettings.swift */; };
+		31C86B1022374CF400EF4186 /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
+		31C86B1122374D0200EF4186 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8C6218F22EF00AD22A5 /* RoundedButton.swift */; };
+		31C86B1222374D0700EF4186 /* ROMAN-TRAJAN-PRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */; };
+		31C86B1322374D0700EF4186 /* GERMANICA.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAD2233277C00D6CAA7 /* GERMANICA.TTF */; };
+		31C86B1422374D0700EF4186 /* LCDPHONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAE2233277C00D6CAA7 /* LCDPHONE.TTF */; };
+		31C86B1522374D0700EF4186 /* IRONLOUNGE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAF2233277C00D6CAA7 /* IRONLOUNGE.TTF */; };
+		31C86B1622374D0700EF4186 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB02233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF */; };
+		31C86B1722374D0700EF4186 /* DIGITAL-7-MONO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB12233277C00D6CAA7 /* DIGITAL-7-MONO.TTF */; };
+		31C86B1822374D0700EF4186 /* PIXEL_MILLENNIUM.TFF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB22233277C00D6CAA7 /* PIXEL_MILLENNIUM.TFF */; };
+		31C86B1922374D0700EF4186 /* RATIONALINT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB32233277C00D6CAA7 /* RATIONALINT.TTF */; };
+		31C86B1A22374D0700EF4186 /* ULTRACONDENSEDSARIF.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB42233277C00D6CAA7 /* ULTRACONDENSEDSARIF.TTF */; };
+		31C86B1B22374D0700EF4186 /* ROTHERNBURGDECORATIVE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB52233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF */; };
+		31C86B1C22374D0700EF4186 /* BLACKROSE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB62233277C00D6CAA7 /* BLACKROSE.TTF */; };
+		31C86B1D22374D0700EF4186 /* CONERIASCRIPT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB72233277C00D6CAA7 /* CONERIASCRIPT.TTF */; };
+		31C86B1E22374D0700EF4186 /* DINPRO-LIGHT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB82233277C00D6CAA7 /* DINPRO-LIGHT.TTF */; };
+		31C86B1F22374D0700EF4186 /* JOYSTIX.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FB92233277C00D6CAA7 /* JOYSTIX.TTF */; };
+		31C86B2022374D0700EF4186 /* KINGTHINGS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FBA2233277C00D6CAA7 /* KINGTHINGS.TTF */; };
+		31C86B2122374D0700EF4186 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FBB2233277C00D6CAA7 /* NIXIEONE.TTF */; };
+		31C86B2222374DA000EF4186 /* BezierPath+Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095F921CC898100F71BC6 /* BezierPath+Length.swift */; };
+		31C86B2322374DA000EF4186 /* PathElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095FA21CC898100F71BC6 /* PathElement.swift */; };
+		31C86B2422374DA000EF4186 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
+		31C86B2522374DA000EF4186 /* MathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5F7EE21966CED000F1677 /* MathFunctions.swift */; };
+		31C86B2622374DA000EF4186 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */; };
+		31C86B2722374DA000EF4186 /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
+		31C86B2822374DA000EF4186 /* SKShapeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999521A0B6B700BB54E7 /* SKShapeNode.swift */; };
+		31C86B2922374DA000EF4186 /* UIImage+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */; };
+		31C86B2A22374DA000EF4186 /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */; };
+		31C86B2B22374DA000EF4186 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D4A5821C0AA9000082A62 /* Collection+Safe.swift */; };
+		31C86B2C22374DA000EF4186 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928A21D059120060D89B /* UserDefaults.swift */; };
+		31C86B2D22374DA000EF4186 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC0F21D51A7000C1208E /* CameraHandler.swift */; };
+		31C86B2E22374DA000EF4186 /* UICollectionView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */; };
+		31C86B2F22374DA000EF4186 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */; };
+		31C86B3022374DA000EF4186 /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
+		31C86B3122374DA000EF4186 /* UIImage+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CDC5E222CCAA700AF3B8D /* UIImage+Gradient.swift */; };
+		31C86B3222374DD200EF4186 /* WatchSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */; };
+		31C86B3322374DE500EF4186 /* ColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68E921931F1400DD8CD6 /* ColorSettingsTableViewCell.swift */; };
+		31C86B3422374DE500EF4186 /* ColorSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8CD218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift */; };
+		31C86B3522374DE500EF4186 /* ColorThemeSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */; };
+		31C86B3622374DE500EF4186 /* ColorThemeSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */; };
+		31C86B3722374DE500EF4186 /* DecoratorRingsSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */; };
+		31C86B3822374DE500EF4186 /* DecoratorThemeSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1CF21B08F1A00A146B7 /* DecoratorThemeSettingCollectionViewCell.swift */; };
+		31C86B3922374DE500EF4186 /* DecoratorThemeSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1D021B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift */; };
+		31C86B3A22374DE500EF4186 /* FaceBackgroundColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */; };
+		31C86B3B22374DE500EF4186 /* FaceBackgroundSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999821A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift */; };
+		31C86B3C22374DE500EF4186 /* FaceBackgroundSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999A21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift */; };
+		31C86B3D22374DE500EF4186 /* FaceShapeSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928621CDABA20060D89B /* FaceShapeSettingCollectionViewCell.swift */; };
+		31C86B3E22374DE500EF4186 /* FaceShapeSettingSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */; };
+		31C86B3F22374DE500EF4186 /* HourHandSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8E7218CF6E300DE6429 /* HourHandSettingsTableViewCell.swift */; };
+		31C86B4022374DE500EF4186 /* HourHandColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68ED2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift */; };
+		31C86B4122374DE500EF4186 /* HourHandSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8E8218CF6E400DE6429 /* HourHandSettingCollectionViewCell.swift */; };
+		31C86B4222374DE500EF4186 /* HandOptionsSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D4A4E21BD6BD600082A62 /* HandOptionsSettingTableViewCell.swift */; };
+		31C86B4322374DE500EF4186 /* HandOutlineColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D4A5021BD90D100082A62 /* HandOutlineColorSettingTableViewCell.swift */; };
+		31C86B4422374DE500EF4186 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */; };
+		31C86B4522374DE500EF4186 /* IndicatorsSecondaryColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */; };
+		31C86B4622374DE500EF4186 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */; };
+		31C86B4722374DE500EF4186 /* MainBackgroundColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999C21A0C63A00BB54E7 /* MainBackgroundColorSettingTableViewCell.swift */; };
+		31C86B4822374DE500EF4186 /* MinuteHandSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8E5218CEFF100DE6429 /* MinuteHandSettingCollectionViewCell.swift */; };
+		31C86B4922374DE500EF4186 /* MinuteHandAnimationSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */; };
+		31C86B4A22374DE500EF4186 /* MinuteHandAnimationSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880621CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift */; };
+		31C86B4B22374DE500EF4186 /* MinuteHandColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC68EB2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift */; };
+		31C86B4C22374DE500EF4186 /* MinuteHandSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8E3218CEF9000DE6429 /* MinuteHandSettingsTableViewCell.swift */; };
+		31C86B4D22374DE500EF4186 /* SecondHandAnimationSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880121CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift */; };
+		31C86B4E22374DE500EF4186 /* SecondHandAnimationSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */; };
+		31C86B4F22374DE500EF4186 /* SettingsTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1B5219899420050177A /* SettingsTableHeaderView.xib */; };
+		31C86B5022374DE500EF4186 /* SettingsTableHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8CB218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift */; };
+		31C86B5122374DE500EF4186 /* SecondHandSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABCC2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift */; };
+		31C86B5222374DE500EF4186 /* SecondHandSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */; };
+		31C86B5322374DE500EF4186 /* SecondHandColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8CF218F4BAE00AD22A5 /* SecondHandColorSettingsTableViewCell.swift */; };
+		31C86B5422374DE500EF4186 /* TitleSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */; };
+		31C86B5522374DEE00EF4186 /* DecoratorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5D021B4023B005BD26D /* DecoratorsTableViewController.swift */; };
+		31C86B5622374DEE00EF4186 /* DecoratorDigitalTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */; };
+		31C86B5722374DEE00EF4186 /* DecoratorPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5D221B40480005BD26D /* DecoratorPreviewController.swift */; };
+		31C86B5822374DEE00EF4186 /* DecoratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5D921B47634005BD26D /* DecoratorTableViewCell.swift */; };
+		31C86B5922374DEE00EF4186 /* DecotatorTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5DB21B47857005BD26D /* DecotatorTextTableViewCell.swift */; };
+		31C86B5A22374DEE00EF4186 /* DecoratorSpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5D521B406C8005BD26D /* DecoratorSpacerTableViewCell.swift */; };
+		31C86B5B22374DEE00EF4186 /* DecotatorShapeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107B5D721B47437005BD26D /* DecotatorShapeTableViewCell.swift */; };
+		31C86B5C22374E0000EF4186 /* WatchPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */; };
+		31C86B5D22374E4100EF4186 /* FaceChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4F1D8219D08890050177A /* FaceChooserViewController.swift */; };
+		31C86B5E22374E5E00EF4186 /* GenerateThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */; };
+		31C86B5F22374E6000EF4186 /* SettingsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */; };
+		31C86B6022374E7200EF4186 /* FaceChooserEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E221A9A2C600561F13 /* FaceChooserEditTableViewController.swift */; };
+		31C86B6122374E7200EF4186 /* FaceChooserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999E21A2045B00BB54E7 /* FaceChooserTableViewController.swift */; };
+		31C86B6222374E7200EF4186 /* FaceChooserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF99A121A205F200BB54E7 /* FaceChooserTableViewCell.swift */; };
+		31C86B6322374E7200EF4186 /* FaceChooserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF99A321A2072C00BB54E7 /* FaceChooserCollectionViewCell.swift */; };
+		31C86B6422374E7200EF4186 /* FaceChooserEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E421A9A37B00561F13 /* FaceChooserEditTableViewCell.swift */; };
+		31C86B672237552A00EF4186 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
 		31D8633821E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */; };
+		31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
 		31D8633E21E5954B005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
 		31E5BC4B21A39DAF00C1B35E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
@@ -271,6 +390,10 @@
 		3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsThirdColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1E221A9A2C600561F13 /* FaceChooserEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceChooserEditTableViewController.swift; sourceTree = "<group>"; };
 		3109D1E421A9A37B00561F13 /* FaceChooserEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceChooserEditTableViewCell.swift; sourceTree = "<group>"; };
+		310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundNode.swift; sourceTree = "<group>"; };
+		310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOverlayColorSettingTableViewCell.swift; sourceTree = "<group>"; };
+		310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundSettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -285,9 +408,6 @@
 		312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockDecoratorTheme.swift; sourceTree = "<group>"; };
 		312D4C07218BCDDB008504D2 /* HourHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourHandNode.swift; sourceTree = "<group>"; };
 		312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimer.swift; sourceTree = "<group>"; };
-		312E6B6C2243015500BB0D05 /* FaceForegroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceForegroundNode.swift; sourceTree = "<group>"; };
-		312E6B6F224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundSettingsTableViewCell.swift; sourceTree = "<group>"; };
-		312E6B70224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceForegroundSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		312E853722239740001C450B /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
 		313AE3DF221A777E00C02462 /* DotsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsNode.swift; sourceTree = "<group>"; };
 		314A010921960409009BCE3C /* UserClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClockSetting.swift; sourceTree = "<group>"; };
@@ -346,8 +466,16 @@
 		31BC68EB2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinuteHandColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		31BC68ED2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourHandColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBackgroundColorSettingTableViewCell.swift; sourceTree = "<group>"; };
-		31BDC0922244682200A03529 /* FaceOverlayColorSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOverlayColorSettingTableViewCell.swift; sourceTree = "<group>"; };
 		31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
+		31C86AE52237493600EF4186 /* Clockology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clockology.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		31C86AE72237493600EF4186 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		31C86AE92237493600EF4186 /* ScreenSaverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSaverController.swift; sourceTree = "<group>"; };
+		31C86AEC2237493600EF4186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClockologyMain.storyboard; sourceTree = "<group>"; };
+		31C86AEE2237493700EF4186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31C86AF12237493700EF4186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		31C86AF32237493700EF4186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31C86AF722374B0300EF4186 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		31C86B682237604800EF4186 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorDigitalTimeTableViewCell.swift; sourceTree = "<group>"; };
 		31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalTimeNode.swift; sourceTree = "<group>"; };
 		31D8633A21E5954B005BCB6F /* NumberTextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextNode.swift; sourceTree = "<group>"; };
@@ -383,6 +511,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		318808ED2178166B00585AB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31C86AE22237493600EF4186 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -460,6 +595,7 @@
 		312D4C06218BCDB5008504D2 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */,
 				310725DE223D7083008030A2 /* PhysicsNode.swift */,
 				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
 				313AE3DF221A777E00C02462 /* DotsNode.swift */,
@@ -467,7 +603,6 @@
 				31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */,
 				31D8633A21E5954B005BCB6F /* NumberTextNode.swift */,
 				31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */,
-				312E6B6C2243015500BB0D05 /* FaceForegroundNode.swift */,
 				31B5E8D1218BD63E00DE6429 /* FaceIndicatorNode.swift */,
 				31B5E8CC218BD26B00DE6429 /* MinuteHandNode.swift */,
 				312D4C07218BCDDB008504D2 /* HourHandNode.swift */,
@@ -482,6 +617,7 @@
 			children = (
 				3196401D22076439005CF169 /* readme.md */,
 				3123628B217AAAF000E78EFC /* Shared */,
+				31C86AE62237493600EF4186 /* Clockology */,
 				318808CF217815E600585AB1 /* AppleWatchFaces */,
 				318808E52178166A00585AB1 /* Face */,
 				318808F42178166B00585AB1 /* Face Extension */,
@@ -496,6 +632,7 @@
 				318808CD217815E600585AB1 /* AppleWatchFaces.app */,
 				318808E42178166A00585AB1 /* Face.app */,
 				318808F02178166B00585AB1 /* Face Extension.appex */,
+				31C86AE52237493600EF4186 /* Clockology.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -571,6 +708,21 @@
 			path = CustomClasses;
 			sourceTree = "<group>";
 		};
+		31C86AE62237493600EF4186 /* Clockology */ = {
+			isa = PBXGroup;
+			children = (
+				31C86B682237604800EF4186 /* README.md */,
+				31C86AE72237493600EF4186 /* AppDelegate.swift */,
+				31C86AE92237493600EF4186 /* ScreenSaverController.swift */,
+				31C86AF722374B0300EF4186 /* PreviewViewController.swift */,
+				31C86AEB2237493600EF4186 /* ClockologyMain.storyboard */,
+				31C86AEE2237493700EF4186 /* Assets.xcassets */,
+				31C86AF02237493700EF4186 /* LaunchScreen.storyboard */,
+				31C86AF32237493700EF4186 /* Info.plist */,
+			);
+			path = Clockology;
+			sourceTree = "<group>";
+		};
 		31EF9991219E602D00BB54E7 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,11 +736,11 @@
 				31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */,
 				31EF999821A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift */,
 				31EF999A21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift */,
-				312E6B70224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift */,
-				312E6B6F224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift */,
+				310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */,
+				310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */,
+				310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */,
 				318A928621CDABA20060D89B /* FaceShapeSettingCollectionViewCell.swift */,
 				318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */,
-				31BDC0922244682200A03529 /* FaceOverlayColorSettingTableViewCell.swift */,
 				31B5E8E7218CF6E300DE6429 /* HourHandSettingsTableViewCell.swift */,
 				31BC68ED2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift */,
 				31B5E8E8218CF6E400DE6429 /* HourHandSettingCollectionViewCell.swift */,
@@ -719,13 +871,30 @@
 			productReference = 318808F02178166B00585AB1 /* Face Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		31C86AE42237493600EF4186 /* Clockology */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31C86AF42237493700EF4186 /* Build configuration list for PBXNativeTarget "Clockology" */;
+			buildPhases = (
+				31C86AE12237493600EF4186 /* Sources */,
+				31C86AE22237493600EF4186 /* Frameworks */,
+				31C86AE32237493600EF4186 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clockology;
+			productName = Clockology;
+			productReference = 31C86AE52237493600EF4186 /* Clockology.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		318808C5217815E600585AB1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Michael Hill";
 				TargetAttributes = {
@@ -761,6 +930,9 @@
 							};
 						};
 					};
+					31C86AE42237493600EF4186 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = 318808C8217815E600585AB1 /* Build configuration list for PBXProject "AppleWatchFaces" */;
@@ -779,6 +951,7 @@
 				318808CC217815E600585AB1 /* AppleWatchFaces */,
 				318808E32178166A00585AB1 /* Face */,
 				318808EF2178166B00585AB1 /* Face Extension */,
+				31C86AE42237493600EF4186 /* Clockology */,
 			);
 		};
 /* End PBXProject section */
@@ -857,6 +1030,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		31C86AE32237493600EF4186 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31C86B1822374D0700EF4186 /* PIXEL_MILLENNIUM.TFF in Resources */,
+				31C86B2022374D0700EF4186 /* KINGTHINGS.TTF in Resources */,
+				31C86B1F22374D0700EF4186 /* JOYSTIX.TTF in Resources */,
+				31C86B1422374D0700EF4186 /* LCDPHONE.TTF in Resources */,
+				31C86B1922374D0700EF4186 /* RATIONALINT.TTF in Resources */,
+				31C86B672237552A00EF4186 /* Media.xcassets in Resources */,
+				31C86B1322374D0700EF4186 /* GERMANICA.TTF in Resources */,
+				31C86B1722374D0700EF4186 /* DIGITAL-7-MONO.TTF in Resources */,
+				31C86AF22237493700EF4186 /* LaunchScreen.storyboard in Resources */,
+				31C86AEF2237493700EF4186 /* Assets.xcassets in Resources */,
+				31C86B0D22374CF400EF4186 /* Settings.json in Resources */,
+				31C86B0E22374CF400EF4186 /* Themes.json in Resources */,
+				31C86B1522374D0700EF4186 /* IRONLOUNGE.TTF in Resources */,
+				31C86B0B22374CF400EF4186 /* SKWatchScene.sks in Resources */,
+				31C86B1D22374D0700EF4186 /* CONERIASCRIPT.TTF in Resources */,
+				31C86B4F22374DE500EF4186 /* SettingsTableHeaderView.xib in Resources */,
+				31C86AED2237493600EF4186 /* ClockologyMain.storyboard in Resources */,
+				31C86B1622374D0700EF4186 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */,
+				31C86B1C22374D0700EF4186 /* BLACKROSE.TTF in Resources */,
+				31C86B2122374D0700EF4186 /* NIXIEONE.TTF in Resources */,
+				31C86B1E22374D0700EF4186 /* DINPRO-LIGHT.TTF in Resources */,
+				31C86B1B22374D0700EF4186 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
+				31C86B1222374D0700EF4186 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
+				31C86B1A22374D0700EF4186 /* ULTRACONDENSEDSARIF.TTF in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -872,13 +1076,12 @@
 				31F56FA52185816F00455FC6 /* SKWatchScene.swift in Sources */,
 				31BC68EE2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift in Sources */,
 				31061F322192716C00EF511B /* SKColor.swift in Sources */,
-				312E6B6D2243015500BB0D05 /* FaceForegroundNode.swift in Sources */,
+				310B1BB02245A25B00EA1827 /* FaceForegroundNode.swift in Sources */,
 				31B5E8CF218BD5A900DE6429 /* ClockRingSetting.swift in Sources */,
 				31B5E8D5218BD81800DE6429 /* ClockSetting.swift in Sources */,
 				31BC68EC2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift in Sources */,
 				31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */,
 				310BA1CA21AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift in Sources */,
-				312E6B71224310AD00BB0D05 /* FaceForegroundSettingsTableViewCell.swift in Sources */,
 				31BC68F02193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift in Sources */,
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
 				3109D1E321A9A2C600561F13 /* FaceChooserEditTableViewController.swift in Sources */,
@@ -887,6 +1090,7 @@
 				31BC68EA21931F1400DD8CD6 /* ColorSettingsTableViewCell.swift in Sources */,
 				31B5E8CD218BD26B00DE6429 /* MinuteHandNode.swift in Sources */,
 				310BA1C621AF736400A146B7 /* TitleSettingsTableViewCell.swift in Sources */,
+				310B1BB92245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */,
 				318808D3217815E600585AB1 /* SettingsViewController.swift in Sources */,
 				310D4A5121BD90D100082A62 /* HandOutlineColorSettingTableViewCell.swift in Sources */,
 				31F8ABAB2187E8DB0014E2ED /* WatchSettingsTableViewController.swift in Sources */,
@@ -895,13 +1099,14 @@
 				31F4F1D9219D08890050177A /* FaceChooserViewController.swift in Sources */,
 				31F8ABCD2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift in Sources */,
 				31B3F8D0218F4BAE00AD22A5 /* SecondHandColorSettingsTableViewCell.swift in Sources */,
+				310B1BB52245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift in Sources */,
 				319095FB21CC898200F71BC6 /* BezierPath+Length.swift in Sources */,
 				3107B5D621B406C8005BD26D /* DecoratorSpacerTableViewCell.swift in Sources */,
 				318A928B21D059120060D89B /* UserDefaults.swift in Sources */,
 				31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */,
 				3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */,
 				314AFC1021D51A7000C1208E /* CameraHandler.swift in Sources */,
-				312E6B72224310AD00BB0D05 /* FaceForegroundSettingCollectionViewCell.swift in Sources */,
+				310B1BB72245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift in Sources */,
 				31EF999F21A2045B00BB54E7 /* FaceChooserTableViewController.swift in Sources */,
 				31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */,
 				31EF999B21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift in Sources */,
@@ -952,7 +1157,6 @@
 				3153880721CB395300A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift in Sources */,
 				310BA1D121B08F1A00A146B7 /* DecoratorThemeSettingCollectionViewCell.swift in Sources */,
 				31F56FA421857FC100455FC6 /* WatchPreviewViewController.swift in Sources */,
-				31BDC0932244682200A03529 /* FaceOverlayColorSettingTableViewCell.swift in Sources */,
 				3107B5D321B40480005BD26D /* DecoratorPreviewController.swift in Sources */,
 				31B5E8E9218CF6E400DE6429 /* HourHandSettingsTableViewCell.swift in Sources */,
 				31EF999321A0AF4F00BB54E7 /* FaceBackgroundNode.swift in Sources */,
@@ -994,12 +1198,114 @@
 				318808FC2178166B00585AB1 /* ExtensionDelegate.swift in Sources */,
 				31B5E8DA218CE01300DE6429 /* ClockFaceSetting.swift in Sources */,
 				31EF999721A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
-				312E6B6E2243015500BB0D05 /* FaceForegroundNode.swift in Sources */,
-				312E6B7322431F8F00BB0D05 /* DigitalTimeNode.swift in Sources */,
+				31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */,
 				31B5E8DC218CE01800DE6429 /* ClockDecoratorTheme.swift in Sources */,
 				31F56FA221857AC300455FC6 /* SecondHandNode.swift in Sources */,
 				3188AC1221CC962B00C90783 /* PathElement.swift in Sources */,
 				FDC17D0221FF98CE0064D962 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31C86AE12237493600EF4186 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31C86B3522374DE500EF4186 /* ColorThemeSettingsTableViewCell.swift in Sources */,
+				312E6B6B2241C7A400BB0D05 /* PhysicsNode.swift in Sources */,
+				31C86B5B22374DEE00EF4186 /* DecotatorShapeTableViewCell.swift in Sources */,
+				31C86B2922374DA000EF4186 /* UIImage+Loading.swift in Sources */,
+				31C86B0022374CEA00EF4186 /* FaceIndicatorNode.swift in Sources */,
+				31C86B2822374DA000EF4186 /* SKShapeNode.swift in Sources */,
+				31C86B2222374DA000EF4186 /* BezierPath+Length.swift in Sources */,
+				31C86B0722374CEF00EF4186 /* ClockSetting.swift in Sources */,
+				31C86B2622374DA000EF4186 /* SwiftyJSON.swift in Sources */,
+				310B1BB12245A25B00EA1827 /* FaceForegroundNode.swift in Sources */,
+				31C86B3622374DE500EF4186 /* ColorThemeSettingCollectionViewCell.swift in Sources */,
+				31C86B0F22374CF400EF4186 /* AppUISettings.swift in Sources */,
+				31C86AEA2237493600EF4186 /* ScreenSaverController.swift in Sources */,
+				31C86AFB22374CEA00EF4186 /* DotsNode.swift in Sources */,
+				31C86B3922374DE500EF4186 /* DecoratorThemeSettingsTableViewCell.swift in Sources */,
+				31C86B3B22374DE500EF4186 /* FaceBackgroundSettingsTableViewCell.swift in Sources */,
+				31C86AFE22374CEA00EF4186 /* NumberTextNode.swift in Sources */,
+				31C86B2722374DA000EF4186 /* SKColor.swift in Sources */,
+				31C86B0322374CEA00EF4186 /* SecondHandNode.swift in Sources */,
+				31C86B3C22374DE500EF4186 /* FaceBackgroundSettingCollectionViewCell.swift in Sources */,
+				31C86B5422374DE500EF4186 /* TitleSettingsTableViewCell.swift in Sources */,
+				31C86B2422374DA000EF4186 /* StringExtension.swift in Sources */,
+				31C86B0822374CEF00EF4186 /* ClockRingSetting.swift in Sources */,
+				31C86B3222374DD200EF4186 /* WatchSettingsTableViewController.swift in Sources */,
+				31C86B3022374DA000EF4186 /* Double+Rounded.swift in Sources */,
+				31C86B1022374CF400EF4186 /* ClockTimer.swift in Sources */,
+				31C86B4522374DE500EF4186 /* IndicatorsSecondaryColorSettingsTableViewCell.swift in Sources */,
+				31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */,
+				31C86AFD22374CEA00EF4186 /* DigitalTimeNode.swift in Sources */,
+				31C86AFC22374CEA00EF4186 /* WatchFaceNode.swift in Sources */,
+				31C86B4122374DE500EF4186 /* HourHandSettingCollectionViewCell.swift in Sources */,
+				31C86B0922374CEF00EF4186 /* ClockDecoratorTheme.swift in Sources */,
+				31C86B4E22374DE500EF4186 /* SecondHandAnimationSettingsTableViewCell.swift in Sources */,
+				31C86B2F22374DA000EF4186 /* UIViewController+Toast.swift in Sources */,
+				310B1BBA2245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */,
+				31C86B2B22374DA000EF4186 /* Collection+Safe.swift in Sources */,
+				31C86B5722374DEE00EF4186 /* DecoratorPreviewController.swift in Sources */,
+				31C86B2D22374DA000EF4186 /* CameraHandler.swift in Sources */,
+				31C86B0422374CEA00EF4186 /* ArcNode.swift in Sources */,
+				31C86AFF22374CEA00EF4186 /* FaceBackgroundNode.swift in Sources */,
+				31C86B0622374CEF00EF4186 /* ClockFaceSetting.swift in Sources */,
+				31C86B5E22374E5E00EF4186 /* GenerateThumbnailsViewController.swift in Sources */,
+				31C86B3E22374DE500EF4186 /* FaceShapeSettingSettingsTableViewCell.swift in Sources */,
+				31C86B3422374DE500EF4186 /* ColorSettingCollectionViewCell.swift in Sources */,
+				31C86B0522374CEF00EF4186 /* UserClockSetting.swift in Sources */,
+				31C86B0222374CEA00EF4186 /* HourHandNode.swift in Sources */,
+				31C86B5822374DEE00EF4186 /* DecoratorTableViewCell.swift in Sources */,
+				31C86B4A22374DE500EF4186 /* MinuteHandAnimationSettingsTableViewCell.swift in Sources */,
+				31C86B2A22374DA000EF4186 /* UIView+Snapshot.swift in Sources */,
+				31C86AF822374B0300EF4186 /* PreviewViewController.swift in Sources */,
+				31C86B4322374DE500EF4186 /* HandOutlineColorSettingTableViewCell.swift in Sources */,
+				31C86B3D22374DE500EF4186 /* FaceShapeSettingCollectionViewCell.swift in Sources */,
+				31C86B4D22374DE500EF4186 /* SecondHandAnimationSettingCollectionViewCell.swift in Sources */,
+				310B1BB82245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift in Sources */,
+				31C86B5622374DEE00EF4186 /* DecoratorDigitalTimeTableViewCell.swift in Sources */,
+				31C86B4022374DE500EF4186 /* HourHandColorSettingsTableViewCell.swift in Sources */,
+				31C86B5A22374DEE00EF4186 /* DecoratorSpacerTableViewCell.swift in Sources */,
+				31C86B3122374DA000EF4186 /* UIImage+Gradient.swift in Sources */,
+				31C86B5322374DE500EF4186 /* SecondHandColorSettingsTableViewCell.swift in Sources */,
+				31C86B4722374DE500EF4186 /* MainBackgroundColorSettingTableViewCell.swift in Sources */,
+				31C86B5F22374E6000EF4186 /* SettingsOptionsViewController.swift in Sources */,
+				31C86B3822374DE500EF4186 /* DecoratorThemeSettingCollectionViewCell.swift in Sources */,
+				31C86B2E22374DA000EF4186 /* UICollectionView+Selection.swift in Sources */,
+				31C86B4422374DE500EF4186 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */,
+				31C86B5122374DE500EF4186 /* SecondHandSettingsTableViewCell.swift in Sources */,
+				31C86AFA22374CEA00EF4186 /* PongGameNode.swift in Sources */,
+				31C86B0122374CEA00EF4186 /* MinuteHandNode.swift in Sources */,
+				31C86B4222374DE500EF4186 /* HandOptionsSettingTableViewCell.swift in Sources */,
+				31C86B6122374E7200EF4186 /* FaceChooserTableViewController.swift in Sources */,
+				31C86B4B22374DE500EF4186 /* MinuteHandColorSettingsTableViewCell.swift in Sources */,
+				31C86B5D22374E4100EF4186 /* FaceChooserViewController.swift in Sources */,
+				31C86B4622374DE500EF4186 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */,
+				31C86B1122374D0200EF4186 /* RoundedButton.swift in Sources */,
+				31C86B6322374E7200EF4186 /* FaceChooserCollectionViewCell.swift in Sources */,
+				31C86B3322374DE500EF4186 /* ColorSettingsTableViewCell.swift in Sources */,
+				31C86B5922374DEE00EF4186 /* DecotatorTextTableViewCell.swift in Sources */,
+				31C86B4822374DE500EF4186 /* MinuteHandSettingCollectionViewCell.swift in Sources */,
+				31C86B6222374E7200EF4186 /* FaceChooserTableViewCell.swift in Sources */,
+				31C86B6022374E7200EF4186 /* FaceChooserEditTableViewController.swift in Sources */,
+				31C86B0A22374CEF00EF4186 /* ClockColorTheme.swift in Sources */,
+				31C86B6422374E7200EF4186 /* FaceChooserEditTableViewCell.swift in Sources */,
+				31C86B0C22374CF400EF4186 /* SKWatchScene.swift in Sources */,
+				31C86B2C22374DA000EF4186 /* UserDefaults.swift in Sources */,
+				31C86B4922374DE500EF4186 /* MinuteHandAnimationSettingCollectionViewCell.swift in Sources */,
+				31C86B4C22374DE500EF4186 /* MinuteHandSettingsTableViewCell.swift in Sources */,
+				31C86B3F22374DE500EF4186 /* HourHandSettingsTableViewCell.swift in Sources */,
+				310B1BB62245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift in Sources */,
+				31C86B5022374DE500EF4186 /* SettingsTableHeaderViewCell.swift in Sources */,
+				31C86B3A22374DE500EF4186 /* FaceBackgroundColorSettingTableViewCell.swift in Sources */,
+				31C86B3722374DE500EF4186 /* DecoratorRingsSettingsTableViewCell.swift in Sources */,
+				31C86B2522374DA000EF4186 /* MathFunctions.swift in Sources */,
+				31C86AF922374CB700EF4186 /* SettingsViewController.swift in Sources */,
+				31C86B5222374DE500EF4186 /* SecondHandSettingCollectionViewCell.swift in Sources */,
+				31C86B2322374DA000EF4186 /* PathElement.swift in Sources */,
+				31C86B5522374DEE00EF4186 /* DecoratorsTableViewController.swift in Sources */,
+				31C86B5C22374E0000EF4186 /* WatchPreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,6 +1363,22 @@
 				318A92AA21D3C2840060D89B /* Base */,
 			);
 			name = Decorators.storyboard;
+			sourceTree = "<group>";
+		};
+		31C86AEB2237493600EF4186 /* ClockologyMain.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31C86AEC2237493600EF4186 /* Base */,
+			);
+			name = ClockologyMain.storyboard;
+			sourceTree = "<group>";
+		};
+		31C86AF02237493700EF4186 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31C86AF12237493700EF4186 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1320,6 +1642,44 @@
 			};
 			name = Release;
 		};
+		31C86AF52237493700EF4186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4345F4RV9N;
+				INFOPLIST_FILE = Clockology/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockology;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		31C86AF62237493700EF4186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4345F4RV9N;
+				INFOPLIST_FILE = Clockology/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikehill.clockology;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1355,6 +1715,15 @@
 			buildConfigurations = (
 				3188090B2178166B00585AB1 /* Debug */,
 				3188090C2178166B00585AB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31C86AF42237493700EF4186 /* Build configuration list for PBXNativeTarget "Clockology" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31C86AF52237493700EF4186 /* Debug */,
+				31C86AF62237493700EF4186 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
