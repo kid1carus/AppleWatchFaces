@@ -107,6 +107,7 @@
 		3153880421CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */; };
 		3153880721CB395300A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */; };
 		3153880821CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880621CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift */; };
+		316837C62245A414002D6333 /* FaceForegroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */; };
 		31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		31724A6621FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
@@ -1198,6 +1199,7 @@
 				318808FC2178166B00585AB1 /* ExtensionDelegate.swift in Sources */,
 				31B5E8DA218CE01300DE6429 /* ClockFaceSetting.swift in Sources */,
 				31EF999721A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
+				316837C62245A414002D6333 /* FaceForegroundNode.swift in Sources */,
 				31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */,
 				31B5E8DC218CE01800DE6429 /* ClockDecoratorTheme.swift in Sources */,
 				31F56FA221857AC300455FC6 /* SecondHandNode.swift in Sources */,
