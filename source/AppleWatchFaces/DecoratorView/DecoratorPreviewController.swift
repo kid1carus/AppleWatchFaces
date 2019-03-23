@@ -188,8 +188,10 @@ class DecoratorPreviewController: UIViewController {
         if let lastItem = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings.last {
             
             newItem.textType = lastItem.textType
+            newItem.textSize = lastItem.textSize
             newItem.ringStaticEffects = lastItem.ringStaticEffects
             newItem.ringMaterialDesiredThemeColorIndex = lastItem.ringMaterialDesiredThemeColorIndex
+            
         }
         
         newItem.ringType = ringType
