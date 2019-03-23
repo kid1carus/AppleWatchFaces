@@ -9,11 +9,11 @@
 import SpriteKit
 
 enum HourHandTypes: String {
-    case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial,
+    case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeArrow,
     HourHandTypePacMan, HourHandTypeMsPacMan, HourHandTypeNone
     
     static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeThinDial, HourHandTypeNone]
-    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypePacMan, HourHandTypeMsPacMan,
+    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypePacMan, HourHandTypeMsPacMan,
                                        HourHandTypeNone]
     
     static func random() -> HourHandTypes {
@@ -59,6 +59,7 @@ class HourHandNode: SKSpriteNode {
         if (nodeType == HourHandTypes.HourHandTypeFatBoxy)  { typeDescription = "Fat Boxy" }
         if (nodeType == HourHandTypes.HourHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
         if (nodeType == HourHandTypes.HourHandTypeCutout)  { typeDescription = "Square Cutout" }
+        if (nodeType == .HourHandTypeArrow) { typeDescription = "Arrow" }
         if (nodeType == HourHandTypes.HourHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == HourHandTypes.HourHandTypeThinDial)  { typeDescription = "Thin Dial" }
         if (nodeType == HourHandTypes.HourHandTypePacMan)  { typeDescription = "Dot Eater" }
@@ -229,6 +230,36 @@ class HourHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = phy
             
+            self.addChild(shape)
+        }
+        
+        if (hourHandType == .HourHandTypeArrow) {
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: -2.5, y: -308.5))
+            bezierPath.addLine(to: CGPoint(x: 57.5, y: -195.5))
+            bezierPath.addLine(to: CGPoint(x: 13.5, y: -201.5))
+            bezierPath.addLine(to: CGPoint(x: 34.5, y: 1.5))
+            bezierPath.addLine(to: CGPoint(x: -2.5, y: 84.5))
+            bezierPath.addLine(to: CGPoint(x: -37.5, y: 1.5))
+            bezierPath.addLine(to: CGPoint(x: -16.5, y: -201.5))
+            bezierPath.addLine(to: CGPoint(x: -57.5, y: -195.5))
+            bezierPath.addLine(to: CGPoint(x: -2.5, y: -308.5))
+            bezierPath.close()
+            
+            let scaledSize = CGFloat(0.4) * ( sizeMultiplier / 200 )
+            
+            //bezierPath.apply(CGAffineTransform.init(translationX: 0, y: 0)) //repos
+            bezierPath.apply(CGAffineTransform.init(scaleX: scaledSize, y:-scaledSize))  //scale/stratch
+            
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
+
             self.addChild(shape)
         }
         

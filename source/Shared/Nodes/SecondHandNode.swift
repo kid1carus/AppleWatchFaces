@@ -11,10 +11,10 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter,
+    case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter,
     SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandNodeTypeNone ]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
     
@@ -56,17 +56,19 @@ class SecondHandNode: SKSpriteNode {
     static func descriptionForType(_ nodeType: SecondHandTypes) -> String {
         var typeDescription = ""
         
-        if (nodeType == SecondHandTypes.SecondHandTypeSwiss)  { typeDescription = "Swiss Railway" }
-        if (nodeType == SecondHandTypes.SecondHandTypeRail)  { typeDescription = "Rail" }
-        if (nodeType == SecondHandTypes.SecondHandTypeRoman)  { typeDescription = "Roman" }
-        if (nodeType == SecondHandTypes.SecondHandTypeBlocky)  { typeDescription = "Blocky" }
-        if (nodeType == SecondHandTypes.SecondHandTypePointy)  { typeDescription = "Pointy" }
-        if (nodeType == SecondHandTypes.SecondHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
-        if (nodeType == SecondHandTypes.SecondHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
-        if (nodeType == SecondHandTypes.SecondHandTypeFlatDial)  { typeDescription = "Flat Dial" }
-        if (nodeType == SecondHandTypes.SecondHandTypeThinDial)  { typeDescription = "Thin Dial" }
-        if (nodeType == SecondHandTypes.SecondHandTypePacMan)  { typeDescription = "Dot Eater" }
-        if (nodeType == SecondHandTypes.SecondHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
+        if (nodeType == .SecondHandTypeSwiss)  { typeDescription = "Swiss Railway" }
+        if (nodeType == .SecondhandTypeSwissCircle)  { typeDescription = "Swiss Dot End" }
+        if (nodeType == .SecondHandTypeRail)  { typeDescription = "Rail" }
+        if (nodeType == .SecondHandTypeRoman)  { typeDescription = "Roman" }
+        if (nodeType == .SecondHandTypeBlocky)  { typeDescription = "Blocky" }
+        if (nodeType == .SecondHandTypePointy)  { typeDescription = "Pointy" }
+        if (nodeType == .SecondHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
+        if (nodeType == .SecondHandTypeArrow)  { typeDescription = "Arrow" }
+        if (nodeType == .SecondHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
+        if (nodeType == .SecondHandTypeFlatDial)  { typeDescription = "Flat Dial" }
+        if (nodeType == .SecondHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        if (nodeType == .SecondHandTypePacMan)  { typeDescription = "Dot Eater" }
+        if (nodeType == .SecondHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
         
         if (nodeType == SecondHandTypes.SecondHandNodeTypeNone)  { typeDescription = "None" }
         
@@ -335,6 +337,84 @@ class SecondHandNode: SKSpriteNode {
             
             self.addChild(shape)
         }
+        
+        if (secondHandType == SecondHandTypes.SecondhandTypeSwissCircle) {
+            
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint.init(x: 8, y: 72))
+            bezierPath.addCurve(to: CGPoint.init(x: 7.88, y: 70.63), controlPoint1: CGPoint.init(x: 8, y: 71.53), controlPoint2: CGPoint.init(x: 7.96, y: 71.07))
+            bezierPath.addCurve(to: CGPoint.init(x: 2, y: 64.25), controlPoint1: CGPoint.init(x: 7.35, y: 67.52), controlPoint2: CGPoint.init(x: 5.02, y: 65.03))
+            bezierPath.addCurve(to: CGPoint.init(x: 2, y: -22), controlPoint1: CGPoint.init(x: 2, y: 44.12), controlPoint2: CGPoint.init(x: 2, y: -22))
+            bezierPath.addLine(to: CGPoint.init(x: -2, y: -22))
+            bezierPath.addCurve(to: CGPoint.init(x: -2, y: 64.25), controlPoint1: CGPoint.init(x: -2, y: -22), controlPoint2: CGPoint.init(x: -2, y: 44.12))
+            bezierPath.addCurve(to: CGPoint.init(x: -8, y: 72), controlPoint1: CGPoint.init(x: -5.45, y: 65.14), controlPoint2: CGPoint.init(x: -8, y: 68.27))
+            bezierPath.addCurve(to: CGPoint.init(x: 0, y: 80), controlPoint1: CGPoint.init(x: -8, y: 76.42), controlPoint2: CGPoint.init(x: -4.42, y: 80))
+            bezierPath.addCurve(to: CGPoint.init(x: 8, y: 72), controlPoint1: CGPoint.init(x: 4.42, y: 80), controlPoint2: CGPoint.init(x: 8, y: 76.42))
+            bezierPath.close()
+            
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            let phy =  SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
+            self.addChild(shape)
+        }
+        
+        if (secondHandType == SecondHandTypes.SecondHandTypeArrow) {
+        
+            let bezier2Path = UIBezierPath()
+            bezier2Path.move(to: CGPoint(x: 1.5, y: -381))
+            bezier2Path.addCurve(to: CGPoint(x: 4.5, y: -372), controlPoint1: CGPoint(x: 1.5, y: -381), controlPoint2: CGPoint(x: 4.5, y: -372))
+            bezier2Path.addCurve(to: CGPoint(x: 4.64, y: -371.85), controlPoint1: CGPoint(x: 4.5, y: -372), controlPoint2: CGPoint(x: 4.55, y: -371.95))
+            bezier2Path.addCurve(to: CGPoint(x: 32.5, y: -343), controlPoint1: CGPoint(x: 20.29, y: -370.38), controlPoint2: CGPoint(x: 32.5, y: -358.02))
+            bezier2Path.addCurve(to: CGPoint(x: 32.14, y: -338.57), controlPoint1: CGPoint(x: 32.5, y: -341.49), controlPoint2: CGPoint(x: 32.38, y: -340.01))
+            bezier2Path.addCurve(to: CGPoint(x: 6.89, y: -314.44), controlPoint1: CGPoint(x: 30.13, y: -326.31), controlPoint2: CGPoint(x: 19.91, y: -316.57))
+            bezier2Path.addCurve(to: CGPoint(x: 6.5, y: -314), controlPoint1: CGPoint(x: 6.64, y: -314.15), controlPoint2: CGPoint(x: 6.5, y: -314))
+            bezier2Path.addCurve(to: CGPoint(x: 5.03, y: -170.12), controlPoint1: CGPoint(x: 6.5, y: -314), controlPoint2: CGPoint(x: 5.77, y: -242.57))
+            bezier2Path.addCurve(to: CGPoint(x: 3.52, y: -21.66), controlPoint1: CGPoint(x: 4.34, y: -102.07), controlPoint2: CGPoint(x: 3.63, y: -33.12))
+            bezier2Path.addCurve(to: CGPoint(x: 20, y: 0), controlPoint1: CGPoint(x: 12.89, y: -19.83), controlPoint2: CGPoint(x: 20, y: -10.83))
+            bezier2Path.addCurve(to: CGPoint(x: 3.5, y: 21.66), controlPoint1: CGPoint(x: 20, y: 10.84), controlPoint2: CGPoint(x: 12.88, y: 19.84))
+            bezier2Path.addCurve(to: CGPoint(x: 3.5, y: 116), controlPoint1: CGPoint(x: 3.5, y: 34.4), controlPoint2: CGPoint(x: 3.5, y: 116))
+            bezier2Path.addCurve(to: CGPoint(x: 12.32, y: 141.48), controlPoint1: CGPoint(x: 3.5, y: 116), controlPoint2: CGPoint(x: 11.05, y: 137.81))
+            bezier2Path.addCurve(to: CGPoint(x: 12.8, y: 143.05), controlPoint1: CGPoint(x: 12.52, y: 141.99), controlPoint2: CGPoint(x: 12.68, y: 142.51))
+            bezier2Path.addCurve(to: CGPoint(x: 13, y: 145), controlPoint1: CGPoint(x: 12.93, y: 143.68), controlPoint2: CGPoint(x: 13, y: 144.33))
+            bezier2Path.addCurve(to: CGPoint(x: -0, y: 156), controlPoint1: CGPoint(x: 13, y: 151.08), controlPoint2: CGPoint(x: 7.18, y: 156))
+            bezier2Path.addCurve(to: CGPoint(x: -13, y: 145), controlPoint1: CGPoint(x: -7.18, y: 156), controlPoint2: CGPoint(x: -13, y: 151.08))
+            bezier2Path.addCurve(to: CGPoint(x: -12.32, y: 141.48), controlPoint1: CGPoint(x: -13, y: 143.77), controlPoint2: CGPoint(x: -12.76, y: 142.58))
+            bezier2Path.addCurve(to: CGPoint(x: -3.5, y: 116), controlPoint1: CGPoint(x: -11.05, y: 137.81), controlPoint2: CGPoint(x: -3.5, y: 116))
+            bezier2Path.addCurve(to: CGPoint(x: -3.5, y: 21.66), controlPoint1: CGPoint(x: -3.5, y: 116), controlPoint2: CGPoint(x: -3.5, y: 34.4))
+            bezier2Path.addCurve(to: CGPoint(x: -20, y: 0), controlPoint1: CGPoint(x: -12.88, y: 19.84), controlPoint2: CGPoint(x: -20, y: 10.84))
+            bezier2Path.addCurve(to: CGPoint(x: -3.5, y: -21.66), controlPoint1: CGPoint(x: -20, y: -10.84), controlPoint2: CGPoint(x: -12.88, y: -19.84))
+            bezier2Path.addCurve(to: CGPoint(x: -3.5, y: -314), controlPoint1: CGPoint(x: -3.5, y: -45.35), controlPoint2: CGPoint(x: -3.5, y: -314))
+            bezier2Path.addCurve(to: CGPoint(x: -3.89, y: -314.44), controlPoint1: CGPoint(x: -3.5, y: -314), controlPoint2: CGPoint(x: -3.64, y: -314.15))
+            bezier2Path.addCurve(to: CGPoint(x: -29.5, y: -343), controlPoint1: CGPoint(x: -18.44, y: -316.82), controlPoint2: CGPoint(x: -29.5, y: -328.7))
+            bezier2Path.addCurve(to: CGPoint(x: -1.64, y: -371.85), controlPoint1: CGPoint(x: -29.5, y: -358.02), controlPoint2: CGPoint(x: -17.29, y: -370.38))
+            bezier2Path.addCurve(to: CGPoint(x: -1.5, y: -372), controlPoint1: CGPoint(x: -1.55, y: -371.95), controlPoint2: CGPoint(x: -1.5, y: -372))
+            bezier2Path.addCurve(to: CGPoint(x: 1.5, y: -381), controlPoint1: CGPoint(x: -1.5, y: -372), controlPoint2: CGPoint(x: 1.46, y: -380.88))
+            bezier2Path.addLine(to: CGPoint(x: 1.5, y: -381))
+            bezier2Path.close()
+            
+            let scaledSize = CGFloat(0.4) * ( sizeMultiplier / 200 )
+            
+            //bezierPath.apply(CGAffineTransform.init(translationX: 0, y: 0)) //repos
+            bezier2Path.apply(CGAffineTransform.init(scaleX: scaledSize, y:-scaledSize))  //scale/stratch
+            
+            let shape = SKShapeNode.init(path: bezier2Path.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            let physicsBody = SKPhysicsBody.init(polygonFrom: bezier2Path.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
+            
+            self.addChild(shape)
+        }
+
         
         if (secondHandType == SecondHandTypes.SecondHandTypePointy) {
             

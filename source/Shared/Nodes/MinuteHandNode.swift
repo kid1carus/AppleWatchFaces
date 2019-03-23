@@ -11,12 +11,12 @@ import UIKit
 import SpriteKit
 
 enum MinuteHandTypes: String {
-    case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeSphere,
+    case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeSphere,
         MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial,
         MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -62,23 +62,25 @@ class MinuteHandNode: SKSpriteNode {
     static func descriptionForType(_ nodeType: MinuteHandTypes) -> String {
         var typeDescription = ""
         
-        if (nodeType == MinuteHandTypes.MinuteHandTypeSwiss)  { typeDescription = "Swiss" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypeRounded)  { typeDescription = "Rounded" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypeRoman)  { typeDescription = "Roman" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypeFatBoxy)  { typeDescription = "Fat Boxy" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypeBoxy)  { typeDescription = "Boxy" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
+        if (nodeType == .MinuteHandTypeSwiss)  { typeDescription = "Swiss" }
+        if (nodeType == .MinuteHandTypeRounded)  { typeDescription = "Rounded" }
+        if (nodeType == .MinuteHandTypeRoman)  { typeDescription = "Roman" }
+        if (nodeType == .MinuteHandTypeFatBoxy)  { typeDescription = "Fat Boxy" }
+        if (nodeType == .MinuteHandTypeBoxy)  { typeDescription = "Boxy" }
+        if (nodeType == .MinuteHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
+        if (nodeType == .MinuteHandTypeArrow)  { typeDescription = "Arrow" }
         
-        if (nodeType == MinuteHandTypes.MinuteHandTypeFlatDial)  { typeDescription = "Flat Dial" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        if (nodeType == .MinuteHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
         
-        if (nodeType == MinuteHandTypes.MinuteHandTypePacMan)  { typeDescription = "Dot Eater" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypePacMan)  { typeDescription = "Ms Dot Eater" }
+        if (nodeType == .MinuteHandTypeFlatDial)  { typeDescription = "Flat Dial" }
+        if (nodeType == .MinuteHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        
+        if (nodeType == .MinuteHandTypePacMan)  { typeDescription = "Dot Eater" }
+        if (nodeType == .MinuteHandTypePacMan)  { typeDescription = "Ms Dot Eater" }
         
         //image based example
-        if (nodeType == MinuteHandTypes.MinuteHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
-        if (nodeType == MinuteHandTypes.MinuteHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
+        if (nodeType == .MinuteHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
+        if (nodeType == .MinuteHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
         
         
         return typeDescription
@@ -260,6 +262,32 @@ class MinuteHandNode: SKSpriteNode {
             let phy = SKPhysicsBody.init(circleOfRadius: 5)
             phy.isDynamic = false
             shape.physicsBody = phy
+            
+            self.addChild(shape)
+        }
+        
+        if (minuteHandType == .MinuteHandTypeArrow) {
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: 0, y: -430))
+            bezierPath.addCurve(to: CGPoint(x: 31, y: -1), controlPoint1: CGPoint(x: 3, y: -425), controlPoint2: CGPoint(x: 31, y: -1))
+            bezierPath.addLine(to: CGPoint(x: 0, y: 69))
+            bezierPath.addLine(to: CGPoint(x: -28, y: -1))
+            bezierPath.addCurve(to: CGPoint(x: 0, y: -430), controlPoint1: CGPoint(x: -28, y: -1), controlPoint2: CGPoint(x: -3, y: -435))
+            bezierPath.close()
+            
+            let scaledSize = CGFloat(0.4) * ( sizeMultiplier / 200 )
+            
+            //bezierPath.apply(CGAffineTransform.init(translationX: 0, y: 0)) //repos
+            bezierPath.apply(CGAffineTransform.init(scaleX: scaledSize, y:-scaledSize))  //scale/stratch
+            
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
             
             self.addChild(shape)
         }

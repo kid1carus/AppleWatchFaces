@@ -11,10 +11,11 @@ import SceneKit
 
 enum FaceIndicatorTypes: String {
     case FaceIndicatorTypeTube, FaceIndicatorTypeSphere, FaceIndicatorTypeBox,
-    FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox, FaceIndicatorTypeCircle, FaceIndicatorTypeNone
+    FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox, FaceIndicatorTypeCircle,
+    FaceIndicatorTypeTriangle, FaceIndicatorTypeFlippedTriangle, FaceIndicatorTypeNone
     
-    static let randomizableValues = [FaceIndicatorTypeTube, FaceIndicatorTypeSphere, FaceIndicatorTypeBox, FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox]
-    static let userSelectableValues = [FaceIndicatorTypeTube, FaceIndicatorTypeSphere, FaceIndicatorTypeBox, FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox]
+    static let randomizableValues = [FaceIndicatorTypeTube, FaceIndicatorTypeSphere, FaceIndicatorTypeBox, FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox, FaceIndicatorTypeTriangle, FaceIndicatorTypeFlippedTriangle]
+    static let userSelectableValues = [FaceIndicatorTypeTube, FaceIndicatorTypeSphere, FaceIndicatorTypeBox, FaceIndicatorTypeTriangle, FaceIndicatorTypeFlippedTriangle, FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox]
     
     static func random() -> FaceIndicatorTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -27,11 +28,13 @@ class FaceIndicatorNode: SKSpriteNode {
     static func descriptionForType(_ nodeType: FaceIndicatorTypes) -> String {
         var typeDescription = ""
         
-        if (nodeType == FaceIndicatorTypes.FaceIndicatorTypeTube)  { typeDescription = "Tube" }
-        if (nodeType == FaceIndicatorTypes.FaceIndicatorTypeSphere)  { typeDescription = "Circle" }
-        if (nodeType == FaceIndicatorTypes.FaceIndicatorTypeBox)  { typeDescription = "Thin Box" }
-        if (nodeType == FaceIndicatorTypes.FaceIndicatorTypeMediumBox )  { typeDescription = "Medium Box" }
-        if (nodeType == FaceIndicatorTypes.FaceIndicatorTypeFatBox)  { typeDescription = "Fat Box" }
+        if (nodeType == .FaceIndicatorTypeTube)  { typeDescription = "Tube" }
+        if (nodeType == .FaceIndicatorTypeSphere)  { typeDescription = "Circle" }
+        if (nodeType == .FaceIndicatorTypeTriangle)  { typeDescription = "Triangle" }
+        if (nodeType == .FaceIndicatorTypeFlippedTriangle) { typeDescription = "Flipped Triangle" }
+        if (nodeType == .FaceIndicatorTypeBox)  { typeDescription = "Thin Box" }
+        if (nodeType == .FaceIndicatorTypeMediumBox )  { typeDescription = "Medium Box" }
+        if (nodeType == .FaceIndicatorTypeFatBox)  { typeDescription = "Fat Box" }
         
         return typeDescription
     }
@@ -122,20 +125,83 @@ class FaceIndicatorNode: SKSpriteNode {
             //self.geometry = SCNBox.init(width: w, height: h, length: 0.002, chamferRadius: 0)
         }
         
-        if (indicatorType == FaceIndicatorTypes.FaceIndicatorTypeTube) {
-            let w = CGFloat( size * Float(0.1) )
-            let h = CGFloat( size * Float(0.6) )
-            //let l = CGFloat( size * Float(0.1) )
-            let cham = w / 2 //fix this to get it rounded w/out crashing on iOS11.0
-            let shapeNode = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier), cornerRadius: cham)
+        if (indicatorType == .FaceIndicatorTypeTriangle) {
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: 44, y: 0.5))
+            bezierPath.addLine(to: CGPoint(x: 87.73, y: 76.25))
+            bezierPath.addLine(to: CGPoint(x: 0.27, y: 76.25))
+            bezierPath.close()
+            
+            let scaledSize = CGFloat(size) * ( sizeMultiplier / 200 )
+            bezierPath.apply(CGAffineTransform.init(translationX: -44, y: -38)) //repos
+            bezierPath.apply(CGAffineTransform.init(scaleX: scaledSize, y:-scaledSize))  //scale/stratch
+            
+            let shapeNode = SKShapeNode.init(path: bezierPath.cgPath)
             shapeNode.fillColor = fillColor
             shapeNode.strokeColor = fillColor
             shapeNode.lineWidth = 1.0
-            shapeNode.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
-            self.addChild(shapeNode)
             
-            //self.geometry = SCNBox.init(width: w, height: h, length: l, chamferRadius: cham )
-            //self.scale = SCNVector3Make( 1.0, 1.0, 0.3)
+            let phy =  SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shapeNode.physicsBody = phy
+            
+            self.addChild(shapeNode)
+        }
+        
+        if (indicatorType == .FaceIndicatorTypeFlippedTriangle) {
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: 44, y: 0.5))
+            bezierPath.addLine(to: CGPoint(x: 87.73, y: 76.25))
+            bezierPath.addLine(to: CGPoint(x: 0.27, y: 76.25))
+            bezierPath.close()
+            
+            let scaledSize = CGFloat(size) * ( sizeMultiplier / 200 )
+            bezierPath.apply(CGAffineTransform.init(translationX: -44, y: -38)) //repos
+            bezierPath.apply(CGAffineTransform.init(scaleX: scaledSize, y:scaledSize))  //scale/stratch
+            
+            let shapeNode = SKShapeNode.init(path: bezierPath.cgPath)
+            shapeNode.fillColor = fillColor
+            shapeNode.strokeColor = fillColor
+            shapeNode.lineWidth = 1.0
+            
+            let phy =  SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shapeNode.physicsBody = phy
+            
+            self.addChild(shapeNode)
+        }
+        
+        if (indicatorType == FaceIndicatorTypes.FaceIndicatorTypeTube) {
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: 35.99, y: 18))
+            bezierPath.addCurve(to: CGPoint(x: 36, y: 18.5), controlPoint1: CGPoint(x: 36, y: 18), controlPoint2: CGPoint(x: 36, y: 18.17))
+            bezierPath.addCurve(to: CGPoint(x: 36, y: 74), controlPoint1: CGPoint(x: 36, y: 24.04), controlPoint2: CGPoint(x: 36, y: 74))
+            bezierPath.addCurve(to: CGPoint(x: 36, y: 74.5), controlPoint1: CGPoint(x: 36, y: 74.17), controlPoint2: CGPoint(x: 36, y: 74.33))
+            bezierPath.addCurve(to: CGPoint(x: 18, y: 93), controlPoint1: CGPoint(x: 36, y: 84.72), controlPoint2: CGPoint(x: 27.94, y: 93))
+            bezierPath.addCurve(to: CGPoint(x: 0, y: 74.5), controlPoint1: CGPoint(x: 8.06, y: 93), controlPoint2: CGPoint(x: 0, y: 84.72))
+            bezierPath.addCurve(to: CGPoint(x: 0.01, y: 74), controlPoint1: CGPoint(x: 0, y: 74.33), controlPoint2: CGPoint(x: 0, y: 74.17))
+            bezierPath.addCurve(to: CGPoint(x: 0, y: 18.5), controlPoint1: CGPoint(x: 0, y: 74), controlPoint2: CGPoint(x: 0, y: 24.05))
+            bezierPath.addCurve(to: CGPoint(x: 0, y: 18), controlPoint1: CGPoint(x: 0, y: 18.17), controlPoint2: CGPoint(x: 0, y: 18))
+            bezierPath.addCurve(to: CGPoint(x: 1.24, y: 11.75), controlPoint1: CGPoint(x: 0.06, y: 15.8), controlPoint2: CGPoint(x: 0.49, y: 13.69))
+            bezierPath.addCurve(to: CGPoint(x: 18, y: 0), controlPoint1: CGPoint(x: 3.86, y: 4.87), controlPoint2: CGPoint(x: 10.38, y: 0))
+            bezierPath.addCurve(to: CGPoint(x: 35.99, y: 18), controlPoint1: CGPoint(x: 27.78, y: 0), controlPoint2: CGPoint(x: 35.74, y: 8.01))
+            bezierPath.close()
+            
+            //translate and scale
+            let scaledSize = CGFloat(size) * ( sizeMultiplier / 200 )
+            bezierPath.apply(CGAffineTransform.init(translationX: -18, y: -47)) //repos
+            bezierPath.apply(CGAffineTransform.init(scaleX: scaledSize, y:scaledSize))  //scale/stratch
+            
+            let shapeNode = SKShapeNode.init(path: bezierPath.cgPath)
+            shapeNode.fillColor = fillColor
+            shapeNode.strokeColor = fillColor
+            shapeNode.lineWidth = 1.0
+            
+            let phy =  SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            phy.isDynamic = false
+            shapeNode.physicsBody = phy
+            
+            self.addChild(shapeNode)
         }
         
         if (indicatorType == FaceIndicatorTypes.FaceIndicatorTypeSphere) {
