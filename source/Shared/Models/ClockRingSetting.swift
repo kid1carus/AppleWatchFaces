@@ -247,7 +247,7 @@ class ClockRingSetting: NSObject {
             ringStaticItemHorizontalPosition: .Right,
             ringStaticItemVerticalPosition: .Top,
             ringStaticTimeFormat: .HHMM,
-            ringStaticEffects: .innerShadow,
+            ringStaticEffects: .None,
             
             indicatorType: FaceIndicatorTypes.FaceIndicatorTypeNone,
             indicatorSize: 0.15,
