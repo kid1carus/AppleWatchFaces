@@ -176,11 +176,20 @@ class DecoratorPreviewController: UIViewController {
     }
     
     func addNewItem( ringType: RingTypes) {
+        
         var newItem = ClockRingSetting.defaults()
         
         //TODO: eventually have better defaults for other types
         if ringType == .RingTypeDigitalTime {
             newItem = ClockRingSetting.defaultsDigitalTime()
+        }
+        
+        //copy some things from last item for convenience
+        if let lastItem = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings.last {
+            
+            newItem.textType = lastItem.textType
+            newItem.ringStaticEffects = lastItem.ringStaticEffects
+            newItem.ringMaterialDesiredThemeColorIndex = lastItem.ringMaterialDesiredThemeColorIndex
         }
         
         newItem.ringType = ringType
