@@ -4879,6 +4879,10 @@
                         "ringPatternTotal" : "12"
                     }
                 ]
-            }
+            },
+            "faceBackgroundType" : "FaceBackgroundTypeVerticalGradient",
+            "clockCasingMaterialName" : "#0000a0ff",
+            "uniqueID" : "96EA74A5-BD4A-4C21-B5C7-8C186A3F719A"
+        }
     ]
 }
