@@ -25,6 +25,9 @@
                                     <constraint firstAttribute="height" constant="200" id="RO1-BS-Qez"/>
                                     <constraint firstAttribute="width" constant="161" id="hrT-PO-LkD"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wO1-cA-uDJ" appends="YES" id="SO7-Pk-dSS"/>
+                                </connections>
                             </skView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwg-b7-jF7">
                                 <rect key="frame" x="0.0" y="235" width="375" height="432"/>
@@ -49,6 +52,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCQ-SV-1vw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="wO1-cA-uDJ">
+                    <connections>
+                        <action selector="respondToPanGestureWithGesture:" destination="oSu-2t-sjk" id="LE1-wo-akF"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1524" y="871.21439280359823"/>
         </scene>

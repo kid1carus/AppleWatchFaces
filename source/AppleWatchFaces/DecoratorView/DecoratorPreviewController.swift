@@ -18,6 +18,30 @@ class DecoratorPreviewController: UIViewController {
     static let ringSettingsChangedNotificationName = Notification.Name("ringSettingsChanged")
     static let ringSettingsEditDetailNotificationName = Notification.Name("ringSettingsEditDetail")
     
+    @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        let translationPoint = gesture.location(in: skView)
+        
+        //debugPrint("dragging X:" + translationPoint.x.description + " y:" + translationPoint.y.description)
+        
+        let xPercent = translationPoint.x / skView.frame.size.width
+        let yPercent = translationPoint.y / skView.frame.size.height
+        
+        var reload = false
+        if gesture.state == .began {
+            reload = true
+        }
+        if let dTVC = decoratorsTableViewController {
+            let xPercRounded = CGFloat(round(1000*xPercent)/1000)
+            let yPercRounded = CGFloat(round(1000*yPercent)/1000)
+            
+            dTVC.dragOnPreviewView(xPercent: xPercRounded, yPercent: yPercRounded, reload: reload)
+        }
+//        if gesture.state == .changed {
+//        }
+//        if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
+//        }
+    }
+    
     func highlightRing( ringNumber: Int) {
         guard let scene = skView.scene else { return }
         guard let watchFaceNode = scene.childNode(withName: "watchFaceNode") else { return }

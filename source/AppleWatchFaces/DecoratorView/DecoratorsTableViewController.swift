@@ -38,6 +38,32 @@ class DecoratorsTableViewController: UITableViewController {
         //NOTE: editingMode is set in previewController so editing mode is displayed correctly in the parent
     }
     
+    func dragOnPreviewView( xPercent: CGFloat, yPercent: CGFloat, reload: Bool) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        guard self.tableView.cellForRow(at: selectedRow) as? DecoratorDigitalTimeTableViewCell != nil else { return }
+        guard let clockSettings = SettingsViewController.currentClockSetting.clockFaceSettings else {
+            return
+        }
+        
+        let ringSetting = clockSettings.ringSettings[selectedRow.row]
+        debugPrint("drag x:" + xPercent.description + " y:" + yPercent.description)
+        debugPrint("selectedRow: " + selectedRow.description)
+        
+        if ringSetting.ringStaticHorizontalPositionNumeric != Float(xPercent) && ringSetting.ringStaticVerticalPositionNumeric != Float(yPercent) {
+            NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                            userInfo:["settingType":"ringStaticItemPosition" ])
+        }
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric = Float(xPercent)
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = Float(yPercent)
+        
+        if (reload) {
+            self.tableView.reloadRows(at: [selectedRow], with: .none)
+            self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
+        }
+    }
+    
 //    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
 //        
 //        //toggle selection

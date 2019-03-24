@@ -65,6 +65,8 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
             clockRingSetting.ringStaticItemHorizontalPosition = .Centered
         case 2:
             clockRingSetting.ringStaticItemHorizontalPosition = .Right
+        case 3:
+            clockRingSetting.ringStaticItemHorizontalPosition = .Numeric
         default:
             clockRingSetting.ringStaticItemHorizontalPosition = .None
         }
@@ -85,6 +87,8 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
             clockRingSetting.ringStaticItemVerticalPosition = .Centered
         case 2:
             clockRingSetting.ringStaticItemVerticalPosition = .Bottom
+        case 3:
+            clockRingSetting.ringStaticItemVerticalPosition = .Numeric
         default:
             clockRingSetting.ringStaticItemVerticalPosition = .None
         }
@@ -221,7 +225,7 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         case .Bottom:
             verticalPositionSegment.selectedSegmentIndex = 2
         case .Numeric:
-            horizontalPositionSegment.selectedSegmentIndex = 3
+            verticalPositionSegment.selectedSegmentIndex = 3
         case .None:
             verticalPositionSegment.isEnabled = true //TODO: not sure what to put here
         }
