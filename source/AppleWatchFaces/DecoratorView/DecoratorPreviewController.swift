@@ -79,7 +79,7 @@ class DecoratorPreviewController: UIViewController {
         
         self.title = String( clockSetting.clockFaceSettings!.ringSettings.count ) + " parts"
         
-        let newWatchFaceNode = WatchFaceNode.init(clockSetting: clockSetting, size: CGSize.init(width: 100, height: 100) )
+        let newWatchFaceNode = WatchFaceNode.init(clockSetting: clockSetting, size: AppUISettings.getSizeForWatchFrame() )
         
         //TODO: figure out whay this is needed
         newWatchFaceNode.position = CGPoint.init(x: 0.5, y: 0.5)

@@ -149,7 +149,8 @@ class WatchFaceNode: SKShapeNode {
                 ringSettings: ringSetting,
                 renderNumbers: true,
                 renderShapes: true,
-                ringShape: ringShapePath)
+                ringShape: ringShapePath,
+                size: size)
             
             //move it closer to center
             currentDistance = currentDistance - ringSetting.ringWidth
@@ -157,7 +158,7 @@ class WatchFaceNode: SKShapeNode {
         
     }
     
-    func generateRingNode( _ clockFaceNode: SKShapeNode, patternTotal: Int, patternArray: [Int], ringType: RingTypes, material: String, currentDistance: Float, clockFaceSettings: ClockFaceSetting, ringSettings: ClockRingSetting, renderNumbers: Bool, renderShapes: Bool, ringShape: UIBezierPath ) {
+    func generateRingNode( _ clockFaceNode: SKShapeNode, patternTotal: Int, patternArray: [Int], ringType: RingTypes, material: String, currentDistance: Float, clockFaceSettings: ClockFaceSetting, ringSettings: ClockRingSetting, renderNumbers: Bool, renderShapes: Bool, ringShape: UIBezierPath, size: CGSize) {
         
         let ringNode = SKNode()
         ringNode.name = "ringNode"
@@ -197,6 +198,13 @@ class WatchFaceNode: SKShapeNode {
             }
             if (ringSettings.ringStaticItemVerticalPosition == .Bottom) {
                 yPos = -yDist
+            }
+            if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
+                xPos = (size.width * (CGFloat(ringSettings.ringStaticHorizontalPositionNumeric) - 0.5))
+            }
+            if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
+                debugPrint("size:", size.debugDescription)
+                yPos = -((size.height * (CGFloat(ringSettings.ringStaticVerticalPositionNumeric) - 0.5)))
             }
             //horizontalPosition: .Right, verticalPosition: .Top
             digitalTimeNode.position = CGPoint.init(x: xPos, y: yPos)

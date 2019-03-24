@@ -131,6 +131,10 @@ class AppUISettings: NSObject {
         }
     }
     
+    static func getSizeForWatchFrame() -> CGSize {
+        return CGSize.init(width: 312, height: 390)
+    }
+    
     static func getScreenBoundsForImages() -> CGSize {
         #if os(watchOS)
         let screenBounds = WKInterfaceDevice.current().screenBounds

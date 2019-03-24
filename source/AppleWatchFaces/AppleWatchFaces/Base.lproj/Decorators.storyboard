@@ -18,23 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <skView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6BS-VO-ogg">
-                                <rect key="frame" x="107" y="27" width="161" height="200"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="RO1-BS-Qez"/>
-                                    <constraint firstAttribute="width" constant="161" id="hrT-PO-LkD"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="wO1-cA-uDJ" appends="YES" id="SO7-Pk-dSS"/>
-                                </connections>
-                            </skView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwg-b7-jF7">
                                 <rect key="frame" x="0.0" y="235" width="375" height="432"/>
                                 <connections>
                                     <segue destination="EUI-x1-eg0" kind="embed" id="p58-Km-11o"/>
                                 </connections>
                             </containerView>
+                            <skView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6BS-VO-ogg">
+                                <rect key="frame" x="107" y="27" width="160" height="200"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="RO1-BS-Qez"/>
+                                    <constraint firstAttribute="width" constant="160" id="hrT-PO-LkD"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wO1-cA-uDJ" appends="YES" id="SO7-Pk-dSS"/>
+                                </connections>
+                            </skView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
