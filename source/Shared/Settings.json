@@ -1,6 +1,129 @@
 {
     "clockSettings" : [
         {
+            "uniqueID" : "405250E6-A82C-4BF2-B3F9-BC72DB1D6B75",
+            "clockFaceSettings" : {
+                "minuteHandMaterialName" : "#ffffffff",
+                "secondHandType" : "SecondHandTypePointy",
+                "shouldShowHandOutlines" : true,
+                "ringSettings" : [
+                    {
+                        "ringType" : "RingTypeSpacer",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.06",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.2",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticTimeFormat" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringWidth" : "0.0",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.42",
+                        "ringPattern" : [
+                            
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticTimeFormat" : "MMDD",
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "textType" : "NumberTextTypeDigitalMono"
+                    },
+                    {
+                        "ringType" : "RingTypeTextNode",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.075",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.88",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "4",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticTimeFormat" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "textType" : "NumberTextTypeDigitalMono"
+                    },
+                    {
+                        "ringType" : "RingTypeSpacer",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.12",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.2",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticTimeFormat" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticItemVerticalPosition" : "Centered",
+                        "ringWidth" : "0.0",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.38",
+                        "ringPattern" : [
+                            
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticTimeFormat" : "DA",
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "textType" : "NumberTextTypeDigitalMono"
+                    }
+                ],
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "handOutlineMaterialName" : "#000000ff",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "hourHandType" : "HourHandTypeFatBoxy",
+                "minuteHandType" : "MinuteHandTypeFatBoxy",
+                "ringMaterials" : [
+                    "#ffffffff",
+                    "",
+                    ""
+                ],
+                "minuteHandMovement" : "MinuteHandMovementSmooth",
+                "secondHandMaterialName" : "#d10000ff",
+                "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#ffffffff"
+            },
+            "clockFaceMaterialName" : "tealCircuits.jpg",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockCasingMaterialName" : "#000000FF",
+            "title" : "Teal Circuits"
+        },
+        {
             "title" : "Test Pattern",
             "clockForegroundMaterialName" : "",
             "clockCasingMaterialName" : "#000000ff",
