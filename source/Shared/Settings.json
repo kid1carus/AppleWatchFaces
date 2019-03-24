@@ -187,7 +187,7 @@
                     },
                     {
                         "ringStaticItemHorizontalPosition" : "Centered",
-                        "ringStaticEffects" : "innerShadow",
+                        "ringStaticEffects" : "None",
                         "textType" : "NumberTextLCDPhone",
                         "indicatorType" : "FaceIndicatorTypeNone",
                         "textOutlineDesiredThemeColorIndex" : "0",
