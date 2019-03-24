@@ -28,6 +28,7 @@ enum RingVerticalPositionTypes: String {
     case Top,
     Centered,
     Bottom,
+    Numeric,
     None
 }
 
@@ -35,6 +36,7 @@ enum RingHorizontalPositionTypes: String {
     case Left,
     Centered,
     Right,
+    Numeric,
     None
 }
 
@@ -152,6 +154,8 @@ class ClockRingSetting: NSObject {
     var ringPattern: [Int]
     var ringPatternTotal: Int
     
+    var ringStaticHorizontalPositionNumeric: Float
+    var ringStaticVerticalPositionNumeric: Float
     var ringStaticItemHorizontalPosition: RingHorizontalPositionTypes
     var ringStaticItemVerticalPosition: RingVerticalPositionTypes
     var ringStaticTimeFormat: DigitalTimeFormats
@@ -174,6 +178,8 @@ class ClockRingSetting: NSObject {
         ringPattern: [Int],
         ringPatternTotal: Int,
         
+        ringStaticHorizontalPositionNumeric: Float,
+        ringStaticVerticalPositionNumeric: Float,
         ringStaticItemHorizontalPosition: RingHorizontalPositionTypes,
         ringStaticItemVerticalPosition: RingVerticalPositionTypes,
         ringStaticTimeFormat: DigitalTimeFormats,
@@ -195,6 +201,9 @@ class ClockRingSetting: NSObject {
         self.ringWidth = ringWidth
         self.ringPattern = ringPattern
         self.ringPatternTotal = ringPatternTotal
+        
+        self.ringStaticHorizontalPositionNumeric = ringStaticHorizontalPositionNumeric
+        self.ringStaticVerticalPositionNumeric = ringStaticVerticalPositionNumeric
         
         self.ringStaticItemHorizontalPosition = ringStaticItemHorizontalPosition
         self.ringStaticItemVerticalPosition = ringStaticItemVerticalPosition
@@ -221,6 +230,8 @@ class ClockRingSetting: NSObject {
             ringPattern: [1],
             ringPatternTotal: 12,
             
+            ringStaticHorizontalPositionNumeric: 0.5,
+            ringStaticVerticalPositionNumeric: 0.5,
             ringStaticItemHorizontalPosition: .None,
             ringStaticItemVerticalPosition: .None,
             ringStaticTimeFormat: .None,
@@ -244,6 +255,8 @@ class ClockRingSetting: NSObject {
             ringPattern: [],
             ringPatternTotal: 0,
             
+            ringStaticHorizontalPositionNumeric: 0.5,
+            ringStaticVerticalPositionNumeric: 0.5,
             ringStaticItemHorizontalPosition: .Right,
             ringStaticItemVerticalPosition: .Top,
             ringStaticTimeFormat: .HHMM,
@@ -295,6 +308,8 @@ class ClockRingSetting: NSObject {
             ringWidth : Float( jsonObj[ "ringWidth" ].floatValue ),
             ringPattern: ClockRingSetting.patternArrayFromSerializedArray( jsonObj[ "ringPattern" ] ),
             ringPatternTotal: Int( jsonObj[ "ringPatternTotal" ].intValue ),
+            ringStaticHorizontalPositionNumeric: Float( jsonObj[ "ringStaticHorizontalPositionNumeric" ].floatValue ),
+            ringStaticVerticalPositionNumeric: Float( jsonObj[ "ringStaticVerticalPositionNumeric" ].floatValue ),
             ringStaticItemHorizontalPosition: ringStaticItemHorizontalPosition,
             ringStaticItemVerticalPosition: ringStaticItemVerticalPosition,
             ringStaticTimeFormat: ringStaticTimeFormat,
@@ -320,6 +335,10 @@ class ClockRingSetting: NSObject {
         serializedDict[ "ringWidth" ] = self.ringWidth.description as AnyObject
         serializedDict[ "ringPattern" ] = self.ringPattern as AnyObject
         serializedDict[ "ringPatternTotal" ] = self.ringPatternTotal.description as AnyObject
+        
+        serializedDict[ "ringStaticHorizontalPositionNumeric" ] = self.ringStaticHorizontalPositionNumeric.description as AnyObject
+        serializedDict[ "ringStaticVerticalPositionNumeric" ] = self.ringStaticVerticalPositionNumeric.description as AnyObject
+        
         serializedDict[ "ringStaticItemHorizontalPosition" ] = self.ringStaticItemHorizontalPosition.rawValue as AnyObject
         serializedDict[ "ringStaticItemVerticalPosition" ] = self.ringStaticItemVerticalPosition.rawValue as AnyObject
         serializedDict[ "ringStaticTimeFormat" ] = self.ringStaticTimeFormat.rawValue as AnyObject

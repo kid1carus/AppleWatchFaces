@@ -207,6 +207,8 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
             horizontalPositionSegment.selectedSegmentIndex = 1
         case .Right:
             horizontalPositionSegment.selectedSegmentIndex = 2
+        case .Numeric:
+            horizontalPositionSegment.selectedSegmentIndex = 3
         case .None:
             horizontalPositionSegment.isEnabled = true //TODO: not sure what to put here
         }
@@ -218,6 +220,8 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
             verticalPositionSegment.selectedSegmentIndex = 1
         case .Bottom:
             verticalPositionSegment.selectedSegmentIndex = 2
+        case .Numeric:
+            horizontalPositionSegment.selectedSegmentIndex = 3
         case .None:
             verticalPositionSegment.isEnabled = true //TODO: not sure what to put here
         }

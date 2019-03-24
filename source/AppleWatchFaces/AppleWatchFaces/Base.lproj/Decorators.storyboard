@@ -135,6 +135,7 @@
                                                 <segment title="Top"/>
                                                 <segment title="Center"/>
                                                 <segment title="Bottom"/>
+                                                <segment title="Drag"/>
                                             </segments>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
@@ -147,6 +148,7 @@
                                                 <segment title="Left"/>
                                                 <segment title="Center"/>
                                                 <segment title="Right"/>
+                                                <segment title="Drag"/>
                                             </segments>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
