@@ -1,6 +1,93 @@
 {
     "clockSettings" : [
         {
+            "title" : "Test Pattern",
+            "clockForegroundMaterialName" : "",
+            "clockCasingMaterialName" : "#000000ff",
+            "clockFaceMaterialName" : "testPattern.jpg",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "uniqueID" : "32086F1E-D83B-502C-9F2D-56C83754BC0A",
+            "faceForegroundType" : "None",
+            "clockFaceSettings" : {
+                "minuteHandMaterialName" : "#FFFFFFFF",
+                "hourHandType" : "HourHandTypeFatBoxy",
+                "shouldShowRomanNumeralText" : false,
+                "shouldShowHandOutlines" : false,
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "secondHandMaterialName" : "#545454ff",
+                "minuteHandType" : "MinuteHandTypeFatBoxy",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "ringMaterials" : [
+                    "#1f3f00ff",
+                    "#b7b700ff",
+                    "#8e8e8eff"
+                ],
+                "secondHandMovement" : "SecondHandMovementStep",
+                "ringSettings" : [
+                    {
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "textType" : "NumberTextTypeHelvica",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringType" : "RingTypeSpacer",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPattern" : [
+                            1
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "shouldShowTextOutline" : false,
+                        "ringPatternTotal" : "12",
+                        "ringStaticTimeFormat" : "None",
+                        "ringWidth" : "0.44",
+                        "textSize" : "0.2"
+                    },
+                    {
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticEffects" : "None",
+                        "textType" : "NumberTextLCDPhone",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringPattern" : [
+                            
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "shouldShowTextOutline" : false,
+                        "ringPatternTotal" : "0",
+                        "ringStaticTimeFormat" : "DA",
+                        "ringWidth" : "0.0",
+                        "textSize" : "0.22"
+                    },
+                    {
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticEffects" : "innerShadow",
+                        "textType" : "NumberTextLCDPhone",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringPattern" : [
+                            
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "shouldShowTextOutline" : false,
+                        "ringPatternTotal" : "0",
+                        "ringStaticTimeFormat" : "DD",
+                        "ringWidth" : "0.0",
+                        "textSize" : "0.22"
+                    }
+                ],
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "secondHandType" : "SecondHandTypeThinDial",
+                "minuteHandMovement" : "MinuteHandMovementStep"
+            }
+        },
+        {
             "clockForegroundMaterialName" : "",
             "faceForegroundType" : "None",
             "faceBackgroundType" : "FaceBackgroundTypeFilled",
