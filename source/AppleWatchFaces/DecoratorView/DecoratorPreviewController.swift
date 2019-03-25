@@ -84,7 +84,6 @@ class DecoratorPreviewController: UIViewController {
         //TODO: figure out whay this is needed
         newWatchFaceNode.position = CGPoint.init(x: 0.5, y: 0.5)
         newWatchFaceNode.setScale(0.0035)
-        newWatchFaceNode.hideHands()
         
         if let scene = skView.scene {
             if let oldNode = scene.childNode(withName: "watchFaceNode") {
@@ -92,19 +91,29 @@ class DecoratorPreviewController: UIViewController {
             }
             scene.addChild(newWatchFaceNode)
         }
+    }
+    
+    func redrawIndicators(clockSetting: ClockSetting) {
+        self.title = String( clockSetting.clockFaceSettings!.ringSettings.count ) + " parts"
         
+        if let scene = skView.scene {
+            if let watchFaceNode = scene.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+                watchFaceNode.redrawIndicators(clockFaceSettings: clockSetting.clockFaceSettings! )
+            }
+        }
     }
     
     @objc func onSettingChangedNotification(notification:Notification)
     {
-        //update values
-        if let data = notification.userInfo as? [String: String] {
-            if data["settingType"] == "sliderValue" {
-                //do conditional drawing if needed
-            }
-        }
+//        //update values
+//        if let data = notification.userInfo as? [String: String] {
+//            if data["settingType"] == "sliderValue" {
+//                //do conditional drawing if needed
+//            }
+//        }
         
-        redraw(clockSetting: SettingsViewController.currentClockSetting)
+        redrawIndicators(clockSetting: SettingsViewController.currentClockSetting )
+        
     }
     
     @objc func onSettingEditDetailNotification(notification:Notification)

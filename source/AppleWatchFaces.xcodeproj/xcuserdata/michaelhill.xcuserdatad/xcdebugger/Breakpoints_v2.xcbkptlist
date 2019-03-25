@@ -522,43 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/WatchFaceNode.swift"
-            timestampString = "575090604.554871"
+            timestampString = "575168751.0518759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "WatchFaceNode"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/Nodes/WatchFaceNode.swift"
-            timestampString = "575090604.555256"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "positionHands(sec:min:hour:force:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/Nodes/WatchFaceNode.swift"
-            timestampString = "575090604.555524"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "WatchFaceNode"
             landmarkType = "3">
          </BreakpointContent>
@@ -641,22 +609,6 @@
                   offsetFromSymbolStart = "819">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/Nodes/WatchFaceNode.swift"
-            timestampString = "575090604.555867"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "generateRingNode(_:patternTotal:patternArray:ringType:material:currentDistance:clockFaceSettings:ringSettings:renderNumbers:renderShapes:ringShape:size:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
