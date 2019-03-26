@@ -17,6 +17,28 @@ class DecoratorPreviewController: UIViewController {
     
     static let ringSettingsChangedNotificationName = Notification.Name("ringSettingsChanged")
     static let ringSettingsEditDetailNotificationName = Notification.Name("ringSettingsEditDetail")
+
+    @IBAction func respondToTapGesture(gesture: UITapGestureRecognizer) {
+        
+        //TODO: add a custom value to these nodes to read later for its ring position / table position
+        
+        //determine which layer is highlighted
+        if gesture.state == .ended {
+            let tapLoc = gesture.location(in: skView)
+            let convert = self.skView.convert(tapLoc, to: skView.scene!)
+            if let nodesAtLoc = skView.scene?.nodes(at: convert) {
+                
+                let firsWithUserdata = nodesAtLoc.first { $0.userData !=  nil }
+                
+                if let node = firsWithUserdata, let userData = node.userData, let positionInRing = userData["positionInRing"] as? Int {
+                    if let dTVC = decoratorsTableViewController {
+                        dTVC.highlightRowFromPreview(rowIndex: positionInRing)
+                        //debugPrint("positionedNode ringIndex: " + positionInRing.description)
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
         let translationPoint = gesture.location(in: skView)

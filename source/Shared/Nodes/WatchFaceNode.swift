@@ -102,8 +102,12 @@ class WatchFaceNode: SKShapeNode {
     
     func generateRingNode( _ clockFaceNode: SKNode, patternTotal: Int, patternArray: [Int], ringType: RingTypes, material: String, currentDistance: Float, clockFaceSettings: ClockFaceSetting, ringSettings: ClockRingSetting, renderNumbers: Bool, renderShapes: Bool, ringShape: UIBezierPath, size: CGSize) {
         
+        let positionInRing = clockFaceSettings.ringSettings.firstIndex(of: ringSettings)
+        
         let ringNode = SKNode()
         ringNode.name = "ringNode"
+        //keep track of ringIndex for tapDetection / highlighting in editor
+        if let positionInRing = positionInRing { ringNode.userData = ["positionInRing":positionInRing] }
         clockFaceNode.addChild(ringNode)
         
         //optional stroke color
@@ -121,7 +125,7 @@ class WatchFaceNode: SKShapeNode {
             //draw it
             let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, timeFormat: ringSettings.ringStaticTimeFormat, textSize: ringSettings.textSize,
                                                        effect: ringSettings.ringStaticEffects, horizontalPosition: ringSettings.ringStaticItemHorizontalPosition, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
-            
+
             digitalTimeNode.zPosition = CGFloat(PartsZPositions.complications.rawValue)
             
             var xPos:CGFloat = 0
@@ -202,6 +206,9 @@ class WatchFaceNode: SKShapeNode {
                     fillColor: SKColor.init(hexString: material),
                     strokeColor: strokeColor
                 )
+                
+                //keep track of ringIndex for tapDetection / highlighting in editor
+                if let positionInRing = positionInRing { outerRingNode.userData = ["positionInRing":positionInRing] }
                 
                 ringNode.name = "textRingNode"
                 

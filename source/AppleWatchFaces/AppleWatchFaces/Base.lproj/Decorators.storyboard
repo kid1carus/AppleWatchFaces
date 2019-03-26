@@ -25,7 +25,7 @@
                                 </connections>
                             </containerView>
                             <skView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6BS-VO-ogg">
-                                <rect key="frame" x="107" y="27" width="160" height="200"/>
+                                <rect key="frame" x="107.5" y="27" width="160" height="200"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="RO1-BS-Qez"/>
@@ -33,6 +33,7 @@
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="wO1-cA-uDJ" appends="YES" id="SO7-Pk-dSS"/>
+                                    <outletCollection property="gestureRecognizers" destination="co7-2h-VMl" appends="YES" id="tkj-ru-uZk"/>
                                 </connections>
                             </skView>
                         </subviews>
@@ -57,6 +58,11 @@
                         <action selector="respondToPanGestureWithGesture:" destination="oSu-2t-sjk" id="LE1-wo-akF"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="co7-2h-VMl">
+                    <connections>
+                        <action selector="respondToTapGestureWithGesture:" destination="oSu-2t-sjk" id="FCv-tO-sMs"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1524" y="871.21439280359823"/>
         </scene>

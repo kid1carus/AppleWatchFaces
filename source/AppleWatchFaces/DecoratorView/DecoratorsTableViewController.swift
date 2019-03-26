@@ -38,6 +38,11 @@ class DecoratorsTableViewController: UITableViewController {
         //NOTE: editingMode is set in previewController so editing mode is displayed correctly in the parent
     }
     
+    func highlightRowFromPreview( rowIndex: Int ) {
+        let selectedRow = IndexPath.init(row: rowIndex, section: 0)
+        self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
+    }
+    
     func dragOnPreviewView( xPercent: CGFloat, yPercent: CGFloat, reload: Bool) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         guard self.tableView.cellForRow(at: selectedRow) as? DecoratorDigitalTimeTableViewCell != nil else { return }
