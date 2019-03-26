@@ -84,6 +84,7 @@ class DecoratorPreviewController: UIViewController {
         //TODO: figure out whay this is needed
         newWatchFaceNode.position = CGPoint.init(x: 0.5, y: 0.5)
         newWatchFaceNode.setScale(0.0035)
+        newWatchFaceNode.hideHands()
         
         if let scene = skView.scene {
             if let oldNode = scene.childNode(withName: "watchFaceNode") {

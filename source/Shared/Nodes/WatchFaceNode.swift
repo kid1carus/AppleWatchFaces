@@ -414,6 +414,18 @@ class WatchFaceNode: SKShapeNode {
         return ringShapePath
     }
     
+    func hideHands() {
+        if let secondHand = self.childNode(withName: "secondHand") {
+            secondHand.isHidden = true
+        }
+        if let minuteHand = self.childNode(withName: "minuteHand") {
+            minuteHand.isHidden = true
+        }
+        if let hourHand = self.childNode(withName: "hourHand") {
+            hourHand.isHidden = true
+        }
+    }
+    
     func redrawIndicators(clockFaceSettings: ClockFaceSetting) {
         self.clockFaceSettings = clockFaceSettings
         
