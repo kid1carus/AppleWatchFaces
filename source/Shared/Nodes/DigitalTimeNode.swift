@@ -51,6 +51,7 @@ enum DigitalTimeEffects: String {
     lightInnerShadow,
     dropShadow,
     digital8,
+    digital8Light,
     frame,
     darkFrame,
     roundedFrame,
@@ -62,6 +63,7 @@ enum DigitalTimeEffects: String {
         lightInnerShadow,
         dropShadow,
         digital8,
+        digital8Light,
         frame,
         darkFrame,
         roundedFrame,
@@ -304,7 +306,7 @@ class DigitalTimeNode: SKNode {
             self.addChild(shadowNode)
         }
         
-        if (effect == .digital8) {
+        if (effect == .digital8 || effect == .digital8Light) {
             var digital8String = ""
             for i in 0..<hourString.count {
                 let index = hourString.index(hourString.startIndex, offsetBy: i)
@@ -318,7 +320,10 @@ class DigitalTimeNode: SKNode {
             
             let digital8Node = timeText.copy() as! SKLabelNode
             digital8Node.name = "textDigital8"
-            let darkMult:CGFloat = 0.15
+            var darkMult:CGFloat = 0.15
+            if effect == .digital8Light {
+                darkMult = 0.4
+            }
             var fillRed:CGFloat = 0.0
             var fillGreen:CGFloat = 0.0
             var fillBlue:CGFloat = 0.0
@@ -493,6 +498,8 @@ class DigitalTimeNode: SKNode {
             description = "Drop Shadow"
         case .digital8:
             description = "Digital 8s"
+        case .digital8Light:
+            description = "Digital 8s Light"
         case .frame:
             description = "Frame"
         case .roundedFrame:
