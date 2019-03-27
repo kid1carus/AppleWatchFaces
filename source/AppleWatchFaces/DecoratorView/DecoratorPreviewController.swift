@@ -17,7 +17,7 @@ class DecoratorPreviewController: UIViewController {
     
     static let ringSettingsChangedNotificationName = Notification.Name("ringSettingsChanged")
     static let ringSettingsEditDetailNotificationName = Notification.Name("ringSettingsEditDetail")
-
+        
     @IBAction func respondToTapGesture(gesture: UITapGestureRecognizer) {
         
         //TODO: add a custom value to these nodes to read later for its ring position / table position
@@ -40,28 +40,45 @@ class DecoratorPreviewController: UIViewController {
         }
     }
     
-    @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
-        let translationPoint = gesture.location(in: skView)
+    @IBAction func respondToPinchGesture(gesture: UIPinchGestureRecognizer) {
         
-        //debugPrint("dragging X:" + translationPoint.x.description + " y:" + translationPoint.y.description)
+        //TODO: add angle once there is support for handling it
+        // https://stackoverflow.com/questions/3559577/how-to-detect-or-define-the-the-orientation-of-a-pinch-gesture-with-uipinchgestu
         
-        let xPercent = translationPoint.x / skView.frame.size.width
-        let yPercent = translationPoint.y / skView.frame.size.height
-        
-        var reload = false
-        if gesture.state == .began {
-            reload = true
-        }
         if let dTVC = decoratorsTableViewController {
-            let xPercRounded = CGFloat(round(1000*xPercent)/1000)
-            let yPercRounded = CGFloat(round(1000*yPercent)/1000)
+            dTVC.sizeFromPreviewView(scale: gesture.scale, reload: false)
             
-            dTVC.dragOnPreviewView(xPercent: xPercRounded, yPercent: yPercRounded, reload: reload)
+            //make it linear
+            gesture.scale = 1.0
+            
+            if gesture.state == .cancelled || gesture.state == .ended || gesture.state == .failed {
+                dTVC.sizeFromPreviewView(scale: gesture.scale, reload: true)
+            }
         }
-//        if gesture.state == .changed {
-//        }
-//        if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
-//        }
+    }
+    
+    @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        
+        if gesture.state == .changed || gesture.state == .began {
+            let translationPoint = gesture.location(in: skView)
+            
+            //debugPrint("dragging X:" + translationPoint.x.description + " y:" + translationPoint.y.description)
+            
+            let xPercent = translationPoint.x / skView.frame.size.width
+            let yPercent = translationPoint.y / skView.frame.size.height
+            
+            var reload = false
+            if gesture.state == .began {
+                reload = true
+            }
+            if let dTVC = decoratorsTableViewController {
+                let xPercRounded = CGFloat(round(1000*xPercent)/1000)
+                let yPercRounded = CGFloat(round(1000*yPercent)/1000)
+                
+                dTVC.dragOnPreviewView(xPercent: xPercRounded, yPercent: yPercRounded, reload: reload)
+            }
+        }
+
     }
     
     func highlightRing( ringNumber: Int) {

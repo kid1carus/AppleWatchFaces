@@ -43,6 +43,27 @@ class DecoratorsTableViewController: UITableViewController {
         self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
     }
     
+    func sizeFromPreviewView( scale: CGFloat, reload: Bool) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        guard self.tableView.cellForRow(at: selectedRow) as? DecoratorDigitalTimeTableViewCell != nil else { return }
+        guard let clockFaceSettings = SettingsViewController.currentClockSetting.clockFaceSettings else { return }
+        
+        
+        let newScale = clockFaceSettings.ringSettings[selectedRow.row].textSize * Float(scale)
+        //debugPrint("diff:" + scale.description + " newScale:" + newScale.description)
+        if newScale>AppUISettings.ringSettigsSliderTextMin && newScale<AppUISettings.ringSettigsSliderTextMax {
+            SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].textSize = Float(newScale)
+        
+            NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":"ringStaticItemScale" ])
+        }
+        
+        if (reload) {
+            self.tableView.reloadRows(at: [selectedRow], with: .none)
+            self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
+        }
+    }
+    
     func dragOnPreviewView( xPercent: CGFloat, yPercent: CGFloat, reload: Bool) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         guard self.tableView.cellForRow(at: selectedRow) as? DecoratorDigitalTimeTableViewCell != nil else { return }
@@ -58,10 +79,12 @@ class DecoratorsTableViewController: UITableViewController {
             NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
                                             userInfo:["settingType":"ringStaticItemPosition" ])
         }
+        
         SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
         SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
         SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric = Float(xPercent)
         SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = Float(yPercent)
+        
         
         if (reload) {
             self.tableView.reloadRows(at: [selectedRow], with: .none)

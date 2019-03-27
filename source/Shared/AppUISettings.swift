@@ -62,7 +62,7 @@ class AppUISettings: NSObject {
 
     //ring text slider
     static let ringSettigsSliderTextMin:Float = 0
-    static let ringSettigsSliderTextMax:Float = 1.5
+    static let ringSettigsSliderTextMax:Float = 2.5
 
     //ring shape sliders
     static let ringSettigsSliderShapeMin:Float = 0
