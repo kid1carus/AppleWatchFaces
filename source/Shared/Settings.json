@@ -1,6 +1,57 @@
 {
     "clockSettings" : [
         {
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#FF0000FF",
+                "hourHandType" : "HourHandTypeNone",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "minuteHandMaterialName" : "#FFFFFFFF",
+                "ringSettings" : [
+                    {
+                        "ringWidth" : "0.24",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringStaticItemVerticalPosition" : "Numeric",
+                        "ringStaticHorizontalPositionNumeric" : "0.569",
+                        "ringPattern" : [
+                            
+                        ],
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "0",
+                        "textType" : "NumberTextTypeDigitalMonoItalics",
+                        "ringStaticEffects" : "digital8",
+                        "ringStaticTimeFormat" : "HHMMSS",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticVerticalPositionNumeric" : "0.158",
+                        "ringStaticItemHorizontalPosition" : "Numeric",
+                        "ringType" : "RingTypeDigitalTime",
+                        "textSize" : "0.8"
+                    }
+                ],
+                "minuteHandType" : "MinuteHandTypeNone",
+                "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "secondHandType" : "SecondHandNodeTypeNone",
+                "shouldShowHandOutlines" : true,
+                "secondHandMovement" : "SecondHandMovementStep",
+                "ringMaterials" : [
+                    "#002613ff",
+                    "#00d369ff",
+                    "#00332aff"
+                ]
+            },
+            "clockFaceMaterialName" : "Calculator.jpg",
+            "clockForegroundMaterialName" : "",
+            "uniqueID" : "B951692A-EC5D-4CC7-96E0-A75215EE1529",
+            "title" : "Digital Calculator",
+            "faceForegroundType" : "None",
+            "clockCasingMaterialName" : "#000000ff",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled"
+        },
+        {
             "uniqueID" : "405250E6-A82C-4BF2-B3F9-BC72DB1D6B75",
             "clockFaceSettings" : {
                 "minuteHandMaterialName" : "#ffffffff",
