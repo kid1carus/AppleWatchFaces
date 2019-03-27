@@ -66,7 +66,7 @@ class HourHandNode: SKSpriteNode {
         if (nodeType == HourHandTypes.HourHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
         
         //image ex
-        if (nodeType == HourHandTypes.HourHandTypeCutout)  { typeDescription = "Image: Fancy White" }
+        if (nodeType == HourHandTypes.HourHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
         if (nodeType == HourHandTypes.HourHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
         
         return typeDescription
