@@ -9,6 +9,7 @@
 import WatchKit
 import WatchConnectivity
 import UIKit
+import SpriteKit
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDelegate {
     
@@ -29,25 +30,30 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         crownAccumulator += rotationalDelta
         timeTravelSpeed = CGFloat(crownAccumulator) * 10.0
-        
         //debugPrint("crownAcc: " + crownAccumulator.description + " timeSpeed:" + timeTravelSpeed.description)
+        
         if !timeTravelTimer.isValid {
             startTimeTravel()
         }
-        
-//        if crownAccumulator > crownThreshold {
-//            nextClock()
-//            crownAccumulator = 0.0
-//        } else if crownAccumulator < -crownThreshold {
-//            prevClock()
-//            crownAccumulator = 0.0
-//        }
+
     }
     
-    func redrawCurrent() {
-        if let skWatchScene = self.skInterface.scene as? SKWatchScene {
-            skWatchScene.redraw(clockSetting: currentClockSetting)
+    func redrawCurrent(transition: Bool, direction: SKTransitionDirection) {
+        
+        if transition {
+            if let watchScene = SKWatchScene(fileNamed: "SKWatchScene") {
+                // Set the scale mode to scale to fit the window
+                watchScene.scaleMode = .aspectFill
+                watchScene.redraw(clockSetting: currentClockSetting)
+                // Present the scene
+                self.skInterface.presentScene(watchScene, transition: SKTransition.push(with: direction, duration: 0.35))
+            }
+        } else {
+            if let skWatchScene = self.skInterface.scene as? SKWatchScene {
+                skWatchScene.redraw(clockSetting: currentClockSetting)
+            }
         }
+        
     }
     
     @IBAction func nextClock() {
@@ -57,7 +63,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         }
         
         currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
-        redrawCurrent()
+        redrawCurrent(transition: true, direction: .left)
     }
     
     @IBAction func prevClock() {
@@ -67,7 +73,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         }
         
         currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
-        redrawCurrent()
+        redrawCurrent(transition: true, direction: .right)
     }
     
     //sending the whole settings file
@@ -100,7 +106,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             //only needed for one off test load, not sync
             if type == "clockFaceMaterialImage" {
                 //reload existing watch face
-                redrawCurrent()
+                redrawCurrent(transition: false, direction: .left)
             }
         }
         
@@ -123,7 +129,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             UserClockSetting.loadFromFile()
             currentClockIndex = 0
             currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
-            redrawCurrent()
+            redrawCurrent(transition: false, direction: .left)
         }
 
     }
@@ -145,29 +151,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         }
     }
     
-//    func processApplicationContext() {
-//        if let iPhoneContext = session.receivedApplicationContext as? [String : String] {
-//            debugPrint("FaceChosen" + iPhoneContext["FaceChosen"]!)
-//
-//            if let chosenFace = iPhoneContext["FaceChosen"] {
-//
-//                UserDefaults.standard.set(chosenFace, forKey: "FaceChosen")
-//
-//                if let skWatchScene = self.skInterface.scene as? SKWatchScene {
-//                    skWatchScene.redraw(clockSetting: currentClockSetting)
-//                }
-//            }
-//
-//
-//        }
-//    }
-    
-//    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-//        DispatchQueue.main.async() {
-//            self.processApplicationContext()
-//        }
-//    }
-    
     @objc func timeTravelMovementTick() {
         let timeInterval = TimeInterval.init(exactly: Int(timeTravelSpeed))!
         ClockTimer.currentDate.addTimeInterval(timeInterval)
@@ -175,8 +158,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         if let skWatchScene = self.skInterface.scene as? SKWatchScene {
             skWatchScene.forceToTime()
         }
-        //SKWatchScene.onNotificationForForceUpdateTime //ClockTimer.timeChangedSecondNotificationName
-        //NotificationCenter.default.post(name: ClockTimer.timeChangedSecondNotificationName, object: nil, userInfo:nil)
     }
     
     func startTimeTravel() {
@@ -186,8 +167,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         timeTravelTimer.invalidate()
         timeTravelTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(InterfaceController.timeTravelMovementTick), userInfo: nil, repeats: true)
     }
-    
-    
     
     func stopTimeTravel() {
         clockTimer.startTimer()
@@ -266,7 +245,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             self.skInterface.presentScene(scene)
             
             //first time draw
-            redrawCurrent()
+            redrawCurrent(transition: false, direction: .left)
         }
     }
     
