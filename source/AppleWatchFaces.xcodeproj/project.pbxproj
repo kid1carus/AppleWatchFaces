@@ -95,6 +95,7 @@
 		312E853922239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
 		313AE3E1221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
+		313EA3C7224C484F00C148BE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
 		314A010A21960409009BCE3C /* UserClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010921960409009BCE3C /* UserClockSetting.swift */; };
 		314A010D219605AA009BCE3C /* Settings.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010B219605AA009BCE3C /* Settings.json */; };
 		314A010E219605AA009BCE3C /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010C219605AA009BCE3C /* Themes.json */; };
@@ -275,7 +276,6 @@
 		31C86B6222374E7200EF4186 /* FaceChooserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF99A121A205F200BB54E7 /* FaceChooserTableViewCell.swift */; };
 		31C86B6322374E7200EF4186 /* FaceChooserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF99A321A2072C00BB54E7 /* FaceChooserCollectionViewCell.swift */; };
 		31C86B6422374E7200EF4186 /* FaceChooserEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E421A9A37B00561F13 /* FaceChooserEditTableViewCell.swift */; };
-		31C86B672237552A00EF4186 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
 		31D8633821E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */; };
 		31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
@@ -1040,12 +1040,12 @@
 				31C86B1F22374D0700EF4186 /* JOYSTIX.TTF in Resources */,
 				31C86B1422374D0700EF4186 /* LCDPHONE.TTF in Resources */,
 				31C86B1922374D0700EF4186 /* RATIONALINT.TTF in Resources */,
-				31C86B672237552A00EF4186 /* Media.xcassets in Resources */,
 				31C86B1322374D0700EF4186 /* GERMANICA.TTF in Resources */,
 				31C86B1722374D0700EF4186 /* DIGITAL-7-MONO.TTF in Resources */,
 				31C86AF22237493700EF4186 /* LaunchScreen.storyboard in Resources */,
 				31C86AEF2237493700EF4186 /* Assets.xcassets in Resources */,
 				31C86B0D22374CF400EF4186 /* Settings.json in Resources */,
+				313EA3C7224C484F00C148BE /* Media.xcassets in Resources */,
 				31C86B0E22374CF400EF4186 /* Themes.json in Resources */,
 				31C86B1522374D0700EF4186 /* IRONLOUNGE.TTF in Resources */,
 				31C86B0B22374CF400EF4186 /* SKWatchScene.sks in Resources */,
