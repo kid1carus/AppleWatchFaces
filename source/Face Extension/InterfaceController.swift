@@ -28,13 +28,20 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         crownAccumulator += rotationalDelta
-        if crownAccumulator > crownThreshold {
-            nextClock()
-            crownAccumulator = 0.0
-        } else if crownAccumulator < -crownThreshold {
-            prevClock()
-            crownAccumulator = 0.0
+        timeTravelSpeed = CGFloat(crownAccumulator) * 10.0
+        
+        //debugPrint("crownAcc: " + crownAccumulator.description + " timeSpeed:" + timeTravelSpeed.description)
+        if !timeTravelTimer.isValid {
+            startTimeTravel()
         }
+        
+//        if crownAccumulator > crownThreshold {
+//            nextClock()
+//            crownAccumulator = 0.0
+//        } else if crownAccumulator < -crownThreshold {
+//            prevClock()
+//            crownAccumulator = 0.0
+//        }
     }
     
     func redrawCurrent() {
@@ -43,7 +50,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         }
     }
     
-    func nextClock() {
+    @IBAction func nextClock() {
         currentClockIndex = currentClockIndex + 1
         if (UserClockSetting.sharedClockSettings.count <= currentClockIndex) {
             currentClockIndex = 0
@@ -53,7 +60,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         redrawCurrent()
     }
     
-    func prevClock() {
+    @IBAction func prevClock() {
         currentClockIndex = currentClockIndex - 1
         if (currentClockIndex<0) {
             currentClockIndex = UserClockSetting.sharedClockSettings.count - 1
@@ -170,6 +177,35 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         }
         //SKWatchScene.onNotificationForForceUpdateTime //ClockTimer.timeChangedSecondNotificationName
         //NotificationCenter.default.post(name: ClockTimer.timeChangedSecondNotificationName, object: nil, userInfo:nil)
+    }
+    
+    func startTimeTravel() {
+        clockTimer.stopTimer()
+        let duration = 1.0/24 //smaller = faster updates
+        
+        timeTravelTimer.invalidate()
+        timeTravelTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(InterfaceController.timeTravelMovementTick), userInfo: nil, repeats: true)
+    }
+    
+    
+    
+    func stopTimeTravel() {
+        clockTimer.startTimer()
+        
+        timeTravelTimer.invalidate()
+        
+        ClockTimer.currentDate = Date()
+        if let skWatchScene = self.skInterface.scene as? SKWatchScene {
+            skWatchScene.forceToTime()
+        }
+    }
+    
+    @IBAction func respondToTapGesture(gesture: WKTapGestureRecognizer) {
+        if timeTravelTimer.isValid {
+            crownAccumulator = 0
+            timeTravelSpeed = 0
+            stopTimeTravel()
+        }
     }
     
     @IBAction func respondToPanGesture(gesture: WKPanGestureRecognizer) {

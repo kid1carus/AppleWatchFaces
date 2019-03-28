@@ -17,11 +17,21 @@
                             <items>
                                 <spriteKitScene width="184" height="224" alignment="center" preferredFramesPerSecond="25" scene="FaceScene.sks" id="Ubu-78-iLh">
                                     <gestureRecognizers>
-                                        <panGestureRecognizer id="LTJ-py-U14">
+                                        <swipeGestureRecognizer id="Fhb-Ge-6Lh">
                                             <connections>
-                                                <action selector="respondToPanGestureWithGesture:" destination="sJs-aO-AIS" id="jza-vX-r8x"/>
+                                                <action selector="prevClock" destination="sJs-aO-AIS" id="DXE-Ac-fxU"/>
                                             </connections>
-                                        </panGestureRecognizer>
+                                        </swipeGestureRecognizer>
+                                        <swipeGestureRecognizer direction="2" id="IJV-3S-vca">
+                                            <connections>
+                                                <action selector="nextClock" destination="sJs-aO-AIS" id="idj-X6-pjT"/>
+                                            </connections>
+                                        </swipeGestureRecognizer>
+                                        <tapGestureRecognizer id="Nr5-OT-J9W">
+                                            <connections>
+                                                <action selector="respondToTapGestureWithGesture:" destination="sJs-aO-AIS" id="3aZ-bJ-Nlf"/>
+                                            </connections>
+                                        </tapGestureRecognizer>
                                     </gestureRecognizers>
                                 </spriteKitScene>
                             </items>
