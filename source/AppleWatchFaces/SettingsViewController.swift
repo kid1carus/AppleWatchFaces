@@ -131,21 +131,24 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     @objc func onNotificationForGetCameraImage(notification:Notification) {
-            CameraHandler.shared.showActionSheet(vc: self)
-            CameraHandler.shared.imagePickedBlock = { (image) in
-                /* get your image here */
-                let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 312, height: 390))
+        CameraHandler.shared.showActionSheet(vc: self)
+        CameraHandler.shared.imagePickedBlock = { (image) in
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
+            /* get your image here */
+            let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 312, height: 390))
 
-                // save it to the docs folder with name of the face
-                let fileName = SettingsViewController.currentClockSetting.uniqueID + AppUISettings.backgroundFileName
-                debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
-                
-                _ = resizedImage.save(imageName: fileName) //_ = resizedImage.save(imageName: fileName)
-                SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
-                
-                NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
-                NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil, userInfo:["settingType":"clockFaceMaterialName"])
-            }
+            // save it to the docs folder with name of the face
+            let fileName = SettingsViewController.currentClockSetting.uniqueID + AppUISettings.backgroundFileName
+            debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
+            
+            _ = resizedImage.save(imageName: fileName) //_ = resizedImage.save(imageName: fileName)
+            SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
+            
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil, userInfo:["settingType":"clockFaceMaterialName"])
+        }
     }
     
     @objc func onNotificationForPreviewSwiped(notification:Notification) {
