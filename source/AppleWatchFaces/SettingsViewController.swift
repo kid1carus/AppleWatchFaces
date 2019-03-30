@@ -346,6 +346,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        WatchSessionManager.sharedManager.delegate = self
         SettingsViewController.clearUndoStack()
         
         //style the section segment
