@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Extensions/UIImage+Loading.swift"
-            timestampString = "570914133.404799"
+            timestampString = "575649700.426788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/FaceChooserViewController.swift"
-            timestampString = "575648359.6834331"
+            timestampString = "575651004.579953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "297"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/SettingsOptionsViewController.swift"
-            timestampString = "569905641.583068"
+            timestampString = "575654676.395986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -234,43 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Face Extension/InterfaceController.swift"
-            timestampString = "575431253.185899"
+            timestampString = "575655623.2359509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "session(_:didReceive:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Face Extension/InterfaceController.swift"
-            timestampString = "575431253.186583"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "session(_:didReceive:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Face Extension/InterfaceController.swift"
-            timestampString = "575431253.186832"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "session(_:didReceive:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,12 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/SettingsViewController.swift"
-            timestampString = "575090204.935867"
+            timestampString = "575655623.236024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "onNotificationForGetCameraImage(notification:)"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "sendSettingAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -362,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Face Extension/InterfaceController.swift"
-            timestampString = "575431253.187125"
+            timestampString = "575655623.2363909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -378,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/SettingsViewController.swift"
-            timestampString = "575090204.936112"
+            timestampString = "575655623.236441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "SettingsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -410,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Extensions/UIImage+Loading.swift"
-            timestampString = "570914133.4054919"
+            timestampString = "575649700.4275531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -458,12 +426,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/SettingsViewController.swift"
-            timestampString = "575090204.936278"
+            timestampString = "575655623.236722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "490"
-            endingLineNumber = "490"
-            landmarkName = "getBackgroundImage()"
+            startingLineNumber = "478"
+            endingLineNumber = "478"
+            landmarkName = "activityViewController(_:itemForActivityType:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -474,12 +442,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/SettingsViewController.swift"
-            timestampString = "575090204.9363199"
+            timestampString = "575655623.236945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
-            landmarkName = "getBackgroundImage()"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
+            landmarkName = "activityViewController(_:itemForActivityType:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
