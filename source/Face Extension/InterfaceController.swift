@@ -117,6 +117,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         
         //handle json settings
         if type == "settingsFile" {
+            //always try to delete to allow for replace in place
+            //TODO: check for file and same size?
             do {
                 try fileManager.removeItem(at: UserClockSetting.ArchiveURL)
                 //print("Existing settings file deleted.")
@@ -136,7 +138,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
                     debugPrint("redrawing for settings reload")
                     self.redrawCurrent(transition: true, direction: .up)
                 }
-                
             }
                 
             catch let error as NSError {
