@@ -61,6 +61,7 @@
 		31090FDD223421AA00D6CAA7 /* PongGameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31090FDC223421AA00D6CAA7 /* PongGameNode.swift */; };
 		31090FDE223421AA00D6CAA7 /* PongGameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31090FDC223421AA00D6CAA7 /* PongGameNode.swift */; };
 		31090FE32234B71300D6CAA7 /* FaceBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */; };
+		31092073224FA2D10032D3AB /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31092072224FA2D10032D3AB /* WatchSessionManager.swift */; };
 		3109D1DD21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */; };
 		3109D1DF21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */; };
 		3109D1E121A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */; };
@@ -386,6 +387,7 @@
 		31090FBA2233277C00D6CAA7 /* KINGTHINGS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = KINGTHINGS.TTF; sourceTree = "<group>"; };
 		31090FBB2233277C00D6CAA7 /* NIXIEONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = NIXIEONE.TTF; sourceTree = "<group>"; };
 		31090FDC223421AA00D6CAA7 /* PongGameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongGameNode.swift; sourceTree = "<group>"; };
+		31092072224FA2D10032D3AB /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsMainColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsSecondaryColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsThirdColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 			isa = PBXGroup;
 			children = (
 				318808D0217815E600585AB1 /* AppDelegate.swift */,
+				31092072224FA2D10032D3AB /* WatchSessionManager.swift */,
 				31F4F1D8219D08890050177A /* FaceChooserViewController.swift */,
 				31EF99A021A2046100BB54E7 /* ChooserView */,
 				318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */,
@@ -1080,6 +1083,7 @@
 				310B1BB02245A25B00EA1827 /* FaceForegroundNode.swift in Sources */,
 				31B5E8CF218BD5A900DE6429 /* ClockRingSetting.swift in Sources */,
 				31B5E8D5218BD81800DE6429 /* ClockSetting.swift in Sources */,
+				31092073224FA2D10032D3AB /* WatchSessionManager.swift in Sources */,
 				31BC68EC2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift in Sources */,
 				31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */,
 				310BA1CA21AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift in Sources */,

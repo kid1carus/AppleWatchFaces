@@ -13,9 +13,35 @@ enum FaceListReloadType: String {
     case none, onlyvisible, full
 }
 
-class FaceChooserViewController: UIViewController, WCSessionDelegate {
+class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     
-    var session: WCSession?
+    //WatchSessionManagerDelegate implementation
+    func sessionActivationDidCompleteError(errorMessage: String) {
+        showError(errorMessage: errorMessage)
+    }
+    
+    func sessionActivationDidCompleteSuccess() {
+        showMessage( message: "Watch session active")
+    }
+    
+    func sessionDidBecomeInactive() {
+        showError(errorMessage: "Watch session became inactive")
+    }
+    
+    func sessionDidDeactivate() {
+        showError(errorMessage: "Watch session did deactivate")
+    }
+    
+    func fileTransferError(errorMessage: String) {
+        self.showError(errorMessage: errorMessage)
+    }
+    
+    func fileTransferSuccess() {
+        self.showMessage(message: "All settings sent")
+    }
+    
+    
+    //var session: WCSession?
     @IBOutlet var sendToWatchButton: UIButton!
     @IBOutlet var themeThumbsButton: UIButton!
     @IBOutlet var filetransferProgress: UIProgressView!
@@ -28,7 +54,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     
     @IBAction func sendAllSettingsAction(sender: UIButton) {
         //debugPrint("sendAllSettingsAction tapped")
-        if let validSession = session {
+        if let validSession = WatchSessionManager.sharedManager.validSession {
             self.showMessage(message: "Sending ...")
             let fileManager = FileManager.default
             if fileManager.fileExists(atPath: UserClockSetting.ArchiveURL.path) {
@@ -44,7 +70,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     }
     
     func sendAllBackgroundImages() {
-        guard let validSession = session else { return }
+        guard let validSession = WatchSessionManager.sharedManager.validSession else { return }
         
         var imagesArray:[String] = []
         for clockSetting in UserClockSetting.sharedClockSettings {
@@ -77,7 +103,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     }
     
     func showfileTransferProgress() {
-        guard let validSession = session, totalTransfers>0 else {
+        guard let validSession = WatchSessionManager.sharedManager.validSession, totalTransfers>0 else {
             filetransferProgress.isHidden = true
             sendToWatchButton.isEnabled = true
             self.showError(errorMessage: "Lost watch session")
@@ -106,8 +132,6 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
             self.showfileTransferProgress()
         })
     }
-    
-
     
     // array of outstanding transfers
     //validSession.outstandingFileTransfers
@@ -158,28 +182,28 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         self.present(alert, animated: true)
     }
     
-    func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
-        if let error = error {
-            self.showError(errorMessage: error.localizedDescription)
-        } else {
-            self.showMessage(message: "All settings sent")
-        }
-    }
+//    func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
+//        if let error = error {
+//            self.showError(errorMessage: error.localizedDescription)
+//        } else {
+//            self.showMessage(message: "All settings sent")
+//        }
+//    }
     
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        //debugPrint("session activationDidCompleteWith")
-        showMessage( message: "Watch session active")
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        //debugPrint("session sessionDidBecomeInactive")
-        showError(errorMessage: "Watch session became inactive")
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        //debugPrint("session sessionDidDeactivate")
-        showError(errorMessage: "Watch session deactivated")
-    }
+//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+//        //debugPrint("session activationDidCompleteWith")
+//        showMessage( message: "Watch session active")
+//    }
+//
+//    func sessionDidBecomeInactive(_ session: WCSession) {
+//        //debugPrint("session sessionDidBecomeInactive")
+//        showError(errorMessage: "Watch session became inactive")
+//    }
+//
+//    func sessionDidDeactivate(_ session: WCSession) {
+//        //debugPrint("session sessionDidDeactivate")
+//        showError(errorMessage: "Watch session deactivated")
+//    }
     
     func showError( errorMessage: String) {
         DispatchQueue.main.async {
@@ -219,11 +243,9 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
             return
         }
         
-        if WCSession.isSupported() {
-            session = WCSession.default
-            session?.delegate = self
-            session?.activate()
-        }
+        // Set up and activate your session early here!
+        WatchSessionManager.sharedManager.startSession()
+        WatchSessionManager.sharedManager.delegate = self
         
         if faceListReloadType == .full {
             if let faceChooserTableVC  = faceChooserTableViewController  {
