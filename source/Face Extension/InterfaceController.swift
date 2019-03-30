@@ -88,30 +88,31 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         //handle meterial image sync
         if type == "clockFaceMaterialImage" || type == "clockFaceMaterialSync" {
             guard let filename = metatdata["filename"] as? String else { return }
+            
+            //always try to delete to allow for replace in place
+            //TODO: check for file and same size?
             do {
                 try fileManager.removeItem(at: UIImage.getImageURL(imageName: filename))
-                print("Existing image file deleted.")
-                
-                do {
-                    let imageData = try Data(contentsOf: file.fileURL)
-                    if let newImage = UIImage.init(data: imageData) {
-                        if newImage.save(imageName: filename) {
-                            //only needed for one off test load, not sync
-                            if type == "clockFaceMaterialImage" {
-                                //reload existing watch face
-                                redrawCurrent(transition: false, direction: .left)
-                            }
-                        }
-                    }
-                } catch let error as NSError {
-                    print("Cant copy fle -- Something went wrong: \(error)")
-                }
-                
-                
+                //print("Existing image file deleted.")
             } catch {
-                print("Failed to delete existing file:\n\((error as NSError).description)")
+                //print("Failed to delete existing file:\n\((error as NSError).description)")
             }
             
+            do {
+                let imageData = try Data(contentsOf: file.fileURL)
+                if let newImage = UIImage.init(data: imageData) {
+                    if newImage.save(imageName: filename) {
+                        //only needed for one off test load, not sync
+                        if type == "clockFaceMaterialImage" {
+                            //reload existing watch face
+                            debugPrint("redrawing for material image")
+                            redrawCurrent(transition: false, direction: .up)
+                        }
+                    }
+                }
+            } catch let error as NSError {
+                print("Cant copy fle -- Something went wrong: \(error)")
+            }
         }
         
         //handle json settings
@@ -129,7 +130,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
                         UserClockSetting.loadFromFile()
                         self.currentClockIndex = 0
                         self.currentClockSetting = UserClockSetting.sharedClockSettings[self.currentClockIndex]
-                        self.redrawCurrent(transition: false, direction: .left)
+                        debugPrint("redrawing for settings reload")
+                        self.redrawCurrent(transition: true, direction: .up)
                     }
                     
                 }
@@ -155,9 +157,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             if jsonObj != JSON.null {
                 let newClockSetting = ClockSetting.init(jsonObj: jsonObj)
                 currentClockSetting = newClockSetting
-                if let skWatchScene = self.skInterface.scene as? SKWatchScene {
-                    skWatchScene.redraw(clockSetting: currentClockSetting)
-                }
+                self.redrawCurrent(transition: true, direction: .down)
                 replyHandler("success".data(using: .utf8) ?? Data.init())
             }
         } catch {
