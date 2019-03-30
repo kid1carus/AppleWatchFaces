@@ -119,32 +119,29 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         if type == "settingsFile" {
             do {
                 try fileManager.removeItem(at: UserClockSetting.ArchiveURL)
-                print("Existing settings file deleted.")
-                
-                do {
-                    try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
-                    
-                    //give this some time to avoid concurrentcy crashes
-                    delay(0.25) {
-                        //reload userClockSettings
-                        UserClockSetting.loadFromFile()
-                        self.currentClockIndex = 0
-                        self.currentClockSetting = UserClockSetting.sharedClockSettings[self.currentClockIndex]
-                        debugPrint("redrawing for settings reload")
-                        self.redrawCurrent(transition: true, direction: .up)
-                    }
-                    
-                }
-                
-                catch let error as NSError {
-                    print("Cant copy new settings file: \(error)")
-                }
+                //print("Existing settings file deleted.")
             } catch {
-                print("Failed to delete existing file:\n\((error as NSError).description)")
+                //print("Failed to delete existing file:\n\((error as NSError).description)")
             }
             
-            
-            
+            do {
+                try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
+                
+                //give this some time to avoid concurrentcy crashes
+                delay(0.25) {
+                    //reload userClockSettings
+                    UserClockSetting.loadFromFile()
+                    self.currentClockIndex = 0
+                    self.currentClockSetting = UserClockSetting.sharedClockSettings[self.currentClockIndex]
+                    debugPrint("redrawing for settings reload")
+                    self.redrawCurrent(transition: true, direction: .up)
+                }
+                
+            }
+                
+            catch let error as NSError {
+                print("Cant copy new settings file: \(error)")
+            }
             
         }
 
