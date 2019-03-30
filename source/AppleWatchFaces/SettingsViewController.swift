@@ -10,14 +10,13 @@ import UIKit
 import SpriteKit
 import WatchConnectivity
 
-class SettingsViewController: UIViewController, WCSessionDelegate {
+class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
 
     @IBOutlet var undoButton: UIBarButtonItem!
     @IBOutlet var redoButton: UIBarButtonItem!
     
     @IBOutlet var groupSegmentControl: UISegmentedControl!
-    
-    var session: WCSession?
+
     weak var watchPreviewViewController:WatchPreviewViewController?
     weak var watchSettingsTableViewController:WatchSettingsTableViewController?
     
@@ -29,6 +28,31 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     static let settingsChangedNotificationName = Notification.Name("settingsChanged")
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
+        
+    //WatchSessionManagerDelegate implementation
+    func sessionActivationDidCompleteError(errorMessage: String) {
+        showError(errorMessage: errorMessage)
+    }
+    
+    func sessionActivationDidCompleteSuccess() {
+        showMessage( message: "Watch session active")
+    }
+    
+    func sessionDidBecomeInactive() {
+        showError(errorMessage: "Watch session became inactive")
+    }
+    
+    func sessionDidDeactivate() {
+        showError(errorMessage: "Watch session did deactivate")
+    }
+    
+    func fileTransferError(errorMessage: String) {
+        self.showError(errorMessage: errorMessage)
+    }
+    
+    func fileTransferSuccess() {
+        self.showMessage(message: "All settings sent")
+    }
     
     func showError( errorMessage: String) {
         DispatchQueue.main.async {
@@ -40,21 +64,6 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         DispatchQueue.main.async {
             self.showToast(message: message, color: UIColor.lightGray)
         }
-    }
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        //debugPrint("session activationDidCompleteWith")
-        showMessage( message: "Watch session active")
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        //debugPrint("session sessionDidBecomeInactive")
-        showError(errorMessage: "Watch session became inactive")
-    }
-
-    func sessionDidDeactivate(_ session: WCSession) {
-        //debugPrint("session sessionDidDeactivate")
-        showError(errorMessage: "Watch session deactivated")
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -90,7 +99,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     @IBAction func sendSettingAction() {
         //debugPrint("sendSetting tapped")
-        if let validSession = session, let jsonData = SettingsViewController.currentClockSetting.toJSONData() {
+        if let validSession = WatchSessionManager.sharedManager.validSession, let jsonData = SettingsViewController.currentClockSetting.toJSONData() {
             
             validSession.sendMessageData(jsonData, replyHandler: { reply in
                 //debugPrint("reply")
@@ -135,8 +144,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
                 SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
                 
                 NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
-                NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-                                                userInfo:["settingType":"clockFaceMaterialName"])
+                NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil, userInfo:["settingType":"clockFaceMaterialName"])
             }
     }
     
@@ -324,14 +332,6 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         //force clean up memory
         if let scene = watchPreviewViewController?.skView.scene as? SKWatchScene {
             scene.cleanup()
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        if WCSession.isSupported() {
-            session = WCSession.default
-            session?.delegate = self
-            session?.activate()
         }
     }
     
