@@ -90,46 +90,60 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             guard let filename = metatdata["filename"] as? String else { return }
             do {
                 try fileManager.removeItem(at: UIImage.getImageURL(imageName: filename))
-                print("Existing file deleted.")
+                print("Existing image file deleted.")
+                
+                do {
+                    let imageData = try Data(contentsOf: file.fileURL)
+                    if let newImage = UIImage.init(data: imageData) {
+                        if newImage.save(imageName: filename) {
+                            //only needed for one off test load, not sync
+                            if type == "clockFaceMaterialImage" {
+                                //reload existing watch face
+                                redrawCurrent(transition: false, direction: .left)
+                            }
+                        }
+                    }
+                } catch let error as NSError {
+                    print("Cant copy fle -- Something went wrong: \(error)")
+                }
+                
+                
             } catch {
                 print("Failed to delete existing file:\n\((error as NSError).description)")
             }
-            do {
-                let imageData = try Data(contentsOf: file.fileURL)
-                if let newImage = UIImage.init(data: imageData) {
-                    _ = newImage.save(imageName: filename)
-                }
-            } catch let error as NSError {
-                print("Cant copy fle -- Something went wrong: \(error)")
-            }
             
-            //only needed for one off test load, not sync
-            if type == "clockFaceMaterialImage" {
-                //reload existing watch face
-                redrawCurrent(transition: false, direction: .left)
-            }
         }
         
         //handle json settings
         if type == "settingsFile" {
             do {
                 try fileManager.removeItem(at: UserClockSetting.ArchiveURL)
-                print("Existing file deleted.")
+                print("Existing settings file deleted.")
+                
+                do {
+                    try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
+                    
+                    //give this some time to avoid concurrentcy crashes
+                    delay(0.25) {
+                        //reload userClockSettings
+                        UserClockSetting.loadFromFile()
+                        self.currentClockIndex = 0
+                        self.currentClockSetting = UserClockSetting.sharedClockSettings[self.currentClockIndex]
+                        self.redrawCurrent(transition: false, direction: .left)
+                    }
+                    
+                }
+                
+                catch let error as NSError {
+                    print("Cant copy new settings file: \(error)")
+                }
             } catch {
                 print("Failed to delete existing file:\n\((error as NSError).description)")
             }
-            do {
-                try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
-            }
-            catch let error as NSError {
-                print("Ooops! Something went wrong: \(error)")
-            }
             
-            //reload userClockSettings
-            UserClockSetting.loadFromFile()
-            currentClockIndex = 0
-            currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
-            redrawCurrent(transition: false, direction: .left)
+            
+            
+            
         }
 
     }
