@@ -99,15 +99,21 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @IBAction func sendSettingAction() {
         //debugPrint("sendSetting tapped")
-        if let validSession = WatchSessionManager.sharedManager.validSession, let jsonData = SettingsViewController.currentClockSetting.toJSONData() {
+        if let validSession = WatchSessionManager.sharedManager.validSession {
             
-            validSession.sendMessageData(jsonData, replyHandler: { reply in
-                //debugPrint("reply")
-                self.showMessage( message: "Watch replied success")
-            }, errorHandler: { error in
-                //debugPrint("error: \(error)")
-                self.showError(errorMessage: error.localizedDescription)
-            })
+            SettingsViewController.createTempTextFile()
+            validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentClockSetting.filename() ])
+  
+            //old message way of doing it
+            
+//            let jsonData = SettingsViewController.currentClockSetting.toJSONData()
+//            validSession.sendMessageData(jsonData, replyHandler: { reply in
+//                //debugPrint("reply")
+//                self.showMessage( message: "Watch replied success")
+//            }, errorHandler: { error in
+//                //debugPrint("error: \(error)")
+//                self.showError(errorMessage: error.localizedDescription)
+//            })
             
             //send background image
             let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
@@ -376,6 +382,19 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGetCameraImage(notification:)), name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil)
     }
     
+    static func attachmentURL()->URL {
+        let filename = SettingsViewController.currentClockSetting.filename() + ".awf"
+        return UserClockSetting.DocumentsDirectory.appendingPathComponent(filename)
+    }
+    static func createTempTextFile() {
+        //TODO: move this to temporary file to be less cleanup later / trash on device
+        //JSON save to file
+        var serializedArray = [NSDictionary]()
+        serializedArray.append(SettingsViewController.currentClockSetting.serializedSettings())
+        //debugPrint("saving setting: ", clockSetting.title)
+        UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: attachmentURL())
+    }
+    
 }
 
 class TextProvider: NSObject, UIActivityItemSource {
@@ -410,18 +429,7 @@ class TextProvider: NSObject, UIActivityItemSource {
 
 class AttachmentProvider: NSObject, UIActivityItemSource {
     
-    func atachmentURL()->URL {
-        let filename = SettingsViewController.currentClockSetting.filename() + ".awf"
-        return UserClockSetting.DocumentsDirectory.appendingPathComponent(filename)
-    }
-    func createTempTextFile() {
-        //TODO: move this to temporary file to be less cleanup later / trash on device
-        //JSON save to file
-        var serializedArray = [NSDictionary]()
-        serializedArray.append(SettingsViewController.currentClockSetting.serializedSettings())
-        //debugPrint("saving setting: ", clockSetting.title)
-        UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: atachmentURL())
-    }
+    
     
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return NSObject()
@@ -433,8 +441,8 @@ class AttachmentProvider: NSObject, UIActivityItemSource {
             return nil
         }
         
-        createTempTextFile()
-        return atachmentURL()
+        SettingsViewController.createTempTextFile()
+        return SettingsViewController.attachmentURL()
 
     }
 }
