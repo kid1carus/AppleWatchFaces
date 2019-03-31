@@ -105,8 +105,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
                         //only needed for one off test load, not sync
                         if type == "clockFaceMaterialImage" {
                             //reload existing watch face
-                            debugPrint("redrawing for material image")
-                            redrawCurrent(transition: false, direction: .up)
+                            //debugPrint("redrawing for material image")
+                            //redrawCurrent(transition: false, direction: .up)
                         }
                     }
                 }
@@ -120,7 +120,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             //try to load a clocksetting from single file sent
             
             var clockSettingsSerializedArray = [JSON]()
-            
             clockSettingsSerializedArray = UserClockSetting.loadSettingArrayFromURL(url: file.fileURL)
 
             //only load the first one and exit!
@@ -133,6 +132,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         
         //handle json settings
         if type == "settingsFile" {
+            
+//            var imageCount = 0
+//            if let imageCountString = metatdata["imageCount"] as? String {
+//                imageCount = Int(imageCountString) ?? 0
+//            }
+            
             //always try to delete to allow for replace in place
             //TODO: check for file and same size?
             do {
@@ -144,16 +149,18 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             
             do {
                 try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
-                
+            
                 //give this some time to avoid concurrentcy crashes
-                delay(0.25) {
+                //TODO: try to remove this.. test with real watch and simulator
+               delay(0.25) {
                     //reload userClockSettings
                     UserClockSetting.loadFromFile()
                     self.currentClockIndex = 0
                     self.currentClockSetting = UserClockSetting.sharedClockSettings[self.currentClockIndex]
+                
                     debugPrint("redrawing for settings reload")
                     self.redrawCurrent(transition: true, direction: .up)
-                }
+               }
             }
                 
             catch let error as NSError {

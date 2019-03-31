@@ -104,7 +104,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             
             //toggle it off to prevent spamming
             sendSettingButton.isEnabled = false
-            delay(0.5) {
+            delay(1.0) {
                 self.sendSettingButton.isEnabled = true
             }
             

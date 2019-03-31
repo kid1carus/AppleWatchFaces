@@ -56,31 +56,40 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         //debugPrint("sendAllSettingsAction tapped")
         if let validSession = WatchSessionManager.sharedManager.validSession {
             self.showMessage(message: "Sending ...")
+            
+            //send any images to be copied first
+            var imagesArray:[String] = []
+            for clockSetting in UserClockSetting.sharedClockSettings {
+                let backgroundImage = clockSetting.clockFaceMaterialName
+                guard backgroundImage.count >= AppUISettings.backgroundFileName.count else { continue }
+                let lastPart = backgroundImage.suffix(AppUISettings.backgroundFileName.count)
+                if lastPart == AppUISettings.backgroundFileName {
+                    imagesArray.append(backgroundImage)
+                }
+            }
+            
+            sendAllBackgroundImages(imagesArray: imagesArray, validSession: validSession)
+            
+            //send settings file
             let fileManager = FileManager.default
             if fileManager.fileExists(atPath: UserClockSetting.ArchiveURL.path) {
-                validSession.transferFile(UserClockSetting.ArchiveURL, metadata: ["type":"settingsFile"])
+                validSession.transferFile(UserClockSetting.ArchiveURL, metadata: ["type":"settingsFile", "imageCount":String(imagesArray.count)])
             } else {
                 self.showError(errorMessage: "No changes to send: Watch has same defaults")
             }
+            
+            //show progress bar
+            totalTransfers = validSession.outstandingFileTransfers.count
+            filetransferProgress.isHidden = false
+            showfileTransferProgress()
         } else {
             self.showError(errorMessage: "No valid watch session")
         }
         
-        sendAllBackgroundImages()
+        
     }
     
-    func sendAllBackgroundImages() {
-        guard let validSession = WatchSessionManager.sharedManager.validSession else { return }
-        
-        var imagesArray:[String] = []
-        for clockSetting in UserClockSetting.sharedClockSettings {
-            let backgroundImage = clockSetting.clockFaceMaterialName
-            guard backgroundImage.count >= AppUISettings.backgroundFileName.count else { continue }
-            let lastPart = backgroundImage.suffix(AppUISettings.backgroundFileName.count)
-            if lastPart == AppUISettings.backgroundFileName {
-                imagesArray.append(backgroundImage)
-            }
-        }
+    func sendAllBackgroundImages(imagesArray:[String], validSession: WCSession) {
         
         if imagesArray.count>0 {
             //show message to user
@@ -90,16 +99,13 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
             for filename in imagesArray {
                 let backgroundImageURL = UIImage.getImageURL(imageName: filename)
                 if fileManager.fileExists(atPath: backgroundImageURL.path) {
-                    validSession.transferFile(backgroundImageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
+                    validSession.transferFile(backgroundImageURL, metadata: ["type":"clockFaceMaterialSync", "filename":filename])
                 } else {
                     self.showError(errorMessage: "No changes to send")
                 }
             }
-            //show progress bar
-            totalTransfers = validSession.outstandingFileTransfers.count
-            filetransferProgress.isHidden = false
-            showfileTransferProgress()
         }
+        
     }
     
     func showfileTransferProgress() {
