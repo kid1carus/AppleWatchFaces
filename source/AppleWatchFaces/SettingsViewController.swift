@@ -108,20 +108,6 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
                 self.sendSettingButton.isEnabled = true
             }
             
-            SettingsViewController.createTempTextFile()
-            validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentClockSetting.filename() ])
-  
-            //old message way of doing it
-            
-//            let jsonData = SettingsViewController.currentClockSetting.toJSONData()
-//            validSession.sendMessageData(jsonData, replyHandler: { reply in
-//                //debugPrint("reply")
-//                self.showMessage( message: "Watch replied success")
-//            }, errorHandler: { error in
-//                //debugPrint("error: \(error)")
-//                self.showError(errorMessage: error.localizedDescription)
-//            })
-            
             //send background image
             let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
             let imageURL = UIImage.getImageURL(imageName: filename)
@@ -131,6 +117,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
                 self.showMessage( message: "Sending background image")
                 validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
             }
+            
+            SettingsViewController.createTempTextFile()
+            validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentClockSetting.filename() ])
             
         } else {
             self.showError(errorMessage: "No valid watch session")
