@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
 
     @IBOutlet var undoButton: UIBarButtonItem!
     @IBOutlet var redoButton: UIBarButtonItem!
+    @IBOutlet var sendSettingButton: UIButton!
     
     @IBOutlet var groupSegmentControl: UISegmentedControl!
 
@@ -100,6 +101,12 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBAction func sendSettingAction() {
         //debugPrint("sendSetting tapped")
         if let validSession = WatchSessionManager.sharedManager.validSession {
+            
+            //toggle it off to prevent spamming
+            sendSettingButton.isEnabled = false
+            delay(0.5) {
+                self.sendSettingButton.isEnabled = true
+            }
             
             SettingsViewController.createTempTextFile()
             validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentClockSetting.filename() ])
