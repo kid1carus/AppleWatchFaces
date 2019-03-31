@@ -135,7 +135,7 @@ If you need to re-install, or just want to manually edit the settings file. Use 
 ### Watch App
 
 1. When AppleWatchFaces is open on the watch, swipe left and right to cycle through the different designs in the iOS app.  
-2. Use the digital crown to test the face with diffirent times, AKA "time travel".  Tap on the watch to go back to normal time.
+2. Use the digital crown to test the face with different times, AKA "time travel".  Tap on the watch to go back to normal time.
 
 3. Set your watch to wake on last activity:
 
