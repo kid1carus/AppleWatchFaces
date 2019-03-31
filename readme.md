@@ -110,18 +110,19 @@ If you are still having issues, please check out a [sideloading tutorial](http:/
 
 1. The main view is for previewing all the faces and deciding if you want to edit one of the them.  You can create a new one with the *create* button or tap *edit* to re-order or delete.  Tapping *send all to watch* will send all current designs to the watch and go to the first one.
 1. On the editor view, you can modify settings for that watch face, like the colors, hands, or indicators ( the parts that make up the face like the shapes and numbers that the hands point to ).  
-1. On the editor view, swipe left and right to go to other faces in the list and swipe up to preview this design on the watch: this the same as the tapping the watch button in the toolbar
+1. On the editor view, dragging left and right to see the face in different times. go to Swipe up to preview this design on the watch: this the same as the tapping the watch button in the toolbar.
+1. Tap the + and - buttons to swith to other faces in the main face list.
 1. On the indicators view you can edit the shapes and numbers that make up the face backgrounds.  The designs are rendered on the watch as shapes like circle or squares and text numbers that are *rings* from the outside to the inside of the watch face.  By editing the list of shapes and text items and *empty space* items, you can change the design of the items in the face and see in the preview watch on the top.
 
 ![APPLEWATCHFACES INDICATORS](docs/AppleWatchFaceIndicators.gif)
 
-5. You can also just choose from pre-defined *color themes* or *indicator themes* which will override current color or parts with known good settings
+6. You can also just choose from pre-defined *color themes* or *indicator themes* which will override current color or parts with known good settings
 
 ![APPLEWATCHFACES THEMES](docs/AppleWatchFacesThemes.gif)
 
-6. Undo / Redo if you make a mistake.  
-7. Tapping Save in the upper right will lock in these settings in the main list and regenerate the thumbnail.  
-8. To abort all current changes tap back without tapping save.
+7. Undo / Redo if you make a mistake.  
+8. Tapping Save in the upper right will lock in these settings in the main list and regenerate the thumbnail.  
+9. To abort all current changes tap back without tapping save.
 
 ### Sharing / Importing
 
@@ -133,20 +134,21 @@ If you need to re-install, or just want to manually edit the settings file. Use 
 
 ### Watch App
 
-1. When AppleWatchFaces is open on the watch, use the digital crown to cycle through the different designs in the iOS app.
+1. When AppleWatchFaces is open on the watch, swipe left and right to cycle through the different designs in the iOS app.  
+2. Use the digital crown to test the face with diffirent times, AKA "time travel".  Tap on the watch to go back to normal time.
 
-2. Set your watch to wake on last activity
+3. Set your watch to wake on last activity:
 
-1. Open the Settings app  on your Apple Watch.
-2. Go to General > Wake Screen, and make sure Wake Screen on Wrist Raise is turned on.
-3. Scroll down and choose when you want your Apple Watch to wake to the last app you used: Always, Within 1 Hour of Last Use, Within 2 Minutes of Last Use, or While in Session (for apps like Workout, Remote, or Maps).
-4. Choose While in Session if you want your Apple Watch to always wake to the watch face (except when you’re still using an app).
-5. You can also do this using the Apple Watch app on your iPhone: Tap My Watch, then go to General > Wake Screen.
+    1. Open the Settings app  on your Apple Watch.
+    2. Go to General > Wake Screen, and make sure Wake Screen on Wrist Raise is turned on.
+    3. Scroll down and choose when you want your Apple Watch to wake to the last app you used: Always, Within 1 Hour of Last Use, Within 2 Minutes of Last Use, or While in Session (for apps like Workout, Remote, or Maps).
+    4. Choose While in Session if you want your Apple Watch to always wake to the watch face (except when you’re still using an app).
+    5. You can also do this using the Apple Watch app on your iPhone: Tap My Watch, then go to General > Wake Screen.
 
-3. Keep the Apple Watch display on longer
+4. Keep the Apple Watch display on longer
 
-1. Open the Settings app  on your Apple Watch.
-2. Go to General > Wake Screen, then tap Wake for 70 Seconds.
+    1. Open the Settings app  on your Apple Watch.
+    2. Go to General > Wake Screen, then tap Wake for 70 Seconds.
 
 
 ## Authors
