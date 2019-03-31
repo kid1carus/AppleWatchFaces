@@ -60,7 +60,7 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
             if fileManager.fileExists(atPath: UserClockSetting.ArchiveURL.path) {
                 validSession.transferFile(UserClockSetting.ArchiveURL, metadata: ["type":"settingsFile"])
             } else {
-                self.showError(errorMessage: "No changes to send")
+                self.showError(errorMessage: "No changes to send: Watch has same defaults")
             }
         } else {
             self.showError(errorMessage: "No valid watch session")
