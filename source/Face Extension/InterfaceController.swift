@@ -115,6 +115,22 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             }
         }
         
+        //handle temporary settings
+        if type == "currentClockSettingFile" {
+            //try to load a clocksetting from single file sent
+            
+            var clockSettingsSerializedArray = [JSON]()
+            
+            clockSettingsSerializedArray = UserClockSetting.loadSettingArrayFromURL(url: file.fileURL)
+
+            //only load the first one and exit!
+            if let firstSerialized = clockSettingsSerializedArray.first {
+                print("loaded title from sent file", firstSerialized["title"])
+                currentClockSetting = ClockSetting.init(jsonObj: firstSerialized)
+                self.redrawCurrent(transition: true, direction: .down)
+            }
+        }
+        
         //handle json settings
         if type == "settingsFile" {
             //always try to delete to allow for replace in place

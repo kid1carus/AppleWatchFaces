@@ -99,6 +99,25 @@ class UserClockSetting: NSObject {
         return clockSettingsSerializedArray
     }
     
+    static func loadSettingArrayFromURL(url: URL) -> [JSON] {
+        var clockSettingsSerializedArray = [JSON]()
+        do {
+            print("loading JSON file path = \(url.absoluteString)")
+            let jsonData = try Data(contentsOf: url, options: Data.ReadingOptions.mappedIfSafe)
+            let jsonObj = try! JSON(data: jsonData)
+            if jsonObj != JSON.null {
+                //print("LOADED !!! jsonData:\(jsonObj)")
+                clockSettingsSerializedArray = jsonObj["clockSettings"].array!
+            } else {
+                print("could not get json from file, make sure that file contains valid json.")
+            }
+        } catch let error as NSError {
+            print("error", error.localizedDescription)
+        }
+        
+        return clockSettingsSerializedArray
+    }
+    
     static func sharedSettingHasThisClockSetting(uniqueID : String) -> Bool {
         for clockSetting in sharedClockSettings {
             if clockSetting.uniqueID == uniqueID { return true }
