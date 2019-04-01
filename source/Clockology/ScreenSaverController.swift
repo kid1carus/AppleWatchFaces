@@ -9,13 +9,10 @@
 import UIKit
 import SpriteKit
 
-class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
+class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDelegate {
 
     var currentClockIndex = 0
-    var timeSinceLastBrightNessUpdate:UInt64 = DispatchTime.now().uptimeNanoseconds
-    private var usersBrightness = UIScreen.main.brightness // save user brightness when we enter to restore on exit
-    private var clockBrightness = UIScreen.main.brightness // save temp brightness when lighting up for settings
-    
+
     weak var previewViewController:PreviewViewController?
     @IBOutlet var panGesture:UIPanGestureRecognizer?
     @IBOutlet var swipeGestureLeft:UISwipeGestureRecognizer?
@@ -105,6 +102,7 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
     }
+
     
     //allow for both gestures at the same time
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
@@ -114,18 +112,6 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
             return true
         }
         return false
-    }
-    
-    func setBrightness( bright:CGFloat) {
-        var level:CGFloat = bright
-        if bright>1.0 {
-            level = 1.0
-        }
-        if bright<0 {
-            level = 0.0
-        }
-        //debugPrint("bright:" + level.description)
-        UIScreen.main.brightness = level
     }
     
     //get brightness offset from PAN
@@ -154,40 +140,5 @@ class ScreenSaverController: UIViewController, UIGestureRecognizerDelegate {
             setBrightness(bright: desiredBrightness)
         }
     }
-    
-    func storeBrightness() {
-        debugPrint("storeBrightness")
-        usersBrightness = UIScreen.main.brightness
-    }
-    
-    func restoreBrightness(level: CGFloat) {
-        debugPrint("REstoreBrightness")
-        UIScreen.main.animateBrightness(to: level)
-        //UIScreen.main.brightness = usersBrightness
-    }
-    
-    @objc private func applicationWillEnterForeground() {
-        storeBrightness()
-    }
-    
-    @objc private func applicationWillResignActive() {
-        restoreBrightness(level: usersBrightness)
-    }
 
-}
-
-extension UIScreen {
-    
-    public func animateBrightness(to value: CGFloat) {
-        let step: CGFloat = 0.1
-
-        guard abs(UIScreen.main.brightness - value) > step else { return }
-        
-        let delta = UIScreen.main.brightness > value ? -step : step
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            UIScreen.main.brightness += delta
-            self.animateBrightness(to: value)
-        }
-    }
 }

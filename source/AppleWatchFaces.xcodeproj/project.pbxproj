@@ -62,6 +62,8 @@
 		31090FDE223421AA00D6CAA7 /* PongGameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31090FDC223421AA00D6CAA7 /* PongGameNode.swift */; };
 		31090FE32234B71300D6CAA7 /* FaceBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */; };
 		31092073224FA2D10032D3AB /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31092072224FA2D10032D3AB /* WatchSessionManager.swift */; };
+		310920752251A8770032D3AB /* UIBrightnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310920742251A8770032D3AB /* UIBrightnessViewController.swift */; };
+		310920772251A92E0032D3AB /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31092072224FA2D10032D3AB /* WatchSessionManager.swift */; };
 		3109D1DD21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */; };
 		3109D1DF21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */; };
 		3109D1E121A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */; };
@@ -388,6 +390,7 @@
 		31090FBB2233277C00D6CAA7 /* NIXIEONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = NIXIEONE.TTF; sourceTree = "<group>"; };
 		31090FDC223421AA00D6CAA7 /* PongGameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongGameNode.swift; sourceTree = "<group>"; };
 		31092072224FA2D10032D3AB /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		310920742251A8770032D3AB /* UIBrightnessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBrightnessViewController.swift; sourceTree = "<group>"; };
 		3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsMainColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsSecondaryColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsThirdColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -717,6 +720,7 @@
 			children = (
 				31C86B682237604800EF4186 /* README.md */,
 				31C86AE72237493600EF4186 /* AppDelegate.swift */,
+				310920742251A8770032D3AB /* UIBrightnessViewController.swift */,
 				31C86AE92237493600EF4186 /* ScreenSaverController.swift */,
 				31C86AF722374B0300EF4186 /* PreviewViewController.swift */,
 				31C86AEB2237493600EF4186 /* ClockologyMain.storyboard */,
@@ -1261,6 +1265,7 @@
 				31C86B3E22374DE500EF4186 /* FaceShapeSettingSettingsTableViewCell.swift in Sources */,
 				31C86B3422374DE500EF4186 /* ColorSettingCollectionViewCell.swift in Sources */,
 				31C86B0522374CEF00EF4186 /* UserClockSetting.swift in Sources */,
+				310920752251A8770032D3AB /* UIBrightnessViewController.swift in Sources */,
 				31C86B0222374CEA00EF4186 /* HourHandNode.swift in Sources */,
 				31C86B5822374DEE00EF4186 /* DecoratorTableViewCell.swift in Sources */,
 				31C86B4A22374DE500EF4186 /* MinuteHandAnimationSettingsTableViewCell.swift in Sources */,
@@ -1291,6 +1296,7 @@
 				31C86B1122374D0200EF4186 /* RoundedButton.swift in Sources */,
 				31C86B6322374E7200EF4186 /* FaceChooserCollectionViewCell.swift in Sources */,
 				31C86B3322374DE500EF4186 /* ColorSettingsTableViewCell.swift in Sources */,
+				310920772251A92E0032D3AB /* WatchSessionManager.swift in Sources */,
 				31C86B5922374DEE00EF4186 /* DecotatorTextTableViewCell.swift in Sources */,
 				31C86B4822374DE500EF4186 /* MinuteHandSettingCollectionViewCell.swift in Sources */,
 				31C86B6222374E7200EF4186 /* FaceChooserTableViewCell.swift in Sources */,
