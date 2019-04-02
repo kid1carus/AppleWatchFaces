@@ -75,7 +75,39 @@
                                                     <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="czJ-HA-L0t" kind="presentation" id="p9C-JC-6Vv"/>
+                                                    <action selector="callEditList" destination="BYZ-38-t0r" eventType="touchUpInside" id="B1n-HC-b40"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4v-5h-962">
+                                                <rect key="frame" x="160" y="470" width="95" height="50"/>
+                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.2985873288" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="XE1-ZI-MpH"/>
+                                                    <constraint firstAttribute="width" constant="75" id="qzI-gN-OTj"/>
+                                                </constraints>
+                                                <state key="normal" title="EditListSegue">
+                                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="callEditList" destination="BYZ-38-t0r" eventType="touchUpInside" id="MPD-In-R9K"/>
+                                                    <segue destination="czJ-HA-L0t" kind="presentation" identifier="callEditListID" id="dcS-vg-HBR"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6S-GL-0YN">
+                                                <rect key="frame" x="160" y="420" width="95" height="50"/>
+                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.2985873288" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="75" id="8TN-pE-bgS"/>
+                                                    <constraint firstAttribute="height" constant="50" id="vhE-Nd-WEg"/>
+                                                </constraints>
+                                                <state key="normal" title="RgenThumbs">
+                                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="callEditList" destination="BYZ-38-t0r" eventType="touchUpInside" id="apI-Bd-BT1"/>
+                                                    <segue destination="dFn-Gl-riU" kind="popoverPresentation" identifier="callMissingThumbsGeneratorID" popoverAnchorView="d6S-GL-0YN" id="NF6-Nc-iez">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -205,13 +237,13 @@
         <!--My Faces-->
         <scene sceneID="WqU-0b-OFr">
             <objects>
-                <tableViewController id="ikf-7L-Kpm" customClass="FaceChooserEditTableViewController" customModule="AppleWatchFaces" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ikf-7L-Kpm" customClass="FaceChooserEditTableViewController" customModule="Clockology" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ySX-eU-N6S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceChooserEditTableViewCellID" rowHeight="100" id="nJD-qm-eqB" customClass="FaceChooserEditTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceChooserEditTableViewCellID" rowHeight="100" id="nJD-qm-eqB" customClass="FaceChooserEditTableViewCell" customModule="Clockology" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nJD-qm-eqB" id="6zl-Bp-WGV">
@@ -287,6 +319,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gB-wD-spf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2608.6956521739135" y="-623.4375"/>
+        </scene>
+        <!--Generate Thumbnails View Controller-->
+        <scene sceneID="hEW-Oo-Q9y">
+            <objects>
+                <viewController id="dFn-Gl-riU" customClass="GenerateThumbnailsViewController" customModule="AppleWatchFaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p7x-gI-y90">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6l-ho-gaY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="C3k-wc-Kg8">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generating Thumbnails" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHP-pB-ma7">
+                                            <rect key="frame" x="8" y="50" width="398" height="23.5"/>
+                                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <skView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxA-pP-FKz">
+                                            <rect key="frame" x="126.5" y="81.5" width="161" height="200"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="D5L-WG-gfR"/>
+                                                <constraint firstAttribute="width" constant="161" id="sid-nv-m9o"/>
+                                            </constraints>
+                                        </skView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4lO-eg-qnW">
+                                            <rect key="frame" x="126.5" y="301" width="161" height="3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="3" id="BF0-Mh-77A"/>
+                                                <constraint firstAttribute="width" constant="161" id="hyW-fl-sog"/>
+                                            </constraints>
+                                            <color key="progressTintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </progressView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ZHP-pB-ma7" firstAttribute="leading" secondItem="C3k-wc-Kg8" secondAttribute="leadingMargin" id="6w9-aA-HZi"/>
+                                        <constraint firstItem="FxA-pP-FKz" firstAttribute="top" secondItem="ZHP-pB-ma7" secondAttribute="bottom" constant="8" id="COv-8N-TyZ"/>
+                                        <constraint firstItem="4lO-eg-qnW" firstAttribute="leading" secondItem="FxA-pP-FKz" secondAttribute="leading" id="EQ8-me-LHx"/>
+                                        <constraint firstItem="ZHP-pB-ma7" firstAttribute="top" secondItem="C3k-wc-Kg8" secondAttribute="top" constant="50" id="aXT-gv-V7g"/>
+                                        <constraint firstItem="FxA-pP-FKz" firstAttribute="centerX" secondItem="C3k-wc-Kg8" secondAttribute="centerX" id="bab-Ng-Kmh"/>
+                                        <constraint firstItem="4lO-eg-qnW" firstAttribute="top" secondItem="FxA-pP-FKz" secondAttribute="bottom" constant="19.5" id="mTq-WF-R1c"/>
+                                        <constraint firstItem="4lO-eg-qnW" firstAttribute="top" secondItem="C3k-wc-Kg8" secondAttribute="top" constant="301" id="tuz-E4-pwK"/>
+                                        <constraint firstItem="ZHP-pB-ma7" firstAttribute="trailing" secondItem="C3k-wc-Kg8" secondAttribute="trailingMargin" id="ubh-UH-TFw"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="b6l-ho-gaY" firstAttribute="trailing" secondItem="7Un-gi-2qL" secondAttribute="trailing" id="2x0-ML-DIp"/>
+                            <constraint firstItem="b6l-ho-gaY" firstAttribute="bottom" secondItem="7Un-gi-2qL" secondAttribute="bottom" id="34x-2m-iYL"/>
+                            <constraint firstItem="b6l-ho-gaY" firstAttribute="leading" secondItem="7Un-gi-2qL" secondAttribute="leading" id="O5l-fJ-rO3"/>
+                            <constraint firstItem="b6l-ho-gaY" firstAttribute="top" secondItem="p7x-gI-y90" secondAttribute="top" id="hWU-C1-mvT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Un-gi-2qL"/>
+                    </view>
+                    <connections>
+                        <outlet property="progressView" destination="4lO-eg-qnW" id="XVB-A4-sxR"/>
+                        <outlet property="skView" destination="FxA-pP-FKz" id="Pyy-ip-8Kf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x0C-DA-1JB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="-1294"/>
         </scene>
     </scenes>
 </document>

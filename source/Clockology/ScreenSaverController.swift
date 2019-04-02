@@ -9,9 +9,14 @@
 import UIKit
 import SpriteKit
 
+enum NavigationDestination: String {
+    case EditList, None
+}
+
 class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDelegate {
 
     var currentClockIndex = 0
+    var currentNavDesination: NavigationDestination = .None
 
     weak var previewViewController:PreviewViewController?
     @IBOutlet var panGesture:UIPanGestureRecognizer?
@@ -19,6 +24,16 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
     @IBOutlet var swipeGestureRight:UISwipeGestureRecognizer?
     
     @IBOutlet var buttonContainerView: UIView!
+    
+    @IBAction func callEditList() {
+        //generate thumbs and exit if needed
+        if shouldRegenerateThumbNailsAndExit() {
+            currentNavDesination = .EditList
+            return
+        }
+        
+        self.performSegue(withIdentifier: "callEditListID", sender: nil)
+    }
     
     @IBAction func showButtons() {
         if self.buttonContainerView.alpha < 1.0 {
@@ -57,6 +72,20 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
         redrawPreviewClock(transition: true, direction: .right)
     }
     
+    func shouldRegenerateThumbNailsAndExit() -> Bool {
+        //generate thumbs and exit if needed
+        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
+        if (missingThumbs.count > 0) {
+            //first run, reload everything
+//            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
+//                faceListReloadType = .full
+//            }
+            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
+            return true
+        }
+        return false
+    }
+    
     func redrawPreviewClock(transition: Bool, direction: SKTransitionDirection) {
         //tell preview to reload
         if previewViewController != nil {
@@ -67,6 +96,11 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
     
     override func viewWillAppear(_ animated: Bool) {
         storeBrightness()
+        
+        if currentNavDesination == .EditList {
+            currentNavDesination = .None
+            callEditList()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
