@@ -124,15 +124,20 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is PreviewViewController {
             let vc = segue.destination as? PreviewViewController
             previewViewController = vc
         }
-        if segue.destination is SettingsViewController {
+        
+        if let settingsViewController = segue.destination as? SettingsViewController {
+            //set current face
+            settingsViewController.currentClockIndex = currentClockIndex
+            //hide nav controller
             navigationController?.setNavigationBarHidden(false, animated: true)
         }
+        
+        
     }
     
     //hide the home indicator
