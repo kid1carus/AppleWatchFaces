@@ -14,7 +14,6 @@
 		31056B5F2218D2CE00D0E15C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
 		31056B602218D2CE00D0E15C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
 		31056B622218DC1700D0E15C /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31056B612218DC1700D0E15C /* ComplicationController.swift */; };
-		31061F302192657200EF511B /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31061F2F2192657200EF511B /* Colors.plist */; };
 		31061F322192716C00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		31061F332192730A00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		310725DF223D7083008030A2 /* PhysicsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310725DE223D7083008030A2 /* PhysicsNode.swift */; };
@@ -64,6 +63,10 @@
 		31092073224FA2D10032D3AB /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31092072224FA2D10032D3AB /* WatchSessionManager.swift */; };
 		310920752251A8770032D3AB /* UIBrightnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310920742251A8770032D3AB /* UIBrightnessViewController.swift */; };
 		310920772251A92E0032D3AB /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31092072224FA2D10032D3AB /* WatchSessionManager.swift */; };
+		31092134225433230032D3AB /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31092133225433220032D3AB /* Colors.plist */; };
+		31092135225433230032D3AB /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31092133225433220032D3AB /* Colors.plist */; };
+		31092138225433C30032D3AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31092137225433C30032D3AB /* Assets.xcassets */; };
+		31092139225433C30032D3AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31092137225433C30032D3AB /* Assets.xcassets */; };
 		3109D1DD21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */; };
 		3109D1DF21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */; };
 		3109D1E121A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */; };
@@ -362,7 +365,6 @@
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		31056B5E2218D2CE00D0E15C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		31056B612218DC1700D0E15C /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		31061F2F2192657200EF511B /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		31061F312192716C00EF511B /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
 		310725DE223D7083008030A2 /* PhysicsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsNode.swift; sourceTree = "<group>"; };
 		3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorRingsSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -391,6 +393,8 @@
 		31090FDC223421AA00D6CAA7 /* PongGameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongGameNode.swift; sourceTree = "<group>"; };
 		31092072224FA2D10032D3AB /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		310920742251A8770032D3AB /* UIBrightnessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBrightnessViewController.swift; sourceTree = "<group>"; };
+		31092133225433220032D3AB /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
+		31092137225433C30032D3AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsMainColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsSecondaryColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsThirdColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -591,9 +595,11 @@
 				318808F92178166B00585AB1 /* SKWatchScene.swift */,
 				314A010B219605AA009BCE3C /* Settings.json */,
 				314A010C219605AA009BCE3C /* Themes.json */,
+				31092133225433220032D3AB /* Colors.plist */,
 				31F4F1B72198ACB50050177A /* AppUISettings.swift */,
 				312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */,
 				31056B5E2218D2CE00D0E15C /* Media.xcassets */,
+				31092137225433C30032D3AB /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -662,7 +668,6 @@
 				318A92A921D3C2840060D89B /* Decorators.storyboard */,
 				318808D9217815E700585AB1 /* LaunchScreen.storyboard */,
 				318808D7217815E700585AB1 /* Assets.xcassets */,
-				31061F2F2192657200EF511B /* Colors.plist */,
 				318808DC217815E700585AB1 /* Info.plist */,
 			);
 			path = AppleWatchFaces;
@@ -970,7 +975,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				31090FBC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
-				31061F302192657200EF511B /* Colors.plist in Resources */,
 				31090FC62233277C00D6CAA7 /* DIGITAL-7-MONO.TTF in Resources */,
 				31090FD02233277C00D6CAA7 /* BLACKROSE.TTF in Resources */,
 				31090FCE2233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
@@ -990,11 +994,13 @@
 				314A010D219605AA009BCE3C /* Settings.json in Resources */,
 				31F56FA62185817E00455FC6 /* SKWatchScene.sks in Resources */,
 				318808DB217815E700585AB1 /* LaunchScreen.storyboard in Resources */,
+				31092134225433230032D3AB /* Colors.plist in Resources */,
 				318808D8217815E700585AB1 /* Assets.xcassets in Resources */,
 				31090FC22233277C00D6CAA7 /* IRONLOUNGE.TTF in Resources */,
 				3196401E22076439005CF169 /* readme.md in Resources */,
 				31090FD42233277C00D6CAA7 /* DINPRO-LIGHT.TTF in Resources */,
 				318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */,
+				31092138225433C30032D3AB /* Assets.xcassets in Resources */,
 				31090FC42233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */,
 				310044C621D3C5DF0019794A /* Settings.storyboard in Resources */,
 			);
@@ -1048,6 +1054,7 @@
 				31C86B1422374D0700EF4186 /* LCDPHONE.TTF in Resources */,
 				31C86B1922374D0700EF4186 /* RATIONALINT.TTF in Resources */,
 				31C86B1322374D0700EF4186 /* GERMANICA.TTF in Resources */,
+				31092139225433C30032D3AB /* Assets.xcassets in Resources */,
 				31C86B1722374D0700EF4186 /* DIGITAL-7-MONO.TTF in Resources */,
 				31C86AF22237493700EF4186 /* LaunchScreen.storyboard in Resources */,
 				31C86AEF2237493700EF4186 /* Assets.xcassets in Resources */,
@@ -1064,6 +1071,7 @@
 				31C86B2122374D0700EF4186 /* NIXIEONE.TTF in Resources */,
 				31C86B1E22374D0700EF4186 /* DINPRO-LIGHT.TTF in Resources */,
 				31C86B1B22374D0700EF4186 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
+				31092135225433230032D3AB /* Colors.plist in Resources */,
 				31C86B1222374D0700EF4186 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
 				31C86B1A22374D0700EF4186 /* ULTRACONDENSEDSARIF.TTF in Resources */,
 			);

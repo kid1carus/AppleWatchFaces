@@ -95,6 +95,7 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
         storeBrightness()
         
         if currentNavDesination == .EditList {
@@ -129,7 +130,9 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
             let vc = segue.destination as? PreviewViewController
             previewViewController = vc
         }
-        
+        if segue.destination is SettingsViewController {
+            navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
     
     //hide the home indicator
