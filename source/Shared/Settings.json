@@ -1,6 +1,204 @@
 {
     "clockSettings" : [
         {
+            "clockForegroundMaterialName" : "#00d369ff",
+            "title" : "Submariner",
+            "faceForegroundType" : "AnimatedPhysicsField",
+            "faceBackgroundType" : "FaceBackgroundTypeVerticalGradient",
+            "uniqueID" : "B27A258E-C984-4DF5-9EFF-429EC01F29AE",
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#547980",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "minuteHandType" : "MinuteHandTypeArrow",
+                "hourHandMaterialName" : "#45ADA8",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "ringMaterials" : [
+                    "#594F4F",
+                    "#547980",
+                    "#00332a"
+                ],
+                "minuteHandMaterialName" : "#45ADA8",
+                "secondHandType" : "SecondHandTypePointy",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "shouldShowHandOutlines" : true,
+                "hourHandType" : "HourHandTypeSwiss",
+                "shouldShowRomanNumeralText" : false,
+                "minuteHandMovement" : "MinuteHandMovementSmooth",
+                "ringSettings" : [
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringStaticTimeFormat" : "None",
+                        "ringType" : "RingTypeSpacer",
+                        "textSize" : "0.25",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticHorizontalPositionNumeric" : "0.0",
+                        "ringStaticVerticalPositionNumeric" : "0.0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.0",
+                        "indicatorSize" : "0.2",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "60",
+                        "textType" : "NumberTextTypeDINPro",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "shouldShowTextOutline" : false
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeTube",
+                        "ringStaticTimeFormat" : "None",
+                        "ringType" : "RingTypeShapeNode",
+                        "textSize" : "0.2",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticHorizontalPositionNumeric" : "0.0",
+                        "ringStaticVerticalPositionNumeric" : "0.0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.01",
+                        "indicatorSize" : "0.26",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringPatternTotal" : "12",
+                        "textType" : "NumberTextTypeDINPro",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "shouldShowTextOutline" : false
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringStaticTimeFormat" : "None",
+                        "ringType" : "RingTypeShapeNode",
+                        "textSize" : "0.36",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticHorizontalPositionNumeric" : "0.5",
+                        "ringStaticVerticalPositionNumeric" : "0.5",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.075",
+                        "indicatorSize" : "0.06",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringPatternTotal" : "60",
+                        "textType" : "NumberTextTypeSystem",
+                        "ringPattern" : [
+                            0,1,1,1,1
+                        ],
+                        "shouldShowTextOutline" : false
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringStaticTimeFormat" : "None",
+                        "ringType" : "RingTypeSpacer",
+                        "textSize" : "0.2",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticHorizontalPositionNumeric" : "0.0",
+                        "ringStaticVerticalPositionNumeric" : "0.0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.12",
+                        "indicatorSize" : "0.2",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "60",
+                        "textType" : "NumberTextTypeGermanica",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "shouldShowTextOutline" : false
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringStaticTimeFormat" : "None",
+                        "ringType" : "RingTypeTextRotatingNode",
+                        "textSize" : "0.36",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticHorizontalPositionNumeric" : "0.0",
+                        "ringStaticVerticalPositionNumeric" : "0.0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.18",
+                        "indicatorSize" : "0.2",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringPatternTotal" : "12",
+                        "textType" : "NumberTextTypeSystem",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "shouldShowTextOutline" : false
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringStaticTimeFormat" : "None",
+                        "ringType" : "RingTypeSpacer",
+                        "textSize" : "0.28",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticHorizontalPositionNumeric" : "0.5",
+                        "ringStaticVerticalPositionNumeric" : "0.5",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringWidth" : "0.2",
+                        "indicatorSize" : "0.15",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "12",
+                        "textType" : "NumberTextTypeSystem",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "shouldShowTextOutline" : false
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringStaticTimeFormat" : "DADD",
+                        "ringType" : "RingTypeDigitalTime",
+                        "textSize" : "0.28",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticHorizontalPositionNumeric" : "0.5",
+                        "ringStaticVerticalPositionNumeric" : "0.365",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringWidth" : "0.0",
+                        "indicatorSize" : "0.15",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringPatternTotal" : "0",
+                        "textType" : "NumberTextTypeSystem",
+                        "ringPattern" : [
+                            
+                        ],
+                        "shouldShowTextOutline" : false
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringStaticTimeFormat" : "Battery",
+                        "ringType" : "RingTypeDigitalTime",
+                        "textSize" : "0.28",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticHorizontalPositionNumeric" : "0.517",
+                        "ringStaticVerticalPositionNumeric" : "0.682",
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringWidth" : "0.0",
+                        "indicatorSize" : "0.15",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "0",
+                        "textType" : "NumberTextTypeSystem",
+                        "ringPattern" : [
+                            
+                        ],
+                        "shouldShowTextOutline" : false
+                    }
+                ]
+            },
+            "clockCasingMaterialName" : "#a3ffd1ff",
+            "clockFaceMaterialName" : "#00d369ff"
+        },
+        {
             "faceForegroundType" : "None",
             "clockCasingMaterialName" : "#000000ff",
             "faceBackgroundType" : "FaceBackgroundTypeFilled",
