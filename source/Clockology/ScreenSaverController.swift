@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 enum NavigationDestination: String {
-    case EditList, None
+    case EditList, Settings, None
 }
 
 class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDelegate {
@@ -33,6 +33,19 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
         }
         
         self.performSegue(withIdentifier: "callEditListID", sender: nil)
+    }
+    
+    @IBAction func callSettings() {
+        
+//        //generate theme thumbs and exit if needed
+        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
+        guard missingThemeThumbs.count==0 else {
+            currentNavDesination = .Settings
+            self.performSegue(withIdentifier: "themeThumbsSegueID", sender: nil)
+            return
+        }
+        
+        self.performSegue(withIdentifier: "callCustomizeID", sender: nil)
     }
     
     @IBAction func showButtons() {
@@ -102,6 +115,11 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
             currentNavDesination = .None
             callEditList()
         }
+        
+        if currentNavDesination == .Settings {
+            currentNavDesination = .None
+            callSettings()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,6 +143,11 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "themeThumbsSegueID" {
+            if let gtvc = segue.destination as? GenerateThumbnailsViewController {
+                gtvc.shouldGenerateThemeThumbs = true
+            }
+        }
         if segue.destination is PreviewViewController {
             let vc = segue.destination as? PreviewViewController
             previewViewController = vc

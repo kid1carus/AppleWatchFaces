@@ -53,7 +53,7 @@
                                                     <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="yXI-RB-Zak" kind="show" id="cta-2J-RQJ"/>
+                                                    <action selector="callSettings" destination="BYZ-38-t0r" eventType="touchUpInside" id="aD1-we-oWY"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PJ-vv-4P3">
@@ -92,7 +92,6 @@
                                                     <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="callEditList" destination="BYZ-38-t0r" eventType="touchUpInside" id="MPD-In-R9K"/>
                                                     <segue destination="czJ-HA-L0t" kind="presentation" identifier="callEditListID" id="dcS-vg-HBR"/>
                                                 </connections>
                                             </button>
@@ -107,8 +106,37 @@
                                                     <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="callEditList" destination="BYZ-38-t0r" eventType="touchUpInside" id="apI-Bd-BT1"/>
                                                     <segue destination="dFn-Gl-riU" kind="popoverPresentation" identifier="callMissingThumbsGeneratorID" popoverAnchorView="d6S-GL-0YN" id="NF6-Nc-iez">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iN-jf-ewB">
+                                                <rect key="frame" x="160" y="371" width="95" height="50"/>
+                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.2985873288" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="AcD-T8-LoG"/>
+                                                    <constraint firstAttribute="width" constant="75" id="V3F-X6-6qT"/>
+                                                </constraints>
+                                                <state key="normal" title="CallSettings">
+                                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="yXI-RB-Zak" kind="show" identifier="callCustomizeID" id="NWG-RT-VRn"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cj-fD-M9i">
+                                                <rect key="frame" x="160" y="321" width="95" height="50"/>
+                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.2985873288" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="4SC-Ne-zhU"/>
+                                                    <constraint firstAttribute="width" constant="75" id="N9Q-tX-NwP"/>
+                                                </constraints>
+                                                <state key="normal" title="RgenThumbs">
+                                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="dFn-Gl-riU" kind="popoverPresentation" identifier="themeThumbsSegueID" popoverAnchorView="9cj-fD-M9i" id="xd7-gM-X35">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
                                                 </connections>
@@ -197,7 +225,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ojb-y0-6r9">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1878,4 +1913,7 @@
         <image name="cameraIcon" width="533" height="533"/>
         <image name="icons-apple-watch" width="360" height="360"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xd7-gM-X35"/>
+    </inferredMetricsTieBreakers>
 </document>
