@@ -22,14 +22,17 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
     var currentClockSetting: ClockSetting = ClockSetting.defaults()
     var currentClockIndex: Int = 0
     var crownAccumulator = 0.0
-    let crownThreshold = 0.4 // how much rotation is need to switch items
     
     var timeTravelTimer = Timer()
     var timeTravelSpeed:CGFloat = 0.0
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         crownAccumulator += rotationalDelta
-        timeTravelSpeed = CGFloat(crownAccumulator) * 10.0
+        
+        //meet a threshold before action, was causing accidental pauses enabling time travel with tiny motion
+        if fabs(crownAccumulator) < 0.25 { return }
+        
+        timeTravelSpeed = CGFloat(crownAccumulator) * 25.0
         //debugPrint("crownAcc: " + crownAccumulator.description + " timeSpeed:" + timeTravelSpeed.description)
         
         if !timeTravelTimer.isValid {
@@ -152,6 +155,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             
                 //give this some time to avoid concurrentcy crashes
                 //TODO: try to remove this.. test with real watch and simulator
+                //session.outstandingFileTransfers.count == 0 { ??
                delay(0.25) {
                     //reload userClockSettings
                     UserClockSetting.loadFromFile()
@@ -256,7 +260,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         //start timer
         clockTimer.startTimer()
         
-        //capture crpwn events
+        //capture crown events
         crownSequencer.delegate = self
         
         //load the last settings
