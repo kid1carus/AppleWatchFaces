@@ -47,7 +47,8 @@ class SKWatchScene: SKScene {
         //need for PONG
         physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         //for now add physics to the edges
-        let borderBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        let frame = self.frame.insetBy(dx: 0, dy: 4.0) //hack to match BG images
+        let borderBody = SKPhysicsBody(edgeLoopFrom: frame)
         //borderBody.categoryBitMask = PhysicsCategory.Wall
         borderBody.friction = 0.0
         borderBody.restitution = 1.0
