@@ -11,10 +11,10 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter,
+    case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandGlowingRadar,
     SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandNodeTypeNone ]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandGlowingRadar, SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
     
@@ -69,6 +69,7 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == .SecondHandTypeThinDial)  { typeDescription = "Thin Dial" }
         if (nodeType == .SecondHandTypePacMan)  { typeDescription = "Dot Eater" }
         if (nodeType == .SecondHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
+        if (nodeType == .SecondHandGlowingRadar) { typeDescription = "Glowing Radar" }
         
         if (nodeType == SecondHandTypes.SecondHandNodeTypeNone)  { typeDescription = "None" }
         
@@ -222,6 +223,34 @@ class SecondHandNode: SKSpriteNode {
         
         if (secondHandType == SecondHandTypes.SecondHandNodeTypeNone) {
             //none :-)
+        }
+        
+        if (secondHandType == .SecondHandGlowingRadar) {
+            let outerRingNode = SKShapeNode.init(circleOfRadius: 100.0)
+            outerRingNode.glowWidth = 3.0
+            outerRingNode.lineWidth = 2.0
+            outerRingNode.strokeColor = SKColor.init(hexString: material)
+            outerRingNode.fillColor = SKColor.clear
+            
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: -5, y: -10))
+            bezierPath.addLine(to: CGPoint(x: 5, y: -10))
+            bezierPath.addLine(to: CGPoint(x: 3, y: 54))
+            bezierPath.addLine(to: CGPoint(x: -3, y: 54))
+            bezierPath.addLine(to: CGPoint(x: -5, y: -10))
+            bezierPath.close()
+            bezierPath.apply(CGAffineTransform.init(scaleX: 0.4, y: 0.4))  //scale/stratch
+            
+            let tickNode = SKShapeNode.init(path: bezierPath.cgPath)
+            tickNode.position = CGPoint.init(x: 0, y: -94)
+            tickNode.glowWidth = 2.0
+            tickNode.lineWidth = 1.0
+            tickNode.strokeColor = SKColor.init(hexString: material)
+            tickNode.fillColor = SKColor.clear
+            
+            outerRingNode.addChild(tickNode)
+            
+            self.addChild(outerRingNode)
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypePacMan) {
