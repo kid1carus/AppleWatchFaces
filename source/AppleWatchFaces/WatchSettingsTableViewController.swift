@@ -42,19 +42,22 @@ class WatchSettingsTableViewController: UITableViewController {
             ["title":"Overlay Color",               "category":"advanced",    "rowHeight":"100.0","cellID":"faceOverlayColorsTableViewCell"]
         ],
         [
-            ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
             
             ["title":"Second Hand",                 "category":"normal",      "rowHeight":"100.0","cellID":"secondHandSettingsTableViewCell"],
-            ["title":"Second Hand Animation",       "category":"advanced",    "rowHeight":"130.0","cellID":"secondhandAnimationSettingsTableViewCellID"],
             ["title":"Second Hand Color",           "category":"normal",      "rowHeight":"100.0","cellID":"secondHandColorsTableViewCell"],
             
             ["title":"Minute Hand",                 "category":"normal",      "rowHeight":"100.0","cellID":"minuteHandSettingsTableViewCell"],
-            ["title":"Minute Hand Animation",       "category":"advanced",    "rowHeight":"130.0","cellID":"minutehandAnimationSettingsTableViewCellID"],
             ["title":"Minute Hand Color",           "category":"normal",      "rowHeight":"100.0","cellID":"minuteHandColorTableViewCell"],
             
             ["title":"Hour Hand",                   "category":"normal",      "rowHeight":"100.0","cellID":"hourHandSettingsTableViewCell"],
             ["title":"Hour Hand Color",             "category":"normal",      "rowHeight":"100.0","cellID":"hourHandColorTableViewCell"],
-            ["title":"Hand Outline Color",          "category":"advanced",    "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"]
+            ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
+            
+            ["title":"Second Hand Animation",       "category":"advanced",    "rowHeight":"130.0","cellID":"secondhandAnimationSettingsTableViewCellID"],
+            ["title":"Minute Hand Animation",       "category":"advanced",    "rowHeight":"130.0","cellID":"minutehandAnimationSettingsTableViewCellID"],
+            
+            ["title":"Hand Outline Color",          "category":"advanced",    "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"],
+             ["title":"Hand Effects",          "category":"advanced",    "rowHeight":"66.0","cellID":"handsEffectsTableViewCellID"]
         ],
         [
             ["title":"Indicator Path",             "category":"path-render", "rowHeight":"100.0","cellID":"ringShapeSettingsTableViewCellID"],
@@ -73,7 +76,7 @@ class WatchSettingsTableViewController: UITableViewController {
         let cellID = sectionsData[currentGroupIndex][section]["cellID"]
         
         switch cellID {
-            
+        
         case "titleSettingsTableViewCellID":
             settingText = SettingsViewController.currentClockSetting.title
         case "colorThemeSettingsTableViewCellID":
@@ -118,7 +121,12 @@ class WatchSettingsTableViewController: UITableViewController {
             settingText = SettingsViewController.currentClockSetting.clockFaceSettings?.hourHandMaterialName ?? ""
         case "handOutlineColorTableViewCell":
             settingText = SettingsViewController.currentClockSetting.clockFaceSettings?.handOutlineMaterialName ?? ""
-            
+        case "handsEffectsTableViewCellID":
+            var secondHandVal:Float = 0.0
+            if let secWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handEffectWidths[safe: 0] {
+                secondHandVal = secWidth
+            }
+            settingText = String(secondHandVal)
         case "ringShapeSettingsTableViewCellID":
             settingText = ClockRingSetting.descriptionForRingRenderShapes((SettingsViewController.currentClockSetting.clockFaceSettings?.ringRenderShape)!)
         case "ringMainColorsTableViewCell":

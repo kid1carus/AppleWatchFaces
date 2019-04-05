@@ -242,7 +242,7 @@ class SecondHandNode: SKSpriteNode {
             bezierPath.apply(CGAffineTransform.init(scaleX: 0.4, y: 0.4))  //scale/stratch
             
             let tickNode = SKShapeNode.init(path: bezierPath.cgPath)
-            tickNode.position = CGPoint.init(x: 0, y: -94)
+            tickNode.position = CGPoint.init(x: 0, y: -96)
             tickNode.glowWidth = 2.0
             tickNode.lineWidth = 1.0
             tickNode.strokeColor = SKColor.init(hexString: material)

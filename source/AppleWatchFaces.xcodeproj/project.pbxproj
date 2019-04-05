@@ -67,6 +67,8 @@
 		31092135225433230032D3AB /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31092133225433220032D3AB /* Colors.plist */; };
 		31092138225433C30032D3AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31092137225433C30032D3AB /* Assets.xcassets */; };
 		31092139225433C30032D3AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31092137225433C30032D3AB /* Assets.xcassets */; };
+		3109213B225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109213A225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift */; };
+		3109213C225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109213A225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift */; };
 		3109D1DD21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */; };
 		3109D1DF21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */; };
 		3109D1E121A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */; };
@@ -395,6 +397,7 @@
 		310920742251A8770032D3AB /* UIBrightnessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBrightnessViewController.swift; sourceTree = "<group>"; };
 		31092133225433220032D3AB /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		31092137225433C30032D3AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3109213A225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectsWidthSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsMainColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsSecondaryColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsThirdColorSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -776,6 +779,7 @@
 				31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */,
 				31B3F8CF218F4BAE00AD22A5 /* SecondHandColorSettingsTableViewCell.swift */,
 				310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */,
+				3109213A225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -1170,6 +1174,7 @@
 				3153880421CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift in Sources */,
 				312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */,
 				3107B5CF21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift in Sources */,
+				3109213B225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift in Sources */,
 				3107B5DA21B47634005BD26D /* DecoratorTableViewCell.swift in Sources */,
 				3153880721CB395300A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift in Sources */,
 				310BA1D121B08F1A00A146B7 /* DecoratorThemeSettingCollectionViewCell.swift in Sources */,
@@ -1257,6 +1262,7 @@
 				31C86B4522374DE500EF4186 /* IndicatorsSecondaryColorSettingsTableViewCell.swift in Sources */,
 				31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */,
 				31C86AFD22374CEA00EF4186 /* DigitalTimeNode.swift in Sources */,
+				3109213C225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift in Sources */,
 				31C86AFC22374CEA00EF4186 /* WatchFaceNode.swift in Sources */,
 				31C86B4122374DE500EF4186 /* HourHandSettingCollectionViewCell.swift in Sources */,
 				31C86B0922374CEF00EF4186 /* ClockDecoratorTheme.swift in Sources */,
