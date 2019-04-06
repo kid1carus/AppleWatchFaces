@@ -125,6 +125,12 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
     override func awakeFromNib() {
         effectWidthSecondHandSlider.minimumValue = AppUISettings.handEffectSettigsSliderSpacerMin
         effectWidthSecondHandSlider.maximumValue = AppUISettings.handEffectSettigsSliderSpacerMax
+        
+        effectWidthMinuteHandSlider.minimumValue = AppUISettings.handEffectSettigsSliderSpacerMin
+        effectWidthMinuteHandSlider.maximumValue = AppUISettings.handEffectSettigsSliderSpacerMax
+        
+        effectWidthHourHandSlider.minimumValue = AppUISettings.handEffectSettigsSliderSpacerMin
+        effectWidthHourHandSlider.maximumValue = AppUISettings.handEffectSettigsSliderSpacerMax
     }
     
 }

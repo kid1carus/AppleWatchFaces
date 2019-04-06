@@ -123,10 +123,12 @@ class WatchSettingsTableViewController: UITableViewController {
             settingText = SettingsViewController.currentClockSetting.clockFaceSettings?.handOutlineMaterialName ?? ""
         case "handsEffectsTableViewCellID":
             var secondHandVal:Float = 0.0
-            if let secWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handEffectWidths[safe: 0] {
-                secondHandVal = secWidth
-            }
-            settingText = String(secondHandVal)
+            var minuteHandVal:Float = 0.0
+            var hourHandVal:Float = 0.0
+            if let secWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handEffectWidths[safe: 0] { secondHandVal = secWidth }
+            if let minWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handEffectWidths[safe: 1] { minuteHandVal = minWidth }
+            if let hourWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handEffectWidths[safe: 2] { hourHandVal = hourWidth }
+            settingText = String(secondHandVal) + "," + String(minuteHandVal) + "," + String(hourHandVal)
         case "ringShapeSettingsTableViewCellID":
             settingText = ClockRingSetting.descriptionForRingRenderShapes((SettingsViewController.currentClockSetting.clockFaceSettings?.ringRenderShape)!)
         case "ringMainColorsTableViewCell":
