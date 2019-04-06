@@ -37,7 +37,7 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         }
         
         if let currentVal = clockFaceSettings.handEffectWidths[safe: 0] {
-            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange {
+            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == 0 {
                 clockFaceSettings.handEffectWidths[0] = roundedValue
                 didChangeSetting = true
             }
