@@ -58,5 +58,10 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         // Configure the view for the selected state
     }
     
+    override func awakeFromNib() {
+        effectWidthSecondHandSlider.minimumValue = AppUISettings.handEffectSettigsSliderSpacerMin
+        effectWidthSecondHandSlider.maximumValue = AppUISettings.handEffectSettigsSliderSpacerMax
+    }
+    
 }
 

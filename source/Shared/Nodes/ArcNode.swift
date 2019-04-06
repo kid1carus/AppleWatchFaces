@@ -15,7 +15,7 @@ class ArcNode: SKNode {
     static let skinnyRadiusWidth:CGFloat = 15.0 //difference between inner and out radius
     
     init(cornerRadius: CGFloat, innerRadius: CGFloat, outerRadius: CGFloat, endAngle: CGFloat,
-         material: String, strokeColor: SKColor, lineWidth: CGFloat) {
+         material: String, strokeColor: SKColor, lineWidth: CGFloat, glowWidth: CGFloat) {
         
         super.init()
         
@@ -59,6 +59,7 @@ class ArcNode: SKNode {
             shape.fillColor = SKColor.init(hexString: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth //how thick the edges are to show rounded corner
+            shape.glowWidth = glowWidth
             
             self.addChild(shape)
         } else {

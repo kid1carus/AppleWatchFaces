@@ -51,11 +51,11 @@ class WatchSettingsTableViewController: UITableViewController {
             
             ["title":"Hour Hand",                   "category":"normal",      "rowHeight":"100.0","cellID":"hourHandSettingsTableViewCell"],
             ["title":"Hour Hand Color",             "category":"normal",      "rowHeight":"100.0","cellID":"hourHandColorTableViewCell"],
-            ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
             
             ["title":"Second Hand Animation",       "category":"advanced",    "rowHeight":"130.0","cellID":"secondhandAnimationSettingsTableViewCellID"],
             ["title":"Minute Hand Animation",       "category":"advanced",    "rowHeight":"130.0","cellID":"minutehandAnimationSettingsTableViewCellID"],
             
+            ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
             ["title":"Hand Outline Color",          "category":"advanced",    "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"],
              ["title":"Hand Effects",          "category":"advanced",    "rowHeight":"66.0","cellID":"handsEffectsTableViewCellID"]
         ],

@@ -47,6 +47,7 @@ class MinuteHandNode: SKSpriteNode {
     var material = ""
     var strokeColor:SKColor = SKColor.white
     var lineWidth: CGFloat = 0.0
+    var glowWidth: CGFloat = 0.0
     var cornerRadius:CGFloat = 0.0
     
     let pacManPathSize = CGSize.init(width: 100.0, height: 65.0)
@@ -115,7 +116,7 @@ class MinuteHandNode: SKSpriteNode {
     
     func addArcNode(endAngle: CGFloat) {
         let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
-                                   endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+                                   endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
         newNode.name = "arcNode"
         self.addChild(newNode)
     }

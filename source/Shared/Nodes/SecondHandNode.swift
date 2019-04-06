@@ -48,6 +48,7 @@ class SecondHandNode: SKSpriteNode {
     var strokeColor:SKColor = SKColor.white
     var lineWidth: CGFloat = 0.0
     var cornerRadius:CGFloat = 0.0
+    var glowWidth: CGFloat = 0.0
     
     //used for dials
     var innerRadius:CGFloat = 0.0
@@ -128,8 +129,14 @@ class SecondHandNode: SKSpriteNode {
         return typeKeysArray
     }
     
+    func addGlowEffect(shape: SKShapeNode, glowWidth: CGFloat) {
+        shape.glowWidth = glowWidth
+        shape.fillColor = SKColor.clear
+        shape.lineWidth = 1.0
+    }
+    
     func addArcNode(endAngle: CGFloat) {
-        let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius, endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+        let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius, endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
         newNode.name = "arcNode"
         
         self.addChild(newNode)
@@ -219,6 +226,7 @@ class SecondHandNode: SKSpriteNode {
         self.material = material
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
+        self.glowWidth = glowWidth
         
         if (secondHandType == SecondHandTypes.SecondHandNodeTypeNone) {
             //none :-)
@@ -333,6 +341,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(circleOfRadius: 4)
             phy.isDynamic = false
@@ -353,6 +362,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
             phy.isDynamic = false
@@ -384,6 +394,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy =  SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             phy.isDynamic = false
@@ -435,6 +446,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezier2Path.cgPath)
             physicsBody.isDynamic = false
@@ -465,6 +477,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
         
             let phy =  SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             phy.isDynamic = false
@@ -478,7 +491,7 @@ class SecondHandNode: SKSpriteNode {
             
             self.addChild(shape)
         }
-        
+ 
         if (secondHandType == SecondHandTypes.SecondHandTypeSwiss) {
             
             let rect = CGRect(x: -2, y: -20, width: 4, height: 104)
@@ -489,6 +502,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
             phy.isDynamic = false
@@ -529,6 +543,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            shape.glowWidth = glowWidth
             
             let rect = CGRect.init(x: 0, y: 0, width: 2, height: 95)
             let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
@@ -560,6 +575,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            shape.glowWidth = glowWidth
             
             self.addChild(shape)
         }
@@ -728,6 +744,7 @@ class SecondHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            shape.glowWidth = glowWidth
             shape.setScale(0.31)
             
             self.addChild(shape)

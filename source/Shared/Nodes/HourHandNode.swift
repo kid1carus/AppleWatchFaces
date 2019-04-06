@@ -34,6 +34,7 @@ class HourHandNode: SKSpriteNode {
     var strokeColor:SKColor = SKColor.white
     var lineWidth: CGFloat = 0.0
     var cornerRadius:CGFloat = 0.0
+    var glowWidth: CGFloat = 0.0
     
     //used for dials
     var innerRadius:CGFloat = 0.0
@@ -92,7 +93,7 @@ class HourHandNode: SKSpriteNode {
     
     func addArcNode(endAngle: CGFloat) {
         let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
-                                   endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+                                   endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
         newNode.name = "arcNode"
         self.addChild(newNode)
     }

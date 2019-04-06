@@ -59,6 +59,10 @@ class AppUISettings: NSObject {
     static let screenShotSeconds:CGFloat = 25
     static let screenShotHour:CGFloat = 9
     static let screenShotMinutes:CGFloat = 41
+    
+    //hand effect spacer slider
+    static let handEffectSettigsSliderSpacerMin:Float = 0
+    static let handEffectSettigsSliderSpacerMax:Float = 8.0
 
     //ring text slider
     static let ringSettigsSliderTextMin:Float = 0
