@@ -1,6 +1,91 @@
 {
     "clockSettings" : [
         {
+            "uniqueID" : "A4D7263C-5E2A-4316-A954-3B6541274776",
+            "title" : "CYR",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#ff5656ff",
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
+                "hourHandType" : "HourHandTypeSwiss",
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "shouldShowHandOutlines" : false,
+                "ringSettings" : [
+                    {
+                        "ringWidth" : "0.075",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringStaticTimeFormat" : "None",
+                        "ringPatternTotal" : "12",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "shouldShowTextOutline" : false,
+                        "indicatorSize" : "0.28",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringType" : "RingTypeShapeNode",
+                        "ringStaticEffects" : "None",
+                        "textType" : "NumberTextTypeHelvica",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "indicatorType" : "FaceIndicatorTypeTube",
+                        "textSize" : "0.2"
+                    },
+                    {
+                        "ringWidth" : "0.24",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticTimeFormat" : "None",
+                        "ringPatternTotal" : "12",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "shouldShowTextOutline" : false,
+                        "indicatorSize" : "0.15",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringType" : "RingTypeSpacer",
+                        "ringStaticEffects" : "None",
+                        "textType" : "NumberTextTypeHelvica",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "textSize" : "0.2"
+                    },
+                    {
+                        "ringWidth" : "0.0",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringStaticTimeFormat" : "DADD",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringPattern" : [
+                            
+                        ],
+                        "shouldShowTextOutline" : false,
+                        "indicatorSize" : "0.15",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticEffects" : "None",
+                        "textType" : "NumberTextTypeSystem",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "textSize" : "0.36"
+                    }
+                ],
+                "secondHandType" : "SecondHandTypeSquaredHole",
+                "ringMaterials" : [
+                    "#0000ffff",
+                    "#e2e2e2ff",
+                    "PixelSquares.jpg"
+                ],
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "minuteHandMaterialName" : "#7fff00ff",
+                "secondHandMovement" : "SecondHandMovementStep",
+                "hourHandMaterialName" : "#38bcffff",
+                "shouldShowRomanNumeralText" : false,
+                "handOutlineMaterialName" : "#ffffffff"
+            },
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "clockFaceMaterialName" : "CYRings.jpg"
+        },
+        {
             "clockForegroundMaterialName" : "#00d369ff",
             "title" : "Submariner",
             "faceForegroundType" : "AnimatedPhysicsField",
