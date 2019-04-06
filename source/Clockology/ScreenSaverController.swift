@@ -148,6 +148,12 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
                 gtvc.shouldGenerateThemeThumbs = true
             }
         }
+        
+        if segue.destination is OptionsViewController {
+            let vc = segue.destination as? OptionsViewController
+            vc?.screenSaverController = self
+        }
+        
         if segue.destination is PreviewViewController {
             let vc = segue.destination as? PreviewViewController
             previewViewController = vc

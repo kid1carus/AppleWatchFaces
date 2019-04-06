@@ -311,6 +311,7 @@
 		31F56FA421857FC100455FC6 /* WatchPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */; };
 		31F56FA52185816F00455FC6 /* SKWatchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F92178166B00585AB1 /* SKWatchScene.swift */; };
 		31F56FA62185817E00455FC6 /* SKWatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 318808F72178166B00585AB1 /* SKWatchScene.sks */; };
+		31F7D19522595D8700A1A27E /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7D19422595D8700A1A27E /* OptionsViewController.swift */; };
 		31F8ABAB2187E8DB0014E2ED /* WatchSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */; };
 		31F8ABCD2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABCC2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift */; };
 		31F8ABCF2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */; };
@@ -507,6 +508,7 @@
 		31F4F1D8219D08890050177A /* FaceChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceChooserViewController.swift; sourceTree = "<group>"; };
 		31F56F9C21857A2000455FC6 /* SecondHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandNode.swift; sourceTree = "<group>"; };
 		31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPreviewViewController.swift; sourceTree = "<group>"; };
+		31F7D19422595D8700A1A27E /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSettingsTableViewController.swift; sourceTree = "<group>"; };
 		31F8ABCC2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHandSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHandSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				310920742251A8770032D3AB /* UIBrightnessViewController.swift */,
 				31C86AE92237493600EF4186 /* ScreenSaverController.swift */,
 				31C86AF722374B0300EF4186 /* PreviewViewController.swift */,
+				31F7D19422595D8700A1A27E /* OptionsViewController.swift */,
 				31C86AEB2237493600EF4186 /* ClockologyMain.storyboard */,
 				31C86AEE2237493700EF4186 /* Assets.xcassets */,
 				31C86AF02237493700EF4186 /* LaunchScreen.storyboard */,
@@ -1316,6 +1319,7 @@
 				31C86B6222374E7200EF4186 /* FaceChooserTableViewCell.swift in Sources */,
 				31C86B6022374E7200EF4186 /* FaceChooserEditTableViewController.swift in Sources */,
 				31C86B0A22374CEF00EF4186 /* ClockColorTheme.swift in Sources */,
+				31F7D19522595D8700A1A27E /* OptionsViewController.swift in Sources */,
 				31C86B6422374E7200EF4186 /* FaceChooserEditTableViewCell.swift in Sources */,
 				31C86B0C22374CF400EF4186 /* SKWatchScene.swift in Sources */,
 				31C86B2C22374DA000EF4186 /* UserDefaults.swift in Sources */,
