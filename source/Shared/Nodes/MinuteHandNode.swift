@@ -12,11 +12,11 @@ import SpriteKit
 
 enum MinuteHandTypes: String {
     case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeSphere,
-        MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial,
+        MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar,
         MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar, MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -75,6 +75,7 @@ class MinuteHandNode: SKSpriteNode {
         
         if (nodeType == .MinuteHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == .MinuteHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        if (nodeType == .MinuteHandTypeRadar)  { typeDescription = "Radar Pointer" }
         
         if (nodeType == .MinuteHandTypePacMan)  { typeDescription = "Dot Eater" }
         if (nodeType == .MinuteHandTypePacMan)  { typeDescription = "Ms Dot Eater" }
@@ -112,6 +113,11 @@ class MinuteHandNode: SKSpriteNode {
         if (nodeType == MinuteHandMovements.MinuteHandMovementSmooth)  { typeDescription = "Smooth" }
         
         return typeDescription
+    }
+    
+    func addGlowEffect(shape: SKShapeNode, glowWidth: CGFloat) {
+        shape.glowWidth = glowWidth
+        shape.lineWidth = 1.0
     }
     
     func addArcNode(endAngle: CGFloat) {
@@ -219,6 +225,35 @@ class MinuteHandNode: SKSpriteNode {
             addArcNode( endAngle: CGFloat.pi * 0.5)
         }
         
+        if (minuteHandType == .MinuteHandTypeRadar) {
+            let outerRingNode = SKShapeNode.init(circleOfRadius: 70.0)
+            outerRingNode.fillColor = SKColor.clear
+            outerRingNode.strokeColor = SKColor.init(hexString: material)
+            outerRingNode.lineWidth = 1.0
+            if glowWidth>0 { addGlowEffect(shape: outerRingNode, glowWidth: glowWidth) }
+            
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: -5, y: -10))
+            bezierPath.addLine(to: CGPoint(x: 5, y: -10))
+            bezierPath.addLine(to: CGPoint(x: 3, y: 54))
+            bezierPath.addLine(to: CGPoint(x: -3, y: 54))
+            bezierPath.addLine(to: CGPoint(x: -5, y: -10))
+            bezierPath.close()
+            bezierPath.apply(CGAffineTransform.init(scaleX: 0.4, y: 0.4))  //scale/stratch
+            
+            let tickNode = SKShapeNode.init(path: bezierPath.cgPath)
+            tickNode.position = CGPoint.init(x: 0, y: -66)
+            
+            tickNode.fillColor = SKColor.clear
+            tickNode.strokeColor = SKColor.init(hexString: material)
+            tickNode.lineWidth = 1.0
+            if glowWidth>0 { addGlowEffect(shape: tickNode, glowWidth: glowWidth) }
+            
+            outerRingNode.addChild(tickNode)
+            
+            self.addChild(outerRingNode)
+        }
+        
         if (minuteHandType == MinuteHandTypes.MinuteHandTypeImageFancyWhite) {
             let im = UIImage.init(named: "minuteHand-fancyWhite.png")
             if let textureImage = im {
@@ -259,6 +294,7 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(circleOfRadius: 5)
             phy.isDynamic = false
@@ -285,6 +321,7 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -315,6 +352,7 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             phy.isDynamic = false
@@ -346,6 +384,7 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             phy.isDynamic = false
@@ -378,6 +417,7 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             phy.isDynamic = false
@@ -402,10 +442,10 @@ class MinuteHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = phy
             
-            
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             self.addChild(shape)
         }
@@ -428,6 +468,7 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             phy.isDynamic = false
@@ -625,6 +666,7 @@ class MinuteHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(polygonFrom: minuteHandPath.cgPath)
             phy.isDynamic = false

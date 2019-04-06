@@ -9,11 +9,11 @@
 import SpriteKit
 
 enum HourHandTypes: String {
-    case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeArrow,
+    case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypeArrow,
     HourHandTypePacMan, HourHandTypeMsPacMan, HourHandTypeNone
     
-    static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeThinDial, HourHandTypeNone]
-    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypePacMan, HourHandTypeMsPacMan,
+    static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRadar, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeThinDial, HourHandTypeNone]
+    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypePacMan, HourHandTypeMsPacMan,
                                        HourHandTypeNone]
     
     static func random() -> HourHandTypes {
@@ -89,6 +89,11 @@ class HourHandNode: SKSpriteNode {
         }
         
         return typeKeysArray
+    }
+    
+    func addGlowEffect(shape: SKShapeNode, glowWidth: CGFloat) {
+        shape.glowWidth = glowWidth
+        shape.lineWidth = 1.0
     }
     
     func addArcNode(endAngle: CGFloat) {
@@ -218,6 +223,35 @@ class HourHandNode: SKSpriteNode {
             }
         }
         
+        if (hourHandType == .HourHandTypeRadar) {
+            let outerRingNode = SKShapeNode.init(circleOfRadius: 40.0)
+            outerRingNode.fillColor = SKColor.clear
+            outerRingNode.strokeColor = SKColor.init(hexString: material)
+            outerRingNode.lineWidth = 1.0
+            if glowWidth>0 { addGlowEffect(shape: outerRingNode, glowWidth: glowWidth) }
+            
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: -5, y: -10))
+            bezierPath.addLine(to: CGPoint(x: 5, y: -10))
+            bezierPath.addLine(to: CGPoint(x: 3, y: 54))
+            bezierPath.addLine(to: CGPoint(x: -3, y: 54))
+            bezierPath.addLine(to: CGPoint(x: -5, y: -10))
+            bezierPath.close()
+            bezierPath.apply(CGAffineTransform.init(scaleX: 0.4, y: 0.4))  //scale/stratch
+            
+            let tickNode = SKShapeNode.init(path: bezierPath.cgPath)
+            tickNode.position = CGPoint.init(x: 0, y: -36)
+            
+            tickNode.fillColor = SKColor.clear
+            tickNode.strokeColor = SKColor.init(hexString: material)
+            tickNode.lineWidth = 1.0
+            if glowWidth>0 { addGlowEffect(shape: tickNode, glowWidth: glowWidth) }
+            
+            outerRingNode.addChild(tickNode)
+            
+            self.addChild(outerRingNode)
+        }
+        
         if (hourHandType == .HourHandTypeSphere) {
             
             let shape = SKShapeNode.init(circleOfRadius: 5)
@@ -226,6 +260,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let phy = SKPhysicsBody.init(circleOfRadius: 5)
             phy.isDynamic = false
@@ -256,6 +291,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -286,6 +322,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -303,6 +340,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: rectanglePath.cgPath)
             physicsBody.isDynamic = false
@@ -319,6 +357,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: rectanglePath.cgPath)
             physicsBody.isDynamic = false
@@ -348,6 +387,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -370,6 +410,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -398,6 +439,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -547,6 +589,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: hourHandPath.cgPath)
             physicsBody.isDynamic = false

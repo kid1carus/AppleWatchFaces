@@ -14,7 +14,7 @@ enum SecondHandTypes: String {
     case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandRadar,
     SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandRadar, SecondHandNodeTypeNone ]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
     
@@ -233,9 +233,9 @@ class SecondHandNode: SKSpriteNode {
         
         if (secondHandType == .SecondHandRadar) {
             let outerRingNode = SKShapeNode.init(circleOfRadius: 100.0)
-            outerRingNode.setMaterial(material: material)
-            outerRingNode.strokeColor = strokeColor
-            outerRingNode.lineWidth = lineWidth
+            outerRingNode.fillColor = SKColor.clear
+            outerRingNode.strokeColor = SKColor.init(hexString: material)
+            outerRingNode.lineWidth = 1.0
             if glowWidth>0 { addGlowEffect(shape: outerRingNode, glowWidth: glowWidth) }
             
             let bezierPath = UIBezierPath()
@@ -250,9 +250,9 @@ class SecondHandNode: SKSpriteNode {
             let tickNode = SKShapeNode.init(path: bezierPath.cgPath)
             tickNode.position = CGPoint.init(x: 0, y: -96)
             
-            tickNode.setMaterial(material: material)
-            tickNode.strokeColor = strokeColor
-            tickNode.lineWidth = lineWidth
+            tickNode.fillColor = SKColor.clear
+            tickNode.strokeColor = SKColor.init(hexString: material)
+            tickNode.lineWidth = 1.0
             if glowWidth>0 { addGlowEffect(shape: tickNode, glowWidth: glowWidth) }
             
             outerRingNode.addChild(tickNode)
