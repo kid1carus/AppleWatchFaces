@@ -12,6 +12,8 @@ import UIKit
 class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
     
     @IBOutlet var effectWidthSecondHandSlider:UISlider!
+    @IBOutlet var effectWidthMinuteHandSlider:UISlider!
+    @IBOutlet var effectWidthHourHandSlider:UISlider!
     
     // called after a new setting should be selected ( IE a new design is loaded )
     override func chooseSetting( animated: Bool ) {
@@ -21,7 +23,7 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         }
     }
     
-    @IBAction func seconfHandWidthSliderValueDidChange ( sender: UISlider) {
+    @IBAction func secondHandWidthSliderValueDidChange ( sender: UISlider) {
         guard let clockFaceSettings = SettingsViewController.currentClockSetting.clockFaceSettings else { return }
         
         //add to undo stack for actions to be able to undo
@@ -48,7 +50,69 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         if didChangeSetting {
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
             NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-                                            userInfo:["cellId": self.cellId , "settingType":"shouldShowHandOutlines"])
+                                            userInfo:["cellId": self.cellId , "settingType":"handEffectWidths"])
+        }
+    }
+    
+    @IBAction func minuteHandWidthSliderValueDidChange ( sender: UISlider) {
+        guard let clockFaceSettings = SettingsViewController.currentClockSetting.clockFaceSettings else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
+        let thresholdForChange:Float = 0.1
+        let roundedValue = Float(round(50*sender.value)/50)
+        var didChangeSetting = false
+        
+        //default it
+        if clockFaceSettings.handEffectWidths.count < 3 {
+            clockFaceSettings.handEffectWidths = [0,0,0]
+        }
+        
+        if let currentVal = clockFaceSettings.handEffectWidths[safe: 1] {
+            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == 0 {
+                clockFaceSettings.handEffectWidths[1] = roundedValue
+                didChangeSetting = true
+            }
+        } else {
+            debugPrint("WARNING: no hand effect width array index to modify")
+        }
+        
+        if didChangeSetting {
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
+                                            userInfo:["cellId": self.cellId , "settingType":"handEffectWidths"])
+        }
+    }
+    
+    @IBAction func hourHandWidthSliderValueDidChange ( sender: UISlider) {
+        guard let clockFaceSettings = SettingsViewController.currentClockSetting.clockFaceSettings else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
+        let thresholdForChange:Float = 0.1
+        let roundedValue = Float(round(50*sender.value)/50)
+        var didChangeSetting = false
+        
+        //default it
+        if clockFaceSettings.handEffectWidths.count < 3 {
+            clockFaceSettings.handEffectWidths = [0,0,0]
+        }
+        
+        if let currentVal = clockFaceSettings.handEffectWidths[safe: 2] {
+            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == 0 {
+                clockFaceSettings.handEffectWidths[2] = roundedValue
+                didChangeSetting = true
+            }
+        } else {
+            debugPrint("WARNING: no hand effect width array index to modify")
+        }
+        
+        if didChangeSetting {
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
+                                            userInfo:["cellId": self.cellId , "settingType":"handEffectWidths"])
         }
     }
     

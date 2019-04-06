@@ -95,7 +95,7 @@ class MinuteHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
             
             let highlightColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
             let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 1.3
-            let selectedHandNode = MinuteHandNode.init(minuteHandType: cell.minuteHandType, material: "#aaaaaaff", strokeColor: highlightColor, lineWidth:highlightLineWidth * 0.7)
+            let selectedHandNode = MinuteHandNode.init(minuteHandType: cell.minuteHandType, material: "#aaaaaaff", strokeColor: highlightColor, lineWidth:highlightLineWidth * 0.7, glowWidth:0)
             selectedHandNode.name = "selectedNode"
             selectedHandNode.setScale(scaleMultiplier)
             selectedHandNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/10)

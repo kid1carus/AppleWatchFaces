@@ -243,6 +243,8 @@ class WatchFaceNode: SKShapeNode {
         shadowColor = shadowColor.withAlphaComponent(0.4)
         let shadowLineWidth:CGFloat = 2.0
         var secondHandGlowWidth:CGFloat = 0
+        var minuteHandGlowWidth:CGFloat = 0
+        var hourHandGlowWidth:CGFloat = 0
         
         //TODO: figure out why [safe: 0] was not working here
         if clockFaceSettings.handEffectWidths.count>0 {
@@ -267,25 +269,30 @@ class WatchFaceNode: SKShapeNode {
         }
         
         if renderShadows {
-            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: glowWidth)
+            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0)
             secHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             secHandShadowNode.name = "secondHandShadow"
             secHandShadowNode.zPosition = shadowChildZposition
             secHandNode.addChild(secHandShadowNode)
         }
         
+        if clockFaceSettings.handEffectWidths.count>1 {
+            minuteHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[1])
+        }
+        
         var minuteHandStrokeColor = SKColor.init(hexString: clockFaceSettings.minuteHandMaterialName)
         if (clockFaceSettings.shouldShowHandOutlines) {
             minuteHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
         }
-        let minHandNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: clockFaceSettings.minuteHandMaterialName, strokeColor: minuteHandStrokeColor, lineWidth: 1.0)
+        let minHandNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: clockFaceSettings.minuteHandMaterialName, strokeColor: minuteHandStrokeColor, lineWidth: 1.0,
+            glowWidth: minuteHandGlowWidth)
         minHandNode.name = "minuteHand"
         minHandNode.zPosition = CGFloat(PartsZPositions.minuteHand.rawValue)
         
         self.addChild(minHandNode)
         
         if renderShadows {
-            let minHandShadowNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
+            let minHandShadowNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0)
             minHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             minHandShadowNode.name = "minuteHandShadow"
             minHandShadowNode.zPosition = shadowChildZposition
@@ -296,15 +303,18 @@ class WatchFaceNode: SKShapeNode {
         if (clockFaceSettings.shouldShowHandOutlines) {
         hourHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
         }
+        if clockFaceSettings.handEffectWidths.count>=2 {
+            hourHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[2])
+        }
         
-        let hourHandNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: clockFaceSettings.hourHandMaterialName, strokeColor: hourHandStrokeColor, lineWidth: 1.0)
+        let hourHandNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: clockFaceSettings.hourHandMaterialName, strokeColor: hourHandStrokeColor, lineWidth: 1.0, glowWidth: hourHandGlowWidth)
         hourHandNode.name = "hourHand"
         hourHandNode.zPosition = CGFloat(PartsZPositions.hourHand.rawValue)
         
         self.addChild(hourHandNode)
         
         if renderShadows {
-            let hourHandShadowNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
+            let hourHandShadowNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0)
             hourHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             hourHandShadowNode.name = "hourHandShadow"
             hourHandShadowNode.zPosition = shadowChildZposition

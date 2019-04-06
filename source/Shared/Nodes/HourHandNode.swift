@@ -148,10 +148,10 @@ class HourHandNode: SKSpriteNode {
     }
     
     convenience init(hourHandType: HourHandTypes, material: String) {
-        self.init(hourHandType: hourHandType, material: material, strokeColor: SKColor.clear, lineWidth: 2.0)
+        self.init(hourHandType: hourHandType, material: material, strokeColor: SKColor.clear, lineWidth: 2.0, glowWidth: 0)
     }
     
-    init(hourHandType: HourHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat) {
+    init(hourHandType: HourHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat, glowWidth: CGFloat) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize())
         
@@ -160,6 +160,7 @@ class HourHandNode: SKSpriteNode {
         self.material = material
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
+        self.glowWidth = glowWidth
         
         if (hourHandType == .HourHandTypePacMan || hourHandType == .HourHandTypeMsPacMan) {
             //add a ghost sprite
