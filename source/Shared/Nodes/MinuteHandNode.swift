@@ -240,10 +240,10 @@ class MinuteHandNode: SKSpriteNode {
             bezierPath.addLine(to: CGPoint(x: -3, y: 54))
             bezierPath.addLine(to: CGPoint(x: -5, y: -10))
             bezierPath.close()
-            bezierPath.apply(CGAffineTransform.init(scaleX: 0.4, y: 0.4))  //scale/stratch
+            bezierPath.apply(CGAffineTransform.init(scaleX: 0.4, y: -0.4))  //scale/stratch
             
             let tickNode = SKShapeNode.init(path: bezierPath.cgPath)
-            tickNode.position = CGPoint.init(x: 0, y: -66)
+            tickNode.position = CGPoint.init(x: 0, y: 66)
             
             tickNode.fillColor = SKColor.clear
             tickNode.strokeColor = SKColor.init(hexString: material)
