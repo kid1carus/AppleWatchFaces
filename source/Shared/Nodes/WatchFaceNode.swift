@@ -249,13 +249,11 @@ class WatchFaceNode: SKShapeNode {
             secondHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[0])
         }
 
-        var secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.secondHandMaterialName)
+        //var secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.secondHandMaterialName)
         
-        //allow for dials to have outlines
-        if (SecondHandTypes.isDialType(type: clockFaceSettings.secondHandType) && clockFaceSettings.shouldShowHandOutlines) {
-            secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
-        }
-        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: 1.0, glowWidth: secondHandGlowWidth)
+        let secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
+        let lineWidth:CGFloat = 0.0
+        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth)
         secHandNode.name = "secondHand"
         secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
         

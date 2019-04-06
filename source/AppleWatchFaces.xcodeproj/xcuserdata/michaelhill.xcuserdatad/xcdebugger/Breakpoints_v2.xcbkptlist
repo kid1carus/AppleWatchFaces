@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/AppUISettings.swift"
-            timestampString = "576204975.373951"
+            timestampString = "576208746.688068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -362,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/HourHandNode.swift"
-            timestampString = "576204975.374169"
+            timestampString = "576208746.688287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -458,13 +458,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/WatchFaceNode.swift"
-            timestampString = "576201703.5807739"
+            timestampString = "576208746.688417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
-            landmarkName = "positionHands(sec:min:hour:force:)"
-            landmarkType = "7">
+            startingLineNumber = "345"
+            endingLineNumber = "345"
+            landmarkName = "WatchFaceNode"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
