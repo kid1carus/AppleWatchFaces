@@ -242,6 +242,12 @@ class WatchFaceNode: SKShapeNode {
         var shadowColor = SKColor.init(hexString: shadowMaterial)
         shadowColor = shadowColor.withAlphaComponent(0.4)
         let shadowLineWidth:CGFloat = 2.0
+        var secondHandGlowWidth:CGFloat = 0
+        
+        //TODO: figure out why [safe: 0] was not working here
+        if clockFaceSettings.handEffectWidths.count>0 {
+            secondHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[0])
+        }
 
         var secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.secondHandMaterialName)
         
@@ -249,7 +255,7 @@ class WatchFaceNode: SKShapeNode {
         if (SecondHandTypes.isDialType(type: clockFaceSettings.secondHandType) && clockFaceSettings.shouldShowHandOutlines) {
             secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
         }
-        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: 1.0)
+        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: 1.0, glowWidth: secondHandGlowWidth)
         secHandNode.name = "secondHand"
         secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
         
@@ -263,7 +269,7 @@ class WatchFaceNode: SKShapeNode {
         }
         
         if renderShadows {
-            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
+            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: glowWidth)
             secHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             secHandShadowNode.name = "secondHandShadow"
             secHandShadowNode.zPosition = shadowChildZposition

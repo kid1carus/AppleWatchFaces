@@ -96,7 +96,7 @@ class SecondHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
             
             let highlightColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
             let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 1.3
-            let selectedHandNode = SecondHandNode.init(secondHandType: cell.secondHandType, material: "#ff0000ff", strokeColor: highlightColor, lineWidth:highlightLineWidth)
+            let selectedHandNode = SecondHandNode.init(secondHandType: cell.secondHandType, material: "#ff0000ff", strokeColor: highlightColor, lineWidth:highlightLineWidth, glowWidth: 0)
             selectedHandNode.name = "selectedNode"
             selectedHandNode.setScale(scaleMultiplier)
             selectedHandNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/7)
