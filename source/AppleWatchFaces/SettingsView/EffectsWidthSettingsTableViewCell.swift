@@ -20,6 +20,18 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         guard let clockFaceSettings = SettingsViewController.currentClockSetting.clockFaceSettings else { return }
         if let secondHandWidth = clockFaceSettings.handEffectWidths[safe: 0] {
             effectWidthSecondHandSlider.value = secondHandWidth
+        } else {
+            effectWidthSecondHandSlider.value = 0
+        }
+        if let minuteHandWidth = clockFaceSettings.handEffectWidths[safe: 1] {
+            effectWidthMinuteHandSlider.value = minuteHandWidth
+        } else {
+            effectWidthMinuteHandSlider.value = 0
+        }
+        if let hourHandWidth = clockFaceSettings.handEffectWidths[safe: 0] {
+            effectWidthHourHandSlider.value = hourHandWidth
+        } else {
+            effectWidthHourHandSlider.value = 0
         }
     }
     
