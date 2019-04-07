@@ -11,6 +11,14 @@ import SceneKit
 import WatchKit
 import UIKit
 
+enum PhysicFieldType: String {
+    case Spring,
+    Noise,
+    LinearGravity,
+    RadialGravity,
+    None
+}
+
 enum FaceForegroundTypes: String {
     case AnimatedPong, AnimatedStarField, AnimatedPhysicsFieldSmall, AnimatedPhysicsField, AnimatedPhysicsFieldLarge, AnimatedSnowField,
     None
@@ -32,6 +40,10 @@ class FaceForegroundNode: SKSpriteNode {
     func isPhysicsField(type : FaceForegroundTypes) -> Bool {
         return (type == .AnimatedPhysicsFieldSmall || type == .AnimatedPhysicsField || type == .AnimatedPhysicsFieldLarge)
     }
+    
+    static func getFieldTypeForForegroundType( foregroundType: FaceForegroundTypes) -> PhysicFieldType {
+        return .Spring
+    }
 
     static func descriptionForType(_ nodeType: FaceForegroundTypes) -> String {
         var typeDescription = ""
@@ -39,9 +51,15 @@ class FaceForegroundNode: SKSpriteNode {
         if (nodeType == .AnimatedPong)  { typeDescription = "Animated: Pong Game" }
         if (nodeType == .AnimatedStarField)  { typeDescription = "Animated: Starfield" }
         if (nodeType == .AnimatedSnowField)  { typeDescription = "Animated: Snow Falling" }
-        if (nodeType == .AnimatedPhysicsFieldSmall)  { typeDescription = "Animated: Physics Field Small" }
+        if (nodeType == .AnimatedPhysicsFieldSmall)  { typeDescription = "Animated: Physics Field " }
         if (nodeType == .AnimatedPhysicsField)  { typeDescription = "Animated: Physics Field Medium" }
         if (nodeType == .AnimatedPhysicsFieldLarge)  { typeDescription = "Animated: Physics Field Large" }
+        
+        //TODO: convert this to extended settings
+        // shape: circle, snowflake, star, square
+        // size: 0 - 4
+        // physics field type: spring, noise, linearGravity, radialgravity
+        // strength: -1 to 1 // act as a multiplier to affect how much action there is
         
         if (nodeType == .None)  { typeDescription = "None" }
         

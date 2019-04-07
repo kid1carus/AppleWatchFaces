@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		310044C621D3C5DF0019794A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310044C421D3C5DF0019794A /* Settings.storyboard */; };
 		3100DC9E21EC26A3007423A5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
+		31053339225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
+		3105333A225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
+		3105333B225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105674621F77E6D0078F3C6 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */; };
 		3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31056B5F2218D2CE00D0E15C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
@@ -365,6 +368,7 @@
 
 /* Begin PBXFileReference section */
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		31053338225A63C7004282E5 /* ClockOverlaySetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockOverlaySetting.swift; sourceTree = "<group>"; };
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		31056B5E2218D2CE00D0E15C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		31056B612218DC1700D0E15C /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -831,6 +835,7 @@
 				31B5E8CE218BD5A900DE6429 /* ClockRingSetting.swift */,
 				312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */,
 				31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */,
+				31053338225A63C7004282E5 /* ClockOverlaySetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1150,6 +1155,7 @@
 				3105674621F77E6D0078F3C6 /* UIViewController+Toast.swift in Sources */,
 				310CDC5F222CCAA700AF3B8D /* UIImage+Gradient.swift in Sources */,
 				31B5E8E4218CEF9000DE6429 /* MinuteHandSettingsTableViewCell.swift in Sources */,
+				31053339225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */,
 				310BA1C821AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift in Sources */,
 				31090FDD223421AA00D6CAA7 /* PongGameNode.swift in Sources */,
 				31FD61E921891B5000E15DEA /* SwiftyJSON.swift in Sources */,
@@ -1194,6 +1200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3105333A225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */,
 				313AE3E1221A777E00C02462 /* DotsNode.swift in Sources */,
 				312E2D7021F3E16A00C2F17F /* ClockTimer.swift in Sources */,
 				31D8633E21E5954B005BCB6F /* NumberTextNode.swift in Sources */,
@@ -1300,6 +1307,7 @@
 				31C86B4722374DE500EF4186 /* MainBackgroundColorSettingTableViewCell.swift in Sources */,
 				31C86B5F22374E6000EF4186 /* SettingsOptionsViewController.swift in Sources */,
 				31C86B3822374DE500EF4186 /* DecoratorThemeSettingCollectionViewCell.swift in Sources */,
+				3105333B225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */,
 				31C86B2E22374DA000EF4186 /* UICollectionView+Selection.swift in Sources */,
 				31C86B4422374DE500EF4186 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */,
 				31C86B5122374DE500EF4186 /* SecondHandSettingsTableViewCell.swift in Sources */,

@@ -56,7 +56,7 @@ class WatchFaceNode: SKShapeNode {
         
         self.addChild(foregroundNode)
         
-        renderHands(clockFaceSettings: clockFaceSettings)
+        renderHands(clockSetting: clockSetting)
         
         renderIndicatorItems(clockFaceSettings: clockFaceSettings, size: size)
     }
@@ -234,7 +234,9 @@ class WatchFaceNode: SKShapeNode {
         }
     }
     
-    func renderHands(clockFaceSettings: ClockFaceSetting) {
+    func renderHands(clockSetting: ClockSetting) {
+        //nothing to without these settings
+        guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
         
         var renderShadows = false
         let shadowMaterial = "#111111AA"
@@ -255,7 +257,8 @@ class WatchFaceNode: SKShapeNode {
         
         let secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
         let lineWidth:CGFloat = 0.0
-        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth)
+        let physicsFieldType = FaceForegroundNode.getFieldTypeForForegroundType(foregroundType: clockSetting.faceForegroundType)
+        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth, fieldType: physicsFieldType)
         secHandNode.name = "secondHand"
         secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
         
@@ -269,7 +272,7 @@ class WatchFaceNode: SKShapeNode {
         }
         
         if renderShadows {
-            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0)
+            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0, fieldType: .None)
             secHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             secHandShadowNode.name = "secondHandShadow"
             secHandShadowNode.zPosition = shadowChildZposition
