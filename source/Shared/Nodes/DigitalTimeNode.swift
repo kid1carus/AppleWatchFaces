@@ -320,9 +320,9 @@ class DigitalTimeNode: SKNode {
             
             let digital8Node = timeText.copy() as! SKLabelNode
             digital8Node.name = "textDigital8"
-            var darkMult:CGFloat = 0.15
+            var darkMult:CGFloat = 0.075
             if effect == .digital8Light {
-                darkMult = 0.4
+                darkMult = 0.2
             }
             var fillRed:CGFloat = 0.0
             var fillGreen:CGFloat = 0.0
