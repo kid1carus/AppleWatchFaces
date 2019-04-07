@@ -99,6 +99,9 @@ class ClockSetting: NSObject {
     var faceBackgroundType:FaceBackgroundTypes
     var faceForegroundType:FaceForegroundTypes
     
+    // overlay settings
+    var clockOverlaySettings:ClockOverlaySetting?
+    
     // face settings
     var clockFaceSettings:ClockFaceSetting?
     
@@ -119,6 +122,7 @@ class ClockSetting: NSObject {
         clockCasingMaterialName: String,
         clockForegroundMaterialName: String,
         
+        clockOverlaySettings: ClockOverlaySetting,
         clockFaceSettings: ClockFaceSetting,
         title: String,
         uniqueID: String)
@@ -126,6 +130,7 @@ class ClockSetting: NSObject {
         self.clockFaceMaterialName = clockFaceMaterialName
         self.faceBackgroundType = faceBackgroundType
         self.faceForegroundType = faceForegroundType
+        self.clockOverlaySettings = clockOverlaySettings
         self.clockFaceSettings = clockFaceSettings
         self.title = title
         self.clockCasingMaterialName = clockCasingMaterialName
@@ -161,6 +166,7 @@ class ClockSetting: NSObject {
             clockCasingMaterialName: "#1c1c1cff",
             clockForegroundMaterialName: "",
             
+            clockOverlaySettings: ClockOverlaySetting.defaults(),
             clockFaceSettings: ClockFaceSetting.defaults(),
             title: "Untitled"
         )
@@ -191,6 +197,7 @@ class ClockSetting: NSObject {
             clockCasingMaterialName: "#FF0000FF",
             clockForegroundMaterialName: "",
 
+            clockOverlaySettings: ClockOverlaySetting.defaults(),
             clockFaceSettings: ClockFaceSetting.random(),
             title: "random"
         )
@@ -214,6 +221,7 @@ class ClockSetting: NSObject {
                      faceForegroundType: FaceForegroundTypes,
                      clockCasingMaterialName: String,
                      clockForegroundMaterialName: String,
+                     clockOverlaySettings: ClockOverlaySetting,
                      clockFaceSettings: ClockFaceSetting,
                      title: String) {
         
@@ -222,6 +230,7 @@ class ClockSetting: NSObject {
                   faceForegroundType: faceForegroundType,
                   clockCasingMaterialName: clockCasingMaterialName,
                   clockForegroundMaterialName: clockForegroundMaterialName,
+                  clockOverlaySettings: clockOverlaySettings,
                   clockFaceSettings: clockFaceSettings,
                   title: title ,
                   uniqueID: UUID().uuidString)
@@ -235,9 +244,15 @@ class ClockSetting: NSObject {
         
         let faceForegroundTypeString = jsonObj["faceForegroundType"].stringValue
         if let faceForegroundTypeFound = FaceForegroundTypes(rawValue: faceForegroundTypeString) {
-            faceForegroundTypeTmp = faceForegroundTypeFound
+            
+            //import old (messy) types into new ones, moved into overlay settings
+            if (faceForegroundTypeString == "FaceIndicatorTypeAnimatedPhysicsFieldSmall" || faceForegroundTypeString == "FaceIndicatorTypeAnimatedPhysicsFieldLarge") {
+                faceForegroundTypeTmp = .AnimatedPhysicsField
+            } else {
+                faceForegroundTypeTmp = faceForegroundTypeFound
+            }
         }
-        
+                    
         let faceBackgroundTypeString = jsonObj["faceBackgroundType"].stringValue
         if let faceBackgroundTypeFound = FaceBackgroundTypes(rawValue: faceBackgroundTypeString) {
             faceBackgroundTypeTmp = faceBackgroundTypeFound
@@ -247,9 +262,9 @@ class ClockSetting: NSObject {
             case "FaceIndicatorTypeAnimatedPhysicsField":
                 faceForegroundTypeTmp = .AnimatedPhysicsField
             case "FaceIndicatorTypeAnimatedPhysicsFieldSmall":
-                faceForegroundTypeTmp = .AnimatedPhysicsFieldSmall
+                faceForegroundTypeTmp = .AnimatedPhysicsField
             case "FaceIndicatorTypeAnimatedPhysicsFieldLarge":
-                faceForegroundTypeTmp = .AnimatedPhysicsFieldLarge
+                faceForegroundTypeTmp = .AnimatedPhysicsField
             case "FaceBackgroundTypeAnimatedPong":
                 faceForegroundTypeTmp = .AnimatedPong
             case "FaceIndicatorTypeAnimatedSnowField":
@@ -269,6 +284,7 @@ class ClockSetting: NSObject {
             clockCasingMaterialName: jsonObj["clockCasingMaterialName"].stringValue,
             clockForegroundMaterialName: jsonObj["clockForegroundMaterialName"].stringValue,
             
+            clockOverlaySettings: ClockOverlaySetting.init(jsonObj: jsonObj["clockOverlaySettings"]),
             clockFaceSettings: ClockFaceSetting.init(jsonObj: jsonObj["clockFaceSettings"]),
             title: jsonObj["title"].stringValue,
             uniqueID: jsonObj["uniqueID"].stringValue
@@ -298,6 +314,11 @@ class ClockSetting: NSObject {
         serializedDict[ "clockFaceMaterialName" ] = self.clockFaceMaterialName as AnyObject
         serializedDict[ "faceBackgroundType" ] = self.faceBackgroundType.rawValue as AnyObject
         serializedDict[ "faceForegroundType" ] = self.faceForegroundType.rawValue as AnyObject
+        
+        //only add this if it applies
+        if self.faceForegroundType != .None {
+            serializedDict[ "clockOverlaySettings" ] = self.clockOverlaySettings!.serializedSettings()
+        }
         serializedDict[ "clockFaceSettings" ] = self.clockFaceSettings!.serializedSettings()
         
         serializedDict[ "clockCasingMaterialName" ] = self.clockCasingMaterialName as AnyObject

@@ -12,6 +12,9 @@
 		31053339225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333A225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333B225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
+		3105333D225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */; };
+		3105333E225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */; };
+		3105333F225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */; };
 		3105674621F77E6D0078F3C6 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */; };
 		3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31056B5F2218D2CE00D0E15C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
@@ -369,6 +372,7 @@
 /* Begin PBXFileReference section */
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		31053338225A63C7004282E5 /* ClockOverlaySetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockOverlaySetting.swift; sourceTree = "<group>"; };
+		3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+JSONHelpers.swift"; sourceTree = "<group>"; };
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		31056B5E2218D2CE00D0E15C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		31056B612218DC1700D0E15C /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -822,6 +826,7 @@
 				3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */,
 				312E853722239740001C450B /* Double+Rounded.swift */,
 				310CDC5E222CCAA700AF3B8D /* UIImage+Gradient.swift */,
+				3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -833,9 +838,9 @@
 				31B5E8D6218BD91400DE6429 /* ClockFaceSetting.swift */,
 				31B5E8D4218BD81800DE6429 /* ClockSetting.swift */,
 				31B5E8CE218BD5A900DE6429 /* ClockRingSetting.swift */,
+				31053338225A63C7004282E5 /* ClockOverlaySetting.swift */,
 				312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */,
 				31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */,
-				31053338225A63C7004282E5 /* ClockOverlaySetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1151,6 +1156,7 @@
 				310BA1D221B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift in Sources */,
 				31B3F8CE218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift in Sources */,
 				310D4A4F21BD6BD600082A62 /* HandOptionsSettingTableViewCell.swift in Sources */,
+				3105333D225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */,
 				31EF999921A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift in Sources */,
 				3105674621F77E6D0078F3C6 /* UIViewController+Toast.swift in Sources */,
 				310CDC5F222CCAA700AF3B8D /* UIImage+Gradient.swift in Sources */,
@@ -1221,6 +1227,7 @@
 				31061F332192730A00EF511B /* SKColor.swift in Sources */,
 				31B5E8D9218CE00E00DE6429 /* ClockSetting.swift in Sources */,
 				314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */,
+				3105333E225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */,
 				31F4F1CF219A60230050177A /* AppUISettings.swift in Sources */,
 				31F4F1DA219D12DF0050177A /* UserClockSetting.swift in Sources */,
 				31056B622218DC1700D0E15C /* ComplicationController.swift in Sources */,
@@ -1308,6 +1315,7 @@
 				31C86B5F22374E6000EF4186 /* SettingsOptionsViewController.swift in Sources */,
 				31C86B3822374DE500EF4186 /* DecoratorThemeSettingCollectionViewCell.swift in Sources */,
 				3105333B225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */,
+				3105333F225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */,
 				31C86B2E22374DA000EF4186 /* UICollectionView+Selection.swift in Sources */,
 				31C86B4422374DE500EF4186 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */,
 				31C86B5122374DE500EF4186 /* SecondHandSettingsTableViewCell.swift in Sources */,

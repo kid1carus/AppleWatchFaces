@@ -20,10 +20,10 @@ enum PhysicFieldType: String {
 }
 
 enum FaceForegroundTypes: String {
-    case AnimatedPong, AnimatedStarField, AnimatedPhysicsFieldSmall, AnimatedPhysicsField, AnimatedPhysicsFieldLarge, AnimatedSnowField,
+    case AnimatedPong, AnimatedStarField, AnimatedSnowField, AnimatedPhysicsField,
     None
     
-    static let userSelectableValues = [AnimatedPong, AnimatedStarField, AnimatedPhysicsFieldSmall, AnimatedPhysicsField, AnimatedPhysicsFieldLarge, AnimatedSnowField, None]
+    static let userSelectableValues = [AnimatedPong, AnimatedStarField, AnimatedSnowField, AnimatedPhysicsField, None]
     
     static let randomizableValues = [None]
     
@@ -38,7 +38,7 @@ class FaceForegroundNode: SKSpriteNode {
     var foregroundType:FaceForegroundTypes = .None
     
     func isPhysicsField(type : FaceForegroundTypes) -> Bool {
-        return (type == .AnimatedPhysicsFieldSmall || type == .AnimatedPhysicsField || type == .AnimatedPhysicsFieldLarge)
+        return (type == .AnimatedPhysicsField)
     }
     
     static func getFieldTypeForForegroundType( foregroundType: FaceForegroundTypes) -> PhysicFieldType {
@@ -51,9 +51,7 @@ class FaceForegroundNode: SKSpriteNode {
         if (nodeType == .AnimatedPong)  { typeDescription = "Animated: Pong Game" }
         if (nodeType == .AnimatedStarField)  { typeDescription = "Animated: Starfield" }
         if (nodeType == .AnimatedSnowField)  { typeDescription = "Animated: Snow Falling" }
-        if (nodeType == .AnimatedPhysicsFieldSmall)  { typeDescription = "Animated: Physics Field " }
-        if (nodeType == .AnimatedPhysicsField)  { typeDescription = "Animated: Physics Field Medium" }
-        if (nodeType == .AnimatedPhysicsFieldLarge)  { typeDescription = "Animated: Physics Field Large" }
+        if (nodeType == .AnimatedPhysicsField)  { typeDescription = "Animated: Physics Field" }
         
         //TODO: convert this to extended settings
         // shape: circle, snowflake, star, square
@@ -116,14 +114,14 @@ class FaceForegroundNode: SKSpriteNode {
             fieldNode.name = "physicsFieldNode"
             var shapeRadius:CGFloat = 2.0
             var physicsShapeSize:CGSize = CGSize.init(width: 3.0, height: 3.0)
-            if (foregroundType == .AnimatedPhysicsFieldSmall) {
-                shapeRadius = 1.0
-                physicsShapeSize = CGSize.init(width: 1.5, height: 1.5)
-            }
-            if (foregroundType == .AnimatedPhysicsFieldLarge) {
-                shapeRadius = 4.0
-                physicsShapeSize = CGSize.init(width: 5.0, height: 5.0)
-            }
+//            if (foregroundType == .AnimatedPhysicsFieldSmall) {
+//                shapeRadius = 1.0
+//                physicsShapeSize = CGSize.init(width: 1.5, height: 1.5)
+//            }
+//            if (foregroundType == .AnimatedPhysicsFieldLarge) {
+//                shapeRadius = 4.0
+//                physicsShapeSize = CGSize.init(width: 5.0, height: 5.0)
+//            }
             fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, shapeRadius: shapeRadius, physicsShapeSize: physicsShapeSize))
             
             let width = screenSize.width+lineWidth

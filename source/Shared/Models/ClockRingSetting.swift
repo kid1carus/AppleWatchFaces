@@ -278,11 +278,6 @@ class ClockRingSetting: NSObject {
     convenience init( jsonObj: JSON ) {
         let ringMaterialDesiredThemeColorIndex = jsonObj[ "ringMaterialDesiredThemeColorIndex" ].intValue
 
-        var textOutlineDesiredThemeColorIndex = 0
-        if (jsonObj["textOutlineDesiredThemeColorIndex"] != JSON.null) {
-            textOutlineDesiredThemeColorIndex = jsonObj[ "textOutlineDesiredThemeColorIndex" ].intValue
-        }
-        
         var ringStaticItemHorizontalPosition:RingHorizontalPositionTypes = .None
         if (jsonObj["ringStaticItemHorizontalPosition"] != JSON.null) {
             ringStaticItemHorizontalPosition = RingHorizontalPositionTypes(rawValue: jsonObj["ringStaticItemHorizontalPosition"].stringValue)!
@@ -299,6 +294,14 @@ class ClockRingSetting: NSObject {
         if (jsonObj["ringStaticEffects"] != JSON.null) {
             ringStaticEffects = DigitalTimeEffects(rawValue: jsonObj["ringStaticEffects"].stringValue)!
         }
+        var indicatorType: FaceIndicatorTypes = .FaceIndicatorTypeNone
+        if (jsonObj["indicatorType"] != JSON.null) {
+            indicatorType = FaceIndicatorTypes(rawValue: jsonObj["indicatorType"].stringValue)!
+        }
+        var textType: NumberTextTypes = .NumberTextTypeSystem
+        if (jsonObj["textType"] != JSON.null) {
+            textType = NumberTextTypes(rawValue: jsonObj["textType"].stringValue)!
+        }
         
         self.init(
             ringType: RingTypes(rawValue: jsonObj["ringType"].stringValue)!,
@@ -307,21 +310,21 @@ class ClockRingSetting: NSObject {
             
             ringWidth : Float( jsonObj[ "ringWidth" ].floatValue ),
             ringPattern: ClockRingSetting.patternArrayFromSerializedArray( jsonObj[ "ringPattern" ] ),
-            ringPatternTotal: Int( jsonObj[ "ringPatternTotal" ].intValue ),
-            ringStaticHorizontalPositionNumeric: Float( jsonObj[ "ringStaticHorizontalPositionNumeric" ].floatValue ),
-            ringStaticVerticalPositionNumeric: Float( jsonObj[ "ringStaticVerticalPositionNumeric" ].floatValue ),
+            ringPatternTotal: NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "ringPatternTotal"),
+            ringStaticHorizontalPositionNumeric: NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "ringStaticHorizontalPositionNumeric"),
+            ringStaticVerticalPositionNumeric: NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "ringStaticVerticalPositionNumeric"),
             ringStaticItemHorizontalPosition: ringStaticItemHorizontalPosition,
             ringStaticItemVerticalPosition: ringStaticItemVerticalPosition,
             ringStaticTimeFormat: ringStaticTimeFormat,
             ringStaticEffects: ringStaticEffects,
             
-            indicatorType: FaceIndicatorTypes(rawValue: jsonObj["indicatorType"].stringValue)!,
-            indicatorSize : Float( jsonObj[ "indicatorSize" ].floatValue ),
+            indicatorType: indicatorType,
+            indicatorSize : NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "indicatorSize"),
             
-            textType: NumberTextTypes(rawValue: jsonObj["textType"].stringValue)!,
-            textSize: Float( jsonObj[ "textSize" ].floatValue ),
-            shouldShowTextOutline: jsonObj[ "shouldShowTextOutline" ].boolValue,
-            textOutlineDesiredThemeColorIndex: textOutlineDesiredThemeColorIndex
+            textType: textType,
+            textSize: NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "textSize"),
+            shouldShowTextOutline: NSObject.boolValueForJSONObj(jsonObj: jsonObj, defaultVal: false, key: "shouldShowTextOutline"),
+            textOutlineDesiredThemeColorIndex: NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "textOutlineDesiredThemeColorIndex")
         )
     }
     
@@ -332,26 +335,38 @@ class ClockRingSetting: NSObject {
 
         serializedDict[ "ringMaterialDesiredThemeColorIndex" ] = self.ringMaterialDesiredThemeColorIndex as AnyObject
         
-        serializedDict[ "ringWidth" ] = self.ringWidth.description as AnyObject
-        serializedDict[ "ringPattern" ] = self.ringPattern as AnyObject
-        serializedDict[ "ringPatternTotal" ] = self.ringPatternTotal.description as AnyObject
+        if ringType != .RingTypeDigitalTime {
+            serializedDict[ "ringWidth" ] = self.ringWidth.description as AnyObject
+            serializedDict[ "ringPattern" ] = self.ringPattern as AnyObject
+            serializedDict[ "ringPatternTotal" ] = self.ringPatternTotal.description as AnyObject
+        }
         
-        serializedDict[ "ringStaticHorizontalPositionNumeric" ] = self.ringStaticHorizontalPositionNumeric.description as AnyObject
-        serializedDict[ "ringStaticVerticalPositionNumeric" ] = self.ringStaticVerticalPositionNumeric.description as AnyObject
+        if ringType == .RingTypeDigitalTime {
+            serializedDict[ "ringStaticItemHorizontalPosition" ] = self.ringStaticItemHorizontalPosition.rawValue as AnyObject
+            serializedDict[ "ringStaticItemVerticalPosition" ] = self.ringStaticItemVerticalPosition.rawValue as AnyObject
+            
+            if self.ringStaticItemVerticalPosition == .Numeric {
+                serializedDict[ "ringStaticVerticalPositionNumeric" ] = self.ringStaticVerticalPositionNumeric.description as AnyObject
+            }
+            if self.ringStaticItemHorizontalPosition == .Numeric {
+                serializedDict[ "ringStaticHorizontalPositionNumeric" ] = self.ringStaticHorizontalPositionNumeric.description as AnyObject
+            }
+            
+            serializedDict[ "ringStaticTimeFormat" ] = self.ringStaticTimeFormat.rawValue as AnyObject
+            serializedDict[ "ringStaticEffects" ] = self.ringStaticEffects.rawValue as AnyObject
+        }
         
-        serializedDict[ "ringStaticItemHorizontalPosition" ] = self.ringStaticItemHorizontalPosition.rawValue as AnyObject
-        serializedDict[ "ringStaticItemVerticalPosition" ] = self.ringStaticItemVerticalPosition.rawValue as AnyObject
-        serializedDict[ "ringStaticTimeFormat" ] = self.ringStaticTimeFormat.rawValue as AnyObject
-        serializedDict[ "ringStaticEffects" ] = self.ringStaticEffects.rawValue as AnyObject
+        if ringType == .RingTypeShapeNode {
+            serializedDict[ "indicatorType" ] = self.indicatorType.rawValue as AnyObject
+            serializedDict[ "indicatorSize" ] = self.indicatorSize.description as AnyObject
+        }
         
-        serializedDict[ "indicatorType" ] = self.indicatorType.rawValue as AnyObject
-        serializedDict[ "indicatorSize" ] = self.indicatorSize.description as AnyObject
-        
-        serializedDict[ "textType" ] = self.textType.rawValue as AnyObject
-        serializedDict[ "textSize" ] = self.textSize.description as AnyObject
-        
-        serializedDict[ "shouldShowTextOutline" ] = NSNumber.init(value: self.shouldShowTextOutline as Bool)
-        serializedDict[ "textOutlineDesiredThemeColorIndex" ] = self.textOutlineDesiredThemeColorIndex.description as AnyObject
+        if ringType == .RingTypeTextNode || ringType == .RingTypeTextRotatingNode || ringType == .RingTypeDigitalTime {
+            serializedDict[ "textType" ] = self.textType.rawValue as AnyObject
+            serializedDict[ "textSize" ] = self.textSize.description as AnyObject
+            serializedDict[ "shouldShowTextOutline" ] = NSNumber.init(value: self.shouldShowTextOutline as Bool)
+            serializedDict[ "textOutlineDesiredThemeColorIndex" ] = self.textOutlineDesiredThemeColorIndex.description as AnyObject
+        }
         
         return serializedDict as NSDictionary
     }
