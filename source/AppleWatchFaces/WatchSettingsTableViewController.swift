@@ -39,7 +39,8 @@ class WatchSettingsTableViewController: UITableViewController {
             ["title":"Bottom Layer Texture",        "category":"normal",      "rowHeight":"100.0","cellID":"mainBackgroundColorsTableViewCell"],
             ["title":"Top Layer Texture",           "category":"normal",      "rowHeight":"100.0","cellID":"faceBackgroundColorsTableViewCell"],
             ["title":"Overlay Type",                "category":"advanced",    "rowHeight":"80.0","cellID":"faceForegroundTypeTableViewCell"],
-            ["title":"Overlay Color",               "category":"advanced",    "rowHeight":"100.0","cellID":"faceOverlayColorsTableViewCell"]
+            ["title":"Overlay Color",               "category":"advanced",    "rowHeight":"100.0","cellID":"faceOverlayColorsTableViewCell"],
+            ["title":"Overlay Options",              "category":"advanced",    "rowHeight":"66.0","cellID":"faceForegroundOptionsSettingsTableViewCellID"]
         ],
         [
             
@@ -57,7 +58,7 @@ class WatchSettingsTableViewController: UITableViewController {
             
             ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
             ["title":"Hand Outline Color",          "category":"advanced",    "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"],
-             ["title":"Hand Effects",          "category":"advanced",    "rowHeight":"144.0","cellID":"handsEffectsTableViewCellID"]
+            ["title":"Hand Effects",          "category":"advanced",    "rowHeight":"144.0","cellID":"handsEffectsTableViewCellID"]
         ],
         [
             ["title":"Indicator Path",             "category":"path-render", "rowHeight":"100.0","cellID":"ringShapeSettingsTableViewCellID"],
@@ -100,7 +101,10 @@ class WatchSettingsTableViewController: UITableViewController {
             } else {
                 settingText = "no outlines"
             }
-            
+        case "faceForegroundOptionsSettingsTableViewCellID":
+            if let overlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings {
+                settingText = "Shape: " + ClockOverlaySetting.descriptionForOverlayShapeType(overlaySettings.shapeType)
+            }
         case "secondHandSettingsTableViewCell":
             settingText = SecondHandNode.descriptionForType((SettingsViewController.currentClockSetting.clockFaceSettings?.secondHandType)!)
         case "secondhandAnimationSettingsTableViewCellID":
@@ -256,6 +260,11 @@ class WatchSettingsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WatchSettingsSelectableTableViewCell
             cell.cellId = cellId //important for updating the proper header cell values later!
             cell.chooseSetting(animated: true)
+            
+            let selectedBackGroundView = UIView.init()
+            selectedBackGroundView.backgroundColor = AppUISettings.settingsTableCellBackgroundColor
+            cell.selectedBackgroundView = selectedBackGroundView
+            
             return cell
         }
     }

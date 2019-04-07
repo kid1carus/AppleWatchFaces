@@ -23,6 +23,7 @@ class AppUISettings: NSObject {
  
     //the color used when highlighting the cell items
     static let settingHighlightColor:String = "#38ff9b"
+    static let settingsTableCellBackgroundColor = UIColor.black
 
     //line width for settings SKNodes strokes ( before scaling )
     static let settingLineWidthBeforeScale:CGFloat = 3.0

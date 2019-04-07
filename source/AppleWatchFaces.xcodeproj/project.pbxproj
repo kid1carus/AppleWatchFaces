@@ -15,6 +15,8 @@
 		3105333D225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */; };
 		3105333E225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */; };
 		3105333F225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */; };
+		31053341225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053340225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift */; };
+		31053342225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053340225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift */; };
 		3105674621F77E6D0078F3C6 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */; };
 		3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31056B5F2218D2CE00D0E15C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
@@ -373,6 +375,7 @@
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		31053338225A63C7004282E5 /* ClockOverlaySetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockOverlaySetting.swift; sourceTree = "<group>"; };
 		3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+JSONHelpers.swift"; sourceTree = "<group>"; };
+		31053340225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceForegroundOptionsettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		31056B5E2218D2CE00D0E15C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		31056B612218DC1700D0E15C /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -791,6 +794,7 @@
 				31B3F8CF218F4BAE00AD22A5 /* SecondHandColorSettingsTableViewCell.swift */,
 				310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */,
 				3109213A225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift */,
+				31053340225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -1198,6 +1202,7 @@
 				31B5E8E9218CF6E400DE6429 /* HourHandSettingsTableViewCell.swift in Sources */,
 				31EF999321A0AF4F00BB54E7 /* FaceBackgroundNode.swift in Sources */,
 				312E853822239740001C450B /* Double+Rounded.swift in Sources */,
+				31053341225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift in Sources */,
 				31A5F7EF21966CED000F1677 /* MathFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1285,6 +1290,7 @@
 				31C86B0922374CEF00EF4186 /* ClockDecoratorTheme.swift in Sources */,
 				31C86B4E22374DE500EF4186 /* SecondHandAnimationSettingsTableViewCell.swift in Sources */,
 				31C86B2F22374DA000EF4186 /* UIViewController+Toast.swift in Sources */,
+				31053342225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift in Sources */,
 				310B1BBA2245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift in Sources */,
 				31C86B2B22374DA000EF4186 /* Collection+Safe.swift in Sources */,
 				31C86B5722374DEE00EF4186 /* DecoratorPreviewController.swift in Sources */,
