@@ -560,7 +560,7 @@ class SecondHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = phy
             
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 0))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 84))
             
             self.addChild(shape)
         }
@@ -788,12 +788,12 @@ class SecondHandNode: SKSpriteNode {
             if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
             shape.setScale(0.31)
             
-            let rect = CGRect.init(x: 0, y: 0, width: 2, height: 85)
+            let rect = CGRect.init(x: 0, y: 0, width: 40, height: 275)
             let phy = SKPhysicsBody.init(rectangleOf: rect.size, center: CGPoint.init(x: rect.midX, y: rect.midY))
             phy.isDynamic = false
             shape.physicsBody = physicsBody
             
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 85))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 275))
             
             self.addChild(shape)
         }
