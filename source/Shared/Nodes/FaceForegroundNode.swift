@@ -11,12 +11,14 @@ import SceneKit
 import WatchKit
 import UIKit
 
-enum PhysicFieldType: String {
+enum PhysicsFieldTypes: String {
     case Spring,
     Noise,
     LinearGravity,
     RadialGravity,
     None
+    
+    static let userSelectableValues = [Spring, Noise, LinearGravity, None]
 }
 
 enum FaceForegroundTypes: String {
@@ -41,10 +43,22 @@ class FaceForegroundNode: SKSpriteNode {
         return (type == .AnimatedPhysicsField)
     }
     
-    static func getFieldTypeForForegroundType( foregroundType: FaceForegroundTypes) -> PhysicFieldType {
+    static func getFieldTypeForForegroundType( foregroundType: FaceForegroundTypes) -> PhysicsFieldTypes {
         return .Spring
     }
 
+    static func descriptionForPhysicsFields(_ fieldType: PhysicsFieldTypes) -> String {
+        var typeDescription = ""
+        
+        if (fieldType == .LinearGravity)  { typeDescription = "Push" }
+        if (fieldType == .Noise)  { typeDescription = "Noise" }
+        if (fieldType == .RadialGravity)  { typeDescription = "GravIn" }
+        if (fieldType == .Spring)  { typeDescription = "Magnet" }
+        if (fieldType == .None)  { typeDescription = "None" }
+        
+        return typeDescription
+    }
+    
     static func descriptionForType(_ nodeType: FaceForegroundTypes) -> String {
         var typeDescription = ""
         
@@ -52,16 +66,18 @@ class FaceForegroundNode: SKSpriteNode {
         if (nodeType == .AnimatedStarField)  { typeDescription = "Animated: Starfield" }
         if (nodeType == .AnimatedSnowField)  { typeDescription = "Animated: Snow Falling" }
         if (nodeType == .AnimatedPhysicsField)  { typeDescription = "Animated: Physics Field" }
-        
-        //TODO: convert this to extended settings
-        // shape: circle, snowflake, star, square
-        // size: 0 - 4
-        // physics field type: spring, noise, linearGravity, radialgravity
-        // strength: -1 to 1 // act as a multiplier to affect how much action there is
-        
         if (nodeType == .None)  { typeDescription = "None" }
         
         return typeDescription
+    }
+    
+    static func physicFieldsTypeDescriptions() -> [String] {
+        var typeDescriptionsArray = [String]()
+        for nodeType in PhysicsFieldTypes.userSelectableValues {
+            typeDescriptionsArray.append(descriptionForPhysicsFields(nodeType))
+        }
+        
+        return typeDescriptionsArray
     }
     
     static func typeDescriptions() -> [String] {
@@ -94,7 +110,7 @@ class FaceForegroundNode: SKSpriteNode {
         }
     }
     
-    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat ) {
+    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat, shapeType: OverlayShapeTypes ) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize.init())
         
@@ -122,7 +138,7 @@ class FaceForegroundNode: SKSpriteNode {
 //                shapeRadius = 4.0
 //                physicsShapeSize = CGSize.init(width: 5.0, height: 5.0)
 //            }
-            fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, shapeRadius: shapeRadius, physicsShapeSize: physicsShapeSize))
+            fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, shapeRadius: shapeRadius, physicsShapeSize: physicsShapeSize, shapeType: shapeType ))
             
             let width = screenSize.width+lineWidth
             let height = screenSize.height+lineWidth

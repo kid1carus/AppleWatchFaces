@@ -216,7 +216,7 @@ class SecondHandNode: SKSpriteNode {
         self.init(secondHandType: secondHandType, material: material, strokeColor: SKColor.clear, lineWidth: 2.0, glowWidth: 0, fieldType: .None)
     }
     
-    func addPhysicsField(fieldType: PhysicFieldType, node: SKNode, position: CGPoint) {
+    func addPhysicsField(fieldType: PhysicsFieldTypes, node: SKNode, position: CGPoint) {
         
         if fieldType == .Spring {
             let field = SKFieldNode.springField()
@@ -259,7 +259,7 @@ class SecondHandNode: SKSpriteNode {
         
     }
     
-    init(secondHandType: SecondHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat, glowWidth: CGFloat, fieldType: PhysicFieldType) {
+    init(secondHandType: SecondHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat, glowWidth: CGFloat, fieldType: PhysicsFieldTypes) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize())
         

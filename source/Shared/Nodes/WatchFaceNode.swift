@@ -50,7 +50,12 @@ class WatchFaceNode: SKShapeNode {
         
         self.addChild(backgroundShapeNode)
         
-        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0)
+        var shapeType: OverlayShapeTypes = .Circle
+        if let clockOverlaySettings = clockSetting.clockOverlaySettings {
+            shapeType = clockOverlaySettings.shapeType
+        }
+        
+        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0, shapeType: shapeType)
         foregroundNode.name = "foregroundNode"
         foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
         
@@ -257,7 +262,8 @@ class WatchFaceNode: SKShapeNode {
         
         let secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
         let lineWidth:CGFloat = 0.0
-        let physicsFieldType = FaceForegroundNode.getFieldTypeForForegroundType(foregroundType: clockSetting.faceForegroundType)
+        var physicsFieldType:PhysicsFieldTypes = .None
+        if let overlaySettings = clockSetting.clockOverlaySettings { physicsFieldType = overlaySettings.fieldType }
         let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth, fieldType: physicsFieldType)
         secHandNode.name = "secondHand"
         secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)

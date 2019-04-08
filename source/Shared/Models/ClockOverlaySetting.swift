@@ -12,20 +12,22 @@ import Foundation
 enum OverlayShapeTypes: String {
     case Circle, Square, Snowflake, Star
     
-    static let userSelectableValues = [Circle, Square, Snowflake, Star]
+    static let userSelectableValues = [Circle, Square]
 }
 
 //hold settings like shape, strength, etc for properites esp the physics node types
 class ClockOverlaySetting: NSObject {
     
+    var fieldType: PhysicsFieldTypes
     var shapeType: OverlayShapeTypes
     
-    init(shapeType: OverlayShapeTypes) {
+    init(shapeType: OverlayShapeTypes, fieldType: PhysicsFieldTypes) {
         self.shapeType = shapeType
+        self.fieldType = fieldType
     }
     
     static func defaults() -> ClockOverlaySetting {
-        return ClockOverlaySetting.init(shapeType: .Circle)
+        return ClockOverlaySetting.init(shapeType: .Circle, fieldType: .None)
     }
     
     convenience init( jsonObj: JSON ) {
@@ -34,13 +36,19 @@ class ClockOverlaySetting: NSObject {
             shapeType = OverlayShapeTypes(rawValue: jsonObj["shapeType"].stringValue)!
         }
         
-        self.init(shapeType: shapeType)
+        var fieldType:PhysicsFieldTypes = .None
+        if (jsonObj["fieldType"] != JSON.null) {
+            fieldType = PhysicsFieldTypes(rawValue: jsonObj["fieldType"].stringValue)!
+        }
+        
+        self.init(shapeType: shapeType, fieldType: fieldType)
     }
     
     func serializedSettings() -> NSDictionary {
         var serializedDict = [String:AnyObject]()
         
         serializedDict[ "shapeType" ] = self.shapeType.rawValue as AnyObject
+        serializedDict[ "fieldType" ] = self.fieldType.rawValue as AnyObject
         
         return serializedDict as NSDictionary
     }
@@ -50,7 +58,7 @@ class ClockOverlaySetting: NSObject {
         
         if (shapeType == .Circle)  { typeDescription = "Circle" }
         if (shapeType == .Square)  { typeDescription = "Square" }
-        if (shapeType == .Snowflake)  { typeDescription = "Snowflake" }
+        if (shapeType == .Snowflake)  { typeDescription = "Snow" }
         if (shapeType == .Star)  { typeDescription = "Star" }
         
         return typeDescription

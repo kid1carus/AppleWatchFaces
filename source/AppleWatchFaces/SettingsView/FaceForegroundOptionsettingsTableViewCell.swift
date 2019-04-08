@@ -11,6 +11,7 @@ import UIKit
 
 class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
     
+    @IBOutlet var fieldTypeSegment:UISegmentedControl!
     @IBOutlet var shapeTypeSegment:UISegmentedControl!
     //@IBOutlet var shapeSizeSlider:UISlider!
     
@@ -21,7 +22,24 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
         if let segmentIndex = OverlayShapeTypes.userSelectableValues.index(of: clockOverlaySettings.shapeType) {
             shapeTypeSegment.selectedSegmentIndex = segmentIndex
         }
+        
+        if let typeSegmentIndex = PhysicsFieldTypes.userSelectableValues.index(of: clockOverlaySettings.fieldType) {
+            fieldTypeSegment.selectedSegmentIndex = typeSegmentIndex
+        }
        
+    }
+    
+    @IBAction func typeSegmentValueDidChange ( sender: UISegmentedControl) {
+        guard let clockOverlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings else { return }
+        
+        clockOverlaySettings.fieldType = PhysicsFieldTypes.userSelectableValues[sender.selectedSegmentIndex]
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+        NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
+                                        userInfo:["cellId": self.cellId , "settingType":"faceForegroundOption"])
     }
     
     @IBAction func shapeSegmentValueDidChange ( sender: UISegmentedControl) {
@@ -80,6 +98,11 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
         shapeTypeSegment.removeAllSegments()
         for (index, description) in ClockOverlaySetting.overlayShapeTypeDescriptions().enumerated() {
             shapeTypeSegment.insertSegment(withTitle: description, at: index, animated: false)
+        }
+        
+        fieldTypeSegment.removeAllSegments()
+        for (index, description) in FaceForegroundNode.physicFieldsTypeDescriptions().enumerated() {
+            fieldTypeSegment.insertSegment(withTitle: description, at: index, animated: false)
         }
         
 //        effectWidthSecondHandSlider.minimumValue = AppUISettings.handEffectSettigsSliderSpacerMin
