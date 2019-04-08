@@ -11,7 +11,7 @@ import SpriteKit
 
 class PhysicsNode: SKSpriteNode {
     
-    init(size: CGSize, material: String, strokeColor: SKColor, lineWidth: CGFloat, shapeRadius: CGFloat, physicsShapeSize: CGSize, shapeType: OverlayShapeTypes) {
+    init(size: CGSize, material: String, strokeColor: SKColor, lineWidth: CGFloat, physicsShapeSize: CGSize, shapeType: OverlayShapeTypes) {
         super.init(texture: nil, color: SKColor.clear, size: size)
         
         let size = AppUISettings.getScreenBoundsForImages()
@@ -26,7 +26,7 @@ class PhysicsNode: SKSpriteNode {
             var newShape:SKShapeNode = SKShapeNode.init()
             
             if shapeType == .Circle {
-                newShape = SKShapeNode.init(circleOfRadius: shapeRadius)
+                newShape = SKShapeNode.init(circleOfRadius: physicsShapeSize.height*0.75)
             }
             if shapeType == .Square {
                 newShape = SKShapeNode.init(rectOf: physicsShapeSize)
@@ -38,6 +38,10 @@ class PhysicsNode: SKSpriteNode {
             let physicsBody = SKPhysicsBody.init(rectangleOf: physicsShapeSize)
             //physicsBody.mass = 2.0
             physicsBody.restitution = 1.0
+            //clamp mass to make it push
+            if physicsBody.mass < 0.0004 {
+                physicsBody.mass = 0.0004
+            }
             
             newShape.physicsBody = physicsBody
             //newShape.physicsBody?.isDynamic = false

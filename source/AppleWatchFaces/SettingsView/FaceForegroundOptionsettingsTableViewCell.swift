@@ -13,11 +13,13 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
     
     @IBOutlet var fieldTypeSegment:UISegmentedControl!
     @IBOutlet var shapeTypeSegment:UISegmentedControl!
-    //@IBOutlet var shapeSizeSlider:UISlider!
+    @IBOutlet var itemSizeSlider:UISlider!
     
     // called after a new setting should be selected ( IE a new design is loaded )
     override func chooseSetting( animated: Bool ) {
         guard let clockOverlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings else { return }
+        
+        itemSizeSlider.value = clockOverlaySettings.itemSize
         
         if let segmentIndex = OverlayShapeTypes.userSelectableValues.index(of: clockOverlaySettings.shapeType) {
             shapeTypeSegment.selectedSegmentIndex = segmentIndex
@@ -27,6 +29,24 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
             fieldTypeSegment.selectedSegmentIndex = typeSegmentIndex
         }
        
+    }
+    
+    @IBAction func itemSizeSliderValueDidChange(sender: UISlider ) {
+        //debugPrint("slider value:" + String( sender.value ) )
+        guard let clockOverlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings else { return }
+        
+        let roundedValue = Float(round(50*sender.value)/50)
+        if roundedValue != clockOverlaySettings.itemSize {
+            //debugPrint("new value:" + String( roundedValue ) )
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
+            clockOverlaySettings.itemSize = roundedValue
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
+                                            userInfo:["cellId": self.cellId , "settingType":"faceForegroundOption"])
+        }
+        
     }
     
     @IBAction func typeSegmentValueDidChange ( sender: UISegmentedControl) {
@@ -55,37 +75,6 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
                                             userInfo:["cellId": self.cellId , "settingType":"faceForegroundOption"])
     }
     
-    @IBAction func minuteHandWidthSliderValueDidChange ( sender: UISlider) {
-        guard let clockFaceSettings = SettingsViewController.currentClockSetting.clockFaceSettings else { return }
-        
-        //add to undo stack for actions to be able to undo
-        SettingsViewController.addToUndoStack()
-        
-        let thresholdForChange:Float = 0.1
-        let roundedValue = Float(round(50*sender.value)/50)
-        var didChangeSetting = false
-        
-        //default it
-        if clockFaceSettings.handEffectWidths.count < 3 {
-            clockFaceSettings.handEffectWidths = [0,0,0]
-        }
-        
-        if let currentVal = clockFaceSettings.handEffectWidths[safe: 1] {
-            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == 0 {
-                clockFaceSettings.handEffectWidths[1] = roundedValue
-                didChangeSetting = true
-            }
-        } else {
-            debugPrint("WARNING: no hand effect width array index to modify")
-        }
-        
-        if didChangeSetting {
-            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
-            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-                                            userInfo:["cellId": self.cellId , "settingType":"handEffectWidths"])
-        }
-    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -93,6 +82,9 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
     }
     
     override func awakeFromNib() {
+        
+        itemSizeSlider.minimumValue = AppUISettings.foregroundItemSizeSettingsSliderSpacerMin
+        itemSizeSlider.maximumValue = AppUISettings.foregroundItemSizeSettingsSliderSpacerMax
         
         //set up segment
         shapeTypeSegment.removeAllSegments()

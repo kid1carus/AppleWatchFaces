@@ -110,7 +110,7 @@ class FaceForegroundNode: SKSpriteNode {
         }
     }
     
-    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat, shapeType: OverlayShapeTypes ) {
+    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat, shapeType: OverlayShapeTypes, itemSize: CGFloat ) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize.init())
         
@@ -128,17 +128,8 @@ class FaceForegroundNode: SKSpriteNode {
             //A layer of a physic blobs
             let fieldNode = SKCropNode()
             fieldNode.name = "physicsFieldNode"
-            var shapeRadius:CGFloat = 2.0
-            var physicsShapeSize:CGSize = CGSize.init(width: 3.0, height: 3.0)
-//            if (foregroundType == .AnimatedPhysicsFieldSmall) {
-//                shapeRadius = 1.0
-//                physicsShapeSize = CGSize.init(width: 1.5, height: 1.5)
-//            }
-//            if (foregroundType == .AnimatedPhysicsFieldLarge) {
-//                shapeRadius = 4.0
-//                physicsShapeSize = CGSize.init(width: 5.0, height: 5.0)
-//            }
-            fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, shapeRadius: shapeRadius, physicsShapeSize: physicsShapeSize, shapeType: shapeType ))
+            let physicsShapeSize:CGSize = CGSize.init(width: itemSize, height: itemSize)
+            fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, physicsShapeSize: physicsShapeSize, shapeType: shapeType ))
             
             let width = screenSize.width+lineWidth
             let height = screenSize.height+lineWidth

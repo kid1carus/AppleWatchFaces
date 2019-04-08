@@ -40,7 +40,7 @@ class WatchSettingsTableViewController: UITableViewController {
             ["title":"Top Layer Texture",           "category":"normal",      "rowHeight":"100.0","cellID":"faceBackgroundColorsTableViewCell"],
             ["title":"Overlay Type",                "category":"advanced",    "rowHeight":"80.0","cellID":"faceForegroundTypeTableViewCell"],
             ["title":"Overlay Color",               "category":"advanced",    "rowHeight":"100.0","cellID":"faceOverlayColorsTableViewCell"],
-            ["title":"Overlay Options",              "category":"advanced",    "rowHeight":"104.0","cellID":"faceForegroundOptionsSettingsTableViewCellID"]
+            ["title":"Overlay Options",              "category":"advanced",    "rowHeight":"144.0","cellID":"faceForegroundOptionsSettingsTableViewCellID"]
         ],
         [
             
@@ -58,7 +58,7 @@ class WatchSettingsTableViewController: UITableViewController {
             
             ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
             ["title":"Hand Outline Color",          "category":"advanced",    "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"],
-            ["title":"Hand Effects",          "category":"advanced",    "rowHeight":"144.0","cellID":"handsEffectsTableViewCellID"]
+            ["title":"Hand Effects",                "category":"advanced",    "rowHeight":"144.0","cellID":"handsEffectsTableViewCellID"]
         ],
         [
             ["title":"Indicator Path",             "category":"path-render", "rowHeight":"100.0","cellID":"ringShapeSettingsTableViewCellID"],

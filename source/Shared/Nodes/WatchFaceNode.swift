@@ -51,11 +51,13 @@ class WatchFaceNode: SKShapeNode {
         self.addChild(backgroundShapeNode)
         
         var shapeType: OverlayShapeTypes = .Circle
+        var itemSize:CGFloat = 0
         if let clockOverlaySettings = clockSetting.clockOverlaySettings {
             shapeType = clockOverlaySettings.shapeType
+            itemSize = CGFloat(clockOverlaySettings.itemSize)
         }
         
-        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0, shapeType: shapeType)
+        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0, shapeType: shapeType, itemSize: itemSize)
         foregroundNode.name = "foregroundNode"
         foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
         

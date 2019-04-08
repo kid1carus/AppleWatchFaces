@@ -40,14 +40,14 @@ class FaceForegroundSettingCollectionViewCell: UICollectionViewCell, SKViewDeleg
         
             if !self.isSelected {
                 //use linewidt > 0 to cause it to clip
-                let handNode = FaceForegroundNode.init(foregroundType: faceForegroundType, material: "#ddddddff", material2: "", strokeColor: SKColor.clear, lineWidth: 1.0, shapeType: .Circle)
+                let handNode = FaceForegroundNode.init(foregroundType: faceForegroundType, material: "#ddddddff", material2: "", strokeColor: SKColor.clear, lineWidth: 1.0, shapeType: .Circle, itemSize: 0)
                 handNode.setScale(scaleMultiplier)
                 handNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/2)
                 scene.addChild(handNode)
             } else {
                 let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 5.0
                 let strokeColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
-                let selectedHandNode = FaceForegroundNode.init(foregroundType: faceForegroundType, material: "#ddddddff", material2: "", strokeColor: strokeColor, lineWidth: highlightLineWidth, shapeType: .Circle)
+                let selectedHandNode = FaceForegroundNode.init(foregroundType: faceForegroundType, material: "#ddddddff", material2: "", strokeColor: strokeColor, lineWidth: highlightLineWidth, shapeType: .Circle, itemSize: 0)
                 
                 selectedHandNode.name = "selectedNode"
                 selectedHandNode.setScale(scaleMultiplier)
