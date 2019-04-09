@@ -12,7 +12,7 @@ import Foundation
 enum OverlayShapeTypes: String {
     case Circle, Square, Snowflake, Star
     
-    static let userSelectableValues = [Circle, Square]
+    static let userSelectableValues = [Circle, Square, Snowflake, Star]
 }
 
 //hold settings like shape, strength, etc for properites esp the physics node types
@@ -60,10 +60,10 @@ class ClockOverlaySetting: NSObject {
     static func descriptionForOverlayShapeType(_ shapeType: OverlayShapeTypes) -> String {
         var typeDescription = ""
         
-        if (shapeType == .Circle)  { typeDescription = "Circle" }
-        if (shapeType == .Square)  { typeDescription = "Square" }
-        if (shapeType == .Snowflake)  { typeDescription = "Snow" }
-        if (shapeType == .Star)  { typeDescription = "Star" }
+        if (shapeType == .Circle)  { typeDescription = "●" }
+        if (shapeType == .Square)  { typeDescription = "■" }
+        if (shapeType == .Snowflake)  { typeDescription = "❆" }
+        if (shapeType == .Star)  { typeDescription = "✦" }
         
         return typeDescription
     }
