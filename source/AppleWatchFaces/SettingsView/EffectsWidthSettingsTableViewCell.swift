@@ -28,7 +28,7 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         } else {
             effectWidthMinuteHandSlider.value = 0
         }
-        if let hourHandWidth = clockFaceSettings.handEffectWidths[safe: 0] {
+        if let hourHandWidth = clockFaceSettings.handEffectWidths[safe: 2] {
             effectWidthHourHandSlider.value = hourHandWidth
         } else {
             effectWidthHourHandSlider.value = 0
