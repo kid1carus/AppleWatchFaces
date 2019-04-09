@@ -142,7 +142,7 @@ class FaceForegroundNode: SKSpriteNode {
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
                 frameNode.lineWidth = lineWidth
-                frameNode.zPosition = -2.0
+                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue)
                 
                 fieldNode.maskNode = frameNode //TODO: this works ouside of this if block but stops backgrounds
                 fieldNode.addChild(frameNode)
@@ -159,7 +159,7 @@ class FaceForegroundNode: SKSpriteNode {
             
             //A second layer of stars
             var emitterNode = starfieldEmitterNode(speed: -22, lifetime: yBounds / 5, scale: 0.12, birthRate: 4, color: medColor)
-            emitterNode.zPosition = -10
+            emitterNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
             starfieldNode.addChild(emitterNode)
             
             //A third layer
@@ -178,7 +178,7 @@ class FaceForegroundNode: SKSpriteNode {
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
                 frameNode.lineWidth = lineWidth
-                frameNode.zPosition = -2.0
+                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
                 
                 starfieldNode.addChild(frameNode)
                 
@@ -214,7 +214,7 @@ class FaceForegroundNode: SKSpriteNode {
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
                 frameNode.lineWidth = lineWidth
-                frameNode.zPosition = -2.0
+                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
                 
                 fieldNode.maskNode = frameNode //TODO: this works ouside of this if block but stops backgrounds
                 fieldNode.addChild(frameNode)
@@ -239,7 +239,7 @@ class FaceForegroundNode: SKSpriteNode {
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
                 frameNode.lineWidth = lineWidth
-                frameNode.zPosition = -2.0
+                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
                 
                 pongGameNode.addChild(frameNode)
             }

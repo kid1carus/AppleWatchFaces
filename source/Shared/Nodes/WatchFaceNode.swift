@@ -234,7 +234,7 @@ class WatchFaceNode: SKShapeNode {
                 outerRingNode.zRotation = angle + CGFloat(Double.pi/2)
             }
             
-            outerRingNode.zPosition = 1
+            outerRingNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.complications.rawValue)
             outerRingNode.position = scaledPoint
             
             ringNode.addChild(outerRingNode)
