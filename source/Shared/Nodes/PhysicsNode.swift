@@ -24,9 +24,7 @@ class PhysicsNode: SKSpriteNode {
             let yPos = r2 * size.height
             
             let newShape:SKNode = SKNode.init()
-            var labelMult:CGFloat = 0.04
-            if (shapeType == .Star) { labelMult *= 2 }
-            
+
             let labelNode = SKLabelNode.init(text: ClockOverlaySetting.descriptionForOverlayShapeType(shapeType) )
             labelNode.fontColor = SKColor.init(hexString: material)
             labelNode.xScale = physicsShapeSize.width * ClockOverlaySetting.multiplierForOverlayShape(shapeType: shapeType)
