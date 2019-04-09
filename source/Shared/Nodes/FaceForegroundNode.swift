@@ -155,15 +155,18 @@ class FaceForegroundNode: SKSpriteNode {
             //A layer of a star field
             let starfieldNode = SKCropNode()
             starfieldNode.name = "starfieldNode"
-            starfieldNode.addChild(starfieldEmitterNode(speed: -28, lifetime: yBounds / 10, scale: 0.17, birthRate: 2, color: mainColor))
+    
+            let mult = itemSize / 4
+            
+            starfieldNode.addChild(starfieldEmitterNode(speed: -28, lifetime: yBounds / 10, scale: 0.17 * mult, birthRate: 2, color: mainColor))
             
             //A second layer of stars
-            var emitterNode = starfieldEmitterNode(speed: -22, lifetime: yBounds / 5, scale: 0.12, birthRate: 4, color: medColor)
+            var emitterNode = starfieldEmitterNode(speed: -22, lifetime: yBounds / 5, scale: 0.12 * mult, birthRate: 4, color: medColor)
             emitterNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
             starfieldNode.addChild(emitterNode)
             
             //A third layer
-            emitterNode = starfieldEmitterNode(speed: -13, lifetime: yBounds / 2, scale: 0.09, birthRate: 12, color: darkColor)
+            emitterNode = starfieldEmitterNode(speed: -13, lifetime: yBounds / 2, scale: 0.09 * mult, birthRate: 12, color: darkColor)
             starfieldNode.addChild(emitterNode)
             
             let width = screenSize.width+lineWidth
@@ -192,15 +195,17 @@ class FaceForegroundNode: SKSpriteNode {
             //A layer of a snow
             let fieldNode = SKCropNode()
             fieldNode.name = "snowfieldNode"
-            fieldNode.addChild(snowfieldEmitterNode(speed: -35, lifetime: yBounds / 10, scale: 0.17, birthRate: 4, color: mainColor))
+            
+            let mult = itemSize / 4
+            fieldNode.addChild(snowfieldEmitterNode(speed: -35, lifetime: yBounds / 10, scale: 0.17 * mult, birthRate: 4, color: mainColor))
             
             //A second layer of stars
-            var emitterNode = snowfieldEmitterNode(speed: -30, lifetime: yBounds / 5, scale: 0.12, birthRate: 8, color: medColor)
+            var emitterNode = snowfieldEmitterNode(speed: -30, lifetime: yBounds / 5, scale: 0.12 * mult, birthRate: 8, color: medColor)
             emitterNode.zPosition = -10
             fieldNode.addChild(emitterNode)
             
             //A third layer
-            emitterNode = snowfieldEmitterNode(speed: -19, lifetime: yBounds / 2, scale: 0.09, birthRate: 16, color: darkColor)
+            emitterNode = snowfieldEmitterNode(speed: -19, lifetime: yBounds / 2, scale: 0.09 * mult, birthRate: 16, color: darkColor)
             fieldNode.addChild(emitterNode)
             
             let width = screenSize.width+lineWidth
