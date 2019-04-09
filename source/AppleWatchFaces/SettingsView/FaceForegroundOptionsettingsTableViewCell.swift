@@ -19,6 +19,14 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
     override func chooseSetting( animated: Bool ) {
         guard let clockOverlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings else { return }
         
+        if SettingsViewController.currentClockSetting.faceForegroundType != .AnimatedPhysicsField {
+            shapeTypeSegment.isEnabled = false
+            fieldTypeSegment.isEnabled = false
+        } else {
+            shapeTypeSegment.isEnabled = true
+            fieldTypeSegment.isEnabled = true
+        }
+        
         itemSizeSlider.value = clockOverlaySettings.itemSize
         
         if let segmentIndex = OverlayShapeTypes.userSelectableValues.index(of: clockOverlaySettings.shapeType) {
