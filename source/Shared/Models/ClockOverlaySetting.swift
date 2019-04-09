@@ -6,13 +6,13 @@
 //  Copyright © 2019 Michael Hill. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 //different types of shapes rings can render in
 enum OverlayShapeTypes: String {
-    case Circle, Square, Snowflake, Star
+    case Circle, Square, Snowflake, Star, Triangle, Heart, Smiley, Skull, Poo
     
-    static let userSelectableValues = [Circle, Square, Snowflake, Star]
+    static let userSelectableValues = [Circle, Square, Snowflake, Star, Triangle, Heart, Smiley, Skull, Poo]
 }
 
 //hold settings like shape, strength, etc for properites esp the physics node types
@@ -57,6 +57,23 @@ class ClockOverlaySetting: NSObject {
         return serializedDict as NSDictionary
     }
     
+    static func multiplierForOverlayShape( shapeType: OverlayShapeTypes) -> CGFloat {
+        //depending on the enoji render, we need to create a ratio for sizing to match physics shapes
+        var mult:CGFloat = 0.04
+        
+        if (shapeType == .Circle)       { mult = 0.04 }
+        if (shapeType == .Square)       { mult = 0.04 }
+        if (shapeType == .Snowflake)    { mult = 0.05 }
+        if (shapeType == .Star)         { mult = 0.07 }
+        if (shapeType == .Triangle)     { mult = 0.06 }
+        if (shapeType == .Heart)        { mult = 0.07 }
+        if (shapeType == .Smiley)       { mult = 0.04 }
+        if (shapeType == .Skull)        { mult = 0.05 }
+        if (shapeType == .Poo)          { mult = 0.05 }
+        
+        return mult
+    }
+    
     static func descriptionForOverlayShapeType(_ shapeType: OverlayShapeTypes) -> String {
         var typeDescription = ""
         
@@ -64,6 +81,11 @@ class ClockOverlaySetting: NSObject {
         if (shapeType == .Square)  { typeDescription = "■" }
         if (shapeType == .Snowflake)  { typeDescription = "❆" }
         if (shapeType == .Star)  { typeDescription = "✦" }
+        if (shapeType == .Triangle)  { typeDescription = "▲" }
+        if (shapeType == .Heart)  { typeDescription = "❤︎" }
+        if (shapeType == .Smiley)  { typeDescription = "😃" }
+        if (shapeType == .Skull)  { typeDescription = "💀" }
+        if (shapeType == .Poo)  { typeDescription = "💩" }
         
         return typeDescription
     }

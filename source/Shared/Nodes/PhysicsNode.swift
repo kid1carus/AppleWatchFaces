@@ -23,17 +23,15 @@ class PhysicsNode: SKSpriteNode {
             let r2 = CGFloat(Double(arc4random()) / 0xFFFFFFFF)
             let yPos = r2 * size.height
             
-            var newShape:SKShapeNode = SKShapeNode.init()
+            let newShape:SKNode = SKNode.init()
+            var labelMult:CGFloat = 0.04
+            if (shapeType == .Star) { labelMult *= 2 }
             
-            if shapeType == .Circle {
-                newShape = SKShapeNode.init(circleOfRadius: physicsShapeSize.height*0.75)
-            }
-            if shapeType == .Square {
-                newShape = SKShapeNode.init(rectOf: physicsShapeSize)
-            }
-            newShape.fillColor = SKColor.init(hexString: material)
-            newShape.lineWidth = 0.0
-            
+            let labelNode = SKLabelNode.init(text: ClockOverlaySetting.descriptionForOverlayShapeType(shapeType) )
+            labelNode.fontColor = SKColor.init(hexString: material)
+            labelNode.xScale = physicsShapeSize.width * ClockOverlaySetting.multiplierForOverlayShape(shapeType: shapeType)
+            labelNode.yScale = physicsShapeSize.height * ClockOverlaySetting.multiplierForOverlayShape(shapeType: shapeType)
+            newShape.addChild(labelNode)
             
             let physicsBody = SKPhysicsBody.init(rectangleOf: physicsShapeSize)
             //physicsBody.mass = 2.0
