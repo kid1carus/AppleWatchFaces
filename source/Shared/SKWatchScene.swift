@@ -43,7 +43,6 @@ class SKWatchScene: SKScene {
     }
     
     override func sceneDidLoad() {
-        
         //need for PONG
         physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         //for now add physics to the edges
