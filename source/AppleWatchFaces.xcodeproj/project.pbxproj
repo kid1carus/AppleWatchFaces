@@ -767,7 +767,6 @@
 				31EF999821A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift */,
 				31EF999A21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift */,
 				310B1BB32245A2EE00EA1827 /* FaceForegroundSettingCollectionViewCell.swift */,
-				310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */,
 				310B1BB22245A2EE00EA1827 /* FaceOverlayColorSettingTableViewCell.swift */,
 				318A928621CDABA20060D89B /* FaceShapeSettingCollectionViewCell.swift */,
 				318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */,
@@ -794,6 +793,7 @@
 				31B3F8CF218F4BAE00AD22A5 /* SecondHandColorSettingsTableViewCell.swift */,
 				310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */,
 				3109213A225817D80032D3AB /* EffectsWidthSettingsTableViewCell.swift */,
+				310B1BB42245A2EE00EA1827 /* FaceForegroundSettingsTableViewCell.swift */,
 				31053340225A9EE9004282E5 /* FaceForegroundOptionsettingsTableViewCell.swift */,
 			);
 			path = SettingsView;

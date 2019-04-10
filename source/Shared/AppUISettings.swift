@@ -68,6 +68,10 @@ class AppUISettings: NSObject {
     //foreground physics item size slider
     static let foregroundItemSizeSettingsSliderSpacerMin:Float = 0
     static let foregroundItemSizeSettingsSliderSpacerMax:Float = 15.0
+    
+    //foreground physics item strength slider
+    static let foregroundItemStrengthSettingsSliderSpacerMin:Float = 0
+    static let foregroundItemStrengthSettingsSliderSpacerMax:Float = 5.0
 
     //ring text slider
     static let ringSettigsSliderTextMin:Float = 0

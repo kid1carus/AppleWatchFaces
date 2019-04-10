@@ -52,7 +52,7 @@ class FaceForegroundSettingsTableViewCell: WatchSettingsSelectableTableViewCell,
         SettingsViewController.currentClockSetting.faceForegroundType = settingType
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
         NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-                                        userInfo:["cellId": self.cellId , "settingType":"faceForegroundType"])
+                                        userInfo:["cellId": self.cellId , "settingType":"faceForegroundType", "reloadCellId":"faceForegroundOptionsSettingsTableViewCellID"])
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

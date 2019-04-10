@@ -14,6 +14,7 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
     @IBOutlet var fieldTypeSegment:UISegmentedControl!
     @IBOutlet var shapeTypeSegment:UISegmentedControl!
     @IBOutlet var itemSizeSlider:UISlider!
+    @IBOutlet var itemStrengthSlider:UISlider!
     
     // called after a new setting should be selected ( IE a new design is loaded )
     override func chooseSetting( animated: Bool ) {
@@ -26,7 +27,14 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
             shapeTypeSegment.isEnabled = true
             fieldTypeSegment.isEnabled = true
         }
+        itemSizeSlider.isEnabled = true
+        itemStrengthSlider.isEnabled = true
+        if SettingsViewController.currentClockSetting.faceForegroundType == .None || SettingsViewController.currentClockSetting.faceForegroundType == .AnimatedPong {
+            itemSizeSlider.isEnabled = false
+            itemStrengthSlider.isEnabled = false
+        }
         
+        itemStrengthSlider.value = clockOverlaySettings.itemStrength
         itemSizeSlider.value = clockOverlaySettings.itemSize
         
         if let segmentIndex = OverlayShapeTypes.userSelectableValues.index(of: clockOverlaySettings.shapeType) {
@@ -37,6 +45,24 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
             fieldTypeSegment.selectedSegmentIndex = typeSegmentIndex
         }
        
+    }
+    
+    @IBAction func itemStrengthSliderValueDidChange(sender: UISlider ) {
+        //debugPrint("slider value:" + String( sender.value ) )
+        guard let clockOverlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings else { return }
+        
+        let roundedValue = Float(round(50*sender.value)/50)
+        if roundedValue != clockOverlaySettings.itemStrength {
+            //debugPrint("new value:" + String( roundedValue ) )
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
+            clockOverlaySettings.itemStrength = roundedValue
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
+                                            userInfo:["cellId": self.cellId , "settingType":"faceForegroundOption"])
+        }
+        
     }
     
     @IBAction func itemSizeSliderValueDidChange(sender: UISlider ) {
@@ -94,6 +120,9 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
         itemSizeSlider.minimumValue = AppUISettings.foregroundItemSizeSettingsSliderSpacerMin
         itemSizeSlider.maximumValue = AppUISettings.foregroundItemSizeSettingsSliderSpacerMax
         
+        itemStrengthSlider.minimumValue = AppUISettings.foregroundItemStrengthSettingsSliderSpacerMin
+        itemStrengthSlider.maximumValue = AppUISettings.foregroundItemStrengthSettingsSliderSpacerMax
+        
         //set up segment
         shapeTypeSegment.removeAllSegments()
         for (index, description) in ClockOverlaySetting.overlayShapeTypeDescriptions().enumerated() {
@@ -104,10 +133,6 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
         for (index, description) in FaceForegroundNode.physicFieldsTypeDescriptions().enumerated() {
             fieldTypeSegment.insertSegment(withTitle: description, at: index, animated: false)
         }
-        
-//        effectWidthSecondHandSlider.minimumValue = AppUISettings.handEffectSettigsSliderSpacerMin
-//        effectWidthSecondHandSlider.maximumValue = AppUISettings.handEffectSettigsSliderSpacerMax
-//
     }
     
 }

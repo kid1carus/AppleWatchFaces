@@ -21,15 +21,17 @@ class ClockOverlaySetting: NSObject {
     var fieldType: PhysicsFieldTypes
     var shapeType: OverlayShapeTypes
     var itemSize: Float
+    var itemStrength: Float
     
-    init(shapeType: OverlayShapeTypes, fieldType: PhysicsFieldTypes, itemSize: Float) {
+    init(shapeType: OverlayShapeTypes, fieldType: PhysicsFieldTypes, itemSize: Float, itemStrength: Float) {
         self.shapeType = shapeType
         self.fieldType = fieldType
         self.itemSize = itemSize
+        self.itemStrength = itemStrength
     }
     
     static func defaults() -> ClockOverlaySetting {
-        return ClockOverlaySetting.init(shapeType: .Circle, fieldType: .None, itemSize: 0)
+        return ClockOverlaySetting.init(shapeType: .Circle, fieldType: .None, itemSize: 0, itemStrength: 1.0)
     }
     
     convenience init( jsonObj: JSON ) {
@@ -43,8 +45,9 @@ class ClockOverlaySetting: NSObject {
             fieldType = PhysicsFieldTypes(rawValue: jsonObj["fieldType"].stringValue)!
         }
         let itemSize:Float = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "itemSize")
+        let itemStrength:Float = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "itemStrength")
         
-        self.init(shapeType: shapeType, fieldType: fieldType, itemSize: itemSize)
+        self.init(shapeType: shapeType, fieldType: fieldType, itemSize: itemSize, itemStrength: itemStrength)
     }
     
     func serializedSettings() -> NSDictionary {
@@ -53,6 +56,7 @@ class ClockOverlaySetting: NSObject {
         serializedDict[ "shapeType" ] = self.shapeType.rawValue as AnyObject
         serializedDict[ "fieldType" ] = self.fieldType.rawValue as AnyObject
         serializedDict[ "itemSize" ] = self.itemSize.description as AnyObject
+        serializedDict[ "itemStrength" ] = self.itemStrength.description as AnyObject
         
         return serializedDict as NSDictionary
     }

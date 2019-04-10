@@ -110,7 +110,7 @@ class FaceForegroundNode: SKSpriteNode {
         }
     }
     
-    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat, shapeType: OverlayShapeTypes, itemSize: CGFloat ) {
+    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat, shapeType: OverlayShapeTypes, itemSize: CGFloat, itemStrength: CGFloat ) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize.init())
         

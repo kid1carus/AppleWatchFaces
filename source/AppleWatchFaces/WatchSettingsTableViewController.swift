@@ -40,7 +40,7 @@ class WatchSettingsTableViewController: UITableViewController {
             ["title":"Top Layer Texture",           "category":"normal",      "rowHeight":"100.0","cellID":"faceBackgroundColorsTableViewCell"],
             ["title":"Overlay Type",                "category":"advanced",    "rowHeight":"80.0","cellID":"faceForegroundTypeTableViewCell"],
             ["title":"Overlay Color",               "category":"advanced",    "rowHeight":"100.0","cellID":"faceOverlayColorsTableViewCell"],
-            ["title":"Overlay Options",              "category":"advanced",    "rowHeight":"144.0","cellID":"faceForegroundOptionsSettingsTableViewCellID"]
+            ["title":"Overlay Options",              "category":"advanced",    "rowHeight":"184.0","cellID":"faceForegroundOptionsSettingsTableViewCellID"]
         ],
         [
             
@@ -103,7 +103,14 @@ class WatchSettingsTableViewController: UITableViewController {
             }
         case "faceForegroundOptionsSettingsTableViewCellID":
             if let overlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings {
-                settingText = "Shape: " + ClockOverlaySetting.descriptionForOverlayShapeType(overlaySettings.shapeType)
+                if SettingsViewController.currentClockSetting.faceForegroundType == .AnimatedPhysicsField {
+                    settingText += FaceForegroundNode.descriptionForPhysicsFields(overlaySettings.fieldType)
+                    settingText += " " + ClockOverlaySetting.descriptionForOverlayShapeType(overlaySettings.shapeType)
+                }
+                if SettingsViewController.currentClockSetting.faceForegroundType != .AnimatedPong && SettingsViewController.currentClockSetting.faceForegroundType != .None {
+                    settingText += " " + overlaySettings.itemSize.description
+                    settingText += " " + overlaySettings.itemStrength.description
+                }
             }
         case "secondHandSettingsTableViewCell":
             settingText = SecondHandNode.descriptionForType((SettingsViewController.currentClockSetting.clockFaceSettings?.secondHandType)!)
@@ -172,10 +179,7 @@ class WatchSettingsTableViewController: UITableViewController {
             removeSectionItemsForCategory(category: "advanced")
             removeSectionItemsForCategory(category: "path-render")
         }
-//        if options.advancedOptionPathRenderingKey == nil || options.advancedOptionPathRenderingKey == false {
-//            // remove path rendering options
-//
-//        }
+
     }
     
     func reloadAfterGroupChange() {
@@ -279,10 +283,23 @@ class WatchSettingsTableViewController: UITableViewController {
         }
         
         if let data = notification.userInfo as? [String: String], let cellID = data["cellId"] {
+            
+            //check to see if we need to reload another cell based on a settings change
+            var reloadCellIDOptional:String? = nil
+            if let reloadCellID = data["reloadCellId"], let dataType = data["settingType"] {
+                if dataType == "faceForegroundType" {
+                    reloadCellIDOptional = reloadCellID
+                }
+            }
+            
             for (index,row) in sectionsData[currentGroupIndex].enumerated() {
                 if row["cellID"] == cellID {
                     //debugPrint("header reload, index" + String(index) )
                     updateHeaderSection( section:index )
+                }
+                //handle reloading cells if needed due to another cell changing an option , IE sending data["reloadCellId"] in userInfo
+                if reloadCellIDOptional != nil && row["cellID"] == reloadCellIDOptional {
+                    self.tableView.reloadSections(IndexSet.init(integer: index), with: UITableView.RowAnimation.none)
                 }
             }
         } else {
