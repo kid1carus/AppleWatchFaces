@@ -134,8 +134,6 @@ class WatchFaceNode: SKShapeNode {
             //draw it
             let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, timeFormat: ringSettings.ringStaticTimeFormat, textSize: ringSettings.textSize,
                                                        effect: ringSettings.ringStaticEffects, horizontalPosition: ringSettings.ringStaticItemHorizontalPosition, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
-
-            digitalTimeNode.zPosition = CGFloat(PartsZPositions.complications.rawValue)
             
             var xPos:CGFloat = 0
             var yPos:CGFloat = 0
@@ -226,8 +224,6 @@ class WatchFaceNode: SKShapeNode {
                     outerRingNode.zRotation = angle - CGFloat(Double.pi/2)
                 }
                 
-                outerRingNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.complications.rawValue)
-                
             }
             if (ringType == RingTypes.RingTypeShapeNode) {
                 //shape
@@ -237,8 +233,6 @@ class WatchFaceNode: SKShapeNode {
                 let angle = atan2(scaledPoint.y, scaledPoint.x)
                 outerRingNode.zRotation = angle + CGFloat(Double.pi/2)
             }
-            
-            outerRingNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.complications.rawValue)
             outerRingNode.position = scaledPoint
             
             ringNode.addChild(outerRingNode)
