@@ -472,14 +472,15 @@ class BackgroundTextProvider: NSObject, UIActivityItemSource {
     }
     
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        if activityType == .postToFacebook  {
-            return nil
-        }
-        let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
-        if !AppUISettings.materialIsColor(materialName: material) && UIImage.getImageFor(imageName: material) != nil {
-            return "Background and settings file attached."
-        }
-        return "Settings file attached."
+        return nil
+//        if activityType == .postToFacebook  {
+//            return nil
+//        }
+//        let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
+//        if !AppUISettings.materialIsColor(materialName: material) && UIImage.getImageFor(imageName: material) != nil {
+//            return "Background and settings file attached."
+//        }
+//        return "Settings file attached."
     }
     
 }
