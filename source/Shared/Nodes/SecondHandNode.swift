@@ -213,14 +213,14 @@ class SecondHandNode: SKSpriteNode {
     }
     
     convenience init(secondHandType: SecondHandTypes, material: String) {
-        self.init(secondHandType: secondHandType, material: material, strokeColor: SKColor.clear, lineWidth: 2.0, glowWidth: 0, fieldType: .None)
+        self.init(secondHandType: secondHandType, material: material, strokeColor: SKColor.clear, lineWidth: 2.0, glowWidth: 0, fieldType: .None, itemStrength:0)
     }
     
-    func addPhysicsField(fieldType: PhysicsFieldTypes, node: SKNode, position: CGPoint) {
+    func addPhysicsField(fieldType: PhysicsFieldTypes, node: SKNode, position: CGPoint, itemStrength: CGFloat) {
         
         if fieldType == .Spring {
             let field = SKFieldNode.springField()
-            field.strength = 0.001
+            field.strength = Float(0.001 * itemStrength)
             field.position = position
             node.addChild(field)
         }
@@ -228,16 +228,16 @@ class SecondHandNode: SKSpriteNode {
         if fieldType == .Noise {
             let field = SKFieldNode.noiseField(withSmoothness: 1.0, animationSpeed: 0.005)
             field.falloff = 0.0001
-            field.strength = 0.0001
+            field.strength = Float(0.0007 * itemStrength)
             field.position = position
             node.addChild(field)
         }
 
         
         if fieldType == .LinearGravity {
-            let field = SKFieldNode.linearGravityField(withVector: vector_float3.init(x: 0, y: 0.5, z: 0))
+            let field = SKFieldNode.linearGravityField(withVector: vector_float3.init(x: 0, y: 5.0, z: 0))
             field.falloff = 0.0000000001
-            field.strength = 0.1
+            field.strength = Float(0.1 * itemStrength)
             field.position = position
             node.addChild(field)
             
@@ -252,14 +252,14 @@ class SecondHandNode: SKSpriteNode {
         if fieldType == .RadialGravity {
             let field = SKFieldNode.radialGravityField()
             field.falloff = 0.1
-            field.strength = 0.05
+            field.strength = Float(0.05 * itemStrength)
             field.position = position
             node.addChild(field)
         }
         
     }
     
-    init(secondHandType: SecondHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat, glowWidth: CGFloat, fieldType: PhysicsFieldTypes) {
+    init(secondHandType: SecondHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat, glowWidth: CGFloat, fieldType: PhysicsFieldTypes, itemStrength: CGFloat) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize())
         
@@ -301,7 +301,7 @@ class SecondHandNode: SKSpriteNode {
             outerRingNode.addChild(tickNode)
             
             //needed to affect the physics fields
-            addPhysicsField(fieldType: fieldType, node: outerRingNode, position: CGPoint.init(x: 0, y: 96))
+            addPhysicsField(fieldType: fieldType, node: outerRingNode, position: CGPoint.init(x: 0, y: 96), itemStrength: itemStrength)
             
             self.addChild(outerRingNode)
         }
@@ -362,7 +362,7 @@ class SecondHandNode: SKSpriteNode {
                 textureNode.colorBlendFactor = 1.0
                 
                 //needed to affect the physics fields
-                addPhysicsField(fieldType: fieldType, node: textureNode, position: CGPoint.init(x: 0, y: 0))
+                addPhysicsField(fieldType: fieldType, node: textureNode, position: CGPoint.init(x: 0, y: 0), itemStrength: itemStrength)
                 
                 self.addChild(textureNode)
             }
@@ -382,7 +382,7 @@ class SecondHandNode: SKSpriteNode {
                 textureNode.colorBlendFactor = 1.0
                 
                 //needed to affect the physics fields
-                addPhysicsField(fieldType: fieldType, node: textureNode, position: CGPoint.init(x: 0, y: 0))
+                addPhysicsField(fieldType: fieldType, node: textureNode, position: CGPoint.init(x: 0, y: 0), itemStrength: itemStrength)
                 
                 self.addChild(textureNode)
             }
@@ -402,7 +402,7 @@ class SecondHandNode: SKSpriteNode {
             shape.physicsBody = phy
             
             //needed to affect the physics fields
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 0))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 0), itemStrength: itemStrength)
             
             self.addChild(shape)
             //self.pivot = SCNMatrix4MakeTranslation(0.0, -0.89, 0)
@@ -421,7 +421,7 @@ class SecondHandNode: SKSpriteNode {
             shape.physicsBody = phy
             
             //needed to affect the phyics fields
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 85))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 85), itemStrength: itemStrength)
             
             self.addChild(shape)
         }
@@ -451,7 +451,7 @@ class SecondHandNode: SKSpriteNode {
             shape.physicsBody = phy
             
             //needed to affect the phyics fields
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 75))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 75), itemStrength: itemStrength)
             
             self.addChild(shape)
         }
@@ -506,7 +506,7 @@ class SecondHandNode: SKSpriteNode {
             shape.physicsBody = physicsBody
             
             //needed to affect the phyics fields
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 75))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 75), itemStrength: itemStrength)
             
             self.addChild(shape)
         }
@@ -539,7 +539,7 @@ class SecondHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = phy
             
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 85))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 85), itemStrength: itemStrength)
             
             self.addChild(shape)
         }
@@ -560,7 +560,7 @@ class SecondHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = phy
             
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 84))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 84), itemStrength: itemStrength)
             
             self.addChild(shape)
         }
@@ -598,7 +598,7 @@ class SecondHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = physicsBody
             
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 90))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 90), itemStrength: itemStrength)
             
             self.addChild(shape)
         }
@@ -611,7 +611,7 @@ class SecondHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = physicsBody
             
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 85))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 85), itemStrength: itemStrength)
             
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
@@ -793,7 +793,7 @@ class SecondHandNode: SKSpriteNode {
             phy.isDynamic = false
             shape.physicsBody = physicsBody
             
-            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 275))
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 275), itemStrength: itemStrength)
             
             self.addChild(shape)
         }

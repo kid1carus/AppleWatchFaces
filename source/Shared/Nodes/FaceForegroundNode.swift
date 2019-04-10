@@ -129,7 +129,8 @@ class FaceForegroundNode: SKSpriteNode {
             let fieldNode = SKCropNode()
             fieldNode.name = "physicsFieldNode"
             let physicsShapeSize:CGSize = CGSize.init(width: itemSize, height: itemSize)
-            fieldNode.addChild(PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, physicsShapeSize: physicsShapeSize, shapeType: shapeType ))
+            let physicsNode = PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, physicsShapeSize: physicsShapeSize, shapeType: shapeType )
+            fieldNode.addChild(physicsNode)
             
             let width = screenSize.width+lineWidth
             let height = screenSize.height+lineWidth
@@ -158,15 +159,15 @@ class FaceForegroundNode: SKSpriteNode {
     
             let mult = itemSize / 4
             
-            starfieldNode.addChild(starfieldEmitterNode(speed: -28, lifetime: yBounds / 10, scale: 0.17 * mult, birthRate: 2, color: mainColor))
+            starfieldNode.addChild(starfieldEmitterNode(speed: -28 * itemStrength, lifetime: yBounds / 5 / (itemStrength+0.1), scale: 0.17 * mult, birthRate: 2, color: mainColor))
             
             //A second layer of stars
-            var emitterNode = starfieldEmitterNode(speed: -22, lifetime: yBounds / 5, scale: 0.12 * mult, birthRate: 4, color: medColor)
+            var emitterNode = starfieldEmitterNode(speed: -22 * itemStrength, lifetime: yBounds / 3 / (itemStrength+0.1), scale: 0.12 * mult, birthRate: 4, color: medColor)
             emitterNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
             starfieldNode.addChild(emitterNode)
             
             //A third layer
-            emitterNode = starfieldEmitterNode(speed: -13, lifetime: yBounds / 2, scale: 0.09 * mult, birthRate: 12, color: darkColor)
+            emitterNode = starfieldEmitterNode(speed: -13 * itemStrength, lifetime: yBounds / (itemStrength+0.1), scale: 0.09 * mult, birthRate: 12, color: darkColor)
             starfieldNode.addChild(emitterNode)
             
             let width = screenSize.width+lineWidth
@@ -197,15 +198,15 @@ class FaceForegroundNode: SKSpriteNode {
             fieldNode.name = "snowfieldNode"
             
             let mult = itemSize / 4
-            fieldNode.addChild(snowfieldEmitterNode(speed: -35, lifetime: yBounds / 10, scale: 0.17 * mult, birthRate: 4, color: mainColor))
+            fieldNode.addChild(snowfieldEmitterNode(speed: -35 * itemStrength, lifetime: yBounds / 5 / (itemStrength+0.1), scale: 0.17 * mult, birthRate: 4, color: mainColor))
             
             //A second layer of stars
-            var emitterNode = snowfieldEmitterNode(speed: -30, lifetime: yBounds / 5, scale: 0.12 * mult, birthRate: 8, color: medColor)
+            var emitterNode = snowfieldEmitterNode(speed: -30 * itemStrength, lifetime: yBounds / 3 / (itemStrength+0.1), scale: 0.12 * mult, birthRate: 8, color: medColor)
             emitterNode.zPosition = -10
             fieldNode.addChild(emitterNode)
             
             //A third layer
-            emitterNode = snowfieldEmitterNode(speed: -19, lifetime: yBounds / 2, scale: 0.09 * mult, birthRate: 16, color: darkColor)
+            emitterNode = snowfieldEmitterNode(speed: -19 * itemStrength, lifetime: yBounds / (itemStrength+0.1), scale: 0.09 * mult, birthRate: 16, color: darkColor)
             fieldNode.addChild(emitterNode)
             
             let width = screenSize.width+lineWidth

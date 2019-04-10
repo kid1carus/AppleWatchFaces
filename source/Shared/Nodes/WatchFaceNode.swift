@@ -267,8 +267,12 @@ class WatchFaceNode: SKShapeNode {
         let secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
         let lineWidth:CGFloat = 0.0
         var physicsFieldType:PhysicsFieldTypes = .None
-        if let overlaySettings = clockSetting.clockOverlaySettings { physicsFieldType = overlaySettings.fieldType }
-        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth, fieldType: physicsFieldType)
+        var physicsFieldItemStrength:CGFloat = 0.0
+        if let overlaySettings = clockSetting.clockOverlaySettings {
+            physicsFieldType = overlaySettings.fieldType
+            physicsFieldItemStrength = CGFloat(overlaySettings.itemStrength)
+        }
+        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth, fieldType: physicsFieldType, itemStrength: physicsFieldItemStrength)
         secHandNode.name = "secondHand"
         secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
         
@@ -282,7 +286,7 @@ class WatchFaceNode: SKShapeNode {
         }
         
         if renderShadows {
-            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0, fieldType: .None)
+            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0, fieldType: .None, itemStrength: 1.0)
             secHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             secHandShadowNode.name = "secondHandShadow"
             secHandShadowNode.zPosition = shadowChildZposition
