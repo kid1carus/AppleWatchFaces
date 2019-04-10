@@ -143,7 +143,7 @@ class FaceForegroundNode: SKSpriteNode {
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
                 frameNode.lineWidth = lineWidth
-                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue)
+                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
                 
                 fieldNode.maskNode = frameNode //TODO: this works ouside of this if block but stops backgrounds
                 fieldNode.addChild(frameNode)
@@ -233,7 +233,6 @@ class FaceForegroundNode: SKSpriteNode {
             
             let pongGameNode = PongGameNode.init(size: AppUISettings.getScreenBoundsForImages(), material: material, strokeColor: strokeColor, lineWidth: lineWidth)
             pongGameNode.name = "pongGameNode"
-            pongGameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.foreground.rawValue)
             
             if (lineWidth>0) {
                 let size = AppUISettings.getScreenBoundsForImages()
@@ -246,7 +245,7 @@ class FaceForegroundNode: SKSpriteNode {
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
                 frameNode.lineWidth = lineWidth
-                //frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.foreground.rawValue)
+                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
                 
                 pongGameNode.addChild(frameNode)
             }
