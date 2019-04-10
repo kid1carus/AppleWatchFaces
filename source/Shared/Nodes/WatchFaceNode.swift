@@ -75,7 +75,7 @@ class WatchFaceNode: SKShapeNode {
         
         let indicatorNode = SKNode()
         indicatorNode.name = "indicatorNode"
-        
+        indicatorNode.zPosition = CGFloat(PartsZPositions.complications.rawValue)
         self.addChild(indicatorNode)
         
         var currentDistance = Float(1.0)
@@ -225,6 +225,8 @@ class WatchFaceNode: SKShapeNode {
                     let angle = atan2(scaledPoint.y, scaledPoint.x)
                     outerRingNode.zRotation = angle - CGFloat(Double.pi/2)
                 }
+                
+                outerRingNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.complications.rawValue)
                 
             }
             if (ringType == RingTypes.RingTypeShapeNode) {
