@@ -12,7 +12,7 @@ import UIKit
 enum OverlayShapeTypes: String {
     case Circle, Square, Snowflake, Star, Triangle, Heart, Smiley, Skull, Poo
     
-    static let userSelectableValues = [Circle, Square, Snowflake, Star, Triangle, Heart, Smiley, Skull, Poo]
+    static let userSelectableValues = [Circle, Square, Snowflake, Star, Heart, Smiley, Skull, Poo]
 }
 
 //hold settings like shape, strength, etc for properites esp the physics node types
