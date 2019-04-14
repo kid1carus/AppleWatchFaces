@@ -526,7 +526,7 @@ class DigitalTimeNode: SKNode {
 
 public extension CGRect {
     
-    public enum Edge {
+    enum Edge {
         case Bottom
         case Left
         case Right
@@ -550,7 +550,7 @@ public extension CGRect {
      - Note: This method DOES mutate the size of the rect.
      - SeeAlso: `algin(edge:toEdge:ofRect:withOffset:)`
      */
-    public func pin(edge: Edge, toEdge: Edge, ofRect rect: CGRect, withOffset offset: CGFloat = 0) -> CGRect {
+    func pin(edge: Edge, toEdge: Edge, ofRect rect: CGRect, withOffset offset: CGFloat = 0) -> CGRect {
         switch (edge, toEdge) {
         case (.Left, .Left):
             return CGRect(x: rect.minX - offset, y: minY, width: width + (minX - rect.minX) + offset, height: height)
@@ -578,7 +578,7 @@ public extension CGRect {
      
      - SeeAlso: `pin(edge:toEdge:ofRect:withOffset:)`
      */
-    public func align(edge: Edge, toEdge: Edge, ofRect rect: CGRect, withOffset offset: CGFloat = 0) -> CGRect {
+    func align(edge: Edge, toEdge: Edge, ofRect rect: CGRect, withOffset offset: CGFloat = 0) -> CGRect {
         return CGRect(origin: alignOrigin(edge: edge, toEdge: toEdge, ofRect: rect, withOffset: offset), size: size)
     }
     

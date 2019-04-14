@@ -55,7 +55,7 @@ extension NSBezierPath {
 public extension BezierPath {
     
     /// Length of path in pt
-    public var length: CGFloat {
+    var length: CGFloat {
         
         return cgPath.length
     }
@@ -64,7 +64,7 @@ public extension BezierPath {
     ///
     /// - Parameter percent: Percentage of path, between 0.0 and 1.0 (inclusive)
     /// - Returns: Point on the path
-    public func point(at percent: CGFloat) -> CGPoint? {
+    func point(at percent: CGFloat) -> CGPoint? {
         
         return cgPath.point(at: percent)
     }
@@ -74,7 +74,7 @@ public extension BezierPath {
 public extension CGPath {
     
     /// Length of path in pt
-    public var length: CGFloat {
+    var length: CGFloat {
         
         return getLength(with: elements)
     }

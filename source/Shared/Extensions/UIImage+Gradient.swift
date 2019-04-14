@@ -8,7 +8,7 @@ public extension UIImage {
         self.init(named: name)
     }
     
-    public convenience init(imageLiteralResourceName name: String) {
+    convenience init(imageLiteralResourceName name: String) {
         self.init(failableImageLiteral: name)
     }
 }
