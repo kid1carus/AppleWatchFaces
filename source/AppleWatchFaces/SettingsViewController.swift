@@ -445,24 +445,23 @@ class AttachmentProvider: NSObject, UIActivityItemSource {
 
 class ImageProvider: NSObject, UIActivityItemSource {
     
+    func getThumbImageURL() -> URL? {
+        if let newImageURL = UIImage.getValidatedImageURL(imageName: SettingsViewController.currentClockSetting.uniqueID) {
+            return newImageURL
+        }
+        return nil
+    }
+    
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        if let newImage = UIImage.getImageFor(imageName: SettingsViewController.currentClockSetting.uniqueID) {
-            return newImage
+        if let newImageURL  = getThumbImageURL() {
+            return newImageURL
         } else {
             return UIImage.init()
         }
     }
     
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        if let newImage = UIImage.getImageFor(imageName: SettingsViewController.currentClockSetting.uniqueID) {
-            if activityType == .mail {
-                return newImage
-            } else {
-                return newImage
-            }
-        } else {
-            return nil
-        }
+        return getThumbImageURL()
     }
 }
 
@@ -487,29 +486,27 @@ class BackgroundTextProvider: NSObject, UIActivityItemSource {
 
 class BackgroundImageProvider: NSObject, UIActivityItemSource {
     
-    func getBackgroundImage() -> UIImage? {
-        var newImage: UIImage?
+    func getBackgroundImageURL() -> URL? {
         let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
         if !AppUISettings.materialIsColor(materialName: material) {
-            if let image = UIImage.getImageFor(imageName: material)  {
-                newImage = image
+            if let newImageURL = UIImage.getValidatedImageURL(imageName: material) {
+                return newImageURL
             }
         }
-        
-        return newImage
+        return nil
     }
     
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        if let newImage = getBackgroundImage() {
-            return newImage
+        if let newImageURL = getBackgroundImageURL() {
+            return newImageURL
         } else {
             return UIImage.init()
         }
     }
     
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        if let newImage = getBackgroundImage() {
-            return newImage
+        if let newImageURL = getBackgroundImageURL() {
+            return newImageURL
         } else {
             return nil
         }
