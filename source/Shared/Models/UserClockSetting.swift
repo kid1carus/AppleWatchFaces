@@ -135,6 +135,19 @@ class UserClockSetting: NSObject {
             //print("got title", clockSettingSerialized["title"])
             var newClockSetting = ClockSetting.init(jsonObj: clockSettingSerialized)
             
+            if clockSettingSerialized["clockFaceMaterialJPGData"] != JSON.null {
+                let base64JPGString = clockSettingSerialized["clockFaceMaterialJPGData"].stringValue
+                if let imageData = NSData(base64Encoded: base64JPGString, options: NSData.Base64DecodingOptions.init(rawValue: 0) ) as Data? {
+                    let newImageURL = UIImage.getImageURL(imageName: newClockSetting.clockFaceMaterialName)
+                    do {
+                        try imageData.write(to: newImageURL)
+                    }
+                    catch {
+                        debugPrint("cant write new JPG")
+                    }
+                }
+            }
+            
             if (importDuplicatesAsNew && sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID)) {
                 if let clonedSetting = newClockSetting.clone(keepUniqueID: false) {
                     let newTitle = newClockSetting.title + " copy"
@@ -170,7 +183,7 @@ class UserClockSetting: NSObject {
     }
 
     static func saveDictToFile(serializedArray:[NSDictionary], pathURL: URL) {
-        let dictionary = ["clockSettings": serializedArray]
+        var dictionary = ["clockSettings": serializedArray]
         
         if JSONSerialization.isValidJSONObject(dictionary) {
             do {

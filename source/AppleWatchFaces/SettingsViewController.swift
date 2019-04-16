@@ -386,7 +386,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         //TODO: move this to temporary file to be less cleanup later / trash on device
         //JSON save to file
         var serializedArray = [NSDictionary]()
-        serializedArray.append(SettingsViewController.currentClockSetting.serializedSettings())
+        let serializedSettings = NSMutableDictionary.init(dictionary: SettingsViewController.currentClockSetting.serializedSettings())
+        if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: SettingsViewController.currentClockSetting.clockFaceMaterialName) {
+            serializedSettings["clockFaceMaterialJPGData"] = jpgDataString
+        }
+        serializedArray.append(serializedSettings)
         //debugPrint("saving setting: ", clockSetting.title)
         UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: attachmentURL())
     }

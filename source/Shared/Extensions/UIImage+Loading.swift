@@ -35,6 +35,19 @@ extension UIImage {
         return imageUrl
     }
     
+    static func getValidatedImageJPGData(imageName: String) -> String? {
+        let fileManager = FileManager.default
+        // check if the image is stored already
+        if fileManager.fileExists(atPath: getImageURL(imageName: imageName).path ) {
+            if let imageData: Data = try? Data(contentsOf: getImageURL(imageName: imageName) ) {
+                //return base64 encoded string
+                let base64Encoded = imageData.base64EncodedString(options: Data.Base64EncodingOptions.init(rawValue: 0))
+                return base64Encoded
+            }
+        }
+        return nil
+    }
+    
     static func getValidatedImageURL(imageName: String) -> URL? {
         let fileManager = FileManager.default
         // check if the image is stored already
