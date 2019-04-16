@@ -382,6 +382,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         let filename = SettingsViewController.currentClockSetting.filename() + ".awf"
         return UserClockSetting.DocumentsDirectory.appendingPathComponent(filename)
     }
+    
     static func createTempTextFile() {
         //TODO: move this to temporary file to be less cleanup later / trash on device
         //JSON save to file
@@ -391,7 +392,12 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             serializedSettings["clockFaceMaterialJPGData"] = jpgDataString
         }
         serializedArray.append(serializedSettings)
-        //debugPrint("saving setting: ", clockSetting.title)
+        
+        //delete existing file if its there
+        let fileManagerIs = FileManager.default
+        if fileManagerIs.fileExists(atPath: attachmentURL().path) {
+            try? fileManagerIs.removeItem(at: attachmentURL())
+        }
         UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: attachmentURL())
     }
     
@@ -429,8 +435,6 @@ class TextProvider: NSObject, UIActivityItemSource {
 
 class AttachmentProvider: NSObject, UIActivityItemSource {
     
-    
-    
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return NSObject()
     }
@@ -451,17 +455,24 @@ class ImageProvider: NSObject, UIActivityItemSource {
     
     func getThumbImageURL() -> URL? {
         if let newImageURL = UIImage.getValidatedImageURL(imageName: SettingsViewController.currentClockSetting.uniqueID) {
-            return newImageURL
+            //copy as new file to send out friendly URL / filename
+            let fileManagerIs = FileManager.default
+            do {
+                let newURL = newImageURL.deletingLastPathComponent().appendingPathComponent(SettingsViewController.currentClockSetting.filename()+".jpg")
+                if fileManagerIs.fileExists(atPath: newURL.path) {
+                    try fileManagerIs.removeItem(at: newURL)
+                }
+                try fileManagerIs.copyItem(at: newImageURL, to: newURL)
+                return newURL
+            } catch {
+                debugPrint("error copying new thumbnail file: " + error.localizedDescription)
+            }
         }
         return nil
     }
     
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        if let newImageURL  = getThumbImageURL() {
-            return newImageURL
-        } else {
-            return UIImage.init()
-        }
+        return UIImage.init()
     }
     
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
@@ -494,7 +505,18 @@ class BackgroundImageProvider: NSObject, UIActivityItemSource {
         let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
         if !AppUISettings.materialIsColor(materialName: material) {
             if let newImageURL = UIImage.getValidatedImageURL(imageName: material) {
-                return newImageURL
+                //copy as new file to send out friendly URL / filename
+                let fileManagerIs = FileManager.default
+                do {
+                    let newURL = newImageURL.deletingLastPathComponent().appendingPathComponent(SettingsViewController.currentClockSetting.filename()+"-background.jpg")
+                    if fileManagerIs.fileExists(atPath: newURL.path) {
+                        try fileManagerIs.removeItem(at: newURL)
+                    }
+                    try fileManagerIs.copyItem(at: newImageURL, to: newURL)
+                    return newURL
+                } catch {
+                    debugPrint("error copying new thumbnail file: " + error.localizedDescription)
+                }
             }
         }
         return nil
