@@ -113,6 +113,10 @@ class ClockSetting: NSObject {
     var clockCasingMaterialName:String
     var clockForegroundMaterialName:String
     
+    var clockFaceMaterialAlpha:Float
+    var clockCasingMaterialAlpha:Float
+    var clockForegroundMaterialAlpha:Float
+    
     var uniqueID:String
     
     init(clockFaceMaterialName: String,
@@ -122,19 +126,30 @@ class ClockSetting: NSObject {
         clockCasingMaterialName: String,
         clockForegroundMaterialName: String,
         
+        clockFaceMaterialAlpha:Float,
+        clockCasingMaterialAlpha:Float,
+        clockForegroundMaterialAlpha:Float,
+        
         clockOverlaySettings: ClockOverlaySetting,
         clockFaceSettings: ClockFaceSetting,
         title: String,
         uniqueID: String)
     {
-        self.clockFaceMaterialName = clockFaceMaterialName
         self.faceBackgroundType = faceBackgroundType
         self.faceForegroundType = faceForegroundType
         self.clockOverlaySettings = clockOverlaySettings
         self.clockFaceSettings = clockFaceSettings
         self.title = title
+        
+        self.clockFaceMaterialName = clockFaceMaterialName
         self.clockCasingMaterialName = clockCasingMaterialName
         self.clockForegroundMaterialName = clockForegroundMaterialName
+        
+        self.clockFaceMaterialAlpha = clockFaceMaterialAlpha
+        self.clockCasingMaterialAlpha = clockCasingMaterialAlpha
+        self.clockForegroundMaterialAlpha = clockForegroundMaterialAlpha
+        
+        
         self.themeTitle = ""
         self.decoratorThemeTitle = ""
         
@@ -143,14 +158,6 @@ class ClockSetting: NSObject {
         
         super.init()
     }
-    
-//    static func settingsByName( settingsName: String) -> ClockSetting {
-//        let allSettings = self.allSettings()
-//        
-//        let theSetting = allSettings[settingsName]
-//        
-//        return theSetting!
-//    }
     
     func filename()->String {
         let newName = self.title.components(separatedBy: CharacterSet.alphanumerics.inverted).joined().lowercased()
@@ -165,6 +172,10 @@ class ClockSetting: NSObject {
             
             clockCasingMaterialName: "#1c1c1cff",
             clockForegroundMaterialName: "",
+            
+            clockFaceMaterialAlpha: 1.0,
+            clockCasingMaterialAlpha: 1.0,
+            clockForegroundMaterialAlpha: 1.0,
             
             clockOverlaySettings: ClockOverlaySetting.defaults(),
             clockFaceSettings: ClockFaceSetting.defaults(),
@@ -196,6 +207,10 @@ class ClockSetting: NSObject {
 
             clockCasingMaterialName: "#FF0000FF",
             clockForegroundMaterialName: "",
+            
+            clockFaceMaterialAlpha: 1.0,
+            clockCasingMaterialAlpha: 1.0,
+            clockForegroundMaterialAlpha: 1.0,
 
             clockOverlaySettings: ClockOverlaySetting.defaults(),
             clockFaceSettings: ClockFaceSetting.random(),
@@ -221,6 +236,11 @@ class ClockSetting: NSObject {
                      faceForegroundType: FaceForegroundTypes,
                      clockCasingMaterialName: String,
                      clockForegroundMaterialName: String,
+                     
+                     clockFaceMaterialAlpha:Float,
+                     clockCasingMaterialAlpha:Float,
+                     clockForegroundMaterialAlpha:Float,
+                     
                      clockOverlaySettings: ClockOverlaySetting,
                      clockFaceSettings: ClockFaceSetting,
                      title: String) {
@@ -230,6 +250,11 @@ class ClockSetting: NSObject {
                   faceForegroundType: faceForegroundType,
                   clockCasingMaterialName: clockCasingMaterialName,
                   clockForegroundMaterialName: clockForegroundMaterialName,
+                  
+                  clockFaceMaterialAlpha:clockFaceMaterialAlpha,
+                  clockCasingMaterialAlpha:clockCasingMaterialAlpha,
+                  clockForegroundMaterialAlpha:clockForegroundMaterialAlpha,
+                  
                   clockOverlaySettings: clockOverlaySettings,
                   clockFaceSettings: clockFaceSettings,
                   title: title ,
@@ -284,6 +309,10 @@ class ClockSetting: NSObject {
             clockCasingMaterialName: jsonObj["clockCasingMaterialName"].stringValue,
             clockForegroundMaterialName: jsonObj["clockForegroundMaterialName"].stringValue,
             
+            clockFaceMaterialAlpha: NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "clockFaceMaterialAlpha"),
+            clockCasingMaterialAlpha: NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "clockCasingMaterialAlpha"),
+            clockForegroundMaterialAlpha: NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "clockForegroundMaterialAlpha"),
+            
             clockOverlaySettings: ClockOverlaySetting.init(jsonObj: jsonObj["clockOverlaySettings"]),
             clockFaceSettings: ClockFaceSetting.init(jsonObj: jsonObj["clockFaceSettings"]),
             title: jsonObj["title"].stringValue,
@@ -323,6 +352,16 @@ class ClockSetting: NSObject {
         
         serializedDict[ "clockCasingMaterialName" ] = self.clockCasingMaterialName as AnyObject
         serializedDict[ "clockForegroundMaterialName" ] = self.clockForegroundMaterialName as AnyObject
+        
+        if self.clockFaceMaterialAlpha != 1.0 {
+            serializedDict[ "clockFaceMaterialAlpha" ] = self.clockFaceMaterialAlpha.description as AnyObject
+        }
+        if self.clockCasingMaterialAlpha != 1.0 {
+            serializedDict[ "clockCasingMaterialAlpha" ] = self.clockCasingMaterialAlpha.description as AnyObject
+        }
+        if self.clockForegroundMaterialAlpha != 1.0 {
+            serializedDict[ "clockForegroundMaterialAlpha" ] = self.clockForegroundMaterialAlpha.description as AnyObject
+        }
         
         return serializedDict as NSDictionary
     }
