@@ -302,7 +302,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @IBAction func shareAll() {
         makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
-        let activityViewController = UIActivityViewController(activityItems: [TextProvider(), ImageProvider(), BackgroundTextProvider(), BackgroundImageProvider(), AttachmentProvider()], applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [TextProvider(), ImageProvider(),
+            BackgroundImageProvider(), AttachmentProvider()], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -405,7 +406,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
 
 class TextProvider: NSObject, UIActivityItemSource {
     
-    let myWebsiteURL = NSURL(string:"https://github.com/orff/AppleWatchFaces")!.absoluteString!
+    let myWebsiteURL = NSURL(string:"clockology")!.absoluteString!
     //let appName = "AppleWatchFaces on github"
     let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentClockSetting.title + "\" I created"
 
