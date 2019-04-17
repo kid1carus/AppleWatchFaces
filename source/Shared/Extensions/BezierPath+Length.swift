@@ -83,7 +83,7 @@ public extension CGPath {
     ///
     /// - Parameter percent: Percentage of path, between 0.0 and 1.0 (inclusive)
     /// - Returns: Point on the path
-    public func point(at percent: CGFloat) -> CGPoint? {
+    func point(at percent: CGFloat) -> CGPoint? {
         
         return point(at: percent, with: elements)
     }
