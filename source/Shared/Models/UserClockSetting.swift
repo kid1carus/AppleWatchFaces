@@ -183,7 +183,7 @@ class UserClockSetting: NSObject {
     }
 
     static func saveDictToFile(serializedArray:[NSDictionary], pathURL: URL) {
-        var dictionary = ["clockSettings": serializedArray]
+        let dictionary = ["clockSettings": serializedArray]
         
         if JSONSerialization.isValidJSONObject(dictionary) {
             do {
