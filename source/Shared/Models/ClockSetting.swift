@@ -113,9 +113,9 @@ class ClockSetting: NSObject {
     var clockCasingMaterialName:String
     var clockForegroundMaterialName:String
     
-    var clockFaceMaterialAlpha:Float
-    var clockCasingMaterialAlpha:Float
-    var clockForegroundMaterialAlpha:Float
+    var clockFaceMaterialAlpha:Float = 1.0
+    var clockCasingMaterialAlpha:Float = 1.0
+    var clockForegroundMaterialAlpha:Float = 1.0
     
     var uniqueID:String
     
