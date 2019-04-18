@@ -32,7 +32,8 @@ class WatchSettingsTableViewController: UITableViewController {
         [
             ["title":"Title",                       "category":"normal",      "rowHeight":"66.0", "cellID":"titleSettingsTableViewCellID"],
             ["title":"Color Theme",                 "category":"normal",      "rowHeight":"130.0", "cellID":"colorThemeSettingsTableViewCellID"],
-            ["title":"Items Theme",                 "category":"normal",      "rowHeight":"130.0","cellID":"decoratorThemeSettingsTableViewCellID"]
+            ["title":"Items Theme",                 "category":"normal",      "rowHeight":"130.0","cellID":"decoratorThemeSettingsTableViewCellID"],
+            ["title":"Transparency",                "category":"advanced",      "rowHeight":"144.0","cellID":"mainAlphaTableViewCellID"]
         ],
         [
             ["title":"Background Type",             "category":"normal",      "rowHeight":"80.0","cellID":"faceBackgroundTypeTableViewCell"],
@@ -84,7 +85,10 @@ class WatchSettingsTableViewController: UITableViewController {
             settingText = SettingsViewController.currentClockSetting.themeTitle
         case "decoratorThemeSettingsTableViewCellID":
             settingText = SettingsViewController.currentClockSetting.decoratorThemeTitle
-        
+        case "mainAlphaTableViewCellID":
+            settingText = SettingsViewController.currentClockSetting.clockFaceMaterialAlpha.description
+            + " " + SettingsViewController.currentClockSetting.clockCasingMaterialAlpha.description
+            + " " + SettingsViewController.currentClockSetting.clockForegroundMaterialAlpha.description
         case "faceBackgroundTypeTableViewCell":
             settingText = FaceBackgroundNode.descriptionForType(SettingsViewController.currentClockSetting.faceBackgroundType)
         case "faceForegroundTypeTableViewCell":

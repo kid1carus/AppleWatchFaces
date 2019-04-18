@@ -52,7 +52,7 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
         guard let clockOverlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings else { return }
         
         let roundedValue = Float(round(50*sender.value)/50)
-        if roundedValue != clockOverlaySettings.itemStrength {
+        if roundedValue != clockOverlaySettings.itemStrength || roundedValue == sender.minimumValue || roundedValue == sender.maximumValue {
             //debugPrint("new value:" + String( roundedValue ) )
             //add to undo stack for actions to be able to undo
             SettingsViewController.addToUndoStack()
@@ -70,7 +70,7 @@ class FaceForegroundOptionSettingsTableViewCell : WatchSettingsSelectableTableVi
         guard let clockOverlaySettings = SettingsViewController.currentClockSetting.clockOverlaySettings else { return }
         
         let roundedValue = Float(round(50*sender.value)/50)
-        if roundedValue != clockOverlaySettings.itemSize {
+        if roundedValue != clockOverlaySettings.itemSize || roundedValue == sender.minimumValue || roundedValue == sender.maximumValue {
             //debugPrint("new value:" + String( roundedValue ) )
             //add to undo stack for actions to be able to undo
             SettingsViewController.addToUndoStack()

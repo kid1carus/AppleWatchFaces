@@ -325,6 +325,8 @@
 		31F8ABCF2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */; };
 		31FD61E921891B5000E15DEA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */; };
 		31FD61EB21891B6900E15DEA /* ClockColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */; };
+		31FE178C22680A4000125B39 /* MainTransparencySettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE178B22680A3F00125B39 /* MainTransparencySettingsTableViewCell.swift */; };
+		31FE178D22680A4000125B39 /* MainTransparencySettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE178B22680A3F00125B39 /* MainTransparencySettingsTableViewCell.swift */; };
 		FDC17D0221FF98CE0064D962 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F52178166B00585AB1 /* InterfaceController.swift */; };
 		FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -525,6 +527,7 @@
 		31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHandSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockColorTheme.swift; sourceTree = "<group>"; };
+		31FE178B22680A3F00125B39 /* MainTransparencySettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTransparencySettingsTableViewCell.swift; sourceTree = "<group>"; };
 		FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateThumbnailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -756,6 +759,7 @@
 		31EF9991219E602D00BB54E7 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				31FE178B22680A3F00125B39 /* MainTransparencySettingsTableViewCell.swift */,
 				31BC68E921931F1400DD8CD6 /* ColorSettingsTableViewCell.swift */,
 				31B3F8CD218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift */,
 				310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */,
@@ -1182,6 +1186,7 @@
 				312D4C05218BCBF0008504D2 /* ClockDecoratorTheme.swift in Sources */,
 				319095FC21CC898200F71BC6 /* PathElement.swift in Sources */,
 				318A928D21D05F660060D89B /* SettingsOptionsViewController.swift in Sources */,
+				31FE178C22680A4000125B39 /* MainTransparencySettingsTableViewCell.swift in Sources */,
 				314A010A21960409009BCE3C /* UserClockSetting.swift in Sources */,
 				3109D1E521A9A37B00561F13 /* FaceChooserEditTableViewCell.swift in Sources */,
 				31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */,
@@ -1344,6 +1349,7 @@
 				31F7D19522595D8700A1A27E /* OptionsViewController.swift in Sources */,
 				31C86B6422374E7200EF4186 /* FaceChooserEditTableViewCell.swift in Sources */,
 				31C86B0C22374CF400EF4186 /* SKWatchScene.swift in Sources */,
+				31FE178D22680A4000125B39 /* MainTransparencySettingsTableViewCell.swift in Sources */,
 				31C86B2C22374DA000EF4186 /* UserDefaults.swift in Sources */,
 				31C86B4922374DE500EF4186 /* MinuteHandAnimationSettingCollectionViewCell.swift in Sources */,
 				31C86B4C22374DE500EF4186 /* MinuteHandSettingsTableViewCell.swift in Sources */,
