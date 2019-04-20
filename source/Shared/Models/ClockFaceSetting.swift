@@ -47,6 +47,7 @@ class ClockFaceSetting: NSObject {
     var shouldShowRomanNumeralText: Bool
     var shouldShowHandOutlines: Bool
     var handEffectWidths: [Float]
+    var handAlphas: [Float]
     
     var ringRenderShape: RingRenderShapes
     var ringMaterials: [String]
@@ -69,6 +70,7 @@ class ClockFaceSetting: NSObject {
         shouldShowRomanNumeralText: Bool,
         shouldShowHandOutlines: Bool,
         handEffectWidths: [Float],
+        handAlphas: [Float],
         
         ringRenderShape: RingRenderShapes,
         ringMaterials: [String],
@@ -89,6 +91,7 @@ class ClockFaceSetting: NSObject {
         self.shouldShowRomanNumeralText = shouldShowRomanNumeralText
         self.shouldShowHandOutlines = shouldShowHandOutlines
         self.handEffectWidths = handEffectWidths
+        self.handAlphas = handAlphas
         
         self.hourHandMaterialName = hourHandMaterialName
         self.minuteHandMaterialName = minuteHandMaterialName
@@ -116,6 +119,7 @@ class ClockFaceSetting: NSObject {
             shouldShowRomanNumeralText: false,
             shouldShowHandOutlines: false,
             handEffectWidths: [0,0,0],
+            handAlphas: [1,1,1],
             
             ringRenderShape: RingRenderShapes.RingRenderShapeCircle,
             ringMaterials: [ "#FFFFFFFF","#e2e2e2ff","#c6c6c6ff" ],
@@ -140,6 +144,7 @@ class ClockFaceSetting: NSObject {
             shouldShowRomanNumeralText: false,
             shouldShowHandOutlines: false,
             handEffectWidths: [0,0,0],
+            handAlphas: [1,1,1],
         
             ringRenderShape: RingRenderShapes.RingRenderShapeCircle,
             ringMaterials: [ "#FFFFFFFF","#e2e2e2ff","#c6c6c6ff" ],
@@ -166,6 +171,13 @@ class ClockFaceSetting: NSObject {
         if let handEffectWidthsdSerializedArray = jsonObj["handEffectWidths"].array {
             for handEffectWidthsdSerialized in handEffectWidthsdSerializedArray {
                 handEffectWidthsTemp.append( handEffectWidthsdSerialized.floatValue )
+            }
+        }
+        
+        var handAlphasTemp = [Float]()
+        if let handAlphasSerializedArray = jsonObj["handAlphas"].array {
+            for handAlphasSerialized in handAlphasSerializedArray {
+                handAlphasTemp.append( handAlphasSerialized.floatValue )
             }
         }
         
@@ -201,6 +213,7 @@ class ClockFaceSetting: NSObject {
             shouldShowRomanNumeralText: jsonObj[ "shouldShowRomanNumeralText" ].boolValue ,
             shouldShowHandOutlines: jsonObj[ "shouldShowHandOutlines" ].boolValue ,
             handEffectWidths: handEffectWidthsTemp,
+            handAlphas: handAlphasTemp,
             
             ringRenderShape: ringRenderShape,
             ringMaterials : ringMaterialsTemp,
@@ -224,7 +237,16 @@ class ClockFaceSetting: NSObject {
         serializedDict[ "secondHandMovement" ] = self.secondHandMovement.rawValue as AnyObject
         serializedDict[ "shouldShowRomanNumeralText" ] = NSNumber.init(value: self.shouldShowRomanNumeralText as Bool)
         serializedDict[ "shouldShowHandOutlines" ] = NSNumber.init(value: self.shouldShowHandOutlines as Bool)
-        serializedDict[ "handEffectWidths" ] = self.handEffectWidths as AnyObject
+        
+        //only add this if its not default
+        if self.handEffectWidths != [0,0,0] {
+            serializedDict[ "handEffectWidths" ] = self.handEffectWidths as AnyObject
+        }
+        
+        //only add this if its not default
+        if self.handAlphas != [1,1,1] {
+            serializedDict[ "handAlphas" ] = self.handAlphas as AnyObject
+        }
         
         serializedDict[ "ringRenderShape" ] = self.ringRenderShape.rawValue as AnyObject
         serializedDict[ "ringMaterials" ] = self.ringMaterials as AnyObject
