@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		310044C621D3C5DF0019794A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310044C421D3C5DF0019794A /* Settings.storyboard */; };
 		3100DC9E21EC26A3007423A5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
 		31053339225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333A225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
@@ -110,6 +109,9 @@
 		312E6B6B2241C7A400BB0D05 /* PhysicsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310725DE223D7083008030A2 /* PhysicsNode.swift */; };
 		312E853822239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		312E853922239740001C450B /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
+		3135DF8F226AC1BC001F94D5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310044C421D3C5DF0019794A /* Settings.storyboard */; };
+		3135DF91226AC1E9001F94D5 /* CLSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3135DF90226AC1E9001F94D5 /* CLSettings.storyboard */; };
+		3135DF93226AC39B001F94D5 /* CLDecorators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3135DF92226AC39B001F94D5 /* CLDecorators.storyboard */; };
 		313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
 		313AE3E1221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
 		313EA3C7224C484F00C148BE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
@@ -436,6 +438,8 @@
 		312D4C07218BCDDB008504D2 /* HourHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourHandNode.swift; sourceTree = "<group>"; };
 		312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimer.swift; sourceTree = "<group>"; };
 		312E853722239740001C450B /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
+		3135DF90226AC1E9001F94D5 /* CLSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CLSettings.storyboard; sourceTree = "<group>"; };
+		3135DF92226AC39B001F94D5 /* CLDecorators.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CLDecorators.storyboard; sourceTree = "<group>"; };
 		313AE3DF221A777E00C02462 /* DotsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsNode.swift; sourceTree = "<group>"; };
 		314A010921960409009BCE3C /* UserClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClockSetting.swift; sourceTree = "<group>"; };
 		314A010B219605AA009BCE3C /* Settings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Settings.json; sourceTree = "<group>"; };
@@ -749,6 +753,8 @@
 				31C86AF722374B0300EF4186 /* PreviewViewController.swift */,
 				31F7D19422595D8700A1A27E /* OptionsViewController.swift */,
 				31C86AEB2237493600EF4186 /* ClockologyMain.storyboard */,
+				3135DF90226AC1E9001F94D5 /* CLSettings.storyboard */,
+				3135DF92226AC39B001F94D5 /* CLDecorators.storyboard */,
 				31C86AEE2237493700EF4186 /* Assets.xcassets */,
 				31C86AF02237493700EF4186 /* LaunchScreen.storyboard */,
 				31C86AF32237493700EF4186 /* Info.plist */,
@@ -1003,6 +1009,7 @@
 				31090FC62233277C00D6CAA7 /* DIGITAL-7-MONO.TTF in Resources */,
 				31090FD02233277C00D6CAA7 /* BLACKROSE.TTF in Resources */,
 				31090FCE2233277C00D6CAA7 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
+				3135DF8F226AC1BC001F94D5 /* Settings.storyboard in Resources */,
 				31090FBE2233277C00D6CAA7 /* GERMANICA.TTF in Resources */,
 				31090FC02233277C00D6CAA7 /* LCDPHONE.TTF in Resources */,
 				31090FDA2233277C00D6CAA7 /* NIXIEONE.TTF in Resources */,
@@ -1027,7 +1034,6 @@
 				318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */,
 				31092138225433C30032D3AB /* Assets.xcassets in Resources */,
 				31090FC42233277C00D6CAA7 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */,
-				310044C621D3C5DF0019794A /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1088,6 +1094,8 @@
 				31C86B0E22374CF400EF4186 /* Themes.json in Resources */,
 				31C86B1522374D0700EF4186 /* IRONLOUNGE.TTF in Resources */,
 				31C86B0B22374CF400EF4186 /* SKWatchScene.sks in Resources */,
+				3135DF93226AC39B001F94D5 /* CLDecorators.storyboard in Resources */,
+				3135DF91226AC1E9001F94D5 /* CLSettings.storyboard in Resources */,
 				31C86B1D22374D0700EF4186 /* CONERIASCRIPT.TTF in Resources */,
 				31C86B4F22374DE500EF4186 /* SettingsTableHeaderView.xib in Resources */,
 				31C86AED2237493600EF4186 /* ClockologyMain.storyboard in Resources */,
