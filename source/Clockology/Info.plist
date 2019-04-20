@@ -20,25 +20,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>PIXEL_MILLENNIUM.TFF</string>
-		<string>JOYSTIX.TTF</string>
-		<string>LCDPHONE.TTF</string>
-		<string>NIXIEONE.TTF</string>
-		<string>DIGITAL-7-MONO.TTF</string>
-		<string>DIGITAL-7-MONO-ITALICS.TTF</string>
-		<string>IRONLOUNGE.TTF</string>
-		<string>ULTRACONDENSEDSARIF.TTF</string>
-		<string>RATIONALINT.TTF</string>
-		<string>ROMAN-TRAJAN-PRO.TTF</string>
-		<string>DINPRO-LIGHT.TTF</string>
-		<string>CONERIASCRIPT.TTF</string>
-		<string>KINGTHINGS.TTF</string>
-		<string>ROTHERNBURGDECORATIVE.TTF</string>
-		<string>GERMANICA.TTF</string>
-		<string>BLACKROSE.TTF</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -61,6 +42,29 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>App Needs to use camera to take watch face background pictures</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App needs access to photo library to same images of watch faces </string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PIXEL_MILLENNIUM.TFF</string>
+		<string>JOYSTIX.TTF</string>
+		<string>LCDPHONE.TTF</string>
+		<string>NIXIEONE.TTF</string>
+		<string>DIGITAL-7-MONO.TTF</string>
+		<string>DIGITAL-7-MONO-ITALICS.TTF</string>
+		<string>IRONLOUNGE.TTF</string>
+		<string>ULTRACONDENSEDSARIF.TTF</string>
+		<string>RATIONALINT.TTF</string>
+		<string>ROMAN-TRAJAN-PRO.TTF</string>
+		<string>DINPRO-LIGHT.TTF</string>
+		<string>CONERIASCRIPT.TTF</string>
+		<string>KINGTHINGS.TTF</string>
+		<string>ROTHERNBURGDECORATIVE.TTF</string>
+		<string>GERMANICA.TTF</string>
+		<string>BLACKROSE.TTF</string>
 	</array>
 </dict>
 </plist>
