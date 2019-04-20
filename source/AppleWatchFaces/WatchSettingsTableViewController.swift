@@ -59,7 +59,8 @@ class WatchSettingsTableViewController: UITableViewController {
             
             ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
             ["title":"Hand Outline Color",          "category":"advanced",    "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"],
-            ["title":"Hand Effects",                "category":"advanced",    "rowHeight":"144.0","cellID":"handsEffectsTableViewCellID"]
+            ["title":"Hand Effects",                "category":"advanced",    "rowHeight":"144.0","cellID":"handsEffectsTableViewCellID"],
+            ["title":"Hand Transparency",           "category":"advanced",    "rowHeight":"144.0","cellID":"handsAlphaTableViewCellID"]
         ],
         [
             ["title":"Indicator Path",             "category":"path-render", "rowHeight":"100.0","cellID":"ringShapeSettingsTableViewCellID"],
@@ -143,6 +144,14 @@ class WatchSettingsTableViewController: UITableViewController {
             if let secWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handEffectWidths[safe: 0] { secondHandVal = secWidth }
             if let minWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handEffectWidths[safe: 1] { minuteHandVal = minWidth }
             if let hourWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handEffectWidths[safe: 2] { hourHandVal = hourWidth }
+            settingText = String(secondHandVal) + "," + String(minuteHandVal) + "," + String(hourHandVal)
+        case "handsAlphaTableViewCellID":
+            var secondHandVal:Float = 0.0
+            var minuteHandVal:Float = 0.0
+            var hourHandVal:Float = 0.0
+            if let secWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handAlphas[safe: 0] { secondHandVal = secWidth }
+            if let minWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handAlphas[safe: 1] { minuteHandVal = minWidth }
+            if let hourWidth = SettingsViewController.currentClockSetting.clockFaceSettings?.handAlphas[safe: 2] { hourHandVal = hourWidth }
             settingText = String(secondHandVal) + "," + String(minuteHandVal) + "," + String(hourHandVal)
         case "ringShapeSettingsTableViewCellID":
             settingText = ClockRingSetting.descriptionForRingRenderShapes((SettingsViewController.currentClockSetting.clockFaceSettings?.ringRenderShape)!)

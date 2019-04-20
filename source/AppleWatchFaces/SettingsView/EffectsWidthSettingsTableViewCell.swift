@@ -51,7 +51,7 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         }
         
         if let currentVal = clockFaceSettings.handEffectWidths[safe: 0] {
-            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == 0 {
+            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == sender.minimumValue || roundedValue == sender.maximumValue {
                 clockFaceSettings.handEffectWidths[0] = roundedValue
                 didChangeSetting = true
             }
@@ -82,7 +82,7 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         }
         
         if let currentVal = clockFaceSettings.handEffectWidths[safe: 1] {
-            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == 0 {
+            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == sender.minimumValue || roundedValue == sender.maximumValue{
                 clockFaceSettings.handEffectWidths[1] = roundedValue
                 didChangeSetting = true
             }
@@ -113,7 +113,7 @@ class EffectsWidthSettingsTableViewCell : WatchSettingsSelectableTableViewCell {
         }
         
         if let currentVal = clockFaceSettings.handEffectWidths[safe: 2] {
-            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == 0 {
+            if abs(roundedValue.distance(to: currentVal)) > thresholdForChange || roundedValue == sender.minimumValue || roundedValue == sender.maximumValue {
                 clockFaceSettings.handEffectWidths[2] = roundedValue
                 didChangeSetting = true
             }
