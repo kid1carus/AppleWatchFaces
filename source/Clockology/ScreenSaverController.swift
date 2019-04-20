@@ -107,6 +107,15 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
         }
     }
     
+    @objc func settingsDidChange(notification: NSNotification) {
+        if let userInfo = notification.userInfo as? [String:Int] {
+            currentClockIndex = userInfo["currentClockIndex"] ?? 00
+        }
+        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
+        
+        redrawPreviewClock(transition: true, direction: .down)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
         storeBrightness()
@@ -129,6 +138,9 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         storeBrightness()
         buttonContainerView?.alpha = 0.0
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ScreenSaverController.showButtons)))
@@ -136,8 +148,9 @@ class ScreenSaverController: UIBrightnessViewController, UIGestureRecognizerDele
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
         redrawPreviewClock(transition: false, direction: .up)
         
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        //react to settings changes
+        NotificationCenter.default.addObserver(self, selector: #selector(ScreenSaverController.settingsDidChange), name: SettingsViewController.settingsExitingNotificationName, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }

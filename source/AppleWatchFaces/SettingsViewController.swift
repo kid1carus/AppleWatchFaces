@@ -29,6 +29,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static let settingsChangedNotificationName = Notification.Name("settingsChanged")
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
+    static let settingsExitingNotificationName = Notification.Name("settingsExiting")
         
     //WatchSessionManagerDelegate implementation
     func sessionActivationDidCompleteError(errorMessage: String) {
@@ -342,6 +343,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             if SettingsViewController.undoArray.count>0 {
                 saveClock()
                 _ = UIImage.delete(imageName: SettingsViewController.currentClockSetting.uniqueID)
+                NotificationCenter.default.post(name: SettingsViewController.settingsExitingNotificationName, object: nil, userInfo:["currentClockIndex":currentClockIndex])
             }
         }
         
