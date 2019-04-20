@@ -74,6 +74,12 @@ class WatchPreviewViewController: UIViewController {
         }
     }
     
+    func adjustAlpha() {
+        if let watchScene = skView.scene as? SKWatchScene {
+            watchScene.adjustAlpha(clockSetting: SettingsViewController.currentClockSetting)
+        }
+    }
+    
     func redraw() {
         if let watchScene = skView.scene as? SKWatchScene {
             watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)

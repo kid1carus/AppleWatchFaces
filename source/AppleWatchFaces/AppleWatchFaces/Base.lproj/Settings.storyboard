@@ -398,8 +398,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="clockCasingMaterialAlphaSlider" destination="iKA-u5-QUa" id="GC7-BH-lhI"/>
-                                    <outlet property="clockFaceMaterialAlphaSlider" destination="pKt-tL-yqv" id="NC7-7U-T3m"/>
+                                    <outlet property="clockCasingMaterialAlphaSlider" destination="pKt-tL-yqv" id="lIx-Hq-anR"/>
+                                    <outlet property="clockFaceMaterialAlphaSlider" destination="iKA-u5-QUa" id="Dk3-1C-Nnf"/>
                                     <outlet property="clockForegroundMaterialAlphaSlider" destination="oB7-r0-C3T" id="GdQ-DQ-7N5"/>
                                 </connections>
                             </tableViewCell>
@@ -603,11 +603,11 @@
                                 <rect key="frame" x="0.0" y="708" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0u0-0a-aMy" id="aqJ-lb-pZm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ys4-a3-4S6">
-                                            <rect key="frame" x="100" y="0.0" width="275" height="100"/>
+                                            <rect key="frame" x="100" y="0.0" width="275" height="99.5"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="sqU-91-tvb">
                                                 <size key="itemSize" width="33" height="33"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -664,7 +664,7 @@
                                 <rect key="frame" x="0.0" y="808" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W8G-Id-OVv" id="L8Q-dL-rrf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oi4-f5-pe1">

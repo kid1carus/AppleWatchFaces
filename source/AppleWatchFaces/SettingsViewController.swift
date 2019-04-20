@@ -127,8 +127,19 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {
+
         debugPrint("onNotificationForSettingsChanged called")
-        redrawPreviewClock()
+        var fullRedraw = true
+        if let userInfo = notification.userInfo as? [String: String] {
+            if userInfo["settingType"] == "alphaUpdate" {
+                //just update alpha
+                fullRedraw = false
+                if watchPreviewViewController != nil {
+                    watchPreviewViewController?.adjustAlpha()
+                }
+            }
+        }
+        if fullRedraw { redrawPreviewClock() }
         setUndoRedoButtonStatus()
     }
     

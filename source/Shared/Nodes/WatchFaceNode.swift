@@ -24,6 +24,18 @@ class WatchFaceNode: SKShapeNode {
         secondHand
     }
     
+    func adjustAlpha(clockSetting: ClockSetting) {
+        if let backgroundNode = self.childNode(withName: "background") {
+            backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
+        }
+        if let backgroundShapeNode = self.childNode(withName: "backgroundShape") {
+            backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
+        }
+        if let foregroundNode = self.childNode(withName: "foregroundNode") {
+            foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
+        }
+    }
+    
     init(clockSetting: ClockSetting, size: CGSize) {
         super.init()
         
@@ -41,12 +53,14 @@ class WatchFaceNode: SKShapeNode {
         let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)
         backgroundNode.name = "background"
         backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
+        backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
         
         self.addChild(backgroundNode)
         
         let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: topLayerMaterial, material2: bottomLayerMaterial)
         backgroundShapeNode.name = "backgroundShape"
         backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
+        backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
         
         self.addChild(backgroundShapeNode)
         
@@ -62,6 +76,7 @@ class WatchFaceNode: SKShapeNode {
         let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0, shapeType: shapeType, itemSize: itemSize, itemStrength: itemStrength)
         foregroundNode.name = "foregroundNode"
         foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
+        foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
         
         self.addChild(foregroundNode)
         
