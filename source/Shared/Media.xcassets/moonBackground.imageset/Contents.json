@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "minuteHand-ImageMoon.png",
+      "filename" : "moonBackground.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "minuteHand-ImageMoon@2x.png",
       "scale" : "2x"
     },
     {
