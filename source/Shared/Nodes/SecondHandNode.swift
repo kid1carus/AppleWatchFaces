@@ -12,9 +12,11 @@ import SceneKit
 
 enum SecondHandTypes: String {
     case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandRadar,
-    SecondHandNodeTypeNone
+        SecondHandTypeImageMoon,
+        SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandNodeTypeNone ]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandTypeImageMoon,
+        SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
     
@@ -72,11 +74,12 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == .SecondHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
         if (nodeType == .SecondHandRadar) { typeDescription = "Radar Pointer" }
         
-        if (nodeType == SecondHandTypes.SecondHandNodeTypeNone)  { typeDescription = "None" }
-        
         // IMAGE BASED EXAMPLES
-        if (nodeType == SecondHandTypes.SecondHandTypeFancyRed)  { typeDescription = "Image: Fancy Red" }
-        if (nodeType == SecondHandTypes.SecondHandTieFighter)  { typeDescription = "Image: Tie Fighter" }
+        if (nodeType == .SecondHandTypeFancyRed)  { typeDescription = "Image: Fancy Red" }
+        if (nodeType == .SecondHandTieFighter)  { typeDescription = "Image: Tie Fighter" }
+        if (nodeType == .SecondHandTypeImageMoon)  { typeDescription = "Image: Moon" }
+        
+        if (nodeType == .SecondHandNodeTypeNone)  { typeDescription = "None" }
         
         return typeDescription
     }
@@ -350,6 +353,24 @@ class SecondHandNode: SKSpriteNode {
             }
             
             addArcNode( endAngle: CGFloat.pi * 0.5)
+        }
+        
+        if (secondHandType == .SecondHandTypeImageMoon) {
+            let im = UIImage.init(named: "secondHand-ImageMoon.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                //textureNode.setScale(0.75)
+                textureNode.anchorPoint = CGPoint.init(x: 0.5, y: 0.1)   //how far from center of image
+                textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                
+                //needed to affect the physics fields
+                addPhysicsField(fieldType: fieldType, node: textureNode, position: CGPoint.init(x: 0, y: 0), itemStrength: itemStrength)
+                
+                self.addChild(textureNode)
+            }
+            
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeFancyRed) {
