@@ -365,8 +365,12 @@ class SecondHandNode: SKSpriteNode {
                 textureNode.color = SKColor.init(hexString: material)
                 textureNode.colorBlendFactor = 1.0
                 
+                let phy = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 20, height: 84), center: CGPoint.init(x: 0, y: 40))
+                phy.isDynamic = false
+                textureNode.physicsBody = phy
+                
                 //needed to affect the physics fields
-                addPhysicsField(fieldType: fieldType, node: textureNode, position: CGPoint.init(x: 0, y: 0), itemStrength: itemStrength)
+                addPhysicsField(fieldType: fieldType, node: textureNode, position: CGPoint.init(x: 0, y: 78.0), itemStrength: itemStrength)
                 
                 self.addChild(textureNode)
             }
