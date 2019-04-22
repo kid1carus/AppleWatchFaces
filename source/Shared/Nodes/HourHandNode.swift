@@ -9,11 +9,13 @@
 import SpriteKit
 
 enum HourHandTypes: String {
-    case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypeArrow,
+    case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeImageMoon,
+        HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypeArrow,
     HourHandTypePacMan, HourHandTypeMsPacMan, HourHandTypeNone
     
     static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRadar, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeThinDial, HourHandTypeNone]
-    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypePacMan, HourHandTypeMsPacMan,
+    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeImageMoon,
+        HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypePacMan, HourHandTypeMsPacMan,
                                        HourHandTypeNone]
     
     static func random() -> HourHandTypes {
@@ -50,25 +52,26 @@ class HourHandNode: SKSpriteNode {
     static func descriptionForType(_ nodeType: HourHandTypes) -> String {
         var typeDescription = ""
         
-        if (nodeType == HourHandTypes.HourHandTypeNone)  { typeDescription = "None" }
+        if (nodeType == .HourHandTypeNone)  { typeDescription = "None" }
         
-        if (nodeType == HourHandTypes.HourHandTypeSwiss)  { typeDescription = "Swiss" }
-        if (nodeType == HourHandTypes.HourHandTypeRounded)  { typeDescription = "Rounded" }
-        if (nodeType == HourHandTypes.HourHandTypeRoman)  { typeDescription = "Roman" }
-        if (nodeType == HourHandTypes.HourHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
-        if (nodeType == HourHandTypes.HourHandTypeBoxy)  { typeDescription = "Boxy" }
-        if (nodeType == HourHandTypes.HourHandTypeFatBoxy)  { typeDescription = "Fat Boxy" }
-        if (nodeType == HourHandTypes.HourHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
-        if (nodeType == HourHandTypes.HourHandTypeCutout)  { typeDescription = "Square Cutout" }
+        if (nodeType == .HourHandTypeSwiss)  { typeDescription = "Swiss" }
+        if (nodeType == .HourHandTypeRounded)  { typeDescription = "Rounded" }
+        if (nodeType == .HourHandTypeRoman)  { typeDescription = "Roman" }
+        if (nodeType == .HourHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
+        if (nodeType == .HourHandTypeBoxy)  { typeDescription = "Boxy" }
+        if (nodeType == .HourHandTypeFatBoxy)  { typeDescription = "Fat Boxy" }
+        if (nodeType == .HourHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
+        if (nodeType == .HourHandTypeCutout)  { typeDescription = "Square Cutout" }
         if (nodeType == .HourHandTypeArrow) { typeDescription = "Arrow" }
-        if (nodeType == HourHandTypes.HourHandTypeFlatDial)  { typeDescription = "Flat Dial" }
-        if (nodeType == HourHandTypes.HourHandTypeThinDial)  { typeDescription = "Thin Dial" }
-        if (nodeType == HourHandTypes.HourHandTypePacMan)  { typeDescription = "Dot Eater" }
-        if (nodeType == HourHandTypes.HourHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
+        if (nodeType == .HourHandTypeFlatDial)  { typeDescription = "Flat Dial" }
+        if (nodeType == .HourHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        if (nodeType == .HourHandTypePacMan)  { typeDescription = "Dot Eater" }
+        if (nodeType == .HourHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
         
         //image ex
-        if (nodeType == HourHandTypes.HourHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
-        if (nodeType == HourHandTypes.HourHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
+        if (nodeType == .HourHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
+        if (nodeType == .HourHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
+        if (nodeType == .HourHandTypeImageMoon) { typeDescription = "Image: Moon" }
         
         return typeDescription
     }
@@ -190,6 +193,24 @@ class HourHandNode: SKSpriteNode {
             }
             
             addArcNode( endAngle: CGFloat.pi * 0.5)
+        }
+        
+        if (hourHandType == .HourHandTypeImageMoon) {
+            let im = UIImage.init(named: "hourHand-ImageMoon.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                //textureNode.setScale(0.75)
+                textureNode.anchorPoint = CGPoint.init(x: 0.5, y: 0.1)   //how far from center of image
+                textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                
+                let phy = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 40, height: 60), center: CGPoint.init(x: 0, y: 29))
+                phy.isDynamic = false
+                textureNode.physicsBody = phy
+                
+                self.addChild(textureNode)
+            }
         }
         
         if (hourHandType == .HourHandTypeImageFancyWhite) {
