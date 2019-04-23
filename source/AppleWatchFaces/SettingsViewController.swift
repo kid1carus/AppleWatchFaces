@@ -132,11 +132,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         debugPrint("onNotificationForSettingsChanged called")
         var fullRedraw = true
         if let userInfo = notification.userInfo as? [String: String] {
-            if userInfo["settingType"] == "alphaUpdate" {
+            if userInfo["settingType"] == "alphaUpdateRings" || userInfo["settingType"] == "alphaUpdateHands" || userInfo["settingType"] == "alphaUpdateBackgrounds" {
                 //just update alpha
                 fullRedraw = false
                 if watchPreviewViewController != nil {
-                    watchPreviewViewController?.adjustAlpha()
+                    watchPreviewViewController?.adjustAlpha(section: userInfo["settingType"] ?? "")
                 }
             }
         }

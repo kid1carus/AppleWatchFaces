@@ -24,44 +24,75 @@ class WatchFaceNode: SKShapeNode {
         secondHand
     }
     
-    func adjustAlpha(clockSetting: ClockSetting) {
-        if let backgroundNode = self.childNode(withName: "background") {
-            backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
-        }
-        if let backgroundShapeNode = self.childNode(withName: "backgroundShape") {
-            backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
-        }
-        if let foregroundNode = self.childNode(withName: "foregroundNode") {
-            foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
+    enum AlphaUpdateSections: Int {
+        case backgrounds = 0,
+        rings,
+        hands
+    }
+    
+    func adjustAlpha(clockSetting: ClockSetting, section: AlphaUpdateSections) {
+        
+        if section == .backgrounds {
+            if let backgroundNode = self.childNode(withName: "background") {
+                backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
+            }
+            if let backgroundShapeNode = self.childNode(withName: "backgroundShape") {
+                backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
+            }
+            if let foregroundNode = self.childNode(withName: "foregroundNode") {
+                foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
+            }
         }
         
-        //need clockface settings for these
-        guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
-        guard clockFaceSettings.handAlphas.count>2 else { return }
+        if section == .hands {
+            //need clockface settings for these
+            guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
+            guard clockFaceSettings.handAlphas.count>2 else { return }
+            
+            let secondHandAlpha = clockFaceSettings.handAlphas[0]
+            if let node = self.childNode(withName: "secondHand") {
+                node.alpha = CGFloat(secondHandAlpha)
+            }
+            if let node = self.childNode(withName: "secondHandShadow") {
+                node.alpha = CGFloat(secondHandAlpha)
+            }
+            
+            let minuteHandAlpha = clockFaceSettings.handAlphas[1]
+            if let node = self.childNode(withName: "minuteHand") {
+                node.alpha = CGFloat(minuteHandAlpha)
+            }
+            if let node = self.childNode(withName: "minuteHandShadow") {
+                node.alpha = CGFloat(minuteHandAlpha)
+            }
+            
+            let hourHandAlpha = clockFaceSettings.handAlphas[2]
+            if let node = self.childNode(withName: "hourHand") {
+                node.alpha = CGFloat(hourHandAlpha)
+            }
+            if let node = self.childNode(withName: "hourHandShadow") {
+                node.alpha = CGFloat(hourHandAlpha)
+            }
+        }
         
-        let secondHandAlpha = clockFaceSettings.handAlphas[0]
-        if let node = self.childNode(withName: "secondHand") {
-            node.alpha = CGFloat(secondHandAlpha)
-        }
-        if let node = self.childNode(withName: "secondHandShadow") {
-            node.alpha = CGFloat(secondHandAlpha)
+        if section == .rings {
+            guard let indicatorNode = self.childNode(withName: "indicatorNode") else { return }
+            
+            guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
+            guard clockFaceSettings.ringAlphas.count>2 else { return }
+            
+            for childnode in indicatorNode.children {
+                if let userDataDict = childnode.userData as? [String: Int] {
+                    let ringMaterialDesiredThemeColorIndex = userDataDict["ringMaterialDesiredThemeColorIndex"]
+                    for index in 0 ... 2 {
+                        if (ringMaterialDesiredThemeColorIndex == index) {
+                            childnode.alpha = CGFloat(clockFaceSettings.ringAlphas[index])
+                        }
+                    }
+                }
+            }
         }
         
-        let minuteHandAlpha = clockFaceSettings.handAlphas[1]
-        if let node = self.childNode(withName: "minuteHand") {
-            node.alpha = CGFloat(minuteHandAlpha)
-        }
-        if let node = self.childNode(withName: "minuteHandShadow") {
-            node.alpha = CGFloat(minuteHandAlpha)
-        }
         
-        let hourHandAlpha = clockFaceSettings.handAlphas[2]
-        if let node = self.childNode(withName: "hourHand") {
-            node.alpha = CGFloat(hourHandAlpha)
-        }
-        if let node = self.childNode(withName: "hourHandShadow") {
-            node.alpha = CGFloat(hourHandAlpha)
-        }
     }
     
     init(clockSetting: ClockSetting, size: CGSize) {
@@ -159,7 +190,7 @@ class WatchFaceNode: SKShapeNode {
         let ringNode = SKNode()
         ringNode.name = "ringNode"
         //keep track of ringIndex for tapDetection / highlighting in editor
-        if let positionInRing = positionInRing { ringNode.userData = ["positionInRing":positionInRing] }
+        if let positionInRing = positionInRing { ringNode.userData = ["positionInRing":positionInRing, "ringMaterialDesiredThemeColorIndex" : ringSettings.ringMaterialDesiredThemeColorIndex] }
         clockFaceNode.addChild(ringNode)
         
         //optional stroke color

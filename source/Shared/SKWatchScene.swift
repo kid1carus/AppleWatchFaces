@@ -27,9 +27,14 @@ class SKWatchScene: SKScene {
         self.addChild(newWatchFaceNode)
     }
     
-    func adjustAlpha(clockSetting: ClockSetting) {
+    func adjustAlpha(clockSetting: ClockSetting, section: String) {
         if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
-            watchFaceNode.adjustAlpha(clockSetting: clockSetting)
+            
+            var alphaSection:WatchFaceNode.AlphaUpdateSections = .backgrounds
+            if section == "alphaUpdateRings" { alphaSection = .rings }
+            if section == "alphaUpdateHands" { alphaSection = .hands }
+            
+            watchFaceNode.adjustAlpha(clockSetting: clockSetting, section: alphaSection)
         }
     }
     

@@ -14,6 +14,7 @@ class MainTransparencySettingsTableViewCell : WatchSettingsSelectableTableViewCe
     @IBOutlet var clockFaceMaterialAlphaSlider:UISlider!
     @IBOutlet var clockCasingMaterialAlphaSlider:UISlider!
     @IBOutlet var clockForegroundMaterialAlphaSlider:UISlider!
+    let settingsTypeAlphaUpdate = "alphaUpdateBackgrounds"
     
     // called after a new setting should be selected ( IE a new design is loaded )
     override func chooseSetting( animated: Bool ) {
@@ -42,11 +43,10 @@ class MainTransparencySettingsTableViewCell : WatchSettingsSelectableTableViewCe
             if sender == clockFaceMaterialAlphaSlider { currentClockSetting.clockFaceMaterialAlpha = roundedValue }
             if sender == clockCasingMaterialAlphaSlider { currentClockSetting.clockCasingMaterialAlpha = roundedValue }
             if sender == clockForegroundMaterialAlphaSlider { currentClockSetting.clockForegroundMaterialAlpha = roundedValue }
-            
-            let settingsType = "alphaUpdate"
-            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingsType])
+        
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingsTypeAlphaUpdate])
             NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-                                            userInfo:["cellId": self.cellId , "settingType":settingsType])
+                                            userInfo:["cellId": self.cellId , "settingType":settingsTypeAlphaUpdate])
         }
         
     }

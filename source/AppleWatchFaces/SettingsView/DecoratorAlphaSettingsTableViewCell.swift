@@ -14,7 +14,7 @@ class DecoratorAlphaSettingsTableViewCell : WatchSettingsSelectableTableViewCell
     @IBOutlet var alphaFirstSlider:UISlider!
     @IBOutlet var alphaSecondSlider:UISlider!
     @IBOutlet var alphaThirdSlider:UISlider!
-    let settingsTypeAlphaUpdate = "alphaUpdate"
+    let settingsTypeAlphaUpdate = "alphaUpdateRings"
     
     // called after a new setting should be selected ( IE a new design is loaded )
     override func chooseSetting( animated: Bool ) {
@@ -63,7 +63,7 @@ class DecoratorAlphaSettingsTableViewCell : WatchSettingsSelectableTableViewCell
         if didChangeSetting {
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingsTypeAlphaUpdate])
             NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-                                            userInfo:["cellId": self.cellId , "settingType":"alphaUpdate"])
+                                            userInfo:["cellId": self.cellId , "settingType":settingsTypeAlphaUpdate])
         }
     }
     
@@ -94,7 +94,7 @@ class DecoratorAlphaSettingsTableViewCell : WatchSettingsSelectableTableViewCell
         if didChangeSetting {
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingsTypeAlphaUpdate])
             NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-                                            userInfo:["cellId": self.cellId , "settingType":"alphaUpdate"])
+                                            userInfo:["cellId": self.cellId , "settingType":settingsTypeAlphaUpdate])
         }
     }
     
@@ -125,7 +125,7 @@ class DecoratorAlphaSettingsTableViewCell : WatchSettingsSelectableTableViewCell
         if didChangeSetting {
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingsTypeAlphaUpdate])
             NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-                                            userInfo:["cellId": self.cellId , "settingType":"alphaUpdate"])
+                                            userInfo:["cellId": self.cellId , "settingType":settingsTypeAlphaUpdate])
         }
     }
     
