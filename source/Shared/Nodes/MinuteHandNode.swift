@@ -262,7 +262,7 @@ class MinuteHandNode: SKSpriteNode {
             if let textureImage = im {
                 let texture = SKTexture.init(image: textureImage)
                 let textureNode = SKSpriteNode.init(texture: texture)
-                //textureNode.setScale(0.75)
+                textureNode.setScale(1.43)
                 textureNode.anchorPoint = CGPoint.init(x: 0.5, y: 0.1)   //how far from center of image
                 textureNode.color = SKColor.init(hexString: material)
                 textureNode.colorBlendFactor = 1.0
