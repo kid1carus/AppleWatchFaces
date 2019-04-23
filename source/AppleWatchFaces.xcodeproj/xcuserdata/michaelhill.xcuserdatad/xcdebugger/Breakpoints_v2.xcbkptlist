@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Models/ClockFaceSetting.swift"
-            timestampString = "577638343.9298199"
+            timestampString = "577721652.054723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "init(jsonObj:)"
             landmarkType = "7">
          </BreakpointContent>

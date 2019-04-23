@@ -122,6 +122,8 @@
 		314A010E219605AA009BCE3C /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010C219605AA009BCE3C /* Themes.json */; };
 		314A011021962FF4009BCE3C /* WatchFaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010F21962FF4009BCE3C /* WatchFaceNode.swift */; };
 		314A011121963537009BCE3C /* WatchFaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010F21962FF4009BCE3C /* WatchFaceNode.swift */; };
+		314A847C226F525200DE36CE /* DecoratorAlphaSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A847B226F525200DE36CE /* DecoratorAlphaSettingsTableViewCell.swift */; };
+		314A847D226F525200DE36CE /* DecoratorAlphaSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A847B226F525200DE36CE /* DecoratorAlphaSettingsTableViewCell.swift */; };
 		314AFC1021D51A7000C1208E /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC0F21D51A7000C1208E /* CameraHandler.swift */; };
 		314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */; };
 		314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */; };
@@ -448,6 +450,7 @@
 		314A010B219605AA009BCE3C /* Settings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Settings.json; sourceTree = "<group>"; };
 		314A010C219605AA009BCE3C /* Themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Themes.json; sourceTree = "<group>"; };
 		314A010F21962FF4009BCE3C /* WatchFaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchFaceNode.swift; sourceTree = "<group>"; };
+		314A847B226F525200DE36CE /* DecoratorAlphaSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorAlphaSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		314AFC0F21D51A7000C1208E /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Selection.swift"; sourceTree = "<group>"; };
 		3153880121CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -768,6 +771,7 @@
 		31EF9991219E602D00BB54E7 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				314A847B226F525200DE36CE /* DecoratorAlphaSettingsTableViewCell.swift */,
 				3135DF94226BB771001F94D5 /* HandAlphaSettingsTableViewCell.swift */,
 				31FE178B22680A3F00125B39 /* MainTransparencySettingsTableViewCell.swift */,
 				31BC68E921931F1400DD8CD6 /* ColorSettingsTableViewCell.swift */,
@@ -1190,6 +1194,7 @@
 				3107B5D121B4023B005BD26D /* DecoratorsTableViewController.swift in Sources */,
 				31D8633821E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift in Sources */,
 				318A928921CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift in Sources */,
+				314A847C226F525200DE36CE /* DecoratorAlphaSettingsTableViewCell.swift in Sources */,
 				312D4C08218BCDDB008504D2 /* HourHandNode.swift in Sources */,
 				310D4A5921C0AA9000082A62 /* Collection+Safe.swift in Sources */,
 				31E5BC4B21A39DAF00C1B35E /* StringExtension.swift in Sources */,
@@ -1378,6 +1383,7 @@
 				31C86B2322374DA000EF4186 /* PathElement.swift in Sources */,
 				31C86B5522374DEE00EF4186 /* DecoratorsTableViewController.swift in Sources */,
 				31C86B5C22374E0000EF4186 /* WatchPreviewViewController.swift in Sources */,
+				314A847D226F525200DE36CE /* DecoratorAlphaSettingsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
