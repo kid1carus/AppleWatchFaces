@@ -2,67 +2,178 @@
     "clockSettings" : [
         {
             "faceForegroundType" : "None",
-            "clockFaceMaterialName" : "moonBackground.jpg",
-            "clockCasingMaterialName" : "#545454ff",
-            "title" : "Moon",
-            "uniqueID" : "C0A1D45F-9ED0-4303-B97F-53B56C31505E",
-            "faceBackgroundType" : "FaceBackgroundTypeFilled",
             "clockForegroundMaterialName" : "#00ffd4ff",
+            "uniqueID" : "C0A1D45F-9ED0-4303-B97F-53B56C31505E",
+            "clockCasingMaterialName" : "#545454ff",
             "clockFaceSettings" : {
-                "secondHandMovement" : "SecondHandMovementOscillate",
-                "shouldShowHandOutlines" : false,
-                "hourHandMaterialName" : "#FFFFFFFF",
+                "minuteHandMaterialName" : "#ffffffff",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "hourHandType" : "HourHandTypeImageMoon",
+                "minuteHandType" : "MinuteHandTypeImageMoon",
                 "secondHandType" : "SecondHandTypeImageMoon",
-                "handEffectWidths" : [
+                "secondHandMaterialName" : "#ffffffff",
+                "ringSettings" : [
+                    {
+                        "textSize" : "0.54",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticVerticalPositionNumeric" : "0.498",
+                        "ringStaticTimeFormat" : "HH",
+                        "textType" : "NumberTextTypeNumeralTrajan",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticItemHorizontalPosition" : "Numeric",
+                        "ringStaticHorizontalPositionNumeric" : "0.754",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticEffects" : "None",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticItemVerticalPosition" : "Numeric"
+                    },
+                    {
+                        "textType" : "NumberTextTypeNumeralTrajan",
+                        "shouldShowTextOutline" : false,
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticVerticalPositionNumeric" : "0.8",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.32",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticHorizontalPositionNumeric" : "0.329",
+                        "ringStaticTimeFormat" : "MM",
+                        "ringStaticItemHorizontalPosition" : "Numeric",
+                        "ringStaticItemVerticalPosition" : "Numeric"
+                    },
+                    {
+                        "ringStaticEffects" : "None",
+                        "textType" : "NumberTextTypeNumeralTrajan",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticTimeFormat" : "DD",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticVerticalPositionNumeric" : "0.342",
+                        "textSize" : "0.32",
+                        "ringStaticItemHorizontalPosition" : "Numeric",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticHorizontalPositionNumeric" : "0.375",
+                        "ringStaticItemVerticalPosition" : "Numeric"
+                    }
+                ],
+                "handAlphas" : [
                     
                 ],
-                "secondHandMaterialName" : "#ffffffff",
                 "ringMaterials" : [
                     "#FFFFFFFF",
                     "#e2e2e2ff",
                     "#c6c6c6ff"
                 ],
-                "shouldShowRomanNumeralText" : false,
-                "handOutlineMaterialName" : "#8e8e8eff",
+                "secondHandMovement" : "SecondHandMovementOscillate",
                 "minuteHandMovement" : "MinuteHandMovementSmooth",
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "handEffectWidths" : [
+                    
+                ],
+                "shouldShowHandOutlines" : false,
                 "ringRenderShape" : "RingRenderShapeCircle",
-                "minuteHandType" : "MinuteHandTypeImageMoon",
-                "minuteHandMaterialName" : "#ffffffff",
+                "shouldShowRomanNumeralText" : false
+            },
+            "title" : "Moon",
+            "clockFaceMaterialName" : "moonBackground.jpg",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled"
+        },
+        {
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "uniqueID" : "6D815191-84DD-4CF4-A500-BD290AB734A7",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockForegroundMaterialName" : "#fff5d8ff",
+            "clockFaceSettings" : {
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "handEffectWidths" : [
+                    
+                ],
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringMaterials" : [
+                    "#fff5d8ff",
+                    "#fff5d8ff",
+                    "#fff5d8ff"
+                ],
+                "shouldShowHandOutlines" : true,
+                "secondHandMaterialName" : "#FF0000FF",
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "shouldShowRomanNumeralText" : false,
+                "ringSettings" : [
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticTimeFormat" : "HHMM",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticHorizontalPositionNumeric" : "0.7",
+                        "ringStaticItemHorizontalPosition" : "Numeric",
+                        "ringStaticEffects" : "digital8Light",
+                        "ringStaticItemVerticalPosition" : "Numeric",
+                        "textType" : "NumberTextLCDPhone",
+                        "ringStaticVerticalPositionNumeric" : "0.208",
+                        "textSize" : "0.86",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringType" : "RingTypeSpacer",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringWidth" : "0.04",
+                        "ringPatternTotal" : "12",
+                        "ringPattern" : [
+                            1
+                        ]
+                    },
+                    {
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "textSize" : "0.36",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticEffects" : "None",
+                        "textType" : "NumberTextLCDPhone",
+                        "ringStaticTimeFormat" : "DADD",
+                        "ringStaticItemHorizontalPosition" : "Centered"
+                    },
+                    {
+                        "ringStaticTimeFormat" : "Battery",
+                        "ringStaticVerticalPositionNumeric" : "0.648",
+                        "textType" : "NumberTextLCDPhone",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringStaticItemHorizontalPosition" : "Numeric",
+                        "ringStaticEffects" : "None",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticHorizontalPositionNumeric" : "0.317",
+                        "ringStaticItemVerticalPosition" : "Numeric",
+                        "textSize" : "0.36",
+                        "ringType" : "RingTypeDigitalTime"
+                    }
+                ],
+                "hourHandType" : "HourHandTypeNone",
                 "handAlphas" : [
                     
                 ],
-                "hourHandType" : "HourHandTypeImageMoon",
-                "ringSettings" : [
-                    {
-                        "ringStaticItemHorizontalPosition" : "Numeric",
-                        "textOutlineDesiredThemeColorIndex" : "0",
-                        "ringStaticItemVerticalPosition" : "Numeric",
-                        "ringStaticEffects" : "None",
-                        "ringType" : "RingTypeDigitalTime",
-                        "ringStaticVerticalPositionNumeric" : "0.498",
-                        "ringStaticTimeFormat" : "HH",
-                        "textType" : "NumberTextTypeNumeralTrajan",
-                        "shouldShowTextOutline" : false,
-                        "textSize" : "0.54",
-                        "ringStaticHorizontalPositionNumeric" : "0.754",
-                        "ringMaterialDesiredThemeColorIndex" : 0
-                    },
-                    {
-                        "ringStaticItemHorizontalPosition" : "Numeric",
-                        "ringStaticItemVerticalPosition" : "Numeric",
-                        "textSize" : "0.32",
-                        "ringStaticVerticalPositionNumeric" : "0.8",
-                        "ringStaticEffects" : "None",
-                        "ringStaticTimeFormat" : "MM",
-                        "textOutlineDesiredThemeColorIndex" : "0",
-                        "shouldShowTextOutline" : false,
-                        "ringStaticHorizontalPositionNumeric" : "0.329",
-                        "textType" : "NumberTextTypeNumeralTrajan",
-                        "ringType" : "RingTypeDigitalTime",
-                        "ringMaterialDesiredThemeColorIndex" : 0
-                    }
-                ]
-            }
+                "secondHandMovement" : "SecondHandMovementStep",
+                "secondHandType" : "SecondHandNodeTypeNone",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "ringAlphas" : [
+                    1,
+                    0.77,
+                    0.66
+                ],
+                "minuteHandType" : "MinuteHandTypeNone",
+                "minuteHandMaterialName" : "#FFFFFFFF"
+            },
+            "faceForegroundType" : "AnimatedStarField",
+            "clockOverlaySettings" : {
+                "fieldType" : "None",
+                "itemStrength" : "0.58",
+                "itemSize" : "2.94",
+                "shapeType" : "Smiley"
+            },
+            "title" : "8-Bit Spacy",
+            "clockForegroundMaterialAlpha" : "0.6",
+            "clockFaceMaterialName" : "8bitSpacey.jpg"
         },
         {
             "clockForegroundMaterialName" : "",
