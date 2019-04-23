@@ -51,6 +51,7 @@ class ClockFaceSetting: NSObject {
     
     var ringRenderShape: RingRenderShapes
     var ringMaterials: [String]
+    var ringAlphas: [Float]
     var ringSettings: [ClockRingSetting]
     
     //tweaks
@@ -74,6 +75,7 @@ class ClockFaceSetting: NSObject {
         
         ringRenderShape: RingRenderShapes,
         ringMaterials: [String],
+        ringAlphas: [Float],
         ringSettings: [ClockRingSetting]
         )
     {
@@ -98,6 +100,7 @@ class ClockFaceSetting: NSObject {
         
         self.ringRenderShape = ringRenderShape
         self.ringMaterials = ringMaterials
+        self.ringAlphas = ringAlphas
         self.ringSettings = ringSettings
     
         super.init()
@@ -123,6 +126,7 @@ class ClockFaceSetting: NSObject {
             
             ringRenderShape: RingRenderShapes.RingRenderShapeCircle,
             ringMaterials: [ "#FFFFFFFF","#e2e2e2ff","#c6c6c6ff" ],
+            ringAlphas: [1,1,1],
             ringSettings: [ ClockRingSetting.defaults() ]
         )
     }
@@ -148,6 +152,7 @@ class ClockFaceSetting: NSObject {
         
             ringRenderShape: RingRenderShapes.RingRenderShapeCircle,
             ringMaterials: [ "#FFFFFFFF","#e2e2e2ff","#c6c6c6ff" ],
+            ringAlphas: [1,1,1],
             ringSettings: [ ClockRingSetting.defaults() ]
         )
     }
@@ -188,6 +193,12 @@ class ClockFaceSetting: NSObject {
             }
         }
         
+        var ringAlphasTemp = [Float]()
+        if let ringAlphasSerializedArray = jsonObj["ringAlphas"].array {
+            for ringAlphasSerialized in ringAlphasSerializedArray {
+                ringAlphasTemp.append( ringAlphasSerialized.floatValue )
+            }
+        }
         var minuteHandMovement = MinuteHandMovements.MinuteHandMovementStep
         if (jsonObj["minuteHandMovement"] != JSON.null) {
             minuteHandMovement = MinuteHandMovements(rawValue: jsonObj["minuteHandMovement"].stringValue)!
@@ -217,6 +228,7 @@ class ClockFaceSetting: NSObject {
             
             ringRenderShape: ringRenderShape,
             ringMaterials : ringMaterialsTemp,
+            ringAlphas: ringAlphasTemp,
             ringSettings : ringSettings
         )
     }
@@ -251,6 +263,11 @@ class ClockFaceSetting: NSObject {
         serializedDict[ "ringRenderShape" ] = self.ringRenderShape.rawValue as AnyObject
         serializedDict[ "ringMaterials" ] = self.ringMaterials as AnyObject
 
+        //only add this if its not default
+        if self.ringAlphas != [1,1,1] {
+            serializedDict[ "ringAlphas" ] = self.ringAlphas as AnyObject
+        }
+        
         var ringSettingsArray = [NSDictionary]()
         for ringSetting in self.ringSettings {
             ringSettingsArray.append ( ringSetting.serializedSettings() )
