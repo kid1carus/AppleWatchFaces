@@ -176,6 +176,78 @@
             "clockFaceMaterialName" : "8bitSpacey.jpg"
         },
         {
+            "uniqueID" : "388C53B1-8BE8-413A-8646-FF475BB815FE",
+            "title" : "Mars",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockForegroundMaterialName" : "",
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "clockFaceMaterialName" : "mars.jpg",
+            "faceForegroundType" : "None",
+            "clockFaceSettings" : {
+                "secondHandMovement" : "SecondHandMovementSmooth",
+                "minuteHandType" : "MinuteHandTypeRounded",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "handEffectWidths" : [
+                    1.1599999666213989,
+                    3.5199999809265137,
+                    3.380000114440918
+                ],
+                "ringSettings" : [
+                    {
+                        "textType" : "NumberTextTypeModernInteger",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "textSize" : "0.38",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "shouldShowTextOutline" : false,
+                        "ringType" : "RingTypeTextRotatingNode",
+                        "ringWidth" : "0.075",
+                        "ringPatternTotal" : "12"
+                    },
+                    {
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "textType" : "NumberTextTypeModernInteger",
+                        "ringStaticEffects" : "None",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringStaticTimeFormat" : "DA",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeDigitalTime",
+                        "textSize" : "0.26",
+                        "shouldShowTextOutline" : false
+                    },
+                    {
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "shouldShowTextOutline" : false,
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticTimeFormat" : "MMDD",
+                        "textSize" : "0.26",
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "textType" : "NumberTextTypeModernInteger"
+                    }
+                ],
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "hourHandType" : "HourHandTypeRounded",
+                "ringMaterials" : [
+                    "#d8f2ffff",
+                    "#e2e2e2ff",
+                    "#c6c6c6ff"
+                ],
+                "secondHandType" : "SecondHandTypeRail",
+                "shouldShowRomanNumeralText" : false,
+                "handOutlineMaterialName" : "#d8e5ffff",
+                "secondHandMaterialName" : "#190033ff",
+                "minuteHandMaterialName" : "#001133ff",
+                "hourHandMaterialName" : "#001133ff",
+                "shouldShowHandOutlines" : true
+            }
+        },
+        {
             "clockForegroundMaterialName" : "",
             "clockFaceMaterialName" : "glitch.jpg",
             "clockFaceSettings" : {

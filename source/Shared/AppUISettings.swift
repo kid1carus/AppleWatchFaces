@@ -41,7 +41,7 @@ class AppUISettings: NSObject {
         "GreyDots.jpg","HangingLight.jpg","MelloYello.jpg","OpticalIllusion.jpg","PixelSquares.jpg","RainbowLines.jpg","Squigglies.jpg",
         "80sDigital.jpg", "brass.jpg","brushedsteel.jpg","light-wood.jpg", "vinylAlbum.jpg", "watchGears.jpg",
         "copper.jpg","watchInnards.jpg","testPattern.jpg","tealCircuits.jpg","CYRings.jpg","orangeBlueAbstract.jpg","FireAndIce.jpg","retroSunset.jpg",
-        "geometric.jpg","metro.jpg","glitch.jpg", "moonBackground.jpg"
+        "geometric.jpg","metro.jpg","glitch.jpg", "moonBackground.jpg","8bitSpacey.jpg", "mars.jpg"
         ]
     
     static func materialIsColor( materialName: String ) -> Bool {
