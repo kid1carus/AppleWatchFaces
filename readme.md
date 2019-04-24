@@ -50,6 +50,8 @@ Join the beta test or follow the installation instructions below to compile from
 
   Currently the watch hands are using UIKit paths and has support for PNGs.  See the example **SecondHandTypes.SecondHandTypeFancyRed** in Shared/Nodes/MinuteHand.swift.  The code will attempt to tint the PNG pixels with the chosen hand color.  White pixels will colorize to the chosen color, and black will not tint at all.  Colors in between will blend.  Import your PNG assets into the /Shared/Media.xcassets folder. 
   
+  There has been many requests for the app to allow adding PNG hands inside the app.  I am investigating this for a future build.
+  
 5. **Can I use my own background images from my phone in the app?**
 
   Yes, tap on the camera icon in the background color picker to pull an image off the phone's camera or gallery.
@@ -62,7 +64,7 @@ Join the beta test or follow the installation instructions below to compile from
     
 7. **Which versions of apple watches does this work with ?**
 
-Any watchOS that can run spriteKit should be fine. Tested with watchOS 5.
+Any watchOS that can run spriteKit should be fine. Tested with watchOS 5 on a device and 4.2/4.3 in the simulator.
 
 8. **Are you planning to do complications ?**
 
@@ -121,7 +123,7 @@ If you are still having issues, please check out a [sideloading tutorial](http:/
 ![APPLEWATCHFACES THEMES](docs/AppleWatchFacesThemes.gif)
 
 7. Undo / Redo if you make a mistake.  
-8. Tapping Save in the upper right will lock in these settings in the main list and regenerate the thumbnail.  
+8. Going back will lock in these settings in the main list and regenerate the thumbnail.  
 9. To abort all current changes tap back without tapping save.
 
 ### Sharing / Importing
@@ -153,11 +155,13 @@ If you need to re-install, or just want to manually edit the settings file. Use 
 
 ## Authors
 
-- Mike Hill - [@orffy](https://twitter.com/orffy)
+Mike Hill - [@orffy](https://twitter.com/orffy)
 
 ## Special thanks
 
-[@jonandrews74](https://twitter.com/jonandrews74) for creating awesome faces
+[Emanuele Esposito@SkorpionBot](https://twitter.com/SkorpionBot) for his design expertise
+[@jonandrews74](https://twitter.com/jonandrews74) for creating awesome designs
+[@AppleWatchFanz](https://twitter.com/AppleWatchFanz) for creating some great designs
 [@nimbus12_](https://twitter.com/nimbus12_) for all around project support, photography, and designs
 and
 [@foz](https://twitter.com/foz) for helping me to kick off the idea
