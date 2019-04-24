@@ -189,6 +189,12 @@ class WatchFaceNode: SKShapeNode {
         
         let ringNode = SKNode()
         ringNode.name = "ringNode"
+        
+        //set alpha for thios colorIndex
+        if ringSettings.ringMaterialDesiredThemeColorIndex < clockFaceSettings.ringAlphas.count {
+            ringNode.alpha = CGFloat(clockFaceSettings.ringAlphas[ringSettings.ringMaterialDesiredThemeColorIndex])
+        }
+        
         //keep track of ringIndex for tapDetection / highlighting in editor
         if let positionInRing = positionInRing { ringNode.userData = ["positionInRing":positionInRing, "ringMaterialDesiredThemeColorIndex" : ringSettings.ringMaterialDesiredThemeColorIndex] }
         clockFaceNode.addChild(ringNode)
