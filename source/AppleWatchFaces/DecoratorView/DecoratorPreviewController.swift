@@ -145,14 +145,30 @@ class DecoratorPreviewController: UIViewController {
     
     @objc func onSettingChangedNotification(notification:Notification)
     {
-//        //update values
-//        if let data = notification.userInfo as? [String: String] {
-//            if data["settingType"] == "sliderValue" {
-//                //do conditional drawing if needed
-//            }
-//        }
         
-        redrawIndicators(clockSetting: SettingsViewController.currentClockSetting )
+        var didRedraw = false
+        
+        //update values
+        if let data = notification.userInfo as? [String: String] {
+            if data["settingType"] == "ringStaticItemPosition", let rowNum = data["rowNum"] {
+                //do conditional drawing if needed
+                let rowNum = Int(rowNum) ?? 0
+                if let scene = skView.scene {
+                    if let watchFaceNode = scene.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+                        
+                        didRedraw = true
+                        
+                        let clockSetting = SettingsViewController.currentClockSetting
+                        watchFaceNode.repositionIndicator(clockFaceSettings: clockSetting.clockFaceSettings!, rowNum:rowNum )
+                    }
+                }
+            }
+        }
+        
+        
+        if !didRedraw {
+            redrawIndicators(clockSetting: SettingsViewController.currentClockSetting )
+        }
         
     }
     

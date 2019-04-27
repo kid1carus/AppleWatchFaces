@@ -80,7 +80,7 @@ class DecoratorsTableViewController: UITableViewController {
     SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = Float(yPercent)
         
         NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
-                                        userInfo:["settingType":"ringStaticItemPosition" ])
+            userInfo:["settingType":"ringStaticItemPosition","rowNum":String(selectedRow.row) ])
         
         
         if (reload) {

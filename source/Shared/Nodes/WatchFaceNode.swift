@@ -13,6 +13,7 @@ class WatchFaceNode: SKShapeNode {
     
     var clockFaceSettings: ClockFaceSetting = ClockFaceSetting.defaults()
     var originalSize: CGSize = CGSize.zero
+    let magicSize = CGSize.init(width: 105, height: 130) //translation in view
     
     enum PartsZPositions: Int {
         case background = 0,
@@ -94,6 +95,26 @@ class WatchFaceNode: SKShapeNode {
         
         
     }
+    
+    func repositionIndicator(clockFaceSettings: ClockFaceSetting, rowNum:Int ) {
+        guard let indicatorNode = self.childNode(withName: "indicatorNode") else { return }
+        guard indicatorNode.children.count > rowNum else { return }
+        
+        let ringNode = indicatorNode.children[rowNum]
+        
+        guard let firstItem = ringNode.children.first else { return }
+        
+        let ringSettings = clockFaceSettings.ringSettings[rowNum]
+        firstItem.position = positionInViewForRingItem( ringSettings: ringSettings)
+    }
+    
+    func positionInViewForRingItem( ringSettings: ClockRingSetting) -> CGPoint {
+        let xPos = magicSize.width * 2 * (CGFloat(ringSettings.ringStaticHorizontalPositionNumeric) - 0.5)
+        let yPos = -magicSize.height * 2 * (CGFloat(ringSettings.ringStaticVerticalPositionNumeric) - 0.5)
+        
+        return CGPoint.init(x: xPos, y: yPos)
+    }
+    
     
     init(clockSetting: ClockSetting, size: CGSize) {
         super.init()
@@ -217,7 +238,6 @@ class WatchFaceNode: SKShapeNode {
             
             var xPos:CGFloat = 0
             var yPos:CGFloat = 0
-            let magicSize = CGSize.init(width: 105, height: 130)
             let xDist = magicSize.width * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 15)
             let yDist = magicSize.height * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 10)
             
@@ -234,10 +254,10 @@ class WatchFaceNode: SKShapeNode {
                 yPos = -yDist
             }
             if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
-                xPos = magicSize.width * 2 * (CGFloat(ringSettings.ringStaticHorizontalPositionNumeric) - 0.5)
+                xPos = positionInViewForRingItem(ringSettings: ringSettings).x
             }
             if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
-                yPos = -magicSize.height * 2 * (CGFloat(ringSettings.ringStaticVerticalPositionNumeric) - 0.5)
+                xPos = positionInViewForRingItem(ringSettings: ringSettings).y
             }
             //horizontalPosition: .Right, verticalPosition: .Top
             digitalTimeNode.position = CGPoint.init(x: xPos, y: yPos)
