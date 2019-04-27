@@ -241,6 +241,8 @@ class WatchFaceNode: SKShapeNode {
             let xDist = magicSize.width * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 15)
             let yDist = magicSize.height * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 10)
             
+            debugPrint("hPos:" + ringSettings.ringStaticItemVerticalPosition.rawValue)
+            
             if (ringSettings.ringStaticItemHorizontalPosition == .Left) {
                 xPos = -xDist
             }
@@ -257,7 +259,7 @@ class WatchFaceNode: SKShapeNode {
                 xPos = positionInViewForRingItem(ringSettings: ringSettings).x
             }
             if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
-                xPos = positionInViewForRingItem(ringSettings: ringSettings).y
+                yPos = positionInViewForRingItem(ringSettings: ringSettings).y
             }
             //horizontalPosition: .Right, verticalPosition: .Top
             digitalTimeNode.position = CGPoint.init(x: xPos, y: yPos)
