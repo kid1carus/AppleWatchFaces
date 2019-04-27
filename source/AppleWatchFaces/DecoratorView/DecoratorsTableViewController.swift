@@ -74,19 +74,17 @@ class DecoratorsTableViewController: UITableViewController {
         let ringSetting = clockSettings.ringSettings[selectedRow.row]
         debugPrint("drag x:" + xPercent.description + " y:" + yPercent.description)
         debugPrint("selectedRow: " + selectedRow.description)
+    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
+    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
+    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric = Float(xPercent)
+    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = Float(yPercent)
         
-        if ringSetting.ringStaticHorizontalPositionNumeric != Float(xPercent) && ringSetting.ringStaticVerticalPositionNumeric != Float(yPercent) {
-            NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
-                                            userInfo:["settingType":"ringStaticItemPosition" ])
-        }
-        
-        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
-        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
-        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric = Float(xPercent)
-        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = Float(yPercent)
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":"ringStaticItemPosition" ])
         
         
         if (reload) {
+            //debugPrint("relaoding row on drag")
             self.tableView.reloadRows(at: [selectedRow], with: .none)
             self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
         }
