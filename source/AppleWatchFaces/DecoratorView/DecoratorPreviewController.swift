@@ -15,9 +15,31 @@ class DecoratorPreviewController: UIViewController {
     //var editBarButton: UIBarButtonItem = UIBarButtonItem()
     weak var decoratorsTableViewController: DecoratorsTableViewController?
     
+    @IBOutlet var nudgeLButton: UIButton!
+    @IBOutlet var nudgeRButton: UIButton!
+    @IBOutlet var nudgeUButton: UIButton!
+    @IBOutlet var nudgeDButton: UIButton!
+    
     static let ringSettingsChangedNotificationName = Notification.Name("ringSettingsChanged")
     static let ringSettingsEditDetailNotificationName = Notification.Name("ringSettingsEditDetail")
+    
+    @IBAction func nudgeRingItem( sender: UIButton) {
+        //TODO: set direction and turn on timer
+        var xDirection:CGFloat = 0
+        var yDirection:CGFloat = 0
         
+        let nudgeAmt:CGFloat = 0.025
+        
+        if sender == nudgeLButton { xDirection = -nudgeAmt }
+        if sender == nudgeRButton { xDirection = nudgeAmt }
+        if sender == nudgeUButton { yDirection = -nudgeAmt }
+        if sender == nudgeDButton { yDirection = nudgeAmt }
+        
+        if let dTVC = decoratorsTableViewController {
+            dTVC.nudgeItem(xDirection: xDirection, yDirection: yDirection)
+        }
+    }
+    
     @IBAction func respondToTapGesture(gesture: UITapGestureRecognizer) {
         
         //TODO: add a custom value to these nodes to read later for its ring position / table position

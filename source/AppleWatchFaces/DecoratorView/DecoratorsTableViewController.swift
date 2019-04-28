@@ -64,14 +64,47 @@ class DecoratorsTableViewController: UITableViewController {
         }
     }
     
-    func dragOnPreviewView( xPercent: CGFloat, yPercent: CGFloat, reload: Bool) {
+    func nudgeItem(xDirection: CGFloat, yDirection: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
-        guard self.tableView.cellForRow(at: selectedRow) as? DecoratorDigitalTimeTableViewCell != nil else { return }
-        guard let clockSettings = SettingsViewController.currentClockSetting.clockFaceSettings else {
+        guard SettingsViewController.currentClockSetting.clockFaceSettings != nil else {
             return
         }
         
-        let ringSetting = clockSettings.ringSettings[selectedRow.row]
+        var reload = false
+        
+        if xDirection != 0.0 && SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition != .Numeric {
+    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
+            reload = true
+        }
+        
+        if yDirection != 0.0 && SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition != .Numeric {
+            SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
+            reload = true
+        }
+        
+    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric + Float(xDirection)
+        
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric + Float(yDirection)
+    
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                    userInfo:["settingType":"ringStaticItemPosition","rowNum":String(selectedRow.row) ])
+        
+        if (reload) {
+            //debugPrint("relaoding row on drag")
+            self.tableView.reloadRows(at: [selectedRow], with: .none)
+            self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
+        }
+    }
+    
+    func dragOnPreviewView( xPercent: CGFloat, yPercent: CGFloat, reload: Bool) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        guard self.tableView.cellForRow(at: selectedRow) as? DecoratorDigitalTimeTableViewCell != nil else { return }
+        guard SettingsViewController.currentClockSetting.clockFaceSettings != nil else {
+            return
+        }
+        
+        //let ringSetting = clockSettings.ringSettings[selectedRow.row]
         debugPrint("drag x:" + xPercent.description + " y:" + yPercent.description)
         debugPrint("selectedRow: " + selectedRow.description)
     SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
