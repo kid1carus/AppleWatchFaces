@@ -159,6 +159,7 @@ Mike Hill - [@orffy](https://twitter.com/orffy)
 
 ## Special thanks
 
+[Jerome@iMrjX](https://twitter.com/iMrjX) for awesome faces (imrjx_design on instagram)
 [Emanuele Esposito@SkorpionBot](https://twitter.com/SkorpionBot) for his design expertise
 [@jonandrews74](https://twitter.com/jonandrews74) for creating awesome designs
 [@AppleWatchFanz](https://twitter.com/AppleWatchFanz) for creating some great designs
