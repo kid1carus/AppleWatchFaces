@@ -37,11 +37,12 @@ class AppUISettings: NSObject {
     static let watchFrameBorderColor = SKColor.darkGray.cgColor
 
     static let materialFiles = [
-       "PacManLevel1.jpg", "MsPacManLevel1", "80sTubes.jpg","AppleDigital.jpg","BackToTheFuture.jpg","Beeker.jpg","BlueSky.jpg","Calculator.jpg","gameBoy.jpg",
+       "80sTubes.jpg","AppleDigital.jpg","BackToTheFuture.jpg","Beeker.jpg","BlueSky.jpg","Calculator.jpg","gameBoy.jpg",
         "GreyDots.jpg","HangingLight.jpg","MelloYello.jpg","OpticalIllusion.jpg","PixelSquares.jpg","RainbowLines.jpg","Squigglies.jpg",
         "80sDigital.jpg", "brass.jpg","brushedsteel.jpg","light-wood.jpg", "vinylAlbum.jpg", "watchGears.jpg",
         "copper.jpg","watchInnards.jpg","testPattern.jpg","tealCircuits.jpg","CYRings.jpg","orangeBlueAbstract.jpg","FireAndIce.jpg","retroSunset.jpg",
-        "geometric.jpg","metro.jpg","glitch.jpg", "moonBackground.jpg","8bitSpacey.jpg", "mars.jpg"
+        "geometric.jpg","metro.jpg","glitch.jpg", "moonBackground.jpg","8bitSpacey.jpg", "mars.jpg", "AppleCasioA168OG.png", "AppleCasioA168Gold.png",
+        "CasioF91OG.png", "CasioF91Gold.png", "CasioF91White.png"
         ]
     
     static func materialIsColor( materialName: String ) -> Bool {
