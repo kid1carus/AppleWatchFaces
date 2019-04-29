@@ -109,6 +109,7 @@ class WatchFaceNode: SKShapeNode {
     }
     
     func positionInViewForRingItem( ringSettings: ClockRingSetting) -> CGPoint {
+        debugPrint("setting pos h:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
         let xPos = magicSize.width * 2 * (CGFloat(ringSettings.ringStaticHorizontalPositionNumeric) - 0.5)
         let yPos = -magicSize.height * 2 * (CGFloat(ringSettings.ringStaticVerticalPositionNumeric) - 0.5)
         
@@ -241,21 +242,40 @@ class WatchFaceNode: SKShapeNode {
             let xDist = magicSize.width * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 15)
             let yDist = magicSize.height * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 10)
             
-            debugPrint("hPos:" + ringSettings.ringStaticItemVerticalPosition.rawValue)
+            let horizNumericForPos = currentDistance
+            let vertNumericForPos = currentDistance
+            
+            //debugPrint("hPos:" + ringSettings.ringStaticItemVerticalPosition.rawValue)
+            
+            if (ringSettings.ringStaticItemHorizontalPosition == .Centered) {
+                ringSettings.ringStaticHorizontalPositionNumeric = 0.5
+            }
+            if (ringSettings.ringStaticItemVerticalPosition == .Centered) {
+                ringSettings.ringStaticVerticalPositionNumeric = 0.5
+            }
             
             if (ringSettings.ringStaticItemHorizontalPosition == .Left) {
                 xPos = -xDist
+                ringSettings.ringStaticHorizontalPositionNumeric = 1.0 - horizNumericForPos
+                //debugPrint("hPos L:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
             }
             if (ringSettings.ringStaticItemHorizontalPosition == .Right) {
                 xPos = xDist
+                ringSettings.ringStaticHorizontalPositionNumeric = horizNumericForPos
+                //debugPrint("hPos R:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
             }
             if (ringSettings.ringStaticItemVerticalPosition == .Top) {
                 yPos = yDist
+                ringSettings.ringStaticVerticalPositionNumeric = 1.0 - vertNumericForPos
+                //debugPrint("hPos T:" + ringSettings.ringStaticVerticalPositionNumeric.description)
             }
             if (ringSettings.ringStaticItemVerticalPosition == .Bottom) {
                 yPos = -yDist
+                ringSettings.ringStaticVerticalPositionNumeric = vertNumericForPos
+                //debugPrint("hPos B:" + ringSettings.ringStaticVerticalPositionNumeric.description)
             }
             if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
+                //debugPrint("hPos:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
                 xPos = positionInViewForRingItem(ringSettings: ringSettings).x
             }
             if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
