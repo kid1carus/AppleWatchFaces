@@ -41,7 +41,7 @@ class AppUISettings: NSObject {
         "GreyDots.jpg","HangingLight.jpg","MelloYello.jpg","OpticalIllusion.jpg","PixelSquares.jpg","RainbowLines.jpg","Squigglies.jpg",
         "80sDigital.jpg", "brass.jpg","brushedsteel.jpg","light-wood.jpg", "vinylAlbum.jpg", "watchGears.jpg",
         "copper.jpg","watchInnards.jpg","testPattern.jpg","tealCircuits.jpg","CYRings.jpg","orangeBlueAbstract.jpg","FireAndIce.jpg","retroSunset.jpg",
-        "geometric.jpg","metro.jpg","glitch.jpg", "moonBackground.jpg","8bitSpacey.jpg", "mars.jpg", "AppleCasioA168OG.png", "AppleCasioA168Gold.png",
+        "geometric.jpg","metro.jpg","glitch.jpg", "moonBackground.jpg","8bitSpacey.jpg", "mars.jpg", "space-background.jpg", "AppleCasioA168OG.png", "AppleCasioA168Gold.png",
         "CasioF91OG.png", "CasioF91Gold.png", "CasioF91White.png"
         ]
     

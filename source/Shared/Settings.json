@@ -1,6 +1,80 @@
 {
     "clockSettings" : [
         {
+            "clockOverlaySettings" : {
+                "itemStrength" : "1.0",
+                "itemSize" : "1.92",
+                "shapeType" : "Circle",
+                "fieldType" : "None"
+            },
+            "uniqueID" : "3DB5DF63-3639-4DA2-808F-AB61FD419653",
+            "title" : "Nebula",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockForegroundMaterialName" : "#aa56ffff",
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "clockFaceMaterialName" : "space-background.jpg",
+            "faceForegroundType" : "AnimatedStarField",
+            "clockFaceSettings" : {
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "hourHandType" : "HourHandTypeRounded",
+                "secondHandMaterialName" : "#190033ff",
+                "minuteHandMaterialName" : "#001133ff",
+                "ringSettings" : [
+                    {
+                        "ringPatternTotal" : "12",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.075",
+                        "ringType" : "RingTypeSpacer",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticEffects" : "None",
+                        "ringStaticTimeFormat" : "DA",
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "shouldShowTextOutline" : false,
+                        "textType" : "NumberTextTypeModernInteger",
+                        "textSize" : "0.26",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "textType" : "NumberTextTypeModernInteger",
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.26",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticTimeFormat" : "MMDD"
+                    }
+                ],
+                "shouldShowRomanNumeralText" : false,
+                "minuteHandType" : "MinuteHandTypeRounded",
+                "handEffectWidths" : [
+                    1.1599999666213989,
+                    3.5199999809265137,
+                    3.380000114440918
+                ],
+                "secondHandMovement" : "SecondHandMovementSmooth",
+                "shouldShowHandOutlines" : true,
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "secondHandType" : "SecondHandTypePointy",
+                "handOutlineMaterialName" : "#6dceffff",
+                "hourHandMaterialName" : "#001133ff",
+                "ringMaterials" : [
+                    "#6dceffff",
+                    "#e2e2e2ff",
+                    "#c6c6c6ff"
+                ]
+            }
+        },
+        {
             "uniqueID" : "60958783-6FED-4FFC-89C8-588B540565BE",
             "title" : "Casio F91 White",
             "faceBackgroundType" : "FaceBackgroundTypeFilled",
