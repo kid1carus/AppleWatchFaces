@@ -296,6 +296,19 @@ class WatchFaceNode: SKShapeNode {
         
         var patternCounter = 0
         
+        let outerRingNode = SKNode.init()
+        
+        //manually position if needed
+        var xPos:CGFloat = 0
+        var yPos:CGFloat = 0
+        if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
+            xPos = positionInViewForRingItem(ringSettings: ringSettings).x
+        }
+        if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
+            yPos = positionInViewForRingItem(ringSettings: ringSettings).y
+        }
+        outerRingNode.position = CGPoint.init(x: xPos, y: yPos)
+        
         generateLoop: for outerRingIndex in 0...(patternTotal-1) {
             //dont draw when pattern == 0
             var doDraw = true
@@ -305,7 +318,7 @@ class WatchFaceNode: SKShapeNode {
             
             if (!doDraw) { continue }
             
-            var outerRingNode = SKNode.init()
+            var innerRingNode = SKNode.init()
             
             //get new position
             let percentOfPath:CGFloat = CGFloat(outerRingIndex) / CGFloat(patternTotal)
@@ -325,7 +338,7 @@ class WatchFaceNode: SKShapeNode {
                     numberToRender = numberToRender * ( 12 / patternTotal )
                 }
                 
-                outerRingNode  = NumberTextNode.init(
+                innerRingNode  = NumberTextNode.init(
                     numberTextType: ringSettings.textType,
                     textSize: ringSettings.textSize,
                     currentNum: numberToRender,
@@ -337,28 +350,30 @@ class WatchFaceNode: SKShapeNode {
                 )
                 
                 //keep track of ringIndex for tapDetection / highlighting in editor
-                if let positionInRing = positionInRing { outerRingNode.userData = ["positionInRing":positionInRing] }
+                if let positionInRing = positionInRing { innerRingNode.userData = ["positionInRing":positionInRing] }
                 
                 ringNode.name = "textRingNode"
                 
                 if ringType == .RingTypeTextRotatingNode {
                     let angle = atan2(scaledPoint.y, scaledPoint.x)
-                    outerRingNode.zRotation = angle - CGFloat(Double.pi/2)
+                    innerRingNode.zRotation = angle - CGFloat(Double.pi/2)
                 }
                 
             }
             if (ringType == RingTypes.RingTypeShapeNode) {
                 //shape
-                outerRingNode = FaceIndicatorNode.init(indicatorType:  ringSettings.indicatorType, size: ringSettings.indicatorSize, fillColor: SKColor.init(hexString: material))
-                outerRingNode.name = "indicatorNode"
+                innerRingNode = FaceIndicatorNode.init(indicatorType:  ringSettings.indicatorType, size: ringSettings.indicatorSize, fillColor: SKColor.init(hexString: material))
+                innerRingNode.name = "indicatorNode"
                 
                 let angle = atan2(scaledPoint.y, scaledPoint.x)
-                outerRingNode.zRotation = angle + CGFloat(Double.pi/2)
+                innerRingNode.zRotation = angle + CGFloat(Double.pi/2)
             }
-            outerRingNode.position = scaledPoint
+            innerRingNode.position = scaledPoint
             
-            ringNode.addChild(outerRingNode)
+            outerRingNode.addChild(innerRingNode)
         }
+        
+        ringNode.addChild(outerRingNode)
     }
     
     func renderHands(clockSetting: ClockSetting) {
