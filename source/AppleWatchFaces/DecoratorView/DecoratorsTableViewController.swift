@@ -71,21 +71,30 @@ class DecoratorsTableViewController: UITableViewController {
         }
         
         var reload = false
+        let ringSettings = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row]
         
-        if xDirection != 0.0 && SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition != .Numeric {
-    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
+        //default to center
+        if ringSettings.ringStaticItemHorizontalPosition == .None {
+            ringSettings.ringStaticHorizontalPositionNumeric = 0.5 //center it
+        }
+        if ringSettings.ringStaticItemVerticalPosition == .None {
+            ringSettings.ringStaticVerticalPositionNumeric = 0.5 //center it
+        }
+        
+        if xDirection != 0.0 && ringSettings.ringStaticItemHorizontalPosition != .Numeric {
+            ringSettings.ringStaticItemHorizontalPosition = .Numeric
             reload = true
         }
         
-        if yDirection != 0.0 && SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition != .Numeric {
-            SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
+        if yDirection != 0.0 && ringSettings.ringStaticItemVerticalPosition != .Numeric {
+            ringSettings.ringStaticItemVerticalPosition = .Numeric
             reload = true
         }
         
-    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric + Float(xDirection)
+        ringSettings.ringStaticHorizontalPositionNumeric = ringSettings.ringStaticHorizontalPositionNumeric + Float(xDirection)
         
-        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
-        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric + Float(yDirection)
+        ringSettings.ringStaticItemVerticalPosition = .Numeric
+        ringSettings.ringStaticVerticalPositionNumeric = ringSettings.ringStaticVerticalPositionNumeric + Float(yDirection)
     
         NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
                                     userInfo:["settingType":"ringStaticItemPosition","rowNum":String(selectedRow.row) ])
@@ -107,10 +116,10 @@ class DecoratorsTableViewController: UITableViewController {
         //let ringSetting = clockSettings.ringSettings[selectedRow.row]
         debugPrint("drag x:" + xPercent.description + " y:" + yPercent.description)
         debugPrint("selectedRow: " + selectedRow.description)
-    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
-    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
-    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric = Float(xPercent)
-    SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = Float(yPercent)
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemHorizontalPosition = .Numeric
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticItemVerticalPosition = .Numeric
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticHorizontalPositionNumeric = Float(xPercent)
+        SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings[selectedRow.row].ringStaticVerticalPositionNumeric = Float(yPercent)
         
         NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
             userInfo:["settingType":"ringStaticItemPosition","rowNum":String(selectedRow.row) ])
