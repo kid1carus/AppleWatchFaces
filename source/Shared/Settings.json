@@ -2,6 +2,96 @@
     "clockSettings" : [
         {
             "clockOverlaySettings" : {
+                "itemStrength" : "0.26",
+                "fieldType" : "LinearGravity",
+                "itemSize" : "8.28",
+                "shapeType" : "Circle"
+            },
+            "clockForegroundMaterialAlpha" : "0.18",
+            "clockForegroundMaterialName" : "#aaaaaaff",
+            "uniqueID" : "B72020A5-598B-4157-A317-4FEACC73AAB8",
+            "title" : "Coal Miner",
+            "clockFaceMaterialAlpha" : "0.82",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockFaceMaterialName" : "#000000ff",
+            "clockCasingMaterialName" : "GreyDots.jpg",
+            "faceForegroundType" : "AnimatedPhysicsField",
+            "clockFaceSettings" : {
+                "handEffectWidths" : [
+                    0.31999999284744263,
+                    0,
+                    0
+                ],
+                "minuteHandMovement" : "MinuteHandMovementSmooth",
+                "minuteHandType" : "MinuteHandTypeFatBoxy",
+                "ringMaterials" : [
+                    "#545454ff",
+                    "#8e8e8eff",
+                    "#DB97CA"
+                ],
+                "shouldShowRomanNumeralText" : false,
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "handOutlineMaterialName" : "#ffffffff",
+                "ringAlphas" : [
+                    
+                ],
+                "hourHandType" : "HourHandTypeFatBoxy",
+                "ringSettings" : [
+                    {
+                        "ringWidth" : "0.075",
+                        "ringPatternTotal" : "4",
+                        "ringType" : "RingTypeShapeNode",
+                        "indicatorType" : "FaceIndicatorTypeSphere",
+                        "indicatorSize" : "0.38",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPattern" : [
+                            1
+                        ]
+                    },
+                    {
+                        "ringStaticItemVerticalPosition" : "Numeric",
+                        "ringStaticEffects" : "None",
+                        "ringStaticItemHorizontalPosition" : "Numeric",
+                        "ringStaticTimeFormat" : "DA",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringStaticVerticalPositionNumeric" : "0.067",
+                        "textType" : "NumberTextLCDPhone",
+                        "textSize" : "0.46",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticHorizontalPositionNumeric" : "0.81200004"
+                    },
+                    {
+                        "textSize" : "0.48",
+                        "ringStaticItemHorizontalPosition" : "Numeric",
+                        "ringStaticVerticalPositionNumeric" : "0.927",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringStaticHorizontalPositionNumeric" : "0.14",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticTimeFormat" : "DD",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticEffects" : "None",
+                        "textType" : "NumberTextLCDPhone",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemVerticalPosition" : "Numeric"
+                    }
+                ],
+                "handAlphas" : [
+                    1,
+                    0.47999998927116394,
+                    0.43999999761581421
+                ],
+                "minuteHandMaterialName" : "#8e8e8eff",
+                "shouldShowHandOutlines" : true,
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
+                "hourHandMaterialName" : "#8e8e8eff",
+                "secondHandMaterialName" : "#00000000",
+                "secondHandType" : "SecondHandTypeArrow"
+            }
+        },
+        {
+            "clockOverlaySettings" : {
                 "itemStrength" : "1.0",
                 "itemSize" : "1.92",
                 "shapeType" : "Circle",
