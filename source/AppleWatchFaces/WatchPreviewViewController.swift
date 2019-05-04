@@ -81,9 +81,9 @@ class WatchPreviewViewController: UIViewController {
     }
     
     func redraw() {
-//        if let watchScene = skView.scene as? SKWatchScene {
-//            watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)
-//        }
+        if let watchScene = skView.scene as? SKWatchScene {
+            watchScene.redraw(faceSetting: SettingsViewController.currentFaceSetting)
+        }
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {

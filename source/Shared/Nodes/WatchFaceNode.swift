@@ -11,7 +11,7 @@ import SpriteKit
 
 class WatchFaceNode: SKShapeNode {
     
-    var clockFaceSettings: ClockFaceSetting = ClockFaceSetting.defaults()
+    var faceSettings: FaceSetting = FaceSetting.defaults()
     var originalSize: CGSize = CGSize.zero
     let magicSize = CGSize.init(width: 105, height: 130) //translation in view
     
@@ -33,65 +33,65 @@ class WatchFaceNode: SKShapeNode {
     
     func adjustAlpha(clockSetting: ClockSetting, section: AlphaUpdateSections) {
         
-        if section == .backgrounds {
-            if let backgroundNode = self.childNode(withName: "background") {
-                backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
-            }
-            if let backgroundShapeNode = self.childNode(withName: "backgroundShape") {
-                backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
-            }
-            if let foregroundNode = self.childNode(withName: "foregroundNode") {
-                foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
-            }
-        }
-        
-        if section == .hands {
-            //need clockface settings for these
-            guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
-            guard clockFaceSettings.handAlphas.count>2 else { return }
-            
-            let secondHandAlpha = clockFaceSettings.handAlphas[0]
-            if let node = self.childNode(withName: "secondHand") {
-                node.alpha = CGFloat(secondHandAlpha)
-            }
-            if let node = self.childNode(withName: "secondHandShadow") {
-                node.alpha = CGFloat(secondHandAlpha)
-            }
-            
-            let minuteHandAlpha = clockFaceSettings.handAlphas[1]
-            if let node = self.childNode(withName: "minuteHand") {
-                node.alpha = CGFloat(minuteHandAlpha)
-            }
-            if let node = self.childNode(withName: "minuteHandShadow") {
-                node.alpha = CGFloat(minuteHandAlpha)
-            }
-            
-            let hourHandAlpha = clockFaceSettings.handAlphas[2]
-            if let node = self.childNode(withName: "hourHand") {
-                node.alpha = CGFloat(hourHandAlpha)
-            }
-            if let node = self.childNode(withName: "hourHandShadow") {
-                node.alpha = CGFloat(hourHandAlpha)
-            }
-        }
-        
-        if section == .rings {
-            guard let indicatorNode = self.childNode(withName: "indicatorNode") else { return }
-            
-            guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
-            guard clockFaceSettings.ringAlphas.count>2 else { return }
-            
-            for childnode in indicatorNode.children {
-                if let userDataDict = childnode.userData as? [String: Int] {
-                    let ringMaterialDesiredThemeColorIndex = userDataDict["ringMaterialDesiredThemeColorIndex"]
-                    for index in 0 ... 2 {
-                        if (ringMaterialDesiredThemeColorIndex == index) {
-                            childnode.alpha = CGFloat(clockFaceSettings.ringAlphas[index])
-                        }
-                    }
-                }
-            }
-        }
+//        if section == .backgrounds {
+//            if let backgroundNode = self.childNode(withName: "background") {
+//                backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
+//            }
+//            if let backgroundShapeNode = self.childNode(withName: "backgroundShape") {
+//                backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
+//            }
+//            if let foregroundNode = self.childNode(withName: "foregroundNode") {
+//                foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
+//            }
+//        }
+//
+//        if section == .hands {
+//            //need clockface settings for these
+//            guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
+//            guard clockFaceSettings.handAlphas.count>2 else { return }
+//
+//            let secondHandAlpha = clockFaceSettings.handAlphas[0]
+//            if let node = self.childNode(withName: "secondHand") {
+//                node.alpha = CGFloat(secondHandAlpha)
+//            }
+//            if let node = self.childNode(withName: "secondHandShadow") {
+//                node.alpha = CGFloat(secondHandAlpha)
+//            }
+//
+//            let minuteHandAlpha = clockFaceSettings.handAlphas[1]
+//            if let node = self.childNode(withName: "minuteHand") {
+//                node.alpha = CGFloat(minuteHandAlpha)
+//            }
+//            if let node = self.childNode(withName: "minuteHandShadow") {
+//                node.alpha = CGFloat(minuteHandAlpha)
+//            }
+//
+//            let hourHandAlpha = clockFaceSettings.handAlphas[2]
+//            if let node = self.childNode(withName: "hourHand") {
+//                node.alpha = CGFloat(hourHandAlpha)
+//            }
+//            if let node = self.childNode(withName: "hourHandShadow") {
+//                node.alpha = CGFloat(hourHandAlpha)
+//            }
+//        }
+//
+//        if section == .rings {
+//            guard let indicatorNode = self.childNode(withName: "indicatorNode") else { return }
+//
+//            guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
+//            guard clockFaceSettings.ringAlphas.count>2 else { return }
+//
+//            for childnode in indicatorNode.children {
+//                if let userDataDict = childnode.userData as? [String: Int] {
+//                    let ringMaterialDesiredThemeColorIndex = userDataDict["ringMaterialDesiredThemeColorIndex"]
+//                    for index in 0 ... 2 {
+//                        if (ringMaterialDesiredThemeColorIndex == index) {
+//                            childnode.alpha = CGFloat(clockFaceSettings.ringAlphas[index])
+//                        }
+//                    }
+//                }
+//            }
+//        }
         
         
     }
@@ -117,53 +117,75 @@ class WatchFaceNode: SKShapeNode {
     }
     
     
-    init(clockSetting: ClockSetting, size: CGSize) {
+    init(faceSettings: FaceSetting, size: CGSize) {
         super.init()
         
+        self.faceSettings = faceSettings
         self.originalSize = size
         self.name = "watchFaceNode"
         
-        //nothing to without these settings
-        guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
-        self.clockFaceSettings = clockFaceSettings
+        let faceLayers = faceSettings.faceLayers
         
-        let bottomLayerMaterial = clockSetting.clockCasingMaterialName
-        let topLayerMaterial = clockSetting.clockFaceMaterialName
-        let overlayMaterial = clockSetting.clockForegroundMaterialName
-        
-        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)
-        backgroundNode.name = "background"
-        backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
-        backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
-        
-        self.addChild(backgroundNode)
-        
-        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: topLayerMaterial, material2: bottomLayerMaterial)
-        backgroundShapeNode.name = "backgroundShape"
-        backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
-        backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
-        
-        self.addChild(backgroundShapeNode)
-        
-        var shapeType: OverlayShapeTypes = .Circle
-        var itemSize:CGFloat = 0
-        var itemStrength:CGFloat = 0
-        if let clockOverlaySettings = clockSetting.clockOverlaySettings {
-            shapeType = clockOverlaySettings.shapeType
-            itemSize = CGFloat(clockOverlaySettings.itemSize)
-            itemStrength = CGFloat(clockOverlaySettings.itemStrength)
+        for faceLayer in faceLayers {
+            if faceLayer.layerType == .SecondHand {
+                let secHandNode = SecondHandNode.init(secondHandType: .SecondHandTypeRail)
+                secHandNode.name = "secondHand"
+                secHandNode.alpha = CGFloat(faceLayer.alpha)
+                //secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
+                
+                self.addChild(secHandNode)
+            }
+            if faceLayer.layerType == .MinuteHand {
+                let minHandNode = MinuteHandNode.init(minuteHandType: .MinuteHandTypeBoxy)
+                minHandNode.name = "minuteHand"
+                minHandNode.alpha = CGFloat(faceLayer.alpha)
+                //secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
+                
+                self.addChild(minHandNode)
+            }
+            if faceLayer.layerType == .HourHand {
+                let hourHandNode = HourHandNode.init(hourHandType: .HourHandTypeBoxy)
+                hourHandNode.name = "hourHand"
+                hourHandNode.alpha = CGFloat(faceLayer.alpha)
+                //secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
+                
+                self.addChild(hourHandNode)
+            }
         }
         
-        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0, shapeType: shapeType, itemSize: itemSize, itemStrength: itemStrength)
-        foregroundNode.name = "foregroundNode"
-        foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
-        foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
-        
-        self.addChild(foregroundNode)
-        
-        renderHands(clockSetting: clockSetting)
-        
-        renderIndicatorItems(clockFaceSettings: clockFaceSettings, size: size)
+//        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)
+//        backgroundNode.name = "background"
+//        backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
+//        backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
+//
+//        self.addChild(backgroundNode)
+//
+//        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: topLayerMaterial, material2: bottomLayerMaterial)
+//        backgroundShapeNode.name = "backgroundShape"
+//        backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
+//        backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
+//
+//        self.addChild(backgroundShapeNode)
+//
+//        var shapeType: OverlayShapeTypes = .Circle
+//        var itemSize:CGFloat = 0
+//        var itemStrength:CGFloat = 0
+//        if let clockOverlaySettings = clockSetting.clockOverlaySettings {
+//            shapeType = clockOverlaySettings.shapeType
+//            itemSize = CGFloat(clockOverlaySettings.itemSize)
+//            itemStrength = CGFloat(clockOverlaySettings.itemStrength)
+//        }
+//
+//        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0, shapeType: shapeType, itemSize: itemSize, itemStrength: itemStrength)
+//        foregroundNode.name = "foregroundNode"
+//        foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
+//        foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
+//
+//        self.addChild(foregroundNode)
+//
+//        renderHands(clockSetting: clockSetting)
+//
+//        renderIndicatorItems(clockFaceSettings: clockFaceSettings, size: size)
     }
     
     func renderIndicatorItems( clockFaceSettings: ClockFaceSetting, size: CGSize ) {
@@ -505,11 +527,11 @@ class WatchFaceNode: SKShapeNode {
         }
         
         if let secondHand = self.childNode(withName: "secondHand") as? SecondHandNode {
-            secondHand.positionHands(sec: sec, secondHandMovement: clockFaceSettings.secondHandMovement, force: force)
+            secondHand.positionHands(sec: sec, secondHandMovement: .SecondHandMovementStep, force: force)
         }
         
         if let minuteHand = self.childNode(withName: "minuteHand") as? MinuteHandNode {
-            minuteHand.positionHands(sec: sec, min: min, minuteHandMovement: clockFaceSettings.minuteHandMovement, force: force)
+            minuteHand.positionHands(sec: sec, min: min, minuteHandMovement: .MinuteHandMovementStep, force: force)
         }
         
         if let hourHand = self.childNode(withName: "hourHand") as? HourHandNode {
@@ -615,14 +637,14 @@ class WatchFaceNode: SKShapeNode {
         }
     }
     
-    func redrawIndicators(clockFaceSettings: ClockFaceSetting) {
-        self.clockFaceSettings = clockFaceSettings
-        
-        //remove old indicators
-        if let indicatorNode = self.childNode(withName: "indicatorNode") {
-            indicatorNode.removeFromParent()
-        }
-        renderIndicatorItems(clockFaceSettings: clockFaceSettings, size: originalSize)
+    func redrawIndicators(faceSetting: FaceSetting) {
+//        self.faceSettings = faceSetting
+//        
+//        //remove old indicators
+//        if let indicatorNode = self.childNode(withName: "indicatorNode") {
+//            indicatorNode.removeFromParent()
+//        }
+//        renderIndicatorItems(clockFaceSettings: clockFaceSettings, size: originalSize)
         
     }
 }
