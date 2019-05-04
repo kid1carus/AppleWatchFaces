@@ -143,38 +143,38 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     //validSession.outstandingFileTransfers
     
     @IBAction func addNewSettingAction(sender: UIButton) {
-        let originalCount = UserClockSetting.sharedClockSettings.count
-        UserClockSetting.addMissingFromDefaults()
-        
-        if let faceChooserTableVC  = faceChooserTableViewController  {
-            faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
-        }
-        let newCount = UserClockSetting.sharedClockSettings.count
-        showMessage(message: "Added from defaults, " + (newCount - originalCount).description + " added" )
-        
-        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
-        guard missingThumbs.count==0 else {
-            //first run, reload everything
-            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
-                faceListReloadType = .full
-            }
-            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
-            return
-        }
+//        let originalCount = UserClockSetting.sharedClockSettings.count
+//        UserClockSetting.addMissingFromDefaults()
+//        
+//        if let faceChooserTableVC  = faceChooserTableViewController  {
+//            faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
+//        }
+//        let newCount = UserClockSetting.sharedClockSettings.count
+//        showMessage(message: "Added from defaults, " + (newCount - originalCount).description + " added" )
+//        
+//        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
+//        guard missingThumbs.count==0 else {
+//            //first run, reload everything
+//            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
+//                faceListReloadType = .full
+//            }
+//            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
+//            return
+//        }
     }
     
     func doResetAllAction() {
-        UserClockSetting.resetToDefaults()
-        
-        AppUISettings.deleteAllFolders()
-        AppUISettings.createFolders()
-        AppUISettings.copyFolders()
-        
-        faceListReloadType = .full
-        
-        _ = self.shouldRegenerateThumbNailsAndExit()
-        
-        self.showMessage(message: "All faces reset to defaults")
+//        UserClockSetting.resetToDefaults()
+//
+//        AppUISettings.deleteAllFolders()
+//        AppUISettings.createFolders()
+//        AppUISettings.copyFolders()
+//
+//        faceListReloadType = .full
+//
+//        _ = self.shouldRegenerateThumbNailsAndExit()
+//
+//        self.showMessage(message: "All faces reset to defaults")
     }
     
     @IBAction func resetAllSettingAction(sender: UIButton) {
@@ -239,15 +239,15 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
-        guard missingThemeThumbs.count==0 else {
-            return
-        }
-        
-        //generate thumbs and exit if needed
-        if shouldRegenerateThumbNailsAndExit() {
-            return
-        }
+//        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
+//        guard missingThemeThumbs.count==0 else {
+//            return
+//        }
+//
+//        //generate thumbs and exit if needed
+//        if shouldRegenerateThumbNailsAndExit() {
+//            return
+//        }
         
         // Set up and activate your session early here!
         WatchSessionManager.sharedManager.startSession()
@@ -269,7 +269,7 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         super.viewDidLoad()
         filetransferProgress.isHidden = true
         
-        UserClockSetting.loadFromFile()
+        UserFaceSetting.loadFromFile()
         
         //show gen thumbs button, only in simulator and only if its turned on in AppUISettings
         #if (arch(i386) || arch(x86_64))
@@ -279,12 +279,12 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         
         #endif
         
-        //generate theme thumbs and exit if needed
-        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
-        guard missingThemeThumbs.count==0 else {
-            self.performSegue(withIdentifier: "themeThumbsSegueID", sender: nil)
-            return
-        }
+//        //generate theme thumbs and exit if needed
+//        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
+//        guard missingThemeThumbs.count==0 else {
+//            self.performSegue(withIdentifier: "themeThumbsSegueID", sender: nil)
+//            return
+//        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForReloadChange(notification:)), name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGenerateThumbs(notification:)), name: FaceChooserViewController.faceChooserRegenerateChangeNotificationName, object: nil)

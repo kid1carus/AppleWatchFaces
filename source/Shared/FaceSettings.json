@@ -1,0 +1,14 @@
+{
+    "faceSettings" : [
+        {
+            "title" : "Face Test 1",
+            "uniqueID" : "3DB5DF63-3639-4DA2-809F-AB61FD419653",
+            "faceLayers" : []
+        },
+        {
+            "title" : "Face Test 2",
+            "uniqueID" : "3DB5DF64-3639-4DA2-809F-AB61FD419664",
+            "faceLayers" : []
+        }
+    ]
+}
