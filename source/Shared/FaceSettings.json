@@ -5,12 +5,15 @@
             "uniqueID" : "3DB5DF63-3639-4DA2-809F-AB61FD419653",
             "faceLayers" : [
                 {
+                    "layerType" : "SecondHand",
                     "alpha": 0.5,
                 },
                 {
+                    "layerType" : "MinuteHand",
                     "alpha": 0.75,
                 },
                 {
+                    "layerType" : "HourHand",
                     "alpha": 1.0,
                 }
             ]

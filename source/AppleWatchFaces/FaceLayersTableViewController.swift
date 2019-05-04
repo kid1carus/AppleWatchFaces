@@ -41,7 +41,7 @@ class FaceLayersTableViewController: UITableViewController {
         let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
-        cell.titleLabel.text = "Alpha: " + String(faceLayer.alpha)
+        cell.titleLabel.text = "Type: " + FaceLayer.descriptionForType(faceLayer.layerType)
         
         return cell
     }

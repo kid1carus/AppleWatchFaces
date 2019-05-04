@@ -303,7 +303,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBAction func saveClock() {
         //just save this clock
         UserFaceSetting.sharedFaceSettings[currentFaceIndex] = SettingsViewController.currentFaceSetting
-        UserClockSetting.saveToFile() //remove this to reset to defaults each time app loads
+        UserFaceSetting.saveToFile() //remove this to reset to defaults each time app loads
         self.showMessage( message: SettingsViewController.currentFaceSetting.title + " saved.")
         
         //makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
@@ -313,11 +313,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         if (self.isMovingFromParent) {
             // moving back, if anything has changed, lets save
-            if SettingsViewController.undoArray.count>0 {
+            //if SettingsViewController.undoArray.count>0 {
                 saveClock()
                 _ = UIImage.delete(imageName: SettingsViewController.currentFaceSetting.uniqueID)
                 NotificationCenter.default.post(name: SettingsViewController.settingsExitingNotificationName, object: nil, userInfo:["currentFaceIndex":currentFaceIndex])
-            }
+            //}
         }
         
         //TODO: probably not needed
