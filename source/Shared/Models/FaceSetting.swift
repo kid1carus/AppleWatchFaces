@@ -38,11 +38,11 @@ class FaceSetting: NSObject {
         return nil
     }
     
-    func clone() -> ClockSetting? {
+    func clone() -> FaceSetting? {
         return clone(keepUniqueID: true)
     }
     
-    func clone( keepUniqueID: Bool ) -> ClockSetting? {
+    func clone( keepUniqueID: Bool ) -> FaceSetting? {
         // use JSON to make a new copy (clone it) -- cause, you know , you can!
         
         let settingsDict = self.serializedSettings()
@@ -52,7 +52,7 @@ class FaceSetting: NSObject {
             let jsonObj = try! JSON(data: jsonData)
             
             if jsonObj != JSON.null {
-                let newSetting = ClockSetting.init(jsonObj: jsonObj)
+                let newSetting = FaceSetting.init(jsonObj: jsonObj)
                 
                 if !keepUniqueID {
                     //re-assing the uid

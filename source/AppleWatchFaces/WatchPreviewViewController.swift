@@ -75,15 +75,15 @@ class WatchPreviewViewController: UIViewController {
     }
     
     func adjustAlpha(section: String) {
-        if let watchScene = skView.scene as? SKWatchScene {
-            watchScene.adjustAlpha(clockSetting: SettingsViewController.currentClockSetting, section: section)
-        }
+//        if let watchScene = skView.scene as? SKWatchScene {
+//            watchScene.adjustAlpha(clockSetting: SettingsViewController.currentClockSetting, section: section)
+//        }
     }
     
     func redraw() {
-        if let watchScene = skView.scene as? SKWatchScene {
-            watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)
-        }
+//        if let watchScene = skView.scene as? SKWatchScene {
+//            watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)
+//        }
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {

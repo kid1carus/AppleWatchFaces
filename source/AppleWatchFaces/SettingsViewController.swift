@@ -19,12 +19,12 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBOutlet var groupSegmentControl: UISegmentedControl!
 
     weak var watchPreviewViewController:WatchPreviewViewController?
-    weak var watchSettingsTableViewController:WatchSettingsTableViewController?
+    weak var faceLayersTableViewController:FaceLayersTableViewController?
     
-    static var currentClockSetting: ClockSetting = ClockSetting.defaults()
-    var currentClockIndex = 0
-    static var undoArray = [ClockSetting]()
-    static var redoArray = [ClockSetting]()
+    static var currentFaceSetting: FaceSetting = FaceSetting.defaults()
+    var currentFaceIndex = 0
+    static var undoArray = [FaceSetting]()
+    static var redoArray = [FaceSetting]()
     
     static let settingsChangedNotificationName = Notification.Name("settingsChanged")
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
@@ -84,96 +84,82 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             let vc = segue.destination as? WatchPreviewViewController
             watchPreviewViewController = vc
         }
-        if segue.destination is WatchSettingsTableViewController {
-            let vc = segue.destination as? WatchSettingsTableViewController
-            watchSettingsTableViewController = vc
+        if segue.destination is FaceLayersTableViewController {
+            let vc = segue.destination as? FaceLayersTableViewController
+            faceLayersTableViewController = vc
         }
         
-    }
-    
-    @IBAction func groupChangeAction(sender: UISegmentedControl) {
-        
-        if watchSettingsTableViewController != nil {
-            watchSettingsTableViewController?.currentGroupIndex = sender.selectedSegmentIndex
-            watchSettingsTableViewController?.reloadAfterGroupChange()
-        }
     }
     
     @IBAction func sendSettingAction() {
         //debugPrint("sendSetting tapped")
-        if let validSession = WatchSessionManager.sharedManager.validSession {
-            
-            //toggle it off to prevent spamming
-            sendSettingButton.isEnabled = false
-            delay(1.0) {
-                self.sendSettingButton.isEnabled = true
-            }
-            
-            //send background image
-            let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
-            let imageURL = UIImage.getImageURL(imageName: filename)
-            let fileManager = FileManager.default
-            // check if the image is stored already
-            if fileManager.fileExists(atPath: imageURL.path) {
-                self.showMessage( message: "Sending background image")
-                validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
-            }
-            
-            SettingsViewController.createTempTextFile()
-            validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentClockSetting.filename() ])
-            
-        } else {
-            self.showError(errorMessage: "No valid watch session")
-        }
+//        if let validSession = WatchSessionManager.sharedManager.validSession {
+//
+//            //toggle it off to prevent spamming
+//            sendSettingButton.isEnabled = false
+//            delay(1.0) {
+//                self.sendSettingButton.isEnabled = true
+//            }
+//
+//            //send background image
+//            let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
+//            let imageURL = UIImage.getImageURL(imageName: filename)
+//            let fileManager = FileManager.default
+//            // check if the image is stored already
+//            if fileManager.fileExists(atPath: imageURL.path) {
+//                self.showMessage( message: "Sending background image")
+//                validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
+//            }
+//
+//            SettingsViewController.createTempTextFile()
+//            validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentClockSetting.filename() ])
+//
+//        } else {
+//            self.showError(errorMessage: "No valid watch session")
+//        }
     }
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {
 
         debugPrint("onNotificationForSettingsChanged called")
         var fullRedraw = true
-        if let userInfo = notification.userInfo as? [String: String] {
-            if userInfo["settingType"] == "alphaUpdateRings" || userInfo["settingType"] == "alphaUpdateHands" || userInfo["settingType"] == "alphaUpdateBackgrounds" {
-                //just update alpha
-                fullRedraw = false
-                if watchPreviewViewController != nil {
-                    watchPreviewViewController?.adjustAlpha(section: userInfo["settingType"] ?? "")
-                }
-            }
-        }
+//        if let userInfo = notification.userInfo as? [String: String] {
+//            if userInfo["settingType"] == "alphaUpdateRings" || userInfo["settingType"] == "alphaUpdateHands" || userInfo["settingType"] == "alphaUpdateBackgrounds" {
+//                //just update alpha
+//                fullRedraw = false
+//                if watchPreviewViewController != nil {
+//                    watchPreviewViewController?.adjustAlpha(section: userInfo["settingType"] ?? "")
+//                }
+//            }
+//        }
         if fullRedraw { redrawPreviewClock() }
         setUndoRedoButtonStatus()
     }
     
     @objc func onNotificationForGetCameraImage(notification:Notification) {
-        CameraHandler.shared.showActionSheet(vc: self)
-        CameraHandler.shared.imagePickedBlock = { (image) in
-            //add to undo stack for actions to be able to undo
-            SettingsViewController.addToUndoStack()
-            
-            /* get your image here */
-            let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 312, height: 390))
-
-            // save it to the docs folder with name of the face
-            let fileName = SettingsViewController.currentClockSetting.uniqueID + AppUISettings.backgroundFileName
-            debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
-            
-            _ = resizedImage.save(imageName: fileName) //_ = resizedImage.save(imageName: fileName)
-            SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
-            
-            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
-            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil, userInfo:["settingType":"clockFaceMaterialName"])
-        }
+//        CameraHandler.shared.showActionSheet(vc: self)
+//        CameraHandler.shared.imagePickedBlock = { (image) in
+//            //add to undo stack for actions to be able to undo
+//            SettingsViewController.addToUndoStack()
+//
+//            /* get your image here */
+//            let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 312, height: 390))
+//
+//            // save it to the docs folder with name of the face
+//            let fileName = SettingsViewController.currentFaceSetting.uniqueID + AppUISettings.backgroundFileName
+//            debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
+//
+//            _ = resizedImage.save(imageName: fileName) //_ = resizedImage.save(imageName: fileName)
+//            SettingsViewController.currentFaceSetting.clockFaceMaterialName = fileName
+//
+//            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+//            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil, userInfo:["settingType":"clockFaceMaterialName"])
+//        }
     }
     
     @objc func onNotificationForPreviewSwiped(notification:Notification) {
         
         if let userInfo = notification.userInfo as? [String: String] {
-//            if userInfo["action"] == "prevClock" {
-//                prevClock()
-//            }
-//            if userInfo["action"] == "nextClock" {
-//                nextClock()
-//            }
             if userInfo["action"] == "sendSetting" {
                 sendSettingAction()
             }
@@ -188,17 +174,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
     }
     
-    func redrawSettingsTableAfterGroupChange() {
-        if watchSettingsTableViewController != nil {
-            watchSettingsTableViewController?.reloadAfterGroupChange()
-        }
-    }
-    
     func redrawSettingsTable() {
-        //tell the settings table to reload
-        if watchSettingsTableViewController != nil {
-            watchSettingsTableViewController?.selectCurrentSettings(animated: true)
+        if let faceLayersTableViewController = faceLayersTableViewController {
+            faceLayersTableViewController.reload()
         }
+
     }
     
     ////////////////
@@ -217,7 +197,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     static func addToUndoStack() {
-        undoArray.append(SettingsViewController.currentClockSetting.clone()!)
+        undoArray.append(SettingsViewController.currentFaceSetting.clone()!)
         redoArray = []
     }
     
@@ -233,36 +213,36 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @IBAction func redo() {
         guard let lastSettings = SettingsViewController.redoArray.popLast() else { return } //current setting
-        SettingsViewController.undoArray.append(SettingsViewController.currentClockSetting)
+        SettingsViewController.undoArray.append(SettingsViewController.currentFaceSetting)
         
-        SettingsViewController.currentClockSetting = lastSettings
+        SettingsViewController.currentFaceSetting = lastSettings
         redrawPreviewClock() //show correct clockr
-        redrawSettingsTableAfterGroupChange() //show new title
+        redrawSettingsTable() //show new title
         setUndoRedoButtonStatus()
     }
     
     @IBAction func undo() {
         guard let lastSettings = SettingsViewController.undoArray.popLast() else { return } //current setting
-        SettingsViewController.redoArray.append(SettingsViewController.currentClockSetting)
+        SettingsViewController.redoArray.append(SettingsViewController.currentFaceSetting)
         
-        SettingsViewController.currentClockSetting = lastSettings
+        SettingsViewController.currentFaceSetting = lastSettings
         redrawPreviewClock() //show correct clockr
-        redrawSettingsTableAfterGroupChange() //show new title
+        redrawSettingsTable() //show new title
         setUndoRedoButtonStatus()
     }
     /////////////////
     
     @IBAction func cloneClockSettings() {
         //add a new item into the shared settings
-        let oldTitle = SettingsViewController.currentClockSetting.title
-        let newClockSetting = SettingsViewController.currentClockSetting.clone(keepUniqueID: false)!
+        let oldTitle = SettingsViewController.currentFaceSetting.title
+        let newClockSetting = SettingsViewController.currentFaceSetting.clone(keepUniqueID: false)!
         newClockSetting.title = oldTitle + " copy"
-        UserClockSetting.sharedClockSettings.insert(newClockSetting, at: currentClockIndex)
-        UserClockSetting.saveToFile()
+        UserFaceSetting.sharedFaceSettings.insert(newClockSetting, at: currentFaceIndex)
+        UserFaceSetting.saveToFile()
         
-        SettingsViewController.currentClockSetting = newClockSetting
+        SettingsViewController.currentFaceSetting = newClockSetting
         redrawPreviewClock() //show correct clock
-        redrawSettingsTableAfterGroupChange() //show new title
+        redrawSettingsTable() //show new title
         clearUndoAndUpdateButtons()
         
         showError(errorMessage: "Face copied")
@@ -272,26 +252,26 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     @IBAction func nextClock() {
-        currentClockIndex = currentClockIndex + 1
-        if (UserClockSetting.sharedClockSettings.count <= currentClockIndex) {
-            currentClockIndex = 0
+        currentFaceIndex = currentFaceIndex + 1
+        if (UserFaceSetting.sharedFaceSettings.count <= currentFaceIndex) {
+            currentFaceIndex = 0
         }
         
-        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
+        SettingsViewController.currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex].clone()!
         redrawPreviewClock()
-        redrawSettingsTableAfterGroupChange()
+        redrawSettingsTable()
         clearUndoAndUpdateButtons()
     }
     
     @IBAction func prevClock() {
-        currentClockIndex = currentClockIndex - 1
-        if (currentClockIndex<0) {
-            currentClockIndex = UserClockSetting.sharedClockSettings.count - 1
+        currentFaceIndex = currentFaceIndex - 1
+        if (currentFaceIndex<0) {
+            currentFaceIndex = UserFaceSetting.sharedFaceSettings.count - 1
         }
         
-        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
+        SettingsViewController.currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex].clone()!
         redrawPreviewClock()
-        redrawSettingsTableAfterGroupChange()
+        redrawSettingsTable()
         clearUndoAndUpdateButtons()
     }
     
@@ -313,7 +293,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     @IBAction func shareAll() {
-        makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
+        makeThumb(fileName: SettingsViewController.currentFaceSetting.uniqueID)
         let activityViewController = UIActivityViewController(activityItems: [TextProvider(), ImageProvider(),
             BackgroundImageProvider(), AttachmentProvider()], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
@@ -322,18 +302,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @IBAction func saveClock() {
         //just save this clock
-        UserClockSetting.sharedClockSettings[currentClockIndex] = SettingsViewController.currentClockSetting
+        UserFaceSetting.sharedFaceSettings[currentFaceIndex] = SettingsViewController.currentFaceSetting
         UserClockSetting.saveToFile() //remove this to reset to defaults each time app loads
-        self.showMessage( message: SettingsViewController.currentClockSetting.title + " saved.")
+        self.showMessage( message: SettingsViewController.currentFaceSetting.title + " saved.")
         
         //makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
-    }
-    
-    @IBAction func revertClock() {
-        //just revert this clock
-        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
-        redrawPreviewClock()
-        redrawSettingsTableAfterGroupChange()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -342,8 +315,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             // moving back, if anything has changed, lets save
             if SettingsViewController.undoArray.count>0 {
                 saveClock()
-                _ = UIImage.delete(imageName: SettingsViewController.currentClockSetting.uniqueID)
-                NotificationCenter.default.post(name: SettingsViewController.settingsExitingNotificationName, object: nil, userInfo:["currentClockIndex":currentClockIndex])
+                _ = UIImage.delete(imageName: SettingsViewController.currentFaceSetting.uniqueID)
+                NotificationCenter.default.post(name: SettingsViewController.settingsExitingNotificationName, object: nil, userInfo:["currentFaceIndex":currentFaceIndex])
             }
         }
         
@@ -356,7 +329,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         //get current selected clock
-        redrawSettingsTableAfterGroupChange()
+        redrawSettingsTable()
         redrawPreviewClock()
         
         setUndoRedoButtonStatus()
@@ -368,51 +341,35 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         WatchSessionManager.sharedManager.delegate = self
         SettingsViewController.clearUndoStack()
         
-        //style the section segment
-        // Add lines below selectedSegmentIndex
-        groupSegmentControl.backgroundColor = .clear
-        groupSegmentControl.tintColor = .clear
+        SettingsViewController.currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex].clone()!
         
-        // Add lines below the segmented control's tintColor
-        groupSegmentControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 20)!,
-            NSAttributedString.Key.foregroundColor: SKColor.white
-            ], for: .normal)
-        
-        groupSegmentControl.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 20)!,
-            NSAttributedString.Key.foregroundColor: SKColor.init(hexString: AppUISettings.settingHighlightColor)
-            ], for: .selected)
-        
-        SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
-        
-         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForPreviewSwiped(notification:)), name: SettingsViewController.settingsPreviewSwipedNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForPreviewSwiped(notification:)), name: SettingsViewController.settingsPreviewSwipedNotificationName, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSettingsChanged(notification:)), name: SettingsViewController.settingsChangedNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGetCameraImage(notification:)), name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil)
     }
     
     static func attachmentURL()->URL {
-        let filename = SettingsViewController.currentClockSetting.filename() + ".awf"
+        let filename = SettingsViewController.currentFaceSetting.filename() + ".awf"
         return UserClockSetting.DocumentsDirectory.appendingPathComponent(filename)
     }
     
     static func createTempTextFile() {
-        //TODO: move this to temporary file to be less cleanup later / trash on device
-        //JSON save to file
-        var serializedArray = [NSDictionary]()
-        let serializedSettings = NSMutableDictionary.init(dictionary: SettingsViewController.currentClockSetting.serializedSettings())
-        if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: SettingsViewController.currentClockSetting.clockFaceMaterialName) {
-            serializedSettings["clockFaceMaterialJPGData"] = jpgDataString
-        }
-        serializedArray.append(serializedSettings)
-        
-        //delete existing file if its there
-        let fileManagerIs = FileManager.default
-        if fileManagerIs.fileExists(atPath: attachmentURL().path) {
-            try? fileManagerIs.removeItem(at: attachmentURL())
-        }
-        UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: attachmentURL())
+//        //TODO: move this to temporary file to be less cleanup later / trash on device
+//        //JSON save to file
+//        var serializedArray = [NSDictionary]()
+//        let serializedSettings = NSMutableDictionary.init(dictionary: SettingsViewController.currentFaceSetting.serializedSettings())
+//        if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: SettingsViewController.currentFaceSetting.clockFaceMaterialName) {
+//            serializedSettings["clockFaceMaterialJPGData"] = jpgDataString
+//        }
+//        serializedArray.append(serializedSettings)
+//
+//        //delete existing file if its there
+//        let fileManagerIs = FileManager.default
+//        if fileManagerIs.fileExists(atPath: attachmentURL().path) {
+//            try? fileManagerIs.removeItem(at: attachmentURL())
+//        }
+//        UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: attachmentURL())
     }
     
 }
@@ -421,7 +378,7 @@ class TextProvider: NSObject, UIActivityItemSource {
     
     let myWebsiteURL = NSURL(string:"clockology")!.absoluteString!
     //let appName = "AppleWatchFaces on github"
-    let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentClockSetting.title + "\" I created"
+    let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentFaceSetting.title + "\" I created"
 
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return NSObject()
@@ -468,11 +425,11 @@ class AttachmentProvider: NSObject, UIActivityItemSource {
 class ImageProvider: NSObject, UIActivityItemSource {
     
     func getThumbImageURL() -> URL? {
-        if let newImageURL = UIImage.getValidatedImageURL(imageName: SettingsViewController.currentClockSetting.uniqueID) {
+        if let newImageURL = UIImage.getValidatedImageURL(imageName: SettingsViewController.currentFaceSetting.uniqueID) {
             //copy as new file to send out friendly URL / filename
             let fileManagerIs = FileManager.default
             do {
-                let newURL = newImageURL.deletingLastPathComponent().appendingPathComponent(SettingsViewController.currentClockSetting.filename()+".jpg")
+                let newURL = newImageURL.deletingLastPathComponent().appendingPathComponent(SettingsViewController.currentFaceSetting.filename()+".jpg")
                 if fileManagerIs.fileExists(atPath: newURL.path) {
                     try fileManagerIs.removeItem(at: newURL)
                 }
@@ -516,23 +473,23 @@ class BackgroundTextProvider: NSObject, UIActivityItemSource {
 class BackgroundImageProvider: NSObject, UIActivityItemSource {
     
     func getBackgroundImageURL() -> URL? {
-        let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
-        if !AppUISettings.materialIsColor(materialName: material) {
-            if let newImageURL = UIImage.getValidatedImageURL(imageName: material) {
-                //copy as new file to send out friendly URL / filename
-                let fileManagerIs = FileManager.default
-                do {
-                    let newURL = newImageURL.deletingLastPathComponent().appendingPathComponent(SettingsViewController.currentClockSetting.filename()+"-background.jpg")
-                    if fileManagerIs.fileExists(atPath: newURL.path) {
-                        try fileManagerIs.removeItem(at: newURL)
-                    }
-                    try fileManagerIs.copyItem(at: newImageURL, to: newURL)
-                    return newURL
-                } catch {
-                    debugPrint("error copying new thumbnail file: " + error.localizedDescription)
-                }
-            }
-        }
+//        let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
+//        if !AppUISettings.materialIsColor(materialName: material) {
+//            if let newImageURL = UIImage.getValidatedImageURL(imageName: material) {
+//                //copy as new file to send out friendly URL / filename
+//                let fileManagerIs = FileManager.default
+//                do {
+//                    let newURL = newImageURL.deletingLastPathComponent().appendingPathComponent(SettingsViewController.currentClockSetting.filename()+"-background.jpg")
+//                    if fileManagerIs.fileExists(atPath: newURL.path) {
+//                        try fileManagerIs.removeItem(at: newURL)
+//                    }
+//                    try fileManagerIs.copyItem(at: newImageURL, to: newURL)
+//                    return newURL
+//                } catch {
+//                    debugPrint("error copying new thumbnail file: " + error.localizedDescription)
+//                }
+//            }
+//        }
         return nil
     }
     

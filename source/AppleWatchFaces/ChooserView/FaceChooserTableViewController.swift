@@ -28,7 +28,7 @@ class FaceChooserTableViewController: UITableViewController {
                 let selectedIndex = indexPathForSelectedItems.first!.item
                     //debugPrint("segue selected item: " + String(selectedIndex))
                 if let settingsViewController = segue.destination as? SettingsViewController {
-                    settingsViewController.currentClockIndex = selectedIndex
+                    settingsViewController.currentFaceIndex = selectedIndex
                 }
             }
         }

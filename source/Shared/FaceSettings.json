@@ -3,7 +3,17 @@
         {
             "title" : "Face Test 1",
             "uniqueID" : "3DB5DF63-3639-4DA2-809F-AB61FD419653",
-            "faceLayers" : []
+            "faceLayers" : [
+                {
+                    "alpha": 0.5,
+                },
+                {
+                    "alpha": 0.75,
+                },
+                {
+                    "alpha": 1.0,
+                }
+            ]
         },
         {
             "title" : "Face Test 2",

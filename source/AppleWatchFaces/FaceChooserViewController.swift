@@ -334,7 +334,7 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
                 
                 //ensure it shows the first one ( our new one )
                 let vc = segue.destination as? SettingsViewController
-                vc?.currentClockIndex = 0
+                vc?.currentFaceIndex = 0
                 //make thumb only works once the VC is fully loaded: doing it here only gets back box
                 //vc?.makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
                 
