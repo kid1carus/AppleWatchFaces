@@ -32,7 +32,7 @@ class AppUISettings: NSObject {
     static let cornerRadiusForSettingsThumbs:CGFloat = 16.0
     
     //corner and border settings for "watch frame"
-    static let watchFrameCornerRadius:CGFloat = 28.0
+    static let watchFrameCornerRadius:CGFloat = 32.0
     static let watchFrameBorderWidth:CGFloat = 4.0
     static let watchFrameBorderColor = SKColor.darkGray.cgColor
 
