@@ -20,6 +20,8 @@ class DecoratorPreviewController: UIViewController {
     @IBOutlet var nudgeUButton: UIButton!
     @IBOutlet var nudgeDButton: UIButton!
     
+    @IBOutlet var numControlsView: UIView!
+    
     static let ringSettingsChangedNotificationName = Notification.Name("ringSettingsChanged")
     static let ringSettingsEditDetailNotificationName = Notification.Name("ringSettingsEditDetail")
     
@@ -101,6 +103,27 @@ class DecoratorPreviewController: UIViewController {
             }
         }
 
+    }
+    
+    func hideNudgeControls() {
+        guard self.numControlsView.isHidden==false else { return }
+        self.numControlsView.alpha = 1.0
+        UIView.animate(withDuration: 0.25, animations: {
+            self.numControlsView.alpha = 0.0
+        }) { (Bool) in
+            self.numControlsView.isHidden = true
+        }
+    }
+    
+    func showNudgeControls() {
+        guard self.numControlsView.isHidden==true else { return }
+        self.numControlsView.isHidden = false
+        self.numControlsView.alpha = 0.0
+        
+        UIView.animate(withDuration: 0.25) {
+            self.numControlsView.alpha = 1.0
+        }
+        
     }
     
     func highlightRing( ringNumber: Int) {
@@ -344,6 +367,11 @@ class DecoratorPreviewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        numControlsView.isHidden = true
+        numControlsView.layer.cornerRadius = 10.0
+        numControlsView.layer.borderWidth = 2.0
+        numControlsView.layer.borderColor = SKColor.darkGray.cgColor
+        
         let createButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.compose, target: self, action: #selector(newItem))
         
         if let dtVC = decoratorsTableViewController {
@@ -355,9 +383,9 @@ class DecoratorPreviewController: UIViewController {
         }
         
         //round the preview watch SKView
-        skView.layer.cornerRadius = 28.0
-        skView.layer.borderWidth = 4.0
-        skView.layer.borderColor = SKColor.darkGray.cgColor
+        skView.layer.cornerRadius = AppUISettings.watchFrameCornerRadius
+        skView.layer.borderWidth = AppUISettings.watchFrameBorderWidth
+        skView.layer.borderColor = AppUISettings.watchFrameBorderColor
         
         let scene = SKScene.init()
         // Set the scale mode to scale to fit the window

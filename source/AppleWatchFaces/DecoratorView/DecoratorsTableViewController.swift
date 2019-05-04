@@ -41,6 +41,8 @@ class DecoratorsTableViewController: UITableViewController {
     func highlightRowFromPreview( rowIndex: Int ) {
         let selectedRow = IndexPath.init(row: rowIndex, section: 0)
         self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
+        
+        showOrHideNudgeControls( row: selectedRow.row)
     }
     
     func sizeFromPreviewView( scale: CGFloat, reload: Bool) {
@@ -106,6 +108,20 @@ class DecoratorsTableViewController: UITableViewController {
         }
     }
     
+    func showOrHideNudgeControls( row: Int ) {
+        guard let clockSettings = SettingsViewController.currentClockSetting.clockFaceSettings
+            else { return }
+        
+        if let dPC = decoratorPreviewController {
+            let ringSetting = clockSettings.ringSettings[row]
+            if ringSetting.ringType == .RingTypeDigitalTime {
+                dPC.showNudgeControls()
+            } else {
+                dPC.hideNudgeControls()
+            }
+        }
+    }
+    
     func dragOnPreviewView( xPercent: CGFloat, yPercent: CGFloat, reload: Bool) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         guard self.tableView.cellForRow(at: selectedRow) as? DecoratorDigitalTimeTableViewCell != nil else { return }
@@ -149,8 +165,10 @@ class DecoratorsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //debugPrint("selected cell:" + indexPath.description)
         
-        if let dPreviewVC = decoratorPreviewController {
-            dPreviewVC.highlightRing(ringNumber: indexPath.row)
+        if let dPC = decoratorPreviewController {
+            showOrHideNudgeControls(row: indexPath.row)
+            
+            dPC.highlightRing(ringNumber: indexPath.row)
         }
         // animate
         tableView.beginUpdates()

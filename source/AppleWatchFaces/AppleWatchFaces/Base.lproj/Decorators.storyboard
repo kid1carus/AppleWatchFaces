@@ -38,7 +38,7 @@
                                 </connections>
                             </skView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6re-Da-KfC">
-                                <rect key="frame" x="305" y="82" width="70" height="90"/>
+                                <rect key="frame" x="308" y="82" width="98" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvC-P9-oxV">
                                         <rect key="frame" x="20" y="-2" width="30" height="39"/>
@@ -85,13 +85,13 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.2519263698630137" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="Bx3-sV-dyU"/>
+                                    <constraint firstAttribute="width" constant="98" id="Bx3-sV-dyU"/>
                                     <constraint firstAttribute="height" constant="90" id="YZJ-a1-Whl"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcg-6c-c8i">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcg-6c-c8i">
                                 <rect key="frame" x="0.0" y="82" width="70" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nux-2U-CIq">
@@ -139,7 +139,7 @@
                         <constraints>
                             <constraint firstItem="6BS-VO-ogg" firstAttribute="top" secondItem="dJe-Bh-v4c" secondAttribute="top" constant="7" id="0M0-7A-VRv"/>
                             <constraint firstItem="gcg-6c-c8i" firstAttribute="leading" secondItem="dJe-Bh-v4c" secondAttribute="leading" id="0ZF-FG-haU"/>
-                            <constraint firstItem="6re-Da-KfC" firstAttribute="trailing" secondItem="dJe-Bh-v4c" secondAttribute="trailing" id="25U-pS-ThL"/>
+                            <constraint firstItem="6re-Da-KfC" firstAttribute="trailing" secondItem="dJe-Bh-v4c" secondAttribute="trailing" constant="31" id="25U-pS-ThL"/>
                             <constraint firstItem="bwg-b7-jF7" firstAttribute="leading" secondItem="OU3-Kj-jK3" secondAttribute="leading" id="8hi-J6-6y5"/>
                             <constraint firstItem="6BS-VO-ogg" firstAttribute="centerY" secondItem="gcg-6c-c8i" secondAttribute="centerY" id="OlD-Yn-A7C"/>
                             <constraint firstItem="bwg-b7-jF7" firstAttribute="bottom" secondItem="dJe-Bh-v4c" secondAttribute="bottom" id="ZGc-a6-bDD"/>
@@ -155,6 +155,7 @@
                         <outlet property="nudgeLButton" destination="Spu-Oh-OX3" id="0fj-YB-91W"/>
                         <outlet property="nudgeRButton" destination="wgx-Zy-CJA" id="KWL-Oa-7ke"/>
                         <outlet property="nudgeUButton" destination="yvC-P9-oxV" id="Ose-Sq-M0H"/>
+                        <outlet property="numControlsView" destination="6re-Da-KfC" id="Ttf-sN-cpk"/>
                         <outlet property="skView" destination="6BS-VO-ogg" id="xUr-gr-sYS"/>
                     </connections>
                 </viewController>
