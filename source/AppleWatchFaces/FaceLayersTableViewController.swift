@@ -53,9 +53,16 @@ class FaceLayersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        var cell = FaceLayerTableViewCell()
+        
         let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
+        if (faceLayer.layerType == .ShapeRing) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerShapeID", for: indexPath) as! FaceLayerShapeTableViewCell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
+        }
+    
         cell.titleLabel.text = FaceLayer.descriptionForType(faceLayer.layerType)
         
         return cell

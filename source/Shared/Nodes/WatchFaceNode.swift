@@ -139,7 +139,6 @@ class WatchFaceNode: SKShapeNode {
                 let minHandNode = MinuteHandNode.init(minuteHandType: .MinuteHandTypeBoxy)
                 minHandNode.name = "minuteHand"
                 minHandNode.alpha = CGFloat(faceLayer.alpha)
-                //secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
                 
                 self.addChild(minHandNode)
             }
@@ -147,9 +146,29 @@ class WatchFaceNode: SKShapeNode {
                 let hourHandNode = HourHandNode.init(hourHandType: .HourHandTypeBoxy)
                 hourHandNode.name = "hourHand"
                 hourHandNode.alpha = CGFloat(faceLayer.alpha)
-                //secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
-                
+
                 self.addChild(hourHandNode)
+            }
+            if faceLayer.layerType == .ImageTexture {
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: "copper.jpg")
+                backgroundNode.name = "background"
+                backgroundNode.alpha = CGFloat(faceLayer.alpha)
+                
+                self.addChild(backgroundNode)
+            }
+            if faceLayer.layerType == .ColorTexture {
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: "#190033ff")
+                backgroundNode.name = "background"
+                backgroundNode.alpha = CGFloat(faceLayer.alpha)
+                
+                self.addChild(backgroundNode)
+            }
+            if faceLayer.layerType == .GradientTexture {
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeDiagonalGradient , material: "#190033ff", material2: "#8e8e8eff")
+                backgroundNode.name = "background"
+                backgroundNode.alpha = CGFloat(faceLayer.alpha)
+                
+                self.addChild(backgroundNode)
             }
         }
         
