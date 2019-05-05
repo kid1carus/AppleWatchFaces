@@ -63,14 +63,8 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell {
 //        }
 //    }
     
-    func titleText( faceLayer: FaceLayer ) -> String {
-        return FaceLayer.descriptionForType(faceLayer.layerType) //+ " : " + FaceIndicatorNode.descriptionForType(clockRingSetting.indicatorType)
-    }
-
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer)
-        
-        self.titleLabel.text = titleText(faceLayer: faceLayer)
         
         valueSlider.minimumValue = AppUISettings.ringSettigsSliderShapeMin
         valueSlider.maximumValue = AppUISettings.ringSettigsSliderShapeMax

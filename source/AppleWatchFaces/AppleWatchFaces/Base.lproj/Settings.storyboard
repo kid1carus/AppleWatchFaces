@@ -111,6 +111,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="titleLabel" destination="2fa-Is-3je" id="h3I-7u-Q0Q"/>
+                                    <outlet property="valueSlider" destination="4Zd-FS-MTS" id="Hdx-hi-f9w"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LayerCellID" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LayerCellID" id="N7z-tj-3r6" customClass="FaceLayerTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">

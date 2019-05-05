@@ -23,8 +23,13 @@ class FaceLayerTableViewCell: UITableViewCell {
         }
     }
     
+    func titleText( faceLayer: FaceLayer ) -> String {
+        return FaceLayer.descriptionForType(faceLayer.layerType)
+    }
+    
     func setupUIForFaceLayer( faceLayer: FaceLayer ) {
         //to be implemented by subClasses
+        self.titleLabel.text = titleText(faceLayer: faceLayer)
     }
     
     //    override func didMoveToSuperview() {

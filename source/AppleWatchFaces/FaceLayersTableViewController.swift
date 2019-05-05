@@ -39,6 +39,40 @@ class FaceLayersTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        var cellHeight:CGFloat = 68
+        
+        let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[indexPath.row]
+        
+        //if selected show
+        if let selectedPath = tableView.indexPathForSelectedRow {
+            //debugPrint("selectedpath:" + selectedPath.description + indexPath.description)
+            if selectedPath.row == indexPath.row {
+                switch faceLayer.layerType {
+                case .ImageTexture:
+                    cellHeight = 270.0
+                case .ColorTexture:
+                    cellHeight = 270.0
+                case .GradientTexture:
+                    cellHeight = 270.0
+                case .HourHand:
+                    cellHeight = 160.0
+                case .MinuteHand:
+                    cellHeight = 290.0
+                case .SecondHand:
+                    cellHeight = 160.0
+                case .ShapeRing:
+                    cellHeight = 290.0
+                case .NumberRing:
+                    cellHeight = 160.0
+                }
+            }
+        }
+        
+        return cellHeight
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,7 +97,7 @@ class FaceLayersTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
         }
     
-        cell.titleLabel.text = FaceLayer.descriptionForType(faceLayer.layerType)
+        cell.setupUIForFaceLayer(faceLayer: faceLayer)
         
         return cell
     }
