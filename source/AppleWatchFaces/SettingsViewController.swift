@@ -68,6 +68,46 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
     }
     
+    func addNewItem( layerType: FaceLayerTypes) {
+        
+        //copy some things from last item for convenience
+//        if let lastItem = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings.last {
+//
+//            newItem.textType = lastItem.textType
+//            newItem.textSize = lastItem.textSize
+//            newItem.ringStaticEffects = lastItem.ringStaticEffects
+//            newItem.ringMaterialDesiredThemeColorIndex = lastItem.ringMaterialDesiredThemeColorIndex
+//
+//        }
+        
+        let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0)
+        SettingsViewController.currentFaceSetting.faceLayers.append(newLayer)
+        redrawPreviewClock()
+        
+        if let flVC = faceLayersTableViewController {
+            flVC.addNewItem(layerType: layerType)
+        }
+        
+    }
+    
+    @IBAction func newItem() {
+        let optionMenu = UIAlertController(title: nil, message: "New Item", preferredStyle: .actionSheet)
+        optionMenu.view.tintColor = UIColor.black
+        
+        for layerType in FaceLayerTypes.userSelectableValues {
+            let newActionDescription = FaceLayer.descriptionForType(layerType)
+            let newAction = UIAlertAction(title: newActionDescription, style: .default, handler: { action in
+                self.addNewItem(layerType: layerType)
+            } )
+            optionMenu.addAction(newAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
         

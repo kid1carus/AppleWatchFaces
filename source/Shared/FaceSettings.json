@@ -6,7 +6,7 @@
             "faceLayers" : [
                 {
                     "layerType" : "SecondHand",
-                    "alpha": 0.5,
+                    "alpha": 0.25,
                 },
                 {
                     "layerType" : "MinuteHand",
