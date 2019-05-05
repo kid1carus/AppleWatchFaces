@@ -84,6 +84,9 @@
 		310D9230227E700B007A5808 /* FaceLayerShapeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D922F227E700B007A5808 /* FaceLayerShapeTableViewCell.swift */; };
 		311B7CAF227F6A8E0073C4C9 /* ShapeLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B0A1CF227F4DE80031AFC0 /* ShapeLayerOptions.swift */; };
 		311B7CB0227F6A8E0073C4C9 /* ShapeLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B0A1CF227F4DE80031AFC0 /* ShapeLayerOptions.swift */; };
+		311B7CB2227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B7CB1227F9D0A0073C4C9 /* SecondHandLayerOptions.swift */; };
+		311B7CB3227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B7CB1227F9D0A0073C4C9 /* SecondHandLayerOptions.swift */; };
+		311B7CB4227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B7CB1227F9D0A0073C4C9 /* SecondHandLayerOptions.swift */; };
 		312D4C05218BCBF0008504D2 /* ClockDecoratorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */; };
 		312D4C08218BCDDB008504D2 /* HourHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C07218BCDDB008504D2 /* HourHandNode.swift */; };
 		312E2D6A21F2D69F00C2F17F /* SKWatchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F92178166B00585AB1 /* SKWatchScene.swift */; };
@@ -409,6 +412,7 @@
 		310D9228227E1F16007A5808 /* FaceLayersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceLayersTableViewController.swift; sourceTree = "<group>"; };
 		310D922D227E6F17007A5808 /* FaceLayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceLayerTableViewCell.swift; sourceTree = "<group>"; };
 		310D922F227E700B007A5808 /* FaceLayerShapeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceLayerShapeTableViewCell.swift; sourceTree = "<group>"; };
+		311B7CB1227F9D0A0073C4C9 /* SecondHandLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHandLayerOptions.swift; sourceTree = "<group>"; };
 		312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockDecoratorTheme.swift; sourceTree = "<group>"; };
 		312D4C07218BCDDB008504D2 /* HourHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourHandNode.swift; sourceTree = "<group>"; };
 		312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimer.swift; sourceTree = "<group>"; };
@@ -848,6 +852,7 @@
 				313BB883227DEC71005BE9C5 /* FaceSetting.swift */,
 				313BB887227DEDB2005BE9C5 /* FaceLayer.swift */,
 				31B0A1CF227F4DE80031AFC0 /* ShapeLayerOptions.swift */,
+				311B7CB1227F9D0A0073C4C9 /* SecondHandLayerOptions.swift */,
 				31B5E8D4218BD81800DE6429 /* ClockSetting.swift */,
 				314A010921960409009BCE3C /* UserClockSetting.swift */,
 				31B5E8D6218BD91400DE6429 /* ClockFaceSetting.swift */,
@@ -1129,6 +1134,7 @@
 				31092073224FA2D10032D3AB /* WatchSessionManager.swift in Sources */,
 				310D9230227E700B007A5808 /* FaceLayerShapeTableViewCell.swift in Sources */,
 				31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */,
+				311B7CB2227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
 				3109D1E321A9A2C600561F13 /* FaceChooserEditTableViewController.swift in Sources */,
 				31EF99A421A2072C00BB54E7 /* FaceChooserCollectionViewCell.swift in Sources */,
@@ -1205,6 +1211,7 @@
 				310725E0223D7083008030A2 /* PhysicsNode.swift in Sources */,
 				31090FDE223421AA00D6CAA7 /* PongGameNode.swift in Sources */,
 				313BB889227DEDB2005BE9C5 /* FaceLayer.swift in Sources */,
+				311B7CB3227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
 				31B5E8E0218CE03200DE6429 /* MinuteHandNode.swift in Sources */,
 				31090FE32234B71300D6CAA7 /* FaceBackgroundNode.swift in Sources */,
 				31061F332192730A00EF511B /* SKColor.swift in Sources */,
@@ -1259,6 +1266,7 @@
 				31C86B5422374DE500EF4186 /* TitleSettingsTableViewCell.swift in Sources */,
 				31C86B2422374DA000EF4186 /* StringExtension.swift in Sources */,
 				31C86B0822374CEF00EF4186 /* ClockRingSetting.swift in Sources */,
+				311B7CB4227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
 				31C86B3222374DD200EF4186 /* WatchSettingsTableViewController.swift in Sources */,
 				31C86B3022374DA000EF4186 /* Double+Rounded.swift in Sources */,
 				31C86B1022374CF400EF4186 /* ClockTimer.swift in Sources */,

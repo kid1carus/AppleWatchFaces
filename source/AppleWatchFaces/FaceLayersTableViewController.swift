@@ -123,5 +123,13 @@ class FaceLayersTableViewController: UITableViewController {
             redrawPreview()
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //debugPrint("selected cell:" + indexPath.description)
+        
+        // animate to show new heights when selected
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
 
 }

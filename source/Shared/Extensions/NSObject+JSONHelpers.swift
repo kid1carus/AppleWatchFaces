@@ -34,5 +34,13 @@ public extension NSObject {
         return boolVal
     }
     
+    static func stringValueForJSONObj( jsonObj: JSON, defaultVal: String, key: String) -> String {
+        var stringVal:String = defaultVal
+        if (jsonObj[key] != JSON.null) {
+            stringVal = jsonObj[key].stringValue
+        }
+        return stringVal
+    }
+    
     
 }
