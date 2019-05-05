@@ -23,6 +23,12 @@ enum FaceLayerTypes: String {
         SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, ShapeRing, NumberRing]
 }
 
+class FaceLayerOptions: NSObject {
+    //will be subclassed for each type
+    func serializedSettings() -> NSDictionary {
+        return [String:AnyObject]() as NSDictionary
+    }
+}
 
 class FaceLayer: NSObject {
     // stuff that applies to all layers
@@ -31,18 +37,20 @@ class FaceLayer: NSObject {
     var alpha: Float = 1.0
     //scale
     //position
-    //alpha
     
+    // specific to each layer by type
+    var layerOptions: FaceLayerOptions
 
-    init(layerType: FaceLayerTypes, alpha: Float) {
+    init(layerType: FaceLayerTypes, alpha: Float, layerOptions: FaceLayerOptions) {
         self.layerType = layerType
         self.alpha = alpha
+        self.layerOptions = layerOptions
     
         super.init()
     }
     
     static func defaults() -> FaceLayer {
-        return FaceLayer.init( layerType: .SecondHand, alpha: 1.0 )
+        return FaceLayer.init( layerType: .SecondHand, alpha: 1.0 ,layerOptions: FaceLayerOptions() )
     }
     
     //init from JSON, ( in from txt files )
@@ -50,6 +58,13 @@ class FaceLayer: NSObject {
         let layerTypeString = jsonObj["layerType"].stringValue
         self.layerType = FaceLayerTypes(rawValue: layerTypeString)!
         self.alpha = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "alpha")
+        
+        //init layerOptions depending on type
+        self.layerOptions = FaceLayerOptions()
+        if self.layerType == .ShapeRing {
+            //TODO: grag this from the JSON
+            self.layerOptions = ShapeLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        }
         
         super.init()
     }
@@ -60,6 +75,7 @@ class FaceLayer: NSObject {
 
         serializedDict[ "layerType" ] = self.layerType.rawValue as AnyObject
         serializedDict[ "alpha" ] = self.alpha.description as AnyObject
+        serializedDict[ "layerOptions" ] = self.layerOptions.serializedSettings()
 
         return serializedDict as NSDictionary
     }
