@@ -98,6 +98,7 @@ class FaceLayersTableViewController: UITableViewController {
         }
     
         cell.setupUIForFaceLayer(faceLayer: faceLayer)
+        cell.parentTableview = self.tableView
         
         return cell
     }

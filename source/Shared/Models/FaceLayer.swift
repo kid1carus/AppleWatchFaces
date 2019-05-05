@@ -38,19 +38,22 @@ class FaceLayer: NSObject {
     //scale
     //position
     
+    var desiredThemeColorIndex: Int = 0
+    
     // specific to each layer by type
     var layerOptions: FaceLayerOptions
 
-    init(layerType: FaceLayerTypes, alpha: Float, layerOptions: FaceLayerOptions) {
+    init(layerType: FaceLayerTypes, alpha: Float, desiredThemeColorIndex: Int, layerOptions: FaceLayerOptions) {
         self.layerType = layerType
         self.alpha = alpha
         self.layerOptions = layerOptions
+        self.desiredThemeColorIndex = desiredThemeColorIndex
     
         super.init()
     }
     
     static func defaults() -> FaceLayer {
-        return FaceLayer.init( layerType: .SecondHand, alpha: 1.0 ,layerOptions: FaceLayerOptions() )
+        return FaceLayer.init( layerType: .SecondHand, alpha: 1.0 , desiredThemeColorIndex: 0, layerOptions: FaceLayerOptions() )
     }
     
     //init from JSON, ( in from txt files )
@@ -58,6 +61,8 @@ class FaceLayer: NSObject {
         let layerTypeString = jsonObj["layerType"].stringValue
         self.layerType = FaceLayerTypes(rawValue: layerTypeString)!
         self.alpha = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "alpha")
+        
+        self.desiredThemeColorIndex = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndex")
         
         //init layerOptions depending on type
         self.layerOptions = FaceLayerOptions()
@@ -75,6 +80,9 @@ class FaceLayer: NSObject {
 
         serializedDict[ "layerType" ] = self.layerType.rawValue as AnyObject
         serializedDict[ "alpha" ] = self.alpha.description as AnyObject
+        
+        serializedDict[ "desiredThemeColorIndex" ] = self.desiredThemeColorIndex as AnyObject
+        
         serializedDict[ "layerOptions" ] = self.layerOptions.serializedSettings()
 
         return serializedDict as NSDictionary

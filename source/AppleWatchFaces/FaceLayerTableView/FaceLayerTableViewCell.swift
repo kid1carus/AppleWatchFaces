@@ -14,6 +14,11 @@ class FaceLayerTableViewCell: UITableViewCell {
     var parentTableview : UITableView?
     @IBOutlet weak var titleLabel: UILabel!
     
+    func myLayerIndex()->Int? {
+        let myLayer = myFaceLayer()
+        return SettingsViewController.currentFaceSetting.faceLayers.index(of: myLayer)
+    }
+    
     func myFaceLayer()->FaceLayer {
         if let tableView = parentTableview, let indexPath = tableView.indexPath(for: self) {
             return (SettingsViewController.currentFaceSetting.faceLayers[indexPath.row])

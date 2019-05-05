@@ -46,6 +46,9 @@
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Zd-FS-MTS">
                                             <rect key="frame" x="107" y="35" width="252" height="31"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="sliderValueDidChangeWithSender:" destination="AY5-fu-kGT" eventType="valueChanged" id="aX1-FY-Jf5"/>
+                                            </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJV-5k-jxB">
                                             <rect key="frame" x="16" y="40" width="33" height="21"/>
@@ -111,7 +114,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="titleLabel" destination="2fa-Is-3je" id="h3I-7u-Q0Q"/>
-                                    <outlet property="valueSlider" destination="4Zd-FS-MTS" id="Hdx-hi-f9w"/>
+                                    <outlet property="valueSlider" destination="4Zd-FS-MTS" id="wv8-eh-hYb"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LayerCellID" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LayerCellID" id="N7z-tj-3r6" customClass="FaceLayerTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">

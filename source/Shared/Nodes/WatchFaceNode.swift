@@ -170,6 +170,17 @@ class WatchFaceNode: SKShapeNode {
                 
                 self.addChild(backgroundNode)
             }
+            if faceLayer.layerType == .ShapeRing {
+                if let shapeOptions = faceLayer.layerOptions as? ShapeLayerOptions {
+                    let shapeNode = SKNode.init()
+                    shapeNode.name = "shapeNode"
+                    
+                    let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: .RingRenderShapeCircle )
+                    generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: "#ffffffff", currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ClockRingSetting.defaults(), renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size)
+                    
+                    self.addChild(shapeNode)
+                }
+            }
         }
         
 //        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)

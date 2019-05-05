@@ -85,7 +85,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             faceLayerOptions = ShapeLayerOptions.init(defaults: true)
         }
         
-        let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, layerOptions: faceLayerOptions)
+        let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, desiredThemeColorIndex: 0, layerOptions: faceLayerOptions)
         SettingsViewController.currentFaceSetting.faceLayers.append(newLayer)
         redrawPreviewClock()
         
