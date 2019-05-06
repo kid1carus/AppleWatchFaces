@@ -626,11 +626,11 @@
 		312D4C06218BCDB5008504D2 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				314A010F21962FF4009BCE3C /* WatchFaceNode.swift */,
 				310B1BAF2245A25B00EA1827 /* FaceForegroundNode.swift */,
 				310725DE223D7083008030A2 /* PhysicsNode.swift */,
 				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
 				313AE3DF221A777E00C02462 /* DotsNode.swift */,
-				314A010F21962FF4009BCE3C /* WatchFaceNode.swift */,
 				31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */,
 				31D8633A21E5954B005BCB6F /* NumberTextNode.swift */,
 				31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */,

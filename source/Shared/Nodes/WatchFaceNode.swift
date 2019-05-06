@@ -176,7 +176,11 @@ class WatchFaceNode: SKShapeNode {
                     shapeNode.name = "shapeNode"
                     
                     let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: .RingRenderShapeCircle )
-                    generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: "#ffffffff", currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ClockRingSetting.defaults(), renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size)
+                    
+                    //TODO: fix this with better ringNode rendering seperating out just shapes
+                    let ringSettings = ClockRingSetting.defaults()
+                    ringSettings.indicatorSize = shapeOptions.indicatorSize
+                    generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: "#ffffffff", currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size)
                     
                     self.addChild(shapeNode)
                 }
