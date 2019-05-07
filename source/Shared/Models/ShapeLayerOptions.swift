@@ -36,7 +36,7 @@ class ShapeLayerOptions: FaceLayerOptions {
     
     init(defaults: Bool ) {
         self.indicatorType = .FaceIndicatorTypeBox
-        self.indicatorSize = 1.0
+        self.indicatorSize = 0.1
         self.patternTotal = 12
         self.patternArray = [1]
         

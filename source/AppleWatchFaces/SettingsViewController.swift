@@ -23,6 +23,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @IBOutlet var numControlsView: UIView!
     
+    @IBOutlet var alphaLessButton: UIButton!
+    @IBOutlet var alphaMoreButton: UIButton!
+    
+    @IBOutlet var alphaControlsView: UIView!
+    
     @IBOutlet var groupSegmentControl: UISegmentedControl!
 
     weak var watchPreviewViewController:WatchPreviewViewController?
@@ -37,6 +42,19 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
     static let settingsExitingNotificationName = Notification.Name("settingsExiting")
+    
+    @IBAction func adjustAlphaForLayerItem( sender: UIButton) {
+        
+        var alphaAdjust:CGFloat = 0.0
+        let nudgeAmt:CGFloat = 0.025
+        
+        if sender == alphaLessButton { alphaAdjust = -nudgeAmt }
+        if sender == alphaMoreButton { alphaAdjust = nudgeAmt }
+        
+        if let flTVC = faceLayersTableViewController {
+            flTVC.alphaAdjustItem(alphaAdjust: alphaAdjust)
+        }
+    }
     
     @IBAction func nudgeLayerItem( sender: UIButton) {
         //TODO: set direction and turn on timer
@@ -405,6 +423,10 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         numControlsView.layer.cornerRadius = 10.0
         numControlsView.layer.borderWidth = 2.0
         numControlsView.layer.borderColor = SKColor.darkGray.cgColor
+        
+        alphaControlsView.layer.cornerRadius = 10.0
+        alphaControlsView.layer.borderWidth = 2.0
+        alphaControlsView.layer.borderColor = SKColor.darkGray.cgColor
         
         SettingsViewController.currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex].clone()!
         

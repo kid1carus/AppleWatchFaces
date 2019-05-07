@@ -31,94 +31,8 @@ class WatchFaceNode: SKShapeNode {
         hands
     }
     
-    func adjustAlpha(clockSetting: ClockSetting, section: AlphaUpdateSections) {
-        
-//        if section == .backgrounds {
-//            if let backgroundNode = self.childNode(withName: "background") {
-//                backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
-//            }
-//            if let backgroundShapeNode = self.childNode(withName: "backgroundShape") {
-//                backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
-//            }
-//            if let foregroundNode = self.childNode(withName: "foregroundNode") {
-//                foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
-//            }
-//        }
-//
-//        if section == .hands {
-//            //need clockface settings for these
-//            guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
-//            guard clockFaceSettings.handAlphas.count>2 else { return }
-//
-//            let secondHandAlpha = clockFaceSettings.handAlphas[0]
-//            if let node = self.childNode(withName: "secondHand") {
-//                node.alpha = CGFloat(secondHandAlpha)
-//            }
-//            if let node = self.childNode(withName: "secondHandShadow") {
-//                node.alpha = CGFloat(secondHandAlpha)
-//            }
-//
-//            let minuteHandAlpha = clockFaceSettings.handAlphas[1]
-//            if let node = self.childNode(withName: "minuteHand") {
-//                node.alpha = CGFloat(minuteHandAlpha)
-//            }
-//            if let node = self.childNode(withName: "minuteHandShadow") {
-//                node.alpha = CGFloat(minuteHandAlpha)
-//            }
-//
-//            let hourHandAlpha = clockFaceSettings.handAlphas[2]
-//            if let node = self.childNode(withName: "hourHand") {
-//                node.alpha = CGFloat(hourHandAlpha)
-//            }
-//            if let node = self.childNode(withName: "hourHandShadow") {
-//                node.alpha = CGFloat(hourHandAlpha)
-//            }
-//        }
-//
-//        if section == .rings {
-//            guard let indicatorNode = self.childNode(withName: "indicatorNode") else { return }
-//
-//            guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
-//            guard clockFaceSettings.ringAlphas.count>2 else { return }
-//
-//            for childnode in indicatorNode.children {
-//                if let userDataDict = childnode.userData as? [String: Int] {
-//                    let ringMaterialDesiredThemeColorIndex = userDataDict["ringMaterialDesiredThemeColorIndex"]
-//                    for index in 0 ... 2 {
-//                        if (ringMaterialDesiredThemeColorIndex == index) {
-//                            childnode.alpha = CGFloat(clockFaceSettings.ringAlphas[index])
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        
-        
-    }
-    
-//    func repositionIndicator(clockFaceSettings: ClockFaceSetting, rowNum:Int ) {
-//        guard let indicatorNode = self.childNode(withName: "indicatorNode") else { return }
-//        guard indicatorNode.children.count > rowNum else { return }
-//
-//        let ringNode = indicatorNode.children[rowNum]
-//
-//        guard let firstItem = ringNode.children.first else { return }
-//
-//        let ringSettings = clockFaceSettings.ringSettings[rowNum]
-//        firstItem.position = positionInViewForRingItem( ringSettings: ringSettings)
-//    }
-    
-//    func positionInViewForRingItem( ringSettings: ClockRingSetting) -> CGPoint {
-//        debugPrint("setting pos h:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
-//        let xPos = magicSize.width * 2 * (CGFloat(ringSettings.ringStaticHorizontalPositionNumeric) - 0.5)
-//        let yPos = -magicSize.height * 2 * (CGFloat(ringSettings.ringStaticVerticalPositionNumeric) - 0.5)
-//
-//        return CGPoint.init(x: xPos, y: yPos)
-//    }
-    
     func positionLayer(faceSetting: FaceSetting, index: Int ) {
         let faceLayer = faceSetting.faceLayers[index]
-        
         let layerNode = self.children[index]
         
         let xPos = magicSize.width * CGFloat(faceLayer.horizontalPosition)
@@ -126,6 +40,13 @@ class WatchFaceNode: SKShapeNode {
         
         layerNode.position = CGPoint.init(x: xPos, y: yPos)
         
+    }
+    
+    func alphaAdjustLayer(faceSetting: FaceSetting, index: Int ) {
+        let faceLayer = faceSetting.faceLayers[index]
+        let layerNode = self.children[index]
+        
+        layerNode.alpha = CGFloat(faceLayer.alpha)
     }
     
     init(faceSettings: FaceSetting, size: CGSize) {

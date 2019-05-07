@@ -28,14 +28,14 @@ class SKWatchScene: SKScene {
     }
     
     func adjustAlpha(clockSetting: ClockSetting, section: String) {
-        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
-            
-            var alphaSection:WatchFaceNode.AlphaUpdateSections = .backgrounds
-            if section == "alphaUpdateRings" { alphaSection = .rings }
-            if section == "alphaUpdateHands" { alphaSection = .hands }
-            
-            watchFaceNode.adjustAlpha(clockSetting: clockSetting, section: alphaSection)
-        }
+//        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+//            
+//            var alphaSection:WatchFaceNode.AlphaUpdateSections = .backgrounds
+//            if section == "alphaUpdateRings" { alphaSection = .rings }
+//            if section == "alphaUpdateHands" { alphaSection = .hands }
+//            
+//            watchFaceNode.adjustAlpha(clockSetting: clockSetting, section: alphaSection)
+//        }
     }
     
     func forceToTime() {

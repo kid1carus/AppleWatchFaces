@@ -323,6 +323,38 @@
                                     <constraint firstAttribute="width" constant="98" id="dbg-iU-0PB"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZ0-ba-Jns">
+                                <rect key="frame" x="307" y="192" width="98" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-NG-dcM">
+                                        <rect key="frame" x="0.0" y="-2" width="30" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="-">
+                                            <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="adjustAlphaForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TY9-Ji-kSX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="st2-KQ-E84">
+                                        <rect key="frame" x="40" y="-2" width="30" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="adjustAlphaForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7wc-KC-ZmO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.24677870530684926" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="Wsd-7p-l3d"/>
+                                    <constraint firstAttribute="height" constant="35" id="eed-ye-TvO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -336,6 +368,8 @@
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fiZ-4C-g0e"/>
                             <constraint firstItem="jDK-Qz-PpH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fil-d1-Caj"/>
                             <constraint firstItem="76T-g5-ywR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="igM-w7-dvn"/>
+                            <constraint firstAttribute="trailing" secondItem="fZ0-ba-Jns" secondAttribute="trailing" constant="-30" id="k5e-Ua-ew9"/>
+                            <constraint firstItem="fZ0-ba-Jns" firstAttribute="top" secondItem="4en-eN-ezb" secondAttribute="bottom" constant="20" id="m9s-Ux-2sv"/>
                             <constraint firstItem="jnB-h9-aWW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="nzt-eg-qxQ"/>
                             <constraint firstItem="76T-g5-ywR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rEM-PR-nyc"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rdI-0N-KmZ"/>
@@ -357,6 +391,9 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="alphaControlsView" destination="fZ0-ba-Jns" id="2Ay-m1-ggv"/>
+                        <outlet property="alphaLessButton" destination="MgX-NG-dcM" id="hAD-kA-5Nl"/>
+                        <outlet property="alphaMoreButton" destination="st2-KQ-E84" id="EW7-m6-TuR"/>
                         <outlet property="nudgeDButton" destination="CjV-Ne-1Ms" id="Y7u-02-Qt2"/>
                         <outlet property="nudgeLButton" destination="sl3-qy-7sh" id="Fmv-mk-YFB"/>
                         <outlet property="nudgeRButton" destination="nnh-nr-bWR" id="D1o-nF-q9c"/>

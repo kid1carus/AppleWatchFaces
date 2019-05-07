@@ -23,6 +23,22 @@ class FaceLayersTableViewController: UITableViewController {
         NotificationCenter.default.post(name: WatchPreviewViewController.settingsNudgedNotificationName, object: nil,
                                         userInfo:["faceLayerIndex":selectedRow.row ])
     }
+    
+    func alphaAdjustItem( alphaAdjust: CGFloat) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
+        
+        //clamp to 0 - 1.0
+        guard layerSettings.alpha+Float(alphaAdjust) >= 0 else { return }
+        guard layerSettings.alpha+Float(alphaAdjust) <= 1.0 else { return }
+        
+        //set the position in the layer
+        layerSettings.alpha += Float(alphaAdjust)
+        
+        //reload
+        NotificationCenter.default.post(name: WatchPreviewViewController.settingsAlphaAdjustNotificationName, object: nil,
+                                        userInfo:["faceLayerIndex":selectedRow.row ])
+    }
 
     func addNewItem( layerType: FaceLayerTypes) {
         self.tableView.beginUpdates()
