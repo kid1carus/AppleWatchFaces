@@ -37,6 +37,23 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
     static let settingsExitingNotificationName = Notification.Name("settingsExiting")
+    
+    @IBAction func nudgeLayerItem( sender: UIButton) {
+        //TODO: set direction and turn on timer
+        var xDirection:CGFloat = 0
+        var yDirection:CGFloat = 0
+        
+        let nudgeAmt:CGFloat = 0.025
+        
+        if sender == nudgeLButton { xDirection = -nudgeAmt }
+        if sender == nudgeRButton { xDirection = nudgeAmt }
+        if sender == nudgeUButton { yDirection = nudgeAmt }
+        if sender == nudgeDButton { yDirection = -nudgeAmt }
+        
+        if let flTVC = faceLayersTableViewController {
+            flTVC.nudgeItem(xDirection: xDirection, yDirection: yDirection)
+        }
+    }
         
     //WatchSessionManagerDelegate implementation
     func sessionActivationDidCompleteError(errorMessage: String) {
@@ -92,7 +109,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             faceLayerOptions = ShapeLayerOptions.init(defaults: true)
         }
         
-        let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, desiredThemeColorIndex: 0, layerOptions: faceLayerOptions)
+        let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, horizontalPosition: 0, verticalPosition:0, scale: 1.0,
+                                      desiredThemeColorIndex: 0, layerOptions: faceLayerOptions)
         SettingsViewController.currentFaceSetting.faceLayers.append(newLayer)
         redrawPreviewClock()
         
@@ -172,19 +190,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {
-
         debugPrint("onNotificationForSettingsChanged called")
-        var fullRedraw = true
-//        if let userInfo = notification.userInfo as? [String: String] {
-//            if userInfo["settingType"] == "alphaUpdateRings" || userInfo["settingType"] == "alphaUpdateHands" || userInfo["settingType"] == "alphaUpdateBackgrounds" {
-//                //just update alpha
-//                fullRedraw = false
-//                if watchPreviewViewController != nil {
-//                    watchPreviewViewController?.adjustAlpha(section: userInfo["settingType"] ?? "")
-//                }
-//            }
-//        }
-        if fullRedraw { redrawPreviewClock() }
+ 
+        redrawPreviewClock()
         setUndoRedoButtonStatus()
     }
     

@@ -16,6 +16,24 @@ class WatchPreviewViewController: UIViewController {
     var timeTravelTimer = Timer()
     var timeTravelSpeed:CGFloat = 0.0
     
+    static let settingsNudgedNotificationName = Notification.Name("settingsNudged")
+    
+    @objc func onSettingsNudgedNotification(notification:Notification)
+    {
+        //update values
+        if let data = notification.userInfo as? [String: Int] {
+            if let index = data["faceLayerIndex"] {
+                //do conditional drawing if needed
+                if let scene = skView.scene {
+                    if let watchFaceNode = scene.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+                        let faceSetting = SettingsViewController.currentFaceSetting
+                        watchFaceNode.positionLayer(faceSetting: faceSetting, index:index )
+                    }
+                }
+            }
+        }
+    }
+    
     @objc func timeTravelMovementTick() {
         let timeInterval = TimeInterval.init(exactly: Int(timeTravelSpeed))!
         ClockTimer.currentDate.addTimeInterval(timeInterval)
@@ -153,6 +171,8 @@ class WatchPreviewViewController: UIViewController {
         skView.showsNodeCount = false
     
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSettingsNudgedNotification(notification:)),
+                                               name: WatchPreviewViewController.settingsNudgedNotificationName, object: nil)
     }
 
 }

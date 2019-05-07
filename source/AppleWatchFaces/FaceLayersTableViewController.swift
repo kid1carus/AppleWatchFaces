@@ -9,6 +9,20 @@
 import UIKit
 
 class FaceLayersTableViewController: UITableViewController {
+    
+    func nudgeItem(xDirection: CGFloat, yDirection: CGFloat) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        
+        let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
+        
+        //set the position in the layer
+        layerSettings.horizontalPosition = layerSettings.horizontalPosition + Float(xDirection)
+        layerSettings.verticalPosition = layerSettings.verticalPosition + Float(yDirection)
+        
+        //reload
+        NotificationCenter.default.post(name: WatchPreviewViewController.settingsNudgedNotificationName, object: nil,
+                                        userInfo:["faceLayerIndex":selectedRow.row ])
+    }
 
     func addNewItem( layerType: FaceLayerTypes) {
         self.tableView.beginUpdates()

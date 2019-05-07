@@ -277,6 +277,9 @@
                                         <state key="normal" title="↑">
                                             <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="nudgeLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JlJ-l4-GUK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sl3-qy-7sh">
                                         <rect key="frame" x="0.0" y="28" width="30" height="39"/>
@@ -285,6 +288,9 @@
                                         <state key="normal" title="←">
                                             <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="nudgeLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lhM-Mt-Q58"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnh-nr-bWR">
                                         <rect key="frame" x="40" y="28" width="30" height="39"/>
@@ -293,6 +299,9 @@
                                         <state key="normal" title="→">
                                             <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="nudgeLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yVd-zY-Y3E"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjV-Ne-1Ms">
                                         <rect key="frame" x="20" y="58" width="30" height="39"/>
@@ -301,6 +310,9 @@
                                         <state key="normal" title="↓">
                                             <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="nudgeLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Trk-bH-UX6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.2519263699" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

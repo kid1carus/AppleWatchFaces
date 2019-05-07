@@ -96,26 +96,37 @@ class WatchFaceNode: SKShapeNode {
         
     }
     
-    func repositionIndicator(clockFaceSettings: ClockFaceSetting, rowNum:Int ) {
-        guard let indicatorNode = self.childNode(withName: "indicatorNode") else { return }
-        guard indicatorNode.children.count > rowNum else { return }
-        
-        let ringNode = indicatorNode.children[rowNum]
-        
-        guard let firstItem = ringNode.children.first else { return }
-        
-        let ringSettings = clockFaceSettings.ringSettings[rowNum]
-        firstItem.position = positionInViewForRingItem( ringSettings: ringSettings)
-    }
+//    func repositionIndicator(clockFaceSettings: ClockFaceSetting, rowNum:Int ) {
+//        guard let indicatorNode = self.childNode(withName: "indicatorNode") else { return }
+//        guard indicatorNode.children.count > rowNum else { return }
+//
+//        let ringNode = indicatorNode.children[rowNum]
+//
+//        guard let firstItem = ringNode.children.first else { return }
+//
+//        let ringSettings = clockFaceSettings.ringSettings[rowNum]
+//        firstItem.position = positionInViewForRingItem( ringSettings: ringSettings)
+//    }
     
-    func positionInViewForRingItem( ringSettings: ClockRingSetting) -> CGPoint {
-        debugPrint("setting pos h:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
-        let xPos = magicSize.width * 2 * (CGFloat(ringSettings.ringStaticHorizontalPositionNumeric) - 0.5)
-        let yPos = -magicSize.height * 2 * (CGFloat(ringSettings.ringStaticVerticalPositionNumeric) - 0.5)
-        
-        return CGPoint.init(x: xPos, y: yPos)
-    }
+//    func positionInViewForRingItem( ringSettings: ClockRingSetting) -> CGPoint {
+//        debugPrint("setting pos h:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
+//        let xPos = magicSize.width * 2 * (CGFloat(ringSettings.ringStaticHorizontalPositionNumeric) - 0.5)
+//        let yPos = -magicSize.height * 2 * (CGFloat(ringSettings.ringStaticVerticalPositionNumeric) - 0.5)
+//
+//        return CGPoint.init(x: xPos, y: yPos)
+//    }
     
+    func positionLayer(faceSetting: FaceSetting, index: Int ) {
+        let faceLayer = faceSetting.faceLayers[index]
+        
+        let layerNode = self.children[index]
+        
+        let xPos = magicSize.width * CGFloat(faceLayer.horizontalPosition)
+        let yPos = magicSize.height * CGFloat(faceLayer.verticalPosition)
+        
+        layerNode.position = CGPoint.init(x: xPos, y: yPos)
+        
+    }
     
     init(faceSettings: FaceSetting, size: CGSize) {
         super.init()
@@ -126,48 +137,56 @@ class WatchFaceNode: SKShapeNode {
         
         let faceLayers = faceSettings.faceLayers
         
+        func setLayerProps( layerNode: SKNode, faceLayer: FaceLayer ) {
+            layerNode.alpha = CGFloat(faceLayer.alpha)
+            
+            let xPos = magicSize.width * CGFloat(faceLayer.horizontalPosition)
+            let yPos = magicSize.height * CGFloat(faceLayer.verticalPosition)
+            
+            layerNode.position = CGPoint.init(x: xPos, y: yPos)
+        }
+        
         for faceLayer in faceLayers {
             if faceLayer.layerType == .SecondHand {
                 let secHandNode = SecondHandNode.init(secondHandType: .SecondHandTypeRail)
                 secHandNode.name = "secondHand"
-                secHandNode.alpha = CGFloat(faceLayer.alpha)
-                //secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
                 
+                setLayerProps(layerNode: secHandNode, faceLayer: faceLayer)
                 self.addChild(secHandNode)
             }
             if faceLayer.layerType == .MinuteHand {
                 let minHandNode = MinuteHandNode.init(minuteHandType: .MinuteHandTypeBoxy)
                 minHandNode.name = "minuteHand"
-                minHandNode.alpha = CGFloat(faceLayer.alpha)
                 
+                setLayerProps(layerNode: minHandNode, faceLayer: faceLayer)
                 self.addChild(minHandNode)
             }
             if faceLayer.layerType == .HourHand {
                 let hourHandNode = HourHandNode.init(hourHandType: .HourHandTypeBoxy)
                 hourHandNode.name = "hourHand"
-                hourHandNode.alpha = CGFloat(faceLayer.alpha)
 
+                setLayerProps(layerNode: hourHandNode, faceLayer: faceLayer)
                 self.addChild(hourHandNode)
             }
             if faceLayer.layerType == .ImageTexture {
                 let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: "copper.jpg")
                 backgroundNode.name = "background"
-                backgroundNode.alpha = CGFloat(faceLayer.alpha)
                 
+                setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
                 self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .ColorTexture {
                 let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: "#190033ff")
                 backgroundNode.name = "background"
-                backgroundNode.alpha = CGFloat(faceLayer.alpha)
                 
+                setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
                 self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .GradientTexture {
                 let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeDiagonalGradient , material: "#190033ff", material2: "#8e8e8eff")
                 backgroundNode.name = "background"
-                backgroundNode.alpha = CGFloat(faceLayer.alpha)
                 
+                setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
                 self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .ShapeRing {
@@ -182,6 +201,7 @@ class WatchFaceNode: SKShapeNode {
                     ringSettings.indicatorSize = shapeOptions.indicatorSize
                     generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: "#ffffffff", currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size)
                     
+                    setLayerProps(layerNode: shapeNode, faceLayer: faceLayer)
                     self.addChild(shapeNode)
                 }
             }
@@ -303,40 +323,40 @@ class WatchFaceNode: SKShapeNode {
             
             //debugPrint("hPos:" + ringSettings.ringStaticItemVerticalPosition.rawValue)
             
-            if (ringSettings.ringStaticItemHorizontalPosition == .Centered) {
-                ringSettings.ringStaticHorizontalPositionNumeric = 0.5
-            }
-            if (ringSettings.ringStaticItemVerticalPosition == .Centered) {
-                ringSettings.ringStaticVerticalPositionNumeric = 0.5
-            }
-            
-            if (ringSettings.ringStaticItemHorizontalPosition == .Left) {
-                xPos = -xDist
-                ringSettings.ringStaticHorizontalPositionNumeric = 1.0 - horizNumericForPos
-                //debugPrint("hPos L:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
-            }
-            if (ringSettings.ringStaticItemHorizontalPosition == .Right) {
-                xPos = xDist
-                ringSettings.ringStaticHorizontalPositionNumeric = horizNumericForPos
-                //debugPrint("hPos R:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
-            }
-            if (ringSettings.ringStaticItemVerticalPosition == .Top) {
-                yPos = yDist
-                ringSettings.ringStaticVerticalPositionNumeric = 1.0 - vertNumericForPos
-                //debugPrint("hPos T:" + ringSettings.ringStaticVerticalPositionNumeric.description)
-            }
-            if (ringSettings.ringStaticItemVerticalPosition == .Bottom) {
-                yPos = -yDist
-                ringSettings.ringStaticVerticalPositionNumeric = vertNumericForPos
-                //debugPrint("hPos B:" + ringSettings.ringStaticVerticalPositionNumeric.description)
-            }
-            if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
-                //debugPrint("hPos:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
-                xPos = positionInViewForRingItem(ringSettings: ringSettings).x
-            }
-            if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
-                yPos = positionInViewForRingItem(ringSettings: ringSettings).y
-            }
+//            if (ringSettings.ringStaticItemHorizontalPosition == .Centered) {
+//                ringSettings.ringStaticHorizontalPositionNumeric = 0.5
+//            }
+//            if (ringSettings.ringStaticItemVerticalPosition == .Centered) {
+//                ringSettings.ringStaticVerticalPositionNumeric = 0.5
+//            }
+//
+//            if (ringSettings.ringStaticItemHorizontalPosition == .Left) {
+//                xPos = -xDist
+//                ringSettings.ringStaticHorizontalPositionNumeric = 1.0 - horizNumericForPos
+//                //debugPrint("hPos L:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
+//            }
+//            if (ringSettings.ringStaticItemHorizontalPosition == .Right) {
+//                xPos = xDist
+//                ringSettings.ringStaticHorizontalPositionNumeric = horizNumericForPos
+//                //debugPrint("hPos R:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
+//            }
+//            if (ringSettings.ringStaticItemVerticalPosition == .Top) {
+//                yPos = yDist
+//                ringSettings.ringStaticVerticalPositionNumeric = 1.0 - vertNumericForPos
+//                //debugPrint("hPos T:" + ringSettings.ringStaticVerticalPositionNumeric.description)
+//            }
+//            if (ringSettings.ringStaticItemVerticalPosition == .Bottom) {
+//                yPos = -yDist
+//                ringSettings.ringStaticVerticalPositionNumeric = vertNumericForPos
+//                //debugPrint("hPos B:" + ringSettings.ringStaticVerticalPositionNumeric.description)
+//            }
+//            if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
+//                //debugPrint("hPos:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
+//                xPos = positionInViewForRingItem(ringSettings: ringSettings).x
+//            }
+//            if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
+//                yPos = positionInViewForRingItem(ringSettings: ringSettings).y
+//            }
             //horizontalPosition: .Right, verticalPosition: .Top
             digitalTimeNode.position = CGPoint.init(x: xPos, y: yPos)
             
@@ -357,12 +377,12 @@ class WatchFaceNode: SKShapeNode {
         //manually position if needed
         var xPos:CGFloat = 0
         var yPos:CGFloat = 0
-        if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
-            xPos = positionInViewForRingItem(ringSettings: ringSettings).x
-        }
-        if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
-            yPos = positionInViewForRingItem(ringSettings: ringSettings).y
-        }
+//        if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
+//            xPos = positionInViewForRingItem(ringSettings: ringSettings).x
+//        }
+//        if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
+//            yPos = positionInViewForRingItem(ringSettings: ringSettings).y
+//        }
         outerRingNode.position = CGPoint.init(x: xPos, y: yPos)
         
         generateLoop: for outerRingIndex in 0...(patternTotal-1) {
