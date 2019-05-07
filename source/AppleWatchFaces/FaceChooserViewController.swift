@@ -225,10 +225,10 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     
     func shouldRegenerateThumbNailsAndExit() -> Bool {
         //generate thumbs and exit if needed
-        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
+        let missingThumbs = UserFaceSetting.settingsWithoutThumbNails()
         if (missingThumbs.count > 0) {
             //first run, reload everything
-            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
+            if missingThumbs.count == UserFaceSetting.sharedFaceSettings.count {
                 faceListReloadType = .full
             }
             self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
@@ -239,15 +239,15 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
-//        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
+//        let missingThemeThumbs = UserFaceSetting.themesWithoutThumbNails()
 //        guard missingThemeThumbs.count==0 else {
 //            return
 //        }
-//
-//        //generate thumbs and exit if needed
-//        if shouldRegenerateThumbNailsAndExit() {
-//            return
-//        }
+
+        //generate thumbs and exit if needed
+        if shouldRegenerateThumbNailsAndExit() {
+            return
+        }
         
         // Set up and activate your session early here!
         WatchSessionManager.sharedManager.startSession()
@@ -280,11 +280,11 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         #endif
         
 //        //generate theme thumbs and exit if needed
-//        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
-//        guard missingThemeThumbs.count==0 else {
-//            self.performSegue(withIdentifier: "themeThumbsSegueID", sender: nil)
-//            return
-//        }
+        let missingThemeThumbs = UserFaceSetting.themesWithoutThumbNails()
+        guard missingThemeThumbs.count==0 else {
+            self.performSegue(withIdentifier: "themeThumbsSegueID", sender: nil)
+            return
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForReloadChange(notification:)), name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGenerateThumbs(notification:)), name: FaceChooserViewController.faceChooserRegenerateChangeNotificationName, object: nil)

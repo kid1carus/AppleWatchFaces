@@ -209,22 +209,23 @@ class UserFaceSetting: NSObject {
     }
     
     //return an array of clockSettings that are missing thumbnail images
-    static func settingsWithoutThumbNails() -> [ClockSetting] {
-        var clockSettingsMissing:[ClockSetting] = []
-//        for clockSetting in sharedClockSettings {
-//            let fileManager = FileManager.default
-//            // check if the image is stored already
-//            let url = UIImage.getImageURL(imageName: clockSetting.uniqueID)
-//            if !fileManager.fileExists(atPath: url.path ) {
-//                clockSettingsMissing.append(clockSetting)
-//            }
-//        }
+    static func settingsWithoutThumbNails() -> [FaceSetting] {
+        var clockSettingsMissing:[FaceSetting] = []
+        for clockSetting in sharedFaceSettings {
+            let fileManager = FileManager.default
+            // check if the image is stored already
+            let url = UIImage.getImageURL(imageName: clockSetting.uniqueID)
+            if !fileManager.fileExists(atPath: url.path ) {
+                clockSettingsMissing.append(clockSetting)
+            }
+        }
         return clockSettingsMissing
     }
     
     //return an array of themes that are missing thumbnail images
     static func themesWithoutThumbNails() -> [ClockColorTheme] {
-        var clockThemesMissing:[ClockColorTheme] = []
+        
+//        var clockThemesMissing:[ClockColorTheme] = []
 //        for themeSetting in sharedColorThemeSettings {
 //            let fileManager = FileManager.default
 //            // check if the image is stored already
@@ -233,7 +234,9 @@ class UserFaceSetting: NSObject {
 //                clockThemesMissing.append(themeSetting)
 //            }
 //        }
-        return clockThemesMissing
+//        return clockThemesMissing
+        
+        return []
     }
     
     

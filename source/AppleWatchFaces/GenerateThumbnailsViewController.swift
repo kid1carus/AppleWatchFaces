@@ -13,7 +13,7 @@ class GenerateThumbnailsViewController: UIViewController {
 
     @IBOutlet var skView: SKView!
     @IBOutlet var progressView: UIProgressView!
-    var settingsWithoutThumbs:[ClockSetting] = []
+    var settingsWithoutThumbs:[FaceSetting] = []
     //used when generating thumbnails / etc
     var timerClockIndex = 0
     var timer = Timer()
@@ -33,10 +33,10 @@ class GenerateThumbnailsViewController: UIViewController {
     }
     
     func generateMissingThumbs() {
-        settingsWithoutThumbs = UserClockSetting.settingsWithoutThumbNails()
+        settingsWithoutThumbs = UserFaceSetting.settingsWithoutThumbNails()
         if settingsWithoutThumbs.count == 0 {
             // generate all !
-            settingsWithoutThumbs = UserClockSetting.sharedClockSettings
+            settingsWithoutThumbs = UserFaceSetting.sharedFaceSettings
         }
     
         // start the timer
@@ -126,34 +126,34 @@ class GenerateThumbnailsViewController: UIViewController {
     // called every time interval from the timer
     @objc func screenshotThumbActionFromTimer() {
         
-//        if (timerClockIndex < settingsWithoutThumbs.count) {
-//            let progress = Float(Float(timerClockIndex) / Float(settingsWithoutThumbs.count))
-//            progressView.progress = progress
-//            
-//            let setting = settingsWithoutThumbs[timerClockIndex]
-//            if let watchScene = skView.scene as? SKWatchScene {
-//                watchScene.redraw(clockSetting: setting)
-//            }
-//            
-//            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
-//                self.makeThumb(fileName: setting.uniqueID)
-//            })
-//            
-//            timerClockIndex += 1
-//            
-//        } else {
-//            timer.invalidate()
-//            
-//            //needs some time to save this so next screen can load it
-//            delay(0.5) {
-//                self.dismiss(animated: false) {
-//                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//                        appDelegate.resumeTimer()
-//                    }
-//                }
-//            }
-//            
-//        }
+        if (timerClockIndex < settingsWithoutThumbs.count) {
+            let progress = Float(Float(timerClockIndex) / Float(settingsWithoutThumbs.count))
+            progressView.progress = progress
+            
+            let setting = settingsWithoutThumbs[timerClockIndex]
+            if let watchScene = skView.scene as? SKWatchScene {
+                watchScene.redraw(faceSetting: setting)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
+                self.makeThumb(fileName: setting.uniqueID)
+            })
+            
+            timerClockIndex += 1
+            
+        } else {
+            timer.invalidate()
+            
+            //needs some time to save this so next screen can load it
+            delay(0.5) {
+                self.dismiss(animated: false) {
+                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appDelegate.resumeTimer()
+                    }
+                }
+            }
+            
+        }
         
         
     }

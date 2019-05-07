@@ -16,6 +16,13 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBOutlet var redoButton: UIBarButtonItem!
     @IBOutlet var sendSettingButton: UIButton!
     
+    @IBOutlet var nudgeLButton: UIButton!
+    @IBOutlet var nudgeRButton: UIButton!
+    @IBOutlet var nudgeUButton: UIButton!
+    @IBOutlet var nudgeDButton: UIButton!
+    
+    @IBOutlet var numControlsView: UIView!
+    
     @IBOutlet var groupSegmentControl: UISegmentedControl!
 
     weak var watchPreviewViewController:WatchPreviewViewController?
@@ -385,6 +392,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         WatchSessionManager.sharedManager.delegate = self
         SettingsViewController.clearUndoStack()
+        
+        //numControlsView.isHidden = true
+        numControlsView.layer.cornerRadius = 10.0
+        numControlsView.layer.borderWidth = 2.0
+        numControlsView.layer.borderColor = SKColor.darkGray.cgColor
         
         SettingsViewController.currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex].clone()!
         
