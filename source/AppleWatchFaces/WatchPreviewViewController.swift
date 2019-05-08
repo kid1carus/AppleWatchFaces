@@ -18,6 +18,24 @@ class WatchPreviewViewController: UIViewController {
     
     static let settingsNudgedNotificationName = Notification.Name("settingsNudged")
     static let settingsAlphaAdjustNotificationName = Notification.Name("settingsAlphaAdjusted")
+    static let settingsSelectedLayerNotificationName = Notification.Name("settingsSelectedLayer")
+    
+    @IBAction func respondToTapGesture(gesture: UITapGestureRecognizer) {
+        //determine which layer is highlighted
+        guard gesture.state == .ended else { return }
+        let tapLoc = gesture.location(in: skView)
+        let convert = self.skView.convert(tapLoc, to: skView.scene!)
+        guard let nodesAtLoc = skView.scene?.nodes(at: convert) else { return }
+        guard let topNode = nodesAtLoc.first else { return }
+        guard let watchNode = skView.scene?.childNode(withName: "watchFaceNode") else { return }
+        
+        for (index,layerNode) in watchNode.children.enumerated() {
+            if topNode.inParentHierarchy(layerNode) {
+                debugPrint("tapped on layer item:" + index.description + " name: " + layerNode.name!)
+                NotificationCenter.default.post(name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil, userInfo:["index":index])
+            }
+        }
+    }
     
     @objc func onSettingsNudgedNotification(notification:Notification)
     {
