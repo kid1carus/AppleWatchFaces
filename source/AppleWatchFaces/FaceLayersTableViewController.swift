@@ -96,6 +96,9 @@ class FaceLayersTableViewController: UITableViewController {
                     cellHeight = 290.0
                 case .NumberRing:
                     cellHeight = 160.0
+                case .DateTimeLabel:
+                    cellHeight = 160.0
+                    
                 }
             }
         }

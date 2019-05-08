@@ -110,6 +110,14 @@ class WatchFaceNode: SKShapeNode {
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
                 self.addChild(backgroundNode)
             }
+            if (faceLayer.layerType == .DateTimeLabel) {
+                let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: .NumberTextTypeSystem, timeFormat: .HHMM, textSize: 1.0,
+                                                           effect: .None, horizontalPosition: .Centered, fillColor: SKColor.init(hexString: "#ffffffff"), strokeColor: SKColor.init(hexString: "#ffffffff"))
+                digitalTimeNode.name = "timeLabel"
+                
+                setLayerProps(layerNode: digitalTimeNode, faceLayer: faceLayer)
+                self.addChild(digitalTimeNode)
+            }
             if faceLayer.layerType == .ShapeRing {
                 if let shapeOptions = faceLayer.layerOptions as? ShapeLayerOptions {
                     let shapeNode = SKNode.init()
@@ -227,66 +235,6 @@ class WatchFaceNode: SKShapeNode {
         
         //just exit for spacer
         if (ringType == RingTypes.RingTypeSpacer) { return }
-        
-        //draw any special items
-        if (ringType == RingTypes.RingTypeDigitalTime) {
-            //draw it
-            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, timeFormat: ringSettings.ringStaticTimeFormat, textSize: ringSettings.textSize,
-                                                       effect: ringSettings.ringStaticEffects, horizontalPosition: ringSettings.ringStaticItemHorizontalPosition, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
-            
-            var xPos:CGFloat = 0
-            var yPos:CGFloat = 0
-            let xDist = magicSize.width * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 15)
-            let yDist = magicSize.height * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 10)
-            
-            let horizNumericForPos = currentDistance
-            let vertNumericForPos = currentDistance
-            
-            //debugPrint("hPos:" + ringSettings.ringStaticItemVerticalPosition.rawValue)
-            
-//            if (ringSettings.ringStaticItemHorizontalPosition == .Centered) {
-//                ringSettings.ringStaticHorizontalPositionNumeric = 0.5
-//            }
-//            if (ringSettings.ringStaticItemVerticalPosition == .Centered) {
-//                ringSettings.ringStaticVerticalPositionNumeric = 0.5
-//            }
-//
-//            if (ringSettings.ringStaticItemHorizontalPosition == .Left) {
-//                xPos = -xDist
-//                ringSettings.ringStaticHorizontalPositionNumeric = 1.0 - horizNumericForPos
-//                //debugPrint("hPos L:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
-//            }
-//            if (ringSettings.ringStaticItemHorizontalPosition == .Right) {
-//                xPos = xDist
-//                ringSettings.ringStaticHorizontalPositionNumeric = horizNumericForPos
-//                //debugPrint("hPos R:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
-//            }
-//            if (ringSettings.ringStaticItemVerticalPosition == .Top) {
-//                yPos = yDist
-//                ringSettings.ringStaticVerticalPositionNumeric = 1.0 - vertNumericForPos
-//                //debugPrint("hPos T:" + ringSettings.ringStaticVerticalPositionNumeric.description)
-//            }
-//            if (ringSettings.ringStaticItemVerticalPosition == .Bottom) {
-//                yPos = -yDist
-//                ringSettings.ringStaticVerticalPositionNumeric = vertNumericForPos
-//                //debugPrint("hPos B:" + ringSettings.ringStaticVerticalPositionNumeric.description)
-//            }
-//            if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
-//                //debugPrint("hPos:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
-//                xPos = positionInViewForRingItem(ringSettings: ringSettings).x
-//            }
-//            if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
-//                yPos = positionInViewForRingItem(ringSettings: ringSettings).y
-//            }
-            //horizontalPosition: .Right, verticalPosition: .Top
-            digitalTimeNode.position = CGPoint.init(x: xPos, y: yPos)
-            
-            ringNode.addChild(digitalTimeNode)
-            
-            return
-        }
-        
-        //draw items that loop
         
         // exit if pattern array is empty
         if (patternArray.count == 0) { return }

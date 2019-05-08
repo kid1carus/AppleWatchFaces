@@ -16,11 +16,12 @@ enum FaceLayerTypes: String {
     ImageTexture,
     ColorTexture,
     GradientTexture,
+    DateTimeLabel,
     ShapeRing,
     NumberRing
     
     static let userSelectableValues = [
-        SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, ShapeRing, NumberRing]
+        SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, DateTimeLabel, ShapeRing, NumberRing]
 }
 
 class FaceLayerOptions: NSObject {
@@ -110,6 +111,8 @@ class FaceLayer: NSObject {
         if (layerType == .SecondHand)  { typeDescription = "Second Hand" }
         if (layerType == .MinuteHand)  { typeDescription = "Minute Hand" }
         if (layerType == .HourHand)  { typeDescription = "Hour Hand" }
+        
+        if (layerType == .DateTimeLabel) { typeDescription = "Digital/Time Label"}
         
         if (layerType == .NumberRing)  { typeDescription = "Number Ring" }
         if (layerType == .ShapeRing)  { typeDescription = "Shape Ring" }
