@@ -39,29 +39,30 @@ class FaceLayer: NSObject {
     var horizontalPosition: Float = 0
     var verticalPosition: Float = 0
     var scale: Float = 1.0
-    //scale
-    //position
+    var angleOffset: Float = 0
     
     var desiredThemeColorIndex: Int = 0
     
     // specific to each layer by type
     var layerOptions: FaceLayerOptions
 
-    init(layerType: FaceLayerTypes, alpha: Float, horizontalPosition: Float, verticalPosition: Float, scale: Float,
+    init(layerType: FaceLayerTypes, alpha: Float, horizontalPosition: Float, verticalPosition: Float, scale: Float, angleOffset: Float,
          desiredThemeColorIndex: Int, layerOptions: FaceLayerOptions) {
         self.layerType = layerType
         self.alpha = alpha
         self.horizontalPosition = horizontalPosition
         self.verticalPosition = verticalPosition
         self.scale = scale
-        self.layerOptions = layerOptions
+        self.angleOffset = angleOffset
+        
         self.desiredThemeColorIndex = desiredThemeColorIndex
+        self.layerOptions = layerOptions
     
         super.init()
     }
     
     static func defaults() -> FaceLayer {
-        return FaceLayer.init( layerType: .SecondHand, alpha: 1.0 , horizontalPosition: 0, verticalPosition: 0, scale: 1.0,
+        return FaceLayer.init( layerType: .SecondHand, alpha: 1.0 , horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
                                desiredThemeColorIndex: 0, layerOptions: FaceLayerOptions() )
     }
     
@@ -74,6 +75,7 @@ class FaceLayer: NSObject {
         self.horizontalPosition = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "horizontalPosition")
         self.verticalPosition = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "verticalPosition")
         self.scale = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "scale")
+        self.angleOffset = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "angleOffset")
         
         self.desiredThemeColorIndex = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndex")
         
@@ -97,6 +99,7 @@ class FaceLayer: NSObject {
         serializedDict[ "horizontalPosition" ] = self.horizontalPosition.description as AnyObject
         serializedDict[ "verticalPosition" ] = self.verticalPosition.description as AnyObject
         serializedDict[ "scale" ] = self.scale.description as AnyObject
+        serializedDict[ "angleOffset" ] = self.angleOffset.description as AnyObject
         
         serializedDict[ "desiredThemeColorIndex" ] = self.desiredThemeColorIndex as AnyObject
         

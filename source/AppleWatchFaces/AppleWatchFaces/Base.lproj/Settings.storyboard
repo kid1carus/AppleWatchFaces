@@ -338,7 +338,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="st2-KQ-E84">
-                                        <rect key="frame" x="40" y="-2" width="30" height="39"/>
+                                        <rect key="frame" x="34" y="-3" width="30" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="+">
@@ -355,18 +355,80 @@
                                     <constraint firstAttribute="height" constant="35" id="eed-ye-TvO"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAX-YD-af9">
+                                <rect key="frame" x="-30" y="82" width="98" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTG-Tq-Tw2">
+                                        <rect key="frame" x="68" y="-2" width="30" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="⃕">
+                                            <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJV-3U-yp8">
+                                        <rect key="frame" x="34" y="-2" width="30" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="⃔">
+                                            <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.24677870530000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="K1T-HN-bGy"/>
+                                    <constraint firstAttribute="width" constant="98" id="rjq-qp-Og4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYe-fh-Ovn">
+                                <rect key="frame" x="-30" y="192" width="98" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdn-8L-cUg">
+                                        <rect key="frame" x="68" y="-2" width="30" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="adjustScaleForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j3N-e6-BdE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjU-YD-V5W">
+                                        <rect key="frame" x="34" y="-2" width="30" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="-">
+                                            <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="adjustScaleForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lgN-8G-xKZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.24677870530000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="DA8-9Z-Bej"/>
+                                    <constraint firstAttribute="width" constant="98" id="bzX-TY-bHr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="MYe-fh-Ovn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-30" id="3OG-k9-vRv"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6lV-5r-8gC"/>
+                            <constraint firstItem="GAX-YD-af9" firstAttribute="top" secondItem="jDK-Qz-PpH" secondAttribute="bottom" constant="22" id="7Fg-FA-GMY"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="top" secondItem="jnB-h9-aWW" secondAttribute="bottom" constant="-2" id="89w-i5-uQa"/>
+                            <constraint firstItem="jnB-h9-aWW" firstAttribute="top" secondItem="MYe-fh-Ovn" secondAttribute="bottom" constant="3" id="Hey-F4-QR8"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Iah-bI-LvK"/>
                             <constraint firstItem="DN7-J7-N45" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="TLv-9L-Qto"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="top" secondItem="DN7-J7-N45" secondAttribute="bottom" constant="41" id="ZBQ-mf-Ujv"/>
                             <constraint firstItem="jDK-Qz-PpH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fBs-Pj-87n"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fiZ-4C-g0e"/>
                             <constraint firstItem="jDK-Qz-PpH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fil-d1-Caj"/>
+                            <constraint firstItem="GAX-YD-af9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-30" id="iFR-HJ-CFp"/>
                             <constraint firstItem="76T-g5-ywR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="igM-w7-dvn"/>
                             <constraint firstAttribute="trailing" secondItem="fZ0-ba-Jns" secondAttribute="trailing" constant="-30" id="k5e-Ua-ew9"/>
                             <constraint firstItem="fZ0-ba-Jns" firstAttribute="top" secondItem="4en-eN-ezb" secondAttribute="bottom" constant="20" id="m9s-Ux-2sv"/>
@@ -400,6 +462,8 @@
                         <outlet property="nudgeUButton" destination="uWU-Lo-pBb" id="JCf-wQ-LCw"/>
                         <outlet property="numControlsView" destination="4en-eN-ezb" id="bZr-uI-TnM"/>
                         <outlet property="redoButton" destination="Yl6-rk-mWd" id="ezs-Pd-HVh"/>
+                        <outlet property="scaleLessButton" destination="YjU-YD-V5W" id="bk7-JB-0R5"/>
+                        <outlet property="scaleMoreButton" destination="Wdn-8L-cUg" id="9L6-cM-J1M"/>
                         <outlet property="sendSettingButton" destination="BTy-1s-4Ku" id="GIP-hv-9UH"/>
                         <outlet property="undoButton" destination="7l3-wd-tEQ" id="8gT-hg-ufg"/>
                     </connections>

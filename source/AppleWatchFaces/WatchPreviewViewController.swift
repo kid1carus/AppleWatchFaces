@@ -18,6 +18,8 @@ class WatchPreviewViewController: UIViewController {
     
     static let settingsNudgedNotificationName = Notification.Name("settingsNudged")
     static let settingsAlphaAdjustNotificationName = Notification.Name("settingsAlphaAdjusted")
+    static let settingsScaleAdjustNotificationName = Notification.Name("settingsScaleAdjusted")
+    
     static let settingsSelectedLayerNotificationName = Notification.Name("settingsSelectedLayer")
     
     @IBAction func respondToTapGesture(gesture: UITapGestureRecognizer) {
@@ -47,6 +49,24 @@ class WatchPreviewViewController: UIViewController {
                     if let watchFaceNode = scene.childNode(withName: "watchFaceNode") as? WatchFaceNode {
                         let faceSetting = SettingsViewController.currentFaceSetting
                         watchFaceNode.positionLayer(faceSetting: faceSetting, index:index )
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    @objc func onSettingsScaleAdjustedNotification(notification:Notification)
+    {
+        //update values
+        if let data = notification.userInfo as? [String: Int] {
+            if let index = data["faceLayerIndex"] {
+                //do conditional drawing if needed
+                if let scene = skView.scene {
+                    if let watchFaceNode = scene.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+                        let faceSetting = SettingsViewController.currentFaceSetting
+                        watchFaceNode.scaleAdjustLayer(faceSetting: faceSetting, index:index )
                     }
                 }
             }
@@ -210,6 +230,9 @@ class WatchPreviewViewController: UIViewController {
                                                name: WatchPreviewViewController.settingsNudgedNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSettingsAlphaAdjustedNotification(notification:)),
                                                name: WatchPreviewViewController.settingsAlphaAdjustNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSettingsScaleAdjustedNotification(notification:)),
+                                               name: WatchPreviewViewController.settingsScaleAdjustNotificationName, object: nil)
+        
     }
 
 }

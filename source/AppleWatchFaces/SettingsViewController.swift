@@ -28,6 +28,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @IBOutlet var alphaControlsView: UIView!
     
+    @IBOutlet var scaleLessButton: UIButton!
+    @IBOutlet var scaleMoreButton: UIButton!
+    
+    @IBOutlet var scaleControlsView: UIView!
+    
     @IBOutlet var groupSegmentControl: UISegmentedControl!
 
     weak var watchPreviewViewController:WatchPreviewViewController?
@@ -42,6 +47,19 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
     static let settingsExitingNotificationName = Notification.Name("settingsExiting")
+    
+    @IBAction func adjustScaleForLayerItem( sender: UIButton) {
+        
+        var scaleAdjust:CGFloat = 0.0
+        let nudgeAmt:CGFloat = 0.025
+        
+        if sender == scaleLessButton { scaleAdjust = -nudgeAmt }
+        if sender == scaleMoreButton { scaleAdjust = nudgeAmt }
+        
+        if let flTVC = faceLayersTableViewController {
+            flTVC.scaleAdjustItem(scaleAdjust: scaleAdjust)
+        }
+    }
     
     @IBAction func adjustAlphaForLayerItem( sender: UIButton) {
         
@@ -128,7 +146,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
         
         let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, horizontalPosition: 0, verticalPosition:0, scale: 1.0,
-                                      desiredThemeColorIndex: 0, layerOptions: faceLayerOptions)
+                                      angleOffset: 0, desiredThemeColorIndex: 0, layerOptions: faceLayerOptions)
         SettingsViewController.currentFaceSetting.faceLayers.append(newLayer)
         redrawPreviewClock()
         

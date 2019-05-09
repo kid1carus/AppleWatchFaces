@@ -24,6 +24,22 @@ class FaceLayersTableViewController: UITableViewController {
                                         userInfo:["faceLayerIndex":selectedRow.row ])
     }
     
+    func scaleAdjustItem( scaleAdjust: CGFloat) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
+        
+        //clamp to 0 - 1.0
+        guard layerSettings.scale+Float(scaleAdjust) >= 0 else { return }
+        guard layerSettings.scale+Float(scaleAdjust) <= 1.0 else { return }
+        
+        //set the position in the layer
+        layerSettings.scale += Float(scaleAdjust)
+        
+        //reload
+        NotificationCenter.default.post(name: WatchPreviewViewController.settingsScaleAdjustNotificationName, object: nil,
+                                        userInfo:["faceLayerIndex":selectedRow.row ])
+    }
+    
     func alphaAdjustItem( alphaAdjust: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]

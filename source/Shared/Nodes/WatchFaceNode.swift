@@ -49,6 +49,14 @@ class WatchFaceNode: SKShapeNode {
         layerNode.alpha = CGFloat(faceLayer.alpha)
     }
     
+    func scaleAdjustLayer(faceSetting: FaceSetting, index: Int ) {
+        let faceLayer = faceSetting.faceLayers[index]
+        let layerNode = self.children[index]
+        
+        layerNode.xScale = CGFloat(faceLayer.scale)
+        layerNode.yScale = CGFloat(faceLayer.scale)
+    }
+    
     init(faceSettings: FaceSetting, size: CGSize) {
         super.init()
         
@@ -60,6 +68,8 @@ class WatchFaceNode: SKShapeNode {
         
         func setLayerProps( layerNode: SKNode, faceLayer: FaceLayer ) {
             layerNode.alpha = CGFloat(faceLayer.alpha)
+            layerNode.xScale = CGFloat(faceLayer.scale)
+            layerNode.yScale = CGFloat(faceLayer.scale)
             
             let xPos = magicSize.width * CGFloat(faceLayer.horizontalPosition)
             let yPos = magicSize.height * CGFloat(faceLayer.verticalPosition)
