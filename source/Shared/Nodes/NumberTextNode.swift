@@ -30,7 +30,8 @@ enum NumberTextTypes: String {
     NumberTextTypeNixie,
     NumberTextLCDPhone,
     NumberTextJoystix,
-    NumberTextPixellated
+    NumberTextPixellated,
+    NumberTextCapeCod
     
     static let userSelectableValues = [NumberTextTypeModernInteger,
                                        NumberTextTypeNixie,
@@ -39,6 +40,7 @@ enum NumberTextTypes: String {
                                        NumberTextTypeDigitalMonoItalics,
                                        NumberTextLCDPhone,
                                        NumberTextJoystix,
+                                       NumberTextCapeCod,
                                        NumberTextTypeBlackRose,
                                        NumberTextTypeCorneriaScript,
                                        NumberTextTypeGermanica,
@@ -83,26 +85,28 @@ class NumberTextNode: SKNode {
     static func descriptionForType(_ nodeType: NumberTextTypes) -> String {
         var typeDescription = ""
         
-        if (nodeType == NumberTextTypes.NumberTextTypeModernInteger)  { typeDescription = "Modern Integer" }
-        if (nodeType == NumberTextTypes.NumberTextTypeBlackRose)  { typeDescription = "Black Rose" }
-        if (nodeType == NumberTextTypes.NumberTextTypeCorneriaScript)  { typeDescription = "Corneria Script" }
-        if (nodeType == NumberTextTypes.NumberTextTypeGermanica)  { typeDescription = "Germanica" }
-        if (nodeType == NumberTextTypes.NumberTextTypeKingThings)  { typeDescription = "King Things" }
-        if (nodeType == NumberTextTypes.NumberTextTypeRothernburgDecorative)  { typeDescription = "Rothernburg Decorative" }
-        if (nodeType == NumberTextTypes.NumberTextTypeHelvicaNeueBold)  { typeDescription = "Helvica Neue Bold" }
-        if (nodeType == NumberTextTypes.NumberTextTypeHelvica)  { typeDescription = "Helvica" }
-        if (nodeType == NumberTextTypes.NumberTextTypeNumeralTrajan)  { typeDescription = "Numeral Trajan" }
-        if (nodeType == NumberTextTypes.NumberTextTypeDINPro)  { typeDescription = "DIN Pro" }
-        if (nodeType == NumberTextTypes.NumberTextTypeUltraCondensedSerif)  { typeDescription = "Ultra Condensed" }
+        if (nodeType == .NumberTextTypeModernInteger)  { typeDescription = "Modern Integer" }
+        if (nodeType == .NumberTextTypeBlackRose)  { typeDescription = "Black Rose" }
+        if (nodeType == .NumberTextTypeCorneriaScript)  { typeDescription = "Corneria Script" }
+        if (nodeType == .NumberTextTypeGermanica)  { typeDescription = "Germanica" }
+        if (nodeType == .NumberTextTypeKingThings)  { typeDescription = "King Things" }
+        if (nodeType == .NumberTextTypeRothernburgDecorative)  { typeDescription = "Rothernburg Decorative" }
+        if (nodeType == .NumberTextTypeHelvicaNeueBold)  { typeDescription = "Helvica Neue Bold" }
+        if (nodeType == .NumberTextTypeHelvica)  { typeDescription = "Helvica" }
+        if (nodeType == .NumberTextTypeNumeralTrajan)  { typeDescription = "Numeral Trajan" }
+        if (nodeType == .NumberTextTypeDINPro)  { typeDescription = "DIN Pro" }
+        if (nodeType == .NumberTextTypeUltraCondensedSerif)  { typeDescription = "Ultra Condensed" }
         
-        if (nodeType == NumberTextTypes.NumberTextTypeSystem) { typeDescription = "System / San Fransisco" }
-        if (nodeType == NumberTextTypes.NumberTextTypeIronLounge) { typeDescription = "Iron Lounge" }
-        if (nodeType == NumberTextTypes.NumberTextTypeDigitalMono) { typeDescription = "Digital MonoSpaced" }
-        if (nodeType == NumberTextTypes.NumberTextTypeDigitalMonoItalics) { typeDescription = "Digital Italics" }
-        if (nodeType == NumberTextTypes.NumberTextTypeNixie) { typeDescription = "Nixie Tube" }
-        if (nodeType == NumberTextTypes.NumberTextLCDPhone) { typeDescription = "LCD Phone" }
-        if (nodeType == NumberTextTypes.NumberTextJoystix) { typeDescription = "Joystix" }
-        if (nodeType == NumberTextTypes.NumberTextPixellated) { typeDescription = "Pixellated" }
+        if (nodeType == .NumberTextTypeSystem) { typeDescription = "System / San Fransisco" }
+        if (nodeType == .NumberTextTypeIronLounge) { typeDescription = "Iron Lounge" }
+        if (nodeType == .NumberTextTypeDigitalMono) { typeDescription = "Digital MonoSpaced" }
+        if (nodeType == .NumberTextTypeDigitalMonoItalics) { typeDescription = "Digital Italics" }
+        if (nodeType == .NumberTextTypeNixie) { typeDescription = "Nixie Tube" }
+        if (nodeType == .NumberTextLCDPhone) { typeDescription = "LCD Phone" }
+        if (nodeType == .NumberTextJoystix) { typeDescription = "Joystix" }
+        if (nodeType == .NumberTextPixellated) { typeDescription = "Pixellated" }
+        
+        if (nodeType == .NumberTextCapeCod) { typeDescription = "Cape Cod" }
     
         return typeDescription
     }
@@ -132,6 +136,8 @@ class NumberTextNode: SKNode {
         if (textType == .NumberTextJoystix) { fontName = "Joystix" }
         if (textType == .NumberTextPixellated) { fontName = "PixelMillennium" }
         
+        if (textType == .NumberTextCapeCod) { fontName = "HermesCapeCod-Regular" }
+    
         if (textType == .NumberTextTypeSystem) {
             fontName = UIFont.systemFont(ofSize: 18.0).familyName
         }

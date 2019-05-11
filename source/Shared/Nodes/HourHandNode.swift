@@ -10,11 +10,11 @@ import SpriteKit
 
 enum HourHandTypes: String {
     case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeImageMoon,
-        HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypeArrow,
+        HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypeArrow, HourHandTypeCapeCod, HourHandTypeCapeCodFilled,
     HourHandTypePacMan, HourHandTypeMsPacMan, HourHandTypeNone
     
     static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRadar, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeThinDial, HourHandTypeNone]
-    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeImageMoon,
+    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeCapeCod, HourHandTypeCapeCodFilled, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeImageMoon,
         HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypePacMan, HourHandTypeMsPacMan,
                                        HourHandTypeNone]
     
@@ -63,6 +63,9 @@ class HourHandNode: SKSpriteNode {
         if (nodeType == .HourHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
         if (nodeType == .HourHandTypeCutout)  { typeDescription = "Square Cutout" }
         if (nodeType == .HourHandTypeArrow) { typeDescription = "Arrow" }
+        if (nodeType == .HourHandTypeCapeCod) { typeDescription = "Cape Cod" }
+        if (nodeType == .HourHandTypeCapeCodFilled) { typeDescription = "Cape Cod Filled" }
+        
         if (nodeType == .HourHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == .HourHandTypeThinDial)  { typeDescription = "Thin Dial" }
         if (nodeType == .HourHandTypePacMan)  { typeDescription = "Dot Eater" }
@@ -321,6 +324,68 @@ class HourHandNode: SKSpriteNode {
 
             self.addChild(shape)
         }
+        
+        if (hourHandType == .HourHandTypeCapeCod || hourHandType == .HourHandTypeCapeCodFilled) {
+            let bezierPath = UIBezierPath()
+            
+            bezierPath.move(to: CGPoint(x: -11, y: -41.61))
+            bezierPath.addCurve(to: CGPoint(x: -11, y: -41.38), controlPoint1: CGPoint(x: -11, y: -41.61), controlPoint2: CGPoint(x: -11, y: -41.38))
+            bezierPath.addCurve(to: CGPoint(x: -11, y: -37.23), controlPoint1: CGPoint(x: -11, y: -40.02), controlPoint2: CGPoint(x: -11, y: -38.64))
+            bezierPath.addCurve(to: CGPoint(x: -11, y: -41.38), controlPoint1: CGPoint(x: -11, y: -37.23), controlPoint2: CGPoint(x: -11, y: -40.48))
+            bezierPath.addCurve(to: CGPoint(x: -11, y: -41.61), controlPoint1: CGPoint(x: -11, y: -41.53), controlPoint2: CGPoint(x: -11, y: -41.61))
+            bezierPath.addLine(to: CGPoint(x: -11, y: -41.61))
+            bezierPath.close()
+            bezierPath.move(to: CGPoint(x: 10.18, y: -127.26))
+            bezierPath.addCurve(to: CGPoint(x: 11, y: -117.39), controlPoint1: CGPoint(x: 11, y: -124.65), controlPoint2: CGPoint(x: 11, y: -122.23))
+            bezierPath.addLine(to: CGPoint(x: 11, y: -37.23))
+            bezierPath.addCurve(to: CGPoint(x: 10.28, y: -32.16), controlPoint1: CGPoint(x: 11, y: -36.77), controlPoint2: CGPoint(x: 11, y: -34.35))
+            bezierPath.addLine(to: CGPoint(x: 10.18, y: -31.74))
+            bezierPath.addCurve(to: CGPoint(x: 3, y: -25.3), controlPoint1: CGPoint(x: 8.99, y: -28.48), controlPoint2: CGPoint(x: 6.26, y: -26.1))
+            bezierPath.addCurve(to: CGPoint(x: 3, y: -10.59), controlPoint1: CGPoint(x: 3, y: -19.86), controlPoint2: CGPoint(x: 3, y: -14.88))
+            bezierPath.addCurve(to: CGPoint(x: 11, y: 0), controlPoint1: CGPoint(x: 7.62, y: -9.28), controlPoint2: CGPoint(x: 11, y: -5.04))
+            bezierPath.addCurve(to: CGPoint(x: -0, y: 11), controlPoint1: CGPoint(x: 11, y: 6.08), controlPoint2: CGPoint(x: 6.08, y: 11))
+            bezierPath.addCurve(to: CGPoint(x: -11, y: 0), controlPoint1: CGPoint(x: -6.08, y: 11), controlPoint2: CGPoint(x: -11, y: 6.08))
+            bezierPath.addCurve(to: CGPoint(x: -3, y: -10.59), controlPoint1: CGPoint(x: -11, y: -5.04), controlPoint2: CGPoint(x: -7.62, y: -9.28))
+            bezierPath.addCurve(to: CGPoint(x: -3, y: -25.3), controlPoint1: CGPoint(x: -3, y: -14.88), controlPoint2: CGPoint(x: -3, y: -19.86))
+            bezierPath.addCurve(to: CGPoint(x: -10.18, y: -31.74), controlPoint1: CGPoint(x: -6.26, y: -26.1), controlPoint2: CGPoint(x: -8.99, y: -28.48))
+            bezierPath.addCurve(to: CGPoint(x: -10.96, y: -37.23), controlPoint1: CGPoint(x: -10.71, y: -33.42), controlPoint2: CGPoint(x: -10.89, y: -35.02))
+            bezierPath.addCurve(to: CGPoint(x: -11, y: -41.38), controlPoint1: CGPoint(x: -11, y: -38.41), controlPoint2: CGPoint(x: -11, y: -39.76))
+            bezierPath.addLine(to: CGPoint(x: -11, y: -41.61))
+            bezierPath.addCurve(to: CGPoint(x: -10.28, y: -126.84), controlPoint1: CGPoint(x: -11, y: -122.32), controlPoint2: CGPoint(x: -10.99, y: -124.69))
+            bezierPath.addLine(to: CGPoint(x: -10.18, y: -127.26))
+            bezierPath.addCurve(to: CGPoint(x: -0.55, y: -134), controlPoint1: CGPoint(x: -8.7, y: -131.31), controlPoint2: CGPoint(x: -4.86, y: -134))
+            bezierPath.addLine(to: CGPoint(x: 0.55, y: -134))
+            bezierPath.addCurve(to: CGPoint(x: 10.18, y: -127.26), controlPoint1: CGPoint(x: 4.86, y: -134), controlPoint2: CGPoint(x: 8.7, y: -131.31))
+            bezierPath.close()
+            
+            bezierPath.apply(CGAffineTransform.init(scaleX: 0.5, y: -0.5))
+            bezierPath.flatness = 0.01
+            
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            
+            let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
+            physicsBody.isDynamic = false
+            shape.physicsBody = physicsBody
+            
+            self.addChild(shape)
+            
+            if (hourHandType == .HourHandTypeCapeCodFilled) {
+                let rectanglePath = UIBezierPath(roundedRect: CGRect(x: -7, y: -129, width: 14, height: 98), cornerRadius: 6)
+                rectanglePath.apply(CGAffineTransform.init(scaleX: 0.5, y: -0.5))
+                
+                let fillShape = SKShapeNode.init(path: rectanglePath.cgPath)
+                fillShape.fillColor = SKColor.black
+                fillShape.strokeColor = SKColor.black
+                fillShape.lineWidth = 1.0
+                
+                self.addChild(fillShape)
+            }
+        }
+            
         
         if (hourHandType == .HourHandTypeCutout) {
             let cutWidth = 9

@@ -49,6 +49,7 @@
 	<string>App needs access to photo library to same images of watch faces </string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>CAPECOD.OTF</string>
 		<string>PIXEL_MILLENNIUM.TFF</string>
 		<string>JOYSTIX.TTF</string>
 		<string>LCDPHONE.TTF</string>
