@@ -74,8 +74,9 @@ class FaceSetting: NSObject {
     var uniqueID:String
     
     var faceLayers: [FaceLayer]
+    var faceColors: [String]
     
-    init(title: String, uniqueID: String, faceLayers: [FaceLayer])
+    init(title: String, uniqueID: String, faceLayers: [FaceLayer], faceColors: [String])
     {
         self.title = title
                 
@@ -83,6 +84,7 @@ class FaceSetting: NSObject {
         self.uniqueID = uniqueID
         
         self.faceLayers = faceLayers
+        self.faceColors = faceColors
         
         super.init()
     }
@@ -96,7 +98,8 @@ class FaceSetting: NSObject {
         return FaceSetting.init(
             title: "Untitled",
             uniqueID: UUID().uuidString,
-            faceLayers: []
+            faceLayers: [],
+            faceColors: ["#FFFFFFFF"]
         )
     }
     
@@ -105,6 +108,15 @@ class FaceSetting: NSObject {
         
         self.title = jsonObj["title"].stringValue
         self.uniqueID = jsonObj["uniqueID"].stringValue
+        
+        // parse the faceColors
+        self.faceColors = [String]()
+        
+        if let faceColorSerializedArray = jsonObj["faceColors"].array {
+            for faceColorSerialized in faceColorSerializedArray {
+                faceColors.append( faceColorSerialized.stringValue )
+            }
+        }
         
         // parse the faceLayers
         self.faceLayers = [FaceLayer]()
@@ -138,6 +150,8 @@ class FaceSetting: NSObject {
         
         serializedDict[ "title" ] = self.title as AnyObject
         serializedDict[ "uniqueID" ] = self.uniqueID as AnyObject
+        
+        serializedDict[ "faceColors" ] = self.faceColors as AnyObject
         
         var faceLayersArray = [NSDictionary]()
         for faceLayer in self.faceLayers {

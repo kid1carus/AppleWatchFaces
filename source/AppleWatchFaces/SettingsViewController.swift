@@ -12,6 +12,9 @@ import WatchConnectivity
 
 class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
 
+    @IBOutlet var layerTableContainer: UIView!
+    @IBOutlet var colorsTableContainer: UIView!
+    
     @IBOutlet var undoButton: UIBarButtonItem!
     @IBOutlet var redoButton: UIBarButtonItem!
     @IBOutlet var sendSettingButton: UIButton!
@@ -307,6 +310,19 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         setUndoRedoButtonStatus()
     }
     
+    @IBAction func groupChangeAction(sender: UISegmentedControl) {
+        //show / hide the tableViews
+        
+        if sender.selectedSegmentIndex == 1 {
+            colorsTableContainer.isHidden = true
+            layerTableContainer.isHidden = false
+        }
+        if sender.selectedSegmentIndex == 2 {
+            colorsTableContainer.isHidden = false
+            layerTableContainer.isHidden = true
+        }
+    }
+    
     @IBAction func redo() {
         guard let lastSettings = SettingsViewController.redoArray.popLast() else { return } //current setting
         SettingsViewController.undoArray.append(SettingsViewController.currentFaceSetting)
@@ -437,6 +453,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         WatchSessionManager.sharedManager.delegate = self
         SettingsViewController.clearUndoStack()
         
+        colorsTableContainer.isHidden = true
+        
         //numControlsView.isHidden = true
         numControlsView.layer.cornerRadius = 10.0
         numControlsView.layer.borderWidth = 2.0
@@ -445,6 +463,22 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         alphaControlsView.layer.cornerRadius = 10.0
         alphaControlsView.layer.borderWidth = 2.0
         alphaControlsView.layer.borderColor = SKColor.darkGray.cgColor
+        
+        //style the section segment
+        // Add lines below selectedSegmentIndex
+        groupSegmentControl.backgroundColor = .clear
+        groupSegmentControl.tintColor = .clear
+        
+        // Add lines below the segmented control's tintColor
+        groupSegmentControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 20)!,
+            NSAttributedString.Key.foregroundColor: SKColor.white
+            ], for: .normal)
+        
+        groupSegmentControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 20)!,
+            NSAttributedString.Key.foregroundColor: SKColor.init(hexString: AppUISettings.settingHighlightColor)
+            ], for: .selected)
         
         SettingsViewController.currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex].clone()!
         

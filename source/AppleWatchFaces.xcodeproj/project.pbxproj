@@ -126,6 +126,9 @@
 		315878CD22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
 		315878CE22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
 		315878CF22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
+		315878D222877B4E008FFC76 /* FaceColorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315878D122877B4E008FFC76 /* FaceColorsTableViewController.swift */; };
+		315878D522878261008FFC76 /* FaceColorSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315878D422878261008FFC76 /* FaceColorSettingTableViewCell.swift */; };
+		315878D82287835B008FFC76 /* ColorSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315878D72287835A008FFC76 /* ColorSettingCollectionViewCell.swift */; };
 		31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		31724A6621FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
@@ -440,6 +443,9 @@
 		3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		3153880621CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		315878CC22876338008FFC76 /* CAPECOD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CAPECOD.OTF; sourceTree = "<group>"; };
+		315878D122877B4E008FFC76 /* FaceColorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceColorsTableViewController.swift; sourceTree = "<group>"; };
+		315878D422878261008FFC76 /* FaceColorSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceColorSettingTableViewCell.swift; sourceTree = "<group>"; };
+		315878D72287835A008FFC76 /* ColorSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -648,6 +654,15 @@
 			path = Nodes;
 			sourceTree = "<group>";
 		};
+		315878D022877AFE008FFC76 /* FaceColorsTableView */ = {
+			isa = PBXGroup;
+			children = (
+				315878D422878261008FFC76 /* FaceColorSettingTableViewCell.swift */,
+				315878D72287835A008FFC76 /* ColorSettingCollectionViewCell.swift */,
+			);
+			path = FaceColorsTableView;
+			sourceTree = "<group>";
+		};
 		318808C4217815E600585AB1 = {
 			isa = PBXGroup;
 			children = (
@@ -680,6 +695,8 @@
 				31092072224FA2D10032D3AB /* WatchSessionManager.swift */,
 				31F4F1D8219D08890050177A /* FaceChooserViewController.swift */,
 				310D9228227E1F16007A5808 /* FaceLayersTableViewController.swift */,
+				315878D122877B4E008FFC76 /* FaceColorsTableViewController.swift */,
+				315878D022877AFE008FFC76 /* FaceColorsTableView */,
 				310D922A227E26F0007A5808 /* FaceLayerTableView */,
 				31EF99A021A2046100BB54E7 /* ChooserView */,
 				318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */,
@@ -1142,6 +1159,7 @@
 				31092073224FA2D10032D3AB /* WatchSessionManager.swift in Sources */,
 				310D9230227E700B007A5808 /* FaceLayerShapeTableViewCell.swift in Sources */,
 				31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */,
+				315878D222877B4E008FFC76 /* FaceColorsTableViewController.swift in Sources */,
 				311B7CB2227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
 				3109D1E321A9A2C600561F13 /* FaceChooserEditTableViewController.swift in Sources */,
@@ -1153,6 +1171,7 @@
 				31F4F1D9219D08890050177A /* FaceChooserViewController.swift in Sources */,
 				313BB884227DEC71005BE9C5 /* FaceSetting.swift in Sources */,
 				319095FB21CC898200F71BC6 /* BezierPath+Length.swift in Sources */,
+				315878D522878261008FFC76 /* FaceColorSettingTableViewCell.swift in Sources */,
 				318A928B21D059120060D89B /* UserDefaults.swift in Sources */,
 				31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */,
 				3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */,
@@ -1181,6 +1200,7 @@
 				31F4F1B82198ACB50050177A /* AppUISettings.swift in Sources */,
 				31B5E8D7218BD91400DE6429 /* ClockFaceSetting.swift in Sources */,
 				312D4C05218BCBF0008504D2 /* ClockDecoratorTheme.swift in Sources */,
+				315878D82287835B008FFC76 /* ColorSettingCollectionViewCell.swift in Sources */,
 				319095FC21CC898200F71BC6 /* PathElement.swift in Sources */,
 				318A928D21D05F660060D89B /* SettingsOptionsViewController.swift in Sources */,
 				314A010A21960409009BCE3C /* UserClockSetting.swift in Sources */,
