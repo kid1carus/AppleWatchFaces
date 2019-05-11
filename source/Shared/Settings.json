@@ -1,6 +1,90 @@
 {
     "clockSettings" : [
         {
+            "title" : "Cape Cod",
+            "faceBackgroundType" : "FaceBackgroundTypeDiagonalSplit",
+            "faceForegroundType" : "None",
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#FF0000FF",
+                "shouldShowRomanNumeralText" : false,
+                "hourHandType" : "HourHandTypeCapeCodFilled",
+                "secondHandType" : "SecondHandTypeRail",
+                "minuteHandType" : "MinuteHandTypeCapeCodFilled",
+                "ringAlphas" : [
+                    0.78,
+                    1,
+                    1
+                ],
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringMaterials" : [
+                    "#000000FF",
+                    "#000000FF",
+                    ""
+                ],
+                "ringSettings" : [
+                    {
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.1",
+                        "ringType" : "RingTypeSpacer"
+                    },
+                    {
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textSize" : "0.68",
+                        "textType" : "NumberTextCapeCod",
+                        "shouldShowTextOutline" : false,
+                        "ringType" : "RingTypeTextNode",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.075"
+                    },
+                    {
+                        "ringWidth" : "0.22",
+                        "ringType" : "RingTypeSpacer",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "12",
+                        "ringPattern" : [
+                            1
+                        ]
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringStaticEffects" : "darkInnerShadow",
+                        "ringStaticItemVerticalPosition" : "Centered",
+                        "textSize" : "0.3",
+                        "ringStaticTimeFormat" : "DD",
+                        "shouldShowTextOutline" : false,
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "textType" : "NumberTextTypeSystem"
+                    }
+                ],
+                "shouldShowHandOutlines" : false,
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "minuteHandMaterialName" : "#c6c6c6ff",
+                "handEffectWidths" : [
+                    
+                ],
+                "handAlphas" : [
+                    
+                ],
+                "hourHandMaterialName" : "#c6c6c6ff"
+            },
+            "clockFaceMaterialName" : "#ffffffff",
+            "clockCasingMaterialName" : "#e2e2e2ff",
+            "uniqueID" : "64E190A8-1136-4F91-81E7-3DDC8591B06F",
+            "clockForegroundMaterialName" : "#91ffecff"
+        },
+        {
             "clockOverlaySettings" : {
                 "itemStrength" : "0.26",
                 "fieldType" : "LinearGravity",
