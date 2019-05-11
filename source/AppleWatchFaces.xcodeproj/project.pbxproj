@@ -123,6 +123,9 @@
 		314AFC1021D51A7000C1208E /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC0F21D51A7000C1208E /* CameraHandler.swift */; };
 		314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */; };
 		314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */; };
+		315878CD22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
+		315878CE22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
+		315878CF22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
 		31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		31724A6621FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
@@ -436,6 +439,7 @@
 		3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		3153880621CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		315878CC22876338008FFC76 /* CAPECOD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CAPECOD.OTF; sourceTree = "<group>"; };
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -563,6 +567,7 @@
 		31090FAB2233277C00D6CAA7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				315878CC22876338008FFC76 /* CAPECOD.OTF */,
 				31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */,
 				31090FAD2233277C00D6CAA7 /* GERMANICA.TTF */,
 				31090FAE2233277C00D6CAA7 /* LCDPHONE.TTF */,
@@ -1031,6 +1036,7 @@
 				31F56FA62185817E00455FC6 /* SKWatchScene.sks in Resources */,
 				318808DB217815E700585AB1 /* LaunchScreen.storyboard in Resources */,
 				31092134225433230032D3AB /* Colors.plist in Resources */,
+				315878CD22876338008FFC76 /* CAPECOD.OTF in Resources */,
 				318808D8217815E700585AB1 /* Assets.xcassets in Resources */,
 				31090FC22233277C00D6CAA7 /* IRONLOUNGE.TTF in Resources */,
 				3196401E22076439005CF169 /* readme.md in Resources */,
@@ -1064,6 +1070,7 @@
 				31090FBF2233277C00D6CAA7 /* GERMANICA.TTF in Resources */,
 				31090FC72233277C00D6CAA7 /* DIGITAL-7-MONO.TTF in Resources */,
 				31EF99A621A21A2200BB54E7 /* Themes.json in Resources */,
+				315878CE22876338008FFC76 /* CAPECOD.OTF in Resources */,
 				318809102178172600585AB1 /* faceBackground.png in Resources */,
 				318809002178166B00585AB1 /* Assets.xcassets in Resources */,
 				31056B602218D2CE00D0E15C /* Media.xcassets in Resources */,
@@ -1106,6 +1113,7 @@
 				31C86B1D22374D0700EF4186 /* CONERIASCRIPT.TTF in Resources */,
 				31C86B4F22374DE500EF4186 /* SettingsTableHeaderView.xib in Resources */,
 				31C86AED2237493600EF4186 /* ClockologyMain.storyboard in Resources */,
+				315878CF22876338008FFC76 /* CAPECOD.OTF in Resources */,
 				31C86B1622374D0700EF4186 /* DIGITAL-7-MONO-ITALICS.TTF in Resources */,
 				31C86B1C22374D0700EF4186 /* BLACKROSE.TTF in Resources */,
 				31C86B2122374D0700EF4186 /* NIXIEONE.TTF in Resources */,
