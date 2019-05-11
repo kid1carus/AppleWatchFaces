@@ -143,24 +143,24 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     //validSession.outstandingFileTransfers
     
     @IBAction func addNewSettingAction(sender: UIButton) {
-//        let originalCount = UserClockSetting.sharedClockSettings.count
-//        UserClockSetting.addMissingFromDefaults()
-//        
-//        if let faceChooserTableVC  = faceChooserTableViewController  {
-//            faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
-//        }
-//        let newCount = UserClockSetting.sharedClockSettings.count
-//        showMessage(message: "Added from defaults, " + (newCount - originalCount).description + " added" )
-//        
-//        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
-//        guard missingThumbs.count==0 else {
-//            //first run, reload everything
-//            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
-//                faceListReloadType = .full
-//            }
-//            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
-//            return
-//        }
+        let originalCount = UserFaceSetting.sharedFaceSettings.count
+        UserFaceSetting.addMissingFromDefaults()
+        
+        if let faceChooserTableVC  = faceChooserTableViewController  {
+            faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
+        }
+        let newCount = UserFaceSetting.sharedFaceSettings.count
+        showMessage(message: "Added from defaults, " + (newCount - originalCount).description + " added" )
+        
+        let missingThumbs = UserFaceSetting.settingsWithoutThumbNails()
+        guard missingThumbs.count==0 else {
+            //first run, reload everything
+            if missingThumbs.count == UserFaceSetting.sharedFaceSettings.count {
+                faceListReloadType = .full
+            }
+            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
+            return
+        }
     }
     
     func doResetAllAction() {
@@ -329,14 +329,12 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         if segue.identifier == "newFaceSegueID" {
             if segue.destination is SettingsViewController {
                 //add a new item into the shared settings
-                let newClockSetting = ClockSetting.defaults()
-                UserClockSetting.sharedClockSettings.insert(newClockSetting, at: 0)
+                let newClockSetting = FaceSetting.defaults()
+                UserFaceSetting.sharedFaceSettings.insert(newClockSetting, at: 0)
                 
                 //ensure it shows the first one ( our new one )
                 let vc = segue.destination as? SettingsViewController
                 vc?.currentFaceIndex = 0
-                //make thumb only works once the VC is fully loaded: doing it here only gets back box
-                //vc?.makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
                 
                 //reload this tableView so it wont crash later trying to only show visible
                 if let faceChooserTableVC  = faceChooserTableViewController  {
