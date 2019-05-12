@@ -66,6 +66,13 @@ class WatchFaceNode: SKShapeNode {
         
         let faceLayers = faceSettings.faceLayers
         
+        func colorForDesiredIndex(index: Int) -> SKColor {
+            let colorString = faceSettings.faceColors[index]
+            return SKColor.init(hexString: colorString)
+            
+            //return SKColor.white
+        }
+        
         func setLayerProps( layerNode: SKNode, faceLayer: FaceLayer ) {
             layerNode.alpha = CGFloat(faceLayer.alpha)
             layerNode.xScale = CGFloat(faceLayer.scale)
@@ -121,8 +128,9 @@ class WatchFaceNode: SKShapeNode {
                 self.addChild(backgroundNode)
             }
             if (faceLayer.layerType == .DateTimeLabel) {
+                let fillColor = colorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
                 let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: .NumberTextTypeSystem, timeFormat: .HHMM, textSize: 1.0,
-                                                           effect: .None, horizontalPosition: .Centered, fillColor: SKColor.init(hexString: "#ffffffff"), strokeColor: SKColor.init(hexString: "#ffffffff"))
+                                                           effect: .None, horizontalPosition: .Centered, fillColor: fillColor, strokeColor: SKColor.init(hexString: "#ffffffff"))
                 digitalTimeNode.name = "timeLabel"
                 
                 setLayerProps(layerNode: digitalTimeNode, faceLayer: faceLayer)

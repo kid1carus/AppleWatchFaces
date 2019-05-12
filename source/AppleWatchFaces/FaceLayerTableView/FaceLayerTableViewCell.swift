@@ -28,6 +28,32 @@ class FaceLayerTableViewCell: UITableViewCell {
         }
     }
     
+   func getColoredImage(colorArray: [String], size: CGSize) -> UIImage {
+        let rect = CGRect.init(origin: CGPoint.zero, size: size)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+    
+        let buttonW = size.width / CGFloat(colorArray.count)
+    
+        for (index,hexString) in colorArray.enumerated() {
+            let color = UIColor.init(hexString: hexString)
+            context!.setFillColor(color.cgColor)
+            
+            let buttonRect = CGRect.init(x: buttonW*CGFloat(index), y: 0, width: buttonW, height: size.height)
+            
+            context!.fill(buttonRect)
+        }
+    
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }
+    
+    func setupButtonBackgroundForColors( button: UIButton) {
+        let coloredImage = getColoredImage(colorArray: SettingsViewController.currentFaceSetting.faceColors, size: button.frame.size )
+        button.setBackgroundImage(coloredImage, for: .normal)
+    }
+    
     func titleText( faceLayer: FaceLayer ) -> String {
         return FaceLayer.descriptionForType(faceLayer.layerType)
     }

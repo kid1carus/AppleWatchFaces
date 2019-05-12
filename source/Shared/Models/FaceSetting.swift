@@ -99,7 +99,7 @@ class FaceSetting: NSObject {
             title: "Untitled",
             uniqueID: UUID().uuidString,
             faceLayers: [],
-            faceColors: ["#FFFFFFFF"]
+            faceColors: ["#FFFFFFFF", "#c6c6c6ff", "#8e8e8eff", "#545454ff", "#1c1c1cff", "#000000ff"]
         )
     }
     

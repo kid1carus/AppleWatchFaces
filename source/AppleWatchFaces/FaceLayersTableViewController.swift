@@ -113,7 +113,7 @@ class FaceLayersTableViewController: UITableViewController {
                 case .NumberRing:
                     cellHeight = 160.0
                 case .DateTimeLabel:
-                    cellHeight = 160.0
+                    cellHeight = 170.0
                     
                 }
             }
@@ -142,6 +142,9 @@ class FaceLayersTableViewController: UITableViewController {
         
         if (faceLayer.layerType == .ShapeRing) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerShapeID", for: indexPath) as! FaceLayerShapeTableViewCell
+        }
+        else if (faceLayer.layerType == .DateTimeLabel) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "decoratorEditorDigitalTimeID", for: indexPath) as! FaceLayerDateTimeLabelTableViewCell
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
         }
