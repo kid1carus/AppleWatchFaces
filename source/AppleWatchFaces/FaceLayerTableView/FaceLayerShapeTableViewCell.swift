@@ -10,9 +10,16 @@ import UIKit
 
 class FaceLayerShapeTableViewCell: FaceLayerTableViewCell {
 
+    @IBOutlet var colorButton: UIButton!
     @IBOutlet var materialSegment: UISegmentedControl!
     @IBOutlet var totalNumbersSegment: UISegmentedControl!
     @IBOutlet var valueSlider: UISlider!
+    
+    let settingTypeString = "shapeRing"
+    
+    @IBAction func colorButtonTapped( colorButton: UIButton, event: UIEvent) {
+        super.handleColorButton( colorButton: colorButton, event: event, settingType: settingTypeString )
+    }
     
 //    func shapeChosen( shapeType: FaceIndicatorTypes ) {
 //        //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
@@ -63,12 +70,14 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell {
             shapeOptions.indicatorSize = roundedValue
             let layerIndex = myLayerIndex() ?? 0
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
-                                            userInfo:["settingType":"shapeRing","layerIndex":layerIndex])
+                                            userInfo:["settingType":settingTypeString ,"layerIndex":layerIndex])
         }
     }
     
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer)
+        
+        setupButtonBackgroundForColors(button: colorButton)
         
         valueSlider.minimumValue = AppUISettings.ringSettigsSliderShapeMin
         valueSlider.maximumValue = AppUISettings.ringSettigsSliderShapeMax

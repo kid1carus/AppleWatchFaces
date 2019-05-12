@@ -10,15 +10,14 @@ import UIKit
 class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell {
     
     @IBOutlet var colorButton: UIButton!
+    @IBOutlet var outlineColorButton: UIButton!
 //    @IBOutlet var totalNumbersSegment: UISegmentedControl!
 //    @IBOutlet var valueSlider: UISlider!
     
+    let settingTypeString = "dateTimeLabel"
 
     @IBAction func colorButtonTapped( colorButton: UIButton, event: UIEvent) {
-        let touches = event.touches(for: colorButton)
-        let firstTouch = touches?.first
-        let position = firstTouch?.location(in: colorButton)
-        debugPrint("pos:" + position!.debugDescription)
+        super.handleColorButton( colorButton: colorButton, event: event, settingType: settingTypeString )
     }
     
     //    func shapeChosen( shapeType: FaceIndicatorTypes ) {
@@ -77,7 +76,8 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell {
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer)
         
-        setupButtonBackgroundForColors( button: colorButton )
+        setupButtonBackgroundForColors(button: colorButton)
+        setupButtonBackgroundForColors(button: outlineColorButton)
     }
     
     

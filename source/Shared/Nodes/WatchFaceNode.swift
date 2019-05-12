@@ -66,11 +66,13 @@ class WatchFaceNode: SKShapeNode {
         
         let faceLayers = faceSettings.faceLayers
         
+        func hexColorForDesiredIndex(index: Int) -> String {
+            return faceSettings.faceColors[index]
+        }
+        
         func colorForDesiredIndex(index: Int) -> SKColor {
-            let colorString = faceSettings.faceColors[index]
+            let colorString = hexColorForDesiredIndex(index: index)
             return SKColor.init(hexString: colorString)
-            
-            //return SKColor.white
         }
         
         func setLayerProps( layerNode: SKNode, faceLayer: FaceLayer ) {
@@ -141,12 +143,13 @@ class WatchFaceNode: SKShapeNode {
                     let shapeNode = SKNode.init()
                     shapeNode.name = "shapeNode"
                     
+                    let fillMaterial = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
                     let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: .RingRenderShapeCircle )
                     
                     //TODO: fix this with better ringNode rendering seperating out just shapes
                     let ringSettings = ClockRingSetting.defaults()
                     ringSettings.indicatorSize = shapeOptions.indicatorSize
-                    generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: "#ffffffff", currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size)
+                    generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: fillMaterial, currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size)
                     
                     setLayerProps(layerNode: shapeNode, faceLayer: faceLayer)
                     self.addChild(shapeNode)

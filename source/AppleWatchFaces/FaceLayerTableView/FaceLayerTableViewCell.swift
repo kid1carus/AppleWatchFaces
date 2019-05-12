@@ -28,6 +28,13 @@ class FaceLayerTableViewCell: UITableViewCell {
         }
     }
     
+    func getColorIndexForColorButton( colorArray: [String], buttonSize: CGSize, position: CGPoint) -> Int {
+        let buttonW = buttonSize.width / CGFloat(colorArray.count)
+        
+        let region = Int(position.x / buttonW)
+        return region
+    }
+    
    func getColoredImage(colorArray: [String], size: CGSize) -> UIImage {
         let rect = CGRect.init(origin: CGPoint.zero, size: size)
         UIGraphicsBeginImageContext(rect.size)
@@ -47,6 +54,19 @@ class FaceLayerTableViewCell: UITableViewCell {
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return img!
+    }
+    
+    func handleColorButton( colorButton: UIButton, event: UIEvent, settingType: String) {
+        let touches = event.touches(for: colorButton)
+        let firstTouch = touches?.first
+        if let position = firstTouch?.location(in: colorButton) {
+            let desiredColorIndex = getColorIndexForColorButton(colorArray: SettingsViewController.currentFaceSetting.faceColors, buttonSize: colorButton.frame.size, position: position)
+            
+            let faceLayer = myFaceLayer()
+            faceLayer.desiredThemeColorIndex = desiredColorIndex
+            
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingType,"layerIndex":myLayerIndex()!])
+        }
     }
     
     func setupButtonBackgroundForColors( button: UIButton) {
