@@ -40,6 +40,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
 
     weak var watchPreviewViewController:WatchPreviewViewController?
     weak var faceLayersTableViewController:FaceLayersTableViewController?
+    weak var faceColorsTableViewController:FaceColorsTableViewController?
     
     static var currentFaceSetting: FaceSetting = FaceSetting.defaults()
     var currentFaceIndex = 0
@@ -197,7 +198,10 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             let vc = segue.destination as? FaceLayersTableViewController
             faceLayersTableViewController = vc
         }
-        
+        if segue.destination is FaceColorsTableViewController {
+            let vc = segue.destination as? FaceColorsTableViewController
+            faceColorsTableViewController = vc
+        }
     }
     
     @IBAction func sendSettingAction() {
@@ -277,7 +281,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         if let faceLayersTableViewController = faceLayersTableViewController {
             faceLayersTableViewController.reload()
         }
-
+        if let faceColorsTableViewController = faceColorsTableViewController {
+            faceColorsTableViewController.reload()
+        }
     }
     
     ////////////////

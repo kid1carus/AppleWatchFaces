@@ -15,6 +15,20 @@ class FaceColorSettingsTableViewCell: UITableViewCell, UICollectionViewDataSourc
     public var colorList : [String] = []
     var colorIndex = 0
     
+    func chooseSetting( animated: Bool ) {
+        debugPrint("** FaceBackgroundColorSettingTableViewCell called: " + SettingsViewController.currentFaceSetting.faceColors[colorIndex])
+        
+        let filteredColor = colorListVersion(unfilteredColor: SettingsViewController.currentFaceSetting.faceColors[colorIndex])
+        if let materialColorIndex = colorList.firstIndex(of: filteredColor) {
+            let indexPath = IndexPath.init(row: materialColorIndex, section: 0)
+            
+            //scroll and set native selection
+            faceColorSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+        } else {
+            faceColorSelectionCollectionView.deselectAll(animated: false)
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
