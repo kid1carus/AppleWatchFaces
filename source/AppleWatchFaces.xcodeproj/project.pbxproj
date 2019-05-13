@@ -227,7 +227,6 @@
 		31C86B2F22374DA000EF4186 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */; };
 		31C86B3022374DA000EF4186 /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E853722239740001C450B /* Double+Rounded.swift */; };
 		31C86B3122374DA000EF4186 /* UIImage+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CDC5E222CCAA700AF3B8D /* UIImage+Gradient.swift */; };
-		31C86B3222374DD200EF4186 /* WatchSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */; };
 		31C86B5C22374E0000EF4186 /* WatchPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */; };
 		31C86B5D22374E4100EF4186 /* FaceChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4F1D8219D08890050177A /* FaceChooserViewController.swift */; };
 		31C86B5E22374E5E00EF4186 /* GenerateThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */; };
@@ -429,7 +428,6 @@
 		31F56F9C21857A2000455FC6 /* SecondHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandNode.swift; sourceTree = "<group>"; };
 		31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPreviewViewController.swift; sourceTree = "<group>"; };
 		31F7D19422595D8700A1A27E /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
-		31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSettingsTableViewController.swift; sourceTree = "<group>"; };
 		31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockColorTheme.swift; sourceTree = "<group>"; };
 		FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateThumbnailsViewController.swift; sourceTree = "<group>"; };
@@ -594,7 +592,6 @@
 				318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */,
 				318808D2217815E600585AB1 /* SettingsViewController.swift */,
 				31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */,
-				31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */,
 				FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */,
 				310044C421D3C5DF0019794A /* Settings.storyboard */,
 				318808D4217815E600585AB1 /* FaceChooser.storyboard */,
@@ -1128,7 +1125,6 @@
 				31C86B2422374DA000EF4186 /* StringExtension.swift in Sources */,
 				31C86B0822374CEF00EF4186 /* ClockRingSetting.swift in Sources */,
 				311B7CB4227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
-				31C86B3222374DD200EF4186 /* WatchSettingsTableViewController.swift in Sources */,
 				31C86B3022374DA000EF4186 /* Double+Rounded.swift in Sources */,
 				31C86B1022374CF400EF4186 /* ClockTimer.swift in Sources */,
 				31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */,

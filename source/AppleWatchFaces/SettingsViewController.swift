@@ -319,11 +319,15 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBAction func groupChangeAction(sender: UISegmentedControl) {
         //show / hide the tableViews
         
-        if sender.selectedSegmentIndex == 1 {
+        if sender.selectedSegmentIndex == 1 { // layers
             colorsTableContainer.isHidden = true
             layerTableContainer.isHidden = false
+            // reload layers because colors and other things may have changes
+            if let faceLayersTableViewController = faceLayersTableViewController {
+                faceLayersTableViewController.reload()
+            }
         }
-        if sender.selectedSegmentIndex == 2 {
+        if sender.selectedSegmentIndex == 2 { // colors
             colorsTableContainer.isHidden = false
             layerTableContainer.isHidden = true
         }

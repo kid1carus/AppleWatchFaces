@@ -16,14 +16,14 @@ class FaceColorSettingsTableViewCell: UITableViewCell, UICollectionViewDataSourc
     var colorIndex = 0
     
     func chooseSetting( animated: Bool ) {
-        debugPrint("** FaceBackgroundColorSettingTableViewCell called: " + SettingsViewController.currentFaceSetting.faceColors[colorIndex])
+        //debugPrint("** FaceBackgroundColorSettingTableViewCell called: " + SettingsViewController.currentFaceSetting.faceColors[colorIndex])
         
         let filteredColor = colorListVersion(unfilteredColor: SettingsViewController.currentFaceSetting.faceColors[colorIndex])
         if let materialColorIndex = colorList.firstIndex(of: filteredColor) {
             let indexPath = IndexPath.init(row: materialColorIndex, section: 0)
             
             //scroll and set native selection
-            faceColorSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            faceColorSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
         } else {
             faceColorSelectionCollectionView.deselectAll(animated: false)
         }
@@ -90,16 +90,14 @@ class FaceColorSettingsTableViewCell: UITableViewCell, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        let newColor = colorList[indexPath.row]
-//
-//        //add to undo stack for actions to be able to undo
-//        SettingsViewController.addToUndoStack()
-//
-//        //update the value
-//        SettingsViewController.currentClockSetting.clockFaceMaterialName = newColor
-//        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
-//        NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
-//                                        userInfo:["cellId": self.cellId , "settingType":"clockFaceMaterialName"])
+        let newColor = colorList[indexPath.row]
+
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+
+        //update the value
+        SettingsViewController.currentFaceSetting.faceColors[colorIndex] = newColor
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":"color"])
     }
     
     // MARK: - Utility functions
