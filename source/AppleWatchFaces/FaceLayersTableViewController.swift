@@ -10,6 +10,48 @@ import UIKit
 
 class FaceLayersTableViewController: UITableViewController {
     
+    func adjustLayerItem(adjustmentType: WatchFaceNode.LayerAdjustmentType, amount: CGFloat) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
+        
+        func clamped (value: Float, min: Float, max: Float) -> Float {
+            if value > max { return max }
+            if value < min { return min }
+            return value
+        }
+        
+        var reload = false
+        
+        if adjustmentType == .Angle {
+            let clampedVal = clamped( value: layerSettings.angleOffset + Float(amount), min: -Float.pi, max: Float.pi )
+            if layerSettings.angleOffset != clampedVal {
+                layerSettings.angleOffset = clampedVal
+                reload = true
+            }
+        }
+        
+        if adjustmentType == .Scale {
+            let clampedVal = clamped( value: layerSettings.scale + Float(amount), min: 0, max: 1.0 )
+            if layerSettings.scale != clampedVal {
+                layerSettings.scale = clampedVal
+                reload = true
+            }
+        }
+        
+        if adjustmentType == .Alpha {
+            let clampedVal = clamped( value: layerSettings.alpha + Float(amount), min: 0, max: 1.0 )
+            if layerSettings.alpha != clampedVal {
+                layerSettings.alpha = clampedVal
+                reload = true
+            }
+        }
+        
+        //exit if no reload
+        guard reload == true else { return }
+        NotificationCenter.default.post(name: WatchPreviewViewController.settingsLayerAdjustNotificationName, object: nil,
+                                        userInfo:["faceLayerIndex":selectedRow.row, "adjustmentType": adjustmentType.rawValue])
+    }
+    
     func nudgeItem(xDirection: CGFloat, yDirection: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         
@@ -21,38 +63,6 @@ class FaceLayersTableViewController: UITableViewController {
         
         //reload
         NotificationCenter.default.post(name: WatchPreviewViewController.settingsNudgedNotificationName, object: nil,
-                                        userInfo:["faceLayerIndex":selectedRow.row ])
-    }
-    
-    func scaleAdjustItem( scaleAdjust: CGFloat) {
-        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
-        let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
-        
-        //clamp to 0 - 1.0
-        guard layerSettings.scale+Float(scaleAdjust) >= 0 else { return }
-        guard layerSettings.scale+Float(scaleAdjust) <= 1.0 else { return }
-        
-        //set the position in the layer
-        layerSettings.scale += Float(scaleAdjust)
-        
-        //reload
-        NotificationCenter.default.post(name: WatchPreviewViewController.settingsScaleAdjustNotificationName, object: nil,
-                                        userInfo:["faceLayerIndex":selectedRow.row ])
-    }
-    
-    func alphaAdjustItem( alphaAdjust: CGFloat) {
-        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
-        let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
-        
-        //clamp to 0 - 1.0
-        guard layerSettings.alpha+Float(alphaAdjust) >= 0 else { return }
-        guard layerSettings.alpha+Float(alphaAdjust) <= 1.0 else { return }
-        
-        //set the position in the layer
-        layerSettings.alpha += Float(alphaAdjust)
-        
-        //reload
-        NotificationCenter.default.post(name: WatchPreviewViewController.settingsAlphaAdjustNotificationName, object: nil,
                                         userInfo:["faceLayerIndex":selectedRow.row ])
     }
 

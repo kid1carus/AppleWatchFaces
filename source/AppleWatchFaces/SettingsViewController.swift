@@ -36,6 +36,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @IBOutlet var scaleControlsView: UIView!
     
+    @IBOutlet var angleLessButton: UIButton!
+    @IBOutlet var angleMoreButton: UIButton!
+    
+    @IBOutlet var angleControlsView: UIView!
+    
     @IBOutlet var groupSegmentControl: UISegmentedControl!
 
     weak var watchPreviewViewController:WatchPreviewViewController?
@@ -52,6 +57,19 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
     static let settingsExitingNotificationName = Notification.Name("settingsExiting")
     
+    @IBAction func adjustAngleForLayerItem( sender: UIButton) {
+        
+        var scaleAdjust:CGFloat = 0.0
+        let nudgeAmt:CGFloat = CGFloat.pi / 8
+        
+        if sender == angleLessButton { scaleAdjust = -nudgeAmt }
+        if sender == angleMoreButton { scaleAdjust = nudgeAmt }
+        
+        if let flTVC = faceLayersTableViewController {
+            flTVC.adjustLayerItem(adjustmentType: .Angle, amount: scaleAdjust)
+        }
+    }
+    
     @IBAction func adjustScaleForLayerItem( sender: UIButton) {
         
         var scaleAdjust:CGFloat = 0.0
@@ -61,7 +79,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         if sender == scaleMoreButton { scaleAdjust = nudgeAmt }
         
         if let flTVC = faceLayersTableViewController {
-            flTVC.scaleAdjustItem(scaleAdjust: scaleAdjust)
+            flTVC.adjustLayerItem(adjustmentType: .Scale, amount: scaleAdjust)
         }
     }
     
@@ -74,7 +92,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         if sender == alphaMoreButton { alphaAdjust = nudgeAmt }
         
         if let flTVC = faceLayersTableViewController {
-            flTVC.alphaAdjustItem(alphaAdjust: alphaAdjust)
+            flTVC.adjustLayerItem(adjustmentType: .Alpha, amount: alphaAdjust)
         }
     }
     

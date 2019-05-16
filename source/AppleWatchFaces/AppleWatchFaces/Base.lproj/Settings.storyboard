@@ -591,6 +591,9 @@
                                         <state key="normal" title="⃕">
                                             <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="adjustAngleForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JVX-aZ-CUy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJV-3U-yp8">
                                         <rect key="frame" x="34" y="-2" width="30" height="39"/>
@@ -599,6 +602,9 @@
                                         <state key="normal" title="⃔">
                                             <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="adjustAngleForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NL4-d8-52G"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.24677870530000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -704,6 +710,9 @@
                         <outlet property="alphaControlsView" destination="fZ0-ba-Jns" id="2Ay-m1-ggv"/>
                         <outlet property="alphaLessButton" destination="MgX-NG-dcM" id="hAD-kA-5Nl"/>
                         <outlet property="alphaMoreButton" destination="st2-KQ-E84" id="EW7-m6-TuR"/>
+                        <outlet property="angleControlsView" destination="GAX-YD-af9" id="yLg-bZ-INr"/>
+                        <outlet property="angleLessButton" destination="SJV-3U-yp8" id="uRD-2e-l6z"/>
+                        <outlet property="angleMoreButton" destination="eTG-Tq-Tw2" id="8DG-e8-HQ7"/>
                         <outlet property="colorsTableContainer" destination="P23-UF-T1a" id="2qf-cg-tp8"/>
                         <outlet property="groupSegmentControl" destination="4qh-Lb-N0o" id="aVJ-3t-1y5"/>
                         <outlet property="layerTableContainer" destination="L09-xH-or1" id="CDy-Vo-zlY"/>

@@ -31,6 +31,28 @@ class WatchFaceNode: SKShapeNode {
         hands
     }
     
+    enum LayerAdjustmentType: Int {
+        case Angle, Scale, Alpha
+    }
+    
+    func adjustLayer(faceSetting: FaceSetting, index: Int, adjustmentType: WatchFaceNode.LayerAdjustmentType) {
+        let faceLayer = faceSetting.faceLayers[index]
+        let layerNode = self.children[index]
+        
+        if adjustmentType == .Angle {
+            layerNode.zRotation = -CGFloat(faceLayer.angleOffset)
+        }
+        
+        if adjustmentType == .Scale {
+            layerNode.xScale = CGFloat(faceLayer.scale)
+            layerNode.yScale = CGFloat(faceLayer.scale)
+        }
+        
+        if adjustmentType == .Alpha {
+            layerNode.alpha = CGFloat(faceLayer.alpha)
+        }
+    }
+    
     func positionLayer(faceSetting: FaceSetting, index: Int ) {
         let faceLayer = faceSetting.faceLayers[index]
         let layerNode = self.children[index]
@@ -40,21 +62,6 @@ class WatchFaceNode: SKShapeNode {
         
         layerNode.position = CGPoint.init(x: xPos, y: yPos)
         
-    }
-    
-    func alphaAdjustLayer(faceSetting: FaceSetting, index: Int ) {
-        let faceLayer = faceSetting.faceLayers[index]
-        let layerNode = self.children[index]
-        
-        layerNode.alpha = CGFloat(faceLayer.alpha)
-    }
-    
-    func scaleAdjustLayer(faceSetting: FaceSetting, index: Int ) {
-        let faceLayer = faceSetting.faceLayers[index]
-        let layerNode = self.children[index]
-        
-        layerNode.xScale = CGFloat(faceLayer.scale)
-        layerNode.yScale = CGFloat(faceLayer.scale)
     }
     
     init(faceSettings: FaceSetting, size: CGSize) {
@@ -79,6 +86,7 @@ class WatchFaceNode: SKShapeNode {
             layerNode.alpha = CGFloat(faceLayer.alpha)
             layerNode.xScale = CGFloat(faceLayer.scale)
             layerNode.yScale = CGFloat(faceLayer.scale)
+            layerNode.zRotation = -CGFloat(faceLayer.angleOffset)
             
             let xPos = magicSize.width * CGFloat(faceLayer.horizontalPosition)
             let yPos = magicSize.height * CGFloat(faceLayer.verticalPosition)
