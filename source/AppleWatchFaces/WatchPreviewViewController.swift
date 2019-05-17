@@ -33,7 +33,7 @@ class WatchPreviewViewController: UIViewController {
         for (index,layerNode) in watchNode.children.enumerated() {
             if topNode.inParentHierarchy(layerNode) {
                 debugPrint("tapped on layer item:" + index.description + " name: " + layerNode.name!)
-                NotificationCenter.default.post(name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil, userInfo:["index":index])
+                NotificationCenter.default.post(name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil, userInfo:["faceLayerIndex":index])
             }
         }
     }
@@ -54,8 +54,7 @@ class WatchPreviewViewController: UIViewController {
         }
     }
     
-    @objc func onSettingsLayerAdjustedNotification(notification:Notification)
-    {
+    @objc func onSettingsLayerAdjustedNotification(notification:Notification) {
         //update values
         if let data = notification.userInfo as? [String: Int], let index = data["faceLayerIndex"], let adjustmentTypeRaw = data["adjustmentType"],
             let adjustmentType = WatchFaceNode.LayerAdjustmentType(rawValue: adjustmentTypeRaw) {
@@ -202,7 +201,6 @@ class WatchPreviewViewController: UIViewController {
                                                name: WatchPreviewViewController.settingsNudgedNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSettingsLayerAdjustedNotification(notification:)),
                                                name: WatchPreviewViewController.settingsLayerAdjustNotificationName, object: nil)
-        
         
     }
 

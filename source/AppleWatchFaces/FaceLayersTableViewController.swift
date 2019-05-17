@@ -80,6 +80,17 @@ class FaceLayersTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    @objc func onSettingsLayerSelectedNotification(notification:Notification) {
+        if let data = notification.userInfo as? [String: Int], let rowIndex = data["faceLayerIndex"] {
+            let selectedRow = IndexPath.init(row: rowIndex, section: 0)
+            self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
+            
+            // animate to show new heights when selected
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,6 +104,9 @@ class FaceLayersTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onSettingsLayerSelectedNotification(notification:)),
+                                               name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
