@@ -8,7 +8,6 @@
 
 import UIKit
 import SpriteKit
-import WatchConnectivity
 
 class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
 
@@ -114,55 +113,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             flTVC.nudgeItem(xDirection: xDirection, yDirection: yDirection)
         }
     }
-        
-    //WatchSessionManagerDelegate implementation
-    func sessionActivationDidCompleteError(errorMessage: String) {
-        showError(errorMessage: errorMessage)
-    }
-    
-    func sessionActivationDidCompleteSuccess() {
-        showMessage( message: "Watch session active")
-    }
-    
-    func sessionDidBecomeInactive() {
-        showError(errorMessage: "Watch session became inactive")
-    }
-    
-    func sessionDidDeactivate() {
-        showError(errorMessage: "Watch session did deactivate")
-    }
-    
-    func fileTransferError(errorMessage: String) {
-        self.showError(errorMessage: errorMessage)
-    }
-    
-    func fileTransferSuccess() {
-        self.showMessage(message: "All settings sent")
-    }
-    
-    func showError( errorMessage: String) {
-        DispatchQueue.main.async {
-            self.showToast(message: errorMessage, color: UIColor.red)
-        }
-    }
-    
-    func showMessage( message: String) {
-        DispatchQueue.main.async {
-            self.showToast(message: message, color: UIColor.lightGray)
-        }
-    }
     
     func addNewItem( layerType: FaceLayerTypes) {
-        
-        //copy some things from last item for convenience
-//        if let lastItem = SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings.last {
-//
-//            newItem.textType = lastItem.textType
-//            newItem.textSize = lastItem.textSize
-//            newItem.ringStaticEffects = lastItem.ringStaticEffects
-//            newItem.ringMaterialDesiredThemeColorIndex = lastItem.ringMaterialDesiredThemeColorIndex
-//
-//        }
+        //TODO: copy some things from last item for convenience
         
         var faceLayerOptions = FaceLayerOptions()
         if layerType == .ShapeRing {
@@ -196,61 +149,6 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         optionMenu.addAction(cancelAction)
         
         self.present(optionMenu, animated: true, completion: nil)
-    }
-    
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        
-        if parent == nil {
-            if let vc = self.navigationController?.viewControllers.first as? FaceChooserViewController {
-                vc.faceListReloadType = .onlyvisible
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is WatchPreviewViewController {
-            let vc = segue.destination as? WatchPreviewViewController
-            watchPreviewViewController = vc
-        }
-        if segue.destination is FaceLayersTableViewController {
-            let vc = segue.destination as? FaceLayersTableViewController
-            faceLayersTableViewController = vc
-            vc?.settingsViewController = self
-        }
-        if segue.destination is FaceColorsTableViewController {
-            let vc = segue.destination as? FaceColorsTableViewController
-            faceColorsTableViewController = vc
-        }
-    }
-    
-    @IBAction func sendSettingAction() {
-        //debugPrint("sendSetting tapped")
-//        if let validSession = WatchSessionManager.sharedManager.validSession {
-//
-//            //toggle it off to prevent spamming
-//            sendSettingButton.isEnabled = false
-//            delay(1.0) {
-//                self.sendSettingButton.isEnabled = true
-//            }
-//
-//            //send background image
-//            let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
-//            let imageURL = UIImage.getImageURL(imageName: filename)
-//            let fileManager = FileManager.default
-//            // check if the image is stored already
-//            if fileManager.fileExists(atPath: imageURL.path) {
-//                self.showMessage( message: "Sending background image")
-//                validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
-//            }
-//
-//            SettingsViewController.createTempTextFile()
-//            validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentClockSetting.filename() ])
-//
-//        } else {
-//            self.showError(errorMessage: "No valid watch session")
-//        }
     }
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {
@@ -307,36 +205,6 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
     }
     
-    ////////////////
-    func setUndoRedoButtonStatus() {
-        debugPrint("undoArray count:" + SettingsViewController.undoArray.count.description)
-        if SettingsViewController.undoArray.count>0 {
-            undoButton.isEnabled = true
-        } else {
-            undoButton.isEnabled = false
-        }
-        if SettingsViewController.redoArray.count > 0 {
-            redoButton.isEnabled = true
-        } else {
-            redoButton.isEnabled = false
-        }
-    }
-    
-    static func addToUndoStack() {
-        undoArray.append(SettingsViewController.currentFaceSetting.clone()!)
-        redoArray = []
-    }
-    
-    static func clearUndoStack() {
-        undoArray = []
-        redoArray = []
-    }
-    
-    func clearUndoAndUpdateButtons() {
-        SettingsViewController.clearUndoStack()
-        setUndoRedoButtonStatus()
-    }
-    
     @IBAction func groupChangeAction(sender: UISegmentedControl) {
         //show / hide the tableViews
         
@@ -354,25 +222,21 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
     }
     
-    @IBAction func redo() {
-        guard let lastSettings = SettingsViewController.redoArray.popLast() else { return } //current setting
-        SettingsViewController.undoArray.append(SettingsViewController.currentFaceSetting)
+    //MARK: ** draw UI **
+    
+    func drawUIForSelectedLayer(selectedLayer: Int, section: WatchFaceNode.LayerAdjustmentType) {
+        let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[selectedLayer]
         
-        SettingsViewController.currentFaceSetting = lastSettings
-        redrawPreviewClock() //show correct clockr
-        redrawSettingsTable() //show new title
-        setUndoRedoButtonStatus()
+        if (section == .Scale || section == .All) {
+            scaleLabel.text = String(round(faceLayer.scale*1000)/1000)
+        }
+        
+        if (section == .Angle || section == .All) {
+            angleLabel.text = String(round(faceLayer.angleOffset*1000)/1000)
+        }
     }
     
-    @IBAction func undo() {
-        guard let lastSettings = SettingsViewController.undoArray.popLast() else { return } //current setting
-        SettingsViewController.redoArray.append(SettingsViewController.currentFaceSetting)
-        
-        SettingsViewController.currentFaceSetting = lastSettings
-        redrawPreviewClock() //show correct clockr
-        redrawSettingsTable() //show new title
-        setUndoRedoButtonStatus()
-    }
+    
     /////////////////
     
     @IBAction func cloneClockSettings() {
@@ -418,31 +282,6 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         clearUndoAndUpdateButtons()
     }
     
-    func makeThumb( fileName: String) {
-        makeThumb(fileName: fileName, cornerCrop: false)
-    }
-    
-    func makeThumb( fileName: String, cornerCrop: Bool ) {
-        //make thumbnail
-        if let watchVC = watchPreviewViewController {
-            
-            if watchVC.makeThumb( imageName: fileName, cornerCrop: cornerCrop ) {
-                //self.showMessage( message: "Screenshot successful.")
-            } else {
-                self.showError(errorMessage: "Problem creating screenshot.")
-            }
-            
-        }
-    }
-    
-    @IBAction func shareAll() {
-        makeThumb(fileName: SettingsViewController.currentFaceSetting.uniqueID)
-        let activityViewController = UIActivityViewController(activityItems: [TextProvider(), ImageProvider(),
-            BackgroundImageProvider(), AttachmentProvider()], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        self.present(activityViewController, animated: true, completion: nil)
-    }
-    
     @IBAction func saveClock() {
         //just save this clock
         UserFaceSetting.sharedFaceSettings[currentFaceIndex] = SettingsViewController.currentFaceSetting
@@ -452,17 +291,31 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         //makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
     }
     
-    //MARK: ** draw UI **
-    
-    func drawUIForSelectedLayer(selectedLayer: Int, section: WatchFaceNode.LayerAdjustmentType) {
-        let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[selectedLayer]
+    //MARK: UIViewController
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
         
-        if (section == .Scale || section == .All) {
-            scaleLabel.text = String(round(faceLayer.scale*1000)/1000)
+        if parent == nil {
+            if let vc = self.navigationController?.viewControllers.first as? FaceChooserViewController {
+                vc.faceListReloadType = .onlyvisible
+            }
         }
-        
-        if (section == .Angle || section == .All) {
-            angleLabel.text = String(round(faceLayer.angleOffset*1000)/1000)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is WatchPreviewViewController {
+            let vc = segue.destination as? WatchPreviewViewController
+            watchPreviewViewController = vc
+        }
+        if segue.destination is FaceLayersTableViewController {
+            let vc = segue.destination as? FaceLayersTableViewController
+            faceLayersTableViewController = vc
+            vc?.settingsViewController = self
+        }
+        if segue.destination is FaceColorsTableViewController {
+            let vc = segue.destination as? FaceColorsTableViewController
+            faceColorsTableViewController = vc
         }
     }
     
@@ -540,163 +393,5 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGetCameraImage(notification:)), name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil)
     }
     
-    static func attachmentURL()->URL {
-        let filename = SettingsViewController.currentFaceSetting.filename() + ".awf"
-        return UserClockSetting.DocumentsDirectory.appendingPathComponent(filename)
-    }
-    
-    static func createTempTextFile() {
-//        //TODO: move this to temporary file to be less cleanup later / trash on device
-//        //JSON save to file
-//        var serializedArray = [NSDictionary]()
-//        let serializedSettings = NSMutableDictionary.init(dictionary: SettingsViewController.currentFaceSetting.serializedSettings())
-//        if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: SettingsViewController.currentFaceSetting.clockFaceMaterialName) {
-//            serializedSettings["clockFaceMaterialJPGData"] = jpgDataString
-//        }
-//        serializedArray.append(serializedSettings)
-//
-//        //delete existing file if its there
-//        let fileManagerIs = FileManager.default
-//        if fileManagerIs.fileExists(atPath: attachmentURL().path) {
-//            try? fileManagerIs.removeItem(at: attachmentURL())
-//        }
-//        UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: attachmentURL())
-    }
-    
 }
 
-class TextProvider: NSObject, UIActivityItemSource {
-    
-    let myWebsiteURL = NSURL(string:"clockology")!.absoluteString!
-    //let appName = "AppleWatchFaces on github"
-    let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentFaceSetting.title + "\" I created"
-
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return NSObject()
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
-    
-        return watchFaceCreatedText
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        
-        let promoText = watchFaceCreatedText + " using " + myWebsiteURL + "."
-        
-        //copy to clipboard for insta / FB
-        UIPasteboard.general.string = promoText
-        
-        if activityType == .postToFacebook  {
-            return nil
-        }
-        
-        return promoText
-    }
-}
-
-class AttachmentProvider: NSObject, UIActivityItemSource {
-    
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return NSObject()
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        
-        if activityType == .postToFacebook  {
-            return nil
-        }
-        
-        SettingsViewController.createTempTextFile()
-        return SettingsViewController.attachmentURL()
-
-    }
-}
-
-class ImageProvider: NSObject, UIActivityItemSource {
-    
-    func getThumbImageURL() -> URL? {
-        if let newImageURL = UIImage.getValidatedImageURL(imageName: SettingsViewController.currentFaceSetting.uniqueID) {
-            //copy as new file to send out friendly URL / filename
-            let fileManagerIs = FileManager.default
-            do {
-                let newURL = newImageURL.deletingLastPathComponent().appendingPathComponent(SettingsViewController.currentFaceSetting.filename()+".jpg")
-                if fileManagerIs.fileExists(atPath: newURL.path) {
-                    try fileManagerIs.removeItem(at: newURL)
-                }
-                try fileManagerIs.copyItem(at: newImageURL, to: newURL)
-                return newURL
-            } catch {
-                debugPrint("error copying new thumbnail file: " + error.localizedDescription)
-            }
-        }
-        return nil
-    }
-    
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return UIImage.init()
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        return getThumbImageURL()
-    }
-}
-
-class BackgroundTextProvider: NSObject, UIActivityItemSource {
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return NSObject()
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        return nil
-//        if activityType == .postToFacebook  {
-//            return nil
-//        }
-//        let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
-//        if !AppUISettings.materialIsColor(materialName: material) && UIImage.getImageFor(imageName: material) != nil {
-//            return "Background and settings file attached."
-//        }
-//        return "Settings file attached."
-    }
-    
-}
-
-class BackgroundImageProvider: NSObject, UIActivityItemSource {
-    
-    func getBackgroundImageURL() -> URL? {
-//        let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
-//        if !AppUISettings.materialIsColor(materialName: material) {
-//            if let newImageURL = UIImage.getValidatedImageURL(imageName: material) {
-//                //copy as new file to send out friendly URL / filename
-//                let fileManagerIs = FileManager.default
-//                do {
-//                    let newURL = newImageURL.deletingLastPathComponent().appendingPathComponent(SettingsViewController.currentClockSetting.filename()+"-background.jpg")
-//                    if fileManagerIs.fileExists(atPath: newURL.path) {
-//                        try fileManagerIs.removeItem(at: newURL)
-//                    }
-//                    try fileManagerIs.copyItem(at: newImageURL, to: newURL)
-//                    return newURL
-//                } catch {
-//                    debugPrint("error copying new thumbnail file: " + error.localizedDescription)
-//                }
-//            }
-//        }
-        return nil
-    }
-    
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        if let newImageURL = getBackgroundImageURL() {
-            return newImageURL
-        } else {
-            return UIImage.init()
-        }
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        if let newImageURL = getBackgroundImageURL() {
-            return newImageURL
-        } else {
-            return nil
-        }
-    }
-}

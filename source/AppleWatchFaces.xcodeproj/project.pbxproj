@@ -261,6 +261,12 @@
 		31F7D19522595D8700A1A27E /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7D19422595D8700A1A27E /* OptionsViewController.swift */; };
 		31FD61E921891B5000E15DEA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */; };
 		31FD61EB21891B6900E15DEA /* ClockColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */; };
+		31FF20C7228E6D010023F8A5 /* SettingsViewController+Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20C6228E6D010023F8A5 /* SettingsViewController+Sharing.swift */; };
+		31FF20C8228E6D130023F8A5 /* SettingsViewController+Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20C6228E6D010023F8A5 /* SettingsViewController+Sharing.swift */; };
+		31FF20CA228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20C9228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift */; };
+		31FF20CB228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20C9228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift */; };
+		31FF20CD228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */; };
+		31FF20CE228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */; };
 		FDC17D0221FF98CE0064D962 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F52178166B00585AB1 /* InterfaceController.swift */; };
 		FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -430,6 +436,9 @@
 		31F7D19422595D8700A1A27E /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockColorTheme.swift; sourceTree = "<group>"; };
+		31FF20C6228E6D010023F8A5 /* SettingsViewController+Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Sharing.swift"; sourceTree = "<group>"; };
+		31FF20C9228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+WatchDelegate.swift"; sourceTree = "<group>"; };
+		31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Undo.swift"; sourceTree = "<group>"; };
 		FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateThumbnailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -590,6 +599,9 @@
 				31EF99A021A2046100BB54E7 /* ChooserView */,
 				318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */,
 				318808D2217815E600585AB1 /* SettingsViewController.swift */,
+				31FF20C6228E6D010023F8A5 /* SettingsViewController+Sharing.swift */,
+				31FF20C9228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift */,
+				31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */,
 				31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */,
 				FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */,
 				310044C421D3C5DF0019794A /* Settings.storyboard */,
@@ -994,6 +1006,7 @@
 				31092073224FA2D10032D3AB /* WatchSessionManager.swift in Sources */,
 				310D9230227E700B007A5808 /* FaceLayerShapeTableViewCell.swift in Sources */,
 				31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */,
+				31FF20CD228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */,
 				315878D222877B4E008FFC76 /* FaceColorsTableViewController.swift in Sources */,
 				311B7CB2227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
@@ -1044,11 +1057,13 @@
 				3109D1E521A9A37B00561F13 /* FaceChooserEditTableViewCell.swift in Sources */,
 				31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */,
 				318808D1217815E600585AB1 /* AppDelegate.swift in Sources */,
+				31FF20C7228E6D010023F8A5 /* SettingsViewController+Sharing.swift in Sources */,
 				312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */,
 				31F56FA421857FC100455FC6 /* WatchPreviewViewController.swift in Sources */,
 				310D922E227E6F17007A5808 /* FaceLayerTableViewCell.swift in Sources */,
 				31EF999321A0AF4F00BB54E7 /* FaceBackgroundNode.swift in Sources */,
 				312E853822239740001C450B /* Double+Rounded.swift in Sources */,
+				31FF20CA228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift in Sources */,
 				31A5F7EF21966CED000F1677 /* MathFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1124,7 +1139,9 @@
 				311B7CB0227F6A8E0073C4C9 /* ShapeLayerOptions.swift in Sources */,
 				31C86B2422374DA000EF4186 /* StringExtension.swift in Sources */,
 				31C86B0822374CEF00EF4186 /* ClockRingSetting.swift in Sources */,
+				31FF20CB228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift in Sources */,
 				311B7CB4227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
+				31FF20CE228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */,
 				31C86B3022374DA000EF4186 /* Double+Rounded.swift in Sources */,
 				31C86B1022374CF400EF4186 /* ClockTimer.swift in Sources */,
 				31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */,
@@ -1140,6 +1157,7 @@
 				31C86AFF22374CEA00EF4186 /* FaceBackgroundNode.swift in Sources */,
 				31C86B0622374CEF00EF4186 /* ClockFaceSetting.swift in Sources */,
 				31C86B5E22374E5E00EF4186 /* GenerateThumbnailsViewController.swift in Sources */,
+				31FF20C8228E6D130023F8A5 /* SettingsViewController+Sharing.swift in Sources */,
 				31C86B0522374CEF00EF4186 /* UserClockSetting.swift in Sources */,
 				310920752251A8770032D3AB /* UIBrightnessViewController.swift in Sources */,
 				31C86B0222374CEA00EF4186 /* HourHandNode.swift in Sources */,
