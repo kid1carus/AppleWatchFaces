@@ -28,6 +28,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBOutlet var alphaLessButton: UIButton!
     @IBOutlet var alphaMoreButton: UIButton!
     
+    @IBOutlet var alphaLabel: UILabel!
     @IBOutlet var alphaControlsView: UIView!
     
     @IBOutlet var scaleLessButton: UIButton!
@@ -233,6 +234,10 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         if (section == .Angle || section == .All) {
             angleLabel.text = String(round(faceLayer.angleOffset*1000)/1000)
+        }
+        
+        if (section == .Alpha || section == .All) {
+            alphaLabel.text = String(round(faceLayer.alpha*1000)/1000)
         }
     }
     
