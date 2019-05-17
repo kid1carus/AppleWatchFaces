@@ -493,7 +493,7 @@
                                     <action selector="newItem" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ap-Ji-0iI"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4en-eN-ezb">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4en-eN-ezb">
                                 <rect key="frame" x="304" y="27" width="98" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sl3-qy-7sh">
@@ -622,7 +622,7 @@
                                     <action selector="groupChangeActionWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="ScI-AX-ofu"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYe-fh-Ovn">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYe-fh-Ovn">
                                 <rect key="frame" x="-25" y="167" width="98" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aL-mv-aw7">
@@ -689,7 +689,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Wdn-8L-cUg" secondAttribute="trailing" constant="2" id="z72-KK-jRd"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZ0-ba-Jns">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZ0-ba-Jns">
                                 <rect key="frame" x="304" y="167" width="98" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-NG-dcM">
@@ -756,7 +756,7 @@
                                     <constraint firstItem="WIl-k4-xQ7" firstAttribute="top" secondItem="fZ0-ba-Jns" secondAttribute="top" id="z0P-JT-Je6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk1-nK-qHQ">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk1-nK-qHQ">
                                 <rect key="frame" x="-25" y="87" width="98" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8f-lf-LtL">

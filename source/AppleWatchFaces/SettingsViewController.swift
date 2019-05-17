@@ -211,6 +211,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBAction func groupChangeAction(sender: UISegmentedControl) {
         //show / hide the tableViews
         
+        if sender.selectedSegmentIndex == 0 { //main
+            hideLayerControls()
+        }
         if sender.selectedSegmentIndex == 1 { // layers
             colorsTableContainer.isHidden = true
             layerTableContainer.isHidden = false
@@ -220,6 +223,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             }
         }
         if sender.selectedSegmentIndex == 2 { // colors
+            hideLayerControls()
+            
             colorsTableContainer.isHidden = false
             layerTableContainer.isHidden = true
         }
@@ -227,8 +232,43 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     //MARK: ** draw UI **
     
+    func hideLayerControls() {
+        guard self.numControlsView.isHidden==false else { return }
+        
+        for controlsView in [numControlsView, alphaControlsView, scaleControlsView,
+                             angleControlsView] {
+            let controlsView = controlsView!
+            controlsView.alpha = 1.0
+            UIView.animate(withDuration: 0.25, animations: {
+                controlsView.alpha = 0.0
+            }) { (Bool) in
+                controlsView.isHidden = true
+            }
+        }
+    }
+    
+    func showLayerControls() {
+        guard self.numControlsView.isHidden==true else { return }
+        
+        for controlsView in [numControlsView, alphaControlsView, scaleControlsView,
+                     angleControlsView] {
+                        let controlsView = controlsView!
+                        controlsView.isHidden = false
+                        controlsView.alpha = 0.0
+                        
+                        UIView.animate(withDuration: 0.25) {
+                            controlsView.alpha = 1.0
+                        }
+        }
+        
+    }
+    
     func drawUIForSelectedLayer(selectedLayer: Int, section: WatchFaceNode.LayerAdjustmentType) {
         let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[selectedLayer]
+        
+        if (section == .All) {
+            showLayerControls()
+        }
         
         if (section == .Scale || section == .All) {
             scaleLabel.text = String(round(faceLayer.scale*1000)/1000)
