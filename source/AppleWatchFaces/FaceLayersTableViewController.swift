@@ -61,6 +61,7 @@ class FaceLayersTableViewController: UITableViewController {
     
     func nudgeItem(xDirection: CGFloat, yDirection: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        guard let settingsViewVC = settingsViewController else { return }
         
         let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
         
@@ -69,6 +70,7 @@ class FaceLayersTableViewController: UITableViewController {
         layerSettings.verticalPosition = layerSettings.verticalPosition + Float(yDirection)
         
         //reload
+        settingsViewVC.drawUIForSelectedLayer(selectedLayer: selectedRow.row, section: .Position)
         NotificationCenter.default.post(name: WatchPreviewViewController.settingsNudgedNotificationName, object: nil,
                                         userInfo:["faceLayerIndex":selectedRow.row ])
     }

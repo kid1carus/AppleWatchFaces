@@ -32,7 +32,7 @@ class WatchPreviewViewController: UIViewController {
         
         for (index,layerNode) in watchNode.children.enumerated() {
             if topNode.inParentHierarchy(layerNode) {
-                debugPrint("tapped on layer item:" + index.description + " name: " + layerNode.name!)
+                //debugPrint("tapped on layer item:" + index.description + " name: " + layerNode.name!)
                 NotificationCenter.default.post(name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil, userInfo:["faceLayerIndex":index])
             }
         }

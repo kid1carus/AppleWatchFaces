@@ -23,6 +23,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBOutlet var nudgeUButton: UIButton!
     @IBOutlet var nudgeDButton: UIButton!
     
+    @IBOutlet var posXLabel: UILabel!
+    @IBOutlet var posYLabel: UILabel!
     @IBOutlet var numControlsView: UIView!
     
     @IBOutlet var alphaLessButton: UIButton!
@@ -238,6 +240,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         if (section == .Alpha || section == .All) {
             alphaLabel.text = String(round(faceLayer.alpha*1000)/1000)
+        }
+        
+        if (section == .Position || section == .All) {
+            posXLabel.text = String(round(faceLayer.horizontalPosition*100)/100)
+            posYLabel.text = String(round(faceLayer.verticalPosition*100)/100)
         }
     }
     
