@@ -10,8 +10,12 @@ import UIKit
 
 class FaceLayersTableViewController: UITableViewController {
     
+    weak var settingsViewController:SettingsViewController?
+    
     func adjustLayerItem(adjustmentType: WatchFaceNode.LayerAdjustmentType, amount: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        guard let settingsViewVC = settingsViewController else { return }
+        
         let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
         
         func clamped (value: Float, min: Float, max: Float) -> Float {
@@ -48,6 +52,9 @@ class FaceLayersTableViewController: UITableViewController {
         
         //exit if no reload
         guard reload == true else { return }
+        //draw labels in settings view
+        settingsViewVC.drawUIForSelectedLayer(selectedLayer: selectedRow.row, section: adjustmentType)
+        //tell preview to redraw a layer
         NotificationCenter.default.post(name: WatchPreviewViewController.settingsLayerAdjustNotificationName, object: nil,
                                         userInfo:["faceLayerIndex":selectedRow.row, "adjustmentType": adjustmentType.rawValue])
     }
@@ -88,6 +95,10 @@ class FaceLayersTableViewController: UITableViewController {
             // animate to show new heights when selected
             tableView.beginUpdates()
             tableView.endUpdates()
+            
+            if let settingsVC = settingsViewController {
+                settingsVC.drawUIForSelectedLayer(selectedLayer: rowIndex, section: .All)
+            }
         }
     }
     
@@ -207,6 +218,10 @@ class FaceLayersTableViewController: UITableViewController {
         // animate to show new heights when selected
         tableView.beginUpdates()
         tableView.endUpdates()
+        
+        if let settingsVC = settingsViewController {
+            settingsVC.drawUIForSelectedLayer(selectedLayer: indexPath.row, section: .All)
+        }
     }
 
 }

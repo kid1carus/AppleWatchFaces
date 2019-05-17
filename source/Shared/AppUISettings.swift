@@ -35,6 +35,11 @@ class AppUISettings: NSObject {
     static let watchFrameCornerRadius:CGFloat = 32.0
     static let watchFrameBorderWidth:CGFloat = 4.0
     static let watchFrameBorderColor = SKColor.darkGray.cgColor
+    
+    //corner and border settings for "watch controls" around the preview watch
+    static let watchControlsCornerRadius:CGFloat = 10.0
+    static let watchControlsWidth:CGFloat = 2.0
+    static let watchControlsBorderColor = SKColor.darkGray.cgColor
 
     static let materialFiles = [
        "80sTubes.jpg","AppleDigital.jpg","BackToTheFuture.jpg","Beeker.jpg","BlueSky.jpg","Calculator.jpg","gameBoy.jpg",

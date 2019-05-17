@@ -32,7 +32,7 @@ class WatchFaceNode: SKShapeNode {
     }
     
     enum LayerAdjustmentType: Int {
-        case Angle, Scale, Alpha
+        case Angle, Scale, Alpha, Position, All
     }
     
     func adjustLayer(faceSetting: FaceSetting, index: Int, adjustmentType: WatchFaceNode.LayerAdjustmentType) {

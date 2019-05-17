@@ -34,11 +34,13 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBOutlet var scaleLessButton: UIButton!
     @IBOutlet var scaleMoreButton: UIButton!
     
+    @IBOutlet var scaleLabel: UILabel!
     @IBOutlet var scaleControlsView: UIView!
     
     @IBOutlet var angleLessButton: UIButton!
     @IBOutlet var angleMoreButton: UIButton!
     
+    @IBOutlet var angleLabel: UILabel!
     @IBOutlet var angleControlsView: UIView!
     
     @IBOutlet var groupSegmentControl: UISegmentedControl!
@@ -215,6 +217,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         if segue.destination is FaceLayersTableViewController {
             let vc = segue.destination as? FaceLayersTableViewController
             faceLayersTableViewController = vc
+            vc?.settingsViewController = self
         }
         if segue.destination is FaceColorsTableViewController {
             let vc = segue.destination as? FaceColorsTableViewController
@@ -449,6 +452,20 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         //makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
     }
     
+    //MARK: ** draw UI **
+    
+    func drawUIForSelectedLayer(selectedLayer: Int, section: WatchFaceNode.LayerAdjustmentType) {
+        let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[selectedLayer]
+        
+        if (section == .Scale || section == .All) {
+            scaleLabel.text = String(round(faceLayer.scale*1000)/1000)
+        }
+        
+        if (section == .Angle || section == .All) {
+            angleLabel.text = String(round(faceLayer.angleOffset*1000)/1000)
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         
         if (self.isMovingFromParent) {
@@ -483,14 +500,21 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         colorsTableContainer.isHidden = true
         
-        //numControlsView.isHidden = true
-        numControlsView.layer.cornerRadius = 10.0
-        numControlsView.layer.borderWidth = 2.0
-        numControlsView.layer.borderColor = SKColor.darkGray.cgColor
+        numControlsView.layer.cornerRadius = AppUISettings.watchControlsCornerRadius
+        numControlsView.layer.borderWidth = AppUISettings.watchControlsWidth
+        numControlsView.layer.borderColor = AppUISettings.watchControlsBorderColor
         
-        alphaControlsView.layer.cornerRadius = 10.0
-        alphaControlsView.layer.borderWidth = 2.0
-        alphaControlsView.layer.borderColor = SKColor.darkGray.cgColor
+        alphaControlsView.layer.cornerRadius = AppUISettings.watchControlsCornerRadius
+        alphaControlsView.layer.borderWidth = AppUISettings.watchControlsWidth
+        alphaControlsView.layer.borderColor = AppUISettings.watchControlsBorderColor
+        
+        scaleControlsView.layer.cornerRadius = AppUISettings.watchControlsCornerRadius
+        scaleControlsView.layer.borderWidth = AppUISettings.watchControlsWidth
+        scaleControlsView.layer.borderColor = AppUISettings.watchControlsBorderColor
+        
+        angleControlsView.layer.cornerRadius = AppUISettings.watchControlsCornerRadius
+        angleControlsView.layer.borderWidth = AppUISettings.watchControlsWidth
+        angleControlsView.layer.borderColor = AppUISettings.watchControlsBorderColor
         
         //style the section segment
         // Add lines below selectedSegmentIndex
