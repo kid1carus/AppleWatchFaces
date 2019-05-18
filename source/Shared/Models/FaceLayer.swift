@@ -85,6 +85,9 @@ class FaceLayer: NSObject {
             //TODO: grag this from the JSON
             self.layerOptions = ShapeLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         }
+        if self.layerType == .DateTimeLabel {
+            self.layerOptions = ShapeLayerDigitalTimeOptions.init(jsonObj: jsonObj["layerOptions"])
+        }
         
         super.init()
     }

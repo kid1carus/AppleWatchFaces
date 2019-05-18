@@ -20,9 +20,14 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     let settingTypeString = "dateTimeLabel"
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let faceLayer = myFaceLayer()
+        
         if collectionView == colorSelectionCollectionView {
-            let faceLayer = myFaceLayer()
             faceLayer.desiredThemeColorIndex = indexPath.row
+        }
+        if collectionView == outlineColorSelectionCollectionView {
+            guard let shapeOptions = faceLayer.layerOptions as? ShapeLayerDigitalTimeOptions else { return }
+            shapeOptions.desiredThemeColorIndexForOutline = indexPath.row
         }
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
@@ -94,7 +99,8 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
         selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
         
         redrawColorsForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView)
-        //select current outline color
+        guard let shapeOptions = faceLayer.layerOptions as? ShapeLayerDigitalTimeOptions else { return }
+        selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: shapeOptions.desiredThemeColorIndexForOutline)
     }
     
     override func awakeFromNib() {

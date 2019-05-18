@@ -295,6 +295,7 @@
                                             </cells>
                                             <connections>
                                                 <outlet property="dataSource" destination="WIH-me-bRh" id="XaC-EL-jOw"/>
+                                                <outlet property="delegate" destination="N3f-GG-a5k" id="U6G-Ps-TPB"/>
                                             </connections>
                                         </collectionView>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-zH-hD1">
