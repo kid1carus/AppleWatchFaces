@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         clockTimer.startTimer()
         
+        //load in color list from color file doe re-use
+        AppUISettings.loadColorList()
+        
         //TODO: do this only once on initial launch ( save a pref to skip it )
         AppUISettings.createFolders()
         

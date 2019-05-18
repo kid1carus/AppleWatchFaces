@@ -7,7 +7,10 @@
 
 import UIKit
 
-class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell {
+class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionViewDelegate {
+    
+    @IBOutlet var colorSelectionCollectionView: UICollectionView!
+    @IBOutlet var outlineColorSelectionCollectionView: UICollectionView!
     
     @IBOutlet var colorButton: UIButton!
     @IBOutlet var outlineColorButton: UIButton!
@@ -15,10 +18,21 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell {
 //    @IBOutlet var valueSlider: UISlider!
     
     let settingTypeString = "dateTimeLabel"
-
-    @IBAction func colorButtonTapped( colorButton: UIButton, event: UIEvent) {
-        super.handleColorButton( colorButton: colorButton, event: event, settingType: settingTypeString )
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == colorSelectionCollectionView {
+            let faceLayer = myFaceLayer()
+            faceLayer.desiredThemeColorIndex = indexPath.row
+        }
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
+    
+//    let desiredColorIndex = getColorIndexForColorButton(colorArray: SettingsViewController.currentFaceSetting.faceColors, buttonSize: colorButton.frame.size, position: position)
+//
+//    let faceLayer = myFaceLayer()
+//    faceLayer.desiredThemeColorIndex = desiredColorIndex
+//
+//    NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingType,"layerIndex":myLayerIndex()!])
     
     //    func shapeChosen( shapeType: FaceIndicatorTypes ) {
     //        //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
@@ -76,8 +90,18 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell {
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer)
         
-        setupButtonBackgroundForColors(button: colorButton)
-        setupButtonBackgroundForColors(button: outlineColorButton)
+        redrawColorsForColorCollectionView( colorCollectionView: colorSelectionCollectionView)
+        selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
+        
+        redrawColorsForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView)
+        //select current outline color
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        
     }
     
     

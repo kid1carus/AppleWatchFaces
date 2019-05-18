@@ -8,17 +8,19 @@
 
 import UIKit
 
-class FaceLayerShapeTableViewCell: FaceLayerTableViewCell {
+class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDelegate {
 
-    @IBOutlet var colorButton: UIButton!
+    @IBOutlet var colorSelectionCollectionView: UICollectionView!
     @IBOutlet var materialSegment: UISegmentedControl!
     @IBOutlet var totalNumbersSegment: UISegmentedControl!
     @IBOutlet var valueSlider: UISlider!
     
     let settingTypeString = "shapeRing"
     
-    @IBAction func colorButtonTapped( colorButton: UIButton, event: UIEvent) {
-        super.handleColorButton( colorButton: colorButton, event: event, settingType: settingTypeString )
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let faceLayer = myFaceLayer()
+        faceLayer.desiredThemeColorIndex = indexPath.row
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
     
 //    func shapeChosen( shapeType: FaceIndicatorTypes ) {
@@ -77,7 +79,8 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell {
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer)
         
-        setupButtonBackgroundForColors(button: colorButton)
+        redrawColorsForColorCollectionView( colorCollectionView: colorSelectionCollectionView)
+        selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
         
         valueSlider.minimumValue = AppUISettings.ringSettigsSliderShapeMin
         valueSlider.maximumValue = AppUISettings.ringSettigsSliderShapeMax

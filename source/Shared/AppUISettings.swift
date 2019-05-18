@@ -97,6 +97,20 @@ class AppUISettings: NSObject {
     static let thumbnailFolder = "thumbs"
     static let backgroundFileName = "-customBackground"
     
+    static var colorList : [String] = []
+    
+    // load colors from Colors.plist and save to colorList array.
+    static func loadColorList() {
+        // create path for Colors.plist resource file.
+        let colorFilePath = Bundle.main.path(forResource: "Colors", ofType: "plist")
+        
+        // save piist file array content to NSArray object
+        let colorNSArray = NSArray(contentsOfFile: colorFilePath!)
+        
+        // Cast NSArray to string array.
+        colorList = colorNSArray as! [String]
+    }
+    
     static func deleteAllFolders() {
         let filemgr = FileManager.default
         let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)

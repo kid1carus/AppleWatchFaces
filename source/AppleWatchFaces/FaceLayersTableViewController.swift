@@ -186,8 +186,8 @@ class FaceLayersTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
         }
     
-        cell.setupUIForFaceLayer(faceLayer: faceLayer)
         cell.parentTableview = self.tableView
+        cell.setupUIForFaceLayer(faceLayer: faceLayer)
         
         return cell
     }

@@ -28,52 +28,6 @@ class FaceLayerTableViewCell: UITableViewCell {
         }
     }
     
-    func getColorIndexForColorButton( colorArray: [String], buttonSize: CGSize, position: CGPoint) -> Int {
-        let buttonW = buttonSize.width / CGFloat(colorArray.count)
-        
-        let region = Int(position.x / buttonW)
-        return region
-    }
-    
-   func getColoredImage(colorArray: [String], size: CGSize) -> UIImage {
-        let rect = CGRect.init(origin: CGPoint.zero, size: size)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-    
-        let buttonW = size.width / CGFloat(colorArray.count)
-    
-        for (index,hexString) in colorArray.enumerated() {
-            let color = UIColor.init(hexString: hexString)
-            context!.setFillColor(color.cgColor)
-            
-            let buttonRect = CGRect.init(x: buttonW*CGFloat(index), y: 0, width: buttonW, height: size.height)
-            
-            context!.fill(buttonRect)
-        }
-    
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return img!
-    }
-    
-    func handleColorButton( colorButton: UIButton, event: UIEvent, settingType: String) {
-        let touches = event.touches(for: colorButton)
-        let firstTouch = touches?.first
-        if let position = firstTouch?.location(in: colorButton) {
-            let desiredColorIndex = getColorIndexForColorButton(colorArray: SettingsViewController.currentFaceSetting.faceColors, buttonSize: colorButton.frame.size, position: position)
-            
-            let faceLayer = myFaceLayer()
-            faceLayer.desiredThemeColorIndex = desiredColorIndex
-            
-            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingType,"layerIndex":myLayerIndex()!])
-        }
-    }
-    
-    func setupButtonBackgroundForColors( button: UIButton) {
-        let coloredImage = getColoredImage(colorArray: SettingsViewController.currentFaceSetting.faceColors, size: button.frame.size )
-        button.setBackgroundImage(coloredImage, for: .normal)
-    }
-    
     func titleText( faceLayer: FaceLayer ) -> String {
         return FaceLayer.descriptionForType(faceLayer.layerType)
     }
@@ -86,6 +40,20 @@ class FaceLayerTableViewCell: UITableViewCell {
     //    override func didMoveToSuperview() {
     //        self.setupUIForClockRingSetting()
     //    }
+    
+    func redrawColorsForColorCollectionView( colorCollectionView: UICollectionView) {
+        if let cdc = colorCollectionView.dataSource as? ColorCollectionDataSource {
+            //reset the colors
+            cdc.faceColors = SettingsViewController.currentFaceSetting.faceColors
+            colorCollectionView.reloadData()
+        }
+    }
+    
+    func selectColorForColorCollectionView( colorCollectionView: UICollectionView, desiredIndex: Int) {
+        //select current item
+        let indexPath = IndexPath.init(row: desiredIndex, section: 0)
+        colorCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

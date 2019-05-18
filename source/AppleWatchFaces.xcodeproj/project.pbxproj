@@ -267,6 +267,7 @@
 		31FF20CB228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20C9228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift */; };
 		31FF20CD228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */; };
 		31FF20CE228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */; };
+		31FF20D5228FB96B0023F8A5 /* ColorCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D4228FB96B0023F8A5 /* ColorCollectionDataSource.swift */; };
 		FDC17D0221FF98CE0064D962 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F52178166B00585AB1 /* InterfaceController.swift */; };
 		FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -439,6 +440,7 @@
 		31FF20C6228E6D010023F8A5 /* SettingsViewController+Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Sharing.swift"; sourceTree = "<group>"; };
 		31FF20C9228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+WatchDelegate.swift"; sourceTree = "<group>"; };
 		31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Undo.swift"; sourceTree = "<group>"; };
+		31FF20D4228FB96B0023F8A5 /* ColorCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionDataSource.swift; sourceTree = "<group>"; };
 		FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateThumbnailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -557,6 +559,7 @@
 			children = (
 				315878D422878261008FFC76 /* FaceColorSettingTableViewCell.swift */,
 				315878D72287835A008FFC76 /* ColorSettingCollectionViewCell.swift */,
+				31FF20D4228FB96B0023F8A5 /* ColorCollectionDataSource.swift */,
 			);
 			path = FaceColorsTableView;
 			sourceTree = "<group>";
@@ -1057,6 +1060,7 @@
 				3109D1E521A9A37B00561F13 /* FaceChooserEditTableViewCell.swift in Sources */,
 				31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */,
 				318808D1217815E600585AB1 /* AppDelegate.swift in Sources */,
+				31FF20D5228FB96B0023F8A5 /* ColorCollectionDataSource.swift in Sources */,
 				31FF20C7228E6D010023F8A5 /* SettingsViewController+Sharing.swift in Sources */,
 				312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */,
 				31F56FA421857FC100455FC6 /* WatchPreviewViewController.swift in Sources */,
