@@ -139,13 +139,15 @@ class WatchFaceNode: SKShapeNode {
             }
             if (faceLayer.layerType == .DateTimeLabel) {
                 
+                var strokeColorHex = ""
                 if let digitalTimeOptions = faceLayer.layerOptions as? ShapeLayerDigitalTimeOptions {
                     //get outline width / color / and font
+                    strokeColorHex = hexColorForDesiredIndex(index: digitalTimeOptions.desiredThemeColorIndexForOutline)
                 }
                 
                 let fillColor = colorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
                 let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: .NumberTextTypeSystem, timeFormat: .HHMM, textSize: 1.0,
-                                                           effect: .None, horizontalPosition: .Centered, fillColor: fillColor, strokeColor: SKColor.init(hexString: "#ffffffff"))
+                                                           effect: .None, horizontalPosition: .Centered, fillColor: fillColor, strokeColor: SKColor.init(hexString: strokeColorHex))
                 digitalTimeNode.name = "timeLabel"
                 
                 setLayerProps(layerNode: digitalTimeNode, faceLayer: faceLayer)
