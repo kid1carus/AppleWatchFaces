@@ -26,6 +26,12 @@ enum FaceBackgroundTypes: String {
     }
 }
 
+enum GradientBackgroundDirectionTypes: String {
+    case Vertical, Horizontal, Diagonal
+    
+    static var userSelectableValues = [Vertical, Horizontal, Diagonal]
+}
+
 class FaceBackgroundNode: SKSpriteNode {
     
     var backgroundType:FaceBackgroundTypes = .FaceBackgroundTypeNone

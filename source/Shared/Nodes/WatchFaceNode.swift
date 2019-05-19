@@ -95,6 +95,8 @@ class WatchFaceNode: SKShapeNode {
         }
         
         for faceLayer in faceLayers {
+            let hexColor = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
+            
             if faceLayer.layerType == .SecondHand {
                 let secHandNode = SecondHandNode.init(secondHandType: .SecondHandTypeRail)
                 secHandNode.name = "secondHand"
@@ -124,14 +126,20 @@ class WatchFaceNode: SKShapeNode {
                 self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .ColorTexture {
-                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: "#190033ff")
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: hexColor)
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
                 self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .GradientTexture {
-                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeDiagonalGradient , material: "#190033ff", material2: "#8e8e8eff")
+                var destinationColorHex = ""
+                if let gradientOptions = faceLayer.layerOptions as? GradientBackgroundLayerOptions {
+                    //get outline width / color / and font
+                    destinationColorHex = hexColorForDesiredIndex(index: gradientOptions.desiredThemeColorIndexForDestination)
+                }
+                
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeDiagonalGradient , material: destinationColorHex, material2: hexColor)
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
@@ -145,7 +153,6 @@ class WatchFaceNode: SKShapeNode {
                     strokeColorHex = hexColorForDesiredIndex(index: digitalTimeOptions.desiredThemeColorIndexForOutline)
                 }
                 
-                let fillColor = colorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
                 let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: .NumberTextTypeSystem, timeFormat: .HHMM, textSize: 1.0,
                                                            effect: .None, horizontalPosition: .Centered, fillColor: fillColor, strokeColor: SKColor.init(hexString: strokeColorHex))
                 digitalTimeNode.name = "timeLabel"

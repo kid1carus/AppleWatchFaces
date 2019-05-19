@@ -271,6 +271,9 @@
 		31FF20D72290A9A80023F8A5 /* DigitalTimeLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */; };
 		31FF20D82290ABBD0023F8A5 /* DigitalTimeLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */; };
 		31FF20D92290ABBD0023F8A5 /* DigitalTimeLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */; };
+		31FF20DB2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20DA2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift */; };
+		31FF20DC2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20DA2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift */; };
+		31FF20DD2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20DA2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift */; };
 		FDC17D0221FF98CE0064D962 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F52178166B00585AB1 /* InterfaceController.swift */; };
 		FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -445,6 +448,7 @@
 		31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Undo.swift"; sourceTree = "<group>"; };
 		31FF20D4228FB96B0023F8A5 /* ColorCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionDataSource.swift; sourceTree = "<group>"; };
 		31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalTimeLayerOptions.swift; sourceTree = "<group>"; };
+		31FF20DA2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundLayerOptions.swift; sourceTree = "<group>"; };
 		FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateThumbnailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -731,6 +735,7 @@
 				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
 				31B0A1CF227F4DE80031AFC0 /* ShapeLayerOptions.swift */,
 				31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */,
+				31FF20DA2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift */,
 				311B7CB1227F9D0A0073C4C9 /* SecondHandLayerOptions.swift */,
 				31B5E8D4218BD81800DE6429 /* ClockSetting.swift */,
 				314A010921960409009BCE3C /* UserClockSetting.swift */,
@@ -1042,6 +1047,7 @@
 				314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */,
 				313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */,
 				314A011021962FF4009BCE3C /* WatchFaceNode.swift in Sources */,
+				31FF20DB2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */,
 				31EF999621A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
 				31EF99A221A205F200BB54E7 /* FaceChooserTableViewCell.swift in Sources */,
 				310D9229227E1F16007A5808 /* FaceLayersTableViewController.swift in Sources */,
@@ -1100,6 +1106,7 @@
 				31724A6621FA91B400D3F599 /* ArcNode.swift in Sources */,
 				31B5E8E2218CE08E00DE6429 /* SwiftyJSON.swift in Sources */,
 				310725E0223D7083008030A2 /* PhysicsNode.swift in Sources */,
+				31FF20DC2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */,
 				31090FDE223421AA00D6CAA7 /* PongGameNode.swift in Sources */,
 				313BB889227DEDB2005BE9C5 /* FaceLayer.swift in Sources */,
 				311B7CB3227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
@@ -1181,6 +1188,7 @@
 				31C86B2E22374DA000EF4186 /* UICollectionView+Selection.swift in Sources */,
 				31C86AFA22374CEA00EF4186 /* PongGameNode.swift in Sources */,
 				31C86B0122374CEA00EF4186 /* MinuteHandNode.swift in Sources */,
+				31FF20DD2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */,
 				31C86B6122374E7200EF4186 /* FaceChooserTableViewController.swift in Sources */,
 				31C86B5D22374E4100EF4186 /* FaceChooserViewController.swift in Sources */,
 				31C86B1122374D0200EF4186 /* RoundedButton.swift in Sources */,

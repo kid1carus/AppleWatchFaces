@@ -88,6 +88,9 @@ class FaceLayer: NSObject {
         if self.layerType == .DateTimeLabel {
             self.layerOptions = DigitalTimeLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         }
+        if self.layerType == .GradientTexture {
+            self.layerOptions = GradientBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        }
         
         super.init()
     }
