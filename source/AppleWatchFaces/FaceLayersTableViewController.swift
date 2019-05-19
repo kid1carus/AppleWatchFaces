@@ -35,7 +35,7 @@ class FaceLayersTableViewController: UITableViewController {
         }
         
         if adjustmentType == .Scale {
-            let clampedVal = clamped( value: layerSettings.scale + Float(amount), min: 0, max: 1.0 )
+            let clampedVal = clamped( value: layerSettings.scale + Float(amount), min: 0, max: AppUISettings.layerSettingsScaleMax )
             if layerSettings.scale != clampedVal {
                 layerSettings.scale = clampedVal
                 reload = true

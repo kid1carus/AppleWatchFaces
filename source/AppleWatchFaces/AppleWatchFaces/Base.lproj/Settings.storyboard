@@ -420,7 +420,19 @@
                                             <state key="normal" title="font">
                                                 <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="buttonTappedWithSender:" destination="N3f-GG-a5k" eventType="touchUpInside" id="DEe-kr-0jz"/>
+                                            </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uv6-As-GUU">
+                                            <rect key="frame" x="144" y="40" width="61.666666666666657" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="Pyi-IH-gYO"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="7uB-v9-FfY" firstAttribute="top" secondItem="uz8-E7-Che" secondAttribute="bottom" constant="20" id="2x3-PU-EEa"/>
@@ -428,12 +440,14 @@
                                         <constraint firstItem="xFJ-Cj-Ztn" firstAttribute="top" secondItem="4MP-mm-eJC" secondAttribute="bottom" constant="13" id="4hO-Ch-qFH"/>
                                         <constraint firstItem="7Jb-zH-hD1" firstAttribute="trailing" secondItem="1dd-Ji-pxW" secondAttribute="trailingMargin" id="4uc-SP-C00"/>
                                         <constraint firstItem="uz8-E7-Che" firstAttribute="leading" secondItem="1dd-Ji-pxW" secondAttribute="leadingMargin" id="988-1b-OdM"/>
+                                        <constraint firstItem="Uv6-As-GUU" firstAttribute="top" secondItem="Jju-ch-W44" secondAttribute="bottom" constant="8" id="BbG-oz-SkB"/>
                                         <constraint firstItem="4MP-mm-eJC" firstAttribute="leading" secondItem="xFJ-Cj-Ztn" secondAttribute="leading" id="CEk-Fb-S2a"/>
                                         <constraint firstItem="4MP-mm-eJC" firstAttribute="leading" secondItem="Jju-ch-W44" secondAttribute="leading" id="CtY-2A-Ez3"/>
                                         <constraint firstItem="4MP-mm-eJC" firstAttribute="top" secondItem="Jju-ch-W44" secondAttribute="bottom" constant="8" symbolic="YES" id="ER8-zS-RW4"/>
                                         <constraint firstItem="xFJ-Cj-Ztn" firstAttribute="leading" secondItem="1dd-Ji-pxW" secondAttribute="leadingMargin" id="Gsg-hs-KcM"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="vlF-bS-nwX" secondAttribute="trailing" constant="2" id="Hvh-1x-9hX"/>
                                         <constraint firstAttribute="trailing" secondItem="RnM-y8-0T6" secondAttribute="trailing" constant="22" id="Jim-pR-Rn5"/>
+                                        <constraint firstItem="Uv6-As-GUU" firstAttribute="leading" secondItem="4MP-mm-eJC" secondAttribute="trailing" constant="89" id="L9B-v2-crE"/>
                                         <constraint firstItem="Jju-ch-W44" firstAttribute="trailing" secondItem="7Jb-zH-hD1" secondAttribute="trailing" id="OkL-ar-nkJ"/>
                                         <constraint firstItem="Jju-ch-W44" firstAttribute="top" secondItem="1dd-Ji-pxW" secondAttribute="topMargin" id="P6i-QX-SXi"/>
                                         <constraint firstItem="5WA-qN-DA1" firstAttribute="top" secondItem="Jju-ch-W44" secondAttribute="bottom" constant="3" id="Q3y-8g-OWZ"/>
@@ -460,6 +474,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="colorSelectionCollectionView" destination="7Jb-zH-hD1" id="69b-FJ-hyL"/>
+                                    <outlet property="fontButton" destination="5WA-qN-DA1" id="HEc-1z-O3x"/>
+                                    <outlet property="fontNameLabel" destination="Uv6-As-GUU" id="req-Zu-HYp"/>
                                     <outlet property="outlineColorSelectionCollectionView" destination="wIS-PL-Bjc" id="PTb-aJ-xYW"/>
                                     <outlet property="outlineWidthSlider" destination="RnM-y8-0T6" id="GGW-FJ-QUa"/>
                                     <outlet property="titleLabel" destination="Jju-ch-W44" id="G3o-Yv-Gr1"/>
@@ -494,7 +510,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mSN-Yn-jje">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="o2N-rb-PNl">
                                                 <size key="itemSize" width="33" height="33"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>

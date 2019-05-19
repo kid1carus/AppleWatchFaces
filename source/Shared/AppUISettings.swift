@@ -97,6 +97,8 @@ class AppUISettings: NSObject {
     static let thumbnailFolder = "thumbs"
     static let backgroundFileName = "-customBackground"
     
+    static let layerSettingsScaleMax:Float = 2.0 //how much things can be scaled up ( should be at least 1.0 )
+    
     static var colorList : [String] = []
     
     // load colors from Colors.plist and save to colorList array.

@@ -63,13 +63,13 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
     
     @IBAction func sliderValueDidChange(sender: UISlider ) {
         let faceLayer = myFaceLayer()
-        guard let shapeOptions = faceLayer.layerOptions as? ShapeLayerOptions else { return }
+        guard let layerOptions = faceLayer.layerOptions as? ShapeLayerOptions else { return }
         
         let roundedValue = Float(round(50*sender.value)/50)
-        if roundedValue != shapeOptions.indicatorSize {
+        if roundedValue != layerOptions.indicatorSize {
             self.selectThisCell()
             debugPrint("slider value:" + String( roundedValue ) )
-            shapeOptions.indicatorSize = roundedValue
+            layerOptions.indicatorSize = roundedValue
             let layerIndex = myLayerIndex() ?? 0
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
                                             userInfo:["settingType":settingTypeString ,"layerIndex":layerIndex])

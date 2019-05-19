@@ -56,10 +56,18 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static var undoArray = [FaceSetting]()
     static var redoArray = [FaceSetting]()
     
+    //values for re-usable UIActionSheets
+    static var actionsTitle:String = ""
+    static var actionsArray = [String]()
+    static var actionCell:AnyObject = FaceLayerTableViewCell()
+    static var actionCellMedthodName = "someMethod"
+    static var actionCellItemChosen = 0
+    
     static let settingsChangedNotificationName = Notification.Name("settingsChanged")
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
     static let settingsExitingNotificationName = Notification.Name("settingsExiting")
+    static let settingsCallActionSheet = Notification.Name("settingsCallActionSheet")
     
     @IBAction func adjustAngleForLayerItem( sender: UIButton) {
         
@@ -196,6 +204,36 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             }
         }
     }
+    
+    @objc func onNotificationForCallActionSheet(notification:Notification) {
+        
+        func showSettingsAlert( title: String, alertActions: [UIAlertAction]) {
+            let optionMenu = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
+            optionMenu.view.tintColor = UIColor.black
+            
+            for action in alertActions {
+                optionMenu.addAction(action)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            optionMenu.addAction(cancelAction)
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+        
+        var actions:[UIAlertAction] = []
+        
+        for (index,actionString) in SettingsViewController.actionsArray.enumerated() {
+            let newAction = UIAlertAction(title: actionString, style: .default, handler: { action in
+                if let cell = SettingsViewController.actionCell as? FaceLayerTableViewCell {
+                    cell.returnFromAction( actionName: SettingsViewController.actionCellMedthodName, itemChosen: index)
+                }
+            } )
+            actions.append(newAction)
+        }
+        showSettingsAlert( title: SettingsViewController.actionsTitle, alertActions: actions )
+    }
+    
     
     func redrawPreviewClock() {
         //tell preview to reload
@@ -449,6 +487,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSettingsChanged(notification:)), name: SettingsViewController.settingsChangedNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGetCameraImage(notification:)), name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForCallActionSheet(notification:)), name: SettingsViewController.settingsCallActionSheet, object: nil)
     }
     
 }

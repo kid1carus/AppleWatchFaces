@@ -28,6 +28,10 @@ class FaceLayerTableViewCell: UITableViewCell {
         }
     }
     
+    func returnFromAction( actionName: String, itemChosen: Int) {
+        debugPrint("returnFromAction not overriden")
+    }
+    
     func titleText( faceLayer: FaceLayer ) -> String {
         return FaceLayer.descriptionForType(faceLayer.layerType)
     }

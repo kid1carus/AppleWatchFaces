@@ -12,8 +12,8 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     @IBOutlet var colorSelectionCollectionView: UICollectionView!
     @IBOutlet var outlineColorSelectionCollectionView: UICollectionView!
     
-    @IBOutlet var colorButton: UIButton!
-    @IBOutlet var outlineColorButton: UIButton!
+    @IBOutlet var fontButton: UIButton!
+    @IBOutlet var fontNameLabel: UILabel!
 //    @IBOutlet var totalNumbersSegment: UISegmentedControl!
     @IBOutlet var outlineWidthSlider: UISlider!
     
@@ -26,10 +26,31 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
             faceLayer.desiredThemeColorIndex = indexPath.row
         }
         if collectionView == outlineColorSelectionCollectionView {
-            guard let shapeOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
-            shapeOptions.desiredThemeColorIndexForOutline = indexPath.row
+            guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
+            layerOptions.desiredThemeColorIndexForOutline = indexPath.row
         }
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
+    }
+    
+    override func returnFromAction( actionName: String, itemChosen: Int) {
+        let faceLayer = myFaceLayer()
+        guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
+        layerOptions.fontType = NumberTextTypes.userSelectableValues[itemChosen]
+        
+        fontNameLabel.text = NumberTextNode.descriptionForType(layerOptions.fontType)
+        
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
+        //debugPrint("returnFromAction action:" + actionName + " item: " + itemChosen.description)
+    }
+    
+    @IBAction func buttonTapped( sender: UIButton ) {
+        if sender == fontButton {
+            SettingsViewController.actionsArray = NumberTextNode.typeDescriptions()
+            SettingsViewController.actionCell = self
+            SettingsViewController.actionCellMedthodName = "chooseFontAction"
+            SettingsViewController.actionsTitle = "Choose Font"
+            NotificationCenter.default.post(name: SettingsViewController.settingsCallActionSheet, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
+        }
     }
     
     @IBAction func widthSliderValueDidChange(sender: UISlider ) {
@@ -57,8 +78,9 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
         selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
         
         redrawColorsForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView)
-        guard let shapeOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
-        selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: shapeOptions.desiredThemeColorIndexForOutline)
+        guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
+        selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: layerOptions.desiredThemeColorIndexForOutline)
+        fontNameLabel.text = NumberTextNode.descriptionForType(layerOptions.fontType)
     }
     
     override func awakeFromNib() {
