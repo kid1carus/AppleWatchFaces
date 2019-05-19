@@ -8,57 +8,23 @@
 
 import UIKit
 
-class FaceLayerColorBackgroundTableViewCell: FaceLayerTableViewCell {
+class FaceLayerColorBackgroundTableViewCell: FaceLayerTableViewCell, UICollectionViewDelegate {
     
-    @IBOutlet var colorSegment: UISegmentedControl!
-    @IBOutlet var sizeSlider: UISlider!
+    @IBOutlet var colorSelectionCollectionView: UICollectionView!
     
-    //    @IBAction func totalSegmentDidChange(sender: UISegmentedControl ) {
-    //        self.selectThisCell()
-    //
-    //        let clockRingSetting = myClockRingSetting()
-    //        clockRingSetting.ringPatternTotal = Int(ClockRingSetting.ringTotalOptions()[sender.selectedSegmentIndex])!
-    //        clockRingSetting.ringPattern = [1] // all on for now
-    //        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
-    //                                        userInfo:["settingType":"ringPatternTotal" ])
-    //    }
+    let settingTypeString = "colorBackground"
     
-//    @IBAction func sliderValueDidChange(sender: UISlider ) {
-//        let faceLayer = myFaceLayer()
-//        guard let shapeOptions = faceLayer.layerOptions as? ShapeLayerOptions else { return }
-//
-//        let roundedValue = Float(round(50*sender.value)/50)
-//        if roundedValue != shapeOptions.indicatorSize {
-//            self.selectThisCell()
-//            debugPrint("slider value:" + String( roundedValue ) )
-//            shapeOptions.indicatorSize = roundedValue
-//            let layerIndex = myLayerIndex() ?? 0
-//            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
-//                                            userInfo:["settingType":"shapeRing","layerIndex":layerIndex])
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let faceLayer = myFaceLayer()
+        faceLayer.desiredThemeColorIndex = indexPath.row
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
+    }
     
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer)
         
-        let faceLayer = myFaceLayer()
-        guard let shapeOptions = faceLayer.layerOptions as? ShapeLayerOptions else { return }
-        
-        sizeSlider.minimumValue = 0.0
-        sizeSlider.maximumValue = 1.0
-        
-        sizeSlider.value = shapeOptions.indicatorSize
-            //            let totalString = String(shapeOptions.patternTotal)
-            //            if let segmentIndex = ShapeLayerOptions.ringTotalOptions().index(of: totalString) {
-            //                self.totalNumbersSegment.selectedSegmentIndex = segmentIndex
-            //            }
-            // }
-        
-        //
-        //        self.materialSegment.selectedSegmentIndex = clockRingSetting.ringMaterialDesiredThemeColorIndex
-        //
-        
-        
+        redrawColorsForColorCollectionView( colorCollectionView: colorSelectionCollectionView)
+        selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
     }
     
     

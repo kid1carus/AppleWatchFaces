@@ -96,6 +96,7 @@ class WatchFaceNode: SKShapeNode {
         
         for faceLayer in faceLayers {
             let hexColor = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
+            let layerColor = SKColor.init(hexString: hexColor)
             
             if faceLayer.layerType == .SecondHand {
                 let secHandNode = SecondHandNode.init(secondHandType: .SecondHandTypeRail)
@@ -148,13 +149,15 @@ class WatchFaceNode: SKShapeNode {
             if (faceLayer.layerType == .DateTimeLabel) {
                 
                 var strokeColorHex = ""
+                var outlineWidth:Float = 0
                 if let digitalTimeOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions {
                     //get outline width / color / and font
                     strokeColorHex = hexColorForDesiredIndex(index: digitalTimeOptions.desiredThemeColorIndexForOutline)
+                    outlineWidth = digitalTimeOptions.outlineWidth
                 }
                 
                 let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: .NumberTextTypeSystem, timeFormat: .HHMM, textSize: 1.0,
-                                                           effect: .None, horizontalPosition: .Centered, fillColor: fillColor, strokeColor: SKColor.init(hexString: strokeColorHex))
+                                                           effect: .None, horizontalPosition: .Centered, fillColor: layerColor, strokeColor: SKColor.init(hexString: strokeColorHex), lineWidth: outlineWidth)
                 digitalTimeNode.name = "timeLabel"
                 
                 setLayerProps(layerNode: digitalTimeNode, faceLayer: faceLayer)

@@ -124,7 +124,7 @@ class FaceLayersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        var cellHeight:CGFloat = 68
+        var cellHeight:CGFloat = 80
         
         let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[indexPath.row]
         
@@ -136,7 +136,7 @@ class FaceLayersTableViewController: UITableViewController {
                 case .ImageTexture:
                     cellHeight = 270.0
                 case .ColorTexture:
-                    cellHeight = 270.0
+                    cellHeight = 80.0
                 case .GradientTexture:
                     cellHeight = 270.0
                 case .HourHand:
@@ -177,12 +177,17 @@ class FaceLayersTableViewController: UITableViewController {
         
         let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[indexPath.row]
         
+        
         if (faceLayer.layerType == .ShapeRing) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerShapeID", for: indexPath) as! FaceLayerShapeTableViewCell
         }
         else if (faceLayer.layerType == .DateTimeLabel) {
             cell = tableView.dequeueReusableCell(withIdentifier: "decoratorEditorDigitalTimeID", for: indexPath) as! FaceLayerDateTimeLabelTableViewCell
-        } else {
+        }
+        else if (faceLayer.layerType == .ColorTexture) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerColorBackgroundID", for: indexPath) as! FaceLayerColorBackgroundTableViewCell
+        }
+        else {
             cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
         }
     

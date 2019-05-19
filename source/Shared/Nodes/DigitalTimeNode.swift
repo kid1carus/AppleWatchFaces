@@ -76,14 +76,12 @@ class DigitalTimeNode: SKNode {
     
     func updateTime( timeString: String ) {
         if let timeText = self.childNode(withName: "timeTextNode") as? SKLabelNode {
-            //let mutableAttributedString = NSMutableAttributedString(string: timeString, attributes: myAttributes)
             let mutableAttributedText = timeText.attributedText!.mutableCopy() as! NSMutableAttributedString
             mutableAttributedText.mutableString.setString(timeString)
             
             timeText.attributedText = mutableAttributedText
         }
         if let timeTextShadow = self.childNode(withName: "textShadow") as? SKLabelNode {
-            //let mutableAttributedString = NSMutableAttributedString(string: timeString, attributes: myAttributes)
             let mutableAttributedText = timeTextShadow.attributedText!.mutableCopy() as! NSMutableAttributedString
             mutableAttributedText.mutableString.setString(timeString)
             
@@ -204,15 +202,15 @@ class DigitalTimeNode: SKNode {
     }
     
     //used when generating node for digital time ( a mini digital clock )
-    init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, effect: DigitalTimeEffects, horizontalPosition: RingHorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor? ) {
+    init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, effect: DigitalTimeEffects, horizontalPosition: RingHorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor?, lineWidth: Float ) {
     
         super.init()
 
         self.name = "digitalTimeNode"
         self.timeFormat = timeFormat
-        
-        //TODO this should dependant on overall scale setting?
-        let textScale = Float(0.0175)
+    
+        //let textScale = Float(0.0175)
+        let fontSize:CGFloat = 64.0
         let hourString = getTimeString()
         
         let timeText = SKLabelNode.init(text: hourString)
@@ -229,17 +227,13 @@ class DigitalTimeNode: SKNode {
         timeText.verticalAlignmentMode = .center
         
         let fontName = NumberTextNode.fontNameForNumberTextType(digitalTimeTextType)
-        
-        //attributed version
-        let strokeWidth = -2 * textSize
-        //debugPrint("strokeW: " + strokeWidth.description)
 
         var attributes: [NSAttributedString.Key : Any] = [
                 .foregroundColor: fillColor,
-                .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
+                .font: UIFont.init(name: fontName, size: fontSize )!
             ]
-        if strokeColor != nil {
-            attributes[.strokeWidth] = round(strokeWidth)
+        if lineWidth > 0 {
+            attributes[.strokeWidth] = -lineWidth
             attributes[.strokeColor] = strokeColor
         }
         timeText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
@@ -291,14 +285,10 @@ class DigitalTimeNode: SKNode {
             let shadowNode = timeText.copy() as! SKLabelNode
             shadowNode.name = "textShadow"
             let shadowColor = SKColor.black.withAlphaComponent(0.3)
-            var attributes: [NSAttributedString.Key : Any] = [
+            let attributes: [NSAttributedString.Key : Any] = [
                 .foregroundColor: shadowColor,
-                .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
+                .font: UIFont.init(name: fontName, size: fontSize)!
             ]
-            if strokeColor != nil {
-                attributes[.strokeWidth] = round(strokeWidth)
-                attributes[.strokeColor] = strokeColor
-            }
             shadowNode.attributedText = NSAttributedString(string: hourString, attributes: attributes)
             shadowNode.zPosition = -0.5
             let shadowOffset = CGFloat(labelRect.size.height/15)
@@ -331,14 +321,10 @@ class DigitalTimeNode: SKNode {
             fillColor.getRed(&fillRed, green: &fillGreen, blue: &fillBlue, alpha: &fillAlpha)
             let darkColor = SKColor.init(red: fillRed*darkMult, green: fillRed*darkMult, blue: fillRed*darkMult, alpha: fillAlpha*darkMult)
             
-            var attributes: [NSAttributedString.Key : Any] = [
+            let attributes: [NSAttributedString.Key : Any] = [
                 .foregroundColor: darkColor,
-                .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
+                .font: UIFont.init(name: fontName, size: fontSize)!
             ]
-            if strokeColor != nil {
-                attributes[.strokeWidth] = round(strokeWidth)
-                attributes[.strokeColor] = strokeColor
-            }
             digital8Node.attributedText = NSAttributedString(string: digital8String, attributes: attributes)
             digital8Node.zPosition = -0.5
             //let shadowOffset:CGFloat = 0
