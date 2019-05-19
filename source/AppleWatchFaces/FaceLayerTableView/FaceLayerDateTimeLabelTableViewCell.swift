@@ -26,7 +26,7 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
             faceLayer.desiredThemeColorIndex = indexPath.row
         }
         if collectionView == outlineColorSelectionCollectionView {
-            guard let shapeOptions = faceLayer.layerOptions as? ShapeLayerDigitalTimeOptions else { return }
+            guard let shapeOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
             shapeOptions.desiredThemeColorIndexForOutline = indexPath.row
         }
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -99,7 +99,7 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
         selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
         
         redrawColorsForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView)
-        guard let shapeOptions = faceLayer.layerOptions as? ShapeLayerDigitalTimeOptions else { return }
+        guard let shapeOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
         selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: shapeOptions.desiredThemeColorIndexForOutline)
     }
     

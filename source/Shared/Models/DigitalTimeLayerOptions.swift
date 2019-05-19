@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShapeLayerDigitalTimeOptions: FaceLayerOptions {
+class DigitalTimeLayerOptions: FaceLayerOptions {
     var fontType: NumberTextTypes
     var outlineWidth: Float
     var desiredThemeColorIndexForOutline: Int

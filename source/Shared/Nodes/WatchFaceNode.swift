@@ -140,7 +140,7 @@ class WatchFaceNode: SKShapeNode {
             if (faceLayer.layerType == .DateTimeLabel) {
                 
                 var strokeColorHex = ""
-                if let digitalTimeOptions = faceLayer.layerOptions as? ShapeLayerDigitalTimeOptions {
+                if let digitalTimeOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions {
                     //get outline width / color / and font
                     strokeColorHex = hexColorForDesiredIndex(index: digitalTimeOptions.desiredThemeColorIndexForOutline)
                 }

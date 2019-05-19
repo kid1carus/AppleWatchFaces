@@ -125,7 +125,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             faceLayerOptions = ShapeLayerOptions.init(defaults: true)
         }
         if layerType == .DateTimeLabel {
-            faceLayerOptions = ShapeLayerDigitalTimeOptions.init(defaults: true)
+            faceLayerOptions = DigitalTimeLayerOptions.init(defaults: true)
         }
         
         let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, horizontalPosition: 0, verticalPosition:0, scale: 1.0,

@@ -268,9 +268,9 @@
 		31FF20CD228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */; };
 		31FF20CE228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */; };
 		31FF20D5228FB96B0023F8A5 /* ColorCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D4228FB96B0023F8A5 /* ColorCollectionDataSource.swift */; };
-		31FF20D72290A9A80023F8A5 /* ShapeLayerDigitalTimeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* ShapeLayerDigitalTimeOptions.swift */; };
-		31FF20D82290ABBD0023F8A5 /* ShapeLayerDigitalTimeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* ShapeLayerDigitalTimeOptions.swift */; };
-		31FF20D92290ABBD0023F8A5 /* ShapeLayerDigitalTimeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* ShapeLayerDigitalTimeOptions.swift */; };
+		31FF20D72290A9A80023F8A5 /* DigitalTimeLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */; };
+		31FF20D82290ABBD0023F8A5 /* DigitalTimeLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */; };
+		31FF20D92290ABBD0023F8A5 /* DigitalTimeLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */; };
 		FDC17D0221FF98CE0064D962 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F52178166B00585AB1 /* InterfaceController.swift */; };
 		FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -444,7 +444,7 @@
 		31FF20C9228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+WatchDelegate.swift"; sourceTree = "<group>"; };
 		31FF20CC228E6EFA0023F8A5 /* SettingsViewController+Undo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Undo.swift"; sourceTree = "<group>"; };
 		31FF20D4228FB96B0023F8A5 /* ColorCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionDataSource.swift; sourceTree = "<group>"; };
-		31FF20D62290A9A80023F8A5 /* ShapeLayerDigitalTimeOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeLayerDigitalTimeOptions.swift; sourceTree = "<group>"; };
+		31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalTimeLayerOptions.swift; sourceTree = "<group>"; };
 		FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateThumbnailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -730,7 +730,7 @@
 				313BB887227DEDB2005BE9C5 /* FaceLayer.swift */,
 				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
 				31B0A1CF227F4DE80031AFC0 /* ShapeLayerOptions.swift */,
-				31FF20D62290A9A80023F8A5 /* ShapeLayerDigitalTimeOptions.swift */,
+				31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */,
 				311B7CB1227F9D0A0073C4C9 /* SecondHandLayerOptions.swift */,
 				31B5E8D4218BD81800DE6429 /* ClockSetting.swift */,
 				314A010921960409009BCE3C /* UserClockSetting.swift */,
@@ -1018,7 +1018,7 @@
 				315878D222877B4E008FFC76 /* FaceColorsTableViewController.swift in Sources */,
 				311B7CB2227F9D0A0073C4C9 /* SecondHandLayerOptions.swift in Sources */,
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
-				31FF20D72290A9A80023F8A5 /* ShapeLayerDigitalTimeOptions.swift in Sources */,
+				31FF20D72290A9A80023F8A5 /* DigitalTimeLayerOptions.swift in Sources */,
 				3109D1E321A9A2C600561F13 /* FaceChooserEditTableViewController.swift in Sources */,
 				31EF99A421A2072C00BB54E7 /* FaceChooserCollectionViewCell.swift in Sources */,
 				31B5E8CD218BD26B00DE6429 /* MinuteHandNode.swift in Sources */,
@@ -1096,7 +1096,7 @@
 				3100DC9E21EC26A3007423A5 /* StringExtension.swift in Sources */,
 				314A011121963537009BCE3C /* WatchFaceNode.swift in Sources */,
 				31A5F7F021966CED000F1677 /* MathFunctions.swift in Sources */,
-				31FF20D82290ABBD0023F8A5 /* ShapeLayerDigitalTimeOptions.swift in Sources */,
+				31FF20D82290ABBD0023F8A5 /* DigitalTimeLayerOptions.swift in Sources */,
 				31724A6621FA91B400D3F599 /* ArcNode.swift in Sources */,
 				31B5E8E2218CE08E00DE6429 /* SwiftyJSON.swift in Sources */,
 				310725E0223D7083008030A2 /* PhysicsNode.swift in Sources */,
@@ -1196,7 +1196,7 @@
 				31C86B2522374DA000EF4186 /* MathFunctions.swift in Sources */,
 				31C86AF922374CB700EF4186 /* SettingsViewController.swift in Sources */,
 				31C86B2322374DA000EF4186 /* PathElement.swift in Sources */,
-				31FF20D92290ABBD0023F8A5 /* ShapeLayerDigitalTimeOptions.swift in Sources */,
+				31FF20D92290ABBD0023F8A5 /* DigitalTimeLayerOptions.swift in Sources */,
 				31C86B5C22374E0000EF4186 /* WatchPreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
