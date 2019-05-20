@@ -39,7 +39,7 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
         }
         
         if actionName == "choosePatternAction" {
-            layerOptions.patternArray = ShapeLayerOptions.ringPatternKeys()[itemChosen] as! [Int]
+            layerOptions.patternArray = ShapeLayerOptions.ringPatterns()[itemChosen] as! [Int]
             patternNameLabel.text =  ShapeLayerOptions.ringPatternDescriptions()[itemChosen]
         }
         

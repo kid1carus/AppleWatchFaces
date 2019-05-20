@@ -59,43 +59,39 @@ class ShapeLayerOptions: FaceLayerOptions {
         return [ "60", "24", "12", "4", "2" ]
     }
     
-    static func ringPatterns() -> [String:NSArray] {
+    static func ringPatterns() -> [NSArray] {
         return [
-            "all on":[1],
-            "all off":[0],
-            "show every 3rd": [1,0,0],
-            "hide every 3rd": [0,1,1],
-            "show every 5th":[1,0,0,0,0],
-            "hide every 5th":[0,1,1,1,1],
-            "alternate off":[0,1],
-            "alternate on":[1,0]
+            [1],
+            [0],
+            [1,0,0],
+            [0,1,1],
+            [1,0,0,0,0],
+            [0,1,1,1,1],
+            [0,1],
+            [1,0]
+        ]
+    }
+    static func ringPatternDescriptions() -> [String] {
+        return [
+            "all on",
+            "all off",
+            "show every 3rd",
+            "hide every 3rd",
+            "show every 5th",
+            "hide every 5th",
+            "alternate off",
+            "alternate on"
         ]
     }
     
     static func descriptionForRingPattern(_ ringPatternToFind: [Int]) -> String {
-        let indexOfPattern = ShapeLayerOptions.ringPatternKeys().index( of: ringPatternToFind as NSArray )!
+        let indexOfPattern = ShapeLayerOptions.ringPatterns().index( of: ringPatternToFind as NSArray )!
         return ringPatternDescriptions()[ indexOfPattern ]
     }
     
     static func patternForRingPatternDescription(_ ringPatternDescription: String) -> [Int] {
         let indexOfPatternDescription = ShapeLayerOptions.ringPatternDescriptions().index( of: ringPatternDescription )!
-        return ringPatternKeys()[ indexOfPatternDescription ] as! [Int]
-    }
-    
-    static func ringPatternDescriptions() -> [String] {
-        var options = [String]()
-        for (key,_) in ringPatterns() {
-            options.append(key)
-        }
-        return options
-    }
-    
-    static func ringPatternKeys() -> [NSArray] {
-        var options = [NSArray]()
-        for (_,values) in ringPatterns() {
-            options.append(values)
-        }
-        return options
+        return ringPatterns()[ indexOfPatternDescription ] as! [Int]
     }
     
     static func descriptionForRingType(_ nodeType: RingTypes) -> String {
