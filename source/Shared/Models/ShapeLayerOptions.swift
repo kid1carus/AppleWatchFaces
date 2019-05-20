@@ -73,12 +73,12 @@ class ShapeLayerOptions: FaceLayerOptions {
     }
     
     static func descriptionForRingPattern(_ ringPatternToFind: [Int]) -> String {
-        let indexOfPattern = ClockRingSetting.ringPatternKeys().index( of: ringPatternToFind as NSArray )!
+        let indexOfPattern = ShapeLayerOptions.ringPatternKeys().index( of: ringPatternToFind as NSArray )!
         return ringPatternDescriptions()[ indexOfPattern ]
     }
     
     static func patternForRingPatternDescription(_ ringPatternDescription: String) -> [Int] {
-        let indexOfPatternDescription = ClockRingSetting.ringPatternDescriptions().index( of: ringPatternDescription )!
+        let indexOfPatternDescription = ShapeLayerOptions.ringPatternDescriptions().index( of: ringPatternDescription )!
         return ringPatternKeys()[ indexOfPatternDescription ] as! [Int]
     }
     

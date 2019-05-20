@@ -18,6 +18,9 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
     @IBOutlet var shapeButton: UIButton!
     @IBOutlet var shapeNameLabel: UILabel!
     
+    @IBOutlet var patternButton: UIButton!
+    @IBOutlet var patternNameLabel: UILabel!
+    
     let settingTypeString = "shapeRing"
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -35,6 +38,11 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
             shapeNameLabel.text = FaceIndicatorNode.descriptionForType(layerOptions.indicatorType)
         }
         
+        if actionName == "choosePatternAction" {
+            layerOptions.patternArray = ShapeLayerOptions.ringPatternKeys()[itemChosen] as! [Int]
+            patternNameLabel.text =  ShapeLayerOptions.ringPatternDescriptions()[itemChosen]
+        }
+        
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
         //debugPrint("returnFromAction action:" + actionName + " item: " + itemChosen.description)
     }
@@ -46,6 +54,11 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
             SettingsViewController.actionsArray = FaceIndicatorNode.typeDescriptions()
             SettingsViewController.actionCellMedthodName = "chooseTypeAction"
             SettingsViewController.actionsTitle = "Choose Shape Type"
+        }
+        if (sender == patternButton) {
+            SettingsViewController.actionsArray = ShapeLayerOptions.ringPatternDescriptions()
+            SettingsViewController.actionCellMedthodName = "choosePatternAction"
+            SettingsViewController.actionsTitle = "Choose Pattern Type"
         }
         NotificationCenter.default.post(name: SettingsViewController.settingsCallActionSheet, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
@@ -89,17 +102,13 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
             valueSlider.value = shapeOptions.indicatorSize
             
             shapeNameLabel.text = FaceIndicatorNode.descriptionForType(shapeOptions.indicatorType)
+            patternNameLabel.text =  ShapeLayerOptions.descriptionForRingPattern(shapeOptions.patternArray)
             
             let totalString = String(shapeOptions.patternTotal)
             if let segmentIndex = ShapeLayerOptions.ringTotalOptions().index(of: totalString) {
                 self.totalNumbersSegment.selectedSegmentIndex = segmentIndex
             }
         }
-            
-//
-//        self.materialSegment.selectedSegmentIndex = clockRingSetting.ringMaterialDesiredThemeColorIndex
-//
-
         
     }
 
