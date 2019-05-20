@@ -187,6 +187,27 @@ class WatchFaceNode: SKShapeNode {
                     self.addChild(shapeNode)
                 }
             }
+            if faceLayer.layerType == .NumberRing {
+                if let layerOptions = faceLayer.layerOptions as? NumberRingLayerOptions {
+                    let shapeNode = SKNode.init()
+                    shapeNode.name = "numberRingNode"
+                    
+                    let fillMaterial = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
+                    let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: .RingRenderShapeCircle )
+                    
+                    //TODO: fix this with better ringNode rendering seperating out just shapes
+                    let ringSettings = ClockRingSetting.defaults()
+                    ringSettings.textSize = layerOptions.textSize
+                    ringSettings.textType = layerOptions.fontType
+                    
+                    generateRingNode(shapeNode, patternTotal: layerOptions.patternTotal, patternArray: layerOptions.patternArray, ringType: .RingTypeTextNode,
+                        material: fillMaterial, currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true,
+                        renderShapes: true, ringShape: ringShapePath, size: size)
+                    
+                    setLayerProps(layerNode: shapeNode, faceLayer: faceLayer)
+                    self.addChild(shapeNode)
+                }
+            }
         }
         
 //        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)

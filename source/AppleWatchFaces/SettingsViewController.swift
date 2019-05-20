@@ -129,14 +129,17 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         //TODO: copy some things from last item for convenience
         
         var faceLayerOptions = FaceLayerOptions()
-        if layerType == .ShapeRing {
+        switch layerType {
+        case .ShapeRing:
             faceLayerOptions = ShapeLayerOptions.init(defaults: true)
-        }
-        if layerType == .DateTimeLabel {
+        case .NumberRing:
+            faceLayerOptions = NumberRingLayerOptions.init(defaults: true)
+        case .DateTimeLabel:
             faceLayerOptions = DigitalTimeLayerOptions.init(defaults: true)
-        }
-        if layerType == .GradientTexture {
+        case .GradientTexture:
             faceLayerOptions = GradientBackgroundLayerOptions.init(defaults: true)
+        default:
+            faceLayerOptions = FaceLayerOptions()
         }
         
         let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, horizontalPosition: 0, verticalPosition:0, scale: 1.0,

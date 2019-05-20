@@ -81,15 +81,18 @@ class FaceLayer: NSObject {
         
         //init layerOptions depending on type
         self.layerOptions = FaceLayerOptions()
-        if self.layerType == .ShapeRing {
-            //TODO: grag this from the JSON
+        
+        switch self.layerType {
+        case .ShapeRing:
             self.layerOptions = ShapeLayerOptions.init(jsonObj: jsonObj["layerOptions"])
-        }
-        if self.layerType == .DateTimeLabel {
+        case .NumberRing:
+            self.layerOptions = NumberRingLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        case .DateTimeLabel:
             self.layerOptions = DigitalTimeLayerOptions.init(jsonObj: jsonObj["layerOptions"])
-        }
-        if self.layerType == .GradientTexture {
+        case .GradientTexture:
             self.layerOptions = GradientBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        default:
+            self.layerOptions = FaceLayerOptions()
         }
         
         super.init()

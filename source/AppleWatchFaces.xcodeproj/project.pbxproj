@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3100DC9E21EC26A3007423A5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
+		3103A4452293644800E7B10A /* NumberRingLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */; };
+		3103A446229364A500E7B10A /* NumberRingLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */; };
+		3103A447229364A600E7B10A /* NumberRingLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */; };
 		31053339225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333A225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333B225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
@@ -322,6 +325,7 @@
 
 /* Begin PBXFileReference section */
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberRingLayerOptions.swift; sourceTree = "<group>"; };
 		31053338225A63C7004282E5 /* ClockOverlaySetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockOverlaySetting.swift; sourceTree = "<group>"; };
 		3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+JSONHelpers.swift"; sourceTree = "<group>"; };
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
@@ -734,6 +738,7 @@
 				313BB887227DEDB2005BE9C5 /* FaceLayer.swift */,
 				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
 				31B0A1CF227F4DE80031AFC0 /* ShapeLayerOptions.swift */,
+				3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */,
 				31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */,
 				31FF20DA2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift */,
 				311B7CB1227F9D0A0073C4C9 /* SecondHandLayerOptions.swift */,
@@ -1036,6 +1041,7 @@
 				319095FB21CC898200F71BC6 /* BezierPath+Length.swift in Sources */,
 				315878D522878261008FFC76 /* FaceColorSettingTableViewCell.swift in Sources */,
 				318A928B21D059120060D89B /* UserDefaults.swift in Sources */,
+				3103A4452293644800E7B10A /* NumberRingLayerOptions.swift in Sources */,
 				31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */,
 				3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */,
 				315878DE2287AF5B008FFC76 /* FaceLayerDateTimeLabelTableViewCell.swift in Sources */,
@@ -1114,6 +1120,7 @@
 				31090FE32234B71300D6CAA7 /* FaceBackgroundNode.swift in Sources */,
 				31061F332192730A00EF511B /* SKColor.swift in Sources */,
 				31B5E8D9218CE00E00DE6429 /* ClockSetting.swift in Sources */,
+				3103A446229364A500E7B10A /* NumberRingLayerOptions.swift in Sources */,
 				314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */,
 				3105333E225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */,
 				311B7CAF227F6A8E0073C4C9 /* ShapeLayerOptions.swift in Sources */,
@@ -1140,6 +1147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				312E6B6B2241C7A400BB0D05 /* PhysicsNode.swift in Sources */,
+				3103A447229364A600E7B10A /* NumberRingLayerOptions.swift in Sources */,
 				31C86B2922374DA000EF4186 /* UIImage+Loading.swift in Sources */,
 				31C86B0022374CEA00EF4186 /* FaceIndicatorNode.swift in Sources */,
 				31C86B2822374DA000EF4186 /* SKShapeNode.swift in Sources */,

@@ -146,12 +146,11 @@ class FaceLayersTableViewController: UITableViewController {
                 case .SecondHand:
                     cellHeight = 160.0
                 case .ShapeRing:
-                    cellHeight = 190.0
+                    cellHeight = 220.0
                 case .NumberRing:
-                    cellHeight = 160.0
+                    cellHeight = 220.0
                 case .DateTimeLabel:
                     cellHeight = 250.0
-                    
                 }
             }
         }
