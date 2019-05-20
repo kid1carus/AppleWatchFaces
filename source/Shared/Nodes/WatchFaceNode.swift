@@ -180,6 +180,7 @@ class WatchFaceNode: SKShapeNode {
                     //TODO: fix this with better ringNode rendering seperating out just shapes
                     let ringSettings = ClockRingSetting.defaults()
                     ringSettings.indicatorSize = shapeOptions.indicatorSize
+                    ringSettings.indicatorType = shapeOptions.indicatorType
                     generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: fillMaterial, currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size)
                     
                     setLayerProps(layerNode: shapeNode, faceLayer: faceLayer)
