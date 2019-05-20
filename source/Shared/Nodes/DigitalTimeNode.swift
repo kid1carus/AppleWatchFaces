@@ -501,8 +501,8 @@ class DigitalTimeNode: SKNode {
     
     static func timeEffectsDescriptions() -> [String] {
         var typeDescriptionsArray = [String]()
-        for nodeType in DigitalTimeFormats.userSelectableValues {
-            typeDescriptionsArray.append(descriptionForTimeFormats(nodeType))
+        for nodeType in DigitalTimeEffects.userSelectableValues {
+            typeDescriptionsArray.append(descriptionForTimeEffects(nodeType))
         }
         
         return typeDescriptionsArray

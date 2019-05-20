@@ -151,15 +151,19 @@ class WatchFaceNode: SKShapeNode {
                 var strokeColorHex = ""
                 var outlineWidth:Float = 0
                 var fontType = NumberTextTypes.NumberTextTypeSystem
+                var formatType = DigitalTimeFormats.HHMM
+                var effectType = DigitalTimeEffects.None
                 if let digitalTimeOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions {
                     //get outline width / color / and font
                     strokeColorHex = hexColorForDesiredIndex(index: digitalTimeOptions.desiredThemeColorIndexForOutline)
                     outlineWidth = digitalTimeOptions.outlineWidth
                     fontType = digitalTimeOptions.fontType
+                    formatType = digitalTimeOptions.formatType
+                    effectType = digitalTimeOptions.effectType
                 }
                 
-                let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: fontType, timeFormat: .HHMM, textSize: 1.0,
-                                                           effect: .None, horizontalPosition: .Centered, fillColor: layerColor, strokeColor: SKColor.init(hexString: strokeColorHex), lineWidth: outlineWidth)
+                let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: fontType, timeFormat: formatType, textSize: 1.0,
+                                                           effect: effectType, horizontalPosition: .Centered, fillColor: layerColor, strokeColor: SKColor.init(hexString: strokeColorHex), lineWidth: outlineWidth)
                 digitalTimeNode.name = "timeLabel"
                 
                 setLayerProps(layerNode: digitalTimeNode, faceLayer: faceLayer)

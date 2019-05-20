@@ -14,6 +14,13 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     
     @IBOutlet var fontButton: UIButton!
     @IBOutlet var fontNameLabel: UILabel!
+    
+    @IBOutlet var formatButton: UIButton!
+    @IBOutlet var formatNameLabel: UILabel!
+    
+    @IBOutlet var effectButton: UIButton!
+    @IBOutlet var effectNameLabel: UILabel!
+    
 //    @IBOutlet var totalNumbersSegment: UISegmentedControl!
     @IBOutlet var outlineWidthSlider: UISlider!
     
@@ -35,22 +42,44 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
-        layerOptions.fontType = NumberTextTypes.userSelectableValues[itemChosen]
         
-        fontNameLabel.text = NumberTextNode.descriptionForType(layerOptions.fontType)
+        if actionName == "chooseFontAction" {
+            layerOptions.fontType = NumberTextTypes.userSelectableValues[itemChosen]
+            fontNameLabel.text = NumberTextNode.descriptionForType(layerOptions.fontType)
+        }
+        
+        if actionName == "chooseFormatAction" {
+            layerOptions.formatType  = DigitalTimeFormats.userSelectableValues[itemChosen]
+            formatNameLabel.text = DigitalTimeNode.descriptionForTimeFormats(layerOptions.formatType)
+        }
+        
+        if actionName == "chooseEffectAction" {
+            layerOptions.effectType  = DigitalTimeEffects.userSelectableValues[itemChosen]
+            effectNameLabel.text = DigitalTimeNode.descriptionForTimeEffects(layerOptions.effectType)
+        }
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
         //debugPrint("returnFromAction action:" + actionName + " item: " + itemChosen.description)
     }
     
     @IBAction func buttonTapped( sender: UIButton ) {
+        SettingsViewController.actionCell = self
         if sender == fontButton {
             SettingsViewController.actionsArray = NumberTextNode.typeDescriptions()
-            SettingsViewController.actionCell = self
             SettingsViewController.actionCellMedthodName = "chooseFontAction"
             SettingsViewController.actionsTitle = "Choose Font"
-            NotificationCenter.default.post(name: SettingsViewController.settingsCallActionSheet, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
         }
+        if sender == formatButton {
+            SettingsViewController.actionsArray = DigitalTimeNode.timeFormatsDescriptions()
+            SettingsViewController.actionCellMedthodName = "chooseFormatAction"
+            SettingsViewController.actionsTitle = "Choose Format"
+        }
+        if sender == effectButton {
+            SettingsViewController.actionsArray = DigitalTimeNode.timeEffectsDescriptions()
+            SettingsViewController.actionCellMedthodName = "chooseEffectAction"
+            SettingsViewController.actionsTitle = "Choose Effect"
+        }
+        NotificationCenter.default.post(name: SettingsViewController.settingsCallActionSheet, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
     
     @IBAction func widthSliderValueDidChange(sender: UISlider ) {
@@ -80,7 +109,10 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
         redrawColorsForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView)
         guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
         selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: layerOptions.desiredThemeColorIndexForOutline)
+        
         fontNameLabel.text = NumberTextNode.descriptionForType(layerOptions.fontType)
+        formatNameLabel.text = DigitalTimeNode.descriptionForTimeFormats(layerOptions.formatType)
+        effectNameLabel.text = DigitalTimeNode.descriptionForTimeEffects(layerOptions.effectType)
     }
     
     override func awakeFromNib() {
