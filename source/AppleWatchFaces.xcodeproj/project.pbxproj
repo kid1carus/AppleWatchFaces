@@ -11,6 +11,7 @@
 		3103A4452293644800E7B10A /* NumberRingLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */; };
 		3103A446229364A500E7B10A /* NumberRingLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */; };
 		3103A447229364A600E7B10A /* NumberRingLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */; };
+		3103A4492293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4482293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift */; };
 		31053339225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333A225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333B225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
@@ -326,6 +327,7 @@
 /* Begin PBXFileReference section */
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberRingLayerOptions.swift; sourceTree = "<group>"; };
+		3103A4482293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerNumberRingTableViewCell.swift; sourceTree = "<group>"; };
 		31053338225A63C7004282E5 /* ClockOverlaySetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockOverlaySetting.swift; sourceTree = "<group>"; };
 		3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+JSONHelpers.swift"; sourceTree = "<group>"; };
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 			children = (
 				310D922D227E6F17007A5808 /* FaceLayerTableViewCell.swift */,
 				310D922F227E700B007A5808 /* FaceLayerShapeTableViewCell.swift */,
+				3103A4482293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift */,
 				315878D9228793A9008FFC76 /* FaceLayerColorBackgroundTableViewCell.swift */,
 				315878DD2287AF5B008FFC76 /* FaceLayerDateTimeLabelTableViewCell.swift */,
 			);
@@ -1081,6 +1084,7 @@
 				31FF20D5228FB96B0023F8A5 /* ColorCollectionDataSource.swift in Sources */,
 				31FF20C7228E6D010023F8A5 /* SettingsViewController+Sharing.swift in Sources */,
 				312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */,
+				3103A4492293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift in Sources */,
 				31F56FA421857FC100455FC6 /* WatchPreviewViewController.swift in Sources */,
 				310D922E227E6F17007A5808 /* FaceLayerTableViewCell.swift in Sources */,
 				31EF999321A0AF4F00BB54E7 /* FaceBackgroundNode.swift in Sources */,

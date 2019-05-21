@@ -180,6 +180,9 @@ class FaceLayersTableViewController: UITableViewController {
         if (faceLayer.layerType == .ShapeRing) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerShapeID", for: indexPath) as! FaceLayerShapeTableViewCell
         }
+        else if (faceLayer.layerType == .NumberRing) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerNumbersID", for: indexPath) as! FaceLayerNumberRingTableViewCell
+        }
         else if (faceLayer.layerType == .DateTimeLabel) {
             cell = tableView.dequeueReusableCell(withIdentifier: "decoratorEditorDigitalTimeID", for: indexPath) as! FaceLayerDateTimeLabelTableViewCell
         }
