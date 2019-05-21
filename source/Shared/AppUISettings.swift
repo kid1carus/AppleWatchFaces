@@ -93,6 +93,10 @@ class AppUISettings: NSObject {
     static let ringSettigsSliderSpacerMin:Float = 0
     static let ringSettigsSliderSpacerMax:Float = 1.5
     
+    //outline width sliders
+    static let layerSettingsOutlineWidthMin:Float = 0
+    static let layerSettingsOutlineWidthMax:Float = 10.0
+    
     //some other DRY settings
     static let thumbnailFolder = "thumbs"
     static let backgroundFileName = "-customBackground"

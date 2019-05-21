@@ -14,6 +14,9 @@ class NumberRingLayerOptions: FaceLayerOptions {
     var patternTotal: Int
     var patternArray: [Int]
     
+    var outlineWidth: Float
+    var desiredThemeColorIndexForOutline: Int
+    
     //init from JSON, ( in from txt files )
     init(jsonObj: JSON ) {
         
@@ -35,6 +38,9 @@ class NumberRingLayerOptions: FaceLayerOptions {
         self.patternTotal = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 12, key: "patternTotal")
         self.patternArray = patternArrayTemp
         
+        self.outlineWidth = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "outlineWidth")
+        self.desiredThemeColorIndexForOutline = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndexForOutline")
+        
         super.init()
     }
     
@@ -43,6 +49,9 @@ class NumberRingLayerOptions: FaceLayerOptions {
         self.textSize = 0.6
         self.patternTotal = 12
         self.patternArray = [1]
+        
+        self.outlineWidth = 0.0
+        self.desiredThemeColorIndexForOutline = 0
         
         super.init()
     }
@@ -55,6 +64,9 @@ class NumberRingLayerOptions: FaceLayerOptions {
         
         serializedDict[ "patternTotal" ] = self.patternTotal.description as AnyObject
         serializedDict[ "patternArray" ] = self.patternArray as AnyObject
+        
+        serializedDict[ "outlineWidth" ] = self.outlineWidth.description as AnyObject
+        serializedDict[ "desiredThemeColorIndexForOutline" ] = self.desiredThemeColorIndexForOutline.description as AnyObject
         
         return serializedDict as NSDictionary
     }

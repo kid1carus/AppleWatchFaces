@@ -21,7 +21,6 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     @IBOutlet var effectButton: UIButton!
     @IBOutlet var effectNameLabel: UILabel!
     
-//    @IBOutlet var totalNumbersSegment: UISegmentedControl!
     @IBOutlet var outlineWidthSlider: UISlider!
     
     let settingTypeString = "dateTimeLabel"
@@ -100,8 +99,8 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer)
         
-        outlineWidthSlider.maximumValue = 10.0
-        outlineWidthSlider.minimumValue = 0.0
+        outlineWidthSlider.minimumValue = AppUISettings.layerSettingsOutlineWidthMin
+        outlineWidthSlider.maximumValue = AppUISettings.layerSettingsOutlineWidthMax
         
         redrawColorsForColorCollectionView( colorCollectionView: colorSelectionCollectionView)
         selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)

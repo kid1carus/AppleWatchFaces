@@ -59,8 +59,8 @@ class DigitalTimeLayerOptions: FaceLayerOptions {
         serializedDict[ "fontType" ] = self.fontType.rawValue as AnyObject
         serializedDict[ "formatType" ] = self.formatType.rawValue as AnyObject
         serializedDict[ "effectType" ] = self.effectType.rawValue as AnyObject
-        serializedDict[ "outlineWidth" ] = self.outlineWidth.description as AnyObject
         
+        serializedDict[ "outlineWidth" ] = self.outlineWidth.description as AnyObject
         serializedDict[ "desiredThemeColorIndexForOutline" ] = self.desiredThemeColorIndexForOutline.description as AnyObject
         
         return serializedDict as NSDictionary
