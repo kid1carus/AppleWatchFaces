@@ -181,7 +181,7 @@ class WatchFaceNode: SKShapeNode {
                     let ringSettings = ClockRingSetting.defaults()
                     ringSettings.indicatorSize = shapeOptions.indicatorSize
                     ringSettings.indicatorType = shapeOptions.indicatorType
-                    generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: fillMaterial, currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size)
+                    generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: fillMaterial, currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size, lineWidth: 0.0)
                     
                     setLayerProps(layerNode: shapeNode, faceLayer: faceLayer)
                     self.addChild(shapeNode)
@@ -199,10 +199,13 @@ class WatchFaceNode: SKShapeNode {
                     let ringSettings = ClockRingSetting.defaults()
                     ringSettings.textSize = layerOptions.textSize
                     ringSettings.textType = layerOptions.fontType
+                    ringSettings.textOutlineDesiredThemeColorIndex = layerOptions.desiredThemeColorIndexForOutline
+                    let clockFaceSettings = ClockFaceSetting.defaults()
+                    clockFaceSettings.ringMaterials = faceSettings.faceColors
                     
                     generateRingNode(shapeNode, patternTotal: layerOptions.patternTotal, patternArray: layerOptions.patternArray, ringType: .RingTypeTextNode,
-                        material: fillMaterial, currentDistance: 0.8, clockFaceSettings: ClockFaceSetting.defaults(), ringSettings: ringSettings, renderNumbers: true,
-                        renderShapes: true, ringShape: ringShapePath, size: size)
+                        material: fillMaterial, currentDistance: 0.8, clockFaceSettings: clockFaceSettings, ringSettings: ringSettings, renderNumbers: true,
+                        renderShapes: true, ringShape: ringShapePath, size: size, lineWidth: layerOptions.outlineWidth)
                     
                     setLayerProps(layerNode: shapeNode, faceLayer: faceLayer)
                     self.addChild(shapeNode)
@@ -245,70 +248,15 @@ class WatchFaceNode: SKShapeNode {
 //        renderIndicatorItems(clockFaceSettings: clockFaceSettings, size: size)
     }
     
-    func renderIndicatorItems( clockFaceSettings: ClockFaceSetting, size: CGSize ) {
-        let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: clockFaceSettings.ringRenderShape )
-        
-        let indicatorNode = SKNode()
-        indicatorNode.name = "indicatorNode"
-        indicatorNode.zPosition = CGFloat(PartsZPositions.complications.rawValue)
-        self.addChild(indicatorNode)
-        
-        var currentDistance = Float(1.0)
-        //loop through ring settings and render rings from outside to inside
-        for ringSetting in clockFaceSettings.ringSettings {
-            
-            let desiredMaterialIndex = ringSetting.ringMaterialDesiredThemeColorIndex
-            var material = ""
-            if (desiredMaterialIndex<=clockFaceSettings.ringMaterials.count-1) {
-                material = clockFaceSettings.ringMaterials[desiredMaterialIndex]
-            } else {
-                material = clockFaceSettings.ringMaterials[clockFaceSettings.ringMaterials.count-1]
-            }
-            
-            generateRingNode(
-                indicatorNode,
-                patternTotal: ringSetting.ringPatternTotal,
-                patternArray: ringSetting.ringPattern,
-                ringType: ringSetting.ringType,
-                material: material,
-                currentDistance: currentDistance,
-                clockFaceSettings: clockFaceSettings,
-                ringSettings: ringSetting,
-                renderNumbers: true,
-                renderShapes: true,
-                ringShape: ringShapePath,
-                size: size)
-            
-            //move it closer to center
-            currentDistance = currentDistance - ringSetting.ringWidth
-        }
-    }
-    
-    func generateRingNode( _ clockFaceNode: SKNode, patternTotal: Int, patternArray: [Int], ringType: RingTypes, material: String, currentDistance: Float, clockFaceSettings: ClockFaceSetting, ringSettings: ClockRingSetting, renderNumbers: Bool, renderShapes: Bool, ringShape: UIBezierPath, size: CGSize) {
-        
-        let positionInRing = clockFaceSettings.ringSettings.firstIndex(of: ringSettings)
+    func generateRingNode( _ clockFaceNode: SKNode, patternTotal: Int, patternArray: [Int], ringType: RingTypes, material: String, currentDistance: Float, clockFaceSettings: ClockFaceSetting, ringSettings: ClockRingSetting, renderNumbers: Bool, renderShapes: Bool, ringShape: UIBezierPath, size: CGSize, lineWidth: Float) {
         
         let ringNode = SKNode()
         ringNode.name = "ringNode"
-        
-        //set alpha for thios colorIndex
-        if ringSettings.ringMaterialDesiredThemeColorIndex < clockFaceSettings.ringAlphas.count {
-            ringNode.alpha = CGFloat(clockFaceSettings.ringAlphas[ringSettings.ringMaterialDesiredThemeColorIndex])
-        }
-        
-        //keep track of ringIndex for tapDetection / highlighting in editor
-        if let positionInRing = positionInRing { ringNode.userData = ["positionInRing":positionInRing, "ringMaterialDesiredThemeColorIndex" : ringSettings.ringMaterialDesiredThemeColorIndex] }
+
         clockFaceNode.addChild(ringNode)
         
-        //optional stroke color
-        var strokeColor:SKColor? = nil
-        if (ringSettings.shouldShowTextOutline) {
-            let strokeMaterial = clockFaceSettings.ringMaterials[ringSettings.textOutlineDesiredThemeColorIndex]
-            strokeColor = SKColor.init(hexString: strokeMaterial)
-        }
-        
-        //just exit for spacer
-        if (ringType == RingTypes.RingTypeSpacer) { return }
+        let strokeMaterial = clockFaceSettings.ringMaterials[ringSettings.textOutlineDesiredThemeColorIndex]
+        let strokeColor = SKColor.init(hexString: strokeMaterial)
         
         // exit if pattern array is empty
         if (patternArray.count == 0) { return }
@@ -316,17 +264,6 @@ class WatchFaceNode: SKShapeNode {
         var patternCounter = 0
         
         let outerRingNode = SKNode.init()
-        
-        //manually position if needed
-        var xPos:CGFloat = 0
-        var yPos:CGFloat = 0
-//        if (ringSettings.ringStaticItemHorizontalPosition == .Numeric) {
-//            xPos = positionInViewForRingItem(ringSettings: ringSettings).x
-//        }
-//        if (ringSettings.ringStaticItemVerticalPosition == .Numeric) {
-//            yPos = positionInViewForRingItem(ringSettings: ringSettings).y
-//        }
-        outerRingNode.position = CGPoint.init(x: xPos, y: yPos)
         
         generateLoop: for outerRingIndex in 0...(patternTotal-1) {
             //dont draw when pattern == 0
@@ -346,8 +283,6 @@ class WatchFaceNode: SKShapeNode {
             let scaledPoint = newPos.applying(CGAffineTransform.init(scaleX: distanceMult, y: distanceMult))
             
             if (renderNumbers && ringType == RingTypes.RingTypeTextNode || renderNumbers && ringType == RingTypes.RingTypeTextRotatingNode) {
-                //print("patternDraw")
-                
                 //numbers
                 var numberToRender = outerRingIndex
                 if numberToRender == 0 { numberToRender = patternTotal }
@@ -365,11 +300,9 @@ class WatchFaceNode: SKShapeNode {
                     shouldDisplayRomanNumerals: clockFaceSettings.shouldShowRomanNumeralText,
                     pivotMode: 0,
                     fillColor: SKColor.init(hexString: material),
-                    strokeColor: strokeColor
+                    strokeColor: strokeColor,
+                    lineWidth: lineWidth
                 )
-                
-                //keep track of ringIndex for tapDetection / highlighting in editor
-                if let positionInRing = positionInRing { innerRingNode.userData = ["positionInRing":positionInRing] }
                 
                 ringNode.name = "textRingNode"
                 

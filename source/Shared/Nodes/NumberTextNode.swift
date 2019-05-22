@@ -154,7 +154,7 @@ class NumberTextNode: SKNode {
     }
     
     //used when generating node for clock faces ( the numbers )
-    init(numberTextType: NumberTextTypes, textSize: Float, currentNum: Int, totalNum: Int, shouldDisplayRomanNumerals: Bool, pivotMode: Int, fillColor: SKColor, strokeColor: SKColor? ) {
+    init(numberTextType: NumberTextTypes, textSize: Float, currentNum: Int, totalNum: Int, shouldDisplayRomanNumerals: Bool, pivotMode: Int, fillColor: SKColor, strokeColor: SKColor?, lineWidth: Float) {
         
         super.init()
         
@@ -176,17 +176,13 @@ class NumberTextNode: SKNode {
         hourText.verticalAlignmentMode = .center
         
         let fontName = NumberTextNode.fontNameForNumberTextType(numberTextType)
-        
-        //attributed version
-        let strokeWidth = -2 * textSize
-        //debugPrint("strokeW: " + strokeWidth.description)
-        
+    
         var attributes: [NSAttributedString.Key : Any] = [
             .foregroundColor: fillColor,
             .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
         ]
-        if strokeColor != nil {
-            attributes[.strokeWidth] = round(strokeWidth)
+        if lineWidth > 0 {
+            attributes[.strokeWidth] = -round(lineWidth)
             attributes[.strokeColor] = strokeColor
         }
         hourText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
