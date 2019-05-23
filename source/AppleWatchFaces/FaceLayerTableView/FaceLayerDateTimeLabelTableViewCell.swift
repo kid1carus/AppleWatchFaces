@@ -97,6 +97,8 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     }
     
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
+        super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
+        
         outlineWidthSlider.minimumValue = AppUISettings.layerSettingsOutlineWidthMin
         outlineWidthSlider.maximumValue = AppUISettings.layerSettingsOutlineWidthMax
         

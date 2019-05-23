@@ -680,8 +680,8 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second Hand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jju-ch-W44">
-                                            <rect key="frame" x="20" y="11" width="110" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jju-ch-W44">
+                                            <rect key="frame" x="20" y="11" width="44" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="jeZ-iy-bPm"/>
                                             </constraints>
@@ -876,6 +876,7 @@
                                     <outlet property="effectSlider" destination="Zak-Z9-Lbc" id="eeN-64-ygU"/>
                                     <outlet property="outlineColorSelectionCollectionView" destination="wIS-PL-Bjc" id="4YE-kN-1xa"/>
                                     <outlet property="outlineWidthSlider" destination="RnM-y8-0T6" id="1Go-V8-dFU"/>
+                                    <outlet property="titleLabel" destination="Jju-ch-W44" id="MnL-eI-Zfa"/>
                                     <outlet property="typeButton" destination="5WA-qN-DA1" id="Mfh-fc-j5X"/>
                                     <outlet property="typeNameLabel" destination="Uv6-As-GUU" id="bK3-ue-gVy"/>
                                 </connections>

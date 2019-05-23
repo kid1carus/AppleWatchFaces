@@ -115,6 +115,8 @@ class FaceLayerNumberRingTableViewCell: FaceLayerTableViewCell, UICollectionView
     }
     
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
+        super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
+        
         redrawColorsForColorCollectionView( colorCollectionView: colorSelectionCollectionView)
         selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
 
