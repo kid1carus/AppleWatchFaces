@@ -10,19 +10,20 @@ import Foundation
 
 class SecondHandLayerOptions: FaceLayerOptions {
     var handType: SecondHandTypes
-    var handColor: String
+    
+    var outlineWidth: Float
+    var desiredThemeColorIndexForOutline: Int
     var handImage: String
     var handAnimation: SecondHandMovements
-    var handOutline: Bool
     var effectsStrength: Float
     
     //init from JSON, ( in from txt files )
     init(jsonObj: JSON ) {
         self.handType = SecondHandTypes(rawValue: jsonObj["handType"].stringValue)!
-        self.handColor = NSObject.stringValueForJSONObj(jsonObj: jsonObj, defaultVal: "#ffffffff", key: "handColor")
+        self.outlineWidth = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "outlineWidth")
+        self.desiredThemeColorIndexForOutline = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndexForOutline")
         self.handImage = NSObject.stringValueForJSONObj(jsonObj: jsonObj, defaultVal: "", key: "handImage")
         self.handAnimation = SecondHandMovements(rawValue: jsonObj["handAnimation"].stringValue)!
-        self.handOutline = NSObject.boolValueForJSONObj(jsonObj: jsonObj, defaultVal: false, key: "handOutline")
         self.effectsStrength = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "effectsStrength")
         
         super.init()
@@ -30,10 +31,11 @@ class SecondHandLayerOptions: FaceLayerOptions {
     
     init(defaults: Bool ) {
         self.handType = .SecondHandTypeBlocky
-        self.handColor = "#ffffffff"
+        self.outlineWidth = 0.0
+        self.desiredThemeColorIndexForOutline = 0
+        
         self.handImage = ""
         self.handAnimation = .SecondHandMovementStep
-        self.handOutline = false
         self.effectsStrength = 0.0
         
         super.init()
@@ -43,10 +45,12 @@ class SecondHandLayerOptions: FaceLayerOptions {
         var serializedDict = [String:AnyObject]()
         
         serializedDict[ "handType" ] = self.handType.rawValue as AnyObject
-        serializedDict[ "handColor" ] = self.handColor as AnyObject
+        
+        serializedDict[ "outlineWidth" ] = self.outlineWidth.description as AnyObject
+        serializedDict[ "desiredThemeColorIndexForOutline" ] = self.desiredThemeColorIndexForOutline.description as AnyObject
+        
         serializedDict[ "handImage" ] = self.handImage as AnyObject
         serializedDict[ "handAnimation" ] = self.handAnimation.rawValue as AnyObject
-        serializedDict[ "handOutline" ] = NSNumber.init(value: self.handOutline as Bool)
         serializedDict[ "effectsStrength" ] = self.effectsStrength.description as AnyObject
         
         return serializedDict as NSDictionary

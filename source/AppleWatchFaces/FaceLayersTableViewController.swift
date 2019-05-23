@@ -144,7 +144,7 @@ class FaceLayersTableViewController: UITableViewController {
                 case .MinuteHand:
                     cellHeight = 290.0
                 case .SecondHand:
-                    cellHeight = 160.0
+                    cellHeight = 250.0
                 case .ShapeRing:
                     cellHeight = 220.0
                 case .NumberRing:
@@ -185,6 +185,9 @@ class FaceLayersTableViewController: UITableViewController {
         }
         else if (faceLayer.layerType == .DateTimeLabel) {
             cell = tableView.dequeueReusableCell(withIdentifier: "decoratorEditorDigitalTimeID", for: indexPath) as! FaceLayerDateTimeLabelTableViewCell
+        }
+        else if (faceLayer.layerType == .SecondHand) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerSecondHandID", for: indexPath) as! FaceLayerSecondHandTableViewCell
         }
         else if (faceLayer.layerType == .ColorTexture) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerColorBackgroundID", for: indexPath) as! FaceLayerColorBackgroundTableViewCell

@@ -138,6 +138,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             faceLayerOptions = DigitalTimeLayerOptions.init(defaults: true)
         case .GradientTexture:
             faceLayerOptions = GradientBackgroundLayerOptions.init(defaults: true)
+        case .SecondHand:
+            faceLayerOptions = SecondHandLayerOptions.init(defaults: true)
         default:
             faceLayerOptions = FaceLayerOptions()
         }

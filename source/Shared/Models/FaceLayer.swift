@@ -91,6 +91,8 @@ class FaceLayer: NSObject {
             self.layerOptions = DigitalTimeLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .GradientTexture:
             self.layerOptions = GradientBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        case .SecondHand:
+            self.layerOptions = SecondHandLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         default:
             self.layerOptions = FaceLayerOptions()
         }

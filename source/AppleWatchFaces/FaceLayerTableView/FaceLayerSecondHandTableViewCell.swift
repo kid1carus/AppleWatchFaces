@@ -1,5 +1,5 @@
 //
-//  FaceLayerDigitalTimeLabel.swift
+//  FaceLayerSecondHandTableViewCell.swift
 //  AppleWatchFaces
 //
 //  Created by Michael Hill on 5/11/19.
@@ -7,23 +7,21 @@
 
 import UIKit
 
-class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionViewDelegate {
+class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelegate {
     
     @IBOutlet var colorSelectionCollectionView: UICollectionView!
     @IBOutlet var outlineColorSelectionCollectionView: UICollectionView!
     
-    @IBOutlet var fontButton: UIButton!
-    @IBOutlet var fontNameLabel: UILabel!
+    @IBOutlet var typeButton: UIButton!
+    @IBOutlet var typeNameLabel: UILabel!
     
-    @IBOutlet var formatButton: UIButton!
-    @IBOutlet var formatNameLabel: UILabel!
-    
-    @IBOutlet var effectButton: UIButton!
-    @IBOutlet var effectNameLabel: UILabel!
+    @IBOutlet var animationButton: UIButton!
+    @IBOutlet var animationNameLabel: UILabel!
     
     @IBOutlet var outlineWidthSlider: UISlider!
+    @IBOutlet var effectSlider: UISlider!
     
-    let settingTypeString = "dateTimeLabel"
+    let settingTypeString = "secondHand"
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let faceLayer = myFaceLayer()
@@ -32,7 +30,7 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
             faceLayer.desiredThemeColorIndex = indexPath.row
         }
         if collectionView == outlineColorSelectionCollectionView {
-            guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
+            guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
             layerOptions.desiredThemeColorIndexForOutline = indexPath.row
         }
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -40,21 +38,11 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
-        guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
+        guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
         
-        if actionName == "chooseFontAction" {
-            layerOptions.fontType = NumberTextTypes.userSelectableValues[itemChosen]
-            fontNameLabel.text = NumberTextNode.descriptionForType(layerOptions.fontType)
-        }
-        
-        if actionName == "chooseFormatAction" {
-            layerOptions.formatType  = DigitalTimeFormats.userSelectableValues[itemChosen]
-            formatNameLabel.text = DigitalTimeNode.descriptionForTimeFormats(layerOptions.formatType)
-        }
-        
-        if actionName == "chooseEffectAction" {
-            layerOptions.effectType  = DigitalTimeEffects.userSelectableValues[itemChosen]
-            effectNameLabel.text = DigitalTimeNode.descriptionForTimeEffects(layerOptions.effectType)
+        if actionName == "chooseTypeAction" {
+            layerOptions.handType = SecondHandTypes.userSelectableValues[itemChosen]
+            typeNameLabel.text = SecondHandNode.descriptionForType(layerOptions.handType)
         }
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -63,53 +51,68 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     
     @IBAction func buttonTapped( sender: UIButton ) {
         SettingsViewController.actionCell = self
-        if sender == fontButton {
-            SettingsViewController.actionsArray = NumberTextNode.typeDescriptions()
-            SettingsViewController.actionCellMedthodName = "chooseFontAction"
-            SettingsViewController.actionsTitle = "Choose Font"
+        if sender == typeButton {
+            SettingsViewController.actionsArray = SecondHandNode.typeDescriptions()
+            SettingsViewController.actionCellMedthodName = "chooseTypeAction"
+            SettingsViewController.actionsTitle = "Choose Type"
         }
-        if sender == formatButton {
-            SettingsViewController.actionsArray = DigitalTimeNode.timeFormatsDescriptions()
-            SettingsViewController.actionCellMedthodName = "chooseFormatAction"
-            SettingsViewController.actionsTitle = "Choose Format"
-        }
-        if sender == effectButton {
-            SettingsViewController.actionsArray = DigitalTimeNode.timeEffectsDescriptions()
-            SettingsViewController.actionCellMedthodName = "chooseEffectAction"
-            SettingsViewController.actionsTitle = "Choose Effect"
-        }
+        
         NotificationCenter.default.post(name: SettingsViewController.settingsCallActionSheet, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
     
     @IBAction func widthSliderValueDidChange(sender: UISlider ) {
         let faceLayer = myFaceLayer()
-        guard let shapeOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
-
+        guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+        
         let roundedValue = Float(round(1*sender.value)/1)
-        if roundedValue != shapeOptions.outlineWidth {
+        if roundedValue != layerOptions.outlineWidth {
             self.selectThisCell()
             debugPrint("slider value:" + String( roundedValue ) )
-            shapeOptions.outlineWidth = roundedValue
+            layerOptions.outlineWidth = roundedValue
             let layerIndex = myLayerIndex() ?? 0
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
                                             userInfo:["settingType":settingTypeString,"layerIndex":layerIndex])
         }
     }
     
+    @IBAction func effectSliderValueDidChange(sender: UISlider ) {
+        let faceLayer = myFaceLayer()
+        guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+        
+        let roundedValue = Float(round(50*sender.value)/50)
+        if roundedValue != layerOptions.effectsStrength {
+            self.selectThisCell()
+            debugPrint("slider value:" + String( roundedValue ) )
+            layerOptions.effectsStrength = roundedValue
+            let layerIndex = myLayerIndex() ?? 0
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
+                                            userInfo:["settingType":settingTypeString,"layerIndex":layerIndex])
+        }
+    }
+    
+    
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
+        
         outlineWidthSlider.minimumValue = AppUISettings.layerSettingsOutlineWidthMin
         outlineWidthSlider.maximumValue = AppUISettings.layerSettingsOutlineWidthMax
+        
+        effectSlider.minimumValue = AppUISettings.handEffectSettigsSliderSpacerMin
+        effectSlider.maximumValue = AppUISettings.handEffectSettigsSliderSpacerMax
         
         redrawColorsForColorCollectionView( colorCollectionView: colorSelectionCollectionView)
         selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
         
         redrawColorsForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView)
-        guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
-        selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: layerOptions.desiredThemeColorIndexForOutline)
         
-        fontNameLabel.text = NumberTextNode.descriptionForType(layerOptions.fontType)
-        formatNameLabel.text = DigitalTimeNode.descriptionForTimeFormats(layerOptions.formatType)
-        effectNameLabel.text = DigitalTimeNode.descriptionForTimeEffects(layerOptions.effectType)
+        guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+        
+        selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: layerOptions.desiredThemeColorIndexForOutline)
+        outlineWidthSlider.value = layerOptions.outlineWidth
+        effectSlider.value = layerOptions.effectsStrength
+        
+        typeNameLabel.text = SecondHandNode.descriptionForType(layerOptions.handType)
+//        formatNameLabel.text = DigitalTimeNode.descriptionForTimeFormats(layerOptions.formatType)
+//        effectNameLabel.text = DigitalTimeNode.descriptionForTimeEffects(layerOptions.effectType)
     }
     
     override func awakeFromNib() {

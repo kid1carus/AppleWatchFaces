@@ -90,8 +90,6 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
     }
     
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
-        super.setupUIForFaceLayer(faceLayer: faceLayer)
-        
         redrawColorsForColorCollectionView( colorCollectionView: colorSelectionCollectionView)
         selectColorForColorCollectionView( colorCollectionView: colorSelectionCollectionView, desiredIndex: faceLayer.desiredThemeColorIndex)
         

@@ -99,7 +99,10 @@ class WatchFaceNode: SKShapeNode {
             let layerColor = SKColor.init(hexString: hexColor)
             
             if faceLayer.layerType == .SecondHand {
-                let secHandNode = SecondHandNode.init(secondHandType: .SecondHandTypeRail)
+                guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+                let strokeColor = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForOutline)
+                let secHandNode = SecondHandNode.init(secondHandType: layerOptions.handType, material: hexColor, strokeColor: strokeColor,
+                    lineWidth: CGFloat(layerOptions.outlineWidth), glowWidth: CGFloat(layerOptions.effectsStrength), fieldType: .None, itemStrength: 0)
                 secHandNode.name = "secondHand"
                 
                 setLayerProps(layerNode: secHandNode, faceLayer: faceLayer)

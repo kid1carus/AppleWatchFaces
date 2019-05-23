@@ -1,27 +1,63 @@
 {
     "faceSettings" : [
         {
-            "title" : "Face Test 1",
-            "uniqueID" : "3DB5DF63-3639-4DA2-809F-AB61FD419653",
+            "faceColors" : [
+                "#FFFFFFFF",
+                "#c6c6c6ff",
+                "#8e8e8eff",
+                "#545454ff",
+                "#1c1c1cff",
+                "#000000ff"
+            ],
             "faceLayers" : [
                 {
-                    "layerType" : "SecondHand",
-                    "alpha": 0.25,
+                    "desiredThemeColorIndex" : 0,
+                    "alpha" : "1.0",
+                    "angleOffset" : "0.0",
+                    "layerOptions" : {
+                        
+                    },
+                    "layerType" : "ColorTexture",
+                    "horizontalPosition" : "0.0",
+                    "scale" : "1.0",
+                    "verticalPosition" : "0.0"
                 },
                 {
-                    "layerType" : "MinuteHand",
-                    "alpha": 0.75,
+                    "scale" : "1.0",
+                    "desiredThemeColorIndex" : 4,
+                    "layerOptions" : {
+                        "patternTotal" : "12",
+                        "patternArray" : [
+                            1
+                        ],
+                        "indicatorSize" : "0.1",
+                        "indicatorType" : "FaceIndicatorTypeBox"
+                    },
+                    "horizontalPosition" : "0.0",
+                    "layerType" : "ShapeRing",
+                    "angleOffset" : "0.0",
+                    "alpha" : "1.0",
+                    "verticalPosition" : "0.0"
                 },
                 {
-                    "layerType" : "HourHand",
-                    "alpha": 1.0,
+                    "layerType" : "DateTimeLabel",
+                    "alpha" : "1.0",
+                    "angleOffset" : "0.0",
+                    "horizontalPosition" : "0.47500008",
+                    "desiredThemeColorIndex" : 4,
+                    "scale" : "0.37500045",
+                    "verticalPosition" : "-0.82499975",
+                    "layerOptions" : {
+                        "effectType" : "None",
+                        "fontType" : "NumberTextTypeSystem",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "outlineWidth" : "0.0",
+                        "formatType" : "DADD"
+                    }
                 }
-            ]
-        },
-        {
-            "title" : "Face Test 2",
-            "uniqueID" : "3DB5DF64-3639-4DA2-809F-AB61FD419664",
-            "faceLayers" : []
+            ],
+            "uniqueID" : "6D3747CE-1DB6-4988-A9C6-78FD769DC523",
+            "title" : "Untitled"
         }
     ]
 }

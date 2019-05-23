@@ -12,6 +12,7 @@
 		3103A446229364A500E7B10A /* NumberRingLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */; };
 		3103A447229364A600E7B10A /* NumberRingLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */; };
 		3103A4492293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A4482293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift */; };
+		3103A44B229575F000E7B10A /* FaceLayerSecondHandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103A44A229575F000E7B10A /* FaceLayerSecondHandTableViewCell.swift */; };
 		31053339225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333A225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
 		3105333B225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31053338225A63C7004282E5 /* ClockOverlaySetting.swift */; };
@@ -328,6 +329,7 @@
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberRingLayerOptions.swift; sourceTree = "<group>"; };
 		3103A4482293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerNumberRingTableViewCell.swift; sourceTree = "<group>"; };
+		3103A44A229575F000E7B10A /* FaceLayerSecondHandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerSecondHandTableViewCell.swift; sourceTree = "<group>"; };
 		31053338225A63C7004282E5 /* ClockOverlaySetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockOverlaySetting.swift; sourceTree = "<group>"; };
 		3105333C225A753F004282E5 /* NSObject+JSONHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+JSONHelpers.swift"; sourceTree = "<group>"; };
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 		310D922A227E26F0007A5808 /* FaceLayerTableView */ = {
 			isa = PBXGroup;
 			children = (
+				3103A44A229575F000E7B10A /* FaceLayerSecondHandTableViewCell.swift */,
 				310D922D227E6F17007A5808 /* FaceLayerTableViewCell.swift */,
 				310D922F227E700B007A5808 /* FaceLayerShapeTableViewCell.swift */,
 				3103A4482293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift */,
@@ -1078,6 +1081,7 @@
 				319095FC21CC898200F71BC6 /* PathElement.swift in Sources */,
 				318A928D21D05F660060D89B /* SettingsOptionsViewController.swift in Sources */,
 				314A010A21960409009BCE3C /* UserClockSetting.swift in Sources */,
+				3103A44B229575F000E7B10A /* FaceLayerSecondHandTableViewCell.swift in Sources */,
 				3109D1E521A9A37B00561F13 /* FaceChooserEditTableViewCell.swift in Sources */,
 				31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */,
 				318808D1217815E600585AB1 /* AppDelegate.swift in Sources */,
