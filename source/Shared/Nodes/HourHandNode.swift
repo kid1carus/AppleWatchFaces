@@ -97,14 +97,9 @@ class HourHandNode: SKSpriteNode {
         return typeKeysArray
     }
     
-    func addGlowEffect(shape: SKShapeNode, glowWidth: CGFloat) {
-        shape.glowWidth = glowWidth
-        shape.lineWidth = 1.0
-    }
-    
     func addArcNode(endAngle: CGFloat) {
         let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
-                                   endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
+                            endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
         newNode.name = "arcNode"
         self.addChild(newNode)
     }
@@ -253,7 +248,7 @@ class HourHandNode: SKSpriteNode {
             outerRingNode.fillColor = SKColor.clear
             outerRingNode.strokeColor = SKColor.init(hexString: material)
             outerRingNode.lineWidth = 1.0
-            if glowWidth>0 { addGlowEffect(shape: outerRingNode, glowWidth: glowWidth) }
+            outerRingNode.glowWidth = glowWidth
             
             let bezierPath = UIBezierPath()
             bezierPath.move(to: CGPoint(x: -5, y: -10))
@@ -270,7 +265,7 @@ class HourHandNode: SKSpriteNode {
             tickNode.fillColor = SKColor.clear
             tickNode.strokeColor = SKColor.init(hexString: material)
             tickNode.lineWidth = 1.0
-            if glowWidth>0 { addGlowEffect(shape: tickNode, glowWidth: glowWidth) }
+            tickNode.glowWidth = glowWidth
             
             outerRingNode.addChild(tickNode)
             
@@ -285,7 +280,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let phy = SKPhysicsBody.init(circleOfRadius: 5)
             phy.isDynamic = false
@@ -316,7 +311,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -365,7 +360,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -409,7 +404,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -427,7 +422,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: rectanglePath.cgPath)
             physicsBody.isDynamic = false
@@ -444,7 +439,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: rectanglePath.cgPath)
             physicsBody.isDynamic = false
@@ -474,7 +469,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -497,7 +492,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -526,7 +521,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: bezierPath.cgPath)
             physicsBody.isDynamic = false
@@ -676,7 +671,7 @@ class HourHandNode: SKSpriteNode {
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
-            if glowWidth>0 { addGlowEffect(shape: shape, glowWidth: glowWidth) }
+            shape.glowWidth = glowWidth
             
             let physicsBody = SKPhysicsBody.init(polygonFrom: hourHandPath.cgPath)
             physicsBody.isDynamic = false

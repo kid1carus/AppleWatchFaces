@@ -109,18 +109,22 @@ class WatchFaceNode: SKShapeNode {
                 self.addChild(secHandNode)
             }
             if faceLayer.layerType == .MinuteHand {
-                let minHandNode = MinuteHandNode.init(minuteHandType: .MinuteHandTypeBoxy)
+                guard let layerOptions = faceLayer.layerOptions as? MinuteHandLayerOptions else { return }
+                let strokeColor = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForOutline)
+                let minHandNode = MinuteHandNode.init(minuteHandType: layerOptions.handType, material: hexColor, strokeColor: strokeColor, lineWidth: CGFloat(layerOptions.outlineWidth), glowWidth: CGFloat(layerOptions.effectsStrength) )
                 minHandNode.name = "minuteHand"
                 
                 setLayerProps(layerNode: minHandNode, faceLayer: faceLayer)
                 self.addChild(minHandNode)
             }
             if faceLayer.layerType == .HourHand {
-                let hourHandNode = HourHandNode.init(hourHandType: .HourHandTypeBoxy)
-                hourHandNode.name = "hourHand"
-
-                setLayerProps(layerNode: hourHandNode, faceLayer: faceLayer)
-                self.addChild(hourHandNode)
+                guard let layerOptions = faceLayer.layerOptions as? HourHandLayerOptions else { return }
+                let strokeColor = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForOutline)
+                let minHandNode = HourHandNode.init(hourHandType: layerOptions.handType, material: hexColor, strokeColor: strokeColor, lineWidth: CGFloat(layerOptions.outlineWidth), glowWidth: CGFloat(layerOptions.effectsStrength) )
+                minHandNode.name = "hourHand"
+                
+                setLayerProps(layerNode: minHandNode, faceLayer: faceLayer)
+                self.addChild(minHandNode)
             }
             if faceLayer.layerType == .ImageTexture {
                 let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: "copper.jpg")

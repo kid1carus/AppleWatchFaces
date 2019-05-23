@@ -93,6 +93,10 @@ class FaceLayer: NSObject {
             self.layerOptions = GradientBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .SecondHand:
             self.layerOptions = SecondHandLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        case .MinuteHand:
+            self.layerOptions = MinuteHandLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        case .HourHand:
+            self.layerOptions = HourHandLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         default:
             self.layerOptions = FaceLayerOptions()
         }

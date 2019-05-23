@@ -140,9 +140,9 @@ class FaceLayersTableViewController: UITableViewController {
                 case .GradientTexture:
                     cellHeight = 270.0
                 case .HourHand:
-                    cellHeight = 160.0
+                    cellHeight = 250.0
                 case .MinuteHand:
-                    cellHeight = 290.0
+                    cellHeight = 250.0
                 case .SecondHand:
                     cellHeight = 250.0
                 case .ShapeRing:
@@ -186,8 +186,8 @@ class FaceLayersTableViewController: UITableViewController {
         else if (faceLayer.layerType == .DateTimeLabel) {
             cell = tableView.dequeueReusableCell(withIdentifier: "decoratorEditorDigitalTimeID", for: indexPath) as! FaceLayerDateTimeLabelTableViewCell
         }
-        else if (faceLayer.layerType == .SecondHand) {
-            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerSecondHandID", for: indexPath) as! FaceLayerSecondHandTableViewCell
+        else if (faceLayer.layerType == .SecondHand) || (faceLayer.layerType == .MinuteHand) || (faceLayer.layerType == .HourHand) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerHandID", for: indexPath) as! FaceLayerHandTableViewCell
         }
         else if (faceLayer.layerType == .ColorTexture) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerColorBackgroundID", for: indexPath) as! FaceLayerColorBackgroundTableViewCell
@@ -206,11 +206,16 @@ class FaceLayersTableViewController: UITableViewController {
         let sourceRow = sourceIndexPath.row;
         let destRow = destinationIndexPath.row;
         
+        if (sourceRow != destRow) {
+            
+            debugPrint("moving cells src:" + sourceRow.description + " dest:" + destRow.description)
+            
             let object = SettingsViewController.currentFaceSetting.faceLayers[sourceRow]
             SettingsViewController.currentFaceSetting.faceLayers.remove(at: sourceRow)
             SettingsViewController.currentFaceSetting.faceLayers.insert(object, at: destRow)
         
-        redrawPreview()
+            redrawPreview()
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

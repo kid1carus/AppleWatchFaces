@@ -140,6 +140,10 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             faceLayerOptions = GradientBackgroundLayerOptions.init(defaults: true)
         case .SecondHand:
             faceLayerOptions = SecondHandLayerOptions.init(defaults: true)
+        case .MinuteHand:
+            faceLayerOptions = MinuteHandLayerOptions.init(defaults: true)
+        case .HourHand:
+            faceLayerOptions = HourHandLayerOptions.init(defaults: true)
         default:
             faceLayerOptions = FaceLayerOptions()
         }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelegate {
+class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelegate {
     
     @IBOutlet var colorSelectionCollectionView: UICollectionView!
     @IBOutlet var outlineColorSelectionCollectionView: UICollectionView!
@@ -30,7 +30,7 @@ class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionView
             faceLayer.desiredThemeColorIndex = indexPath.row
         }
         if collectionView == outlineColorSelectionCollectionView {
-            guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+            guard let layerOptions = faceLayer.layerOptions as? HandLayerOptions else { return }
             layerOptions.desiredThemeColorIndexForOutline = indexPath.row
         }
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -38,11 +38,23 @@ class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionView
     
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
-        guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
-        
+    
         if actionName == "chooseTypeAction" {
-            layerOptions.handType = SecondHandTypes.userSelectableValues[itemChosen]
-            typeNameLabel.text = SecondHandNode.descriptionForType(layerOptions.handType)
+            if myFaceLayer().layerType == .SecondHand {
+                guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+                layerOptions.handType = SecondHandTypes.userSelectableValues[itemChosen]
+                typeNameLabel.text = SecondHandNode.descriptionForType(layerOptions.handType)
+            }
+            if myFaceLayer().layerType == .MinuteHand {
+                guard let layerOptions = faceLayer.layerOptions as? MinuteHandLayerOptions else { return }
+                layerOptions.handType = MinuteHandTypes.userSelectableValues[itemChosen]
+                typeNameLabel.text = MinuteHandNode.descriptionForType(layerOptions.handType)
+            }
+            if myFaceLayer().layerType == .HourHand {
+                guard let layerOptions = faceLayer.layerOptions as? HourHandLayerOptions else { return }
+                layerOptions.handType = HourHandTypes.userSelectableValues[itemChosen]
+                typeNameLabel.text = HourHandNode.descriptionForType(layerOptions.handType)
+            }
         }
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -52,7 +64,15 @@ class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionView
     @IBAction func buttonTapped( sender: UIButton ) {
         SettingsViewController.actionCell = self
         if sender == typeButton {
-            SettingsViewController.actionsArray = SecondHandNode.typeDescriptions()
+            if myFaceLayer().layerType == .SecondHand {
+                SettingsViewController.actionsArray = SecondHandNode.typeDescriptions()
+            }
+            if myFaceLayer().layerType == .MinuteHand {
+                SettingsViewController.actionsArray = MinuteHandNode.typeDescriptions()
+            }
+            if myFaceLayer().layerType == .HourHand {
+                SettingsViewController.actionsArray = HourHandNode.typeDescriptions()
+            }
             SettingsViewController.actionCellMedthodName = "chooseTypeAction"
             SettingsViewController.actionsTitle = "Choose Type"
         }
@@ -62,7 +82,7 @@ class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionView
     
     @IBAction func widthSliderValueDidChange(sender: UISlider ) {
         let faceLayer = myFaceLayer()
-        guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+        guard let layerOptions = faceLayer.layerOptions as? HandLayerOptions else { return }
         
         let roundedValue = Float(round(1*sender.value)/1)
         if roundedValue != layerOptions.outlineWidth {
@@ -77,7 +97,7 @@ class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionView
     
     @IBAction func effectSliderValueDidChange(sender: UISlider ) {
         let faceLayer = myFaceLayer()
-        guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+        guard let layerOptions = faceLayer.layerOptions as? HandLayerOptions else { return }
         
         let roundedValue = Float(round(50*sender.value)/50)
         if roundedValue != layerOptions.effectsStrength {
@@ -89,7 +109,6 @@ class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionView
                                             userInfo:["settingType":settingTypeString,"layerIndex":layerIndex])
         }
     }
-    
     
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
@@ -105,13 +124,25 @@ class FaceLayerSecondHandTableViewCell: FaceLayerTableViewCell, UICollectionView
         
         redrawColorsForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView)
         
-        guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+        guard let layerOptions = faceLayer.layerOptions as? HandLayerOptions else { return }
         
         selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: layerOptions.desiredThemeColorIndexForOutline)
         outlineWidthSlider.value = layerOptions.outlineWidth
         effectSlider.value = layerOptions.effectsStrength
         
-        typeNameLabel.text = SecondHandNode.descriptionForType(layerOptions.handType)
+        if faceLayer.layerType == .SecondHand {
+            guard let secondHandLayerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+            typeNameLabel.text = SecondHandNode.descriptionForType(secondHandLayerOptions.handType)
+        }
+        if faceLayer.layerType == .MinuteHand {
+            guard let minuteHandLayerOptions = faceLayer.layerOptions as? MinuteHandLayerOptions else { return }
+            typeNameLabel.text = MinuteHandNode.descriptionForType(minuteHandLayerOptions.handType)
+        }
+        if faceLayer.layerType == .HourHand {
+            guard let hourHandLayerOptions = faceLayer.layerOptions as? HourHandLayerOptions else { return }
+            typeNameLabel.text = HourHandNode.descriptionForType(hourHandLayerOptions.handType)
+        }
+        
 //        formatNameLabel.text = DigitalTimeNode.descriptionForTimeFormats(layerOptions.formatType)
 //        effectNameLabel.text = DigitalTimeNode.descriptionForTimeEffects(layerOptions.effectType)
     }
