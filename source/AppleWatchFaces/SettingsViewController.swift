@@ -152,6 +152,10 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, horizontalPosition: 0, verticalPosition:0, scale: 1.0,
                                       angleOffset: 0, desiredThemeColorIndex: 0, layerOptions: faceLayerOptions)
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        setUndoRedoButtonStatus()
+        
         SettingsViewController.currentFaceSetting.faceLayers.append(newLayer)
         redrawPreviewClock()
         
@@ -430,11 +434,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         if (self.isMovingFromParent) {
             // moving back, if anything has changed, lets save
-            //if SettingsViewController.undoArray.count>0 {
+            if SettingsViewController.undoArray.count>0 {
                 saveClock()
                 _ = UIImage.delete(imageName: SettingsViewController.currentFaceSetting.uniqueID)
                 NotificationCenter.default.post(name: SettingsViewController.settingsExitingNotificationName, object: nil, userInfo:["currentFaceIndex":currentFaceIndex])
-            //}
+            }
         }
         
         //TODO: probably not needed

@@ -210,11 +210,15 @@ class FaceLayersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard let settingsViewVC = settingsViewController else { return }
+        
         let sourceRow = sourceIndexPath.row;
         let destRow = destinationIndexPath.row;
         
         if (sourceRow != destRow) {
             
+            SettingsViewController.addToUndoStack()
+            settingsViewVC.setUndoRedoButtonStatus()
             debugPrint("moving cells src:" + sourceRow.description + " dest:" + destRow.description)
             
             let object = SettingsViewController.currentFaceSetting.faceLayers[sourceRow]
@@ -222,11 +226,17 @@ class FaceLayersTableViewController: UITableViewController {
             SettingsViewController.currentFaceSetting.faceLayers.insert(object, at: destRow)
         
             redrawPreview()
+            
+            
         }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            guard let settingsViewVC = settingsViewController else { return }
+            SettingsViewController.addToUndoStack()
+            settingsViewVC.setUndoRedoButtonStatus()
+            
             let sourceRow = indexPath.row;
             //let trashedSetting = clockSettings.ringSettings[sourceRow]
             SettingsViewController.currentFaceSetting.faceLayers.remove(at: sourceRow)
