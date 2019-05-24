@@ -134,7 +134,7 @@ class FaceLayersTableViewController: UITableViewController {
             if selectedPath.row == indexPath.row {
                 switch faceLayer.layerType {
                 case .ImageTexture:
-                    cellHeight = 270.0
+                    cellHeight = 145.0
                 case .ColorTexture:
                     cellHeight = 80.0
                 case .GradientTexture:
@@ -195,7 +195,10 @@ class FaceLayersTableViewController: UITableViewController {
         else if (faceLayer.layerType == .GradientTexture) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerGradientCellID", for: indexPath) as! FaceLayerGradientBackgroundTableViewCell
         }
-        
+        else if (faceLayer.layerType == .ImageTexture) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerImageCellID", for: indexPath) as! FaceLayerImageBackgroundTableViewCell
+        }
+            
         else {
             cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
         }
