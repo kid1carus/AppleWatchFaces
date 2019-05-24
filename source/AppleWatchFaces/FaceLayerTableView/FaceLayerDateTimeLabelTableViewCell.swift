@@ -28,6 +28,9 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let faceLayer = myFaceLayer()
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         if collectionView == colorSelectionCollectionView {
             faceLayer.desiredThemeColorIndex = indexPath.row
         }
@@ -41,6 +44,9 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
         
         if actionName == "chooseFontAction" {
             layerOptions.fontType = NumberTextTypes.userSelectableValues[itemChosen]
@@ -87,6 +93,9 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
 
         let roundedValue = Float(round(1*sender.value)/1)
         if roundedValue != shapeOptions.outlineWidth {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
             self.selectThisCell()
             debugPrint("slider value:" + String( roundedValue ) )
             shapeOptions.outlineWidth = roundedValue

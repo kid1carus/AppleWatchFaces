@@ -25,6 +25,10 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let faceLayer = myFaceLayer()
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         faceLayer.desiredThemeColorIndex = indexPath.row
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
@@ -32,6 +36,9 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? ShapeLayerOptions else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
         
         if actionName == "chooseTypeAction" {
             layerOptions.indicatorType = FaceIndicatorTypes.userSelectableValues[itemChosen]
@@ -68,6 +75,9 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? ShapeLayerOptions else { return }
 
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         layerOptions.patternTotal = Int(ClockRingSetting.ringTotalOptions()[sender.selectedSegmentIndex])!
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":settingTypeString ,"layerIndex":myLayerIndex()!])
@@ -80,6 +90,9 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
         
         let roundedValue = Float(round(50*sender.value)/50)
         if roundedValue != layerOptions.indicatorSize {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
             self.selectThisCell()
             debugPrint("slider value:" + String( roundedValue ) )
             layerOptions.indicatorSize = roundedValue

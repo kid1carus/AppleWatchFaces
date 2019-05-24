@@ -21,6 +21,9 @@ class FaceLayerGradientBackgroundTableViewCell: FaceLayerTableViewCell, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let faceLayer = myFaceLayer()
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         if collectionView == colorSelectionCollectionView {
             faceLayer.desiredThemeColorIndex = indexPath.row
         }
@@ -35,6 +38,9 @@ class FaceLayerGradientBackgroundTableViewCell: FaceLayerTableViewCell, UICollec
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? GradientBackgroundLayerOptions else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
         
         if actionName == "chooseDirectionAction" {
             layerOptions.directionType = GradientBackgroundDirectionTypes.userSelectableValues[itemChosen]

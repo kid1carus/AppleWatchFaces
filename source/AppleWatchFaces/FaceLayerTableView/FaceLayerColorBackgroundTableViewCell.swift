@@ -16,6 +16,10 @@ class FaceLayerColorBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let faceLayer = myFaceLayer()
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         faceLayer.desiredThemeColorIndex = indexPath.row
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }

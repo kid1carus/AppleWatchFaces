@@ -43,6 +43,9 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         layerOptions.filename = AppUISettings.materialFiles[indexPath.row]
         filenameLabel.text = layerOptions.filename
         

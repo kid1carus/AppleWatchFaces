@@ -29,6 +29,10 @@ class FaceLayerNumberRingTableViewCell: FaceLayerTableViewCell, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let faceLayer = myFaceLayer()
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         if collectionView == colorSelectionCollectionView {
             faceLayer.desiredThemeColorIndex = indexPath.row
         }
@@ -42,6 +46,9 @@ class FaceLayerNumberRingTableViewCell: FaceLayerTableViewCell, UICollectionView
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? NumberRingLayerOptions else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
         
         if actionName == "chooseFontAction" {
             layerOptions.fontType = NumberTextTypes.userSelectableValues[itemChosen]
@@ -78,6 +85,9 @@ class FaceLayerNumberRingTableViewCell: FaceLayerTableViewCell, UICollectionView
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? NumberRingLayerOptions else { return }
 
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         layerOptions.patternTotal = Int(ClockRingSetting.ringTotalOptions()[sender.selectedSegmentIndex])!
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":settingTypeString ,"layerIndex":myLayerIndex()!])
@@ -89,6 +99,9 @@ class FaceLayerNumberRingTableViewCell: FaceLayerTableViewCell, UICollectionView
         
         let roundedValue = Float(round(1*sender.value)/1)
         if roundedValue != layerOptions.outlineWidth {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
             self.selectThisCell()
             debugPrint("slider value:" + String( roundedValue ) )
             layerOptions.outlineWidth = roundedValue
@@ -105,6 +118,9 @@ class FaceLayerNumberRingTableViewCell: FaceLayerTableViewCell, UICollectionView
         
         let roundedValue = Float(round(50*sender.value)/50)
         if roundedValue != layerOptions.textSize {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
             self.selectThisCell()
             debugPrint("slider value:" + String( roundedValue ) )
             layerOptions.textSize = roundedValue

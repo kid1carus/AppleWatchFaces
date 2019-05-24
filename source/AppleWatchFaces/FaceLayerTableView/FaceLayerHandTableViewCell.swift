@@ -26,6 +26,9 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let faceLayer = myFaceLayer()
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         if collectionView == colorSelectionCollectionView {
             faceLayer.desiredThemeColorIndex = indexPath.row
         }
@@ -39,6 +42,9 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
     
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         if actionName == "chooseTypeAction" {
             if myFaceLayer().layerType == .SecondHand {
                 guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
@@ -86,8 +92,12 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
         
         let roundedValue = Float(round(1*sender.value)/1)
         if roundedValue != layerOptions.outlineWidth {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
             self.selectThisCell()
             debugPrint("slider value:" + String( roundedValue ) )
+            
             layerOptions.outlineWidth = roundedValue
             let layerIndex = myLayerIndex() ?? 0
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
@@ -101,6 +111,9 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
         
         let roundedValue = Float(round(50*sender.value)/50)
         if roundedValue != layerOptions.effectsStrength {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
             self.selectThisCell()
             debugPrint("slider value:" + String( roundedValue ) )
             layerOptions.effectsStrength = roundedValue
