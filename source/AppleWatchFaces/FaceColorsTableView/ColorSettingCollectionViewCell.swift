@@ -35,19 +35,12 @@ class ColorSettingCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        //moved to cell draw
-        //circleView.layer.cornerRadius = circleView.layer.frame.height / 2
-        
-        circleView.layer.borderWidth = 0.0
-        circleView.layer.borderColor = SKColor.clear.cgColor
-        
-        clipsToBounds = true
-        
-//        if borderWidth > 0 {
-//                layer.borderColor = normalBorderColor?.cgColor
-//        }
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        circleView.layer.borderWidth = 0.0
+//        circleView.layer.borderColor = SKColor.clear.cgColor
+//        
+//        clipsToBounds = true
+//    }
 }
