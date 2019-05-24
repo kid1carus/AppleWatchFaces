@@ -466,6 +466,20 @@ class WatchFaceNode: SKShapeNode {
     
     func positionHands( sec: CGFloat, min: CGFloat, hour: CGFloat, force: Bool ) {
         
+        for (index,layer) in self.faceSettings.faceLayers.enumerated() {
+            
+            if layer.layerType == .SecondHand, let secondHandNode = self.children[index] as? SecondHandNode {
+                    secondHandNode.positionHands(sec: sec, secondHandMovement: .SecondHandMovementStep, force: force)
+            }
+            
+            if layer.layerType == .MinuteHand, let minuteHandNode = self.children[index] as? MinuteHandNode {
+                minuteHandNode.positionHands(sec: sec, min: min, minuteHandMovement: .MinuteHandMovementStep, force: force)
+            }
+            
+            if layer.layerType == .HourHand, let hourHandNode = self.children[index] as? HourHandNode {
+                hourHandNode.positionHands(min: min, hour: hour, force: force)
+            }
+        }
         if let background = self.childNode(withName: "backgroundShape") as? FaceBackgroundNode {
             background.positionHands(min: min, hour: hour, force: force)
         }
@@ -473,18 +487,7 @@ class WatchFaceNode: SKShapeNode {
         if let foreground = self.childNode(withName: "foregroundNode") as? FaceForegroundNode {
             foreground.positionHands(min: min, hour: hour, force: force)
         }
-        
-        if let secondHand = self.childNode(withName: "secondHand") as? SecondHandNode {
-            secondHand.positionHands(sec: sec, secondHandMovement: .SecondHandMovementStep, force: force)
-        }
-        
-        if let minuteHand = self.childNode(withName: "minuteHand") as? MinuteHandNode {
-            minuteHand.positionHands(sec: sec, min: min, minuteHandMovement: .MinuteHandMovementStep, force: force)
-        }
-        
-        if let hourHand = self.childNode(withName: "hourHand") as? HourHandNode {
-            hourHand.positionHands(min: min, hour: hour, force: force)
-        }
+    
     }
     
     func setToTime() {
