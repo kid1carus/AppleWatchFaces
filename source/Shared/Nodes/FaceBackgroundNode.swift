@@ -72,6 +72,25 @@ class FaceBackgroundNode: SKSpriteNode {
         return typeKeysArray
     }
     
+    static func descriptionForGradientDirections(_ nodeType: GradientBackgroundDirectionTypes) -> String {
+        var typeDescription = ""
+        
+        if (nodeType == .Diagonal)  { typeDescription = "Diagonal" }
+        if (nodeType == .Horizontal)  { typeDescription = "Horizontal" }
+        if (nodeType == .Vertical)  { typeDescription = "Vertical" }
+        
+        return typeDescription
+    }
+    
+    static func gradientDirectionDescriptions() -> [String] {
+        var typeDescriptionsArray = [String]()
+        for nodeType in GradientBackgroundDirectionTypes.userSelectableValues {
+            typeDescriptionsArray.append(descriptionForGradientDirections(nodeType))
+        }
+        
+        return typeDescriptionsArray
+    }
+    
     static func filledShapeNode(material: String) -> SKShapeNode {
         let screenSize = AppUISettings.getScreenBoundsForImages()
         let xBounds = (screenSize.width / 2.0).rounded()

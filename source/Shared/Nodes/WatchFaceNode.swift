@@ -142,12 +142,21 @@ class WatchFaceNode: SKShapeNode {
             }
             if faceLayer.layerType == .GradientTexture {
                 var destinationColorHex = ""
+                var backgroundType:FaceBackgroundTypes = .FaceBackgroundTypeDiagonalGradient
                 if let gradientOptions = faceLayer.layerOptions as? GradientBackgroundLayerOptions {
                     //get outline width / color / and font
                     destinationColorHex = hexColorForDesiredIndex(index: gradientOptions.desiredThemeColorIndexForDestination)
+                    switch gradientOptions.directionType {
+                    case .Diagonal:
+                        backgroundType = .FaceBackgroundTypeDiagonalGradient
+                    case .Horizontal:
+                        backgroundType = .FaceBackgroundTypeHorizontalGradient
+                    case .Vertical:
+                        backgroundType = .FaceBackgroundTypeVerticalGradient
+                    }
                 }
                 
-                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeDiagonalGradient , material: destinationColorHex, material2: hexColor)
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: backgroundType , material: destinationColorHex, material2: hexColor)
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)

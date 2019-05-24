@@ -138,7 +138,7 @@ class FaceLayersTableViewController: UITableViewController {
                 case .ColorTexture:
                     cellHeight = 80.0
                 case .GradientTexture:
-                    cellHeight = 270.0
+                    cellHeight = 145.0
                 case .HourHand:
                     cellHeight = 250.0
                 case .MinuteHand:
@@ -192,6 +192,10 @@ class FaceLayersTableViewController: UITableViewController {
         else if (faceLayer.layerType == .ColorTexture) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerColorBackgroundID", for: indexPath) as! FaceLayerColorBackgroundTableViewCell
         }
+        else if (faceLayer.layerType == .GradientTexture) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerGradientCellID", for: indexPath) as! FaceLayerGradientBackgroundTableViewCell
+        }
+        
         else {
             cell = tableView.dequeueReusableCell(withIdentifier: "LayerCellID", for: indexPath) as! FaceLayerTableViewCell
         }

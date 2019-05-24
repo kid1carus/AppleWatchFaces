@@ -27,6 +27,7 @@
 		31061F322192716C00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		31061F332192730A00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		310675D3229727F500EBCFE0 /* FaceLayerHandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310675D2229727F400EBCFE0 /* FaceLayerHandTableViewCell.swift */; };
+		310675D5229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310675D4229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift */; };
 		310725DF223D7083008030A2 /* PhysicsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310725DE223D7083008030A2 /* PhysicsNode.swift */; };
 		310725E0223D7083008030A2 /* PhysicsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310725DE223D7083008030A2 /* PhysicsNode.swift */; };
 		31090FBC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */; };
@@ -336,6 +337,7 @@
 		31056B612218DC1700D0E15C /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		31061F312192716C00EF511B /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
 		310675D2229727F400EBCFE0 /* FaceLayerHandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerHandTableViewCell.swift; sourceTree = "<group>"; };
+		310675D4229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerGradientBackgroundTableViewCell.swift; sourceTree = "<group>"; };
 		310725DE223D7083008030A2 /* PhysicsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsNode.swift; sourceTree = "<group>"; };
 		31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ROMAN-TRAJAN-PRO.TTF"; sourceTree = "<group>"; };
 		31090FAD2233277C00D6CAA7 /* GERMANICA.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GERMANICA.TTF; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 		310D922A227E26F0007A5808 /* FaceLayerTableView */ = {
 			isa = PBXGroup;
 			children = (
+				310675D4229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift */,
 				310675D2229727F400EBCFE0 /* FaceLayerHandTableViewCell.swift */,
 				310D922D227E6F17007A5808 /* FaceLayerTableViewCell.swift */,
 				310D922F227E700B007A5808 /* FaceLayerShapeTableViewCell.swift */,
@@ -1054,6 +1057,7 @@
 				315878DE2287AF5B008FFC76 /* FaceLayerDateTimeLabelTableViewCell.swift in Sources */,
 				314AFC1021D51A7000C1208E /* CameraHandler.swift in Sources */,
 				31EF999F21A2045B00BB54E7 /* FaceChooserTableViewController.swift in Sources */,
+				310675D5229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift in Sources */,
 				31B0A1D0227F4DE80031AFC0 /* ShapeLayerOptions.swift in Sources */,
 				31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */,
 				FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */,
