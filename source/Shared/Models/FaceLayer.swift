@@ -97,6 +97,8 @@ class FaceLayer: NSObject {
             self.layerOptions = MinuteHandLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .HourHand:
             self.layerOptions = HourHandLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        case .ImageTexture:
+            self.layerOptions = ImageBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         default:
             self.layerOptions = FaceLayerOptions()
         }

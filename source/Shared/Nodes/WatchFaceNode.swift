@@ -127,7 +127,9 @@ class WatchFaceNode: SKShapeNode {
                 self.addChild(minHandNode)
             }
             if faceLayer.layerType == .ImageTexture {
-                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: "copper.jpg")
+                guard let imageOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+                
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: imageOptions.filename)
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)

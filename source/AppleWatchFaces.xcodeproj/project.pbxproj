@@ -29,6 +29,9 @@
 		310675D3229727F500EBCFE0 /* FaceLayerHandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310675D2229727F400EBCFE0 /* FaceLayerHandTableViewCell.swift */; };
 		310675D5229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310675D4229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift */; };
 		310675D72297820C00EBCFE0 /* FaceLayerImageBackgroundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310675D62297820C00EBCFE0 /* FaceLayerImageBackgroundTableViewCell.swift */; };
+		310675D9229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310675D8229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift */; };
+		310675DA229826F500EBCFE0 /* ImageBackgroundLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310675D8229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift */; };
+		310675DB229826F500EBCFE0 /* ImageBackgroundLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310675D8229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift */; };
 		310725DF223D7083008030A2 /* PhysicsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310725DE223D7083008030A2 /* PhysicsNode.swift */; };
 		310725E0223D7083008030A2 /* PhysicsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310725DE223D7083008030A2 /* PhysicsNode.swift */; };
 		31090FBC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */; };
@@ -340,6 +343,7 @@
 		310675D2229727F400EBCFE0 /* FaceLayerHandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerHandTableViewCell.swift; sourceTree = "<group>"; };
 		310675D4229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerGradientBackgroundTableViewCell.swift; sourceTree = "<group>"; };
 		310675D62297820C00EBCFE0 /* FaceLayerImageBackgroundTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerImageBackgroundTableViewCell.swift; sourceTree = "<group>"; };
+		310675D8229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackgroundLayerOptions.swift; sourceTree = "<group>"; };
 		310725DE223D7083008030A2 /* PhysicsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsNode.swift; sourceTree = "<group>"; };
 		31090FAC2233277C00D6CAA7 /* ROMAN-TRAJAN-PRO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ROMAN-TRAJAN-PRO.TTF"; sourceTree = "<group>"; };
 		31090FAD2233277C00D6CAA7 /* GERMANICA.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GERMANICA.TTF; sourceTree = "<group>"; };
@@ -574,6 +578,7 @@
 				312D4C07218BCDDB008504D2 /* HourHandNode.swift */,
 				31F56F9C21857A2000455FC6 /* SecondHandNode.swift */,
 				31724A6421FA91B400D3F599 /* ArcNode.swift */,
+				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -748,7 +753,7 @@
 				313BB88B227DF5DB005BE9C5 /* UserFaceSetting.swift */,
 				313BB883227DEC71005BE9C5 /* FaceSetting.swift */,
 				313BB887227DEDB2005BE9C5 /* FaceLayer.swift */,
-				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
+				310675D8229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift */,
 				31B0A1CF227F4DE80031AFC0 /* ShapeLayerOptions.swift */,
 				3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */,
 				31FF20D62290A9A80023F8A5 /* DigitalTimeLayerOptions.swift */,
@@ -1098,6 +1103,7 @@
 				312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */,
 				3103A4492293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift in Sources */,
 				31F56FA421857FC100455FC6 /* WatchPreviewViewController.swift in Sources */,
+				310675D9229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift in Sources */,
 				310D922E227E6F17007A5808 /* FaceLayerTableViewCell.swift in Sources */,
 				31EF999321A0AF4F00BB54E7 /* FaceBackgroundNode.swift in Sources */,
 				312E853822239740001C450B /* Double+Rounded.swift in Sources */,
@@ -1112,6 +1118,7 @@
 			files = (
 				3105333A225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */,
 				313AE3E1221A777E00C02462 /* DotsNode.swift in Sources */,
+				310675DA229826F500EBCFE0 /* ImageBackgroundLayerOptions.swift in Sources */,
 				312E2D7021F3E16A00C2F17F /* ClockTimer.swift in Sources */,
 				31D8633E21E5954B005BCB6F /* NumberTextNode.swift in Sources */,
 				31053344225C3DE7004282E5 /* FaceForegroundNode.swift in Sources */,
@@ -1210,6 +1217,7 @@
 				3105333B225A63C7004282E5 /* ClockOverlaySetting.swift in Sources */,
 				3105333F225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */,
 				31C86B2E22374DA000EF4186 /* UICollectionView+Selection.swift in Sources */,
+				310675DB229826F500EBCFE0 /* ImageBackgroundLayerOptions.swift in Sources */,
 				31C86AFA22374CEA00EF4186 /* PongGameNode.swift in Sources */,
 				31C86B0122374CEA00EF4186 /* MinuteHandNode.swift in Sources */,
 				31FF20DD2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */,
