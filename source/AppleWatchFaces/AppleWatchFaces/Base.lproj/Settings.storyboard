@@ -92,18 +92,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcY-Zf-SgJ" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcY-Zf-SgJ" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="CcY-Zf-SgJ" firstAttribute="centerX" secondItem="Fb9-a1-BdL" secondAttribute="centerX" id="9Ms-jh-Mhm"/>
-                                                        <constraint firstItem="CcY-Zf-SgJ" firstAttribute="top" secondItem="Fb9-a1-BdL" secondAttribute="topMargin" constant="-17" id="E8c-W5-QtI"/>
-                                                        <constraint firstItem="CcY-Zf-SgJ" firstAttribute="centerY" secondItem="Fb9-a1-BdL" secondAttribute="centerY" id="gPJ-fU-dgI"/>
-                                                        <constraint firstItem="CcY-Zf-SgJ" firstAttribute="leading" secondItem="Fb9-a1-BdL" secondAttribute="leadingMargin" constant="-13" id="pZF-Ld-7H5"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="CcY-Zf-SgJ" id="8rJ-Jv-v7N"/>
                                                     </connections>
@@ -133,18 +128,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0TV-PL-UCa" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0TV-PL-UCa" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="0TV-PL-UCa" firstAttribute="top" secondItem="YjN-K4-1MY" secondAttribute="topMargin" constant="-17" id="81s-n2-gOp"/>
-                                                        <constraint firstItem="0TV-PL-UCa" firstAttribute="leading" secondItem="YjN-K4-1MY" secondAttribute="leadingMargin" constant="-13" id="Lnz-EF-Vkl"/>
-                                                        <constraint firstItem="0TV-PL-UCa" firstAttribute="centerY" secondItem="YjN-K4-1MY" secondAttribute="centerY" id="a2U-xU-1DS"/>
-                                                        <constraint firstItem="0TV-PL-UCa" firstAttribute="centerX" secondItem="YjN-K4-1MY" secondAttribute="centerX" id="oGj-ZL-hR4"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="0TV-PL-UCa" id="vLU-uK-dPf"/>
                                                     </connections>
@@ -403,18 +393,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVD-Eg-R2O" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVD-Eg-R2O" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="DVD-Eg-R2O" firstAttribute="leading" secondItem="MG8-vg-4pK" secondAttribute="leadingMargin" constant="-13" id="G8a-Ws-D7C"/>
-                                                        <constraint firstItem="DVD-Eg-R2O" firstAttribute="centerY" secondItem="MG8-vg-4pK" secondAttribute="centerY" id="moS-07-Ytz"/>
-                                                        <constraint firstItem="DVD-Eg-R2O" firstAttribute="top" secondItem="MG8-vg-4pK" secondAttribute="topMargin" constant="-17" id="pbC-dr-4LC"/>
-                                                        <constraint firstItem="DVD-Eg-R2O" firstAttribute="centerX" secondItem="MG8-vg-4pK" secondAttribute="centerX" id="sNV-X8-FrZ"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="DVD-Eg-R2O" id="7Hq-Tp-QPE"/>
                                                     </connections>
@@ -604,20 +589,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOc-zx-5qs" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOc-zx-5qs" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="wOc-zx-5qs" firstAttribute="centerY" secondItem="dk4-y2-777" secondAttribute="centerY" id="2eR-8v-2g3"/>
-                                                        <constraint firstItem="wOc-zx-5qs" firstAttribute="centerX" secondItem="dk4-y2-777" secondAttribute="centerX" id="3C2-zL-ska"/>
-                                                        <constraint firstItem="wOc-zx-5qs" firstAttribute="leading" secondItem="dk4-y2-777" secondAttribute="leadingMargin" constant="-13" id="E9o-0h-Dti"/>
-                                                        <constraint firstItem="wOc-zx-5qs" firstAttribute="leading" secondItem="dk4-y2-777" secondAttribute="leadingMargin" constant="-5" id="LKa-7u-qka"/>
-                                                        <constraint firstItem="wOc-zx-5qs" firstAttribute="top" secondItem="dk4-y2-777" secondAttribute="topMargin" constant="-5" id="NW2-pe-wYw"/>
-                                                        <constraint firstItem="wOc-zx-5qs" firstAttribute="top" secondItem="dk4-y2-777" secondAttribute="topMargin" constant="-17" id="Ycd-ob-I0n"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="wOc-zx-5qs" id="7Em-pf-40s"/>
                                                     </connections>
@@ -698,20 +676,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pN3-bi-sp3" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pN3-bi-sp3" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="pN3-bi-sp3" firstAttribute="top" secondItem="d49-NR-egJ" secondAttribute="topMargin" constant="-5" id="JaF-f1-2nu"/>
-                                                        <constraint firstItem="pN3-bi-sp3" firstAttribute="leading" secondItem="d49-NR-egJ" secondAttribute="leadingMargin" constant="-13" id="VIr-Fp-Mc1"/>
-                                                        <constraint firstItem="pN3-bi-sp3" firstAttribute="centerX" secondItem="d49-NR-egJ" secondAttribute="centerX" id="gPp-8n-d4u"/>
-                                                        <constraint firstItem="pN3-bi-sp3" firstAttribute="top" secondItem="d49-NR-egJ" secondAttribute="topMargin" constant="-17" id="i8M-iH-Y8b"/>
-                                                        <constraint firstItem="pN3-bi-sp3" firstAttribute="leading" secondItem="d49-NR-egJ" secondAttribute="leadingMargin" constant="-5" id="uAb-cV-gux"/>
-                                                        <constraint firstItem="pN3-bi-sp3" firstAttribute="centerY" secondItem="d49-NR-egJ" secondAttribute="centerY" id="uEV-YT-1oa"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="pN3-bi-sp3" id="LJa-j8-VW6"/>
                                                     </connections>
@@ -983,18 +954,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9oX-wR-FYg" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9oX-wR-FYg" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="9oX-wR-FYg" firstAttribute="centerX" secondItem="3Kz-YI-aAZ" secondAttribute="centerX" id="11e-wj-Vzb"/>
-                                                        <constraint firstItem="9oX-wR-FYg" firstAttribute="top" secondItem="3Kz-YI-aAZ" secondAttribute="topMargin" constant="-17" id="J31-0i-ZWo"/>
-                                                        <constraint firstItem="9oX-wR-FYg" firstAttribute="centerY" secondItem="3Kz-YI-aAZ" secondAttribute="centerY" id="lUo-Qs-Plw"/>
-                                                        <constraint firstItem="9oX-wR-FYg" firstAttribute="leading" secondItem="3Kz-YI-aAZ" secondAttribute="leadingMargin" constant="-13" id="o9I-No-GIU"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="9oX-wR-FYg" id="p7s-Zr-c8P"/>
                                                     </connections>
@@ -1024,18 +990,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xzH-wH-9bm" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xzH-wH-9bm" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="xzH-wH-9bm" firstAttribute="top" secondItem="Pwc-wg-L8c" secondAttribute="topMargin" constant="-17" id="63i-o2-nRd"/>
-                                                        <constraint firstItem="xzH-wH-9bm" firstAttribute="centerY" secondItem="Pwc-wg-L8c" secondAttribute="centerY" id="862-9F-yeR"/>
-                                                        <constraint firstItem="xzH-wH-9bm" firstAttribute="centerX" secondItem="Pwc-wg-L8c" secondAttribute="centerX" id="Tcs-II-qng"/>
-                                                        <constraint firstItem="xzH-wH-9bm" firstAttribute="leading" secondItem="Pwc-wg-L8c" secondAttribute="leadingMargin" constant="-13" id="aLW-OF-scQ"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="xzH-wH-9bm" id="0Fp-Gh-Nc5"/>
                                                     </connections>
@@ -1259,18 +1220,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPj-5e-vrp" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPj-5e-vrp" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="NPj-5e-vrp" firstAttribute="leading" secondItem="XQF-6x-jlZ" secondAttribute="leadingMargin" constant="-13" id="0ee-uv-401"/>
-                                                        <constraint firstItem="NPj-5e-vrp" firstAttribute="centerY" secondItem="XQF-6x-jlZ" secondAttribute="centerY" id="ETh-0l-okz"/>
-                                                        <constraint firstItem="NPj-5e-vrp" firstAttribute="centerX" secondItem="XQF-6x-jlZ" secondAttribute="centerX" id="rG3-kp-cZQ"/>
-                                                        <constraint firstItem="NPj-5e-vrp" firstAttribute="top" secondItem="XQF-6x-jlZ" secondAttribute="topMargin" constant="-17" id="tv9-gn-Gc0"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="NPj-5e-vrp" id="V24-8W-2Lj"/>
                                                     </connections>
@@ -1300,18 +1256,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOj-8C-e3o" userLabel="CircleView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOj-8C-e3o" userLabel="CircleView">
                                                                 <rect key="frame" x="3" y="3" width="27" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="nOj-8C-e3o" firstAttribute="centerX" secondItem="4EA-SZ-6mk" secondAttribute="centerX" id="CuR-tB-g93"/>
-                                                        <constraint firstItem="nOj-8C-e3o" firstAttribute="leading" secondItem="4EA-SZ-6mk" secondAttribute="leadingMargin" constant="-13" id="aYV-Q7-bX6"/>
-                                                        <constraint firstItem="nOj-8C-e3o" firstAttribute="top" secondItem="4EA-SZ-6mk" secondAttribute="topMargin" constant="-17" id="tD4-S9-1UK"/>
-                                                        <constraint firstItem="nOj-8C-e3o" firstAttribute="centerY" secondItem="4EA-SZ-6mk" secondAttribute="centerY" id="xvc-62-Omt"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="circleView" destination="nOj-8C-e3o" id="V9i-jq-aOQ"/>
                                                     </connections>
