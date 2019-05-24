@@ -29,6 +29,10 @@ class FaceLayersTableViewController: UITableViewController {
         if adjustmentType == .Angle {
             let clampedVal = clamped( value: layerSettings.angleOffset + Float(amount), min: -Float.pi, max: Float.pi )
             if layerSettings.angleOffset != clampedVal {
+                //add to undo stack for actions to be able to undo
+                SettingsViewController.addToUndoStack()
+                settingsViewVC.setUndoRedoButtonStatus()
+                
                 layerSettings.angleOffset = clampedVal
                 reload = true
             }
@@ -37,6 +41,10 @@ class FaceLayersTableViewController: UITableViewController {
         if adjustmentType == .Scale {
             let clampedVal = clamped( value: layerSettings.scale + Float(amount), min: 0, max: AppUISettings.layerSettingsScaleMax )
             if layerSettings.scale != clampedVal {
+                //add to undo stack for actions to be able to undo
+                SettingsViewController.addToUndoStack()
+                settingsViewVC.setUndoRedoButtonStatus()
+                
                 layerSettings.scale = clampedVal
                 reload = true
             }
@@ -45,6 +53,10 @@ class FaceLayersTableViewController: UITableViewController {
         if adjustmentType == .Alpha {
             let clampedVal = clamped( value: layerSettings.alpha + Float(amount), min: 0, max: 1.0 )
             if layerSettings.alpha != clampedVal {
+                //add to undo stack for actions to be able to undo
+                SettingsViewController.addToUndoStack()
+                settingsViewVC.setUndoRedoButtonStatus()
+                
                 layerSettings.alpha = clampedVal
                 reload = true
             }
@@ -52,6 +64,7 @@ class FaceLayersTableViewController: UITableViewController {
         
         //exit if no reload
         guard reload == true else { return }
+        
         //draw labels in settings view
         settingsViewVC.drawUIForSelectedLayer(selectedLayer: selectedRow.row, section: adjustmentType)
         //tell preview to redraw a layer
@@ -62,6 +75,10 @@ class FaceLayersTableViewController: UITableViewController {
     func nudgeItem(xDirection: CGFloat, yDirection: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         guard let settingsViewVC = settingsViewController else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        settingsViewVC.setUndoRedoButtonStatus()
         
         let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
         

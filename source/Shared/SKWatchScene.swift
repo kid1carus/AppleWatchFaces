@@ -27,7 +27,7 @@ class SKWatchScene: SKScene {
         self.addChild(newWatchFaceNode)
     }
     
-    func adjustAlpha(clockSetting: ClockSetting, section: String) {
+//    func adjustAlpha(clockSetting: ClockSetting, section: String) {
 //        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
 //            
 //            var alphaSection:WatchFaceNode.AlphaUpdateSections = .backgrounds
@@ -36,7 +36,7 @@ class SKWatchScene: SKScene {
 //            
 //            watchFaceNode.adjustAlpha(clockSetting: clockSetting, section: alphaSection)
 //        }
-    }
+ //   }
     
     func forceToTime() {
         if let oldNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
