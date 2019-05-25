@@ -482,7 +482,8 @@ class WatchFaceNode: SKShapeNode {
             }
             
             if layer.layerType == .MinuteHand, let minuteHandNode = self.children[index] as? MinuteHandNode {
-                minuteHandNode.positionHands(sec: sec, min: min, minuteHandMovement: .MinuteHandMovementStep, force: force)
+                guard let layerOptions = layer.layerOptions as? MinuteHandLayerOptions else { return }
+                minuteHandNode.positionHands(sec: sec, min: min, minuteHandMovement: layerOptions.handAnimation, force: force)
             }
             
             if layer.layerType == .HourHand, let hourHandNode = self.children[index] as? HourHandNode {

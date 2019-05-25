@@ -119,6 +119,15 @@ class MinuteHandNode: SKSpriteNode {
         return typeDescription
     }
     
+    static func movementDescriptions() -> [String] {
+        var typeDescriptionsArray = [String]()
+        for nodeType in MinuteHandMovements.userSelectableValues {
+            typeDescriptionsArray.append(descriptionForMovement(nodeType))
+        }
+        
+        return typeDescriptionsArray
+    }
+    
     func addGlowEffect(shape: SKShapeNode, glowWidth: CGFloat) {
         shape.glowWidth = glowWidth
         shape.lineWidth = 1.0

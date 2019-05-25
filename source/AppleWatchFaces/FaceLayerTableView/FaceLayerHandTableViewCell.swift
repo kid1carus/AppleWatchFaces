@@ -79,6 +79,11 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
                 layerOptions.handAnimation = SecondHandMovements.userSelectableValues[itemChosen]
                 animationNameLabel.text = SecondHandNode.descriptionForMovement(layerOptions.handAnimation)
             }
+            if myFaceLayer().layerType == .MinuteHand {
+                guard let layerOptions = faceLayer.layerOptions as? MinuteHandLayerOptions else { return }
+                layerOptions.handAnimation = MinuteHandMovements.userSelectableValues[itemChosen]
+                animationNameLabel.text = MinuteHandNode.descriptionForMovement(layerOptions.handAnimation)
+            }
         }
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -106,7 +111,12 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
             SettingsViewController.actionsTitle = "Choose Physics Field Type"
         }
         if sender == animationButton {
-            SettingsViewController.actionsArray = SecondHandNode.movementDescriptions()
+            if myFaceLayer().layerType == .SecondHand {
+                SettingsViewController.actionsArray = SecondHandNode.movementDescriptions()
+            }
+            if myFaceLayer().layerType == .MinuteHand {
+                SettingsViewController.actionsArray = MinuteHandNode.movementDescriptions()
+            }
             SettingsViewController.actionCellMedthodName = "chooseAnimationAction"
             SettingsViewController.actionsTitle = "Choose Animation"
         }
@@ -180,6 +190,7 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
         if faceLayer.layerType == .MinuteHand {
             guard let minuteHandLayerOptions = faceLayer.layerOptions as? MinuteHandLayerOptions else { return }
             typeNameLabel.text = MinuteHandNode.descriptionForType(minuteHandLayerOptions.handType)
+            animationNameLabel.text = MinuteHandNode.descriptionForMovement(minuteHandLayerOptions.handAnimation)
         }
         if faceLayer.layerType == .HourHand {
             guard let hourHandLayerOptions = faceLayer.layerOptions as? HourHandLayerOptions else { return }

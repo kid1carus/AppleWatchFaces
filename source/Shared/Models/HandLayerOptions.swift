@@ -50,20 +50,31 @@ class SecondHandLayerOptions: HandLayerOptions {
 
 class MinuteHandLayerOptions: HandLayerOptions {
     var handType: MinuteHandTypes
+    var handAnimation: MinuteHandMovements
     
     override init(jsonObj: JSON ) {
         self.handType = MinuteHandTypes(rawValue: jsonObj["handType"].stringValue)!
+        if (jsonObj["handAnimation"] != JSON.null) {
+            self.handAnimation = MinuteHandMovements(rawValue: jsonObj["handAnimation"].stringValue)!
+        } else {
+            self.handAnimation = .MinuteHandMovementStep
+        }
+        
         super.init(jsonObj: jsonObj)
     }
     
     override init(defaults: Bool ) {
         self.handType = .MinuteHandTypeBoxy
+        self.handAnimation = .MinuteHandMovementStep
         super.init(defaults: defaults)
     }
     
     override func serializedSettings() -> NSDictionary {
         var serializedDict = super.serializedSettings() as! [String:AnyObject]
+        
         serializedDict[ "handType" ] = self.handType.rawValue as AnyObject
+        serializedDict[ "handAnimation" ] = self.handAnimation.rawValue as AnyObject
+        
         return serializedDict as NSDictionary
     }
 }

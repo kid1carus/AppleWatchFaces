@@ -157,7 +157,7 @@ class FaceLayersTableViewController: UITableViewController {
                 case .GradientTexture:
                     cellHeight = 145.0
                 case .HourHand:
-                    cellHeight = 250.0
+                    cellHeight = 220.0
                 case .MinuteHand:
                     cellHeight = 250.0
                 case .SecondHand:
