@@ -169,7 +169,7 @@ class FaceLayersTableViewController: UITableViewController {
                 case .DateTimeLabel:
                     cellHeight = 250.0
                 case .ParticleField:
-                    cellHeight = 220.0
+                    cellHeight = 180.0
                 }
             }
         }
@@ -216,6 +216,9 @@ class FaceLayersTableViewController: UITableViewController {
         }
         else if (faceLayer.layerType == .ImageTexture) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerImageCellID", for: indexPath) as! FaceLayerImageBackgroundTableViewCell
+        }
+        else if (faceLayer.layerType == .ParticleField) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerFieldID", for: indexPath) as! FaceLayerFieldTableViewCell
         }
             
         else {

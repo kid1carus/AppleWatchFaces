@@ -138,6 +138,7 @@
 		315AAB8F22998A3C00B3A3E9 /* ParticleFieldLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB8522997C2F00B3A3E9 /* ParticleFieldLayerOptions.swift */; };
 		315AAB9022998A3C00B3A3E9 /* ParticleFieldLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB8522997C2F00B3A3E9 /* ParticleFieldLayerOptions.swift */; };
 		315AAB9122998A3D00B3A3E9 /* ParticleFieldLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB8522997C2F00B3A3E9 /* ParticleFieldLayerOptions.swift */; };
+		315AAB932299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB922299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift */; };
 		31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		31724A6621FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
@@ -387,6 +388,7 @@
 		315878D9228793A9008FFC76 /* FaceLayerColorBackgroundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceLayerColorBackgroundTableViewCell.swift; sourceTree = "<group>"; };
 		315878DD2287AF5B008FFC76 /* FaceLayerDateTimeLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceLayerDateTimeLabelTableViewCell.swift; sourceTree = "<group>"; };
 		315AAB8522997C2F00B3A3E9 /* ParticleFieldLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleFieldLayerOptions.swift; sourceTree = "<group>"; };
+		315AAB922299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerFieldTableViewCell.swift; sourceTree = "<group>"; };
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 		310D922A227E26F0007A5808 /* FaceLayerTableView */ = {
 			isa = PBXGroup;
 			children = (
+				315AAB922299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift */,
 				310675D62297820C00EBCFE0 /* FaceLayerImageBackgroundTableViewCell.swift */,
 				310675D4229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift */,
 				310675D2229727F400EBCFE0 /* FaceLayerHandTableViewCell.swift */,
@@ -1052,6 +1055,7 @@
 				314A011021962FF4009BCE3C /* WatchFaceNode.swift in Sources */,
 				31FF20DB2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */,
 				31EF999621A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
+				315AAB932299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift in Sources */,
 				31EF99A221A205F200BB54E7 /* FaceChooserTableViewCell.swift in Sources */,
 				310D9229227E1F16007A5808 /* FaceLayersTableViewController.swift in Sources */,
 				310725DF223D7083008030A2 /* PhysicsNode.swift in Sources */,

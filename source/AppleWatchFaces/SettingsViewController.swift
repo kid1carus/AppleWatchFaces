@@ -146,6 +146,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             faceLayerOptions = HourHandLayerOptions.init(defaults: true)
         case .ImageTexture:
             faceLayerOptions = ImageBackgroundLayerOptions.init(defaults: true)
+        case .ParticleField:
+            faceLayerOptions = ParticleFieldLayerOptions.init(defaults: true)
         default:
             faceLayerOptions = FaceLayerOptions()
         }

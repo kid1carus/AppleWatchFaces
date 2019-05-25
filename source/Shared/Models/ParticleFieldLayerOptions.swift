@@ -19,45 +19,54 @@ enum OverlayShapeTypes: String {
 //hold settings like shape, strength, etc for properites esp the physics node types
 class ParticleFieldLayerOptions: FaceLayerOptions {
     
-    var fieldType: PhysicsFieldTypes
+    var nodeType: FaceForegroundTypes
+    
     var shapeType: OverlayShapeTypes
     var itemSize: Float
-    var itemStrength: Float
     
-    init(shapeType: OverlayShapeTypes, fieldType: PhysicsFieldTypes, itemSize: Float, itemStrength: Float) {
+    init(nodeType: FaceForegroundTypes, shapeType: OverlayShapeTypes, itemSize: Float) {
+        
+        self.nodeType = nodeType
+        
         self.shapeType = shapeType
-        self.fieldType = fieldType
         self.itemSize = itemSize
-        self.itemStrength = itemStrength
     }
     
     static func defaults() -> ParticleFieldLayerOptions {
-        return ParticleFieldLayerOptions.init(shapeType: .Circle, fieldType: .None, itemSize: 0, itemStrength: 1.0)
+        return ParticleFieldLayerOptions.init(nodeType: .AnimatedPhysicsField, shapeType: .Circle, itemSize: 0)
+    }
+    
+    init(defaults: Bool ) {
+        self.nodeType = .AnimatedPhysicsField
+        self.itemSize = 0
+        self.shapeType = .Circle
+        
+        super.init()
     }
     
     convenience init( jsonObj: JSON ) {
+        
+        var nodeType:FaceForegroundTypes = .AnimatedPhysicsField
+        if (jsonObj["nodeType"] != JSON.null) {
+            nodeType = FaceForegroundTypes(rawValue: jsonObj["nodeType"].stringValue)!
+        }
+        
         var shapeType:OverlayShapeTypes = .Circle
         if (jsonObj["shapeType"] != JSON.null) {
             shapeType = OverlayShapeTypes(rawValue: jsonObj["shapeType"].stringValue)!
         }
         
-        var fieldType:PhysicsFieldTypes = .None
-        if (jsonObj["fieldType"] != JSON.null) {
-            fieldType = PhysicsFieldTypes(rawValue: jsonObj["fieldType"].stringValue)!
-        }
         let itemSize:Float = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "itemSize")
-        let itemStrength:Float = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "itemStrength")
         
-        self.init(shapeType: shapeType, fieldType: fieldType, itemSize: itemSize, itemStrength: itemStrength)
+        self.init(nodeType: nodeType, shapeType: shapeType, itemSize: itemSize)
     }
     
     override func serializedSettings() -> NSDictionary {
         var serializedDict = [String:AnyObject]()
         
+        serializedDict[ "nodeType" ] = self.nodeType.rawValue as AnyObject
         serializedDict[ "shapeType" ] = self.shapeType.rawValue as AnyObject
-        serializedDict[ "fieldType" ] = self.fieldType.rawValue as AnyObject
         serializedDict[ "itemSize" ] = self.itemSize.description as AnyObject
-        serializedDict[ "itemStrength" ] = self.itemStrength.description as AnyObject
         
         return serializedDict as NSDictionary
     }
