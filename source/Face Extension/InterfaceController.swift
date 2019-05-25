@@ -123,7 +123,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             //try to load a clocksetting from single file sent
             
             var clockSettingsSerializedArray = [JSON]()
-            clockSettingsSerializedArray = UserFaceSetting.loadSettingArrayFromURL(url: file.fileURL)
+            clockSettingsSerializedArray = UserFaceSetting.loadSettingArrayFromSaveFile(path: file.fileURL.path)
 
             //only load the first one and exit!
             if let firstSerialized = clockSettingsSerializedArray.first {
@@ -131,6 +131,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
                 currentFaceSetting = FaceSetting.init(jsonObj: firstSerialized)
                 self.redrawCurrent(transition: true, direction: .down)
             }
+
         }
         
         //handle json settings

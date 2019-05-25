@@ -82,7 +82,7 @@ class UserFaceSetting: NSObject {
         var clockSettingsSerializedArray = [JSON]()
         do {
             print("loading JSON file path = \(path)")
-            let jsonData = try Data.init(contentsOf: URL(fileURLWithPath: path))    //Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe)
+            let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe) //Data.init(contentsOf: URL(fileURLWithPath: path))
             let jsonObj = try! JSON(data: jsonData)
             if jsonObj != JSON.null {
                 //print("LOADED !!! jsonData:\(jsonObj)")
