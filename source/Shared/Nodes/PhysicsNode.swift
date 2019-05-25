@@ -25,10 +25,10 @@ class PhysicsNode: SKSpriteNode {
             
             let newShape:SKNode = SKNode.init()
 
-            let labelNode = SKLabelNode.init(text: FieldLayerOptions.descriptionForOverlayShapeType(shapeType) )
+            let labelNode = SKLabelNode.init(text: ParticleFieldLayerOptions.descriptionForOverlayShapeType(shapeType) )
             labelNode.fontColor = SKColor.init(hexString: material)
-            labelNode.xScale = physicsShapeSize.width * FieldLayerOptions.multiplierForOverlayShape(shapeType: shapeType)
-            labelNode.yScale = physicsShapeSize.height * FieldLayerOptions.multiplierForOverlayShape(shapeType: shapeType)
+            labelNode.xScale = physicsShapeSize.width * ParticleFieldLayerOptions.multiplierForOverlayShape(shapeType: shapeType)
+            labelNode.yScale = physicsShapeSize.height * ParticleFieldLayerOptions.multiplierForOverlayShape(shapeType: shapeType)
             newShape.addChild(labelNode)
             
             let physicsBody = SKPhysicsBody.init(rectangleOf: physicsShapeSize)

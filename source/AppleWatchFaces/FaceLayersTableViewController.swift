@@ -168,6 +168,8 @@ class FaceLayersTableViewController: UITableViewController {
                     cellHeight = 300.0
                 case .DateTimeLabel:
                     cellHeight = 250.0
+                case .ParticleField:
+                    cellHeight = 220.0
                 }
             }
         }

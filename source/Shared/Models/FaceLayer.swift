@@ -16,12 +16,13 @@ enum FaceLayerTypes: String {
     ImageTexture,
     ColorTexture,
     GradientTexture,
+    ParticleField,
     DateTimeLabel,
     ShapeRing,
     NumberRing
     
     static let userSelectableValues = [
-        SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, DateTimeLabel, ShapeRing, NumberRing]
+        SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, DateTimeLabel, ShapeRing, NumberRing, ParticleField]
 }
 
 class FaceLayerOptions: NSObject {
@@ -140,6 +141,8 @@ class FaceLayer: NSObject {
         if (layerType == .ImageTexture)  { typeDescription = "Image Texture" }
         if (layerType == .ColorTexture)  { typeDescription = "Color Texture" }
         if (layerType == .GradientTexture)  { typeDescription = "Gradient Texture" }
+        
+        if (layerType == .ParticleField)  { typeDescription = "Particle Field" }
         
         return typeDescription
     }

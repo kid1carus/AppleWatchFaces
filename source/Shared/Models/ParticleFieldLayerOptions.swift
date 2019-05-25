@@ -17,7 +17,7 @@ enum OverlayShapeTypes: String {
 }
 
 //hold settings like shape, strength, etc for properites esp the physics node types
-class FieldLayerOptions: NSObject {
+class ParticleFieldLayerOptions: FaceLayerOptions {
     
     var fieldType: PhysicsFieldTypes
     var shapeType: OverlayShapeTypes
@@ -31,8 +31,8 @@ class FieldLayerOptions: NSObject {
         self.itemStrength = itemStrength
     }
     
-    static func defaults() -> FieldLayerOptions {
-        return FieldLayerOptions.init(shapeType: .Circle, fieldType: .None, itemSize: 0, itemStrength: 1.0)
+    static func defaults() -> ParticleFieldLayerOptions {
+        return ParticleFieldLayerOptions.init(shapeType: .Circle, fieldType: .None, itemSize: 0, itemStrength: 1.0)
     }
     
     convenience init( jsonObj: JSON ) {
@@ -51,7 +51,7 @@ class FieldLayerOptions: NSObject {
         self.init(shapeType: shapeType, fieldType: fieldType, itemSize: itemSize, itemStrength: itemStrength)
     }
     
-    func serializedSettings() -> NSDictionary {
+    override func serializedSettings() -> NSDictionary {
         var serializedDict = [String:AnyObject]()
         
         serializedDict[ "shapeType" ] = self.shapeType.rawValue as AnyObject

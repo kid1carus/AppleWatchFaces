@@ -221,6 +221,22 @@ class WatchFaceNode: SKShapeNode {
                     self.addChild(shapeNode)
                 }
             }
+            
+            if faceLayer.layerType == .ParticleField {
+                //if let layerOptions = faceLayer.layerOptions as? ParticleFieldLayerOptions {
+                    let fillMaterial = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
+                    //let strokeHex = faceSettings.faceColors[layerOptions.desiredThemeColorIndexForOutline]
+                    let strokeColor = SKColor.white
+                    let material2 = "#eeeeeeff"
+                    
+                    let particleNode = FaceForegroundNode.init(foregroundType: .AnimatedPhysicsField, material: fillMaterial, material2: material2, strokeColor: strokeColor, lineWidth: 1, shapeType: OverlayShapeTypes.Circle, itemSize: 8.0, itemStrength: 0.26)
+                    particleNode.name = "particleNode"
+                    
+                    setLayerProps(layerNode: particleNode, faceLayer: faceLayer)
+                    self.addChild(particleNode)
+                //}
+            }
+
         }
         
 //        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)
