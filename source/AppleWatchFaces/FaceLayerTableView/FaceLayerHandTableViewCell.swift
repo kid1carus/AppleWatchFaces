@@ -15,6 +15,9 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
     @IBOutlet var typeButton: UIButton!
     @IBOutlet var typeNameLabel: UILabel!
     
+    @IBOutlet var physicsFieldTypeButton: UIButton!
+    @IBOutlet var physicFieldTypeNameLabel: UILabel!
+    
     @IBOutlet var animationButton: UIButton!
     @IBOutlet var animationNameLabel: UILabel!
     
@@ -63,6 +66,14 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
             }
         }
         
+        if actionName == "choosePhysicsFieldTypeAction" {
+            if myFaceLayer().layerType == .SecondHand {
+                guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+                layerOptions.physicsFieldType = PhysicsFieldTypes.userSelectableValues[itemChosen]
+                physicFieldTypeNameLabel.text = FaceForegroundNode.descriptionForPhysicsFields(layerOptions.physicsFieldType)
+            }
+        }
+        
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
         //debugPrint("returnFromAction action:" + actionName + " item: " + itemChosen.description)
     }
@@ -81,6 +92,11 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
             }
             SettingsViewController.actionCellMedthodName = "chooseTypeAction"
             SettingsViewController.actionsTitle = "Choose Type"
+        }
+        if sender == physicsFieldTypeButton {
+            SettingsViewController.actionsArray = FaceForegroundNode.physicFieldsTypeDescriptions()
+            SettingsViewController.actionCellMedthodName = "choosePhysicsFieldTypeAction"
+            SettingsViewController.actionsTitle = "Choose Physics Field Type"
         }
         
         NotificationCenter.default.post(name: SettingsViewController.settingsCallActionSheet, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -145,6 +161,7 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
         
         if faceLayer.layerType == .SecondHand {
             guard let secondHandLayerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+            physicFieldTypeNameLabel.text = FaceForegroundNode.descriptionForPhysicsFields(secondHandLayerOptions.physicsFieldType)
             typeNameLabel.text = SecondHandNode.descriptionForType(secondHandLayerOptions.handType)
         }
         if faceLayer.layerType == .MinuteHand {

@@ -10,22 +10,36 @@ import Foundation
 
 class SecondHandLayerOptions: HandLayerOptions {
     var handType: SecondHandTypes
+    var physicsFieldType: PhysicsFieldTypes
+    var physicFieldStrength: Float
     
     override init(jsonObj: JSON ) {
         self.handType = SecondHandTypes(rawValue: jsonObj["handType"].stringValue)!
+        if (jsonObj["physicsFieldType"] != JSON.null) {
+            self.physicsFieldType = PhysicsFieldTypes(rawValue: jsonObj["physicsFieldType"].stringValue)!
+        } else {
+            self.physicsFieldType = .None
+        }
+        self.physicFieldStrength = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 2.0, key: "physicFieldStrength")
         
         super.init(jsonObj: jsonObj)
     }
     
     override init(defaults: Bool ) {
         self.handType = .SecondHandTypeBlocky
+        self.physicsFieldType = .None
+        self.physicFieldStrength = 2.0
         
         super.init(defaults: defaults)
     }
     
     override func serializedSettings() -> NSDictionary {
         var serializedDict = super.serializedSettings() as! [String:AnyObject]
+        
         serializedDict[ "handType" ] = self.handType.rawValue as AnyObject
+        serializedDict[ "physicsFieldType" ] = self.physicsFieldType.rawValue as AnyObject
+        serializedDict[ "physicFieldStrength" ] = self.physicFieldStrength.description as AnyObject
+        
         return serializedDict as NSDictionary
     }
 }

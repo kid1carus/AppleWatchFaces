@@ -102,7 +102,7 @@ class WatchFaceNode: SKShapeNode {
                 guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
                 let strokeColor = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForOutline)
                 let secHandNode = SecondHandNode.init(secondHandType: layerOptions.handType, material: hexColor, strokeColor: strokeColor,
-                    lineWidth: CGFloat(layerOptions.outlineWidth), glowWidth: CGFloat(layerOptions.effectsStrength), fieldType: .None, itemStrength: 0)
+                                                      lineWidth: CGFloat(layerOptions.outlineWidth), glowWidth: CGFloat(layerOptions.effectsStrength), fieldType: layerOptions.physicsFieldType, itemStrength: CGFloat(layerOptions.physicFieldStrength))
                 secHandNode.name = "secondHand"
                 
                 setLayerProps(layerNode: secHandNode, faceLayer: faceLayer)
@@ -229,7 +229,7 @@ class WatchFaceNode: SKShapeNode {
                     let strokeColor = SKColor.white
                     let material2 = "#eeeeeeff"
                     
-                    let particleNode = FaceForegroundNode.init(foregroundType: .AnimatedPhysicsField, material: fillMaterial, material2: material2, strokeColor: strokeColor, lineWidth: 1, shapeType: OverlayShapeTypes.Circle, itemSize: 8.0, itemStrength: 0.26)
+                    let particleNode = FaceForegroundNode.init(foregroundType: .AnimatedPhysicsField, material: fillMaterial, material2: material2, strokeColor: strokeColor, lineWidth: 0, shapeType: OverlayShapeTypes.Circle, itemSize: 8.0, itemStrength: 0.26)
                     particleNode.name = "particleNode"
                     
                     setLayerProps(layerNode: particleNode, faceLayer: faceLayer)
