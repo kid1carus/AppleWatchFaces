@@ -10,6 +10,7 @@ import Foundation
 
 class SecondHandLayerOptions: HandLayerOptions {
     var handType: SecondHandTypes
+    var handAnimation: SecondHandMovements
     var physicsFieldType: PhysicsFieldTypes
     var physicFieldStrength: Float
     
@@ -21,6 +22,7 @@ class SecondHandLayerOptions: HandLayerOptions {
             self.physicsFieldType = .None
         }
         self.physicFieldStrength = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 2.0, key: "physicFieldStrength")
+        self.handAnimation = SecondHandMovements(rawValue: jsonObj["handAnimation"].stringValue)!
         
         super.init(jsonObj: jsonObj)
     }
@@ -29,6 +31,7 @@ class SecondHandLayerOptions: HandLayerOptions {
         self.handType = .SecondHandTypeBlocky
         self.physicsFieldType = .None
         self.physicFieldStrength = 2.0
+        self.handAnimation = .SecondHandMovementStep
         
         super.init(defaults: defaults)
     }
@@ -39,6 +42,7 @@ class SecondHandLayerOptions: HandLayerOptions {
         serializedDict[ "handType" ] = self.handType.rawValue as AnyObject
         serializedDict[ "physicsFieldType" ] = self.physicsFieldType.rawValue as AnyObject
         serializedDict[ "physicFieldStrength" ] = self.physicFieldStrength.description as AnyObject
+        serializedDict[ "handAnimation" ] = self.handAnimation.rawValue as AnyObject
         
         return serializedDict as NSDictionary
     }
@@ -89,7 +93,6 @@ class HandLayerOptions: FaceLayerOptions {
     var outlineWidth: Float
     var desiredThemeColorIndexForOutline: Int
     var handImage: String
-    var handAnimation: SecondHandMovements
     var effectsStrength: Float
     
     //init from JSON, ( in from txt files )
@@ -98,7 +101,6 @@ class HandLayerOptions: FaceLayerOptions {
         self.outlineWidth = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "outlineWidth")
         self.desiredThemeColorIndexForOutline = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndexForOutline")
         self.handImage = NSObject.stringValueForJSONObj(jsonObj: jsonObj, defaultVal: "", key: "handImage")
-        self.handAnimation = SecondHandMovements(rawValue: jsonObj["handAnimation"].stringValue)!
         self.effectsStrength = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "effectsStrength")
         
         super.init()
@@ -109,7 +111,6 @@ class HandLayerOptions: FaceLayerOptions {
         self.desiredThemeColorIndexForOutline = 0
         
         self.handImage = ""
-        self.handAnimation = .SecondHandMovementStep
         self.effectsStrength = 0.0
         
         super.init()
@@ -122,7 +123,6 @@ class HandLayerOptions: FaceLayerOptions {
         serializedDict[ "desiredThemeColorIndexForOutline" ] = self.desiredThemeColorIndexForOutline.description as AnyObject
         
         serializedDict[ "handImage" ] = self.handImage as AnyObject
-        serializedDict[ "handAnimation" ] = self.handAnimation.rawValue as AnyObject
         serializedDict[ "effectsStrength" ] = self.effectsStrength.description as AnyObject
         
         return serializedDict as NSDictionary

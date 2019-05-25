@@ -73,6 +73,13 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
                 physicFieldTypeNameLabel.text = FaceForegroundNode.descriptionForPhysicsFields(layerOptions.physicsFieldType)
             }
         }
+        if actionName == "chooseAnimationAction" {
+            if myFaceLayer().layerType == .SecondHand {
+                guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
+                layerOptions.handAnimation = SecondHandMovements.userSelectableValues[itemChosen]
+                animationNameLabel.text = SecondHandNode.descriptionForMovement(layerOptions.handAnimation)
+            }
+        }
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
         //debugPrint("returnFromAction action:" + actionName + " item: " + itemChosen.description)
@@ -97,6 +104,11 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
             SettingsViewController.actionsArray = FaceForegroundNode.physicFieldsTypeDescriptions()
             SettingsViewController.actionCellMedthodName = "choosePhysicsFieldTypeAction"
             SettingsViewController.actionsTitle = "Choose Physics Field Type"
+        }
+        if sender == animationButton {
+            SettingsViewController.actionsArray = SecondHandNode.movementDescriptions()
+            SettingsViewController.actionCellMedthodName = "chooseAnimationAction"
+            SettingsViewController.actionsTitle = "Choose Animation"
         }
         
         NotificationCenter.default.post(name: SettingsViewController.settingsCallActionSheet, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -163,6 +175,7 @@ class FaceLayerHandTableViewCell: FaceLayerTableViewCell, UICollectionViewDelega
             guard let secondHandLayerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
             physicFieldTypeNameLabel.text = FaceForegroundNode.descriptionForPhysicsFields(secondHandLayerOptions.physicsFieldType)
             typeNameLabel.text = SecondHandNode.descriptionForType(secondHandLayerOptions.handType)
+            animationNameLabel.text = SecondHandNode.descriptionForMovement(secondHandLayerOptions.handAnimation)
         }
         if faceLayer.layerType == .MinuteHand {
             guard let minuteHandLayerOptions = faceLayer.layerOptions as? MinuteHandLayerOptions else { return }

@@ -475,8 +475,10 @@ class WatchFaceNode: SKShapeNode {
         
         for (index,layer) in self.faceSettings.faceLayers.enumerated() {
             
-            if layer.layerType == .SecondHand, let secondHandNode = self.children[index] as? SecondHandNode {
-                    secondHandNode.positionHands(sec: sec, secondHandMovement: .SecondHandMovementStep, force: force)
+            if layer.layerType == .SecondHand, let secondHandNode = self.children[index] as?
+                SecondHandNode {
+                    guard let layerOptions = layer.layerOptions as? SecondHandLayerOptions else { return }
+                    secondHandNode.positionHands(sec: sec, secondHandMovement: layerOptions.handAnimation, force: force)
             }
             
             if layer.layerType == .MinuteHand, let minuteHandNode = self.children[index] as? MinuteHandNode {
