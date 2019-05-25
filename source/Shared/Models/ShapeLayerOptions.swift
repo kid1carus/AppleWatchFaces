@@ -94,36 +94,36 @@ class ShapeLayerOptions: FaceLayerOptions {
         return ringPatterns()[ indexOfPatternDescription ] as! [Int]
     }
     
-    static func descriptionForRingType(_ nodeType: RingTypes) -> String {
-        var typeDescription = ""
-        
-        if (nodeType == RingTypes.RingTypeShapeNode)  { typeDescription = "Shape" }
-        if (nodeType == RingTypes.RingTypeTextNode)  { typeDescription = "Text" }
-        if (nodeType == RingTypes.RingTypeTextRotatingNode)  { typeDescription = "Rotating Text" }
-        if (nodeType == RingTypes.RingTypeDigitalTime)  { typeDescription = "Date/Battery Text" }
-        
-        if (nodeType == RingTypes.RingTypeSpacer )  { typeDescription = "Empty Space" }
-        
-        return typeDescription
-    }
+//    static func descriptionForRingType(_ nodeType: RingTypes) -> String {
+//        var typeDescription = ""
+//
+//        if (nodeType == RingTypes.RingTypeShapeNode)  { typeDescription = "Shape" }
+//        if (nodeType == RingTypes.RingTypeTextNode)  { typeDescription = "Text" }
+//        if (nodeType == RingTypes.RingTypeTextRotatingNode)  { typeDescription = "Rotating Text" }
+//        if (nodeType == RingTypes.RingTypeDigitalTime)  { typeDescription = "Date/Battery Text" }
+//
+//        if (nodeType == RingTypes.RingTypeSpacer )  { typeDescription = "Empty Space" }
+//
+//        return typeDescription
+//    }
     
-    static func ringTypeDescriptions() -> [String] {
-        var typeDescriptionsArray = [String]()
-        for nodeType in RingTypes.userSelectableValues {
-            typeDescriptionsArray.append(descriptionForRingType(nodeType))
-        }
-        
-        return typeDescriptionsArray
-    }
+//    static func ringTypeDescriptions() -> [String] {
+//        var typeDescriptionsArray = [String]()
+//        for nodeType in RingTypes.userSelectableValues {
+//            typeDescriptionsArray.append(descriptionForRingType(nodeType))
+//        }
+//
+//        return typeDescriptionsArray
+//    }
     
-    static func ringTypeKeys() -> [String] {
-        var typeKeysArray = [String]()
-        for nodeType in RingTypes.userSelectableValues {
-            typeKeysArray.append(nodeType.rawValue)
-        }
-        
-        return typeKeysArray
-    }
+//    static func ringTypeKeys() -> [String] {
+//        var typeKeysArray = [String]()
+//        for nodeType in RingTypes.userSelectableValues {
+//            typeKeysArray.append(nodeType.rawValue)
+//        }
+//        
+//        return typeKeysArray
+//    }
     
     static func descriptionForRingRenderShapes(_ nodeType: RingRenderShapes) -> String {
         var typeDescription = ""

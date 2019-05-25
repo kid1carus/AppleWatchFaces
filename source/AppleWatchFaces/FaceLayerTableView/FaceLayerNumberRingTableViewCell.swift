@@ -88,7 +88,7 @@ class FaceLayerNumberRingTableViewCell: FaceLayerTableViewCell, UICollectionView
         //add to undo stack for actions to be able to undo
         SettingsViewController.addToUndoStack()
         
-        layerOptions.patternTotal = Int(ClockRingSetting.ringTotalOptions()[sender.selectedSegmentIndex])!
+        layerOptions.patternTotal = Int(ShapeLayerOptions.ringTotalOptions()[sender.selectedSegmentIndex])!
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":settingTypeString ,"layerIndex":myLayerIndex()!])
     }

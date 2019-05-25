@@ -1,11 +1,12 @@
 //
-//  ClockOverlaySetting.swift
+//  FieldLayerOptions.swift
 //  AppleWatchFaces
 //
-//  Created by Michael Hill on 4/7/19.
+//  Created by Michael Hill on 5/25/19.
 //  Copyright © 2019 Michael Hill. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 //different types of shapes rings can render in
@@ -16,7 +17,7 @@ enum OverlayShapeTypes: String {
 }
 
 //hold settings like shape, strength, etc for properites esp the physics node types
-class ClockOverlaySetting: NSObject {
+class FieldLayerOptions: NSObject {
     
     var fieldType: PhysicsFieldTypes
     var shapeType: OverlayShapeTypes
@@ -30,8 +31,8 @@ class ClockOverlaySetting: NSObject {
         self.itemStrength = itemStrength
     }
     
-    static func defaults() -> ClockOverlaySetting {
-        return ClockOverlaySetting.init(shapeType: .Circle, fieldType: .None, itemSize: 0, itemStrength: 1.0)
+    static func defaults() -> FieldLayerOptions {
+        return FieldLayerOptions.init(shapeType: .Circle, fieldType: .None, itemSize: 0, itemStrength: 1.0)
     }
     
     convenience init( jsonObj: JSON ) {

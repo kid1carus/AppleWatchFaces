@@ -72,3 +72,35 @@ class NumberRingLayerOptions: FaceLayerOptions {
     }
     
 }
+
+//different types of things that can be assigned to a ring on the clock face
+enum RingTypes: String {
+    case RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeDigitalTime, RingTypeSpacer
+    
+    static let userSelectableValues = [RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeDigitalTime, RingTypeSpacer]
+}
+
+//different types of shapes rings can render in
+enum RingRenderShapes: String {
+    case RingRenderShapeCircle, RingRenderShapeOval, RingRenderShapeRoundedRect
+    
+    static let userSelectableValues = [RingRenderShapeCircle, RingRenderShapeOval, RingRenderShapeRoundedRect]
+}
+
+//position types for statically positioned items like date, digital time
+enum RingVerticalPositionTypes: String {
+    case Top,
+    Centered,
+    Bottom,
+    Numeric,
+    None
+}
+
+enum RingHorizontalPositionTypes: String {
+    case Left,
+    Centered,
+    Right,
+    Numeric,
+    None
+}
+
