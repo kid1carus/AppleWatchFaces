@@ -61,7 +61,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
     
     @IBAction func nextClock() {
         currentFaceIndex = currentFaceIndex + 1
-        if (UserClockSetting.sharedClockSettings.count <= currentFaceIndex) {
+        if (UserFaceSetting.sharedFaceSettings.count <= currentFaceIndex) {
             currentFaceIndex = 0
         }
         
@@ -144,21 +144,21 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             //always try to delete to allow for replace in place
             //TODO: check for file and same size?
             do {
-                try fileManager.removeItem(at: UserClockSetting.ArchiveURL)
+                try fileManager.removeItem(at: UserFaceSetting.ArchiveURL)
                 //print("Existing settings file deleted.")
             } catch {
                 //print("Failed to delete existing file:\n\((error as NSError).description)")
             }
             
             do {
-                try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
+                try fileManager.copyItem(at: file.fileURL, to: UserFaceSetting.ArchiveURL)
             
                 //give this some time to avoid concurrentcy crashes
                 //TODO: try to remove this.. test with real watch and simulator
                 //session.outstandingFileTransfers.count == 0 { ??
                delay(0.25) {
-                    //reload userClockSettings
-                    UserClockSetting.loadFromFile()
+                    //reload Settings
+                    UserFaceSetting.loadFromFile()
                     self.currentFaceIndex = 0
                     self.currentFaceSetting = UserFaceSetting.sharedFaceSettings[self.currentFaceIndex]
                 

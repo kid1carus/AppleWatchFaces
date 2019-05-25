@@ -59,21 +59,22 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
             
             //send any images to be copied first
             var imagesArray:[String] = []
-            for clockSetting in UserClockSetting.sharedClockSettings {
-                let backgroundImage = clockSetting.clockFaceMaterialName
-                guard backgroundImage.count >= AppUISettings.backgroundFileName.count else { continue }
-                let lastPart = backgroundImage.suffix(AppUISettings.backgroundFileName.count)
-                if lastPart == AppUISettings.backgroundFileName {
-                    imagesArray.append(backgroundImage)
-                }
-            }
             
-            sendAllBackgroundImages(imagesArray: imagesArray, validSession: validSession)
+//            for faceSetting in UserFaceSetting {
+//                let backgroundImage = clockSetting.clockFaceMaterialName
+//                guard backgroundImage.count >= AppUISettings.backgroundFileName.count else { continue }
+//                let lastPart = backgroundImage.suffix(AppUISettings.backgroundFileName.count)
+//                if lastPart == AppUISettings.backgroundFileName {
+//                    imagesArray.append(backgroundImage)
+//                }
+//            }
+//
+//            sendAllBackgroundImages(imagesArray: imagesArray, validSession: validSession)
             
             //send settings file
             let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: UserClockSetting.ArchiveURL.path) {
-                validSession.transferFile(UserClockSetting.ArchiveURL, metadata: ["type":"settingsFile", "imageCount":String(imagesArray.count)])
+            if fileManager.fileExists(atPath: UserFaceSetting.ArchiveURL.path) {
+                validSession.transferFile(UserFaceSetting.ArchiveURL, metadata: ["type":"settingsFile", "imageCount":String(imagesArray.count)])
             } else {
                 self.showError(errorMessage: "No changes to send: Watch has same defaults")
             }

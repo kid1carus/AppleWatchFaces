@@ -12,31 +12,31 @@ import WatchConnectivity
 extension SettingsViewController {
     
     @IBAction func sendSettingAction() {
-        //debugPrint("sendSetting tapped")
-        //        if let validSession = WatchSessionManager.sharedManager.validSession {
-        //
-        //            //toggle it off to prevent spamming
-        //            sendSettingButton.isEnabled = false
-        //            delay(1.0) {
-        //                self.sendSettingButton.isEnabled = true
-        //            }
-        //
-        //            //send background image
-        //            let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
-        //            let imageURL = UIImage.getImageURL(imageName: filename)
-        //            let fileManager = FileManager.default
-        //            // check if the image is stored already
-        //            if fileManager.fileExists(atPath: imageURL.path) {
-        //                self.showMessage( message: "Sending background image")
-        //                validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
-        //            }
-        //
-        //            SettingsViewController.createTempTextFile()
-        //            validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentClockSetting.filename() ])
-        //
-        //        } else {
-        //            self.showError(errorMessage: "No valid watch session")
-        //        }
+        debugPrint("sendSetting tapped")
+        if let validSession = WatchSessionManager.sharedManager.validSession {
+
+            //toggle it off to prevent spamming
+            sendSettingButton.isEnabled = false
+            delay(1.0) {
+                self.sendSettingButton.isEnabled = true
+            }
+
+//                    //send background image
+//                    let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
+//                    let imageURL = UIImage.getImageURL(imageName: filename)
+//                    let fileManager = FileManager.default
+//                    // check if the image is stored already
+//                    if fileManager.fileExists(atPath: imageURL.path) {
+//                        self.showMessage( message: "Sending background image")
+//                        validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
+//                    }
+
+            SettingsViewController.createTempTextFile()
+            validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentFaceSetting.filename() ])
+
+        } else {
+            self.showError(errorMessage: "No valid watch session")
+        }
     }
     
     //WatchSessionManagerDelegate implementation

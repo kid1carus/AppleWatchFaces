@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         guard url.pathExtension == "awf" else { return false }
         
-        UserClockSetting.loadFromFile()
-        UserClockSetting.addNewFromPath(path: url.path, importDuplicatesAsNew: true)
+        UserFaceSetting.loadFromFile()
+        UserFaceSetting.addNewFromPath(path: url.path, importDuplicatesAsNew: true)
         
         //tell chooser view to reload its cells and regen thumbs
         NotificationCenter.default.post(name: FaceChooserViewController.faceChooserRegenerateChangeNotificationName, object: nil, userInfo:nil)

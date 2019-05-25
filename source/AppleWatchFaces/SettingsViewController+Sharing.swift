@@ -12,25 +12,25 @@ import UIKit
 extension SettingsViewController {
     static func attachmentURL()->URL {
         let filename = SettingsViewController.currentFaceSetting.filename() + ".awf"
-        return UserClockSetting.DocumentsDirectory.appendingPathComponent(filename)
+        return UserFaceSetting.DocumentsDirectory.appendingPathComponent(filename)
     }
     
     static func createTempTextFile() {
-        //        //TODO: move this to temporary file to be less cleanup later / trash on device
-        //        //JSON save to file
-        //        var serializedArray = [NSDictionary]()
-        //        let serializedSettings = NSMutableDictionary.init(dictionary: SettingsViewController.currentFaceSetting.serializedSettings())
-        //        if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: SettingsViewController.currentFaceSetting.clockFaceMaterialName) {
-        //            serializedSettings["clockFaceMaterialJPGData"] = jpgDataString
-        //        }
-        //        serializedArray.append(serializedSettings)
-        //
-        //        //delete existing file if its there
-        //        let fileManagerIs = FileManager.default
-        //        if fileManagerIs.fileExists(atPath: attachmentURL().path) {
-        //            try? fileManagerIs.removeItem(at: attachmentURL())
-        //        }
-        //        UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: attachmentURL())
+        //TODO: move this to temporary file to be less cleanup later / trash on device
+        //JSON save to file
+        var serializedArray = [NSDictionary]()
+        let serializedSettings = NSMutableDictionary.init(dictionary: SettingsViewController.currentFaceSetting.serializedSettings())
+//                if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: SettingsViewController.currentFaceSetting.clockFaceMaterialName) {
+//                    serializedSettings["clockFaceMaterialJPGData"] = jpgDataString
+//                }
+        serializedArray.append(serializedSettings)
+
+        //delete existing file if its there
+        let fileManagerIs = FileManager.default
+        if fileManagerIs.fileExists(atPath: attachmentURL().path) {
+            try? fileManagerIs.removeItem(at: attachmentURL())
+        }
+        UserFaceSetting.saveDictToFile(serializedArray: serializedArray, pathURL: attachmentURL())
     }
     
     func makeThumb( fileName: String) {
