@@ -60,16 +60,16 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
             //send any images to be copied first
             var imagesArray:[String] = []
             
-//            for faceSetting in UserFaceSetting {
-//                let backgroundImage = clockSetting.clockFaceMaterialName
-//                guard backgroundImage.count >= AppUISettings.backgroundFileName.count else { continue }
-//                let lastPart = backgroundImage.suffix(AppUISettings.backgroundFileName.count)
-//                if lastPart == AppUISettings.backgroundFileName {
-//                    imagesArray.append(backgroundImage)
-//                }
-//            }
-//
-//            sendAllBackgroundImages(imagesArray: imagesArray, validSession: validSession)
+            for faceSetting in UserFaceSetting.sharedFaceSettings {
+                
+                for layer in faceSetting.faceLayers {
+                    if layer.filenameForImage != "" {
+                        imagesArray.append(layer.filenameForImage)
+                    }
+                }
+            }
+
+            sendAllBackgroundImages(imagesArray: imagesArray, validSession: validSession)
             
             //send settings file
             let fileManager = FileManager.default

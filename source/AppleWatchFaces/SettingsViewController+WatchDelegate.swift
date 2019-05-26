@@ -20,16 +20,21 @@ extension SettingsViewController {
             delay(1.0) {
                 self.sendSettingButton.isEnabled = true
             }
-
-//                    //send background image
-//                    let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
-//                    let imageURL = UIImage.getImageURL(imageName: filename)
-//                    let fileManager = FileManager.default
-//                    // check if the image is stored already
-//                    if fileManager.fileExists(atPath: imageURL.path) {
-//                        self.showMessage( message: "Sending background image")
-//                        validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
-//                    }
+            
+            //send any images to be copied first
+            let fileManager = FileManager.default
+            for layer in SettingsViewController.currentFaceSetting.faceLayers {
+                if layer.filenameForImage != "" {
+                    
+                    let backgroundImageURL = UIImage.getImageURL(imageName: layer.filenameForImage)
+                    if fileManager.fileExists(atPath: backgroundImageURL.path) {
+                        validSession.transferFile(backgroundImageURL, metadata: ["type":"clockFaceMaterialSync", "filename":layer.filenameForImage])
+                    } else {
+                        self.showError(errorMessage: "No changes to send")
+                    }
+                    
+                }
+            }
 
             SettingsViewController.createTempTextFile()
             validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentFaceSetting.filename() ])
