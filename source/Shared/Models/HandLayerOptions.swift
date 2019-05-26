@@ -54,8 +54,8 @@ class MinuteHandLayerOptions: HandLayerOptions {
     
     override init(jsonObj: JSON ) {
         self.handType = MinuteHandTypes(rawValue: jsonObj["handType"].stringValue)!
-        if (jsonObj["handAnimation"] != JSON.null) {
-            self.handAnimation = MinuteHandMovements(rawValue: jsonObj["handAnimation"].stringValue)!
+        if (jsonObj["handAnimation"] != JSON.null), let handAnimation = MinuteHandMovements(rawValue: jsonObj["handAnimation"].stringValue) {
+            self.handAnimation = handAnimation
         } else {
             self.handAnimation = .MinuteHandMovementStep
         }
