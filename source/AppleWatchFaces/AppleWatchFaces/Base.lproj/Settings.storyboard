@@ -268,9 +268,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TQh-YL-wtZ">
-                                            <rect key="frame" x="20" y="68" width="374" height="66"/>
+                                            <rect key="frame" x="94" y="68" width="300" height="66"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="66" id="wNU-hu-v4N"/>
+                                                <constraint firstAttribute="height" constant="66" id="An8-B1-hKm"/>
                                             </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="n9c-Nc-tMZ">
                                                 <size key="itemSize" width="53" height="66"/>
@@ -308,21 +308,35 @@
                                                 <outlet property="delegate" destination="cId-tz-F3a" id="R8i-GJ-V6s"/>
                                             </connections>
                                         </collectionView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dyy-7g-LbI">
+                                            <rect key="frame" x="20" y="68" width="66" height="66"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="66" id="5BC-zr-HCT"/>
+                                                <constraint firstAttribute="width" constant="66" id="rCe-ia-HvZ"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="cameraIcon"/>
+                                            <connections>
+                                                <action selector="cameraButtonTappedWithSender:" destination="cId-tz-F3a" eventType="touchUpInside" id="O2P-pi-J4k"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="TQh-YL-wtZ" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leadingMargin" id="L1O-Av-usX"/>
+                                        <constraint firstItem="TQh-YL-wtZ" firstAttribute="top" secondItem="FW8-dn-pcI" secondAttribute="bottom" constant="7" id="F9s-AR-8U9"/>
                                         <constraint firstItem="1gn-MC-yA0" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leadingMargin" id="Nj5-Wx-I7r"/>
                                         <constraint firstItem="1gn-MC-yA0" firstAttribute="top" secondItem="byy-1g-Sng" secondAttribute="topMargin" id="PCP-ka-157"/>
+                                        <constraint firstItem="Dyy-7g-LbI" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leadingMargin" id="R34-8a-P7i"/>
+                                        <constraint firstItem="TQh-YL-wtZ" firstAttribute="leading" secondItem="Dyy-7g-LbI" secondAttribute="trailing" constant="8" id="SMn-Ug-XAd"/>
                                         <constraint firstItem="FW8-dn-pcI" firstAttribute="trailing" secondItem="byy-1g-Sng" secondAttribute="trailingMargin" id="V37-f2-Xoo"/>
                                         <constraint firstItem="FW8-dn-pcI" firstAttribute="top" secondItem="1gn-MC-yA0" secondAttribute="bottom" constant="8" id="XMj-ab-lCZ"/>
                                         <constraint firstItem="1gn-MC-yA0" firstAttribute="trailing" secondItem="byy-1g-Sng" secondAttribute="trailingMargin" id="ZXg-6y-6Y8"/>
+                                        <constraint firstItem="Dyy-7g-LbI" firstAttribute="top" secondItem="FW8-dn-pcI" secondAttribute="bottom" constant="7" id="fUe-6T-5gc"/>
                                         <constraint firstItem="FW8-dn-pcI" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leadingMargin" id="id2-Vb-Tj7"/>
-                                        <constraint firstItem="TQh-YL-wtZ" firstAttribute="top" secondItem="FW8-dn-pcI" secondAttribute="bottom" constant="7" id="o6S-11-NTj"/>
-                                        <constraint firstItem="TQh-YL-wtZ" firstAttribute="trailing" secondItem="byy-1g-Sng" secondAttribute="trailingMargin" id="z0g-D1-KhQ"/>
+                                        <constraint firstItem="TQh-YL-wtZ" firstAttribute="trailing" secondItem="byy-1g-Sng" secondAttribute="trailingMargin" id="tIi-av-7hc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <outlet property="cameraButton" destination="Dyy-7g-LbI" id="Adh-3h-R0P"/>
                                     <outlet property="filenameLabel" destination="FW8-dn-pcI" id="G0V-Vn-mqL"/>
                                     <outlet property="imageSelectionCollectionView" destination="TQh-YL-wtZ" id="9Vl-ha-86H"/>
                                     <outlet property="titleLabel" destination="1gn-MC-yA0" id="B7e-CU-7uh"/>
@@ -2382,6 +2396,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cameraIcon" width="266.66665649414062" height="266.66665649414062"/>
         <image name="icons-apple-watch" width="480" height="480"/>
     </resources>
 </document>

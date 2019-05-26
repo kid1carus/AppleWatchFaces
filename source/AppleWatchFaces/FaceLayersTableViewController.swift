@@ -12,6 +12,8 @@ class FaceLayersTableViewController: UITableViewController {
     
     weak var settingsViewController:SettingsViewController?
     
+    static let reloadLayerNotificationName = Notification.Name("reloadLayer")
+    
     func adjustLayerItem(adjustmentType: WatchFaceNode.LayerAdjustmentType, amount: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         guard let settingsViewVC = settingsViewController else { return }
@@ -121,6 +123,13 @@ class FaceLayersTableViewController: UITableViewController {
         }
     }
     
+    @objc func onReloadLayerNotification(notification:Notification) {
+        guard let data = notification.userInfo as? [String: Int] else { return }
+        guard let layerIndex = data["layerIndex"] else { return }
+        
+        self.tableView.reloadRows(at: [IndexPath.init(row: layerIndex, section: 0)], with: UITableView.RowAnimation.automatic)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,6 +146,7 @@ class FaceLayersTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onSettingsLayerSelectedNotification(notification:)),
                                                name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onReloadLayerNotification(notification:)), name: FaceLayersTableViewController.reloadLayerNotificationName, object: nil)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

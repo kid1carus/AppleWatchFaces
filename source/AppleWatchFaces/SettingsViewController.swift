@@ -157,7 +157,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
         
         let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, horizontalPosition: 0, verticalPosition:0, scale: 1.0,
-                                      angleOffset: 0, desiredThemeColorIndex: 0, layerOptions: faceLayerOptions)
+                                      angleOffset: 0, desiredThemeColorIndex: 0, layerOptions: faceLayerOptions, filenameForImage: "")
         //add to undo stack for actions to be able to undo
         SettingsViewController.addToUndoStack()
         setUndoRedoButtonStatus()
@@ -197,24 +197,27 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     @objc func onNotificationForGetCameraImage(notification:Notification) {
-//        CameraHandler.shared.showActionSheet(vc: self)
-//        CameraHandler.shared.imagePickedBlock = { (image) in
-//            //add to undo stack for actions to be able to undo
-//            SettingsViewController.addToUndoStack()
-//
-//            /* get your image here */
-//            let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 312, height: 390))
-//
-//            // save it to the docs folder with name of the face
-//            let fileName = SettingsViewController.currentFaceSetting.uniqueID + AppUISettings.backgroundFileName
-//            debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
-//
-//            _ = resizedImage.save(imageName: fileName) //_ = resizedImage.save(imageName: fileName)
-//            SettingsViewController.currentFaceSetting.clockFaceMaterialName = fileName
-//
-//            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
-//            NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil, userInfo:["settingType":"clockFaceMaterialName"])
-//        }
+        guard let data = notification.userInfo as? [String: Int] else { return }
+        guard let layerIndex = data["layerIndex"] else { return }
+            
+        CameraHandler.shared.showActionSheet(vc: self)
+        CameraHandler.shared.imagePickedBlock = { (image, url) in
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+
+            /* get your image here */
+            let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 312, height: 390))
+
+            // save it to the docs folder with name of the filename
+            let fileName =  url.lastPathComponent // SettingsViewController.currentFaceSetting.uniqueID + AppUISettings.backgroundFileName
+            debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
+
+            _ = resizedImage.save(imageName: fileName) //_ = resizedImage.save(imageName: fileName)
+            SettingsViewController.currentFaceSetting.faceLayers[layerIndex].filenameForImage = fileName
+
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+            NotificationCenter.default.post(name: FaceLayersTableViewController.reloadLayerNotificationName, object: nil, userInfo:["layerIndex":layerIndex])
+        }
     }
     
     @objc func onNotificationForPreviewSwiped(notification:Notification) {

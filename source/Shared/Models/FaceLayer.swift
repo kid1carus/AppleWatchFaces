@@ -42,13 +42,14 @@ class FaceLayer: NSObject {
     var scale: Float = 1.0
     var angleOffset: Float = 0
     
+    var filenameForImage: String = ""
     var desiredThemeColorIndex: Int = 0
     
     // specific to each layer by type
     var layerOptions: FaceLayerOptions
 
     init(layerType: FaceLayerTypes, alpha: Float, horizontalPosition: Float, verticalPosition: Float, scale: Float, angleOffset: Float,
-         desiredThemeColorIndex: Int, layerOptions: FaceLayerOptions) {
+         desiredThemeColorIndex: Int, layerOptions: FaceLayerOptions, filenameForImage: String) {
         self.layerType = layerType
         self.alpha = alpha
         self.horizontalPosition = horizontalPosition
@@ -58,13 +59,15 @@ class FaceLayer: NSObject {
         
         self.desiredThemeColorIndex = desiredThemeColorIndex
         self.layerOptions = layerOptions
+        
+        self.filenameForImage = filenameForImage
     
         super.init()
     }
     
     static func defaults() -> FaceLayer {
         return FaceLayer.init( layerType: .SecondHand, alpha: 1.0 , horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
-                               desiredThemeColorIndex: 0, layerOptions: FaceLayerOptions() )
+                               desiredThemeColorIndex: 0, layerOptions: FaceLayerOptions(), filenameForImage: "" )
     }
     
     //init from JSON, ( in from txt files )
@@ -79,6 +82,8 @@ class FaceLayer: NSObject {
         self.angleOffset = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 1.0, key: "angleOffset")
         
         self.desiredThemeColorIndex = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndex")
+        
+        self.filenameForImage = NSObject.stringValueForJSONObj(jsonObj: jsonObj, defaultVal: "", key: "filenameForImage")
         
         //init layerOptions depending on type
         self.layerOptions = FaceLayerOptions()
@@ -124,6 +129,8 @@ class FaceLayer: NSObject {
         serializedDict[ "desiredThemeColorIndex" ] = self.desiredThemeColorIndex as AnyObject
         
         serializedDict[ "layerOptions" ] = self.layerOptions.serializedSettings()
+        
+        serializedDict[ "filenameForImage" ] = self.filenameForImage as AnyObject
 
         return serializedDict as NSDictionary
     }

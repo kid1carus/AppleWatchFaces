@@ -17,6 +17,10 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     
     let settingTypeString = "imageBackground"
     
+    @IBAction func cameraButtonTapped( sender: UIButton) {
+        NotificationCenter.default.post(name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil, userInfo:["layerIndex":myLayerIndex()!])
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return AppUISettings.materialFiles.count
     }
@@ -46,6 +50,8 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         //add to undo stack for actions to be able to undo
         SettingsViewController.addToUndoStack()
         
+        faceLayer.filenameForImage = "" //clear this out
+        
         layerOptions.filename = AppUISettings.materialFiles[indexPath.row]
         filenameLabel.text = layerOptions.filename
         
@@ -55,11 +61,15 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
         
-        guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
-        if let meterialsIndex = AppUISettings.materialFiles.index(of: layerOptions.filename) {
-            filenameLabel.text = layerOptions.filename
-            let indexPath = IndexPath.init(row: meterialsIndex, section: 0)
-            imageSelectionCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        if faceLayer.filenameForImage != "" {
+            filenameLabel.text = faceLayer.filenameForImage
+        } else {
+            guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+            if let meterialsIndex = AppUISettings.materialFiles.index(of: layerOptions.filename) {
+                filenameLabel.text = layerOptions.filename
+                let indexPath = IndexPath.init(row: meterialsIndex, section: 0)
+                imageSelectionCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+            }
         }
         
     }

@@ -15,7 +15,7 @@ class CameraHandler: NSObject{
     fileprivate var currentVC: UIViewController!
     
     //MARK: Internal Properties
-    var imagePickedBlock: ((UIImage) -> Void)?
+    var imagePickedBlock: ((UIImage, URL) -> Void)?
     
     func camera()
     {
@@ -68,12 +68,12 @@ extension CameraHandler: UIImagePickerControllerDelegate, UINavigationController
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         //originals from gallery
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.imagePickedBlock?(image)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage, let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            self.imagePickedBlock?(image, url)
         }
         //edited from camera
-        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.imagePickedBlock?(image)
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage, let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            self.imagePickedBlock?(image, url)
         }
         
         currentVC.dismiss(animated: true, completion: nil)
