@@ -14,6 +14,8 @@ class ShapeLayerOptions: FaceLayerOptions {
     var patternTotal: Int
     var patternArray: [Int]
     
+    var pathShape: RingRenderShapes
+    
     //init from JSON, ( in from txt files )
     init(jsonObj: JSON ) {
         
@@ -22,6 +24,13 @@ class ShapeLayerOptions: FaceLayerOptions {
             for patternSerialized in patternArraySerialized {
                 patternArrayTemp.append( patternSerialized.intValue )
             }
+        }
+        
+        let pathShapeString = jsonObj["pathShape"].stringValue
+        if let pathShape = RingRenderShapes(rawValue: pathShapeString) {
+            self.pathShape = pathShape
+        } else {
+            self.pathShape = .RingRenderShapeCircle
         }
         
         let indicatorTypeString = jsonObj["indicatorType"].stringValue
@@ -40,6 +49,8 @@ class ShapeLayerOptions: FaceLayerOptions {
         self.patternTotal = 12
         self.patternArray = [1]
         
+        self.pathShape = .RingRenderShapeCircle
+        
         super.init()
     }
     
@@ -51,6 +62,8 @@ class ShapeLayerOptions: FaceLayerOptions {
         
         serializedDict[ "patternTotal" ] = self.patternTotal.description as AnyObject
         serializedDict[ "patternArray" ] = self.patternArray as AnyObject
+        
+        serializedDict[ "pathShape" ] = self.pathShape.rawValue as AnyObject
         
         return serializedDict as NSDictionary
     }
@@ -130,7 +143,7 @@ class ShapeLayerOptions: FaceLayerOptions {
         
         if (nodeType == RingRenderShapes.RingRenderShapeCircle)  { typeDescription = "Circle" }
         if (nodeType == RingRenderShapes.RingRenderShapeOval)  { typeDescription = "Oval" }
-        if (nodeType == RingRenderShapes.RingRenderShapeRoundedRect)  { typeDescription = "Rectangle" }
+        if (nodeType == RingRenderShapes.RingRenderShapeRoundedRect)  { typeDescription = "Square" }
         
         return typeDescription
     }

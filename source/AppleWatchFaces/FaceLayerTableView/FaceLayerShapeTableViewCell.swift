@@ -21,6 +21,8 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
     @IBOutlet var patternButton: UIButton!
     @IBOutlet var patternNameLabel: UILabel!
     
+    @IBOutlet var pathShapeSegment:UISegmentedControl!
+    
     let settingTypeString = "shapeRing"
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -82,6 +84,18 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":settingTypeString ,"layerIndex":myLayerIndex()!])
     }
+    
+    @IBAction func pathShapeSegmentDidChange(sender: UISegmentedControl ) {
+        let faceLayer = myFaceLayer()
+        guard let layerOptions = faceLayer.layerOptions as? ShapeLayerOptions else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
+        layerOptions.pathShape = RingRenderShapes.userSelectableValues[sender.selectedSegmentIndex]
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":settingTypeString ,"layerIndex":myLayerIndex()!])
+    }
 
     
     @IBAction func sliderValueDidChange(sender: UISlider ) {
@@ -120,6 +134,14 @@ class FaceLayerShapeTableViewCell: FaceLayerTableViewCell, UICollectionViewDeleg
             let totalString = String(shapeOptions.patternTotal)
             if let segmentIndex = ShapeLayerOptions.ringTotalOptions().index(of: totalString) {
                 self.totalNumbersSegment.selectedSegmentIndex = segmentIndex
+            }
+            
+            pathShapeSegment.removeAllSegments()
+            for (index,descr) in ShapeLayerOptions.ringRenderShapesDescriptions().enumerated() {
+                pathShapeSegment.insertSegment(withTitle: descr, at: index, animated: false)
+            }
+            if let pathIndex = RingRenderShapes.userSelectableValues.index(of: shapeOptions.pathShape) {
+                self.pathShapeSegment.selectedSegmentIndex = pathIndex
             }
         }
         

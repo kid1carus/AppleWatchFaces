@@ -16,6 +16,7 @@ class NumberRingLayerOptions: FaceLayerOptions {
     
     var outlineWidth: Float
     var desiredThemeColorIndexForOutline: Int
+    var pathShape: RingRenderShapes
     
     //init from JSON, ( in from txt files )
     init(jsonObj: JSON ) {
@@ -32,6 +33,13 @@ class NumberRingLayerOptions: FaceLayerOptions {
             self.fontType = fontType
         } else {
             self.fontType = .NumberTextTypeSystem
+        }
+        
+        let pathShapeString = jsonObj["pathShape"].stringValue
+        if let pathShape = RingRenderShapes(rawValue: pathShapeString) {
+            self.pathShape = pathShape
+        } else {
+            self.pathShape = .RingRenderShapeCircle
         }
         
         self.textSize = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.6, key: "textSize")
@@ -52,6 +60,7 @@ class NumberRingLayerOptions: FaceLayerOptions {
         
         self.outlineWidth = 0.0
         self.desiredThemeColorIndexForOutline = 0
+        self.pathShape = .RingRenderShapeCircle
         
         super.init()
     }
@@ -67,6 +76,8 @@ class NumberRingLayerOptions: FaceLayerOptions {
         
         serializedDict[ "outlineWidth" ] = self.outlineWidth.description as AnyObject
         serializedDict[ "desiredThemeColorIndexForOutline" ] = self.desiredThemeColorIndexForOutline.description as AnyObject
+        
+        serializedDict[ "pathShape" ] = self.pathShape.rawValue as AnyObject
         
         return serializedDict as NSDictionary
     }

@@ -193,7 +193,7 @@ class WatchFaceNode: SKShapeNode {
                     shapeNode.name = "shapeNode"
                     
                     let fillMaterial = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
-                    let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: .RingRenderShapeCircle )
+                    let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: shapeOptions.pathShape )
                     
                     let strokeHex = ""
                     
@@ -209,7 +209,7 @@ class WatchFaceNode: SKShapeNode {
                     shapeNode.name = "numberRingNode"
                     
                     let fillMaterial = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
-                    let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: .RingRenderShapeCircle )
+                    let ringShapePath = WatchFaceNode.getShapePath( ringRenderShape: layerOptions.pathShape )
                     
                     let strokeHex = faceSettings.faceColors[layerOptions.desiredThemeColorIndexForOutline]
                     
@@ -239,39 +239,6 @@ class WatchFaceNode: SKShapeNode {
 
         }
         
-//        let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)
-//        backgroundNode.name = "background"
-//        backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
-//        backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
-//
-//        self.addChild(backgroundNode)
-//
-//        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: topLayerMaterial, material2: bottomLayerMaterial)
-//        backgroundShapeNode.name = "backgroundShape"
-//        backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
-//        backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
-//
-//        self.addChild(backgroundShapeNode)
-//
-//        var shapeType: OverlayShapeTypes = .Circle
-//        var itemSize:CGFloat = 0
-//        var itemStrength:CGFloat = 0
-//        if let clockOverlaySettings = clockSetting.clockOverlaySettings {
-//            shapeType = clockOverlaySettings.shapeType
-//            itemSize = CGFloat(clockOverlaySettings.itemSize)
-//            itemStrength = CGFloat(clockOverlaySettings.itemStrength)
-//        }
-//
-//        let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0, shapeType: shapeType, itemSize: itemSize, itemStrength: itemStrength)
-//        foregroundNode.name = "foregroundNode"
-//        foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
-//        foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
-//
-//        self.addChild(foregroundNode)
-//
-//        renderHands(clockSetting: clockSetting)
-//
-//        renderIndicatorItems(clockFaceSettings: clockFaceSettings, size: size)
     }
     
     func generateRingNode( _ clockFaceNode: SKNode, patternTotal: Int, patternArray: [Int], ringType: RingTypes, material: String, currentDistance: Float, renderNumbers: Bool, renderShapes: Bool, ringShape: UIBezierPath, size: CGSize, lineWidth: Float, strokeHex: String, textSize: Float, textType: NumberTextTypes, indicatorSize: Float, indicatorType: FaceIndicatorTypes) {
@@ -352,120 +319,6 @@ class WatchFaceNode: SKShapeNode {
         
         ringNode.addChild(outerRingNode)
     }
-    
-//    func renderHands(clockSetting: ClockSetting) {
-//        //nothing to without these settings
-//        guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
-//
-//        var renderShadows = false
-//        let shadowMaterial = "#111111AA"
-//        let shadowChildZposition:CGFloat = -0.5
-//        var shadowColor = SKColor.init(hexString: shadowMaterial)
-//        shadowColor = shadowColor.withAlphaComponent(0.4)
-//        let shadowLineWidth:CGFloat = 2.0
-//        var secondHandGlowWidth:CGFloat = 0
-//        var minuteHandGlowWidth:CGFloat = 0
-//        var hourHandGlowWidth:CGFloat = 0
-//        var secondHandAlpha:CGFloat = 1
-//        var minuteHandAlpha:CGFloat = 1
-//        var hourHandAlpha:CGFloat = 1
-//
-//        //TODO: figure out why [safe: 0] was not working here
-//        if clockFaceSettings.handEffectWidths.count>0 {
-//            secondHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[0])
-//        }
-//        if clockFaceSettings.handAlphas.count>0 {
-//            secondHandAlpha = CGFloat(clockFaceSettings.handAlphas[0])
-//        }
-//
-//        //var secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.secondHandMaterialName)
-//
-//        let secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
-//        let lineWidth:CGFloat = 0.0
-//        var physicsFieldType:PhysicsFieldTypes = .None
-//        var physicsFieldItemStrength:CGFloat = 0.0
-//        if let overlaySettings = clockSetting.clockOverlaySettings {
-//            physicsFieldType = overlaySettings.fieldType
-//            physicsFieldItemStrength = CGFloat(overlaySettings.itemStrength)
-//        }
-//        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth, fieldType: physicsFieldType, itemStrength: physicsFieldItemStrength)
-//        secHandNode.name = "secondHand"
-//        secHandNode.alpha = secondHandAlpha
-//        secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
-//
-//        self.addChild(secHandNode)
-//
-//        //whitelist rendring shadows
-//        let typesThatShouldHaveShadows = [SecondHandTypes.SecondHandTypeBlocky, SecondHandTypes.SecondHandTypeFlatDial,
-//                                          SecondHandTypes.SecondHandTypePointy, SecondHandTypes.SecondHandTypePointy, SecondHandTypes.SecondHandTypeSquaredHole]
-//        if (typesThatShouldHaveShadows.firstIndex(of: clockFaceSettings.secondHandType) != nil) {
-//            renderShadows = true
-//        }
-//
-//        if renderShadows {
-//            let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0, fieldType: .None, itemStrength: 1.0)
-//            secHandShadowNode.position = CGPoint.init(x: 0, y: 0)
-//            secHandShadowNode.name = "secondHandShadow"
-//            secHandShadowNode.alpha = secondHandAlpha
-//            secHandShadowNode.zPosition = shadowChildZposition
-//            secHandNode.addChild(secHandShadowNode)
-//        }
-//
-//        if clockFaceSettings.handEffectWidths.count>1 {
-//            minuteHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[1])
-//        }
-//        if clockFaceSettings.handAlphas.count>1 {
-//            minuteHandAlpha = CGFloat(clockFaceSettings.handAlphas[1])
-//        }
-//
-//        var minuteHandStrokeColor = SKColor.init(hexString: clockFaceSettings.minuteHandMaterialName)
-//        if (clockFaceSettings.shouldShowHandOutlines) {
-//            minuteHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
-//        }
-//        let minHandNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: clockFaceSettings.minuteHandMaterialName, strokeColor: minuteHandStrokeColor, lineWidth: 1.0,
-//            glowWidth: minuteHandGlowWidth)
-//        minHandNode.name = "minuteHand"
-//        minHandNode.alpha = minuteHandAlpha
-//        minHandNode.zPosition = CGFloat(PartsZPositions.minuteHand.rawValue)
-//
-//        self.addChild(minHandNode)
-//
-//        if renderShadows {
-//            let minHandShadowNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0)
-//            minHandShadowNode.position = CGPoint.init(x: 0, y: 0)
-//            minHandShadowNode.name = "minuteHandShadow"
-//            minHandShadowNode.alpha = minuteHandAlpha
-//            minHandShadowNode.zPosition = shadowChildZposition
-//            minHandNode.addChild(minHandShadowNode)
-//        }
-//
-//        var hourHandStrokeColor = SKColor.init(hexString: clockFaceSettings.hourHandMaterialName)
-//        if (clockFaceSettings.shouldShowHandOutlines) {
-//        hourHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
-//        }
-//        if clockFaceSettings.handEffectWidths.count>2 {
-//            hourHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[2])
-//        }
-//        if clockFaceSettings.handAlphas.count>2 {
-//            hourHandAlpha = CGFloat(clockFaceSettings.handAlphas[2])
-//        }
-//
-//        let hourHandNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: clockFaceSettings.hourHandMaterialName, strokeColor: hourHandStrokeColor, lineWidth: 1.0, glowWidth: hourHandGlowWidth)
-//        hourHandNode.name = "hourHand"
-//        hourHandNode.alpha = hourHandAlpha
-//        hourHandNode.zPosition = CGFloat(PartsZPositions.hourHand.rawValue)
-//
-//        self.addChild(hourHandNode)
-//
-//        if renderShadows {
-//            let hourHandShadowNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth, glowWidth: 0)
-//            hourHandShadowNode.position = CGPoint.init(x: 0, y: 0)
-//            hourHandShadowNode.name = "hourHandShadow"
-//            hourHandShadowNode.alpha = hourHandAlpha
-//            hourHandShadowNode.zPosition = shadowChildZposition
-//            hourHandNode.addChild(hourHandShadowNode)
-//        }
-//    }
     
     func positionHands( sec: CGFloat, min: CGFloat, hour: CGFloat ) {
         positionHands(sec: sec, min: min, hour: hour, force: false)
