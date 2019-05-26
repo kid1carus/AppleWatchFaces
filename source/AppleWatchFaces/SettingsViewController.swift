@@ -46,6 +46,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBOutlet var angleLabel: UILabel!
     @IBOutlet var angleControlsView: UIView!
     
+    @IBOutlet var addNewLayerButton: UIButton!
+    
     @IBOutlet var groupSegmentControl: UISegmentedControl!
 
     weak var watchPreviewViewController:WatchPreviewViewController?
@@ -283,11 +285,16 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             colorsTableContainer.isHidden = true
             layerTableContainer.isHidden = true
             optionsTableContainer.isHidden = false
+            
+            addNewLayerButton.isHidden = true
         }
         if sender.selectedSegmentIndex == 1 { // layers
             colorsTableContainer.isHidden = true
             optionsTableContainer.isHidden = true
             layerTableContainer.isHidden = false
+            
+            addNewLayerButton.isHidden = false
+            
             // reload layers because colors and other things may have changes
             if let faceLayersTableViewController = faceLayersTableViewController {
                 faceLayersTableViewController.reload()
@@ -299,6 +306,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             colorsTableContainer.isHidden = false
             layerTableContainer.isHidden = true
             optionsTableContainer.isHidden = true
+            
+            addNewLayerButton.isHidden = true
         }
     }
     
