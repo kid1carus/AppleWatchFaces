@@ -11,6 +11,7 @@ import SpriteKit
 
 class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
 
+    @IBOutlet var optionsTableContainer: UIView!
     @IBOutlet var layerTableContainer: UIView!
     @IBOutlet var colorsTableContainer: UIView!
     
@@ -50,6 +51,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     weak var watchPreviewViewController:WatchPreviewViewController?
     weak var faceLayersTableViewController:FaceLayersTableViewController?
     weak var faceColorsTableViewController:FaceColorsTableViewController?
+    weak var faceOptionsTableViewController:FaceOptionsTableViewController?
     
     static var currentFaceSetting: FaceSetting = FaceSetting.defaults()
     var currentFaceIndex = 0
@@ -261,6 +263,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     func redrawSettingsTable() {
+        if let faceOptionsTableViewController = faceOptionsTableViewController {
+            faceOptionsTableViewController.reload()
+        }
         if let faceLayersTableViewController = faceLayersTableViewController {
             faceLayersTableViewController.reload()
         }
@@ -274,9 +279,14 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         if sender.selectedSegmentIndex == 0 { //main
             hideLayerControls()
+            
+            colorsTableContainer.isHidden = true
+            layerTableContainer.isHidden = true
+            optionsTableContainer.isHidden = false
         }
         if sender.selectedSegmentIndex == 1 { // layers
             colorsTableContainer.isHidden = true
+            optionsTableContainer.isHidden = true
             layerTableContainer.isHidden = false
             // reload layers because colors and other things may have changes
             if let faceLayersTableViewController = faceLayersTableViewController {
@@ -288,6 +298,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             
             colorsTableContainer.isHidden = false
             layerTableContainer.isHidden = true
+            optionsTableContainer.isHidden = true
         }
     }
     
@@ -430,6 +441,10 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             let vc = segue.destination as? FaceColorsTableViewController
             faceColorsTableViewController = vc
         }
+        if segue.destination is FaceOptionsTableViewController {
+            let vc = segue.destination as? FaceOptionsTableViewController
+            faceOptionsTableViewController = vc
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -465,6 +480,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         SettingsViewController.clearUndoStack()
         
         colorsTableContainer.isHidden = true
+        optionsTableContainer.isHidden = true
         
         numControlsView.layer.cornerRadius = AppUISettings.watchControlsCornerRadius
         numControlsView.layer.borderWidth = AppUISettings.watchControlsWidth

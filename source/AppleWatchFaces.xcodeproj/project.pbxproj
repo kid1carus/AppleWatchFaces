@@ -139,6 +139,8 @@
 		315AAB9022998A3C00B3A3E9 /* ParticleFieldLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB8522997C2F00B3A3E9 /* ParticleFieldLayerOptions.swift */; };
 		315AAB9122998A3D00B3A3E9 /* ParticleFieldLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB8522997C2F00B3A3E9 /* ParticleFieldLayerOptions.swift */; };
 		315AAB932299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB922299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift */; };
+		315AAB95229AE18300B3A3E9 /* FaceOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB94229AE18300B3A3E9 /* FaceOptionsTableViewController.swift */; };
+		315AAB98229AE44D00B3A3E9 /* FaceOptionsTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AAB97229AE44D00B3A3E9 /* FaceOptionsTitleTableViewCell.swift */; };
 		31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		31724A6621FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
@@ -389,6 +391,8 @@
 		315878DD2287AF5B008FFC76 /* FaceLayerDateTimeLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceLayerDateTimeLabelTableViewCell.swift; sourceTree = "<group>"; };
 		315AAB8522997C2F00B3A3E9 /* ParticleFieldLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleFieldLayerOptions.swift; sourceTree = "<group>"; };
 		315AAB922299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerFieldTableViewCell.swift; sourceTree = "<group>"; };
+		315AAB94229AE18300B3A3E9 /* FaceOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceOptionsTableViewController.swift; sourceTree = "<group>"; };
+		315AAB97229AE44D00B3A3E9 /* FaceOptionsTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceOptionsTitleTableViewCell.swift; sourceTree = "<group>"; };
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -580,6 +584,14 @@
 			path = FaceColorsTableView;
 			sourceTree = "<group>";
 		};
+		315AAB96229AE40600B3A3E9 /* FaceOptionsTableView */ = {
+			isa = PBXGroup;
+			children = (
+				315AAB97229AE44D00B3A3E9 /* FaceOptionsTitleTableViewCell.swift */,
+			);
+			path = FaceOptionsTableView;
+			sourceTree = "<group>";
+		};
 		318808C4217815E600585AB1 = {
 			isa = PBXGroup;
 			children = (
@@ -613,6 +625,8 @@
 				31F4F1D8219D08890050177A /* FaceChooserViewController.swift */,
 				310D9228227E1F16007A5808 /* FaceLayersTableViewController.swift */,
 				315878D122877B4E008FFC76 /* FaceColorsTableViewController.swift */,
+				315AAB94229AE18300B3A3E9 /* FaceOptionsTableViewController.swift */,
+				315AAB96229AE40600B3A3E9 /* FaceOptionsTableView */,
 				315878D022877AFE008FFC76 /* FaceColorsTableView */,
 				310D922A227E26F0007A5808 /* FaceLayerTableView */,
 				31EF99A021A2046100BB54E7 /* ChooserView */,
@@ -1051,10 +1065,12 @@
 				31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */,
 				FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */,
 				314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */,
+				315AAB95229AE18300B3A3E9 /* FaceOptionsTableViewController.swift in Sources */,
 				313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */,
 				314A011021962FF4009BCE3C /* WatchFaceNode.swift in Sources */,
 				31FF20DB2291C57A0023F8A5 /* GradientBackgroundLayerOptions.swift in Sources */,
 				31EF999621A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
+				315AAB98229AE44D00B3A3E9 /* FaceOptionsTitleTableViewCell.swift in Sources */,
 				315AAB932299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift in Sources */,
 				31EF99A221A205F200BB54E7 /* FaceChooserTableViewCell.swift in Sources */,
 				310D9229227E1F16007A5808 /* FaceLayersTableViewController.swift in Sources */,
