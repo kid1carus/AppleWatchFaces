@@ -23,11 +23,11 @@ class UserClockSetting: NSObject {
     static func importToFaceSettings() -> Int {
         
         var countOfImported = 0
-        //var colorIndex = 0
         
         for clockSetting in sharedClockSettings {
+            var nextColorIndex = 0
             
-            func alterLayerForColorOrImage(newFaceSetting: FaceSetting, faceLayer: FaceLayer, materialToTest: String, colorIndex: Int, backgroundType: FaceBackgroundTypes ) {
+            func alterLayerForColorOrImage(newFaceSetting: FaceSetting, faceLayer: FaceLayer, materialToTest: String, backgroundType: FaceBackgroundTypes ) {
                 
                 let layerOptions = ImageBackgroundLayerOptions.init(defaults: true)
                 layerOptions.backgroundType = backgroundType
@@ -35,8 +35,9 @@ class UserClockSetting: NSObject {
                 if AppUISettings.materialIsColor(materialName: materialToTest) {
                     faceLayer.layerType = .ColorTexture
                     
-                    newFaceSetting.faceColors[colorIndex] = materialToTest
-                    faceLayer.desiredThemeColorIndex = colorIndex
+                    newFaceSetting.faceColors[nextColorIndex] = materialToTest
+                    faceLayer.desiredThemeColorIndex = nextColorIndex
+                    nextColorIndex += 1
                 } else {
                     faceLayer.layerType = .ImageTexture
                     
@@ -53,6 +54,7 @@ class UserClockSetting: NSObject {
             newFaceSetting.title = clockSetting.title
             debugPrint("importing: " + clockSetting.title)
             
+            //BOTTOM BG LAYER
             let bottomLayerMaterial = clockSetting.clockCasingMaterialName
             let topLayerMaterial = clockSetting.clockFaceMaterialName
             let overlayMaterial = clockSetting.clockForegroundMaterialName
@@ -61,18 +63,11 @@ class UserClockSetting: NSObject {
             //set layer props
             bottomLayer.alpha = clockSetting.clockCasingMaterialAlpha
             
-            alterLayerForColorOrImage(newFaceSetting: newFaceSetting, faceLayer: bottomLayer, materialToTest: bottomLayerMaterial, colorIndex: 0, backgroundType: .FaceBackgroundTypeFilled)
-        
+            alterLayerForColorOrImage(newFaceSetting: newFaceSetting, faceLayer: bottomLayer, materialToTest: bottomLayerMaterial, backgroundType: .FaceBackgroundTypeFilled)
+    
             newFaceSetting.faceLayers.append(bottomLayer)
-            
-            
-//            let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: bottomLayerMaterial)
-//            backgroundNode.name = "background"
-//            backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
-//            backgroundNode.alpha = CGFloat(clockSetting.clockCasingMaterialAlpha)
-//
-//            self.addChild(backgroundNode)
-
+    
+            //MIDDLE BG LAYER
             let middleLayer = FaceLayer.defaults()
             middleLayer.alpha = clockSetting.clockFaceMaterialAlpha
             
@@ -81,7 +76,7 @@ class UserClockSetting: NSObject {
                 
                 middleLayer.layerType = .GradientTexture
                 
-                var layerOptions = GradientBackgroundLayerOptions.init(defaults: true)
+                let layerOptions = GradientBackgroundLayerOptions.init(defaults: true)
                 
                 switch clockSetting.faceBackgroundType {
                 case .FaceBackgroundTypeDiagonalGradient:
@@ -96,15 +91,18 @@ class UserClockSetting: NSObject {
                 
                 middleLayer.desiredThemeColorIndex = 0
                 
-                newFaceSetting.faceColors[1] = topLayerMaterial
-                layerOptions.desiredThemeColorIndexForDestination = 1
+                newFaceSetting.faceColors[nextColorIndex] = topLayerMaterial
+                layerOptions.desiredThemeColorIndexForDestination = nextColorIndex
+                nextColorIndex += 1
                 
                 middleLayer.layerOptions = layerOptions
             } else {
-                alterLayerForColorOrImage(newFaceSetting: newFaceSetting, faceLayer: middleLayer, materialToTest: topLayerMaterial, colorIndex: 1, backgroundType: clockSetting.faceBackgroundType)
+                alterLayerForColorOrImage(newFaceSetting: newFaceSetting, faceLayer: middleLayer, materialToTest: topLayerMaterial, backgroundType: clockSetting.faceBackgroundType)
             }
             
             newFaceSetting.faceLayers.append(middleLayer)
+            
+            //TODO: FOREGROUND BG LAYER
             
 //            let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: topLayerMaterial, material2: bottomLayerMaterial)
 //            backgroundShapeNode.name = "backgroundShape"
@@ -113,6 +111,8 @@ class UserClockSetting: NSObject {
 //
 //            self.addChild(backgroundShapeNode)
 //
+            //TODO: add foreground node here ( fields n such )
+            
 //            var shapeType: OverlayShapeTypes = .Circle
 //            var itemSize:CGFloat = 0
 //            var itemStrength:CGFloat = 0
@@ -128,6 +128,93 @@ class UserClockSetting: NSObject {
 //            foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
 //
 //            self.addChild(foregroundNode)
+            
+            //SECOND HAND
+            guard let clockFaceSettings = clockSetting.clockFaceSettings else { continue }
+            
+            var secondHandGlowWidth:CGFloat = 0
+            var minuteHandGlowWidth:CGFloat = 0
+            var hourHandGlowWidth:CGFloat = 0
+            var secondHandAlpha:CGFloat = 1
+            var minuteHandAlpha:CGFloat = 1
+            var hourHandAlpha:CGFloat = 1
+            
+            var desiredThemeColorIndexForOutline = -1
+            
+            if clockFaceSettings.handEffectWidths.count>0 {
+                secondHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[0])
+            }
+            if clockFaceSettings.handAlphas.count>0 {
+                secondHandAlpha = CGFloat(clockFaceSettings.handAlphas[0])
+            }
+            
+            //add new color for second hand
+            newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.secondHandMaterialName
+            let desiredThemeColorIndex = nextColorIndex
+            nextColorIndex += 1
+            
+            //set up layer options
+            let secondHandLayerOptions = SecondHandLayerOptions.init(defaults: true)
+            secondHandLayerOptions.handType = clockFaceSettings.secondHandType
+            secondHandLayerOptions.handAnimation = clockFaceSettings.secondHandMovement
+            secondHandLayerOptions.effectsStrength = Float(secondHandGlowWidth)
+            if clockFaceSettings.shouldShowHandOutlines {
+                secondHandLayerOptions.outlineWidth = 1.0
+                newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.handOutlineMaterialName
+                secondHandLayerOptions.desiredThemeColorIndexForOutline = nextColorIndex
+                desiredThemeColorIndexForOutline = nextColorIndex
+                
+                nextColorIndex += 1
+            }
+            if let overlaySettings = clockSetting.clockOverlaySettings {
+                secondHandLayerOptions.physicsFieldType = overlaySettings.fieldType
+                secondHandLayerOptions.physicFieldStrength = overlaySettings.itemStrength
+            }
+            
+            let secondHandLayer = FaceLayer.init(layerType: .SecondHand, alpha: Float(secondHandAlpha), horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
+                        desiredThemeColorIndex: desiredThemeColorIndex, layerOptions: secondHandLayerOptions, filenameForImage: "")
+
+            //set props
+            secondHandLayer.alpha = Float(secondHandAlpha)
+            
+            newFaceSetting.faceLayers.append(secondHandLayer)
+            /*
+            let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth, fieldType: physicsFieldType, itemStrength: physicsFieldItemStrength)
+            */
+            
+            //MINUTE HAND
+            if clockFaceSettings.handEffectWidths.count>1 {
+                minuteHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[1])
+            }
+            if clockFaceSettings.handAlphas.count>1 {
+                minuteHandAlpha = CGFloat(clockFaceSettings.handAlphas[1])
+            }
+            
+            //add new color for second hand
+            newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.minuteHandMaterialName
+            let minutedesiredThemeColorIndex = nextColorIndex
+            nextColorIndex += 1
+            
+            //set up layer options
+            let minuteHandLayerOptions = MinuteHandLayerOptions.init(defaults: true)
+            minuteHandLayerOptions.handType = clockFaceSettings.minuteHandType
+            minuteHandLayerOptions.handAnimation = clockFaceSettings.minuteHandMovement
+            minuteHandLayerOptions.effectsStrength = Float(minuteHandGlowWidth)
+            if clockFaceSettings.shouldShowHandOutlines {
+                minuteHandLayerOptions.outlineWidth = 1.0
+                minuteHandLayerOptions.desiredThemeColorIndexForOutline = desiredThemeColorIndexForOutline
+            }
+            
+            let minuteHandLayer = FaceLayer.init(layerType: .MinuteHand, alpha: Float(minuteHandAlpha), horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
+                                                 desiredThemeColorIndex: minutedesiredThemeColorIndex, layerOptions: minuteHandLayerOptions, filenameForImage: "")
+            
+            //set props
+            minuteHandLayer.alpha = Float(minuteHandAlpha)
+            
+            newFaceSetting.faceLayers.append(minuteHandLayer)
+            
+            //HOUR HAND
+        
          
             UserFaceSetting.sharedFaceSettings.append(newFaceSetting)
             countOfImported += 1
