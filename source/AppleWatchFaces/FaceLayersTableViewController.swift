@@ -109,6 +109,11 @@ class FaceLayersTableViewController: UITableViewController {
     }
     
     @objc func onSettingsLayerSelectedNotification(notification:Notification) {
+        //ignore this if layers isnt selected
+        guard let settingsVC = settingsViewController else { return }
+        guard settingsVC.isLayersSelected() else { return }
+        
+        
         if let data = notification.userInfo as? [String: Int], let rowIndex = data["faceLayerIndex"] {
             let selectedRow = IndexPath.init(row: rowIndex, section: 0)
             self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)

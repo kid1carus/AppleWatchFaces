@@ -281,6 +281,10 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
     }
     
+    func isLayersSelected()->Bool {
+        return (!layerTableContainer.isHidden)
+    }
+    
     @IBAction func groupChangeAction(sender: UISegmentedControl) {
         //show / hide the tableViews
         
