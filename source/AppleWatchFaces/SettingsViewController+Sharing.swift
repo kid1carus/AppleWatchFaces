@@ -21,11 +21,14 @@ extension SettingsViewController {
         let serializedSettings = NSMutableDictionary.init(dictionary: SettingsViewController.currentFaceSetting.serializedSettings())
         
         if embedImages {
-            var embeddedImages:[String] = []
+            var embeddedImages:[NSDictionary] = []
             for layer in SettingsViewController.currentFaceSetting.faceLayers {
+                let layerImageDict = NSMutableDictionary.init()
                 if layer.filenameForImage != "" {
                     if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: layer.filenameForImage) {
-                        embeddedImages.append(jpgDataString)
+                        layerImageDict["imageData"] = jpgDataString
+                        layerImageDict["filename"] = layer.filenameForImage
+                        embeddedImages.append(layerImageDict)
                     }
                 }
             }
