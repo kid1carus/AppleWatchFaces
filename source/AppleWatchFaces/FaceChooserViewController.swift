@@ -143,6 +143,17 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     // array of outstanding transfers
     //validSession.outstandingFileTransfers
     
+    @IBAction func importSettings( sender: UIButton) {
+        UserClockSetting.loadFromFile()
+        let numberImported = UserClockSetting.importToFaceSettings()
+    
+        self.showMessage(message: numberImported.description + " faces imported from " + UserClockSetting.fileName)
+        
+        if let faceChooserTableVC  = faceChooserTableViewController  {
+            faceChooserTableVC.reloadAllThumbs()
+        }
+    }
+    
     @IBAction func addNewSettingAction(sender: UIButton) {
         let originalCount = UserFaceSetting.sharedFaceSettings.count
         UserFaceSetting.addMissingFromDefaults()
