@@ -128,7 +128,7 @@ If you are still having issues, please check out a [sideloading tutorial](http:/
 
 ### Sharing / Importing
 
-Best is email, but there is a share sheet implementation to export out the faces, custom gallery/phone backgrounds and the JSON settings as an .awf file.  If you open one of these files on your phone with the OS handler, you should see and option for "copy to AppleWatchFaces" which will import it into the app.
+Best is email, but there is a share sheet implementation to export out the faces, custom gallery/phone backgrounds and the JSON settings as a **.clk** file.  If you open one of these files on your phone with the OS handler, you should see and option for "copy to AppleWatchFaces" which will import it into the app.
 
 ### Back-Up / Restore My Settings
 

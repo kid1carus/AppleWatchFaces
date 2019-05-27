@@ -11,7 +11,7 @@ import UIKit
 
 extension SettingsViewController {
     static func attachmentURL()->URL {
-        let filename = SettingsViewController.currentFaceSetting.filename() + ".awf"
+        let filename = SettingsViewController.currentFaceSetting.filename() + ".clk"
         return UserFaceSetting.DocumentsDirectory.appendingPathComponent(filename)
     }
     
