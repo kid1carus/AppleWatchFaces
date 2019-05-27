@@ -118,21 +118,15 @@ class UserFaceSetting: NSObject {
             //print("got title", clockSettingSerialized["title"])=
             var newClockSetting = FaceSetting.init(jsonObj: clockSettingSerialized)
 
- 
-            /*
             if clockSettingSerialized["embeddedImages"] != JSON.null {
-                
-                var base64JPGStrings:[String] = []
-                if let base64JPGArray = clockSettingSerialized["embeddedImages"].array {
-                    for base64JPG in base64JPGArray {
-                        base64JPGStrings.append( base64JPG.stringValue )
-                    }
-                }
-                
-                for base64JPGString in base64JPGStrings {
-                    
+            
+                if let imagesSerialized = clockSettingSerialized["embeddedImages"].array {
+                    for imageJSONObj in imagesSerialized {
+                        let filename = imageJSONObj["filename"].stringValue
+                        let base64JPGString = imageJSONObj["imageData"].stringValue
+                        
                         if let imageData = NSData(base64Encoded: base64JPGString, options: NSData.Base64DecodingOptions.init(rawValue: 0) ) as Data? {
-                            let newImageURL = UIImage.getImageURL(imageName: newClockSetting.clockFaceMaterialName)
+                            let newImageURL = UIImage.getImageURL(imageName: filename)
                             do {
                                 try imageData.write(to: newImageURL)
                             }
@@ -140,12 +134,13 @@ class UserFaceSetting: NSObject {
                                 debugPrint("cant write new JPG")
                             }
                             
-                        
+                            
+                        }
                     }
                 }
                 
             }
- */
+ 
 
             if (importDuplicatesAsNew && sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID)) {
                 if let clonedSetting = newClockSetting.clone(keepUniqueID: false) {
