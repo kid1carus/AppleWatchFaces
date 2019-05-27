@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Handle File Sharing
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        guard url.pathExtension == "awf" else { return false }
+        guard url.pathExtension == "clk" else { return false }
         
         UserFaceSetting.loadFromFile()
         UserFaceSetting.addNewFromPath(path: url.path, importDuplicatesAsNew: true)

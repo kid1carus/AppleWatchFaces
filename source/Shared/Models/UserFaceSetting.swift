@@ -109,50 +109,66 @@ class UserFaceSetting: NSObject {
     }
     
     static func addNewFromPath(path: String, importDuplicatesAsNew: Bool) {
-//        var clockSettingsSerializedArray = [JSON]()
-//        clockSettingsSerializedArray = loadSettingArrayFromSaveFile( path: path)
-//
-//        let numOriginalClocks = sharedClockSettings.count
-//        //loop thru all settings in defaults, and insert any new ones to our clock settings
-//        for clockSettingSerialized in clockSettingsSerializedArray {
-//            //print("got title", clockSettingSerialized["title"])
-//            var newClockSetting = ClockSetting.init(jsonObj: clockSettingSerialized)
-//
-//            if clockSettingSerialized["clockFaceMaterialJPGData"] != JSON.null {
-//                let base64JPGString = clockSettingSerialized["clockFaceMaterialJPGData"].stringValue
-//                if let imageData = NSData(base64Encoded: base64JPGString, options: NSData.Base64DecodingOptions.init(rawValue: 0) ) as Data? {
-//                    let newImageURL = UIImage.getImageURL(imageName: newClockSetting.clockFaceMaterialName)
-//                    do {
-//                        try imageData.write(to: newImageURL)
-//                    }
-//                    catch {
-//                        debugPrint("cant write new JPG")
-//                    }
-//                }
-//            }
-//
-//            if (importDuplicatesAsNew && sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID)) {
-//                if let clonedSetting = newClockSetting.clone(keepUniqueID: false) {
-//                    let newTitle = newClockSetting.title + " copy"
-//                    newClockSetting = clonedSetting
-//                    newClockSetting.title = newTitle
-//                }
-//            }
-//
-//            //if this one already in our list?
-//            if !sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID) {
-//                sharedClockSettings.insert(newClockSetting, at: 0)
-//                //try re-copying the file just in case it was deleted and will be recovered
-//                if let image = UIImage.init(named: newClockSetting.uniqueID + ".jpg") {
-//                    _ = image.save(imageName: newClockSetting.uniqueID)
-//                }
-//            }
-//        }
-//
-//        //if there are new ones, save it
-//        if sharedClockSettings.count > numOriginalClocks {
-//            saveToFile()
-//        }
+        var clockSettingsSerializedArray = [JSON]()
+        clockSettingsSerializedArray = loadSettingArrayFromSaveFile( path: path)
+
+        let numOriginalClocks = sharedFaceSettings.count
+        //loop thru all settings in defaults, and insert any new ones to our clock settings
+        for clockSettingSerialized in clockSettingsSerializedArray {
+            //print("got title", clockSettingSerialized["title"])=
+            var newClockSetting = FaceSetting.init(jsonObj: clockSettingSerialized)
+
+ 
+            /*
+            if clockSettingSerialized["embeddedImages"] != JSON.null {
+                
+                var base64JPGStrings:[String] = []
+                if let base64JPGArray = clockSettingSerialized["embeddedImages"].array {
+                    for base64JPG in base64JPGArray {
+                        base64JPGStrings.append( base64JPG.stringValue )
+                    }
+                }
+                
+                for base64JPGString in base64JPGStrings {
+                    
+                        if let imageData = NSData(base64Encoded: base64JPGString, options: NSData.Base64DecodingOptions.init(rawValue: 0) ) as Data? {
+                            let newImageURL = UIImage.getImageURL(imageName: newClockSetting.clockFaceMaterialName)
+                            do {
+                                try imageData.write(to: newImageURL)
+                            }
+                            catch {
+                                debugPrint("cant write new JPG")
+                            }
+                            
+                        
+                    }
+                }
+                
+            }
+ */
+
+            if (importDuplicatesAsNew && sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID)) {
+                if let clonedSetting = newClockSetting.clone(keepUniqueID: false) {
+                    let newTitle = newClockSetting.title + " copy"
+                    newClockSetting = clonedSetting
+                    newClockSetting.title = newTitle
+                }
+            }
+
+            //if this one already in our list?
+            if !sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID) {
+                sharedFaceSettings.insert(newClockSetting, at: 0)
+                //try re-copying the file just in case it was deleted and will be recovered
+                if let image = UIImage.init(named: newClockSetting.uniqueID + ".jpg") {
+                    _ = image.save(imageName: newClockSetting.uniqueID)
+                }
+            }
+        }
+
+        //if there are new ones, save it
+        if sharedFaceSettings.count > numOriginalClocks {
+            saveToFile()
+        }
     }
     
     static func addMissingFromDefaults() {
