@@ -10,17 +10,25 @@ import Foundation
 
 class ImageBackgroundLayerOptions: FaceLayerOptions {
     var filename: String
+    var backgroundType: FaceBackgroundTypes
     //
     
     //init from JSON, ( in from txt files )
     init(jsonObj: JSON ) {
         self.filename = jsonObj["filename"].stringValue
+        let backgroundTypeString = jsonObj["backgroundType"].stringValue
+        if let backgroundType = FaceBackgroundTypes(rawValue: backgroundTypeString) {
+            self.backgroundType = backgroundType
+        } else {
+            self.backgroundType = .FaceBackgroundTypeFilled
+        }
         
         super.init()
     }
     
     init(defaults: Bool ) {
         self.filename = ""
+        self.backgroundType = .FaceBackgroundTypeFilled
         
         super.init()
     }
@@ -29,6 +37,7 @@ class ImageBackgroundLayerOptions: FaceLayerOptions {
         var serializedDict = [String:AnyObject]()
         
         serializedDict[ "filename" ] = self.filename as AnyObject
+        serializedDict[ "backgroundType" ] = self.backgroundType.rawValue as AnyObject
     
         return serializedDict as NSDictionary
     }

@@ -105,6 +105,8 @@ class FaceLayer: NSObject {
             self.layerOptions = HourHandLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .ImageTexture:
             self.layerOptions = ImageBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        case .ColorTexture:
+            self.layerOptions = ImageBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .ParticleField:
             self.layerOptions = ParticleFieldLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         default:

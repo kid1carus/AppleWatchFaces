@@ -15,7 +15,38 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     @IBOutlet var cameraButton: UIButton!
     @IBOutlet var filenameLabel: UILabel!
     
+    @IBOutlet var shapeButton: UIButton!
+    @IBOutlet var shapeNameLabel: UILabel!
+    
     let settingTypeString = "imageBackground"
+    
+    override func returnFromAction( actionName: String, itemChosen: Int) {
+        let faceLayer = myFaceLayer()
+        guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
+        if actionName == "chooseTypeAction" {
+            layerOptions.backgroundType = FaceBackgroundTypes.userSelectableValues[itemChosen]
+            shapeNameLabel.text = FaceBackgroundNode.descriptionForType(layerOptions.backgroundType)
+        }
+        
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
+        //debugPrint("returnFromAction action:" + actionName + " item: " + itemChosen.description)
+    }
+    
+    @IBAction func buttonTapped( sender: UIButton ) {
+        SettingsViewController.actionCell = self
+        
+        if sender == shapeButton {
+            SettingsViewController.actionsArray = FaceBackgroundNode.typeDescriptions()
+            SettingsViewController.actionCellMedthodName = "chooseTypeAction"
+            SettingsViewController.actionsTitle = "Choose Shape Type"
+        }
+        
+        NotificationCenter.default.post(name: SettingsViewController.settingsCallActionSheet, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
+    }
     
     @IBAction func cameraButtonTapped( sender: UIButton) {
         NotificationCenter.default.post(name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil, userInfo:["layerIndex":myLayerIndex()!])
@@ -61,10 +92,12 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
         
+        guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+        shapeNameLabel.text = FaceBackgroundNode.descriptionForType(layerOptions.backgroundType)
+        
         if faceLayer.filenameForImage != "" {
             filenameLabel.text = faceLayer.filenameForImage
         } else {
-            guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
             if let meterialsIndex = AppUISettings.materialFiles.index(of: layerOptions.filename) {
                 filenameLabel.text = layerOptions.filename
                 let indexPath = IndexPath.init(row: meterialsIndex, section: 0)

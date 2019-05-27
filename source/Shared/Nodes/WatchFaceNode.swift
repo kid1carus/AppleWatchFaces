@@ -134,14 +134,16 @@ class WatchFaceNode: SKShapeNode {
                     filename = faceLayer.filenameForImage
                 }
                 
-                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: filename)
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: imageOptions.backgroundType , material: filename)
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
                 self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .ColorTexture {
-                let backgroundNode = FaceBackgroundNode.init(backgroundType: .FaceBackgroundTypeFilled , material: hexColor)
+                guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+                
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: layerOptions.backgroundType , material: hexColor)
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)

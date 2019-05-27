@@ -15,8 +15,7 @@ enum FaceBackgroundTypes: String {
         FaceBackgroundTypeNone
     
     static var userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
-                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
-                                     FaceBackgroundTypeNone]
+                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeNone]
     
     static let randomizableValues = userSelectableValues //short cut, but will get none
     

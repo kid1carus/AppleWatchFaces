@@ -521,12 +521,12 @@
 			children = (
 				315AAB922299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift */,
 				310675D62297820C00EBCFE0 /* FaceLayerImageBackgroundTableViewCell.swift */,
+				315878D9228793A9008FFC76 /* FaceLayerColorBackgroundTableViewCell.swift */,
 				310675D4229778A700EBCFE0 /* FaceLayerGradientBackgroundTableViewCell.swift */,
 				310675D2229727F400EBCFE0 /* FaceLayerHandTableViewCell.swift */,
 				310D922D227E6F17007A5808 /* FaceLayerTableViewCell.swift */,
 				310D922F227E700B007A5808 /* FaceLayerShapeTableViewCell.swift */,
 				3103A4482293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift */,
-				315878D9228793A9008FFC76 /* FaceLayerColorBackgroundTableViewCell.swift */,
 				315878DD2287AF5B008FFC76 /* FaceLayerDateTimeLabelTableViewCell.swift */,
 			);
 			path = FaceLayerTableView;
