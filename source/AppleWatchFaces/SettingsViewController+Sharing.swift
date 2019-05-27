@@ -15,14 +15,24 @@ extension SettingsViewController {
         return UserFaceSetting.DocumentsDirectory.appendingPathComponent(filename)
     }
     
-    static func createTempTextFile() {
-        //TODO: move this to temporary file to be less cleanup later / trash on device
-        //JSON save to file
+    static func createTempTextFile(embedImages: Bool) {
+        //TODO: move this to temporary folder to be less cleanup later / trash on device
         var serializedArray = [NSDictionary]()
         let serializedSettings = NSMutableDictionary.init(dictionary: SettingsViewController.currentFaceSetting.serializedSettings())
-//                if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: SettingsViewController.currentFaceSetting.clockFaceMaterialName) {
-//                    serializedSettings["clockFaceMaterialJPGData"] = jpgDataString
-//                }
+        
+        if embedImages {
+            var embeddedImages:[String] = []
+            for layer in SettingsViewController.currentFaceSetting.faceLayers {
+                if layer.filenameForImage != "" {
+                    if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: layer.filenameForImage) {
+                        embeddedImages.append(jpgDataString)
+                    }
+                }
+            }
+            //add to serialized
+            serializedSettings["embeddedImages"] = embeddedImages
+        }
+        
         serializedArray.append(serializedSettings)
 
         //delete existing file if its there
@@ -101,7 +111,7 @@ class AttachmentProvider: NSObject, UIActivityItemSource {
             return nil
         }
         
-        SettingsViewController.createTempTextFile()
+        SettingsViewController.createTempTextFile(embedImages: true)
         return SettingsViewController.attachmentURL()
         
     }

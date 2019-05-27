@@ -36,7 +36,7 @@ extension SettingsViewController {
                 }
             }
 
-            SettingsViewController.createTempTextFile()
+            SettingsViewController.createTempTextFile(embedImages: false)
             validSession.transferFile(SettingsViewController.attachmentURL(), metadata: ["type":"currentClockSettingFile", "filename":SettingsViewController.currentFaceSetting.filename() ])
 
         } else {
