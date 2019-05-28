@@ -74,7 +74,11 @@ class WatchFaceNode: SKShapeNode {
         let faceLayers = faceSettings.faceLayers
         
         func hexColorForDesiredIndex(index: Int) -> String {
-            return faceSettings.faceColors[index]
+            if faceSettings.faceColors.count > index {
+                return faceSettings.faceColors[index]
+            } else {
+                return ""
+            }
         }
         
         func colorForDesiredIndex(index: Int) -> SKColor {
@@ -220,7 +224,10 @@ class WatchFaceNode: SKShapeNode {
                     
                     let strokeHex = faceSettings.faceColors[layerOptions.desiredThemeColorIndexForOutline]
                     
-                    generateRingNode(shapeNode, patternTotal: layerOptions.patternTotal, patternArray: layerOptions.patternArray, ringType: .RingTypeTextNode,
+                    var ringType:RingTypes = .RingTypeTextNode
+                    if layerOptions.isRotating { ringType = .RingTypeTextRotatingNode }
+                    
+                    generateRingNode(shapeNode, patternTotal: layerOptions.patternTotal, patternArray: layerOptions.patternArray, ringType: ringType,
                         material: fillMaterial, currentDistance: 0.8, renderNumbers: true,
                         renderShapes: true, ringShape: ringShapePath, size: size, lineWidth: layerOptions.outlineWidth, strokeHex: strokeHex, textSize: layerOptions.textSize, textType: layerOptions.fontType, indicatorSize: 0, indicatorType: .FaceIndicatorTypeNone)
                     

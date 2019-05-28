@@ -24,8 +24,18 @@ class UserClockSetting: NSObject {
         
         var countOfImported = 0
         for clockSetting in sharedClockSettings {
-            var nextColorIndex = 0
             guard let clockFaceSettings = clockSetting.clockFaceSettings else { continue }
+            
+            func getIndexForMaterial(newFaceSetting: FaceSetting, materialToTest: String ) -> Int {
+                
+                if let index = newFaceSetting.faceColors.index(of: materialToTest) {
+                    return index
+                } else {
+                    newFaceSetting.faceColors.append(materialToTest)
+                }
+                
+                return newFaceSetting.faceColors.count-1
+            }
             
             func alterLayerForColorOrImage(newFaceSetting: FaceSetting, faceLayer: FaceLayer, materialToTest: String, backgroundType: FaceBackgroundTypes ) {
                 
@@ -34,10 +44,8 @@ class UserClockSetting: NSObject {
                 
                 if AppUISettings.materialIsColor(materialName: materialToTest) {
                     faceLayer.layerType = .ColorTexture
-                    
-                    newFaceSetting.faceColors[nextColorIndex] = materialToTest
-                    faceLayer.desiredThemeColorIndex = nextColorIndex
-                    nextColorIndex += 1
+       
+                    faceLayer.desiredThemeColorIndex = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: materialToTest)
                 } else {
                     faceLayer.layerType = .ImageTexture
                     
@@ -48,6 +56,9 @@ class UserClockSetting: NSObject {
             }
             
             let newFaceSetting = FaceSetting.defaults()
+            
+            //empty out all the colors
+            newFaceSetting.faceColors = []
             
             //copy in the basics
             newFaceSetting.uniqueID = clockSetting.uniqueID
@@ -91,9 +102,7 @@ class UserClockSetting: NSObject {
                 
                 middleLayer.desiredThemeColorIndex = 0
                 
-                newFaceSetting.faceColors[nextColorIndex] = topLayerMaterial
-                layerOptions.desiredThemeColorIndexForDestination = nextColorIndex
-                nextColorIndex += 1
+                layerOptions.desiredThemeColorIndexForDestination = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: topLayerMaterial)
                 
                 middleLayer.layerOptions = layerOptions
             } else {
@@ -130,7 +139,56 @@ class UserClockSetting: NSObject {
 //            self.addChild(foregroundNode)
             
             //RING SETTINGS LOOP
+            var currentDistance = Float(1.0)
+            
             for ringSetting in clockFaceSettings.ringSettings {
+                
+                //grab material
+                var material = ""
+                let desiredMaterialIndex = ringSetting.ringMaterialDesiredThemeColorIndex
+                if (desiredMaterialIndex<=clockFaceSettings.ringMaterials.count-1) {
+                    material = clockFaceSettings.ringMaterials[desiredMaterialIndex]
+                } else {
+                    material = clockFaceSettings.ringMaterials[clockFaceSettings.ringMaterials.count-1]
+                }
+                
+                let layerDesiredColorIndex = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: material)
+                let scale = currentDistance * 1.3 // TODO: whats this magic number?
+                
+                if ringSetting.ringType == .RingTypeShapeNode {
+
+                    let shapeLayerOptions = ShapeLayerOptions.init(defaults: true)
+                    shapeLayerOptions.indicatorSize = ringSetting.indicatorSize / scale
+                    shapeLayerOptions.indicatorType = ringSetting.indicatorType
+                    shapeLayerOptions.pathShape = clockFaceSettings.ringRenderShape
+                    shapeLayerOptions.patternArray = ringSetting.ringPattern
+                    shapeLayerOptions.patternTotal = ringSetting.ringPatternTotal
+                    
+                    //TODO: figure out ring alpha
+                    
+                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.ShapeRing, alpha: 1.0, horizontalPosition: 0, verticalPosition: 0, scale: scale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
+                    newFaceSetting.faceLayers.append(newRingLayer)
+                }
+                if ringSetting.ringType == .RingTypeTextNode || ringSetting.ringType == .RingTypeTextRotatingNode {
+                    
+                    let shapeLayerOptions = NumberRingLayerOptions.init(defaults: true)
+                    shapeLayerOptions.textSize = ringSetting.textSize / scale
+                    shapeLayerOptions.fontType = ringSetting.textType
+                    shapeLayerOptions.pathShape = clockFaceSettings.ringRenderShape
+                    shapeLayerOptions.patternArray = ringSetting.ringPattern
+                    shapeLayerOptions.patternTotal = ringSetting.ringPatternTotal
+                    if ringSetting.ringType == .RingTypeTextRotatingNode {
+                        shapeLayerOptions.isRotating = true
+                    }
+                    
+                    //TODO: figure out ring alpha
+                    
+                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.NumberRing, alpha: 1.0, horizontalPosition: 0, verticalPosition: 0, scale: scale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
+                    newFaceSetting.faceLayers.append(newRingLayer)
+                }
+                
+                //move it closer to center
+                currentDistance = currentDistance - ringSetting.ringWidth
                 
             }
             // END RING SETTINGS LOOP
@@ -145,10 +203,7 @@ class UserClockSetting: NSObject {
             
             var desiredThemeColorIndexForOutline = -1
             if clockFaceSettings.shouldShowHandOutlines {
-                newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.handOutlineMaterialName
-                desiredThemeColorIndexForOutline = nextColorIndex
-                
-                nextColorIndex += 1
+                desiredThemeColorIndexForOutline = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: clockFaceSettings.handOutlineMaterialName)
             }
             
             //HOUR HAND
@@ -158,11 +213,8 @@ class UserClockSetting: NSObject {
             if clockFaceSettings.handAlphas.count>2 {
                 hourHandAlpha = CGFloat(clockFaceSettings.handAlphas[2])
             }
-            
-            //add new color for second hand
-            newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.hourHandMaterialName
-            let hourdesiredThemeColorIndex = nextColorIndex
-            nextColorIndex += 1
+        
+            let hourdesiredThemeColorIndex = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: clockFaceSettings.hourHandMaterialName)
             
             //set up layer options
             let hourHandLayerOptions = HourHandLayerOptions.init(defaults: true)
@@ -176,10 +228,9 @@ class UserClockSetting: NSObject {
             let hourHandLayer = FaceLayer.init(layerType: .HourHand, alpha: Float(hourHandAlpha), horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
                                                desiredThemeColorIndex: hourdesiredThemeColorIndex, layerOptions: hourHandLayerOptions, filenameForImage: "")
             
-            //set props
-            hourHandLayer.alpha = Float(hourHandAlpha)
-            
-            newFaceSetting.faceLayers.append(hourHandLayer)
+            if clockFaceSettings.hourHandType != .HourHandTypeNone {
+                newFaceSetting.faceLayers.append(hourHandLayer)
+            }
             // END HOUR HAND
             
             //MINUTE HAND
@@ -190,10 +241,7 @@ class UserClockSetting: NSObject {
                 minuteHandAlpha = CGFloat(clockFaceSettings.handAlphas[1])
             }
             
-            //add new color for second hand
-            newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.minuteHandMaterialName
-            let minutedesiredThemeColorIndex = nextColorIndex
-            nextColorIndex += 1
+            let minutedesiredThemeColorIndex = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: clockFaceSettings.minuteHandMaterialName)
             
             //set up layer options
             let minuteHandLayerOptions = MinuteHandLayerOptions.init(defaults: true)
@@ -211,7 +259,9 @@ class UserClockSetting: NSObject {
             //set props
             minuteHandLayer.alpha = Float(minuteHandAlpha)
             
-            newFaceSetting.faceLayers.append(minuteHandLayer)
+            if clockFaceSettings.minuteHandType != .MinuteHandTypeNone {
+                newFaceSetting.faceLayers.append(minuteHandLayer)
+            }
             // END MINUTE HAND
             
             //SECOND HAND
@@ -222,11 +272,8 @@ class UserClockSetting: NSObject {
                 secondHandAlpha = CGFloat(clockFaceSettings.handAlphas[0])
             }
             
-            //add new color for second hand
-            newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.secondHandMaterialName
-            let desiredThemeColorIndex = nextColorIndex
-            nextColorIndex += 1
-            
+            let secondHandDesiredThemeColorIndex = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: clockFaceSettings.secondHandMaterialName)
+
             //set up layer options
             let secondHandLayerOptions = SecondHandLayerOptions.init(defaults: true)
             secondHandLayerOptions.handType = clockFaceSettings.secondHandType
@@ -242,12 +289,14 @@ class UserClockSetting: NSObject {
             }
             
             let secondHandLayer = FaceLayer.init(layerType: .SecondHand, alpha: Float(secondHandAlpha), horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
-                        desiredThemeColorIndex: desiredThemeColorIndex, layerOptions: secondHandLayerOptions, filenameForImage: "")
+                        desiredThemeColorIndex: secondHandDesiredThemeColorIndex, layerOptions: secondHandLayerOptions, filenameForImage: "")
 
             //set props
             secondHandLayer.alpha = Float(secondHandAlpha)
             
-            newFaceSetting.faceLayers.append(secondHandLayer)
+            if clockFaceSettings.secondHandType != .SecondHandNodeTypeNone {
+                newFaceSetting.faceLayers.append(secondHandLayer)
+            }
             // END SECOND HAND
          
             UserFaceSetting.sharedFaceSettings.append(newFaceSetting)
