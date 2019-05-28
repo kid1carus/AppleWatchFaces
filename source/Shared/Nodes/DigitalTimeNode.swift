@@ -290,7 +290,7 @@ class DigitalTimeNode: SKNode {
                 .font: UIFont.init(name: fontName, size: fontSize)!
             ]
             shadowNode.attributedText = NSAttributedString(string: hourString, attributes: attributes)
-            shadowNode.zPosition = -0.5
+            //shadowNode.zPosition = -0.5
             let shadowOffset = CGFloat(labelRect.size.height/15)
             shadowNode.position = CGPoint.init(x: timeText.position.x+shadowOffset, y: timeText.position.y-shadowOffset)
             self.addChild(shadowNode)
@@ -326,7 +326,7 @@ class DigitalTimeNode: SKNode {
                 .font: UIFont.init(name: fontName, size: fontSize)!
             ]
             digital8Node.attributedText = NSAttributedString(string: digital8String, attributes: attributes)
-            digital8Node.zPosition = -0.5
+            //digital8Node.zPosition = -0.5
             //let shadowOffset:CGFloat = 0
             digital8Node.isHidden = false
             digital8Node.horizontalAlignmentMode = .right
@@ -380,7 +380,7 @@ class DigitalTimeNode: SKNode {
                 let frameNode = SKShapeNode.init(rect: expandedRect)
                 frameNode.fillColor = darkColor
                 frameNode.lineWidth = 0.0
-                frameNode.zPosition = -0.5
+                //frameNode.zPosition = -0.5
                 
                 self.addChild(frameNode)
             }
@@ -389,7 +389,7 @@ class DigitalTimeNode: SKNode {
                 let frameNode = SKShapeNode.init(rect: expandedRect)
                 frameNode.fillColor = lightColor
                 frameNode.lineWidth = 0.0
-                frameNode.zPosition = -0.5
+                //frameNode.zPosition = -0.5
                 
                 self.addChild(frameNode)
             }
