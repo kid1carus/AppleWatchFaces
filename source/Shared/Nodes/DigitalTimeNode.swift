@@ -237,7 +237,6 @@ class DigitalTimeNode: SKNode {
             attributes[.strokeColor] = strokeColor
         }
         timeText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
-        self.addChild(timeText)
         
         //needs to always come BEFORE calculateAccumulatedFrame since it will adjust the width
         setToTime(force: true) //update to latest time to start
@@ -395,7 +394,11 @@ class DigitalTimeNode: SKNode {
             }
             
             timeText.addChild(shadowNode)
+            
+            
         }
+        
+        self.addChild(timeText)
         
         //check to see if we need to update time every second
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: ClockTimer.timeChangedSecondNotificationName, object: nil)
