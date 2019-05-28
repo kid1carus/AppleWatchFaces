@@ -23,9 +23,9 @@ class UserClockSetting: NSObject {
     static func importToFaceSettings() -> Int {
         
         var countOfImported = 0
-        
         for clockSetting in sharedClockSettings {
             var nextColorIndex = 0
+            guard let clockFaceSettings = clockSetting.clockFaceSettings else { continue }
             
             func alterLayerForColorOrImage(newFaceSetting: FaceSetting, faceLayer: FaceLayer, materialToTest: String, backgroundType: FaceBackgroundTypes ) {
                 
@@ -129,9 +129,13 @@ class UserClockSetting: NSObject {
 //
 //            self.addChild(foregroundNode)
             
-            //SECOND HAND
-            guard let clockFaceSettings = clockSetting.clockFaceSettings else { continue }
+            //RING SETTINGS LOOP
+            for ringSetting in clockFaceSettings.ringSettings {
+                
+            }
+            // END RING SETTINGS LOOP
             
+            //HANDS
             var secondHandGlowWidth:CGFloat = 0
             var minuteHandGlowWidth:CGFloat = 0
             var hourHandGlowWidth:CGFloat = 0
@@ -140,47 +144,43 @@ class UserClockSetting: NSObject {
             var hourHandAlpha:CGFloat = 1
             
             var desiredThemeColorIndexForOutline = -1
-            
-            if clockFaceSettings.handEffectWidths.count>0 {
-                secondHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[0])
-            }
-            if clockFaceSettings.handAlphas.count>0 {
-                secondHandAlpha = CGFloat(clockFaceSettings.handAlphas[0])
-            }
-            
-            //add new color for second hand
-            newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.secondHandMaterialName
-            let desiredThemeColorIndex = nextColorIndex
-            nextColorIndex += 1
-            
-            //set up layer options
-            let secondHandLayerOptions = SecondHandLayerOptions.init(defaults: true)
-            secondHandLayerOptions.handType = clockFaceSettings.secondHandType
-            secondHandLayerOptions.handAnimation = clockFaceSettings.secondHandMovement
-            secondHandLayerOptions.effectsStrength = Float(secondHandGlowWidth)
             if clockFaceSettings.shouldShowHandOutlines {
-                secondHandLayerOptions.outlineWidth = 1.0
                 newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.handOutlineMaterialName
-                secondHandLayerOptions.desiredThemeColorIndexForOutline = nextColorIndex
                 desiredThemeColorIndexForOutline = nextColorIndex
                 
                 nextColorIndex += 1
             }
-            if let overlaySettings = clockSetting.clockOverlaySettings {
-                secondHandLayerOptions.physicsFieldType = overlaySettings.fieldType
-                secondHandLayerOptions.physicFieldStrength = overlaySettings.itemStrength
+            
+            //HOUR HAND
+            if clockFaceSettings.handEffectWidths.count>2 {
+                hourHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[2])
+            }
+            if clockFaceSettings.handAlphas.count>2 {
+                hourHandAlpha = CGFloat(clockFaceSettings.handAlphas[2])
             }
             
-            let secondHandLayer = FaceLayer.init(layerType: .SecondHand, alpha: Float(secondHandAlpha), horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
-                        desiredThemeColorIndex: desiredThemeColorIndex, layerOptions: secondHandLayerOptions, filenameForImage: "")
-
-            //set props
-            secondHandLayer.alpha = Float(secondHandAlpha)
+            //add new color for second hand
+            newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.hourHandMaterialName
+            let hourdesiredThemeColorIndex = nextColorIndex
+            nextColorIndex += 1
             
-            newFaceSetting.faceLayers.append(secondHandLayer)
-            /*
-            let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: lineWidth, glowWidth: secondHandGlowWidth, fieldType: physicsFieldType, itemStrength: physicsFieldItemStrength)
-            */
+            //set up layer options
+            let hourHandLayerOptions = HourHandLayerOptions.init(defaults: true)
+            hourHandLayerOptions.handType = clockFaceSettings.hourHandType
+            hourHandLayerOptions.effectsStrength = Float(hourHandGlowWidth)
+            if clockFaceSettings.shouldShowHandOutlines {
+                hourHandLayerOptions.outlineWidth = 1.0
+                hourHandLayerOptions.desiredThemeColorIndexForOutline = desiredThemeColorIndexForOutline
+            }
+            
+            let hourHandLayer = FaceLayer.init(layerType: .HourHand, alpha: Float(hourHandAlpha), horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
+                                               desiredThemeColorIndex: hourdesiredThemeColorIndex, layerOptions: hourHandLayerOptions, filenameForImage: "")
+            
+            //set props
+            hourHandLayer.alpha = Float(hourHandAlpha)
+            
+            newFaceSetting.faceLayers.append(hourHandLayer)
+            // END HOUR HAND
             
             //MINUTE HAND
             if clockFaceSettings.handEffectWidths.count>1 {
@@ -212,9 +212,43 @@ class UserClockSetting: NSObject {
             minuteHandLayer.alpha = Float(minuteHandAlpha)
             
             newFaceSetting.faceLayers.append(minuteHandLayer)
+            // END MINUTE HAND
             
-            //HOUR HAND
-        
+            //SECOND HAND
+            if clockFaceSettings.handEffectWidths.count>0 {
+                secondHandGlowWidth = CGFloat(clockFaceSettings.handEffectWidths[0])
+            }
+            if clockFaceSettings.handAlphas.count>0 {
+                secondHandAlpha = CGFloat(clockFaceSettings.handAlphas[0])
+            }
+            
+            //add new color for second hand
+            newFaceSetting.faceColors[nextColorIndex] = clockFaceSettings.secondHandMaterialName
+            let desiredThemeColorIndex = nextColorIndex
+            nextColorIndex += 1
+            
+            //set up layer options
+            let secondHandLayerOptions = SecondHandLayerOptions.init(defaults: true)
+            secondHandLayerOptions.handType = clockFaceSettings.secondHandType
+            secondHandLayerOptions.handAnimation = clockFaceSettings.secondHandMovement
+            secondHandLayerOptions.effectsStrength = Float(secondHandGlowWidth)
+            if clockFaceSettings.shouldShowHandOutlines {
+                secondHandLayerOptions.outlineWidth = 1.0
+                secondHandLayerOptions.desiredThemeColorIndexForOutline = desiredThemeColorIndexForOutline
+            }
+            if let overlaySettings = clockSetting.clockOverlaySettings {
+                secondHandLayerOptions.physicsFieldType = overlaySettings.fieldType
+                secondHandLayerOptions.physicFieldStrength = overlaySettings.itemStrength
+            }
+            
+            let secondHandLayer = FaceLayer.init(layerType: .SecondHand, alpha: Float(secondHandAlpha), horizontalPosition: 0, verticalPosition: 0, scale: 1.0, angleOffset: 0,
+                        desiredThemeColorIndex: desiredThemeColorIndex, layerOptions: secondHandLayerOptions, filenameForImage: "")
+
+            //set props
+            secondHandLayer.alpha = Float(secondHandAlpha)
+            
+            newFaceSetting.faceLayers.append(secondHandLayer)
+            // END SECOND HAND
          
             UserFaceSetting.sharedFaceSettings.append(newFaceSetting)
             countOfImported += 1
