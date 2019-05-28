@@ -186,6 +186,78 @@ class UserClockSetting: NSObject {
                     let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.NumberRing, alpha: 1.0, horizontalPosition: 0, verticalPosition: 0, scale: scale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
                     newFaceSetting.faceLayers.append(newRingLayer)
                 }
+                if ringSetting.ringType == .RingTypeDigitalTime {
+                    
+                    let magicSize = CGSize.init(width: 105, height: 130) //translation in view
+                    
+                    func positionInViewForRingItem( ringSettings: ClockRingSetting) -> CGPoint {
+                        //debugPrint("setting pos h:" + ringSettings.ringStaticHorizontalPositionNumeric.description)
+                        let xPos = magicSize.width * 2 * (CGFloat(ringSettings.ringStaticHorizontalPositionNumeric) - 0.5)
+                        let yPos = -magicSize.height * 2 * (CGFloat(ringSettings.ringStaticVerticalPositionNumeric) - 0.5)
+                        
+                        return CGPoint.init(x: xPos, y: yPos)
+                    }
+                    
+                    //positioning code from watchNode
+                    var xPos:CGFloat = 0
+                    var yPos:CGFloat = 0
+                    let xDist = magicSize.width * CGFloat(currentDistance) - CGFloat(ringSetting.textSize * 15)
+                    let yDist = magicSize.height * CGFloat(currentDistance) - CGFloat(ringSetting.textSize * 10)
+                    
+                    let horizNumericForPos = currentDistance
+                    let vertNumericForPos = currentDistance
+                    
+                    //debugPrint("hPos:" + ringSetting.ringStaticItemVerticalPosition.rawValue)
+                    
+                    if (ringSetting.ringStaticItemHorizontalPosition == .Centered) {
+                        ringSetting.ringStaticHorizontalPositionNumeric = 0.5
+                    }
+                    if (ringSetting.ringStaticItemVerticalPosition == .Centered) {
+                        ringSetting.ringStaticVerticalPositionNumeric = 0.5
+                    }
+                    
+                    if (ringSetting.ringStaticItemHorizontalPosition == .Left) {
+                        xPos = -xDist
+                        ringSetting.ringStaticHorizontalPositionNumeric = 1.0 - horizNumericForPos
+                        //debugPrint("hPos L:" + ringSetting.ringStaticHorizontalPositionNumeric.description)
+                    }
+                    if (ringSetting.ringStaticItemHorizontalPosition == .Right) {
+                        xPos = xDist
+                        ringSetting.ringStaticHorizontalPositionNumeric = horizNumericForPos
+                        //debugPrint("hPos R:" + ringSetting.ringStaticHorizontalPositionNumeric.description)
+                    }
+                    if (ringSetting.ringStaticItemVerticalPosition == .Top) {
+                        yPos = yDist
+                        ringSetting.ringStaticVerticalPositionNumeric = 1.0 - vertNumericForPos
+                        //debugPrint("hPos T:" + ringSetting.ringStaticVerticalPositionNumeric.description)
+                    }
+                    if (ringSetting.ringStaticItemVerticalPosition == .Bottom) {
+                        yPos = -yDist
+                        ringSetting.ringStaticVerticalPositionNumeric = vertNumericForPos
+                        //debugPrint("hPos B:" + ringSetting.ringStaticVerticalPositionNumeric.description)
+                    }
+                    if (ringSetting.ringStaticItemHorizontalPosition == .Numeric) {
+                        //debugPrint("hPos:" + ringSetting.ringStaticHorizontalPositionNumeric.description)
+                        xPos = positionInViewForRingItem(ringSettings: ringSetting).x
+                    }
+                    if (ringSetting.ringStaticItemVerticalPosition == .Numeric) {
+                        yPos = positionInViewForRingItem(ringSettings: ringSetting).y
+                    }
+                    
+                    let shapeLayerOptions = DigitalTimeLayerOptions.init(defaults: true)
+                    let textScale = ringSetting.textSize * 0.9
+                    shapeLayerOptions.fontType = ringSetting.textType
+                    shapeLayerOptions.effectType = ringSetting.ringStaticEffects
+                    shapeLayerOptions.formatType = ringSetting.ringStaticTimeFormat
+                    
+                    let hPos = (xPos / (312/2)) * 1.25
+                    let vPos = (yPos / (390/2)) * 1.45
+                    
+                    //adjust for positions ?
+                    
+                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.DateTimeLabel, alpha: 1.0, horizontalPosition: Float(hPos), verticalPosition: Float(vPos), scale: textScale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
+                    newFaceSetting.faceLayers.append(newRingLayer)
+                }
                 
                 //move it closer to center
                 currentDistance = currentDistance - ringSetting.ringWidth
