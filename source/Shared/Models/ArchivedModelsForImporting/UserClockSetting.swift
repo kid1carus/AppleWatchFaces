@@ -376,7 +376,7 @@ class UserClockSetting: NSObject {
             }
             // END SECOND HAND
          
-            UserFaceSetting.sharedFaceSettings.append(newFaceSetting)
+            UserFaceSetting.sharedFaceSettings.insert(newFaceSetting, at: 0) // append(newFaceSetting)
             countOfImported += 1
         }
         // dont save yet?
