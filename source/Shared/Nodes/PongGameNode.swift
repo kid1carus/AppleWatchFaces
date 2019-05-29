@@ -107,7 +107,7 @@ class PongGameNode: SKSpriteNode {
         line.fontSize = 50.0
         line.zRotation = CGFloat(Double.pi/2)
         line.verticalAlignmentMode = .center
-        line.zPosition = -1.0
+        //line.zPosition = -1.0
         line.fontColor = color
         
         self.addChild(line)
@@ -116,7 +116,7 @@ class PongGameNode: SKSpriteNode {
         let scoreLeft = SKLabelNode.init(fontNamed: "PixelMillennium")
         scoreLeft.text = "00"
         scoreLeft.fontSize = 60.0
-        scoreLeft.zPosition = -1.0
+        //scoreLeft.zPosition = -1.0
         scoreLeft.fontColor = color
         scoreLeft.name = "scoreLeft"
         scoreLeft.position = CGPoint.init(x: -size.width/4, y: size.height/2 - 50)
@@ -127,7 +127,7 @@ class PongGameNode: SKSpriteNode {
         let scoreRight = SKLabelNode.init(fontNamed: "PixelMillennium")
         scoreRight.text = "00"
         scoreRight.fontSize = 60.0
-        scoreRight.zPosition = -1.0
+        //scoreRight.zPosition = -1.0
         scoreRight.fontColor = color
         scoreRight.name = "scoreRight"
         scoreRight.position = CGPoint.init(x: size.width/4, y: size.height/2 - 50)
