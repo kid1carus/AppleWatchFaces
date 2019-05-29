@@ -133,7 +133,7 @@ class UserClockSetting: NSObject {
 
                 newFaceSetting.faceLayers.append(fieldLayer)
             }
-                        
+            
             //RING SETTINGS LOOP
             var currentDistance = Float(1.0)
             
@@ -149,12 +149,17 @@ class UserClockSetting: NSObject {
                 }
                 
                 let layerDesiredColorIndex = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: material)
-                let scale = currentDistance * 1.3 // TODO: whats this magic number?
+                let scale = currentDistance * 1.23 // TODO: whats this magic number?
+                
+                var alpha:Float = 1.0
+                if ringSetting.ringMaterialDesiredThemeColorIndex < clockFaceSettings.ringAlphas.count {
+                    alpha = clockFaceSettings.ringAlphas[ringSetting.ringMaterialDesiredThemeColorIndex]
+                }
                 
                 if ringSetting.ringType == .RingTypeShapeNode {
 
                     let shapeLayerOptions = ShapeLayerOptions.init(defaults: true)
-                    shapeLayerOptions.indicatorSize = ringSetting.indicatorSize / scale
+                    shapeLayerOptions.indicatorSize = (ringSetting.indicatorSize / scale) * 1.1
                     shapeLayerOptions.indicatorType = ringSetting.indicatorType
                     shapeLayerOptions.pathShape = clockFaceSettings.ringRenderShape
                     shapeLayerOptions.patternArray = ringSetting.ringPattern
@@ -162,7 +167,7 @@ class UserClockSetting: NSObject {
                     
                     //TODO: figure out ring alpha
                     
-                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.ShapeRing, alpha: 1.0, horizontalPosition: 0, verticalPosition: 0, scale: scale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
+                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.ShapeRing, alpha: alpha, horizontalPosition: 0, verticalPosition: 0, scale: scale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
                     newFaceSetting.faceLayers.append(newRingLayer)
                 }
                 if ringSetting.ringType == .RingTypeTextNode || ringSetting.ringType == .RingTypeTextRotatingNode {
@@ -177,9 +182,13 @@ class UserClockSetting: NSObject {
                         shapeLayerOptions.isRotating = true
                     }
                     
-                    //TODO: figure out ring alpha
+                    if (ringSetting.shouldShowTextOutline) {
+                        let strokeMaterial = clockFaceSettings.ringMaterials[ringSetting.textOutlineDesiredThemeColorIndex]
+                        shapeLayerOptions.desiredThemeColorIndexForOutline = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: strokeMaterial)
+                    }
                     
-                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.NumberRing, alpha: 1.0, horizontalPosition: 0, verticalPosition: 0, scale: scale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
+                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.NumberRing, alpha: alpha, horizontalPosition: 0, verticalPosition: 0, scale: scale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
+            
                     newFaceSetting.faceLayers.append(newRingLayer)
                 }
                 if ringSetting.ringType == .RingTypeDigitalTime {
@@ -241,7 +250,7 @@ class UserClockSetting: NSObject {
                     }
                     
                     let shapeLayerOptions = DigitalTimeLayerOptions.init(defaults: true)
-                    let textScale = ringSetting.textSize * 0.9
+                    let textScale = ringSetting.textSize * 0.925
                     shapeLayerOptions.fontType = ringSetting.textType
                     shapeLayerOptions.effectType = ringSetting.ringStaticEffects
                     shapeLayerOptions.formatType = ringSetting.ringStaticTimeFormat
@@ -251,7 +260,7 @@ class UserClockSetting: NSObject {
                     
                     //adjust for positions ?
                     
-                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.DateTimeLabel, alpha: 1.0, horizontalPosition: Float(hPos), verticalPosition: Float(vPos), scale: textScale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
+                    let newRingLayer = FaceLayer.init(layerType: FaceLayerTypes.DateTimeLabel, alpha: alpha, horizontalPosition: Float(hPos), verticalPosition: Float(vPos), scale: textScale, angleOffset: 0, desiredThemeColorIndex: layerDesiredColorIndex, layerOptions: shapeLayerOptions, filenameForImage: "")
                     newFaceSetting.faceLayers.append(newRingLayer)
                 }
                 
@@ -269,10 +278,7 @@ class UserClockSetting: NSObject {
             var minuteHandAlpha:CGFloat = 1
             var hourHandAlpha:CGFloat = 1
             
-            var desiredThemeColorIndexForOutline = -1
-            if clockFaceSettings.shouldShowHandOutlines {
-                desiredThemeColorIndexForOutline = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: clockFaceSettings.handOutlineMaterialName)
-            }
+            let desiredThemeColorIndexForOutline = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: clockFaceSettings.handOutlineMaterialName)
             
             //HOUR HAND
             if clockFaceSettings.handEffectWidths.count>2 {
@@ -348,7 +354,7 @@ class UserClockSetting: NSObject {
             secondHandLayerOptions.handAnimation = clockFaceSettings.secondHandMovement
             secondHandLayerOptions.effectsStrength = Float(secondHandGlowWidth)
             if clockFaceSettings.shouldShowHandOutlines {
-                secondHandLayerOptions.outlineWidth = 1.0
+                secondHandLayerOptions.outlineWidth = 0.0
                 secondHandLayerOptions.desiredThemeColorIndexForOutline = desiredThemeColorIndexForOutline
             }
             if let overlaySettings = clockSetting.clockOverlaySettings {
