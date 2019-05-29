@@ -109,35 +109,31 @@ class UserClockSetting: NSObject {
                 alterLayerForColorOrImage(newFaceSetting: newFaceSetting, faceLayer: middleLayer, materialToTest: topLayerMaterial, backgroundType: clockSetting.faceBackgroundType)
             }
             
-            newFaceSetting.faceLayers.append(middleLayer)
+            if clockSetting.faceBackgroundType != .FaceBackgroundTypeNone {
+                newFaceSetting.faceLayers.append(middleLayer)
+            }
+        
+            //FIELD BG LAYER
+            if clockSetting.faceForegroundType != .None {
             
-            //TODO: FOREGROUND BG LAYER
+                let fieldLayer = FaceLayer.defaults()
+                fieldLayer.alpha = clockSetting.clockForegroundMaterialAlpha
+                fieldLayer.layerType = .ParticleField
             
-//            let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: topLayerMaterial, material2: bottomLayerMaterial)
-//            backgroundShapeNode.name = "backgroundShape"
-//            backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
-//            backgroundShapeNode.alpha = CGFloat(clockSetting.clockFaceMaterialAlpha)
-//
-//            self.addChild(backgroundShapeNode)
-//
-            //TODO: add foreground node here ( fields n such )
-            
-//            var shapeType: OverlayShapeTypes = .Circle
-//            var itemSize:CGFloat = 0
-//            var itemStrength:CGFloat = 0
-//            if let clockOverlaySettings = clockSetting.clockOverlaySettings {
-//                shapeType = clockOverlaySettings.shapeType
-//                itemSize = CGFloat(clockOverlaySettings.itemSize)
-//                itemStrength = CGFloat(clockOverlaySettings.itemStrength)
-//            }
-//
-//            let foregroundNode = FaceForegroundNode.init(foregroundType: clockSetting.faceForegroundType, material: overlayMaterial, material2: bottomLayerMaterial, strokeColor: SKColor.clear, lineWidth: 0.0, shapeType: shapeType, itemSize: itemSize, itemStrength: itemStrength)
-//            foregroundNode.name = "foregroundNode"
-//            foregroundNode.zPosition = CGFloat(PartsZPositions.foreground.rawValue)
-//            foregroundNode.alpha = CGFloat(clockSetting.clockForegroundMaterialAlpha)
-//
-//            self.addChild(foregroundNode)
-            
+                let layerOptions = ParticleFieldLayerOptions.init(defaults: true)
+                layerOptions.nodeType = clockSetting.faceForegroundType
+
+                if let clockOverlaySettings = clockSetting.clockOverlaySettings {
+                    layerOptions.shapeType = clockOverlaySettings.shapeType
+                    layerOptions.itemSize = clockOverlaySettings.itemSize
+                }
+
+                fieldLayer.desiredThemeColorIndex = getIndexForMaterial(newFaceSetting: newFaceSetting, materialToTest: overlayMaterial)
+                fieldLayer.layerOptions = layerOptions
+
+                newFaceSetting.faceLayers.append(fieldLayer)
+            }
+                        
             //RING SETTINGS LOOP
             var currentDistance = Float(1.0)
             
