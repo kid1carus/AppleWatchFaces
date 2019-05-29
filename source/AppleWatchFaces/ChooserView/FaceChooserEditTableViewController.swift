@@ -27,7 +27,7 @@ class FaceChooserEditTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserClockSetting.sharedClockSettings.count
+        return UserFaceSetting.sharedFaceSettings.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,7 +35,7 @@ class FaceChooserEditTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! FaceChooserEditTableViewCell
         
-        let clockSetting = UserClockSetting.sharedClockSettings[indexPath.row]
+        let clockSetting = UserFaceSetting.sharedFaceSettings[indexPath.row]
         cell.title.text = clockSetting.title
         //debugPrint("U: " + clockSetting.title + " " + clockSetting.uniqueID)
         if let newImage = UIImage.getImageFor(imageName: clockSetting.uniqueID) {
@@ -53,30 +53,30 @@ class FaceChooserEditTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let sourceRow = sourceIndexPath.row;
         let destRow = destinationIndexPath.row;
-        let object = UserClockSetting.sharedClockSettings[sourceRow]
-        UserClockSetting.sharedClockSettings.remove(at: sourceRow)
-        UserClockSetting.sharedClockSettings.insert(object, at: destRow)
+        let object = UserFaceSetting.sharedFaceSettings[sourceRow]
+        UserFaceSetting.sharedFaceSettings.remove(at: sourceRow)
+        UserFaceSetting.sharedFaceSettings.insert(object, at: destRow)
         //save new result to disk
-        UserClockSetting.saveToFile()
+        UserFaceSetting.saveToFile()
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let sourceRow = indexPath.row;
-            let trashedSetting = UserClockSetting.sharedClockSettings[sourceRow]
+            let trashedSetting = UserFaceSetting.sharedFaceSettings[sourceRow]
             //delete thumbnail
             if UIImage.delete(imageName:  trashedSetting.uniqueID) {
-                UserClockSetting.sharedClockSettings.remove(at: sourceRow)
+                UserFaceSetting.sharedFaceSettings.remove(at: sourceRow)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 setTitleWithCount()
                 //save new result to disk
-                UserClockSetting.saveToFile()
+                UserFaceSetting.saveToFile()
             }
         }
     }
     
     func setTitleWithCount() {
-        self.navigationItem.title = "My Faces (" + String(UserClockSetting.sharedClockSettings.count) + ")"
+        self.navigationItem.title = "My Faces (" + String(UserFaceSetting.sharedFaceSettings.count) + ")"
     }
  
     override func viewDidLoad() {

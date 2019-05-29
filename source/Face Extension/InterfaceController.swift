@@ -19,8 +19,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) { }
     let session = WCSession.default
     
-    var currentClockSetting: ClockSetting = ClockSetting.defaults()
-    var currentClockIndex: Int = 0
+    var currentFaceSetting: FaceSetting = FaceSetting.defaults()
+    var currentFaceIndex: Int = 0
     var crownAccumulator = 0.0
     
     var timeTravelTimer = Timer()
@@ -47,35 +47,35 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             if let watchScene = SKWatchScene(fileNamed: "SKWatchScene") {
                 // Set the scale mode to scale to fit the window
                 watchScene.scaleMode = .aspectFill
-                watchScene.redraw(clockSetting: currentClockSetting)
+                watchScene.redraw(faceSetting: currentFaceSetting)
                 // Present the scene
                 self.skInterface.presentScene(watchScene, transition: SKTransition.push(with: direction, duration: 0.35))
             }
         } else {
             if let skWatchScene = self.skInterface.scene as? SKWatchScene {
-                skWatchScene.redraw(clockSetting: currentClockSetting)
+                skWatchScene.redraw(faceSetting: currentFaceSetting)
             }
         }
         
     }
     
     @IBAction func nextClock() {
-        currentClockIndex = currentClockIndex + 1
-        if (UserClockSetting.sharedClockSettings.count <= currentClockIndex) {
-            currentClockIndex = 0
+        currentFaceIndex = currentFaceIndex + 1
+        if (UserFaceSetting.sharedFaceSettings.count <= currentFaceIndex) {
+            currentFaceIndex = 0
         }
         
-        currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
+        currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex]
         redrawCurrent(transition: true, direction: .left)
     }
     
     @IBAction func prevClock() {
-        currentClockIndex = currentClockIndex - 1
-        if (currentClockIndex<0) {
-            currentClockIndex = UserClockSetting.sharedClockSettings.count - 1
+        currentFaceIndex = currentFaceIndex - 1
+        if (currentFaceIndex<0) {
+            currentFaceIndex = UserFaceSetting.sharedFaceSettings.count - 1
         }
         
-        currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
+        currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex]
         redrawCurrent(transition: true, direction: .right)
     }
     
@@ -123,14 +123,15 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             //try to load a clocksetting from single file sent
             
             var clockSettingsSerializedArray = [JSON]()
-            clockSettingsSerializedArray = UserClockSetting.loadSettingArrayFromURL(url: file.fileURL)
+            clockSettingsSerializedArray = UserFaceSetting.loadSettingArrayFromSaveFile(path: file.fileURL.path)
 
             //only load the first one and exit!
             if let firstSerialized = clockSettingsSerializedArray.first {
                 print("loaded title from sent file", firstSerialized["title"])
-                currentClockSetting = ClockSetting.init(jsonObj: firstSerialized)
+                currentFaceSetting = FaceSetting.init(jsonObj: firstSerialized)
                 self.redrawCurrent(transition: true, direction: .down)
             }
+
         }
         
         //handle json settings
@@ -144,23 +145,23 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             //always try to delete to allow for replace in place
             //TODO: check for file and same size?
             do {
-                try fileManager.removeItem(at: UserClockSetting.ArchiveURL)
+                try fileManager.removeItem(at: UserFaceSetting.ArchiveURL)
                 //print("Existing settings file deleted.")
             } catch {
                 //print("Failed to delete existing file:\n\((error as NSError).description)")
             }
             
             do {
-                try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
+                try fileManager.copyItem(at: file.fileURL, to: UserFaceSetting.ArchiveURL)
             
                 //give this some time to avoid concurrentcy crashes
                 //TODO: try to remove this.. test with real watch and simulator
                 //session.outstandingFileTransfers.count == 0 { ??
                delay(0.25) {
-                    //reload userClockSettings
-                    UserClockSetting.loadFromFile()
-                    self.currentClockIndex = 0
-                    self.currentClockSetting = UserClockSetting.sharedClockSettings[self.currentClockIndex]
+                    //reload Settings
+                    UserFaceSetting.loadFromFile()
+                    self.currentFaceIndex = 0
+                    self.currentFaceSetting = UserFaceSetting.sharedFaceSettings[self.currentFaceIndex]
                 
                     debugPrint("redrawing for settings reload")
                     self.redrawCurrent(transition: true, direction: .up)
@@ -180,8 +181,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         do {
             let jsonObj = try JSON(data: messageData)
             if jsonObj != JSON.null {
-                let newClockSetting = ClockSetting.init(jsonObj: jsonObj)
-                currentClockSetting = newClockSetting
+                let newFaceSetting = FaceSetting.init(jsonObj: jsonObj)
+                currentFaceSetting = newFaceSetting
                 self.redrawCurrent(transition: true, direction: .down)
                 replyHandler("success".data(using: .utf8) ?? Data.init())
             }
@@ -264,8 +265,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         crownSequencer.delegate = self
         
         //load the last settings
-        UserClockSetting.loadFromFile()
-        currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
+        UserFaceSetting.loadFromFile()
+        currentFaceSetting = UserFaceSetting.sharedFaceSettings[currentFaceIndex]
         
         setTitle(" ")
         

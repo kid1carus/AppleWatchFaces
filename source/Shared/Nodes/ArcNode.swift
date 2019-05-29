@@ -59,10 +59,7 @@ class ArcNode: SKNode {
             shape.fillColor = SKColor.init(hexString: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth //how thick the edges are to show rounded corner
-            if glowWidth > 0 {
-                shape.glowWidth = glowWidth
-                shape.lineWidth = 1.0
-            }
+            shape.glowWidth = glowWidth
             
             self.addChild(shape)
         } else {

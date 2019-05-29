@@ -14,9 +14,9 @@ class SKWatchScene: SKScene {
     static let timeForceUpdateNotificationName = Notification.Name("timeForceUpdate")
     static let sceneSlowFrameUpdateNotificationName = Notification.Name("sceneSlowFrameUpdate")
     
-    func redraw(clockSetting: ClockSetting) {
+    func redraw(faceSetting: FaceSetting) {
         
-        let newWatchFaceNode = WatchFaceNode.init(clockSetting: clockSetting, size: self.size )
+        let newWatchFaceNode = WatchFaceNode.init(faceSettings: faceSetting, size: self.size )
         newWatchFaceNode.setScale(1.375)
         
         if let oldNode = self.childNode(withName: "watchFaceNode") {
@@ -27,16 +27,16 @@ class SKWatchScene: SKScene {
         self.addChild(newWatchFaceNode)
     }
     
-    func adjustAlpha(clockSetting: ClockSetting, section: String) {
-        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
-            
-            var alphaSection:WatchFaceNode.AlphaUpdateSections = .backgrounds
-            if section == "alphaUpdateRings" { alphaSection = .rings }
-            if section == "alphaUpdateHands" { alphaSection = .hands }
-            
-            watchFaceNode.adjustAlpha(clockSetting: clockSetting, section: alphaSection)
-        }
-    }
+//    func adjustAlpha(clockSetting: ClockSetting, section: String) {
+//        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+//            
+//            var alphaSection:WatchFaceNode.AlphaUpdateSections = .backgrounds
+//            if section == "alphaUpdateRings" { alphaSection = .rings }
+//            if section == "alphaUpdateHands" { alphaSection = .hands }
+//            
+//            watchFaceNode.adjustAlpha(clockSetting: clockSetting, section: alphaSection)
+//        }
+ //   }
     
     func forceToTime() {
         if let oldNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {

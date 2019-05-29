@@ -35,6 +35,11 @@ class AppUISettings: NSObject {
     static let watchFrameCornerRadius:CGFloat = 32.0
     static let watchFrameBorderWidth:CGFloat = 4.0
     static let watchFrameBorderColor = SKColor.darkGray.cgColor
+    
+    //corner and border settings for "watch controls" around the preview watch
+    static let watchControlsCornerRadius:CGFloat = 10.0
+    static let watchControlsWidth:CGFloat = 2.0
+    static let watchControlsBorderColor = SKColor.darkGray.cgColor
 
     static let materialFiles = [
        "80sTubes.jpg","AppleDigital.jpg","BackToTheFuture.jpg","Beeker.jpg","BlueSky.jpg","Calculator.jpg","gameBoy.jpg",
@@ -88,9 +93,29 @@ class AppUISettings: NSObject {
     static let ringSettigsSliderSpacerMin:Float = 0
     static let ringSettigsSliderSpacerMax:Float = 1.5
     
+    //outline width sliders
+    static let layerSettingsOutlineWidthMin:Float = 0
+    static let layerSettingsOutlineWidthMax:Float = 10.0
+    
     //some other DRY settings
     static let thumbnailFolder = "thumbs"
     static let backgroundFileName = "-customBackground"
+    
+    static let layerSettingsScaleMax:Float = 2.0 //how much things can be scaled up ( should be at least 1.0 )
+    
+    static var colorList : [String] = []
+    
+    // load colors from Colors.plist and save to colorList array.
+    static func loadColorList() {
+        // create path for Colors.plist resource file.
+        let colorFilePath = Bundle.main.path(forResource: "Colors", ofType: "plist")
+        
+        // save piist file array content to NSArray object
+        let colorNSArray = NSArray(contentsOfFile: colorFilePath!)
+        
+        // Cast NSArray to string array.
+        colorList = colorNSArray as! [String]
+    }
     
     static func deleteAllFolders() {
         let filemgr = FileManager.default

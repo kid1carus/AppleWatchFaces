@@ -59,21 +59,22 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
             
             //send any images to be copied first
             var imagesArray:[String] = []
-            for clockSetting in UserClockSetting.sharedClockSettings {
-                let backgroundImage = clockSetting.clockFaceMaterialName
-                guard backgroundImage.count >= AppUISettings.backgroundFileName.count else { continue }
-                let lastPart = backgroundImage.suffix(AppUISettings.backgroundFileName.count)
-                if lastPart == AppUISettings.backgroundFileName {
-                    imagesArray.append(backgroundImage)
+            
+            for faceSetting in UserFaceSetting.sharedFaceSettings {
+                
+                for layer in faceSetting.faceLayers {
+                    if layer.filenameForImage != "" {
+                        imagesArray.append(layer.filenameForImage)
+                    }
                 }
             }
-            
+
             sendAllBackgroundImages(imagesArray: imagesArray, validSession: validSession)
             
             //send settings file
             let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: UserClockSetting.ArchiveURL.path) {
-                validSession.transferFile(UserClockSetting.ArchiveURL, metadata: ["type":"settingsFile", "imageCount":String(imagesArray.count)])
+            if fileManager.fileExists(atPath: UserFaceSetting.ArchiveURL.path) {
+                validSession.transferFile(UserFaceSetting.ArchiveURL, metadata: ["type":"settingsFile", "imageCount":String(imagesArray.count)])
             } else {
                 self.showError(errorMessage: "No changes to send: Watch has same defaults")
             }
@@ -142,20 +143,36 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     // array of outstanding transfers
     //validSession.outstandingFileTransfers
     
+    @IBAction func importSettings( sender: UIButton) {
+        UserClockSetting.loadFromFile()
+        let numberImported = UserClockSetting.importToFaceSettings()
+    
+        self.showMessage(message: numberImported.description + " faces imported from " + UserClockSetting.fileName)
+        
+        if numberImported > 0 {
+            if let faceChooserTableVC  = faceChooserTableViewController  {
+                faceChooserTableVC.reloadAllThumbs()
+            }
+            
+            faceListReloadType = .full
+            _ = self.shouldRegenerateThumbNailsAndExit()
+        }
+    }
+    
     @IBAction func addNewSettingAction(sender: UIButton) {
-        let originalCount = UserClockSetting.sharedClockSettings.count
-        UserClockSetting.addMissingFromDefaults()
+        let originalCount = UserFaceSetting.sharedFaceSettings.count
+        UserFaceSetting.addMissingFromDefaults()
         
         if let faceChooserTableVC  = faceChooserTableViewController  {
             faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
         }
-        let newCount = UserClockSetting.sharedClockSettings.count
+        let newCount = UserFaceSetting.sharedFaceSettings.count
         showMessage(message: "Added from defaults, " + (newCount - originalCount).description + " added" )
         
-        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
+        let missingThumbs = UserFaceSetting.settingsWithoutThumbNails()
         guard missingThumbs.count==0 else {
             //first run, reload everything
-            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
+            if missingThumbs.count == UserFaceSetting.sharedFaceSettings.count {
                 faceListReloadType = .full
             }
             self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
@@ -164,16 +181,16 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     func doResetAllAction() {
-        UserClockSetting.resetToDefaults()
-        
+        UserFaceSetting.resetToDefaults()
+
         AppUISettings.deleteAllFolders()
         AppUISettings.createFolders()
         AppUISettings.copyFolders()
-        
+
         faceListReloadType = .full
-        
+
         _ = self.shouldRegenerateThumbNailsAndExit()
-        
+
         self.showMessage(message: "All faces reset to defaults")
     }
     
@@ -225,10 +242,10 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     
     func shouldRegenerateThumbNailsAndExit() -> Bool {
         //generate thumbs and exit if needed
-        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
+        let missingThumbs = UserFaceSetting.settingsWithoutThumbNails()
         if (missingThumbs.count > 0) {
             //first run, reload everything
-            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
+            if missingThumbs.count == UserFaceSetting.sharedFaceSettings.count {
                 faceListReloadType = .full
             }
             self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
@@ -239,11 +256,11 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
-        guard missingThemeThumbs.count==0 else {
-            return
-        }
-        
+//        let missingThemeThumbs = UserFaceSetting.themesWithoutThumbNails()
+//        guard missingThemeThumbs.count==0 else {
+//            return
+//        }
+
         //generate thumbs and exit if needed
         if shouldRegenerateThumbNailsAndExit() {
             return
@@ -269,7 +286,7 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         super.viewDidLoad()
         filetransferProgress.isHidden = true
         
-        UserClockSetting.loadFromFile()
+        UserFaceSetting.loadFromFile()
         
         //show gen thumbs button, only in simulator and only if its turned on in AppUISettings
         #if (arch(i386) || arch(x86_64))
@@ -279,8 +296,8 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         
         #endif
         
-        //generate theme thumbs and exit if needed
-        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
+//        //generate theme thumbs and exit if needed
+        let missingThemeThumbs = UserFaceSetting.themesWithoutThumbNails()
         guard missingThemeThumbs.count==0 else {
             self.performSegue(withIdentifier: "themeThumbsSegueID", sender: nil)
             return
@@ -329,14 +346,12 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         if segue.identifier == "newFaceSegueID" {
             if segue.destination is SettingsViewController {
                 //add a new item into the shared settings
-                let newClockSetting = ClockSetting.defaults()
-                UserClockSetting.sharedClockSettings.insert(newClockSetting, at: 0)
+                let newClockSetting = FaceSetting.defaults()
+                UserFaceSetting.sharedFaceSettings.insert(newClockSetting, at: 0)
                 
                 //ensure it shows the first one ( our new one )
                 let vc = segue.destination as? SettingsViewController
-                vc?.currentClockIndex = 0
-                //make thumb only works once the VC is fully loaded: doing it here only gets back box
-                //vc?.makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
+                vc?.currentFaceIndex = 0
                 
                 //reload this tableView so it wont crash later trying to only show visible
                 if let faceChooserTableVC  = faceChooserTableViewController  {

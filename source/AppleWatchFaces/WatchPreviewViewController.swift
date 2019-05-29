@@ -16,6 +16,56 @@ class WatchPreviewViewController: UIViewController {
     var timeTravelTimer = Timer()
     var timeTravelSpeed:CGFloat = 0.0
     
+    static let settingsNudgedNotificationName = Notification.Name("settingsNudged")
+    static let settingsLayerAdjustNotificationName = Notification.Name("settingsLayerAdjusted")
+    
+    static let settingsSelectedLayerNotificationName = Notification.Name("settingsSelectedLayer")
+    
+    @IBAction func respondToTapGesture(gesture: UITapGestureRecognizer) {
+        //determine which layer is highlighted
+        guard gesture.state == .ended else { return }
+        let tapLoc = gesture.location(in: skView)
+        let convert = self.skView.convert(tapLoc, to: skView.scene!)
+        guard let nodesAtLoc = skView.scene?.nodes(at: convert) else { return }
+        guard let topNode = nodesAtLoc.first else { return }
+        guard let watchNode = skView.scene?.childNode(withName: "watchFaceNode") else { return }
+        
+        for (index,layerNode) in watchNode.children.enumerated() {
+            if topNode.inParentHierarchy(layerNode) {
+                //debugPrint("tapped on layer item:" + index.description + " name: " + layerNode.name!)
+                NotificationCenter.default.post(name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil, userInfo:["faceLayerIndex":index])
+            }
+        }
+    }
+    
+    @objc func onSettingsNudgedNotification(notification:Notification)
+    {
+        //update values
+        if let data = notification.userInfo as? [String: Int] {
+            if let index = data["faceLayerIndex"] {
+                //do conditional drawing if needed
+                if let scene = skView.scene {
+                    if let watchFaceNode = scene.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+                        let faceSetting = SettingsViewController.currentFaceSetting
+                        watchFaceNode.positionLayer(faceSetting: faceSetting, index:index )
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func onSettingsLayerAdjustedNotification(notification:Notification) {
+        //update values
+        if let data = notification.userInfo as? [String: Int], let index = data["faceLayerIndex"], let adjustmentTypeRaw = data["adjustmentType"],
+            let adjustmentType = WatchFaceNode.LayerAdjustmentType(rawValue: adjustmentTypeRaw) {
+            //do conditional drawing if needed
+            if let scene = skView.scene, let watchFaceNode = scene.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+                    let faceSetting = SettingsViewController.currentFaceSetting
+                    watchFaceNode.adjustLayer(faceSetting: faceSetting, index:index, adjustmentType: adjustmentType )
+                }
+            }
+    }
+    
     @objc func timeTravelMovementTick() {
         let timeInterval = TimeInterval.init(exactly: Int(timeTravelSpeed))!
         ClockTimer.currentDate.addTimeInterval(timeInterval)
@@ -74,15 +124,9 @@ class WatchPreviewViewController: UIViewController {
         }
     }
     
-    func adjustAlpha(section: String) {
-        if let watchScene = skView.scene as? SKWatchScene {
-            watchScene.adjustAlpha(clockSetting: SettingsViewController.currentClockSetting, section: section)
-        }
-    }
-    
     func redraw() {
         if let watchScene = skView.scene as? SKWatchScene {
-            watchScene.redraw(clockSetting: SettingsViewController.currentClockSetting)
+            watchScene.redraw(faceSetting: SettingsViewController.currentFaceSetting)
         }
     }
     
@@ -153,6 +197,11 @@ class WatchPreviewViewController: UIViewController {
         skView.showsNodeCount = false
     
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSettingsNudgedNotification(notification:)),
+                                               name: WatchPreviewViewController.settingsNudgedNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSettingsLayerAdjustedNotification(notification:)),
+                                               name: WatchPreviewViewController.settingsLayerAdjustNotificationName, object: nil)
+        
     }
 
 }

@@ -110,7 +110,7 @@ class FaceForegroundNode: SKSpriteNode {
         }
     }
     
-    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat, shapeType: OverlayShapeTypes, itemSize: CGFloat, itemStrength: CGFloat ) {
+    init(foregroundType: FaceForegroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat, shapeType: OverlayShapeTypes, itemSize: CGFloat, itemStrength: CGFloat, particleZPosition: CGFloat ) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize.init())
         
@@ -126,105 +126,52 @@ class FaceForegroundNode: SKSpriteNode {
         
         if (isPhysicsField(type: foregroundType)) {
             //A layer of a physic blobs
-            let fieldNode = SKCropNode()
+            let fieldNode = SKNode()
             fieldNode.name = "physicsFieldNode"
             let physicsShapeSize:CGSize = CGSize.init(width: itemSize, height: itemSize)
             let physicsNode = PhysicsNode.init(size: screenSize, material: material, strokeColor: strokeColor, lineWidth: lineWidth, physicsShapeSize: physicsShapeSize, shapeType: shapeType )
             fieldNode.addChild(physicsNode)
-            
-            let width = screenSize.width+lineWidth
-            let height = screenSize.height+lineWidth
-            let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
-            let frameNode = SKShapeNode.init(rect:frameNodeRect)
-            
-            //green frame for settings UI
-            if (lineWidth>0) {
-                //draw it as a shape, no background!
-                frameNode.fillColor = SKColor.black
-                frameNode.strokeColor = strokeColor
-                frameNode.lineWidth = lineWidth
-                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
-                
-                fieldNode.maskNode = frameNode //TODO: this works ouside of this if block but stops backgrounds
-                fieldNode.addChild(frameNode)
-            }
             
             self.addChild(fieldNode)
         }
         
         if (foregroundType == .AnimatedStarField) {
             //A layer of a star field
-            let starfieldNode = SKCropNode()
+            let starfieldNode = SKNode()
             starfieldNode.name = "starfieldNode"
     
             let mult = itemSize / 4
             
-            starfieldNode.addChild(starfieldEmitterNode(speed: -28 * itemStrength, lifetime: yBounds / 5 / (itemStrength+0.1), scale: 0.17 * mult, birthRate: 2, color: mainColor))
+            starfieldNode.addChild(starfieldEmitterNode(speed: -28 * itemStrength, lifetime: yBounds / 5 / (itemStrength+0.1), scale: 0.17 * mult, birthRate: 2, color: mainColor, particleZPosition: particleZPosition))
             
             //A second layer of stars
-            var emitterNode = starfieldEmitterNode(speed: -22 * itemStrength, lifetime: yBounds / 3 / (itemStrength+0.1), scale: 0.12 * mult, birthRate: 4, color: medColor)
-            emitterNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
+            var emitterNode = starfieldEmitterNode(speed: -22 * itemStrength, lifetime: yBounds / 3 / (itemStrength+0.1), scale: 0.12 * mult, birthRate: 4, color: medColor, particleZPosition: particleZPosition)
+            //emitterNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
             starfieldNode.addChild(emitterNode)
             
             //A third layer
-            emitterNode = starfieldEmitterNode(speed: -13 * itemStrength, lifetime: yBounds / (itemStrength+0.1), scale: 0.09 * mult, birthRate: 12, color: darkColor)
+            emitterNode = starfieldEmitterNode(speed: -13 * itemStrength, lifetime: yBounds / (itemStrength+0.1), scale: 0.09 * mult, birthRate: 12, color: darkColor, particleZPosition: particleZPosition)
             starfieldNode.addChild(emitterNode)
-            
-            let width = screenSize.width+lineWidth
-            let height = screenSize.height+lineWidth
-            
-            let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
-            let frameNode = SKShapeNode.init(rect:frameNodeRect)
-            
-            //green frame for settings UI
-            if (lineWidth>0) {
-                //draw it as a shape, no background!
-                frameNode.fillColor = SKColor.black
-                frameNode.strokeColor = strokeColor
-                frameNode.lineWidth = lineWidth
-                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
-                
-                starfieldNode.addChild(frameNode)
-                
-                starfieldNode.maskNode = frameNode
-            }
             
             self.addChild(starfieldNode)
         }
         
         if (foregroundType == .AnimatedSnowField) {
             //A layer of a snow
-            let fieldNode = SKCropNode()
+            let fieldNode = SKNode()
             fieldNode.name = "snowfieldNode"
             
             let mult = itemSize / 4
-            fieldNode.addChild(snowfieldEmitterNode(speed: -35 * itemStrength, lifetime: yBounds / 5 / (itemStrength+0.1), scale: 0.17 * mult, birthRate: 4, color: mainColor))
+            fieldNode.addChild(snowfieldEmitterNode(speed: -35 * itemStrength, lifetime: yBounds / 5 / (itemStrength+0.1), scale: 0.17 * mult, birthRate: 4, color: mainColor, particleZPosition: particleZPosition))
             
             //A second layer of stars
-            var emitterNode = snowfieldEmitterNode(speed: -30 * itemStrength, lifetime: yBounds / 3 / (itemStrength+0.1), scale: 0.12 * mult, birthRate: 8, color: medColor)
-            emitterNode.zPosition = -10
+            var emitterNode = snowfieldEmitterNode(speed: -30 * itemStrength, lifetime: yBounds / 3 / (itemStrength+0.1), scale: 0.12 * mult, birthRate: 8, color: medColor, particleZPosition: particleZPosition)
+            //emitterNode.zPosition = -10
             fieldNode.addChild(emitterNode)
             
             //A third layer
-            emitterNode = snowfieldEmitterNode(speed: -19 * itemStrength, lifetime: yBounds / (itemStrength+0.1), scale: 0.09 * mult, birthRate: 16, color: darkColor)
+            emitterNode = snowfieldEmitterNode(speed: -19 * itemStrength, lifetime: yBounds / (itemStrength+0.1), scale: 0.09 * mult, birthRate: 16, color: darkColor, particleZPosition: particleZPosition)
             fieldNode.addChild(emitterNode)
-            
-            let width = screenSize.width+lineWidth
-            let height = screenSize.height+lineWidth
-            let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
-            let frameNode = SKShapeNode.init(rect:frameNodeRect)
-            
-            //green frame for settings UI
-            if (lineWidth>0) {
-                //draw it as a shape, no background!
-                frameNode.fillColor = SKColor.black
-                frameNode.strokeColor = strokeColor
-                frameNode.lineWidth = lineWidth
-                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
-                
-                fieldNode.maskNode = frameNode //TODO: this works ouside of this if block but stops backgrounds
-                fieldNode.addChild(frameNode)
-            }
             
             self.addChild(fieldNode)
         }
@@ -245,7 +192,7 @@ class FaceForegroundNode: SKSpriteNode {
                 frameNode.fillColor = SKColor.black
                 frameNode.strokeColor = strokeColor
                 frameNode.lineWidth = lineWidth
-                frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
+                //frameNode.zPosition = CGFloat(WatchFaceNode.PartsZPositions.background.rawValue-2)
                 
                 pongGameNode.addChild(frameNode)
             }
@@ -256,7 +203,7 @@ class FaceForegroundNode: SKSpriteNode {
     }
     
     //Creates a new star field
-    func starfieldEmitterNode(speed: CGFloat, lifetime: CGFloat, scale: CGFloat, birthRate: CGFloat, color: SKColor) -> SKEmitterNode {
+    func starfieldEmitterNode(speed: CGFloat, lifetime: CGFloat, scale: CGFloat, birthRate: CGFloat, color: SKColor, particleZPosition: CGFloat) -> SKEmitterNode {
         
         let size = AppUISettings.getScreenBoundsForImages()
         let starImage = UIImage.init(named: "StarForEmitter.png")!
@@ -275,6 +222,8 @@ class FaceForegroundNode: SKSpriteNode {
         emitterNode.position = CGPoint(x: -size.width/2, y: 0)
         emitterNode.particlePositionRange = CGVector(dx: size.height, dy: 0)
         emitterNode.particleSpeedRange = 16.0
+        
+        emitterNode.particleZPosition = particleZPosition
         
         //Rotates the stars
         emitterNode.particleAction = SKAction.repeatForever(SKAction.sequence([
@@ -297,7 +246,7 @@ class FaceForegroundNode: SKSpriteNode {
     }
     
     //Creates a new snow field
-    func snowfieldEmitterNode(speed: CGFloat, lifetime: CGFloat, scale: CGFloat, birthRate: CGFloat, color: SKColor) -> SKEmitterNode {
+    func snowfieldEmitterNode(speed: CGFloat, lifetime: CGFloat, scale: CGFloat, birthRate: CGFloat, color: SKColor, particleZPosition: CGFloat) -> SKEmitterNode {
         
         let size = AppUISettings.getScreenBoundsForImages()
         let starImage = UIImage.init(named: "SnowForEmitter.png")!
@@ -317,6 +266,8 @@ class FaceForegroundNode: SKSpriteNode {
         emitterNode.position = CGPoint(x: 0, y: size.height/2)
         emitterNode.particlePositionRange = CGVector(dx: size.width, dy: 0)
         emitterNode.particleSpeedRange = 16.0
+        
+        emitterNode.particleZPosition = particleZPosition
         
         emitterNode.advanceSimulationTime(TimeInterval(lifetime))
         return emitterNode

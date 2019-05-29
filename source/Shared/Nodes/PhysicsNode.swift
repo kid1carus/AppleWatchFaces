@@ -25,10 +25,10 @@ class PhysicsNode: SKSpriteNode {
             
             let newShape:SKNode = SKNode.init()
 
-            let labelNode = SKLabelNode.init(text: ClockOverlaySetting.descriptionForOverlayShapeType(shapeType) )
+            let labelNode = SKLabelNode.init(text: ParticleFieldLayerOptions.descriptionForOverlayShapeType(shapeType) )
             labelNode.fontColor = SKColor.init(hexString: material)
-            labelNode.xScale = physicsShapeSize.width * ClockOverlaySetting.multiplierForOverlayShape(shapeType: shapeType)
-            labelNode.yScale = physicsShapeSize.height * ClockOverlaySetting.multiplierForOverlayShape(shapeType: shapeType)
+            labelNode.xScale = physicsShapeSize.width * ParticleFieldLayerOptions.multiplierForOverlayShape(shapeType: shapeType)
+            labelNode.yScale = physicsShapeSize.height * ParticleFieldLayerOptions.multiplierForOverlayShape(shapeType: shapeType)
             newShape.addChild(labelNode)
             
             let physicsBody = SKPhysicsBody.init(rectangleOf: physicsShapeSize)
@@ -47,12 +47,7 @@ class PhysicsNode: SKSpriteNode {
             self.addChild(newShape)
         }
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationFrameUpdate(notification:)), name: SKWatchScene.sceneSlowFrameUpdateNotificationName, object: nil)
-        
     }
-    
-//    @objc func onNotificationFrameUpdate(notification:Notification) {
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

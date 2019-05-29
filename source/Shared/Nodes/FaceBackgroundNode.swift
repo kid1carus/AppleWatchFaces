@@ -15,8 +15,7 @@ enum FaceBackgroundTypes: String {
         FaceBackgroundTypeNone
     
     static var userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
-                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
-                                     FaceBackgroundTypeNone]
+                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeNone]
     
     static let randomizableValues = userSelectableValues //short cut, but will get none
     
@@ -24,6 +23,12 @@ enum FaceBackgroundTypes: String {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
         return randomizableValues[randomIndex]
     }
+}
+
+enum GradientBackgroundDirectionTypes: String {
+    case Vertical, Horizontal, Diagonal
+    
+    static var userSelectableValues = [Vertical, Horizontal, Diagonal]
 }
 
 class FaceBackgroundNode: SKSpriteNode {
@@ -64,6 +69,25 @@ class FaceBackgroundNode: SKSpriteNode {
         }
         
         return typeKeysArray
+    }
+    
+    static func descriptionForGradientDirections(_ nodeType: GradientBackgroundDirectionTypes) -> String {
+        var typeDescription = ""
+        
+        if (nodeType == .Diagonal)  { typeDescription = "Diagonal" }
+        if (nodeType == .Horizontal)  { typeDescription = "Horizontal" }
+        if (nodeType == .Vertical)  { typeDescription = "Vertical" }
+        
+        return typeDescription
+    }
+    
+    static func gradientDirectionDescriptions() -> [String] {
+        var typeDescriptionsArray = [String]()
+        for nodeType in GradientBackgroundDirectionTypes.userSelectableValues {
+            typeDescriptionsArray.append(descriptionForGradientDirections(nodeType))
+        }
+        
+        return typeDescriptionsArray
     }
     
     static func filledShapeNode(material: String) -> SKShapeNode {

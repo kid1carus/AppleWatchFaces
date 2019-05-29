@@ -17,16 +17,16 @@ class FaceChooserTableViewCell: FaceChooserSelectableTableViewCell, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return UserClockSetting.sharedClockSettings.count
+        return UserFaceSetting.sharedFaceSettings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "faceChooserCell", for: indexPath) as! FaceChooserCollectionViewCell
         
-        let clockSetting = UserClockSetting.sharedClockSettings[indexPath.row]
-        cell.title.text = clockSetting.title
+        let faceSetting = UserFaceSetting.sharedFaceSettings[indexPath.row]
+        cell.title.text = faceSetting.title
         //debugPrint("U: " + clockSetting.title + " " + clockSetting.uniqueID)
-        if let newImage = UIImage.getImageFor(imageName: clockSetting.uniqueID) {
+        if let newImage = UIImage.getImageFor(imageName: faceSetting.uniqueID) {
             cell.imageView.image = newImage
             cell.imageView.layer.cornerRadius = AppUISettings.watchFrameCornerRadius
             cell.imageView.layer.borderColor = AppUISettings.watchFrameBorderColor

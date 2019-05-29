@@ -32,7 +32,7 @@ class ClockDecoratorTheme: NSObject {
     var shouldShowRomanNumeralText: Bool
     
     //tweaks
-    var ringSettings: [ClockRingSetting]
+    //var ringSettings: [ClockRingSetting]
     
     //NOTE: ANY CHANGES HERE NEED TO BE MADE IN CLOCKFACESETTINGS
     
@@ -70,15 +70,15 @@ class ClockDecoratorTheme: NSObject {
         self.shouldShowRomanNumeralText = jsonObj[ "shouldShowRomanNumeralText" ].boolValue
         
         
-        // parse the ringSettings
-        self.ringSettings = [ClockRingSetting]()
-        
-        if let ringSettingsSerializedArray = jsonObj["ringSettings"].array {
-            for ringSettingSerialized in ringSettingsSerializedArray {
-                let newRingSetting = ClockRingSetting.init(jsonObj: ringSettingSerialized)
-                self.ringSettings.append( newRingSetting )
-            }
-        }
+//        // parse the ringSettings
+//        self.ringSettings = [ClockRingSetting]()
+//        
+//        if let ringSettingsSerializedArray = jsonObj["ringSettings"].array {
+//            for ringSettingSerialized in ringSettingsSerializedArray {
+//                let newRingSetting = ClockRingSetting.init(jsonObj: ringSettingSerialized)
+//                self.ringSettings.append( newRingSetting )
+//            }
+//        }
         
         super.init()
     }
