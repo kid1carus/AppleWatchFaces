@@ -102,9 +102,9 @@ class UserFaceSetting: NSObject {
     }
     
     static func sharedSettingHasThisClockSetting(uniqueID : String) -> Bool {
-//        for clockSetting in sharedClockSettings {
-//            if clockSetting.uniqueID == uniqueID { return true }
-//        }
+        for clockSetting in sharedFaceSettings {
+            if clockSetting.uniqueID == uniqueID { return true }
+        }
         return false
     }
     

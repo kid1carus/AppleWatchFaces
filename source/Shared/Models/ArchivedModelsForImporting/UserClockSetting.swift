@@ -24,8 +24,11 @@ class UserClockSetting: NSObject {
         
         var countOfImported = 0
         for clockSetting in sharedClockSettings {
-            guard let clockFaceSettings = clockSetting.clockFaceSettings else { continue }
+            //dont re-import a setting !
+            guard !UserFaceSetting.sharedSettingHasThisClockSetting(uniqueID: clockSetting.uniqueID) else { continue }
             
+            guard let clockFaceSettings = clockSetting.clockFaceSettings else { continue }
+    
             func getIndexForMaterial(newFaceSetting: FaceSetting, materialToTest: String ) -> Int {
                 
                 if let index = newFaceSetting.faceColors.index(of: materialToTest) {
