@@ -98,7 +98,8 @@ class WatchFaceNode: SKShapeNode {
             layerNode.position = CGPoint.init(x: xPos, y: yPos)
         }
         
-        for faceLayer in faceLayers {
+        for (layerIndex, faceLayer) in faceLayers.enumerated() {
+            
             let hexColor = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
             let layerColor = SKColor.init(hexString: hexColor)
             
@@ -110,6 +111,7 @@ class WatchFaceNode: SKShapeNode {
                 secHandNode.name = "secondHand"
                 
                 setLayerProps(layerNode: secHandNode, faceLayer: faceLayer)
+                secHandNode.zPosition = CGFloat(layerIndex)
                 self.addChild(secHandNode)
             }
             if faceLayer.layerType == .MinuteHand {
@@ -119,6 +121,7 @@ class WatchFaceNode: SKShapeNode {
                 minHandNode.name = "minuteHand"
                 
                 setLayerProps(layerNode: minHandNode, faceLayer: faceLayer)
+                minHandNode.zPosition = CGFloat(layerIndex)
                 self.addChild(minHandNode)
             }
             if faceLayer.layerType == .HourHand {
@@ -128,6 +131,7 @@ class WatchFaceNode: SKShapeNode {
                 minHandNode.name = "hourHand"
                 
                 setLayerProps(layerNode: minHandNode, faceLayer: faceLayer)
+                minHandNode.zPosition = CGFloat(layerIndex)
                 self.addChild(minHandNode)
             }
             if faceLayer.layerType == .ImageTexture {
@@ -142,6 +146,7 @@ class WatchFaceNode: SKShapeNode {
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
+                backgroundNode.zPosition = CGFloat(layerIndex)
                 self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .ColorTexture {
@@ -151,6 +156,7 @@ class WatchFaceNode: SKShapeNode {
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
+                backgroundNode.zPosition = CGFloat(layerIndex)
                 self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .GradientTexture {
@@ -173,6 +179,7 @@ class WatchFaceNode: SKShapeNode {
                 backgroundNode.name = "background"
                 
                 setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
+                backgroundNode.zPosition = CGFloat(layerIndex)
                 self.addChild(backgroundNode)
             }
             if (faceLayer.layerType == .DateTimeLabel) {
@@ -196,6 +203,7 @@ class WatchFaceNode: SKShapeNode {
                 digitalTimeNode.name = "timeLabel"
                 
                 setLayerProps(layerNode: digitalTimeNode, faceLayer: faceLayer)
+                digitalTimeNode.zPosition = CGFloat(layerIndex)
                 self.addChild(digitalTimeNode)
             }
             if faceLayer.layerType == .ShapeRing {
@@ -211,6 +219,7 @@ class WatchFaceNode: SKShapeNode {
                     generateRingNode(shapeNode, patternTotal: shapeOptions.patternTotal, patternArray: shapeOptions.patternArray, ringType: .RingTypeShapeNode, material: fillMaterial, currentDistance: 0.8, renderNumbers: true, renderShapes: true, ringShape: ringShapePath, size: size, lineWidth: 0.0, strokeHex: strokeHex, textSize: 0, textType: .NumberTextTypeSystem, indicatorSize: shapeOptions.indicatorSize, indicatorType: shapeOptions.indicatorType)
                     
                     setLayerProps(layerNode: shapeNode, faceLayer: faceLayer)
+                    shapeNode.zPosition = CGFloat(layerIndex)
                     self.addChild(shapeNode)
                 }
             }
@@ -232,6 +241,7 @@ class WatchFaceNode: SKShapeNode {
                         renderShapes: true, ringShape: ringShapePath, size: size, lineWidth: layerOptions.outlineWidth, strokeHex: strokeHex, textSize: layerOptions.textSize, textType: layerOptions.fontType, indicatorSize: 0, indicatorType: .FaceIndicatorTypeNone)
                     
                     setLayerProps(layerNode: shapeNode, faceLayer: faceLayer)
+                    shapeNode.zPosition = CGFloat(layerIndex)
                     self.addChild(shapeNode)
                 }
             }
@@ -243,10 +253,11 @@ class WatchFaceNode: SKShapeNode {
                     let strokeColor = SKColor.white
                     let material2 = "#eeeeeeff"
                     
-                    let particleNode = FaceForegroundNode.init(foregroundType: layerOptions.nodeType, material: fillMaterial, material2: material2, strokeColor: strokeColor, lineWidth: 0, shapeType: layerOptions.shapeType, itemSize: CGFloat(layerOptions.itemSize), itemStrength: 0.26)
+                    let particleNode = FaceForegroundNode.init(foregroundType: layerOptions.nodeType, material: fillMaterial, material2: material2, strokeColor: strokeColor, lineWidth: 0, shapeType: layerOptions.shapeType, itemSize: CGFloat(layerOptions.itemSize), itemStrength: 0.26, particleZPosition: CGFloat(layerIndex)-0.5)
                     particleNode.name = "particleNode"
                     
                     setLayerProps(layerNode: particleNode, faceLayer: faceLayer)
+                    particleNode.zPosition = CGFloat(layerIndex)
                     self.addChild(particleNode)
                 }
             }
