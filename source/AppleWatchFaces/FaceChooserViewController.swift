@@ -149,8 +149,13 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     
         self.showMessage(message: numberImported.description + " faces imported from " + UserClockSetting.fileName)
         
-        if let faceChooserTableVC  = faceChooserTableViewController  {
-            faceChooserTableVC.reloadAllThumbs()
+        if numberImported > 0 {
+            if let faceChooserTableVC  = faceChooserTableViewController  {
+                faceChooserTableVC.reloadAllThumbs()
+            }
+            
+            faceListReloadType = .full
+            _ = self.shouldRegenerateThumbNailsAndExit()
         }
     }
     
@@ -176,17 +181,17 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     func doResetAllAction() {
-//        UserClockSetting.resetToDefaults()
-//
-//        AppUISettings.deleteAllFolders()
-//        AppUISettings.createFolders()
-//        AppUISettings.copyFolders()
-//
-//        faceListReloadType = .full
-//
-//        _ = self.shouldRegenerateThumbNailsAndExit()
-//
-//        self.showMessage(message: "All faces reset to defaults")
+        UserFaceSetting.resetToDefaults()
+
+        AppUISettings.deleteAllFolders()
+        AppUISettings.createFolders()
+        AppUISettings.copyFolders()
+
+        faceListReloadType = .full
+
+        _ = self.shouldRegenerateThumbNailsAndExit()
+
+        self.showMessage(message: "All faces reset to defaults")
     }
     
     @IBAction func resetAllSettingAction(sender: UIButton) {
