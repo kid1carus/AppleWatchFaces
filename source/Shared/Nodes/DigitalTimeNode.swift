@@ -25,8 +25,10 @@ enum DigitalTimeFormats: String {
     DADD,
     DDMM,
     MMDD,
+    MO,
     DA,
     DD,
+    DL,
     Battery,
     None
     
@@ -34,9 +36,11 @@ enum DigitalTimeFormats: String {
         Battery,
         DA,
         DD,
+        DL,
         MMDD,
         DADD,
         DDMM,
+        MO,
         HHMM,
         HHMMPM,
         HHMMSS,
@@ -158,6 +162,7 @@ class DigitalTimeNode: SKNode {
 
         let monthWord = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1].uppercased()
         let dayWord = calendar.shortWeekdaySymbols[calendar.component(.weekday, from: date)-1].uppercased()
+        let dayLongWord = calendar.standaloneWeekdaySymbols[calendar.component(.weekday, from: date)-1].uppercased()
    
         let dayString = String(format: "%02d", Int(day))
         
@@ -173,6 +178,8 @@ class DigitalTimeNode: SKNode {
         switch timeFormat {
         case .DD:
             timeString = dayString
+        case .DL:
+            timeString = dayLongWord
         case .DA:
             timeString = dayWord
         case .DADD:
@@ -429,25 +436,29 @@ class DigitalTimeNode: SKNode {
         case .Battery:
             description = "Battery %"
         case .DA:
-            description = "DA"
+            description = "Day Short - Tue"
+        case .DL:
+            description = "Day - Tuesday"
         case .DADD:
-            description = "DA&DD"
+            description = "Day Short & Num - Tue 5"
         case .DD:
-            description = "DD"
+            description = "Day Num - 5"
         case .DDMM:
-            description = "DD&MO"
+            description = "Day Num & Month - 5 May"
         case .MMDD:
-            description = "MO&DD"
+            description = "Month & Day Num - May 5"
+        case .MO:
+            description = "Month - May"
         case .HHMM:
-            description = "HH:MM"
+            description = "Hour:Min - 10:30"
         case .HHMMPM:
-            description = "HH:MM pm"
+            description = "HH:MM pm - 10:30 pm"
         case .HHMMSS:
-            description = "HH:MM:SS"
+            description = "HH:MM:SS - 10:30:55"
         case .HH:
-            description = "HH"
+            description = "HH - 10"
         case .MM:
-            description = "MM"
+            description = "MM - 30"
         default:
             description = "None"
         }
