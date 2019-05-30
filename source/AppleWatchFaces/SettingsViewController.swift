@@ -49,6 +49,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBOutlet var addNewLayerButton: UIButton!
     
     @IBOutlet var groupSegmentControl: UISegmentedControl!
+    @IBOutlet var timeTravelView: UIView!
 
     weak var watchPreviewViewController:WatchPreviewViewController?
     weak var faceLayersTableViewController:FaceLayersTableViewController?
@@ -72,6 +73,14 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
     static let settingsExitingNotificationName = Notification.Name("settingsExiting")
     static let settingsCallActionSheet = Notification.Name("settingsCallActionSheet")
+    
+    //forward tim travel
+    @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        //moved this here to repspond only, but forward to old handler
+        if let watchPreviewViewController = watchPreviewViewController {
+            watchPreviewViewController.respondToPanGesture(gesture: gesture)
+        }
+    }
     
     @IBAction func adjustAngleForLayerItem( sender: UIButton) {
         
@@ -515,6 +524,10 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         angleControlsView.layer.cornerRadius = AppUISettings.watchControlsCornerRadius
         angleControlsView.layer.borderWidth = AppUISettings.watchControlsWidth
         angleControlsView.layer.borderColor = AppUISettings.watchControlsBorderColor
+        
+        timeTravelView.layer.cornerRadius = 6.0
+        timeTravelView.layer.borderWidth = AppUISettings.watchControlsWidth
+        timeTravelView.layer.borderColor = AppUISettings.watchFrameBorderColor
         
         //style the section segment
         // Add lines below selectedSegmentIndex

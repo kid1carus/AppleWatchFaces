@@ -1900,6 +1900,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nz5-A2-kCi">
+                                <rect key="frame" x="269" y="54" width="42" height="51"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aroundTheClock" translatesAutoresizingMaskIntoConstraints="NO" id="9zh-D0-FBw">
+                                        <rect key="frame" x="20" y="15" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="J7F-YO-vnQ"/>
+                                    <constraint firstAttribute="width" constant="42" id="ct7-4Z-SKm"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4Um-41-a9j" appends="YES" id="bxg-qg-AH5"/>
+                                </connections>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hj-dZ-8Ib">
                                 <rect key="frame" x="0.0" y="268" width="414" height="424"/>
                                 <connections>
@@ -2185,7 +2203,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.24677870530000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Bz6-S4-Fz2" firstAttribute="top" secondItem="rk1-nK-qHQ" secondAttribute="top" constant="11" id="Awg-Bb-0WR"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="98" id="Dfr-cr-4zU"/>
@@ -2363,8 +2381,10 @@
                             <constraint firstItem="L09-xH-or1" firstAttribute="top" secondItem="jnB-h9-aWW" secondAttribute="bottom" constant="-2" id="89w-i5-uQa"/>
                             <constraint firstItem="P23-UF-T1a" firstAttribute="top" secondItem="DN7-J7-N45" secondAttribute="bottom" constant="41" id="B2O-UC-cZs"/>
                             <constraint firstItem="4qh-Lb-N0o" firstAttribute="centerX" secondItem="L09-xH-or1" secondAttribute="centerX" id="B5g-2S-nrT"/>
+                            <constraint firstItem="nz5-A2-kCi" firstAttribute="leading" secondItem="DN7-J7-N45" secondAttribute="trailing" constant="-18" id="D9A-q7-3Xk"/>
                             <constraint firstItem="rk1-nK-qHQ" firstAttribute="top" secondItem="jDK-Qz-PpH" secondAttribute="bottom" constant="27" id="FOd-pG-v5n"/>
                             <constraint firstItem="jnB-h9-aWW" firstAttribute="top" secondItem="MYe-fh-Ovn" secondAttribute="bottom" constant="3" id="Hey-F4-QR8"/>
+                            <constraint firstItem="nz5-A2-kCi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="34" id="Hvk-Gk-Uum"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Iah-bI-LvK"/>
                             <constraint firstAttribute="trailing" secondItem="fZ0-ba-Jns" secondAttribute="trailing" constant="-22" id="Jpq-3U-5yO"/>
                             <constraint firstItem="P23-UF-T1a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Km1-WO-VJz"/>
@@ -2427,10 +2447,16 @@
                         <outlet property="scaleLessButton" destination="YjU-YD-V5W" id="bk7-JB-0R5"/>
                         <outlet property="scaleMoreButton" destination="Wdn-8L-cUg" id="9L6-cM-J1M"/>
                         <outlet property="sendSettingButton" destination="BTy-1s-4Ku" id="GIP-hv-9UH"/>
+                        <outlet property="timeTravelView" destination="nz5-A2-kCi" id="cxd-Qo-KfX"/>
                         <outlet property="undoButton" destination="7l3-wd-tEQ" id="8gT-hg-ufg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="4Um-41-a9j">
+                    <connections>
+                        <action selector="respondToPanGestureWithGesture:" destination="BYZ-38-t0r" id="quX-4u-H5f"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="808.69565217391312" y="129.61956521739131"/>
         </scene>
@@ -2447,7 +2473,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="LM3-Ln-PA8" appends="YES" id="y9d-4E-pRN"/>
                                     <outletCollection property="gestureRecognizers" destination="Obc-je-emg" appends="YES" id="10U-na-9Lc"/>
                                 </connections>
                             </skView>
@@ -2460,11 +2485,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKm-1s-s5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="LM3-Ln-PA8">
-                    <connections>
-                        <action selector="respondToPanGestureWithGesture:" destination="gcy-GJ-xSo" id="zcu-IH-2Df"/>
-                    </connections>
-                </panGestureRecognizer>
                 <tapGestureRecognizer id="Obc-je-emg">
                     <connections>
                         <action selector="respondToTapGestureWithGesture:" destination="gcy-GJ-xSo" id="2Xj-yO-Rbg"/>
@@ -2475,6 +2495,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="aroundTheClock" width="200" height="200"/>
         <image name="cameraIcon" width="266.66665649414062" height="266.66665649414062"/>
         <image name="icons-apple-watch" width="480" height="480"/>
     </resources>

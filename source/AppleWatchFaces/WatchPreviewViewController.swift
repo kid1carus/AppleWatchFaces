@@ -75,6 +75,7 @@ class WatchPreviewViewController: UIViewController {
         }
     }
     
+    
     @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -89,7 +90,7 @@ class WatchPreviewViewController: UIViewController {
         }
         if gesture.state == .changed {
             let translationPoint = gesture.translation(in: skView)
-            timeTravelSpeed = translationPoint.x * 10.0
+            timeTravelSpeed = translationPoint.y * 10.0
         }
         if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
             clockTimer.startTimer()
