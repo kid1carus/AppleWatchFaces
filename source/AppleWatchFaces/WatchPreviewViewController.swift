@@ -78,6 +78,23 @@ class WatchPreviewViewController: UIViewController {
         }
     }
     
+    @IBAction func respondToPinchGesture(gesture: UIPinchGestureRecognizer) {
+        
+        //TODO: add angle once there is support for handling it
+        // https://stackoverflow.com/questions/3559577/how-to-detect-or-define-the-the-orientation-of-a-pinch-gesture-with-uipinchgestu
+        
+        if let settingsViewController = settingsViewController {
+            settingsViewController.sizeFromPreviewView(scale: gesture.scale, reload: false)
+            
+            //make it linear
+            gesture.scale = 1.0
+            
+            if gesture.state == .cancelled || gesture.state == .ended || gesture.state == .failed {
+                settingsViewController.sizeFromPreviewView(scale: gesture.scale, reload: true)
+            }
+        }
+    }
+    
     @IBAction func respondToDragPanGesture(gesture: UIPanGestureRecognizer) {
         
         if gesture.state == .changed || gesture.state == .began {

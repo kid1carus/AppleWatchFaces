@@ -14,6 +14,29 @@ class FaceLayersTableViewController: UITableViewController {
     
     static let reloadLayerNotificationName = Notification.Name("reloadLayer")
     
+    func sizeFromPreviewView( scale: CGFloat, reload: Bool) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
+        guard let settingsViewVC = settingsViewController else { return }
+        
+        let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
+        
+        //debugPrint("pinch scale: " + scale.description)
+        
+        let clampedVal = clamped( value: layerSettings.scale * Float(scale), min: 0, max: AppUISettings.layerSettingsScaleMax )
+        if layerSettings.scale != clampedVal {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            settingsViewVC.setUndoRedoButtonStatus()
+            
+            layerSettings.scale = clampedVal
+            //draw labels in settings view
+            settingsViewVC.drawUIForSelectedLayer(selectedLayer: selectedRow.row, section: .Scale)
+            //tell preview to redraw a layer
+            NotificationCenter.default.post(name: WatchPreviewViewController.settingsLayerAdjustNotificationName, object: nil,
+                                            userInfo:["faceLayerIndex":selectedRow.row, "adjustmentType": WatchFaceNode.LayerAdjustmentType.Scale.rawValue])
+        }
+    }
+    
     func dragOnPreviewView( absoluteX: CGFloat, absoluteY: CGFloat, reload: Bool) {
         nudgeItem(xDirection: 0, yDirection: 0, absoluteX: absoluteX, absoluteY: absoluteY)
     }
@@ -23,12 +46,6 @@ class FaceLayersTableViewController: UITableViewController {
         guard let settingsViewVC = settingsViewController else { return }
         
         let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
-        
-        func clamped (value: Float, min: Float, max: Float) -> Float {
-            if value > max { return max }
-            if value < min { return min }
-            return value
-        }
         
         var reload = false
         
@@ -306,6 +323,12 @@ class FaceLayersTableViewController: UITableViewController {
         if let settingsVC = settingsViewController {
             settingsVC.drawUIForSelectedLayer(selectedLayer: indexPath.row, section: .All)
         }
+    }
+    
+    func clamped (value: Float, min: Float, max: Float) -> Float {
+        if value > max { return max }
+        if value < min { return min }
+        return value
     }
 
 }

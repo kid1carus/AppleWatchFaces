@@ -2475,6 +2475,7 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Obc-je-emg" appends="YES" id="10U-na-9Lc"/>
                                     <outletCollection property="gestureRecognizers" destination="wYc-EM-16o" appends="YES" id="Ec8-bQ-cut"/>
+                                    <outletCollection property="gestureRecognizers" destination="7Lg-8Q-vnO" appends="YES" id="DCu-tc-nD4"/>
                                 </connections>
                             </skView>
                         </subviews>
@@ -2496,6 +2497,11 @@
                         <action selector="respondToDragPanGestureWithGesture:" destination="gcy-GJ-xSo" id="kLD-xi-Tc9"/>
                     </connections>
                 </panGestureRecognizer>
+                <pinchGestureRecognizer id="7Lg-8Q-vnO">
+                    <connections>
+                        <action selector="respondToPinchGestureWithGesture:" destination="gcy-GJ-xSo" id="nZg-vf-M4H"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1461" y="130"/>
         </scene>

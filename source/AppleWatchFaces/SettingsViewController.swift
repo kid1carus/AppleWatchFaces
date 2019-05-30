@@ -386,6 +386,12 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
     }
     
+    func sizeFromPreviewView( scale: CGFloat, reload: Bool) {
+        if let faceLayersTableViewController = faceLayersTableViewController {
+            faceLayersTableViewController.sizeFromPreviewView(scale: scale, reload: reload)
+        }
+    }
+    
     func dragOnPreviewView( absoluteX: CGFloat, absoluteY: CGFloat, reload: Bool) {
         if let faceLayersTableViewController = faceLayersTableViewController {
             faceLayersTableViewController.dragOnPreviewView(absoluteX: absoluteX, absoluteY: absoluteY, reload: reload)
