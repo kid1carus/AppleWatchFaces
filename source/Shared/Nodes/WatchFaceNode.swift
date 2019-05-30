@@ -64,6 +64,23 @@ class WatchFaceNode: SKShapeNode {
         
     }
     
+    func highlightLayer(index: Int) {
+        let layerNode = self.children[index]
+        
+        let originalScale = layerNode.xScale
+        
+        let bloomUpAction = SKAction.scale(to: originalScale*1.3, duration: 0.175)
+        bloomUpAction.timingMode = .easeIn
+        let bloomDownAction = SKAction.scale(to: originalScale, duration: 0.095)
+        bloomUpAction.timingMode = .easeOut
+        let combinedAction = SKAction.sequence([bloomUpAction, bloomDownAction])
+
+        if !layerNode.hasActions() {
+            layerNode.run(combinedAction)
+        }
+
+    }
+    
     init(faceSettings: FaceSetting, size: CGSize) {
         super.init()
         

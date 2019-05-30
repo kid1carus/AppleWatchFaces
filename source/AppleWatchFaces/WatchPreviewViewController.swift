@@ -28,12 +28,13 @@ class WatchPreviewViewController: UIViewController {
         let convert = self.skView.convert(tapLoc, to: skView.scene!)
         guard let nodesAtLoc = skView.scene?.nodes(at: convert) else { return }
         guard let topNode = nodesAtLoc.first else { return }
-        guard let watchNode = skView.scene?.childNode(withName: "watchFaceNode") else { return }
+        guard let watchNode = skView.scene?.childNode(withName: "watchFaceNode") as? WatchFaceNode else { return }
         
         for (index,layerNode) in watchNode.children.enumerated() {
             if topNode.inParentHierarchy(layerNode) {
                 //debugPrint("tapped on layer item:" + index.description + " name: " + layerNode.name!)
                 NotificationCenter.default.post(name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil, userInfo:["faceLayerIndex":index])
+                watchNode.highlightLayer(index: index)
             }
         }
     }
