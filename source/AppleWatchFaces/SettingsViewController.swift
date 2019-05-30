@@ -74,9 +74,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static let settingsExitingNotificationName = Notification.Name("settingsExiting")
     static let settingsCallActionSheet = Notification.Name("settingsCallActionSheet")
     
-    //forward tim travel
     @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
-        //moved this here to repspond only, but forward to old handler
+        //forward time travel hangler
         if let watchPreviewViewController = watchPreviewViewController {
             watchPreviewViewController.respondToPanGesture(gesture: gesture)
         }
@@ -134,7 +133,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         if sender == nudgeDButton { yDirection = -nudgeAmt }
         
         if let flTVC = faceLayersTableViewController {
-            flTVC.nudgeItem(xDirection: xDirection, yDirection: yDirection)
+            flTVC.nudgeItem(xDirection: xDirection, yDirection: yDirection, absoluteX: 0, absoluteY: 0)
         }
     }
     
@@ -387,7 +386,11 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
     }
     
-    
+    func dragOnPreviewView( absoluteX: CGFloat, absoluteY: CGFloat, reload: Bool) {
+        if let faceLayersTableViewController = faceLayersTableViewController {
+            faceLayersTableViewController.dragOnPreviewView(absoluteX: absoluteX, absoluteY: absoluteY, reload: reload)
+        }
+    }
     /////////////////
     
     @IBAction func cloneClockSettings() {
@@ -458,6 +461,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         if segue.destination is WatchPreviewViewController {
             let vc = segue.destination as? WatchPreviewViewController
             watchPreviewViewController = vc
+            vc?.settingsViewController = self
         }
         if segue.destination is FaceLayersTableViewController {
             let vc = segue.destination as? FaceLayersTableViewController

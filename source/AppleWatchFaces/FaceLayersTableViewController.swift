@@ -14,6 +14,10 @@ class FaceLayersTableViewController: UITableViewController {
     
     static let reloadLayerNotificationName = Notification.Name("reloadLayer")
     
+    func dragOnPreviewView( absoluteX: CGFloat, absoluteY: CGFloat, reload: Bool) {
+        nudgeItem(xDirection: 0, yDirection: 0, absoluteX: absoluteX, absoluteY: absoluteY)
+    }
+    
     func adjustLayerItem(adjustmentType: WatchFaceNode.LayerAdjustmentType, amount: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         guard let settingsViewVC = settingsViewController else { return }
@@ -74,7 +78,8 @@ class FaceLayersTableViewController: UITableViewController {
                                         userInfo:["faceLayerIndex":selectedRow.row, "adjustmentType": adjustmentType.rawValue])
     }
     
-    func nudgeItem(xDirection: CGFloat, yDirection: CGFloat) {
+ 
+    func nudgeItem(xDirection: CGFloat, yDirection: CGFloat, absoluteX: CGFloat, absoluteY: CGFloat) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else { return }
         guard let settingsViewVC = settingsViewController else { return }
         
@@ -85,8 +90,16 @@ class FaceLayersTableViewController: UITableViewController {
         let layerSettings = SettingsViewController.currentFaceSetting.faceLayers[selectedRow.row]
         
         //set the position in the layer
-        layerSettings.horizontalPosition = layerSettings.horizontalPosition + Float(xDirection)
-        layerSettings.verticalPosition = layerSettings.verticalPosition + Float(yDirection)
+        if absoluteX == 0 {
+            layerSettings.horizontalPosition = layerSettings.horizontalPosition + Float(xDirection)
+        } else {
+            layerSettings.horizontalPosition = Float(absoluteX)
+        }
+        if absoluteY == 0 {
+            layerSettings.verticalPosition = layerSettings.verticalPosition + Float(yDirection)
+        } else {
+            layerSettings.verticalPosition = Float(absoluteY)
+        }
         
         //reload
         settingsViewVC.drawUIForSelectedLayer(selectedLayer: selectedRow.row, section: .Position)

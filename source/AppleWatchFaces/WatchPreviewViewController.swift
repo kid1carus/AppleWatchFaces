@@ -16,6 +16,8 @@ class WatchPreviewViewController: UIViewController {
     var timeTravelTimer = Timer()
     var timeTravelSpeed:CGFloat = 0.0
     
+    weak var settingsViewController:SettingsViewController?
+    
     static let settingsNudgedNotificationName = Notification.Name("settingsNudged")
     static let settingsLayerAdjustNotificationName = Notification.Name("settingsLayerAdjusted")
     
@@ -76,6 +78,29 @@ class WatchPreviewViewController: UIViewController {
         }
     }
     
+    @IBAction func respondToDragPanGesture(gesture: UIPanGestureRecognizer) {
+        
+        if gesture.state == .changed || gesture.state == .began {
+            let translationPoint = gesture.location(in: skView)
+            
+            //debugPrint("dragging X:" + translationPoint.x.description + " y:" + translationPoint.y.description)
+            
+            let xPercent = translationPoint.x / (skView.frame.size.width/2) - 1.0
+            let yPercent = translationPoint.y / (skView.frame.size.height/2) - 1.0
+            
+            var reload = false
+            if gesture.state == .began {
+                reload = true
+            }
+            if let settingsViewController = settingsViewController {
+                let xPercRounded = CGFloat(round(1000*xPercent)/1000)
+                let yPercRounded = CGFloat(round(1000*yPercent)/1000)
+                
+                settingsViewController.dragOnPreviewView(absoluteX: xPercRounded, absoluteY: -yPercRounded, reload: reload)
+            }
+        }
+        
+    }
     
     @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
         

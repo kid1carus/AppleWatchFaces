@@ -2474,6 +2474,7 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Obc-je-emg" appends="YES" id="10U-na-9Lc"/>
+                                    <outletCollection property="gestureRecognizers" destination="wYc-EM-16o" appends="YES" id="Ec8-bQ-cut"/>
                                 </connections>
                             </skView>
                         </subviews>
@@ -2490,6 +2491,11 @@
                         <action selector="respondToTapGestureWithGesture:" destination="gcy-GJ-xSo" id="2Xj-yO-Rbg"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="wYc-EM-16o">
+                    <connections>
+                        <action selector="respondToDragPanGestureWithGesture:" destination="gcy-GJ-xSo" id="kLD-xi-Tc9"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1461" y="130"/>
         </scene>
