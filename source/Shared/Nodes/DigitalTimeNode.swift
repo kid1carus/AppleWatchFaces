@@ -23,6 +23,7 @@ enum DigitalTimeFormats: String {
     HH,
     MM,
     SS,
+    PM,
     DADD,
     DDMM,
     MMDD,
@@ -49,6 +50,7 @@ enum DigitalTimeFormats: String {
         HH,
         MM,
         SS,
+        PM,
         Battery,
         Colon,
         Slash
@@ -147,15 +149,23 @@ class DigitalTimeNode: SKNode {
         
         func timeStringWithoutAMPM( dateFormatterTime: DateFormatter)->String {
             var timeStr = dateFormatterTime.string(from: ClockTimer.currentDate)
-            //var ampmStr = ""
             if let rng = timeStr.range(of: dateFormatterTime.amSymbol) {
-                //ampmStr = dateFormatterTime.amSymbol
                 timeStr.removeSubrange(rng)
             } else if let rng = timeStr.range(of: dateFormatterTime.pmSymbol) {
-                //aampmStr = dateFormatterTime.pmSymbol
                 timeStr.removeSubrange(rng)
             }
             return timeStr
+        }
+        
+        func timeStringAMPM( dateFormatterTime: DateFormatter)->String {
+            let timeStr = dateFormatterTime.string(from: ClockTimer.currentDate)
+            var ampmStr = ""
+            if let rng = timeStr.range(of: dateFormatterTime.amSymbol) {
+                ampmStr = dateFormatterTime.amSymbol
+            } else if let rng = timeStr.range(of: dateFormatterTime.pmSymbol) {
+                ampmStr = dateFormatterTime.pmSymbol
+            }
+            return ampmStr
         }
         
         let date = ClockTimer.currentDate
@@ -218,6 +228,8 @@ class DigitalTimeNode: SKNode {
             timeString = minString
         case .SS:
             timeString = secString
+        case .PM:
+            timeString = timeStringAMPM(dateFormatterTime: dateFormatterTime)
         default:
             timeString = " " //empty can cause crash on calcuating size  (calculateAccumulatedFrame)
         }
@@ -478,6 +490,8 @@ class DigitalTimeNode: SKNode {
             description = "30 - min"
         case .SS:
             description = "55 - sec"
+        case .PM:
+            description = "AM - am/pm"
         case .Colon:
             description = ": - colon"
         case .Slash:
