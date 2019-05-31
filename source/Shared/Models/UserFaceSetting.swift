@@ -167,7 +167,7 @@ class UserFaceSetting: NSObject {
     }
     
     static func addMissingFromDefaults() {
-        guard let path = Bundle.main.path(forResource: "Settings", ofType: "json") else { return }
+        guard let path = Bundle.main.path(forResource: "FaceSettings", ofType: "json") else { return }
         addNewFromPath(path: path, importDuplicatesAsNew: false)
     }
     
