@@ -22,6 +22,7 @@ enum DigitalTimeFormats: String {
     HHMMPM,
     HH,
     MM,
+    SS,
     DADD,
     DDMM,
     MMDD,
@@ -45,7 +46,8 @@ enum DigitalTimeFormats: String {
         HHMMPM,
         HHMMSS,
         HH,
-        MM
+        MM,
+        SS
     ]
 }
 
@@ -117,23 +119,26 @@ class DigitalTimeNode: SKNode {
         
         if timeFormat == .Battery {
             
+            var batteryPercent:Float = 100
+            
             #if os(watchOS)
                 WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
-                var batteryPercent = WKInterfaceDevice.current().batteryLevel
+                batteryPercent = WKInterfaceDevice.current().batteryLevel
                 //var batteryState = WKInterfaceDevice.current().batteryState
                 WKInterfaceDevice.current().isBatteryMonitoringEnabled = false
-            
-                if batteryPercent > 1.0 {
-                    batteryPercent = 1.0
-                }
-                if batteryPercent < 0.0 {
-                    batteryPercent = 0.0
-                }
-            
-                return Int(batteryPercent * 100).description + "%"
             #else
-                return "100%"
+                UIDevice.current.isBatteryMonitoringEnabled = true
+                batteryPercent = UIDevice.current.batteryLevel
             #endif
+            
+            if batteryPercent > 1.0 {
+                batteryPercent = 1.0
+            }
+            if batteryPercent < 0.0 {
+                batteryPercent = 0.0
+            }
+            
+            return Int(batteryPercent * 100).description + "%"
         }
         
         func timeStringWithoutAMPM( dateFormatterTime: DateFormatter)->String {
@@ -158,7 +163,7 @@ class DigitalTimeNode: SKNode {
         
         let hour = CGFloat(calendar.component(.hour, from: date))
         let minutes = CGFloat(calendar.component(.minute, from: date))
-//        let seconds = CGFloat(calendar.component(.second, from: date))
+        let seconds = CGFloat(calendar.component(.second, from: date))
 
         let monthWord = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1].uppercased()
         let dayWord = calendar.shortWeekdaySymbols[calendar.component(.weekday, from: date)-1].uppercased()
@@ -172,7 +177,7 @@ class DigitalTimeNode: SKNode {
         
         let hourString = String(format: "%02d", Int(hour))
         let minString = String(format: "%02d", Int(minutes))
-//        let secString = String(format: "%02d", Int(seconds))
+        let secString = String(format: "%02d", Int(seconds))
         
         var timeString = ""
         switch timeFormat {
@@ -201,6 +206,8 @@ class DigitalTimeNode: SKNode {
             timeString = hourString
         case .MM:
             timeString = minString
+        case .SS:
+            timeString = secString
         default:
             timeString = " " //empty can cause crash on calcuating size  (calculateAccumulatedFrame)
         }
@@ -436,29 +443,31 @@ class DigitalTimeNode: SKNode {
         case .Battery:
             description = "Battery %"
         case .DA:
-            description = "Day Short - Tue"
+            description = "Tue - Day Short"
         case .DL:
-            description = "Day - Tuesday"
+            description = "Tuesday - Day Full"
         case .DADD:
-            description = "Day Short & Num - Tue 5"
+            description = "Tue 5 - Day Short & Num"
         case .DD:
-            description = "Day Num - 5"
+            description = "5 - Day Num"
         case .DDMM:
-            description = "Day Num & Month - 5 May"
+            description = "5 May - Day Num & Month"
         case .MMDD:
-            description = "Month & Day Num - May 5"
+            description = "May 5 - Month & Day Num"
         case .MO:
-            description = "Month - May"
+            description = "May - Month"
         case .HHMM:
-            description = "Hour:Min - 10:30"
+            description = "10:30 - Hour:Min"
         case .HHMMPM:
-            description = "HH:MM pm - 10:30 pm"
+            description = "10:30 pm - hour:min pm"
         case .HHMMSS:
-            description = "HH:MM:SS - 10:30:55"
+            description = "10:30:55 - hour:min:sec"
         case .HH:
-            description = "HH - 10"
+            description = "10 - hour"
         case .MM:
-            description = "MM - 30"
+            description = "30 - min"
+        case .SS:
+            description = "55 - sec"
         default:
             description = "None"
         }
