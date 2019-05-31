@@ -31,10 +31,11 @@ enum DigitalTimeFormats: String {
     DD,
     DL,
     Battery,
+    Colon,
+    Slash,
     None
     
     static let userSelectableValues = [
-        Battery,
         DA,
         DD,
         DL,
@@ -47,7 +48,10 @@ enum DigitalTimeFormats: String {
         HHMMSS,
         HH,
         MM,
-        SS
+        SS,
+        Battery,
+        Colon,
+        Slash
     ]
 }
 
@@ -108,7 +112,7 @@ class DigitalTimeNode: SKNode {
         
         // EXIT EARLY DEPENDING ON TYPE -- only move forward (do the update ) once per minute
         // saves on framerate & battery by not updating unless its needed
-        if (timeFormat != .HHMMSS && seconds != 0 && force == false) {
+        if (timeFormat != .HHMMSS && timeFormat != .SS && seconds != 0 && force == false) {
             return
         }
         let timeString = getTimeString()
@@ -181,6 +185,10 @@ class DigitalTimeNode: SKNode {
         
         var timeString = ""
         switch timeFormat {
+        case .Colon:
+            timeString = ":"
+        case .Slash:
+            timeString = "/"
         case .DD:
             timeString = dayString
         case .DL:
@@ -193,6 +201,8 @@ class DigitalTimeNode: SKNode {
             timeString = dayString + " " + monthWord
         case .MMDD:
             timeString = monthWord + " " + dayString
+        case .MO:
+            timeString = monthWord
         case .HHMM:
             dateFormatterTime.timeStyle = .short
             timeString = timeStringWithoutAMPM(dateFormatterTime: dateFormatterTime)
@@ -468,6 +478,10 @@ class DigitalTimeNode: SKNode {
             description = "30 - min"
         case .SS:
             description = "55 - sec"
+        case .Colon:
+            description = ": - colon"
+        case .Slash:
+            description = "/ - slash"
         default:
             description = "None"
         }
