@@ -204,10 +204,12 @@ class FaceLayersTableViewController: UITableViewController {
         
         let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[indexPath.row]
         
+        //this was showing small versions of cells before I edited it out ( was causing too many selection and scroling issues
+        
         //if selected show
-        if let selectedPath = tableView.indexPathForSelectedRow {
+        //if let selectedPath = tableView.indexPathForSelectedRow {
             //debugPrint("selectedpath:" + selectedPath.description + indexPath.description)
-            if selectedPath.row == indexPath.row {
+            //if selectedPath.row == indexPath.row {
                 switch faceLayer.layerType {
                 case .ImageTexture:
                     cellHeight = 175.0
@@ -230,8 +232,8 @@ class FaceLayersTableViewController: UITableViewController {
                 case .ParticleField:
                     cellHeight = 180.0
                 }
-            }
-        }
+            //}
+        //}
         
         return cellHeight
     }
