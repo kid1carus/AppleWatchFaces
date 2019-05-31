@@ -162,8 +162,10 @@ class DigitalTimeNode: SKNode {
             var ampmStr = ""
             if let rng = timeStr.range(of: dateFormatterTime.amSymbol) {
                 ampmStr = dateFormatterTime.amSymbol
+                _ = rng.description
             } else if let rng = timeStr.range(of: dateFormatterTime.pmSymbol) {
                 ampmStr = dateFormatterTime.pmSymbol
+                _ = rng.description
             }
             return ampmStr
         }
