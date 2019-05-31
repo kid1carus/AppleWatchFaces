@@ -162,8 +162,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             faceLayerOptions = ImageBackgroundLayerOptions.init(defaults: true)
         case .ParticleField:
             faceLayerOptions = ParticleFieldLayerOptions.init(defaults: true)
-        default:
-            faceLayerOptions = FaceLayerOptions()
+        //default:
+        //    faceLayerOptions = FaceLayerOptions()
         }
         
         let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, horizontalPosition: 0, verticalPosition:0, scale: 1.0,
