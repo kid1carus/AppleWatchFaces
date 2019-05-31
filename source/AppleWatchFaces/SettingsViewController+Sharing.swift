@@ -76,7 +76,8 @@ class TextProvider: NSObject, UIActivityItemSource {
     
     let myWebsiteURL = NSURL(string:"clockology")!.absoluteString!
     //let appName = "AppleWatchFaces on github"
-    let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentFaceSetting.title + "\" I created"
+    let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentFaceSetting.title + "\" I created."
+    let authorAtText = " @orffy "
     
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return NSObject()
@@ -96,6 +97,10 @@ class TextProvider: NSObject, UIActivityItemSource {
         
         if activityType == .postToFacebook  {
             return nil
+        }
+        
+        if activityType == .postToTwitter {
+            return promoText + authorAtText
         }
         
         return promoText
