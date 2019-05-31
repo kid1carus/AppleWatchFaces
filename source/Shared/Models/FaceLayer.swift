@@ -109,8 +109,8 @@ class FaceLayer: NSObject {
             self.layerOptions = ImageBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .ParticleField:
             self.layerOptions = ParticleFieldLayerOptions.init(jsonObj: jsonObj["layerOptions"])
-        default:
-            self.layerOptions = FaceLayerOptions()
+        //default:
+        //    self.layerOptions = FaceLayerOptions()
         }
         
         super.init()
