@@ -1,6 +1,260 @@
 {
     "faceSettings" : [
         {
+            "uniqueID" : "F6ADF43D-8491-408F-AABD-1434189DECB8",
+            "title" : "Angular Motion",
+            "faceColors" : [
+                "#ff7f00ff",
+                "#ffff00ff",
+                "#0073adff",
+                "#ffca2bff",
+                "#d8fff8ff",
+                "#383838ff"
+            ],
+            "faceLayers" : [
+                {
+                    "layerType" : "ColorTexture",
+                    "filenameForImage" : "",
+                    "layerOptions" : {
+                        "filename" : "",
+                        "backgroundType" : "FaceBackgroundTypeFilled"
+                    },
+                    "verticalPosition" : "0.387",
+                    "angleOffset" : "-0.7853982",
+                    "horizontalPosition" : "0.7920001",
+                    "alpha" : "1.0",
+                    "scale" : "1.0",
+                    "desiredThemeColorIndex" : 2
+                },
+                {
+                    "verticalPosition" : "-1.143",
+                    "filenameForImage" : "",
+                    "alpha" : "0.40000045",
+                    "angleOffset" : "0.7853982",
+                    "layerType" : "ColorTexture",
+                    "scale" : "1.0",
+                    "desiredThemeColorIndex" : 5,
+                    "layerOptions" : {
+                        "filename" : "",
+                        
+                        "backgroundType" : "FaceBackgroundTypeFilled"
+                    },
+                    "horizontalPosition" : "-0.567"
+                },
+                {
+                    "verticalPosition" : "-1.277",
+                    "layerOptions" : {
+                        "backgroundType" : "FaceBackgroundTypeFilled",
+                        "filename" : ""
+                    },
+                    "scale" : "1.1999998",
+                    "alpha" : "1.0",
+                    "horizontalPosition" : "-0.454",
+                    "layerType" : "ColorTexture",
+                    "desiredThemeColorIndex" : 1,
+                    "angleOffset" : "-0.7853982",
+                    "filenameForImage" : ""
+                },
+                {
+                    "verticalPosition" : "1.2049999",
+                    "angleOffset" : "0.7853982",
+                    "filenameForImage" : "",
+                    "horizontalPosition" : "-0.6079999",
+                    "layerType" : "ColorTexture",
+                    "desiredThemeColorIndex" : 5,
+                    "scale" : "1.0",
+                    "layerOptions" : {
+                        "backgroundType" : "FaceBackgroundTypeFilled",
+                        "filename" : ""
+                    },
+                    "alpha" : "0.37500045"
+                },
+                {
+                    "layerOptions" : {
+                        "backgroundType" : "FaceBackgroundTypeFilled",
+                        "filename" : ""
+                    },
+                    "layerType" : "ColorTexture",
+                    "scale" : "1.2999997",
+                    "alpha" : "1.0",
+                    "filenameForImage" : "",
+                    "horizontalPosition" : "-1.2039999",
+                    "desiredThemeColorIndex" : 3,
+                    "verticalPosition" : "1.4829999",
+                    "angleOffset" : "-0.7853982"
+                },
+                {
+                    "layerType" : "ColorTexture",
+                    "layerOptions" : {
+                        "backgroundType" : "FaceBackgroundTypeFilled",
+                        "filename" : ""
+                    },
+                    "verticalPosition" : "-1.04",
+                    "angleOffset" : "-0.7853982",
+                    "desiredThemeColorIndex" : 5,
+                    "filenameForImage" : "",
+                    "alpha" : "0.40000045",
+                    "horizontalPosition" : "-1.063",
+                    "scale" : "1.0"
+                },
+                {
+                    "layerOptions" : {
+                        "filename" : "",
+                        "backgroundType" : "FaceBackgroundTypeFilled"
+                    },
+                    "angleOffset" : "-0.7853982",
+                    "alpha" : "1.0",
+                    "layerType" : "ColorTexture",
+                    "horizontalPosition" : "-1.0959998",
+                    "scale" : "1.0",
+                    "desiredThemeColorIndex" : 0,
+                    "verticalPosition" : "-1.0619999",
+                    "filenameForImage" : ""
+                },
+                {
+                    "alpha" : "1.0",
+                    "angleOffset" : "0.7853982",
+                    "layerOptions" : {
+                        "fontType" : "NumberTextTypeDINPro",
+                        "effectType" : "None",
+                        "outlineWidth" : "5.0",
+                        "desiredThemeColorIndexForOutline" : "2",
+                        "formatType" : "DL"
+                    },
+                    "scale" : "0.40000045",
+                    "filenameForImage" : "",
+                    "verticalPosition" : "-0.505",
+                    "desiredThemeColorIndex" : 2,
+                    "layerType" : "DateTimeLabel",
+                    "horizontalPosition" : "0.092"
+                },
+                {
+                    "horizontalPosition" : "0.562",
+                    "scale" : "1.1499999",
+                    "angleOffset" : "-0.7853982",
+                    "alpha" : "1.0",
+                    "filenameForImage" : "",
+                    "layerType" : "DateTimeLabel",
+                    "layerOptions" : {
+                        "effectType" : "None",
+                        "formatType" : "HH",
+                        "fontType" : "NumberTextTypeDINPro",
+                        "desiredThemeColorIndexForOutline" : "3",
+                        "outlineWidth" : "4.0"
+                    },
+                    "desiredThemeColorIndex" : 3,
+                    "verticalPosition" : "-0.063"
+                },
+                {
+                    "angleOffset" : "-0.7853982",
+                    "horizontalPosition" : "0.5540001",
+                    "desiredThemeColorIndex" : 4,
+                    "alpha" : "1.0",
+                    "layerType" : "DateTimeLabel",
+                    "scale" : "0.9250001",
+                    "verticalPosition" : "0.55799997",
+                    "layerOptions" : {
+                        "fontType" : "NumberTextTypeDINPro",
+                        "formatType" : "MM",
+                        "outlineWidth" : "3.0",
+                        "effectType" : "None",
+                        "desiredThemeColorIndexForOutline" : "4"
+                    },
+                    "filenameForImage" : ""
+                },
+                {
+                    "horizontalPosition" : "-0.396",
+                    "layerType" : "DateTimeLabel",
+                    "verticalPosition" : "0.493",
+                    "scale" : "0.62500036",
+                    "alpha" : "1.0",
+                    "desiredThemeColorIndex" : 0,
+                    "angleOffset" : "-0.7853982",
+                    "layerOptions" : {
+                        "outlineWidth" : "3.0",
+                        "fontType" : "NumberTextTypeDINPro",
+                        "effectType" : "None",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "formatType" : "MO"
+                    },
+                    "filenameForImage" : ""
+                },
+                {
+                    "verticalPosition" : "0.7619999",
+                    "desiredThemeColorIndex" : 0,
+                    "filenameForImage" : "",
+                    "scale" : "0.62500036",
+                    "horizontalPosition" : "-0.725",
+                    "angleOffset" : "-0.7853982",
+                    "alpha" : "1.0",
+                    "layerType" : "DateTimeLabel",
+                    "layerOptions" : {
+                        "effectType" : "None",
+                        "formatType" : "DD",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "outlineWidth" : "2.0",
+                        "fontType" : "NumberTextTypeDINPro"
+                    }
+                },
+                {
+                    "alpha" : "0.82500017",
+                    "desiredThemeColorIndex" : 4,
+                    "scale" : "0.39291224",
+                    "layerType" : "ShapeRing",
+                    "layerOptions" : {
+                        "indicatorType" : "FaceIndicatorTypeSphere",
+                        "pathShape" : "RingRenderShapeCircle",
+                        "indicatorSize" : "0.26",
+                        "patternArray" : [
+                            1
+                        ],
+                        "patternTotal" : "60"
+                    },
+                    "filenameForImage" : "",
+                    "verticalPosition" : "-0.7029999",
+                    "angleOffset" : "0.0",
+                    "horizontalPosition" : "-0.6"
+                },
+                {
+                    "alpha" : "1.0",
+                    "scale" : "0.3160168",
+                    "layerType" : "SecondHand",
+                    "verticalPosition" : "-0.7",
+                    "angleOffset" : "0.0",
+                    "desiredThemeColorIndex" : 0,
+                    "layerOptions" : {
+                        "handType" : "SecondHandTypeFlatDial",
+                        "handImage" : "",
+                        "effectsStrength" : "0.0",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "outlineWidth" : "0.0",
+                        "physicFieldStrength" : "2.0",
+                        "physicsFieldType" : "None",
+                        "handAnimation" : "SecondHandMovementStep"
+                    },
+                    "horizontalPosition" : "-0.59600013",
+                    "filenameForImage" : ""
+                },
+                {
+                    "alpha" : "1.0",
+                    "scale" : "0.24069884",
+                    "layerType" : "DateTimeLabel",
+                    "horizontalPosition" : "-0.5960001",
+                    "angleOffset" : "0.7853982",
+                    "desiredThemeColorIndex" : 4,
+                    "verticalPosition" : "-0.69799995",
+                    "layerOptions" : {
+                        "desiredThemeColorIndexForOutline" : "4",
+                        "effectType" : "None",
+                        "fontType" : "NumberTextTypeDINPro",
+                        "outlineWidth" : "0.0",
+                        "formatType" : "Battery"
+                    },
+                    "filenameForImage" : ""
+                }
+            ]
+        },
+        {
             "uniqueID" : "64E190A8-1136-4F91-81E7-3DDC8591B06F",
             "title" : "Cape Cod",
             "faceLayers" : [
