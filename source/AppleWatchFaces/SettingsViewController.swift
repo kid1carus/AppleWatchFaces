@@ -197,6 +197,14 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         optionMenu.addAction(cancelAction)
         
         self.present(optionMenu, animated: true, completion: nil)
+
+        //move layers table to the bottom to better handle inserts
+        if let faceLayersTableViewController = faceLayersTableViewController, SettingsViewController.currentFaceSetting.faceLayers.count>0 {
+                let indexPathBottom = IndexPath(row: SettingsViewController.currentFaceSetting.faceLayers.count-1, section: 0)
+                faceLayersTableViewController.tableView.scrollToRow(at: indexPathBottom, at: UITableView.ScrollPosition.bottom, animated: true)
+                faceLayersTableViewController.tableView.beginUpdates()
+                faceLayersTableViewController.tableView.endUpdates()
+        }
     }
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {

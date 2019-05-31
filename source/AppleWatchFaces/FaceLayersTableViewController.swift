@@ -125,9 +125,20 @@ class FaceLayersTableViewController: UITableViewController {
     }
 
     func addNewItem( layerType: FaceLayerTypes) {
+        let indexPath = IndexPath(row: SettingsViewController.currentFaceSetting.faceLayers.count-1, section: 0)
         self.tableView.beginUpdates()
-        self.tableView.insertRows(at: [IndexPath(row: SettingsViewController.currentFaceSetting.faceLayers.count-1, section: 0)], with: .automatic)
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
         self.tableView.endUpdates()
+        
+        delay(0.1) {
+            self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+        }
+        
+        delay(0.3) {
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
+    
     }
     
     func redrawPreview() {
@@ -146,12 +157,15 @@ class FaceLayersTableViewController: UITableViewController {
         
         if let data = notification.userInfo as? [String: Int], let rowIndex = data["faceLayerIndex"] {
             let selectedRow = IndexPath.init(row: rowIndex, section: 0)
-            self.tableView.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
             
-            // animate to show new heights when selected
-            tableView.beginUpdates()
-            tableView.endUpdates()
+            self.tableView.selectRow(at: selectedRow, animated: true, scrollPosition: .top)
             
+            delay(0.35) {
+                // animate to show new heights when selected
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            }
+    
             if let settingsVC = settingsViewController {
                 settingsVC.drawUIForSelectedLayer(selectedLayer: rowIndex, section: .All)
             }
