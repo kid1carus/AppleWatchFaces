@@ -11,11 +11,16 @@ import SceneKit
 import UIKit
 
 enum FaceBackgroundTypes: String {
-    case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
+    case FaceBackgroundTypeImage, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
         FaceBackgroundTypeNone
     
-    static var userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
-                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeNone]
+    static var userSelectableValues = [
+        FaceBackgroundTypeCircle,
+        FaceBackgroundTypeFilled,
+        FaceBackgroundTypeDiagonalSplit,
+        FaceBackgroundTypeVerticalSplit,
+        FaceBackgroundTypeHorizontalSplit,
+        FaceBackgroundTypeNone]
     
     static let randomizableValues = userSelectableValues //short cut, but will get none
     
@@ -47,6 +52,8 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalGradient)  { typeDescription = "Vertical Gradient" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalGradient)  { typeDescription = "Horizonal Gradient" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalGradient)  { typeDescription = "Diagonal Gradient" }
+        
+        if (nodeType == .FaceBackgroundTypeImage) { typeDescription = "Image Size" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
@@ -133,6 +140,19 @@ class FaceBackgroundNode: SKSpriteNode {
         let screenSize = AppUISettings.getScreenBoundsForImages()
         let xBounds = (screenSize.width / 2.0).rounded()
         let yBounds = (screenSize.height / 2.0).rounded()
+        
+        if (backgroundType == .FaceBackgroundTypeImage) {
+            
+            let imageNode = SKSpriteNode.init()
+            
+            //load image
+            if let image = UIImage.getImageFor(imageName: material)  {
+                imageNode.size = image.size
+                imageNode.texture = SKTexture.init(image: image)
+            }
+            
+            self.addChild(imageNode)
+        }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {
             

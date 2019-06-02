@@ -233,8 +233,13 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             let fileName =  url.lastPathComponent // SettingsViewController.currentFaceSetting.uniqueID + AppUISettings.backgroundFileName
             debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
 
-            _ = resizedImage.save(imageName: fileName) //_ = resizedImage.save(imageName: fileName)
+            _ = image.saveImported(imageName: fileName)
+            
+            //_ = resizedImage.save(imageName: fileName)
             SettingsViewController.currentFaceSetting.faceLayers[layerIndex].filenameForImage = fileName
+            if let layerOptions = SettingsViewController.currentFaceSetting.faceLayers[layerIndex].layerOptions as? ImageBackgroundLayerOptions {
+                layerOptions.backgroundType = .FaceBackgroundTypeImage
+            }
 
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
             NotificationCenter.default.post(name: FaceLayersTableViewController.reloadLayerNotificationName, object: nil, userInfo:["layerIndex":layerIndex])

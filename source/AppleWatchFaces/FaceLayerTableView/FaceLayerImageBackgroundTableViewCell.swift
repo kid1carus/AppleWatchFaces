@@ -97,6 +97,7 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         
         faceLayer.filenameForImage = "" //clear this out
         
+        layerOptions.backgroundType = .FaceBackgroundTypeFilled
         layerOptions.filename = AppUISettings.materialFiles[indexPath.row]
         filenameLabel.text = layerOptions.filename
         

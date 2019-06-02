@@ -95,6 +95,14 @@ extension UIImage {
         return ((try? self.jpegData(compressionQuality: 0.75)?.write(to: imageUrl )) != nil)
     }
     
+    //used when importing an inage from gallery or camera ( preserves transparency )
+    func saveImported(imageName: String) -> Bool {
+        // image has not been created yet: create it, store it, return it
+        let imageUrl = UIImage.getImageURL(imageName: imageName)
+        
+        return ((try? self.pngData()?.write(to: imageUrl )) != nil)
+    }
+    
     static func delete(imageName: String ) -> Bool {
         //debugPrint("looking getImagePath: " + getImagePath(imageName: imageName))
         let fileManager = FileManager.default
