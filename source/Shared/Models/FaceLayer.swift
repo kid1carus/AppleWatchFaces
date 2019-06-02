@@ -19,10 +19,11 @@ enum FaceLayerTypes: String {
     ParticleField,
     DateTimeLabel,
     ShapeRing,
-    NumberRing
+    NumberRing,
+    Gear
     
     static let userSelectableValues = [
-        SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, DateTimeLabel, ShapeRing, NumberRing, ParticleField]
+        SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, DateTimeLabel, ShapeRing, NumberRing, Gear, ParticleField]
 }
 
 class FaceLayerOptions: NSObject {
@@ -107,6 +108,8 @@ class FaceLayer: NSObject {
             self.layerOptions = ImageBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .ColorTexture:
             self.layerOptions = ImageBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        case .Gear:
+            self.layerOptions = GearLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .ParticleField:
             self.layerOptions = ParticleFieldLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         //default:
@@ -152,6 +155,8 @@ class FaceLayer: NSObject {
         if (layerType == .ImageTexture)  { typeDescription = "Image Texture" }
         if (layerType == .ColorTexture)  { typeDescription = "Color Texture" }
         if (layerType == .GradientTexture)  { typeDescription = "Gradient Texture" }
+        
+        if (layerType == .Gear) { typeDescription = "Gear" }
         
         if (layerType == .ParticleField)  { typeDescription = "Particle Field" }
         

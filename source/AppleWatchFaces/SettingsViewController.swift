@@ -142,6 +142,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         var faceLayerOptions = FaceLayerOptions()
         switch layerType {
+        case .Gear:
+            faceLayerOptions = GearLayerOptions.init(defaults: true)
         case .ShapeRing:
             faceLayerOptions = ShapeLayerOptions.init(defaults: true)
         case .NumberRing:

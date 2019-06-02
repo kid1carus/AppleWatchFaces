@@ -121,6 +121,12 @@
 		314AFC1021D51A7000C1208E /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC0F21D51A7000C1208E /* CameraHandler.swift */; };
 		314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */; };
 		314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */; };
+		314FEC8122A4FA270030DAE0 /* GearNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FEC8022A4FA270030DAE0 /* GearNode.swift */; };
+		314FEC8222A4FA270030DAE0 /* GearNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FEC8022A4FA270030DAE0 /* GearNode.swift */; };
+		314FEC8322A4FA270030DAE0 /* GearNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FEC8022A4FA270030DAE0 /* GearNode.swift */; };
+		314FEC8522A4FDC30030DAE0 /* GearLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FEC8422A4FDC30030DAE0 /* GearLayerOptions.swift */; };
+		314FEC8622A4FDC30030DAE0 /* GearLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FEC8422A4FDC30030DAE0 /* GearLayerOptions.swift */; };
+		314FEC8722A4FDC30030DAE0 /* GearLayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314FEC8422A4FDC30030DAE0 /* GearLayerOptions.swift */; };
 		315878CD22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
 		315878CE22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
 		315878CF22876338008FFC76 /* CAPECOD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 315878CC22876338008FFC76 /* CAPECOD.OTF */; };
@@ -387,6 +393,8 @@
 		314A010F21962FF4009BCE3C /* WatchFaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchFaceNode.swift; sourceTree = "<group>"; };
 		314AFC0F21D51A7000C1208E /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Selection.swift"; sourceTree = "<group>"; };
+		314FEC8022A4FA270030DAE0 /* GearNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearNode.swift; sourceTree = "<group>"; };
+		314FEC8422A4FDC30030DAE0 /* GearLayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearLayerOptions.swift; sourceTree = "<group>"; };
 		315878CC22876338008FFC76 /* CAPECOD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CAPECOD.OTF; sourceTree = "<group>"; };
 		315878D122877B4E008FFC76 /* FaceColorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceColorsTableViewController.swift; sourceTree = "<group>"; };
 		315878D422878261008FFC76 /* FaceColorSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceColorSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -579,6 +587,7 @@
 				31F56F9C21857A2000455FC6 /* SecondHandNode.swift */,
 				31724A6421FA91B400D3F599 /* ArcNode.swift */,
 				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
+				314FEC8022A4FA270030DAE0 /* GearNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -776,6 +785,7 @@
 				313BB88B227DF5DB005BE9C5 /* UserFaceSetting.swift */,
 				313BB883227DEC71005BE9C5 /* FaceSetting.swift */,
 				313BB887227DEDB2005BE9C5 /* FaceLayer.swift */,
+				314FEC8422A4FDC30030DAE0 /* GearLayerOptions.swift */,
 				310675D8229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift */,
 				31B0A1CF227F4DE80031AFC0 /* ShapeLayerOptions.swift */,
 				3103A4442293644800E7B10A /* NumberRingLayerOptions.swift */,
@@ -1059,6 +1069,7 @@
 				310D9230227E700B007A5808 /* FaceLayerShapeTableViewCell.swift in Sources */,
 				31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */,
 				31FF20CD228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */,
+				314FEC8522A4FDC30030DAE0 /* GearLayerOptions.swift in Sources */,
 				315878D222877B4E008FFC76 /* FaceColorsTableViewController.swift in Sources */,
 				311B7CB2227F9D0A0073C4C9 /* HandLayerOptions.swift in Sources */,
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
@@ -1122,6 +1133,7 @@
 				31706A12229C5DAB003F83FC /* UserClockSetting.swift in Sources */,
 				31FF20C7228E6D010023F8A5 /* SettingsViewController+Sharing.swift in Sources */,
 				312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */,
+				314FEC8122A4FA270030DAE0 /* GearNode.swift in Sources */,
 				3103A4492293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift in Sources */,
 				31F56FA421857FC100455FC6 /* WatchPreviewViewController.swift in Sources */,
 				310675D9229816D000EBCFE0 /* ImageBackgroundLayerOptions.swift in Sources */,
@@ -1148,6 +1160,7 @@
 				3188AC1121CC962000C90783 /* BezierPath+Length.swift in Sources */,
 				312E853922239740001C450B /* Double+Rounded.swift in Sources */,
 				313BB885227DEC71005BE9C5 /* FaceSetting.swift in Sources */,
+				314FEC8622A4FDC30030DAE0 /* GearLayerOptions.swift in Sources */,
 				310CDC69222CD2EF00AF3B8D /* UIImage+Gradient.swift in Sources */,
 				3100DC9E21EC26A3007423A5 /* StringExtension.swift in Sources */,
 				314A011121963537009BCE3C /* WatchFaceNode.swift in Sources */,
@@ -1181,6 +1194,7 @@
 				315AAB9022998A3C00B3A3E9 /* ParticleFieldLayerOptions.swift in Sources */,
 				3188AC1221CC962B00C90783 /* PathElement.swift in Sources */,
 				FDC17D0221FF98CE0064D962 /* InterfaceController.swift in Sources */,
+				314FEC8222A4FA270030DAE0 /* GearNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1189,6 +1203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				312E6B6B2241C7A400BB0D05 /* PhysicsNode.swift in Sources */,
+				314FEC8322A4FA270030DAE0 /* GearNode.swift in Sources */,
 				3103A447229364A600E7B10A /* NumberRingLayerOptions.swift in Sources */,
 				31C86B2922374DA000EF4186 /* UIImage+Loading.swift in Sources */,
 				31C86B0022374CEA00EF4186 /* FaceIndicatorNode.swift in Sources */,
@@ -1196,6 +1211,7 @@
 				31C86B2222374DA000EF4186 /* BezierPath+Length.swift in Sources */,
 				31C86B2622374DA000EF4186 /* SwiftyJSON.swift in Sources */,
 				310B1BB12245A25B00EA1827 /* FaceForegroundNode.swift in Sources */,
+				314FEC8722A4FDC30030DAE0 /* GearLayerOptions.swift in Sources */,
 				31C86B0F22374CF400EF4186 /* AppUISettings.swift in Sources */,
 				31C86AEA2237493600EF4186 /* ScreenSaverController.swift in Sources */,
 				31C86AFB22374CEA00EF4186 /* DotsNode.swift in Sources */,

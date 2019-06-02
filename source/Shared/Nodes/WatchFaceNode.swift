@@ -139,6 +139,19 @@ class WatchFaceNode: SKShapeNode {
             let hexColor = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
             let layerColor = SKColor.init(hexString: hexColor)
             
+            if faceLayer.layerType == .Gear {
+                guard let layerOptions = faceLayer.layerOptions as? GearLayerOptions else { return }
+                
+                let strokeColor = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForOutline)
+                
+                let gearNode = GearNode.init(gearType: layerOptions.gearType, material: hexColor, strokeColor: strokeColor, lineWidth: CGFloat(layerOptions.outlineWidth), glowWidth: 0.0)
+                gearNode.name = "gear"
+                
+                setLayerProps(layerNode: gearNode, faceLayer: faceLayer)
+                gearNode.zPosition = CGFloat(layerIndex)
+                self.addChild(gearNode)
+            }
+            
             if faceLayer.layerType == .ImageTexture {
                 guard let imageOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
                 
