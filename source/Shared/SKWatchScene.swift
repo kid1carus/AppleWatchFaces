@@ -75,6 +75,11 @@ class SKWatchScene: SKScene {
             //slow update ping
             NotificationCenter.default.post(name: SKWatchScene.sceneSlowFrameUpdateNotificationName, object: nil, userInfo:nil)
         }
+        
+        //send updates directly to watchNode for delegation in animations
+        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+            watchFaceNode.update(currentTime)
+        }
     }
     
     @objc func onNotificationForSecondsChanged(notification:Notification) {

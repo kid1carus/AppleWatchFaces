@@ -81,6 +81,25 @@ class WatchFaceNode: SKShapeNode {
 
     }
     
+    func update(_ currentTime: TimeInterval) {
+        //frame updates from scene. used for animations when needed
+        
+        let faceLayers = faceSettings.faceLayers
+        
+        //TODO: optimize this later
+        for (layerIndex, faceLayer) in faceLayers.enumerated() {
+            if faceLayer.layerType == .ImageTexture {
+                guard let imageOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { continue }
+                guard imageOptions.backgroundType == .FaceBackgroundTypeImage else { continue }
+                
+                let layerNode = self.children[layerIndex]
+                //for seconds
+                let rotateAmount = (CGFloat(currentTime) * CGFloat.pi) / 60
+                layerNode.zRotation = rotateAmount * CGFloat(imageOptions.anglePerSec)
+            }
+        }
+    }
+    
     init(faceSettings: FaceSetting, size: CGSize) {
         super.init()
         
