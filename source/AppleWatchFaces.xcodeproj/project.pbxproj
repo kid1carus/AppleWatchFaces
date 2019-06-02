@@ -252,6 +252,7 @@
 		31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
 		31D8633E21E5954B005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633A21E5954B005BCB6F /* NumberTextNode.swift */; };
+		31DD953522A3B38B00868E31 /* FaceLayerGearTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD953422A3B38B00868E31 /* FaceLayerGearTableViewCell.swift */; };
 		31E5BC4B21A39DAF00C1B35E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
 		31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */; };
 		31EF999321A0AF4F00BB54E7 /* FaceBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */; };
@@ -452,6 +453,7 @@
 		31C86B682237604800EF4186 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalTimeNode.swift; sourceTree = "<group>"; };
 		31D8633A21E5954B005BCB6F /* NumberTextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextNode.swift; sourceTree = "<group>"; };
+		31DD953422A3B38B00868E31 /* FaceLayerGearTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceLayerGearTableViewCell.swift; sourceTree = "<group>"; };
 		31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Loading.swift"; sourceTree = "<group>"; };
 		31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBackgroundNode.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 		310D922A227E26F0007A5808 /* FaceLayerTableView */ = {
 			isa = PBXGroup;
 			children = (
+				31DD953422A3B38B00868E31 /* FaceLayerGearTableViewCell.swift */,
 				315AAB922299BAAA00B3A3E9 /* FaceLayerFieldTableViewCell.swift */,
 				310675D62297820C00EBCFE0 /* FaceLayerImageBackgroundTableViewCell.swift */,
 				315878D9228793A9008FFC76 /* FaceLayerColorBackgroundTableViewCell.swift */,
@@ -1131,6 +1134,7 @@
 				315AAB8C22997FEB00B3A3E9 /* ClockDecoratorTheme.swift in Sources */,
 				31FF20D5228FB96B0023F8A5 /* ColorCollectionDataSource.swift in Sources */,
 				31706A12229C5DAB003F83FC /* UserClockSetting.swift in Sources */,
+				31DD953522A3B38B00868E31 /* FaceLayerGearTableViewCell.swift in Sources */,
 				31FF20C7228E6D010023F8A5 /* SettingsViewController+Sharing.swift in Sources */,
 				312E2D6F21F3E16A00C2F17F /* ClockTimer.swift in Sources */,
 				314FEC8122A4FA270030DAE0 /* GearNode.swift in Sources */,

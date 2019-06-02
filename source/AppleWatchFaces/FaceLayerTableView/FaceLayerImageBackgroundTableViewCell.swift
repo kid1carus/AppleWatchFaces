@@ -151,6 +151,9 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         }
         
         if (newSpeed != originalSpeed) {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
             layerOptions.anglePerSec = newSpeed
             rotationSpeedLabel.text = String(layerOptions.anglePerSec)
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])

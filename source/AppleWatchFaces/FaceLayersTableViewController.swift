@@ -212,7 +212,7 @@ class FaceLayersTableViewController: UITableViewController {
             //if selectedPath.row == indexPath.row {
                 switch faceLayer.layerType {
                 case .Gear:
-                    cellHeight = 145.0
+                    cellHeight = 230.0
                 case .ImageTexture:
                     cellHeight = 225.0
                 case .ColorTexture:
@@ -279,6 +279,9 @@ class FaceLayersTableViewController: UITableViewController {
         }
         else if (faceLayer.layerType == .ImageTexture) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerImageCellID", for: indexPath) as! FaceLayerImageBackgroundTableViewCell
+        }
+        else if (faceLayer.layerType == .Gear) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerGearID", for: indexPath) as! FaceLayerGearTableViewCell
         }
         else if (faceLayer.layerType == .ParticleField) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerFieldID", for: indexPath) as! FaceLayerFieldTableViewCell

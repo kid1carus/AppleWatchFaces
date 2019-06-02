@@ -88,13 +88,18 @@ class WatchFaceNode: SKShapeNode {
         
         //TODO: optimize this later
         for (layerIndex, faceLayer) in faceLayers.enumerated() {
+            let layerNode = self.children[layerIndex]
+            //for seconds
+            let rotateAmount = (CGFloat(currentTime) * CGFloat.pi) / 60
+            
             if faceLayer.layerType == .ImageTexture {
                 guard let imageOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { continue }
-                //guard imageOptions.backgroundType == .FaceBackgroundTypeImage else { continue }
                 
-                let layerNode = self.children[layerIndex]
-                //for seconds
-                let rotateAmount = (CGFloat(currentTime) * CGFloat.pi) / 60
+                layerNode.zRotation = rotateAmount * CGFloat(imageOptions.anglePerSec)
+            }
+            if faceLayer.layerType == .Gear {
+                guard let imageOptions = faceLayer.layerOptions as? GearLayerOptions else { continue }
+                
                 layerNode.zRotation = rotateAmount * CGFloat(imageOptions.anglePerSec)
             }
         }
