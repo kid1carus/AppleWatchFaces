@@ -11,6 +11,10 @@ import Foundation
 class ImageBackgroundLayerOptions: FaceLayerOptions {
     var filename: String
     var backgroundType: FaceBackgroundTypes
+    
+    var hasTransparency: Bool       // will save and load as PNG to preserve transp
+    var anglePerSec: Float          // 1 = 6 seconds to go all the way around
+    
     //
     
     //init from JSON, ( in from txt files )
@@ -22,6 +26,9 @@ class ImageBackgroundLayerOptions: FaceLayerOptions {
         } else {
             self.backgroundType = .FaceBackgroundTypeFilled
         }
+        self.hasTransparency = NSObject.boolValueForJSONObj(jsonObj: jsonObj, defaultVal: false, key: "hasTransparency")
+        self.anglePerSec = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "anglePerSec")
+        
         
         super.init()
     }
@@ -29,6 +36,8 @@ class ImageBackgroundLayerOptions: FaceLayerOptions {
     init(defaults: Bool ) {
         self.filename = ""
         self.backgroundType = .FaceBackgroundTypeFilled
+        self.hasTransparency = false
+        self.anglePerSec = 0.0
         
         super.init()
     }
@@ -38,6 +47,8 @@ class ImageBackgroundLayerOptions: FaceLayerOptions {
         
         serializedDict[ "filename" ] = self.filename as AnyObject
         serializedDict[ "backgroundType" ] = self.backgroundType.rawValue as AnyObject
+        serializedDict[ "hasTransparency" ] = NSNumber.init(value: self.hasTransparency as Bool)
+        serializedDict[ "anglePerSec" ] = self.anglePerSec as AnyObject
     
         return serializedDict as NSDictionary
     }

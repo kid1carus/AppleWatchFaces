@@ -69,6 +69,10 @@ class AppUISettings: NSObject {
     static let screenShotHour:CGFloat = 9
     static let screenShotMinutes:CGFloat = 41
     
+    //image rotation speed  slider
+    static let imageRotationSpeedSettigsSliderMin:Float = -10
+    static let imageRotationSpeedSettigsSliderMax:Float = 10
+    
     //hand effect spacer slider
     static let handEffectSettigsSliderSpacerMin:Float = 0
     static let handEffectSettigsSliderSpacerMax:Float = 8.0

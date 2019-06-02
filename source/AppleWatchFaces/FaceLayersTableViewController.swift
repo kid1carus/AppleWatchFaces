@@ -212,7 +212,7 @@ class FaceLayersTableViewController: UITableViewController {
             //if selectedPath.row == indexPath.row {
                 switch faceLayer.layerType {
                 case .ImageTexture:
-                    cellHeight = 175.0
+                    cellHeight = 250.0
                 case .ColorTexture:
                     cellHeight = 105.0
                 case .GradientTexture:

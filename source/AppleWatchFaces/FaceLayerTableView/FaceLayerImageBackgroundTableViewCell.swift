@@ -14,11 +14,25 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     @IBOutlet var imageSelectionCollectionView: UICollectionView!
     @IBOutlet var cameraButton: UIButton!
     @IBOutlet var filenameLabel: UILabel!
+    @IBOutlet var hasTransparencySwitch: UISwitch!
+    @IBOutlet var rotationSpeedSlider: UISlider!
     
     @IBOutlet var shapeButton: UIButton!
     @IBOutlet var shapeNameLabel: UILabel!
     
     let settingTypeString = "imageBackground"
+    
+    @IBAction func hasTransparencySwitchFlipped( sender: UISwitch ) {
+        let faceLayer = myFaceLayer()
+        guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
+        layerOptions.hasTransparency = sender.isOn
+        
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
+    }
     
     override func returnFromAction( actionName: String, itemChosen: Int) {
         let faceLayer = myFaceLayer()
@@ -89,11 +103,35 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
     
+    @IBAction func speedSliderValueDidChange(sender: UISlider ) {
+        let faceLayer = myFaceLayer()
+        guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+        
+        let roundedValue = Float(round(50*sender.value)/50)
+        if roundedValue != layerOptions.anglePerSec {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            
+            debugPrint("slider value:" + String( roundedValue ) )
+            layerOptions.anglePerSec = roundedValue
+            let layerIndex = myLayerIndex() ?? 0
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
+                                            userInfo:["settingType":settingTypeString ,"layerIndex":layerIndex])
+        }
+    }
+    
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
         
         guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+        
+        rotationSpeedSlider.minimumValue = AppUISettings.imageRotationSpeedSettigsSliderMin
+        rotationSpeedSlider.maximumValue = AppUISettings.imageRotationSpeedSettigsSliderMax
+        rotationSpeedSlider.value = layerOptions.anglePerSec
+            
         shapeNameLabel.text = FaceBackgroundNode.descriptionForType(layerOptions.backgroundType)
+        
+        hasTransparencySwitch.isOn = layerOptions.hasTransparency
         
         if faceLayer.filenameForImage != "" {
             filenameLabel.text = faceLayer.filenameForImage
