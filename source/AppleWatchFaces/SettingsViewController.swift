@@ -172,6 +172,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         SettingsViewController.addToUndoStack()
         setUndoRedoButtonStatus()
         
+        //turn on layer controls in case this is the first layer
+        showLayerControls()
+        
         SettingsViewController.currentFaceSetting.faceLayers.append(newLayer)
         redrawPreviewClock()
         
