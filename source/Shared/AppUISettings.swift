@@ -103,6 +103,7 @@ class AppUISettings: NSObject {
     
     //some other DRY settings
     static let thumbnailFolder = "thumbs"
+    static let originalsFolder = "originals"
     static let backgroundFileName = "-customBackground"
     
     static let layerSettingsScaleMax:Float = 2.0 //how much things can be scaled up ( should be at least 1.0 )
@@ -138,10 +139,16 @@ class AppUISettings: NSObject {
         let filemgr = FileManager.default
         let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
         let docsURL = dirPaths[0]
-        let newDir = docsURL.appendingPathComponent(AppUISettings.thumbnailFolder).path
+        let thumbDir = docsURL.appendingPathComponent(AppUISettings.thumbnailFolder).path
+        let originalsDir = docsURL.appendingPathComponent(AppUISettings.originalsFolder).path
         
         do{
-            try filemgr.createDirectory(atPath: newDir,withIntermediateDirectories: true, attributes: nil)
+            try filemgr.createDirectory(atPath: thumbDir,withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Error: \(error.localizedDescription)")
+        }
+        do{
+            try filemgr.createDirectory(atPath: originalsDir,withIntermediateDirectories: true, attributes: nil)
         } catch {
             print("Error: \(error.localizedDescription)")
         }
@@ -203,6 +210,31 @@ class AppUISettings: NSObject {
         let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return newImage
+    }
+    
+    static func imageWithImage (image:UIImage, fitToSize: CGSize) -> UIImage {
+        
+        var newSize = CGSize.init()
+        
+        if (image.size.height > image.size.width) { //portrait
+            let oldWidth = image.size.width
+            let scaleFactor = fitToSize.width / oldWidth
+            
+            newSize.height = image.size.height * scaleFactor
+            newSize.width = oldWidth * scaleFactor
+        } else {
+            let oldHeight = image.size.height
+            let scaleFactor = fitToSize.height / oldHeight
+            
+            newSize.width = image.size.width * scaleFactor
+            newSize.height = oldHeight * scaleFactor
+        }
+
+        UIGraphicsBeginImageContext(CGSize(width:newSize.width, height:newSize.height))
+        image.draw(in: CGRect(x:0, y:0, width:newSize.width, height:newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
     }
 
 }

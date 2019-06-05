@@ -139,6 +139,22 @@ class WatchFaceNode: SKShapeNode {
             let hexColor = hexColorForDesiredIndex(index: faceLayer.desiredThemeColorIndex)
             let layerColor = SKColor.init(hexString: hexColor)
             
+            if faceLayer.layerType == .ImageTexture {
+                guard let imageOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+                
+                var filename = imageOptions.filename
+                if (faceLayer.filenameForImage != "") {
+                    filename = faceLayer.filenameForImage
+                }
+                
+                let backgroundNode = FaceBackgroundNode.init(backgroundType: imageOptions.backgroundType , material: filename)
+                backgroundNode.name = "background"
+                
+                setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
+                backgroundNode.zPosition = CGFloat(layerIndex)
+                self.addChild(backgroundNode)
+            }
+            
             if faceLayer.layerType == .SecondHand {
                 guard let layerOptions = faceLayer.layerOptions as? SecondHandLayerOptions else { return }
                 let strokeColor = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForOutline)
@@ -169,21 +185,6 @@ class WatchFaceNode: SKShapeNode {
                 setLayerProps(layerNode: minHandNode, faceLayer: faceLayer)
                 minHandNode.zPosition = CGFloat(layerIndex)
                 self.addChild(minHandNode)
-            }
-            if faceLayer.layerType == .ImageTexture {
-                guard let imageOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
-                
-                var filename = imageOptions.filename
-                if (faceLayer.filenameForImage != "") {
-                    filename = faceLayer.filenameForImage
-                }
-                
-                let backgroundNode = FaceBackgroundNode.init(backgroundType: imageOptions.backgroundType , material: filename)
-                backgroundNode.name = "background"
-                
-                setLayerProps(layerNode: backgroundNode, faceLayer: faceLayer)
-                backgroundNode.zPosition = CGFloat(layerIndex)
-                self.addChild(backgroundNode)
             }
             if faceLayer.layerType == .ColorTexture {
                 guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }

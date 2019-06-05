@@ -211,7 +211,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     }
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {
-        debugPrint("onNotificationForSettingsChanged called")
+        //debugPrint("onNotificationForSettingsChanged called")
  
         redrawPreviewClock()
         setUndoRedoButtonStatus()
@@ -227,17 +227,25 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             SettingsViewController.addToUndoStack()
 
             /* get your image here */
-            let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 312, height: 390))
+            let optimalWidth = AppUISettings.getScreenBoundsForImages().width * 1.0
+            let optimalHeight = AppUISettings.getScreenBoundsForImages().height * 1.0
+            let optimalSize = CGSize.init(width: optimalWidth, height: optimalHeight)
+            let resizedImage = AppUISettings.imageWithImage(image: image, fitToSize: optimalSize)
 
             // save it to the docs folder with name of the filename
             let fileName =  url.lastPathComponent // SettingsViewController.currentFaceSetting.uniqueID + AppUISettings.backgroundFileName
-            debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
+            debugPrint("got an image! filename: " + fileName + " original: " + image.description + " reasized: " + resizedImage.description)
 
+            if let layerOptions = SettingsViewController.currentFaceSetting.faceLayers[layerIndex].layerOptions as? ImageBackgroundLayerOptions {
+            
+            //save original
             _ = image.saveImported(imageName: fileName)
+            //save resized for use
+            _ = resizedImage.save(imageName: fileName, usePNG: layerOptions.hasTransparency)
             
             //_ = resizedImage.save(imageName: fileName)
             SettingsViewController.currentFaceSetting.faceLayers[layerIndex].filenameForImage = fileName
-            if let layerOptions = SettingsViewController.currentFaceSetting.faceLayers[layerIndex].layerOptions as? ImageBackgroundLayerOptions {
+            
                 layerOptions.backgroundType = .FaceBackgroundTypeImage
             }
 

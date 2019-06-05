@@ -143,15 +143,14 @@ class FaceBackgroundNode: SKSpriteNode {
         
         if (backgroundType == .FaceBackgroundTypeImage) {
             
-            let imageNode = SKSpriteNode.init()
-            
             //load image
             if let image = UIImage.getImageFor(imageName: material)  {
-                imageNode.size = image.size
-                imageNode.texture = SKTexture.init(image: image)
+                let texture = SKTexture.init(image: image)
+                let scaledSize = CGSize.init(width: image.size.width * image.scale, height: image.size.height * image.scale)
+                let imageNode = SKSpriteNode.init(texture: texture, size: scaledSize)
+                self.addChild(imageNode)
             }
-            
-            self.addChild(imageNode)
+    
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {

@@ -162,7 +162,7 @@ class WatchPreviewViewController: UIViewController {
     func makeThumb( imageName:String, cornerCrop: Bool ) -> Bool {
         //let newView = skView.snapshotView(afterScreenUpdates: true)
         if let newImage = skView?.snapshot {
-            return newImage.save(imageName: imageName, cornerCrop: cornerCrop)
+            return newImage.save(imageName: imageName, cornerCrop: cornerCrop, usePNG: false)
         } else {
             return false
         }

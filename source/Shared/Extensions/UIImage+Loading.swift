@@ -16,6 +16,25 @@ extension UIImage {
     static let screenScale:CGFloat = UIScreen.main.scale
     #endif
     
+    static func getOriginalImagePath( imageName: String ) -> String {
+        let fileManager = FileManager.default
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        if let documentDirectory: URL = urls.first {
+            let imagePath = documentDirectory.appendingPathComponent(AppUISettings.originalsFolder, isDirectory: true).appendingPathComponent( imageName + ".png" )
+            return imagePath.absoluteString
+        }
+        
+        return ""
+    }
+    
+    static func getOriginalImageURL( imageName: String) -> URL {
+        // declare image location
+        let imagePath = getOriginalImagePath( imageName: imageName )
+        let imageUrl = URL.init(string: imagePath)!
+        
+        return imageUrl
+    }
+    
     static func getImagePath( imageName: String ) -> String {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
@@ -77,10 +96,14 @@ extension UIImage {
     }
     
     func save(imageName: String) -> Bool {
-        return save(imageName: imageName, cornerCrop: false)
+        return save(imageName: imageName, usePNG: false)
     }
     
-    func save(imageName: String, cornerCrop: Bool ) -> Bool {
+    func save(imageName: String, usePNG: Bool) -> Bool {
+        return save(imageName: imageName, cornerCrop: false, usePNG: usePNG)
+    }
+    
+    func save(imageName: String, cornerCrop: Bool, usePNG: Bool ) -> Bool {
         // image has not been created yet: create it, store it, return it
         let imageUrl = UIImage.getImageURL(imageName: imageName)
         
@@ -92,13 +115,18 @@ extension UIImage {
                 return ((try? croppedImage.jpegData(compressionQuality: 0.75)?.write(to: imageUrl )) != nil)
             }
         }
-        return ((try? self.jpegData(compressionQuality: 0.75)?.write(to: imageUrl )) != nil)
+        if (usePNG) {
+            return ((try? self.pngData()?.write(to: imageUrl )) != nil)
+        } else {
+            return ((try? self.jpegData(compressionQuality: 0.75)?.write(to: imageUrl )) != nil)
+        }
+
     }
     
-    //used when importing an inage from gallery or camera ( preserves transparency )
+    //used when importing an inage from gallery or camera ( preserves transparency and creates a resized version if needed  )
     func saveImported(imageName: String) -> Bool {
         // image has not been created yet: create it, store it, return it
-        let imageUrl = UIImage.getImageURL(imageName: imageName)
+        let imageUrl = UIImage.getOriginalImageURL(imageName: imageName)
         
         return ((try? self.pngData()?.write(to: imageUrl )) != nil)
     }
