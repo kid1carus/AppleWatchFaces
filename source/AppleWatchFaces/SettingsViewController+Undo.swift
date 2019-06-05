@@ -12,7 +12,7 @@ import WatchConnectivity
 extension SettingsViewController {
     
     func setUndoRedoButtonStatus() {
-        debugPrint("undoArray count:" + SettingsViewController.undoArray.count.description)
+        //debugPrint("undoArray count:" + SettingsViewController.undoArray.count.description)
         if SettingsViewController.undoArray.count>0 {
             undoButton.isEnabled = true
         } else {
