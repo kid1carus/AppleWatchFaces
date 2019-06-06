@@ -15,7 +15,10 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     @IBOutlet var cameraButton: UIButton!
     @IBOutlet var filenameLabel: UILabel!
     @IBOutlet var hasTransparencySwitch: UISwitch!
-    @IBOutlet var rotationSpeedSlider: UISlider!
+    //@IBOutlet var rotationSpeedSlider: UISlider!
+    @IBOutlet var rotationSpeedFaster: UIButton!
+    @IBOutlet var rotationSpeedLower: UIButton!
+    @IBOutlet var rotationSpeedLabel: UILabel!
     
     @IBOutlet var shapeButton: UIButton!
     @IBOutlet var shapeNameLabel: UILabel!
@@ -30,6 +33,16 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         SettingsViewController.addToUndoStack()
         
         layerOptions.hasTransparency = sender.isOn
+        
+        if (layerOptions.hasTransparency) {
+            //re import from camera
+            NotificationCenter.default.post(name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil, userInfo:["layerIndex":myLayerIndex()!])
+        } else {
+            // remake thumb
+            if let image = UIImage.getImageFor(imageName: faceLayer.filenameForImage)  {
+                _ = image.save(imageName: faceLayer.filenameForImage)
+            }
+        }
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
@@ -104,32 +117,67 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
     
-    @IBAction func speedSliderValueDidChange(sender: UISlider ) {
+    @IBAction func speedButtonPressed(sender: UIButton) {
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
         
-        let roundedValue = Float(round(50*sender.value)/50)
-        if roundedValue != layerOptions.anglePerSec {
-            //add to undo stack for actions to be able to undo
-            SettingsViewController.addToUndoStack()
-            
-            debugPrint("slider value:" + String( roundedValue ) )
-            layerOptions.anglePerSec = roundedValue
-            let layerIndex = myLayerIndex() ?? 0
-            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
-                                            userInfo:["settingType":settingTypeString ,"layerIndex":layerIndex])
+        let valueToAdd:Float = 0.1
+        let originalSpeed = layerOptions.anglePerSec
+        var newSpeed = originalSpeed
+        
+        func roundedValue(val:Float) -> Float {
+            return Float(round(50*val)/50)
+        }
+        if sender == rotationSpeedLower {
+            if roundedValue(val: originalSpeed - valueToAdd) > AppUISettings.imageRotationSpeedSettigsSliderMin {
+                newSpeed = roundedValue(val: originalSpeed - valueToAdd)
+            } else {
+                newSpeed = AppUISettings.imageRotationSpeedSettigsSliderMin
+            }
+        }
+        if sender == rotationSpeedFaster {
+            if roundedValue(val: originalSpeed + valueToAdd) < AppUISettings.imageRotationSpeedSettigsSliderMax {
+                newSpeed = roundedValue(val: originalSpeed + valueToAdd)
+            } else {
+                newSpeed = AppUISettings.imageRotationSpeedSettigsSliderMax
+            }
+        }
+        
+        if (newSpeed != originalSpeed) {
+            layerOptions.anglePerSec = newSpeed
+            rotationSpeedLabel.text = String(layerOptions.anglePerSec)
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
         }
     }
+    
+//    @IBAction func speedSliderValueDidChange(sender: UISlider ) {
+//        let faceLayer = myFaceLayer()
+//        guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
+//
+//        let roundedValue = Float(round(50*sender.value)/50)
+//        if roundedValue != layerOptions.anglePerSec {
+//            //add to undo stack for actions to be able to undo
+//            SettingsViewController.addToUndoStack()
+//
+//            debugPrint("slider value:" + String( roundedValue ) )
+//            layerOptions.anglePerSec = roundedValue
+//            let layerIndex = myLayerIndex() ?? 0
+//            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
+//                                            userInfo:["settingType":settingTypeString ,"layerIndex":layerIndex])
+//        }
+//    }
     
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
         
         guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
         
-        rotationSpeedSlider.minimumValue = AppUISettings.imageRotationSpeedSettigsSliderMin
-        rotationSpeedSlider.maximumValue = AppUISettings.imageRotationSpeedSettigsSliderMax
-        rotationSpeedSlider.value = layerOptions.anglePerSec
-            
+//        rotationSpeedSlider.minimumValue = AppUISettings.imageRotationSpeedSettigsSliderMin
+//        rotationSpeedSlider.maximumValue = AppUISettings.imageRotationSpeedSettigsSliderMax
+//        rotationSpeedSlider.value = layerOptions.anglePerSec
+
+        rotationSpeedLabel.text = String(layerOptions.anglePerSec)
+        
         shapeNameLabel.text = FaceBackgroundNode.descriptionForType(layerOptions.backgroundType)
         
         hasTransparencySwitch.isOn = layerOptions.hasTransparency

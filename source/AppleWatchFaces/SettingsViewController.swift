@@ -212,7 +212,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {
         //debugPrint("onNotificationForSettingsChanged called")
- 
+        
         redrawPreviewClock()
         setUndoRedoButtonStatus()
     }
@@ -220,8 +220,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @objc func onNotificationForGetCameraImage(notification:Notification) {
         guard let data = notification.userInfo as? [String: Int] else { return }
         guard let layerIndex = data["layerIndex"] else { return }
-            
+        
         CameraHandler.shared.showActionSheet(vc: self)
+        
         CameraHandler.shared.imagePickedBlock = { (image, url) in
             //add to undo stack for actions to be able to undo
             SettingsViewController.addToUndoStack()
