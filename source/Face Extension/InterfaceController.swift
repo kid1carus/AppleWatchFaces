@@ -100,22 +100,15 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             } catch {
                 //print("Failed to delete existing file:\n\((error as NSError).description)")
             }
-            
+        
             do {
                 let imageData = try Data(contentsOf: file.fileURL)
-                if let newImage = UIImage.init(data: imageData) {
-                    if newImage.save(imageName: filename) {
-                        //only needed for one off test load, not sync
-                        if type == "clockFaceMaterialImage" {
-                            //reload existing watch face
-                            //debugPrint("redrawing for material image")
-                            //redrawCurrent(transition: false, direction: .up)
-                        }
-                    }
-                }
-            } catch let error as NSError {
-                print("Cant copy fle -- Something went wrong: \(error)")
+                let imageURL = UIImage.getImageURL(imageName: filename)
+                try imageData.write(to: imageURL)
+            } catch {
+                debugPrint("cant write image to URL")
             }
+ 
         }
         
         //handle temporary settings
