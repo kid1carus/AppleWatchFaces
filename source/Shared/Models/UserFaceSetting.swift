@@ -124,16 +124,22 @@ class UserFaceSetting: NSObject {
                     for imageJSONObj in imagesSerialized {
                         let filename = imageJSONObj["filename"].stringValue
                         let base64JPGString = imageJSONObj["imageData"].stringValue
+                        let hasTransparency = NSObject.boolValueForJSONObj(jsonObj: imageJSONObj, defaultVal: false, key: "hasTransparency")
                         
                         if let imageData = NSData(base64Encoded: base64JPGString, options: NSData.Base64DecodingOptions.init(rawValue: 0) ) as Data? {
-                            let newImageURL = UIImage.getImageURL(imageName: filename)
-                            do {
-                                try imageData.write(to: newImageURL)
-                            }
-                            catch {
-                                debugPrint("cant write new JPG")
-                            }
+                            if let newImage = UIImage.init(data: imageData) {
                             
+                                let optimalSize = AppUISettings.getOptimalImageSize()
+                                let resizedImage = AppUISettings.imageWithImage(image: newImage, fitToSize: optimalSize)
+                                if hasTransparency {
+                                    _ = resizedImage.save(imageName: filename, usePNG: true)
+                                } else {
+                                    _ = resizedImage.save(imageName: filename, usePNG: false)
+                                }
+                                debugPrint("imported new image: " + filename)
+                                debugPrint("has tranparency: " + hasTransparency.description)
+                                debugPrint("resized size: " + resizedImage.size.debugDescription)
+                            }
                             
                         }
                     }

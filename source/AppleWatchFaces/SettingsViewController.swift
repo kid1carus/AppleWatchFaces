@@ -228,9 +228,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             SettingsViewController.addToUndoStack()
 
             /* get your image here */
-            let optimalWidth = AppUISettings.getScreenBoundsForImages().width * 1.0
-            let optimalHeight = AppUISettings.getScreenBoundsForImages().height * 1.0
-            let optimalSize = CGSize.init(width: optimalWidth, height: optimalHeight)
+            let optimalSize = AppUISettings.getOptimalImageSize()
             let resizedImage = AppUISettings.imageWithImage(image: image, fitToSize: optimalSize)
 
             // save it to the docs folder with name of the filename

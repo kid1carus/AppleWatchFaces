@@ -204,6 +204,12 @@ class AppUISettings: NSObject {
         return CGSize.init(width: w, height: h)
     }
     
+    static func getOptimalImageSize() -> CGSize {
+        let optimalWidth = AppUISettings.getScreenBoundsForImages().width * 1.0
+        let optimalHeight = AppUISettings.getScreenBoundsForImages().height * 1.0
+        return CGSize.init(width: optimalWidth, height: optimalHeight)
+    }
+    
     static func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
         image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
