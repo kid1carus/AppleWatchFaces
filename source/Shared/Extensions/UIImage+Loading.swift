@@ -57,13 +57,25 @@ extension UIImage {
     static func getValidatedImageJPGData(imageName: String) -> String? {
         let fileManager = FileManager.default
         // check if the image is stored already
-        if fileManager.fileExists(atPath: getImageURL(imageName: imageName).path ) {
-            if let imageData: Data = try? Data(contentsOf: getImageURL(imageName: imageName) ) {
+        // if has an original image, use that
+        var pathForImage = ""
+        
+        if fileManager.fileExists(atPath: getOriginalImageURL(imageName: imageName).path) {
+            pathForImage = getImageURL(imageName: imageName).path
+            debugPrint("used original path for export: " + imageName)
+        }
+        else if fileManager.fileExists(atPath: getImageURL(imageName: imageName).path) {
+            pathForImage = getImageURL(imageName: imageName).path
+            debugPrint("used thumb path for export: " + imageName)
+        }
+        if pathForImage != "" {
+            if let imageData: Data = try? Data(contentsOf: URL.init(fileURLWithPath: pathForImage) ) {
                 //return base64 encoded string
                 let base64Encoded = imageData.base64EncodedString(options: Data.Base64EncodingOptions.init(rawValue: 0))
                 return base64Encoded
             }
         }
+    
         return nil
     }
     
@@ -120,7 +132,6 @@ extension UIImage {
         } else {
             return ((try? self.jpegData(compressionQuality: 0.75)?.write(to: imageUrl )) != nil)
         }
-
     }
     
     //used when importing an inage from gallery or camera ( preserves transparency and creates a resized version if needed  )

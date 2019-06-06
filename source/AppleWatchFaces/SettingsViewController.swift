@@ -238,13 +238,18 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
 
             if let layerOptions = SettingsViewController.currentFaceSetting.faceLayers[layerIndex].layerOptions as? ImageBackgroundLayerOptions {
             
-            //save original
-            _ = image.saveImported(imageName: fileName)
-            //save resized for use
-            _ = resizedImage.save(imageName: fileName, usePNG: layerOptions.hasTransparency)
+                //only save original if its larger, otherwise we can use thumb
+                if image.size.width > resizedImage.size.width && image.size.height > resizedImage.size.height {
+                    //save original
+                    debugPrint("** saved an original for export **")
+                    _ = image.saveImported(imageName: fileName)
+                }
+                
+                //save resized for use in the app ( but maybe not sharing )
+                _ = resizedImage.save(imageName: fileName, usePNG: layerOptions.hasTransparency)
             
-            //_ = resizedImage.save(imageName: fileName)
-            SettingsViewController.currentFaceSetting.faceLayers[layerIndex].filenameForImage = fileName
+                //_ = resizedImage.save(imageName: fileName)
+                SettingsViewController.currentFaceSetting.faceLayers[layerIndex].filenameForImage = fileName
             
                 layerOptions.backgroundType = .FaceBackgroundTypeImage
             }

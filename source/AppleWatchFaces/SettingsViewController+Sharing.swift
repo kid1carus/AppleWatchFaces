@@ -28,6 +28,11 @@ extension SettingsViewController {
                     if let jpgDataString = UIImage.getValidatedImageJPGData(imageName: layer.filenameForImage) {
                         layerImageDict["imageData"] = jpgDataString
                         layerImageDict["filename"] = layer.filenameForImage
+                        
+                        if let layerOptions = layer.layerOptions as? ImageBackgroundLayerOptions {
+                            layerImageDict["hasTransparency"] = layerOptions.hasTransparency
+                        }
+                        
                         embeddedImages.append(layerImageDict)
                     }
                 }

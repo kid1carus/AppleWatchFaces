@@ -71,7 +71,7 @@ class UserFaceSetting: NSObject {
 
         //load serialized data into shared clock settings
         for faceSettingSerialized in faceSettingsSerializedArray {
-            print("face: got title", faceSettingSerialized["title"])
+            //print("face: got title", faceSettingSerialized["title"])
             let newFaceSetting = FaceSetting.init(jsonObj: faceSettingSerialized)
             debugPrint("n:" + newFaceSetting.title + " " + newFaceSetting.uniqueID)
             sharedFaceSettings.append( newFaceSetting )
