@@ -156,6 +156,7 @@ If you need to re-install, or just want to manually edit the settings file. Use 
 ## Authors
 
 Mike Hill - [@orffy](https://twitter.com/orffy)
+Sylvian [@ElChoquito](https://twitter.com/SylGllr)
 
 ## Special thanks
 
