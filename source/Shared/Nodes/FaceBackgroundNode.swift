@@ -148,6 +148,22 @@ class FaceBackgroundNode: SKSpriteNode {
         let xBounds = (screenSize.width / 2.0).rounded()
         let yBounds = (screenSize.height / 2.0).rounded()
         
+        func maskImageIntoShape( materialToUse: String, shapeNode: SKShapeNode) -> SKNode {
+            //needed to properly be able to set alpha
+            let effectsNodeWrapper = SKEffectNode.init()
+            
+            shapeNode.fillColor = SKColor.white //needed for crop to mask properly
+            shapeNode.lineWidth = 0.0
+            let cropNode = SKCropNode()
+            let filledNode = FaceBackgroundNode.filledShapeNode(material: materialToUse)
+            cropNode.addChild(filledNode)
+            cropNode.maskNode = shapeNode
+            
+            effectsNodeWrapper.addChild(cropNode)
+            effectsNodeWrapper.shouldRasterize = true
+            return effectsNodeWrapper
+        }
+        
         if (backgroundType == .FaceBackgroundTypeImage) {
             
             //load image
@@ -217,14 +233,18 @@ class FaceBackgroundNode: SKSpriteNode {
             backgroundPath.close()
 
             //transform to work for us
-            backgroundPath.apply(CGAffineTransform.init(scaleX: 0.7, y: -0.7))
+            backgroundPath.apply(CGAffineTransform.init(scaleX: 0.71, y: -0.71))
             
             let shape = SKShapeNode.init(path: backgroundPath.cgPath)
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
             
-            self.addChild(shape)
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+                self.addChild( maskImageIntoShape(materialToUse: material, shapeNode: shape) )
+            }
 
         }
         
@@ -252,14 +272,18 @@ class FaceBackgroundNode: SKSpriteNode {
             bezierPath.close()
             
             //transform to work for us
-            bezierPath.apply(CGAffineTransform.init(scaleX: 0.7, y: -0.7))
+            bezierPath.apply(CGAffineTransform.init(scaleX: 0.71, y: -0.71))
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
             
-            self.addChild(shape)
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+                self.addChild( maskImageIntoShape(materialToUse: material, shapeNode: shape) )
+            }
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit) {
@@ -270,6 +294,7 @@ class FaceBackgroundNode: SKSpriteNode {
             bezierPath.close()
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            
             shape.setMaterial(material: material)
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
@@ -287,11 +312,14 @@ class FaceBackgroundNode: SKSpriteNode {
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
-            
-            self.addChild(shape)
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+                self.addChild( maskImageIntoShape(materialToUse: material, shapeNode: shape) )
+            }
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalSplit) {
@@ -304,11 +332,14 @@ class FaceBackgroundNode: SKSpriteNode {
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
-            
-            self.addChild(shape)
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+                self.addChild( maskImageIntoShape(materialToUse: material, shapeNode: shape) )
+            }
         
         }
         
@@ -317,11 +348,14 @@ class FaceBackgroundNode: SKSpriteNode {
             let r = CGFloat(1.1)
             let shape = SKShapeNode.init(circleOfRadius: r * sizeMultiplier)
             
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
-            
-            self.addChild(shape)
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+               self.addChild( maskImageIntoShape(materialToUse: material, shapeNode: shape) )
+            }
             
         }
         
