@@ -13,7 +13,7 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     
     @IBOutlet var imageSelectionCollectionView: UICollectionView!
     @IBOutlet var cameraButton: UIButton!
-    @IBOutlet var filenameLabel: UILabel!
+    //@IBOutlet var filenameLabel: UILabel!
     @IBOutlet var hasTransparencySwitch: UISwitch!
     //@IBOutlet var rotationSpeedSlider: UISlider!
     @IBOutlet var rotationSpeedFaster: UIButton!
@@ -29,10 +29,11 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
         
+        layerOptions.hasTransparency = sender.isOn
+        hasTransparencySwitch.isEnabled = layerOptions.hasTransparency
+        
         //add to undo stack for actions to be able to undo
         SettingsViewController.addToUndoStack()
-        
-        layerOptions.hasTransparency = sender.isOn
         
         if (layerOptions.hasTransparency) {
             //re import from camera
@@ -40,7 +41,9 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         } else {
             // remake thumb
             if let image = UIImage.getImageFor(imageName: faceLayer.filenameForImage)  {
-                _ = image.save(imageName: faceLayer.filenameForImage)
+                //downgrade image and get new filename
+                faceLayer.filenameForImage = image.downgradePNGtoJPG(imageName: faceLayer.filenameForImage)
+                //filenameLabel.text = faceLayer.filenameForImage
             }
         }
         
@@ -64,6 +67,11 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     }
     
     @IBAction func buttonTapped( sender: UIButton ) {
+        let faceLayer = myFaceLayer()
+        
+        //dont allow custom camera images to be shaped ( they look gross )
+        guard faceLayer.filenameForImage == "" else { return }
+        
         SettingsViewController.actionCell = self
         
         if sender == shapeButton {
@@ -109,10 +117,14 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         SettingsViewController.addToUndoStack()
         
         faceLayer.filenameForImage = "" //clear this out
+        unSelectCameraButton()
         
-        layerOptions.backgroundType = .FaceBackgroundTypeFilled
+        //if it was a camera image sized, fill it
+        if layerOptions.backgroundType == .FaceBackgroundTypeImage {
+            layerOptions.backgroundType = .FaceBackgroundTypeFilled
+        }
         layerOptions.filename = AppUISettings.materialFiles[indexPath.row]
-        filenameLabel.text = layerOptions.filename
+        //filenameLabel.text = layerOptions.filename
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
     }
@@ -167,6 +179,18 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
 //        }
 //    }
     
+    func selectCameraButton() {
+        cameraButton.layer.borderWidth = 2.0
+        cameraButton.layer.borderColor = UIColor.init(hexString: AppUISettings.settingHighlightColor).cgColor
+    }
+    
+    func unSelectCameraButton() {
+        hasTransparencySwitch.isEnabled = false
+        cameraButton.setBackgroundImage(UIImage.init(named: "cameraIcon"), for: UIControl.State.normal)
+        cameraButton.layer.borderWidth = 0.0
+        cameraButton.layer.borderColor = UIColor.clear.cgColor
+    }
+    
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
         
@@ -181,12 +205,21 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         shapeNameLabel.text = FaceBackgroundNode.descriptionForType(layerOptions.backgroundType)
         
         hasTransparencySwitch.isOn = layerOptions.hasTransparency
+        hasTransparencySwitch.isEnabled = layerOptions.hasTransparency
         
         if faceLayer.filenameForImage != "" {
-            filenameLabel.text = faceLayer.filenameForImage
+            //filenameLabel.text = faceLayer.filenameForImage
+            imageSelectionCollectionView.deselectAll(animated: true)
+            if let cameraImage = UIImage.getImageFor(imageName: faceLayer.filenameForImage) {
+                let resizedImage = AppUISettings.imageWithImage(image: cameraImage, scaledToSize: cameraButton.frame.size)
+                cameraButton.setBackgroundImage(resizedImage, for: UIControl.State.normal)
+            }
+            selectCameraButton()
         } else {
+            unSelectCameraButton()
+            
             if let meterialsIndex = AppUISettings.materialFiles.index(of: layerOptions.filename) {
-                filenameLabel.text = layerOptions.filename
+                //filenameLabel.text = layerOptions.filename
                 let indexPath = IndexPath.init(row: meterialsIndex, section: 0)
                 imageSelectionCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             }

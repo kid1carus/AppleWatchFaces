@@ -236,6 +236,14 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             debugPrint("got an image! filename: " + fileName + " original: " + image.description + " reasized: " + resizedImage.description)
 
             if let layerOptions = SettingsViewController.currentFaceSetting.faceLayers[layerIndex].layerOptions as? ImageBackgroundLayerOptions {
+                
+                //grab file extension for determining if we should set transparency
+                let pathExtention = url.pathExtension
+                if pathExtention.uppercased() == "PNG" {
+                    layerOptions.hasTransparency = true
+                } else {
+                    layerOptions.hasTransparency = false
+                }
             
                 //only save original if its larger, otherwise we can use thumb
                 if image.size.width > resizedImage.size.width && image.size.height > resizedImage.size.height {

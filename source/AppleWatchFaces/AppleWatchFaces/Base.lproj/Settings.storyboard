@@ -245,11 +245,11 @@
                                     <outlet property="titleLabel" destination="T1k-tf-uqh" id="QUa-ls-3Es"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceLayerImageCellID" rowHeight="250" id="cId-tz-F3a" customClass="FaceLayerImageBackgroundTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="173" width="414" height="250"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceLayerImageCellID" rowHeight="225" id="cId-tz-F3a" customClass="FaceLayerImageBackgroundTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="173" width="414" height="225"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cId-tz-F3a" id="byy-1g-Sng">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="249.66666666666666"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="224.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Texture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gn-MC-yA0">
@@ -261,17 +261,8 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filename" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FW8-dn-pcI">
-                                            <rect key="frame" x="8" y="40" width="374" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="KZr-cF-xjw"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TQh-YL-wtZ">
-                                            <rect key="frame" x="82" y="68" width="312" height="66"/>
+                                            <rect key="frame" x="82" y="40" width="312" height="66"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="66" id="2uO-Re-Xu1"/>
                                             </constraints>
@@ -307,7 +298,8 @@
                                             </connections>
                                         </collectionView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dyy-7g-LbI">
-                                            <rect key="frame" x="8" y="68" width="66" height="66"/>
+                                            <rect key="frame" x="8" y="40" width="66" height="66"/>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="66" id="5aD-Wi-5oc"/>
                                                 <constraint firstAttribute="width" constant="66" id="Z3T-iL-tLo"/>
@@ -318,7 +310,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJR-3M-g4R">
-                                            <rect key="frame" x="8" y="142" width="49" height="21"/>
+                                            <rect key="frame" x="8" y="114" width="49" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="j0f-Lp-Twl"/>
                                             </constraints>
@@ -327,7 +319,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See Through" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T4-6c-Gjy">
-                                            <rect key="frame" x="8" y="176" width="124" height="21"/>
+                                            <rect key="frame" x="8" y="148" width="124" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="WkN-yF-rsT"/>
                                                 <constraint firstAttribute="height" constant="21" id="b4s-sX-jA4"/>
@@ -338,7 +330,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0L-P1-CjB">
-                                            <rect key="frame" x="132" y="142" width="48" height="21"/>
+                                            <rect key="frame" x="132" y="114" width="48" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="M5C-ta-5Nj"/>
                                             </constraints>
@@ -347,7 +339,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hr-PG-mw7">
-                                            <rect key="frame" x="8" y="137" width="386" height="30"/>
+                                            <rect key="frame" x="8" y="109" width="386" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="0U6-RB-r7l"/>
                                             </constraints>
@@ -359,7 +351,7 @@
                                             </connections>
                                         </button>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-Yx-O9N">
-                                            <rect key="frame" x="345" y="171" width="51" height="31"/>
+                                            <rect key="frame" x="345" y="143" width="51" height="31"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="31" id="CkY-Lt-agP"/>
                                             </constraints>
@@ -369,7 +361,7 @@
                                             </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpU-2P-nYb">
-                                            <rect key="frame" x="132" y="216" width="124" height="21"/>
+                                            <rect key="frame" x="132" y="188" width="124" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="5UL-mA-Suw"/>
                                                 <constraint firstAttribute="width" constant="124" id="WEP-pf-10H"/>
@@ -379,7 +371,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53x-hc-YRj">
-                                            <rect key="frame" x="328" y="207" width="30" height="39"/>
+                                            <rect key="frame" x="328" y="179" width="30" height="39"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="39" id="lHy-07-1ZY"/>
                                                 <constraint firstAttribute="width" constant="30" id="sfv-HN-VeQ"/>
@@ -393,7 +385,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-In-dYi">
-                                            <rect key="frame" x="364" y="207" width="30" height="39"/>
+                                            <rect key="frame" x="364" y="179" width="30" height="39"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="DRC-mx-WTE"/>
                                                 <constraint firstAttribute="height" constant="39" id="wFg-sJ-10J"/>
@@ -407,7 +399,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotation Spd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0j-cN-tHd">
-                                            <rect key="frame" x="8" y="216" width="124" height="21"/>
+                                            <rect key="frame" x="8" y="188" width="124" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="124" id="3Gn-al-UUX"/>
                                                 <constraint firstAttribute="height" constant="21" id="fxX-MC-zxt"/>
@@ -419,7 +411,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="1gn-MC-yA0" firstAttribute="top" secondItem="byy-1g-Sng" secondAttribute="top" constant="11" id="028-YU-C4k"/>
-                                        <constraint firstAttribute="trailing" secondItem="FW8-dn-pcI" secondAttribute="trailing" constant="32" id="1xu-nb-FMU"/>
+                                        <constraint firstItem="Dyy-7g-LbI" firstAttribute="top" secondItem="1gn-MC-yA0" secondAttribute="bottom" constant="8" id="1An-Qf-ZlU"/>
                                         <constraint firstItem="6T4-6c-Gjy" firstAttribute="top" secondItem="8hr-PG-mw7" secondAttribute="bottom" constant="9" id="4oA-mf-tL4"/>
                                         <constraint firstItem="Tgt-In-dYi" firstAttribute="leading" secondItem="53x-hc-YRj" secondAttribute="trailing" constant="6" id="6iZ-u2-vXe"/>
                                         <constraint firstItem="8hr-PG-mw7" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leading" constant="8" id="Buw-hb-v7Q"/>
@@ -428,31 +420,27 @@
                                         <constraint firstItem="1gn-MC-yA0" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leading" constant="8" id="FUw-Bb-vW1"/>
                                         <constraint firstItem="8hr-PG-mw7" firstAttribute="top" secondItem="TQh-YL-wtZ" secondAttribute="bottom" constant="3" id="Fqc-DD-8lb"/>
                                         <constraint firstItem="AJR-3M-g4R" firstAttribute="top" secondItem="Dyy-7g-LbI" secondAttribute="bottom" constant="8" id="JNh-PM-Mmd"/>
-                                        <constraint firstItem="Dyy-7g-LbI" firstAttribute="top" secondItem="FW8-dn-pcI" secondAttribute="bottom" constant="7" id="Opo-Xe-4yS"/>
+                                        <constraint firstItem="TQh-YL-wtZ" firstAttribute="top" secondItem="1gn-MC-yA0" secondAttribute="bottom" constant="8" id="P8Z-3S-SmZ"/>
                                         <constraint firstItem="n0L-P1-CjB" firstAttribute="top" secondItem="TQh-YL-wtZ" secondAttribute="bottom" constant="8" id="Rlv-cG-9Dt"/>
                                         <constraint firstItem="TQh-YL-wtZ" firstAttribute="leading" secondItem="Dyy-7g-LbI" secondAttribute="trailing" constant="8" id="UfI-D0-lMO"/>
                                         <constraint firstItem="xpU-2P-nYb" firstAttribute="leading" secondItem="T0j-cN-tHd" secondAttribute="trailing" id="Viq-54-Viz"/>
                                         <constraint firstItem="T0j-cN-tHd" firstAttribute="top" secondItem="6T4-6c-Gjy" secondAttribute="bottom" constant="19" id="Vvc-Qi-fRr"/>
                                         <constraint firstAttribute="trailing" secondItem="8hr-PG-mw7" secondAttribute="trailing" constant="20" id="WwU-ht-UaL"/>
-                                        <constraint firstItem="FW8-dn-pcI" firstAttribute="top" secondItem="1gn-MC-yA0" secondAttribute="bottom" constant="8" id="Ylf-Lv-sHf"/>
                                         <constraint firstItem="53x-hc-YRj" firstAttribute="top" secondItem="EDa-Yx-O9N" secondAttribute="bottom" constant="5" id="fHK-w1-r1S"/>
                                         <constraint firstItem="TQh-YL-wtZ" firstAttribute="trailing" secondItem="byy-1g-Sng" secondAttribute="trailingMargin" id="kQQ-SS-6IG"/>
                                         <constraint firstItem="Dyy-7g-LbI" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leading" constant="8" id="kxm-aC-LZh"/>
                                         <constraint firstItem="6T4-6c-Gjy" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leading" constant="8" id="lUb-Ew-Cqv"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="EDa-Yx-O9N" secondAttribute="trailing" id="llI-2q-kcb"/>
-                                        <constraint firstItem="TQh-YL-wtZ" firstAttribute="top" secondItem="FW8-dn-pcI" secondAttribute="bottom" constant="7" id="muK-Ko-34n"/>
                                         <constraint firstAttribute="trailing" secondItem="Tgt-In-dYi" secondAttribute="trailing" constant="20" id="n7e-lE-u8z"/>
                                         <constraint firstItem="T0j-cN-tHd" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leading" constant="8" id="oQo-7M-Vfc"/>
                                         <constraint firstItem="Tgt-In-dYi" firstAttribute="top" secondItem="EDa-Yx-O9N" secondAttribute="bottom" constant="5" id="rIu-Cg-zQe"/>
                                         <constraint firstItem="EDa-Yx-O9N" firstAttribute="top" secondItem="8hr-PG-mw7" secondAttribute="bottom" constant="4" id="w2f-rB-uXd"/>
                                         <constraint firstItem="n0L-P1-CjB" firstAttribute="leading" secondItem="AJR-3M-g4R" secondAttribute="trailing" constant="75" id="wvK-lb-M99"/>
-                                        <constraint firstItem="FW8-dn-pcI" firstAttribute="leading" secondItem="byy-1g-Sng" secondAttribute="leading" constant="8" id="xNM-yW-5do"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="cameraButton" destination="Dyy-7g-LbI" id="Adh-3h-R0P"/>
-                                    <outlet property="filenameLabel" destination="FW8-dn-pcI" id="G0V-Vn-mqL"/>
                                     <outlet property="hasTransparencySwitch" destination="EDa-Yx-O9N" id="Jrt-0u-jh2"/>
                                     <outlet property="imageSelectionCollectionView" destination="TQh-YL-wtZ" id="9Vl-ha-86H"/>
                                     <outlet property="rotationSpeedFaster" destination="Tgt-In-dYi" id="ZMX-lh-1MP"/>
@@ -464,7 +452,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LayerCellID" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LayerCellID" id="N7z-tj-3r6" customClass="FaceLayerTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="423" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="398" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N7z-tj-3r6" id="S3t-yd-Kn5">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -492,7 +480,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceLayerShapeID" rowHeight="255" id="AY5-fu-kGT" customClass="FaceLayerShapeTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="414" height="255"/>
+                                <rect key="frame" x="0.0" y="442" width="414" height="255"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AY5-fu-kGT" id="uXg-Co-AHc">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="254.66666666666666"/>
@@ -739,7 +727,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceLayerFieldID" rowHeight="180" id="ocp-bq-ASg" customClass="FaceLayerFieldTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="722" width="414" height="180"/>
+                                <rect key="frame" x="0.0" y="697" width="414" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ocp-bq-ASg" id="EWE-BR-1IG">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="179.66666666666666"/>
@@ -924,7 +912,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceLayerNumbersID" rowHeight="335" id="y7o-9P-Ns2" customClass="FaceLayerNumberRingTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="902" width="414" height="335"/>
+                                <rect key="frame" x="0.0" y="877" width="414" height="335"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y7o-9P-Ns2" id="hKw-kH-Q1E">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="334.66666666666669"/>
@@ -1231,7 +1219,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceLayerColorBackgroundID" rowHeight="105" id="zv9-bv-TL7" customClass="FaceLayerColorBackgroundTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1237" width="414" height="105"/>
+                                <rect key="frame" x="0.0" y="1212" width="414" height="105"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zv9-bv-TL7" id="tlN-P3-Bri">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="104.66666666666667"/>
@@ -1349,7 +1337,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="faceLayerHandID" rowHeight="290" id="N3f-GG-a5k" customClass="FaceLayerHandTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1342" width="414" height="290"/>
+                                <rect key="frame" x="0.0" y="1317" width="414" height="290"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N3f-GG-a5k" id="1dd-Ji-pxW">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="289.66666666666669"/>
@@ -1648,7 +1636,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="decoratorEditorDigitalTimeID" rowHeight="250" id="yNM-Gy-DY2" customClass="FaceLayerDateTimeLabelTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1632" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="1607" width="414" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yNM-Gy-DY2" id="toC-wg-5jC">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="249.66666666666666"/>

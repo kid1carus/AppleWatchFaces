@@ -134,6 +134,22 @@ extension UIImage {
         }
     }
     
+    func downgradePNGtoJPG(imageName: String) -> String {
+        // self is png image
+        let imageUrl = UIImage.getImageURL(imageName: imageName)
+        //delete old PNG
+        let fileManagerIs = FileManager.default
+        if fileManagerIs.fileExists(atPath: imageUrl.path) {
+            try? fileManagerIs.removeItem(at: imageUrl)
+        }
+        let jpgImageURL = URL.init(fileURLWithPath: imageName).deletingPathExtension().appendingPathExtension("jpg")
+        //convert to JPG and save it
+        _ = self.save(imageName: jpgImageURL.path, usePNG: false)
+        //return new filename
+        let newImageName = jpgImageURL.path
+        return newImageName
+    }
+    
     //used when importing an inage from gallery or camera ( preserves transparency and creates a resized version if needed  )
     func saveImported(imageName: String) -> Bool {
         // image has not been created yet: create it, store it, return it

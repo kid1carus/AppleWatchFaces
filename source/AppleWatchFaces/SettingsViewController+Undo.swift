@@ -56,7 +56,7 @@ extension SettingsViewController {
         
         SettingsViewController.currentFaceSetting = lastSettings
         redrawPreviewClock() //show correct clockr
-        redrawSettingsTable() //show new title
+        redrawSettingsTable() //show new data
         setUndoRedoButtonStatus()
     }
     

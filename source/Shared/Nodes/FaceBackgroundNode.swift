@@ -11,7 +11,9 @@ import SceneKit
 import UIKit
 
 enum FaceBackgroundTypes: String {
-    case FaceBackgroundTypeImage, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
+    case FaceBackgroundTypeImage, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit,
+        FaceBackgroundTypeFaceCircleCutout,
+        FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
         FaceBackgroundTypeNone
     
     static var userSelectableValues = [
@@ -20,6 +22,7 @@ enum FaceBackgroundTypes: String {
         FaceBackgroundTypeDiagonalSplit,
         FaceBackgroundTypeVerticalSplit,
         FaceBackgroundTypeHorizontalSplit,
+        FaceBackgroundTypeFaceCircleCutout,
         FaceBackgroundTypeNone]
     
     static let randomizableValues = userSelectableValues //short cut, but will get none
@@ -47,13 +50,14 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeFilled)  { typeDescription = "Filled" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit)  { typeDescription = "Split Diagonal" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalSplit)  { typeDescription = "Vertical Split" }
-        if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalSplit)  { typeDescription = "Horizonatal Split" }
+        if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalSplit)  { typeDescription = "Horizontal Split" }
+        if (nodeType == .FaceBackgroundTypeFaceCircleCutout) { typeDescription = "Circle Cutout" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalGradient)  { typeDescription = "Vertical Gradient" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalGradient)  { typeDescription = "Horizonal Gradient" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalGradient)  { typeDescription = "Diagonal Gradient" }
         
-        if (nodeType == .FaceBackgroundTypeImage) { typeDescription = "Image Size" }
+        if (nodeType == .FaceBackgroundTypeImage) { typeDescription = "Image Shape" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
@@ -177,6 +181,48 @@ class FaceBackgroundNode: SKSpriteNode {
             effectsNode.shouldRasterize = true //speed 1 layer
             self.addChild(effectsNode)
             
+        }
+        
+        if backgroundType == .FaceBackgroundTypeFaceCircleCutout {
+            let backgroundPath = UIBezierPath()
+            backgroundPath.move(to: CGPoint(x: 52, y: -127))
+            backgroundPath.addLine(to: CGPoint(x: -52, y: -127))
+            backgroundPath.addLine(to: CGPoint(x: -52, y: -93))
+            backgroundPath.addLine(to: CGPoint(x: 52, y: -93))
+            backgroundPath.addLine(to: CGPoint(x: 52, y: -127))
+            backgroundPath.close()
+            backgroundPath.move(to: CGPoint(x: 56, y: 65))
+            backgroundPath.addCurve(to: CGPoint(x: 21, y: 100), controlPoint1: CGPoint(x: 36.67, y: 65), controlPoint2: CGPoint(x: 21, y: 80.67))
+            backgroundPath.addCurve(to: CGPoint(x: 56, y: 135), controlPoint1: CGPoint(x: 21, y: 119.33), controlPoint2: CGPoint(x: 36.67, y: 135))
+            backgroundPath.addCurve(to: CGPoint(x: 91, y: 100), controlPoint1: CGPoint(x: 75.33, y: 135), controlPoint2: CGPoint(x: 91, y: 119.33))
+            backgroundPath.addCurve(to: CGPoint(x: 61.36, y: 65.41), controlPoint1: CGPoint(x: 91, y: 82.49), controlPoint2: CGPoint(x: 78.15, y: 67.99))
+            backgroundPath.addCurve(to: CGPoint(x: 56, y: 65), controlPoint1: CGPoint(x: 59.61, y: 65.14), controlPoint2: CGPoint(x: 57.82, y: 65))
+            backgroundPath.close()
+            backgroundPath.move(to: CGPoint(x: -56, y: 65))
+            backgroundPath.addCurve(to: CGPoint(x: -91, y: 100), controlPoint1: CGPoint(x: -75.33, y: 65), controlPoint2: CGPoint(x: -91, y: 80.67))
+            backgroundPath.addCurve(to: CGPoint(x: -56, y: 135), controlPoint1: CGPoint(x: -91, y: 119.33), controlPoint2: CGPoint(x: -75.33, y: 135))
+            backgroundPath.addCurve(to: CGPoint(x: -21, y: 100), controlPoint1: CGPoint(x: -36.67, y: 135), controlPoint2: CGPoint(x: -21, y: 119.33))
+            backgroundPath.addCurve(to: CGPoint(x: -33.75, y: 72.98), controlPoint1: CGPoint(x: -21, y: 89.12), controlPoint2: CGPoint(x: -25.96, y: 79.4))
+            backgroundPath.addCurve(to: CGPoint(x: -56, y: 65), controlPoint1: CGPoint(x: -39.8, y: 68), controlPoint2: CGPoint(x: -47.55, y: 65))
+            backgroundPath.close()
+            backgroundPath.move(to: CGPoint(x: 156, y: -195))
+            backgroundPath.addCurve(to: CGPoint(x: 156, y: 195), controlPoint1: CGPoint(x: 156, y: -195), controlPoint2: CGPoint(x: 156, y: 195))
+            backgroundPath.addLine(to: CGPoint(x: -156, y: 195))
+            backgroundPath.addLine(to: CGPoint(x: -156, y: -195))
+            backgroundPath.addLine(to: CGPoint(x: 156, y: -195))
+            backgroundPath.addLine(to: CGPoint(x: 156, y: -195))
+            backgroundPath.close()
+
+            //transform to work for us
+            backgroundPath.apply(CGAffineTransform.init(scaleX: 0.75, y: -0.75))
+            
+            let shape = SKShapeNode.init(path: backgroundPath.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            self.addChild(shape)
+
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit) {
