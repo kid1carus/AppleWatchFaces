@@ -13,6 +13,7 @@ import UIKit
 enum FaceBackgroundTypes: String {
     case FaceBackgroundTypeImage, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit,
         FaceBackgroundTypeFaceCircleCutout,
+        FaceBackgroundTypeRoundedCircleCutout,
         FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
         FaceBackgroundTypeNone
     
@@ -23,6 +24,7 @@ enum FaceBackgroundTypes: String {
         FaceBackgroundTypeVerticalSplit,
         FaceBackgroundTypeHorizontalSplit,
         FaceBackgroundTypeFaceCircleCutout,
+        FaceBackgroundTypeRoundedCircleCutout,
         FaceBackgroundTypeNone]
     
     static let randomizableValues = userSelectableValues //short cut, but will get none
@@ -51,7 +53,8 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit)  { typeDescription = "Split Diagonal" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalSplit)  { typeDescription = "Vertical Split" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalSplit)  { typeDescription = "Horizontal Split" }
-        if (nodeType == .FaceBackgroundTypeFaceCircleCutout) { typeDescription = "Circle Cutout" }
+        if (nodeType == .FaceBackgroundTypeFaceCircleCutout) { typeDescription = "Square with Cutout" }
+        if (nodeType == .FaceBackgroundTypeRoundedCircleCutout) { typeDescription = "Circle with Cutouts"}
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalGradient)  { typeDescription = "Vertical Gradient" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalGradient)  { typeDescription = "Horizonal Gradient" }
@@ -214,7 +217,7 @@ class FaceBackgroundNode: SKSpriteNode {
             backgroundPath.close()
 
             //transform to work for us
-            backgroundPath.apply(CGAffineTransform.init(scaleX: 0.75, y: -0.75))
+            backgroundPath.apply(CGAffineTransform.init(scaleX: 0.7, y: -0.7))
             
             let shape = SKShapeNode.init(path: backgroundPath.cgPath)
             shape.setMaterial(material: material)
@@ -223,6 +226,40 @@ class FaceBackgroundNode: SKSpriteNode {
             
             self.addChild(shape)
 
+        }
+        
+        if (backgroundType == .FaceBackgroundTypeRoundedCircleCutout) {
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: 50, y: 0))
+            bezierPath.addCurve(to: CGPoint(x: 23, y: 10.49), controlPoint1: CGPoint(x: 39.59, y: 0), controlPoint2: CGPoint(x: 30.12, y: 3.97))
+            bezierPath.addCurve(to: CGPoint(x: 10, y: 40), controlPoint1: CGPoint(x: 15.01, y: 17.8), controlPoint2: CGPoint(x: 10, y: 28.32))
+            bezierPath.addCurve(to: CGPoint(x: 50, y: 80), controlPoint1: CGPoint(x: 10, y: 62.09), controlPoint2: CGPoint(x: 27.91, y: 80))
+            bezierPath.addCurve(to: CGPoint(x: 90, y: 40), controlPoint1: CGPoint(x: 72.09, y: 80), controlPoint2: CGPoint(x: 90, y: 62.09))
+            bezierPath.addCurve(to: CGPoint(x: 50, y: 0), controlPoint1: CGPoint(x: 90, y: 17.91), controlPoint2: CGPoint(x: 72.09, y: 0))
+            bezierPath.close()
+            bezierPath.move(to: CGPoint(x: -50, y: 0))
+            bezierPath.addCurve(to: CGPoint(x: -90, y: 40), controlPoint1: CGPoint(x: -72.09, y: 0), controlPoint2: CGPoint(x: -90, y: 17.91))
+            bezierPath.addCurve(to: CGPoint(x: -50, y: 80), controlPoint1: CGPoint(x: -90, y: 62.09), controlPoint2: CGPoint(x: -72.09, y: 80))
+            bezierPath.addCurve(to: CGPoint(x: -10, y: 40), controlPoint1: CGPoint(x: -27.91, y: 80), controlPoint2: CGPoint(x: -10, y: 62.09))
+            bezierPath.addCurve(to: CGPoint(x: -49, y: 0.01), controlPoint1: CGPoint(x: -10, y: 18.24), controlPoint2: CGPoint(x: -27.37, y: 0.55))
+            bezierPath.addCurve(to: CGPoint(x: -50, y: 0), controlPoint1: CGPoint(x: -49.33, y: 0), controlPoint2: CGPoint(x: -49.66, y: 0))
+            bezierPath.close()
+            bezierPath.move(to: CGPoint(x: 155, y: 0))
+            bezierPath.addCurve(to: CGPoint(x: -0, y: 155), controlPoint1: CGPoint(x: 155, y: 85.6), controlPoint2: CGPoint(x: 85.6, y: 155))
+            bezierPath.addCurve(to: CGPoint(x: -155, y: -0), controlPoint1: CGPoint(x: -85.6, y: 155), controlPoint2: CGPoint(x: -155, y: 85.6))
+            bezierPath.addCurve(to: CGPoint(x: 0, y: -155), controlPoint1: CGPoint(x: -155, y: -85.6), controlPoint2: CGPoint(x: -85.6, y: -155))
+            bezierPath.addCurve(to: CGPoint(x: 155, y: 0), controlPoint1: CGPoint(x: 85.6, y: -155), controlPoint2: CGPoint(x: 155, y: -85.6))
+            bezierPath.close()
+            
+            //transform to work for us
+            bezierPath.apply(CGAffineTransform.init(scaleX: 0.7, y: -0.7))
+            
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            self.addChild(shape)
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit) {
