@@ -38,7 +38,7 @@ class FaceChooserEditTableViewController: UITableViewController {
         let clockSetting = UserFaceSetting.sharedFaceSettings[indexPath.row]
         cell.title.text = clockSetting.title
         //debugPrint("U: " + clockSetting.title + " " + clockSetting.uniqueID)
-        if let newImage = UIImage.getImageFor(imageName: clockSetting.uniqueID) {
+        if let newImage = UIImage.getImageFor(imageName: clockSetting.uniqueID + ".jpg") {
             cell.thumbImageView.image = newImage
             cell.thumbImageView.layer.cornerRadius = AppUISettings.watchFrameCornerRadius / 2
             cell.thumbImageView.layer.borderColor = AppUISettings.watchFrameBorderColor

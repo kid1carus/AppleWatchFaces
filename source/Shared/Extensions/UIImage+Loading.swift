@@ -20,7 +20,7 @@ extension UIImage {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         if let documentDirectory: URL = urls.first {
-            let imagePath = documentDirectory.appendingPathComponent(AppUISettings.originalsFolder, isDirectory: true).appendingPathComponent( imageName + ".png" )
+            let imagePath = documentDirectory.appendingPathComponent(AppUISettings.originalsFolder, isDirectory: true).appendingPathComponent( imageName )
             return imagePath.absoluteString
         }
         
@@ -39,7 +39,7 @@ extension UIImage {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         if let documentDirectory: URL = urls.first {
-            let imagePath = documentDirectory.appendingPathComponent(AppUISettings.thumbnailFolder, isDirectory: true).appendingPathComponent( imageName + ".jpg" )
+            let imagePath = documentDirectory.appendingPathComponent(AppUISettings.thumbnailFolder, isDirectory: true).appendingPathComponent( imageName )
             return imagePath.absoluteString
         }
         
@@ -89,9 +89,14 @@ extension UIImage {
     }
     
     static func getImageFor(imageName: String) -> UIImage? {
-        //debugPrint("looking getImagePath: " + getImagePath(imageName: imageName))
+        debugPrint("looking getImagePath: " + getImagePath(imageName: imageName))
         let fileManager = FileManager.default
         // check if the image is stored already
+        
+//        if let bundleImage = UIImage.init(named: imageName) {
+//            return bundleImage
+//        }
+        
         if fileManager.fileExists(atPath: getImageURL(imageName: imageName).path ) {
             //debugPrint("UIIMAGE.load!")
             

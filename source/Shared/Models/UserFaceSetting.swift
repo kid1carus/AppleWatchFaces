@@ -231,7 +231,7 @@ class UserFaceSetting: NSObject {
         for clockSetting in sharedFaceSettings {
             let fileManager = FileManager.default
             // check if the image is stored already
-            let url = UIImage.getImageURL(imageName: clockSetting.uniqueID)
+            let url = UIImage.getImageURL(imageName: clockSetting.uniqueID + ".jpg")
             if !fileManager.fileExists(atPath: url.path ) {
                 clockSettingsMissing.append(clockSetting)
             }

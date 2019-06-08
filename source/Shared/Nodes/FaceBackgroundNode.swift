@@ -11,7 +11,7 @@ import SceneKit
 import UIKit
 
 enum FaceBackgroundTypes: String {
-    case FaceBackgroundTypeImage, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit,
+    case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit,
         FaceBackgroundTypeFaceCircleCutout,
         FaceBackgroundTypeRoundedCircleCutout,
         FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
@@ -60,7 +60,7 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalGradient)  { typeDescription = "Horizonal Gradient" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalGradient)  { typeDescription = "Diagonal Gradient" }
         
-        if (nodeType == .FaceBackgroundTypeImage) { typeDescription = "Image Shape" }
+        //if (nodeType == .FaceBackgroundTypeImage) { typeDescription = "Image Shape" }
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
@@ -148,15 +148,36 @@ class FaceBackgroundNode: SKSpriteNode {
         let xBounds = (screenSize.width / 2.0).rounded()
         let yBounds = (screenSize.height / 2.0).rounded()
         
+        func getImageNode( material: String) -> SKNode? {
+            //load image
+            if let image = UIImage.getImageFor(imageName: material)  {
+                let texture = SKTexture.init(image: image)
+                let scaledSize = CGSize.init(width: image.size.width * image.scale, height: image.size.height * image.scale)
+                let imageNode = SKSpriteNode.init(texture: texture, size: scaledSize)
+                return imageNode
+            }
+            
+            return nil
+        }
         func maskImageIntoShape( materialToUse: String, shapeNode: SKShapeNode) -> SKNode {
+            
+            var imageNode = SKNode()
+            
+            if let cameraImage = getImageNode(material: material) {
+                imageNode = cameraImage
+            } else {
+                imageNode = FaceBackgroundNode.filledShapeNode(material: materialToUse)
+            }
+            
             //needed to properly be able to set alpha
             let effectsNodeWrapper = SKEffectNode.init()
             
             shapeNode.fillColor = SKColor.white //needed for crop to mask properly
             shapeNode.lineWidth = 0.0
             let cropNode = SKCropNode()
-            let filledNode = FaceBackgroundNode.filledShapeNode(material: materialToUse)
-            cropNode.addChild(filledNode)
+            
+            //let filledNode = FaceBackgroundNode.filledShapeNode(material: materialToUse)
+            cropNode.addChild(imageNode)
             cropNode.maskNode = shapeNode
             
             effectsNodeWrapper.addChild(cropNode)
@@ -164,42 +185,46 @@ class FaceBackgroundNode: SKSpriteNode {
             return effectsNodeWrapper
         }
         
-        if (backgroundType == .FaceBackgroundTypeImage) {
-            
-            //load image
-            if let image = UIImage.getImageFor(imageName: material)  {
-                let texture = SKTexture.init(image: image)
-                let scaledSize = CGSize.init(width: image.size.width * image.scale, height: image.size.height * image.scale)
-                let imageNode = SKSpriteNode.init(texture: texture, size: scaledSize)
-                self.addChild(imageNode)
-            }
-    
-        }
+//        if (backgroundType == .FaceBackgroundTypeImage) {
+//
+//            if let imageNode = getImageNode(material: material) {
+//                self.addChild(imageNode)
+//            }
+//
+//        }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {
             
-            let effectsNode = SKEffectNode.init()
+            let screenSize = AppUISettings.getScreenBoundsForImages()
+            let xBounds = (screenSize.width / 2.0).rounded()
+            let yBounds = (screenSize.height / 2.0).rounded()
             
-            if (lineWidth>0) {
-                let width = screenSize.width //+lineWidth
-                let height = screenSize.height  //+lineWidth
-                let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
-                let frameNode = SKShapeNode.init(rect:frameNodeRect)
+            //rect != shape from path, so draw it from path
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: -xBounds, y: yBounds))
+            bezierPath.addLine(to: CGPoint(x: xBounds, y: yBounds))
+            bezierPath.addLine(to: CGPoint(x: xBounds, y: -yBounds))
+            bezierPath.addLine(to: CGPoint(x: -xBounds, y: -yBounds))
+            bezierPath.close()
+            
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
                 
-                //draw it as a shape, no background!
-                frameNode.fillColor = SKColor.black
-                frameNode.strokeColor = strokeColor
-                frameNode.lineWidth = lineWidth*2
-                
-                effectsNode.addChild(frameNode)
+                if let imageNode = getImageNode(material: material) {
+                    // imported camera image, dont bound to fill size
+                    self.addChild(imageNode)
+                } else {
+                    // bundle image, bound to fill ( shape ) size
+                    self.addChild( maskImageIntoShape(materialToUse: material, shapeNode: shape) )
+                }
             }
-        
-            let shape = FaceBackgroundNode.filledShapeNode(material: material)
-            effectsNode.addChild(shape)
-            
-            effectsNode.shouldRasterize = true //speed 1 layer
-            self.addChild(effectsNode)
-            
+
         }
         
         if backgroundType == .FaceBackgroundTypeFaceCircleCutout {
@@ -295,11 +320,15 @@ class FaceBackgroundNode: SKSpriteNode {
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
             
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
-            
-            self.addChild(shape)
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+                self.addChild( maskImageIntoShape(materialToUse: material, shapeNode: shape) )
+            }
+
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeVerticalSplit) {

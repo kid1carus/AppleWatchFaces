@@ -258,7 +258,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
                 //_ = resizedImage.save(imageName: fileName)
                 SettingsViewController.currentFaceSetting.faceLayers[layerIndex].filenameForImage = fileName
             
-                layerOptions.backgroundType = .FaceBackgroundTypeImage
+                layerOptions.backgroundType = .FaceBackgroundTypeFilled
             }
 
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
@@ -526,7 +526,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             // moving back, if anything has changed, lets save
             if SettingsViewController.undoArray.count>0 {
                 saveClock()
-                _ = UIImage.delete(imageName: SettingsViewController.currentFaceSetting.uniqueID)
+                _ = UIImage.delete(imageName: SettingsViewController.currentFaceSetting.uniqueID + ".jpg")
                 NotificationCenter.default.post(name: SettingsViewController.settingsExitingNotificationName, object: nil, userInfo:["currentFaceIndex":currentFaceIndex])
             }
         }

@@ -26,7 +26,7 @@ class FaceChooserTableViewCell: FaceChooserSelectableTableViewCell, UICollection
         let faceSetting = UserFaceSetting.sharedFaceSettings[indexPath.row]
         cell.title.text = faceSetting.title
         //debugPrint("U: " + clockSetting.title + " " + clockSetting.uniqueID)
-        if let newImage = UIImage.getImageFor(imageName: faceSetting.uniqueID) {
+        if let newImage = UIImage.getImageFor(imageName: faceSetting.uniqueID + ".jpg") {
             cell.imageView.image = newImage
             cell.imageView.layer.cornerRadius = AppUISettings.watchFrameCornerRadius
             cell.imageView.layer.borderColor = AppUISettings.watchFrameBorderColor

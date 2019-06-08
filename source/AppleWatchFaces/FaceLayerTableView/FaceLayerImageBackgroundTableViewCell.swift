@@ -67,11 +67,6 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     }
     
     @IBAction func buttonTapped( sender: UIButton ) {
-        let faceLayer = myFaceLayer()
-        
-        //dont allow custom camera images to be shaped ( they look gross )
-        guard faceLayer.filenameForImage == "" else { return }
-        
         SettingsViewController.actionCell = self
         
         if sender == shapeButton {
@@ -119,10 +114,10 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         faceLayer.filenameForImage = "" //clear this out
         unSelectCameraButton()
         
-        //if it was a camera image sized, fill it
-        if layerOptions.backgroundType == .FaceBackgroundTypeImage {
-            layerOptions.backgroundType = .FaceBackgroundTypeFilled
-        }
+//        //if it was a camera image sized, fill it
+//        if layerOptions.backgroundType == .FaceBackgroundTypeImage {
+//            layerOptions.backgroundType = .FaceBackgroundTypeFilled
+//        }
         layerOptions.filename = AppUISettings.materialFiles[indexPath.row]
         //filenameLabel.text = layerOptions.filename
         

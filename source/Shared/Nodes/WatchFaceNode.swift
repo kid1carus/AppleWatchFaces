@@ -90,7 +90,7 @@ class WatchFaceNode: SKShapeNode {
         for (layerIndex, faceLayer) in faceLayers.enumerated() {
             if faceLayer.layerType == .ImageTexture {
                 guard let imageOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { continue }
-                guard imageOptions.backgroundType == .FaceBackgroundTypeImage else { continue }
+                //guard imageOptions.backgroundType == .FaceBackgroundTypeImage else { continue }
                 
                 let layerNode = self.children[layerIndex]
                 //for seconds
