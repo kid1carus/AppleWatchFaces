@@ -318,6 +318,7 @@ class FaceLayersTableViewController: UITableViewController {
         if editingStyle == .delete {
             guard let settingsViewVC = settingsViewController else { return }
             SettingsViewController.addToUndoStack()
+            settingsViewVC.hideLayerControls()
             settingsViewVC.setUndoRedoButtonStatus()
             
             let sourceRow = indexPath.row;
