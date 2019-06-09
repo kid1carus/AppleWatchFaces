@@ -1,6 +1,128 @@
 {
     "faceSettings" : [
         {
+            "faceLayers" : [
+                {
+                    "angleOffset" : "0.0",
+                    "layerType" : "ImageTexture",
+                    "scale" : "1.0",
+                    "layerOptions" : {
+                        "filename" : "testPattern.jpg",
+                        "hasTransparency" : false,
+                        "backgroundType" : "FaceBackgroundTypeFilled",
+                        "anglePerSec" : 0
+                    },
+                    "desiredThemeColorIndex" : 0,
+                    "horizontalPosition" : "0.0",
+                    "alpha" : "0.24",
+                    "verticalPosition" : "0.0",
+                    "filenameForImage" : ""
+                },
+                {
+                    "horizontalPosition" : "0.0",
+                    "alpha" : "0.94",
+                    "verticalPosition" : "0.0",
+                    "scale" : "1.0",
+                    "angleOffset" : "0.0",
+                    "layerType" : "ImageTexture",
+                    "desiredThemeColorIndex" : 0,
+                    "filenameForImage" : "",
+                    "layerOptions" : {
+                        "anglePerSec" : 0,
+                        "backgroundType" : "FaceBackgroundTypeFilled",
+                        "filename" : "sunset80.jpg",
+                        "hasTransparency" : true
+                    }
+                },
+                {
+                    "alpha" : "0.24",
+                    "angleOffset" : "0.0",
+                    "layerOptions" : {
+                        "effectsStrength" : "3.34",
+                        "physicsFieldType" : "None",
+                        "handImage" : "",
+                        "handType" : "SecondHandTypeThinDial",
+                        "desiredThemeColorIndexForOutline" : "2",
+                        "physicFieldStrength" : "1.0",
+                        "outlineWidth" : "0.0",
+                        "handAnimation" : "SecondHandMovementStep"
+                    },
+                    "desiredThemeColorIndex" : 4,
+                    "layerType" : "SecondHand",
+                    "verticalPosition" : "0.0",
+                    "horizontalPosition" : "0.0",
+                    "filenameForImage" : "",
+                    "scale" : "0.975"
+                },
+                {
+                    "layerOptions" : {
+                        "outlineWidth" : "0.0",
+                        "pathShape" : "RingRenderShapeRoundedRect",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "fontType" : "NumberTextCapeCod",
+                        "patternTotal" : "4",
+                        "textSize" : "0.831075",
+                        "isRotating" : false,
+                        "patternArray" : [
+                            1
+                        ]
+                    },
+                    "horizontalPosition" : "0.0",
+                    "desiredThemeColorIndex" : 1,
+                    "filenameForImage" : "",
+                    "angleOffset" : "0.0",
+                    "verticalPosition" : "0.0",
+                    "alpha" : "1.0",
+                    "layerType" : "NumberRing",
+                    "scale" : "1.107"
+                },
+                {
+                    "verticalPosition" : "0.0",
+                    "filenameForImage" : "",
+                    "horizontalPosition" : "0.0",
+                    "layerOptions" : {
+                        "handType" : "HourHandTypeCapeCodFilled",
+                        "desiredThemeColorIndexForOutline" : "2",
+                        "effectsStrength" : "0.0",
+                        "outlineWidth" : "1.0",
+                        "handImage" : ""
+                    },
+                    "alpha" : "0.52",
+                    "layerType" : "HourHand",
+                    "desiredThemeColorIndex" : 3,
+                    "scale" : "1.0",
+                    "angleOffset" : "0.0"
+                },
+                {
+                    "horizontalPosition" : "0.0",
+                    "layerOptions" : {
+                        "handType" : "MinuteHandTypeCapeCodFilled",
+                        "desiredThemeColorIndexForOutline" : "2",
+                        "outlineWidth" : "1.0",
+                        "handImage" : "",
+                        "effectsStrength" : "0.0",
+                        "handAnimation" : "MinuteHandMovementSmooth"
+                    },
+                    "desiredThemeColorIndex" : 3,
+                    "alpha" : "0.52",
+                    "verticalPosition" : "0.0",
+                    "scale" : "1.0",
+                    "layerType" : "MinuteHand",
+                    "angleOffset" : "0.0",
+                    "filenameForImage" : ""
+                }
+            ],
+            "title" : "Cape Cod Sunset",
+            "uniqueID" : "518CA251-4328-4225-B787-073D33E09B0F",
+            "faceColors" : [
+                "#2b71ffff",
+                "#c6c6c6",
+                "#8282ffff",
+                "#ff2b95ff",
+                "#ff38ffff"
+            ]
+        },
+        {
             "uniqueID" : "F6ADF43D-8491-408F-AABD-1434189DECB8",
             "title" : "Angular Motion",
             "faceColors" : [
