@@ -64,8 +64,11 @@ class FaceChooserEditTableViewController: UITableViewController {
         if editingStyle == .delete {
             let sourceRow = indexPath.row;
             let trashedSetting = UserFaceSetting.sharedFaceSettings[sourceRow]
+            
+            //TODO: delete all images, or maybe move them to TMP folder to be auto-deleted?
+            
             //delete thumbnail
-            if UIImage.delete(imageName:  trashedSetting.uniqueID) {
+            if UIImage.delete(imageName:  trashedSetting.uniqueID + ".jpg") {
                 UserFaceSetting.sharedFaceSettings.remove(at: sourceRow)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 setTitleWithCount()

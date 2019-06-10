@@ -296,7 +296,7 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         
         #endif
         
-//        //generate theme thumbs and exit if needed
+        //generate theme thumbs and exit if needed
         let missingThemeThumbs = UserFaceSetting.themesWithoutThumbNails()
         guard missingThemeThumbs.count==0 else {
             self.performSegue(withIdentifier: "themeThumbsSegueID", sender: nil)
