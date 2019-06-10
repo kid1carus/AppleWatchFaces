@@ -15,13 +15,13 @@ class CameraHandler: NSObject{
     fileprivate var currentVC: UIViewController!
     
     //MARK: Internal Properties
-    var imagePickedBlock: ((UIImage, URL) -> Void)?
+    var imagePickedBlock: ((UIImage, URL?) -> Void)?
     
     func camera()
     {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             let myPickerController = UIImagePickerController()
-            myPickerController.allowsEditing = true
+            //myPickerController.allowsEditing = true
             myPickerController.delegate = self;
             myPickerController.sourceType = .camera
             currentVC.present(myPickerController, animated: true, completion: nil)
@@ -68,12 +68,22 @@ extension CameraHandler: UIImagePickerControllerDelegate, UINavigationController
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         //originals from gallery
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage, let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
-            self.imagePickedBlock?(image, url)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            var urlToUse:URL? = nil
+            if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+                urlToUse = url
+            }
+            self.imagePickedBlock?(image, urlToUse)
+            
         }
         //edited from camera
-        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage, let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
-            self.imagePickedBlock?(image, url)
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            var urlToUse:URL? = nil
+            if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+                urlToUse = url
+            }
+            self.imagePickedBlock?(image, urlToUse)
+            
         }
         
         currentVC.dismiss(animated: true, completion: nil)

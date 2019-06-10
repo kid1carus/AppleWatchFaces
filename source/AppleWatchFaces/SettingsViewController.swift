@@ -223,8 +223,6 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         guard let data = notification.userInfo as? [String: Int] else { return }
         guard let layerIndex = data["layerIndex"] else { return }
         
-        CameraHandler.shared.showActionSheet(vc: self)
-        
         CameraHandler.shared.imagePickedBlock = { (image, url) in
             //add to undo stack for actions to be able to undo
             SettingsViewController.addToUndoStack()
@@ -233,18 +231,29 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             let optimalSize = AppUISettings.getOptimalImageSize()
             let resizedImage = AppUISettings.imageWithImage(image: image, fitToSize: optimalSize)
 
-            // save it to the docs folder with name of the filename
-            let fileName =  url.lastPathComponent // SettingsViewController.currentFaceSetting.uniqueID + AppUISettings.backgroundFileName
-            debugPrint("got an image! filename: " + fileName + " original: " + image.description + " reasized: " + resizedImage.description)
+            var fileName = ""
+            if url != nil {
+                // gallery image
+                
+                // save it to the docs folder with name of the filename
+                fileName =  url!.lastPathComponent
+            } else {
+                //camera image no URL
+                
+                fileName = SettingsViewController.currentFaceSetting.uniqueID + ".jpg"
+            }
+            debugPrint("got an image! filename: " + fileName + " original: " + image.description + " resized: " + resizedImage.description)
 
             if let layerOptions = SettingsViewController.currentFaceSetting.faceLayers[layerIndex].layerOptions as? ImageBackgroundLayerOptions {
                 
                 //grab file extension for determining if we should set transparency
-                let pathExtention = url.pathExtension
-                if pathExtention.uppercased() == "PNG" {
-                    layerOptions.hasTransparency = true
-                } else {
-                    layerOptions.hasTransparency = false
+                if url != nil {
+                    let pathExtention = url!.pathExtension
+                    if pathExtention.uppercased() == "PNG" {
+                        layerOptions.hasTransparency = true
+                    } else {
+                        layerOptions.hasTransparency = false
+                    }
                 }
             
                 //only save original if its larger, otherwise we can use thumb
@@ -266,6 +275,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
             NotificationCenter.default.post(name: FaceLayersTableViewController.reloadLayerNotificationName, object: nil, userInfo:["layerIndex":layerIndex])
         }
+        
+        CameraHandler.shared.showActionSheet(vc: self)
     }
     
     @objc func onNotificationForPreviewSwiped(notification:Notification) {
