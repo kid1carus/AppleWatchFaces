@@ -174,12 +174,13 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         SettingsViewController.addToUndoStack()
         setUndoRedoButtonStatus()
         
-        //turn on layer controls in case this is the first layer
-        showLayerControls()
-        
         SettingsViewController.currentFaceSetting.faceLayers.append(newLayer)
         redrawPreviewClock()
         
+        //turn on layer controls in case this is the first layer
+        drawUIForSelectedLayer(selectedLayer: SettingsViewController.currentFaceSetting.faceLayers.count - 1, section: .All)
+        showLayerControls()
+
         if let flVC = faceLayersTableViewController {
             flVC.addNewItem(layerType: layerType)
         }

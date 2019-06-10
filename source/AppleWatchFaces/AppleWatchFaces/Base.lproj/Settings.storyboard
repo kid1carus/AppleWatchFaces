@@ -1788,6 +1788,9 @@
                                             <state key="normal">
                                                 <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="buttonTappedWithSender:" destination="irc-by-tQW" eventType="touchUpInside" id="dFT-ZR-gbV"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMu-Nm-Y6p">
                                             <rect key="frame" x="340" y="188" width="30" height="39"/>
@@ -1883,6 +1886,7 @@
                                     <outlet property="rotationSpeedLabel" destination="x6U-I5-Esr" id="09f-Lf-Q1b"/>
                                     <outlet property="rotationSpeedLower" destination="hMu-Nm-Y6p" id="BmQ-5X-k78"/>
                                     <outlet property="titleLabel" destination="m4m-Re-COL" id="hCF-eP-fk6"/>
+                                    <outlet property="typeButton" destination="G4P-Fc-Zv7" id="Nsh-FZ-0n7"/>
                                     <outlet property="typeNameLabel" destination="mng-nq-g5H" id="hSj-wV-Scm"/>
                                 </connections>
                             </tableViewCell>

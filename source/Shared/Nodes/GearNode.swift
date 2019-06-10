@@ -10,10 +10,10 @@ import UIKit
 import SpriteKit
 
 enum GearTypes: String {
-    case Big,
+    case Big, Small,
     None
     
-    static let userSelectableValues = [Big, None]
+    static let userSelectableValues = [Big, Small, None]
     static let randomizableValues = userSelectableValues
 }
 
@@ -382,12 +382,108 @@ class GearNode: SKSpriteNode {
             
             self.addChild(shape)
         }
+        
+        if (gearType == .Small) {
+            let gearPath = UIBezierPath()
+            gearPath.move(to: CGPoint(x: 28, y: -250))
+            gearPath.addCurve(to: CGPoint(x: 37, y: -220), controlPoint1: CGPoint(x: 34, y: -244), controlPoint2: CGPoint(x: 35, y: -240))
+            gearPath.addCurve(to: CGPoint(x: 45, y: -191), controlPoint1: CGPoint(x: 39, y: -200), controlPoint2: CGPoint(x: 41, y: -198))
+            gearPath.addCurve(to: CGPoint(x: 52.38, y: -184.69), controlPoint1: CGPoint(x: 46.36, y: -188.63), controlPoint2: CGPoint(x: 49.21, y: -186.48))
+            gearPath.addCurve(to: CGPoint(x: 94.47, y: -167.01), controlPoint1: CGPoint(x: 67.23, y: -180.46), controlPoint2: CGPoint(x: 81.33, y: -174.49))
+            gearPath.addCurve(to: CGPoint(x: 102.65, y: -166.67), controlPoint1: CGPoint(x: 97.2, y: -166.49), controlPoint2: CGPoint(x: 100.03, y: -166.28))
+            gearPath.addCurve(to: CGPoint(x: 128.75, y: -181.63), controlPoint1: CGPoint(x: 112.54, y: -168.13), controlPoint2: CGPoint(x: 116.77, y: -172.39))
+            gearPath.addCurve(to: CGPoint(x: 156.26, y: -196.6), controlPoint1: CGPoint(x: 140.73, y: -190.88), controlPoint2: CGPoint(x: 147.07, y: -197.27))
+            gearPath.addCurve(to: CGPoint(x: 180.37, y: -181.15), controlPoint1: CGPoint(x: 165.46, y: -195.93), controlPoint2: CGPoint(x: 171.14, y: -190.3))
+            gearPath.addCurve(to: CGPoint(x: 196.03, y: -157.17), controlPoint1: CGPoint(x: 189.6, y: -172), controlPoint2: CGPoint(x: 195.99, y: -165.66))
+            gearPath.addCurve(to: CGPoint(x: 181.3, y: -129.53), controlPoint1: CGPoint(x: 196.07, y: -148.69), controlPoint2: CGPoint(x: 193.96, y: -145.14))
+            gearPath.addCurve(to: CGPoint(x: 166.57, y: -103.31), controlPoint1: CGPoint(x: 168.64, y: -113.92), controlPoint2: CGPoint(x: 168.65, y: -111.09))
+            gearPath.addCurve(to: CGPoint(x: 167.46, y: -93.27), controlPoint1: CGPoint(x: 165.83, y: -100.58), controlPoint2: CGPoint(x: 166.41, y: -96.9))
+            gearPath.addCurve(to: CGPoint(x: 184.14, y: -53.03), controlPoint1: CGPoint(x: 174.47, y: -80.66), controlPoint2: CGPoint(x: 180.1, y: -67.18))
+            gearPath.addCurve(to: CGPoint(x: 191.16, y: -44.58), controlPoint1: CGPoint(x: 185.98, y: -49.86), controlPoint2: CGPoint(x: 188.32, y: -46.71))
+            gearPath.addCurve(to: CGPoint(x: 220.16, y: -36.58), controlPoint1: CGPoint(x: 199.16, y: -38.58), controlPoint2: CGPoint(x: 205.16, y: -38.58))
+            gearPath.addCurve(to: CGPoint(x: 250.16, y: -27.58), controlPoint1: CGPoint(x: 235.16, y: -34.58), controlPoint2: CGPoint(x: 244.16, y: -34.58))
+            gearPath.addCurve(to: CGPoint(x: 256.16, y: 0.42), controlPoint1: CGPoint(x: 256.16, y: -20.58), controlPoint2: CGPoint(x: 256.16, y: -12.58))
+            gearPath.addCurve(to: CGPoint(x: 250.16, y: 28.42), controlPoint1: CGPoint(x: 256.16, y: 13.42), controlPoint2: CGPoint(x: 256.16, y: 22.42))
+            gearPath.addCurve(to: CGPoint(x: 220.16, y: 37.42), controlPoint1: CGPoint(x: 244.16, y: 34.42), controlPoint2: CGPoint(x: 240.16, y: 35.42))
+            gearPath.addCurve(to: CGPoint(x: 191.16, y: 45.42), controlPoint1: CGPoint(x: 200.16, y: 39.42), controlPoint2: CGPoint(x: 198.16, y: 41.42))
+            gearPath.addCurve(to: CGPoint(x: 182.97, y: 56.47), controlPoint1: CGPoint(x: 187.9, y: 47.29), controlPoint2: CGPoint(x: 185.06, y: 51.99))
+            gearPath.addCurve(to: CGPoint(x: 168.46, y: 90.96), controlPoint1: CGPoint(x: 179.25, y: 68.51), controlPoint2: CGPoint(x: 174.37, y: 80.06))
+            gearPath.addCurve(to: CGPoint(x: 166.97, y: 103.55), controlPoint1: CGPoint(x: 167.25, y: 94.91), controlPoint2: CGPoint(x: 166.39, y: 99.47))
+            gearPath.addCurve(to: CGPoint(x: 181.82, y: 129.71), controlPoint1: CGPoint(x: 168.39, y: 113.45), controlPoint2: CGPoint(x: 172.63, y: 117.69))
+            gearPath.addCurve(to: CGPoint(x: 196.67, y: 157.29), controlPoint1: CGPoint(x: 191.02, y: 141.73), controlPoint2: CGPoint(x: 197.38, y: 148.1))
+            gearPath.addCurve(to: CGPoint(x: 181.12, y: 181.33), controlPoint1: CGPoint(x: 195.97, y: 166.48), controlPoint2: CGPoint(x: 190.31, y: 172.14))
+            gearPath.addCurve(to: CGPoint(x: 157.07, y: 196.89), controlPoint1: CGPoint(x: 171.92, y: 190.52), controlPoint2: CGPoint(x: 165.56, y: 196.89))
+            gearPath.addCurve(to: CGPoint(x: 129.5, y: 182.04), controlPoint1: CGPoint(x: 148.59, y: 196.89), controlPoint2: CGPoint(x: 145.05, y: 194.77))
+            gearPath.addCurve(to: CGPoint(x: 103.33, y: 167.19), controlPoint1: CGPoint(x: 113.94, y: 169.31), controlPoint2: CGPoint(x: 111.11, y: 169.31))
+            gearPath.addCurve(to: CGPoint(x: 89.17, y: 169.42), controlPoint1: CGPoint(x: 99.56, y: 166.16), controlPoint2: CGPoint(x: 93.94, y: 167.63))
+            gearPath.addCurve(to: CGPoint(x: 53.82, y: 183.77), controlPoint1: CGPoint(x: 77.99, y: 175.32), controlPoint2: CGPoint(x: 66.16, y: 180.15))
+            gearPath.addCurve(to: CGPoint(x: 45, y: 191), controlPoint1: CGPoint(x: 50.52, y: 185.64), controlPoint2: CGPoint(x: 47.22, y: 188.04))
+            gearPath.addCurve(to: CGPoint(x: 37, y: 220), controlPoint1: CGPoint(x: 39, y: 199), controlPoint2: CGPoint(x: 39, y: 205))
+            gearPath.addCurve(to: CGPoint(x: 28, y: 250), controlPoint1: CGPoint(x: 35, y: 235), controlPoint2: CGPoint(x: 35, y: 244))
+            gearPath.addCurve(to: CGPoint(x: 0, y: 256), controlPoint1: CGPoint(x: 21, y: 256), controlPoint2: CGPoint(x: 13, y: 256))
+            gearPath.addCurve(to: CGPoint(x: -28, y: 250), controlPoint1: CGPoint(x: -13, y: 256), controlPoint2: CGPoint(x: -22, y: 256))
+            gearPath.addCurve(to: CGPoint(x: -37, y: 220), controlPoint1: CGPoint(x: -34, y: 244), controlPoint2: CGPoint(x: -35, y: 240))
+            gearPath.addCurve(to: CGPoint(x: -45, y: 191), controlPoint1: CGPoint(x: -39, y: 200), controlPoint2: CGPoint(x: -41, y: 198))
+            gearPath.addCurve(to: CGPoint(x: -53.78, y: 183.93), controlPoint1: CGPoint(x: -46.55, y: 188.28), controlPoint2: CGPoint(x: -50.06, y: 185.87))
+            gearPath.addCurve(to: CGPoint(x: -94.82, y: 166.6), controlPoint1: CGPoint(x: -68.24, y: 179.73), controlPoint2: CGPoint(x: -81.99, y: 173.88))
+            gearPath.addCurve(to: CGPoint(x: -103.11, y: 166.22), controlPoint1: CGPoint(x: -97.59, y: 166.06), controlPoint2: CGPoint(x: -100.45, y: 165.84))
+            gearPath.addCurve(to: CGPoint(x: -129.23, y: 181.15), controlPoint1: CGPoint(x: -113.01, y: 167.67), controlPoint2: CGPoint(x: -117.24, y: 171.92))
+            gearPath.addCurve(to: CGPoint(x: -156.77, y: 196.08), controlPoint1: CGPoint(x: -141.23, y: 190.38), controlPoint2: CGPoint(x: -147.57, y: 196.76))
+            gearPath.addCurve(to: CGPoint(x: -180.85, y: 180.59), controlPoint1: CGPoint(x: -165.96, y: 195.4), controlPoint2: CGPoint(x: -171.64, y: 189.76))
+            gearPath.addCurve(to: CGPoint(x: -196.48, y: 156.59), controlPoint1: CGPoint(x: -190.07, y: 171.42), controlPoint2: CGPoint(x: -196.45, y: 165.08))
+            gearPath.addCurve(to: CGPoint(x: -181.71, y: 128.97), controlPoint1: CGPoint(x: -196.5, y: 148.11), controlPoint2: CGPoint(x: -194.39, y: 144.57))
+            gearPath.addCurve(to: CGPoint(x: -166.94, y: 102.77), controlPoint1: CGPoint(x: -169.03, y: 113.38), controlPoint2: CGPoint(x: -169.03, y: 110.55))
+            gearPath.addCurve(to: CGPoint(x: -167.65, y: 93.34), controlPoint1: CGPoint(x: -166.24, y: 100.19), controlPoint2: CGPoint(x: -166.71, y: 96.77))
+            gearPath.addCurve(to: CGPoint(x: -184.74, y: 52.18), controlPoint1: CGPoint(x: -174.86, y: 80.46), controlPoint2: CGPoint(x: -180.63, y: 66.67))
+            gearPath.addCurve(to: CGPoint(x: -191, y: 45), controlPoint1: CGPoint(x: -186.45, y: 49.46), controlPoint2: CGPoint(x: -188.53, y: 46.85))
+            gearPath.addCurve(to: CGPoint(x: -220, y: 37), controlPoint1: CGPoint(x: -199, y: 39), controlPoint2: CGPoint(x: -205, y: 39))
+            gearPath.addCurve(to: CGPoint(x: -250, y: 28), controlPoint1: CGPoint(x: -235, y: 35), controlPoint2: CGPoint(x: -244, y: 35))
+            gearPath.addCurve(to: CGPoint(x: -256, y: 0), controlPoint1: CGPoint(x: -256, y: 21), controlPoint2: CGPoint(x: -256, y: 13))
+            gearPath.addCurve(to: CGPoint(x: -250, y: -28), controlPoint1: CGPoint(x: -256, y: -13), controlPoint2: CGPoint(x: -256, y: -22))
+            gearPath.addCurve(to: CGPoint(x: -220, y: -37), controlPoint1: CGPoint(x: -244, y: -34), controlPoint2: CGPoint(x: -240, y: -35))
+            gearPath.addCurve(to: CGPoint(x: -191, y: -45), controlPoint1: CGPoint(x: -200, y: -39), controlPoint2: CGPoint(x: -198, y: -41))
+            gearPath.addCurve(to: CGPoint(x: -184.96, y: -51.9), controlPoint1: CGPoint(x: -188.75, y: -46.29), controlPoint2: CGPoint(x: -186.7, y: -48.92))
+            gearPath.addCurve(to: CGPoint(x: -167.6, y: -93.93), controlPoint1: CGPoint(x: -180.83, y: -66.71), controlPoint2: CGPoint(x: -174.96, y: -80.8))
+            gearPath.addCurve(to: CGPoint(x: -166.9, y: -103.63), controlPoint1: CGPoint(x: -166.85, y: -97.12), controlPoint2: CGPoint(x: -166.45, y: -100.51))
+            gearPath.addCurve(to: CGPoint(x: -181.75, y: -129.79), controlPoint1: CGPoint(x: -168.31, y: -113.53), controlPoint2: CGPoint(x: -172.55, y: -117.77))
+            gearPath.addCurve(to: CGPoint(x: -196.59, y: -157.37), controlPoint1: CGPoint(x: -190.94, y: -141.81), controlPoint2: CGPoint(x: -197.3, y: -148.18))
+            gearPath.addCurve(to: CGPoint(x: -181.04, y: -181.41), controlPoint1: CGPoint(x: -195.89, y: -166.56), controlPoint2: CGPoint(x: -190.23, y: -172.22))
+            gearPath.addCurve(to: CGPoint(x: -157, y: -196.97), controlPoint1: CGPoint(x: -171.85, y: -190.6), controlPoint2: CGPoint(x: -165.48, y: -196.97))
+            gearPath.addCurve(to: CGPoint(x: -129.42, y: -182.12), controlPoint1: CGPoint(x: -148.51, y: -196.97), controlPoint2: CGPoint(x: -144.98, y: -194.84))
+            gearPath.addCurve(to: CGPoint(x: -103.26, y: -167.27), controlPoint1: CGPoint(x: -113.86, y: -169.39), controlPoint2: CGPoint(x: -111.03, y: -169.39))
+            gearPath.addCurve(to: CGPoint(x: -92.73, y: -168.27), controlPoint1: CGPoint(x: -100.41, y: -166.49), controlPoint2: CGPoint(x: -96.52, y: -167.14))
+            gearPath.addCurve(to: CGPoint(x: -51.79, y: -184.99), controlPoint1: CGPoint(x: -79.91, y: -175.34), controlPoint2: CGPoint(x: -66.19, y: -180.99))
+            gearPath.addCurve(to: CGPoint(x: -45, y: -191), controlPoint1: CGPoint(x: -49.21, y: -186.65), controlPoint2: CGPoint(x: -46.76, y: -188.65))
+            gearPath.addCurve(to: CGPoint(x: -37, y: -220), controlPoint1: CGPoint(x: -39, y: -199), controlPoint2: CGPoint(x: -39, y: -205))
+            gearPath.addCurve(to: CGPoint(x: -28, y: -250), controlPoint1: CGPoint(x: -35, y: -235), controlPoint2: CGPoint(x: -35, y: -244))
+            gearPath.addCurve(to: CGPoint(x: 0, y: -256), controlPoint1: CGPoint(x: -21, y: -256), controlPoint2: CGPoint(x: -13, y: -256))
+            gearPath.addCurve(to: CGPoint(x: 28, y: -250), controlPoint1: CGPoint(x: 13, y: -256), controlPoint2: CGPoint(x: 22, y: -256))
+            gearPath.close()
+            gearPath.move(to: CGPoint(x: 0, y: -64))
+            gearPath.addCurve(to: CGPoint(x: -64, y: -0), controlPoint1: CGPoint(x: -35.35, y: -64), controlPoint2: CGPoint(x: -64, y: -35.35))
+            gearPath.addCurve(to: CGPoint(x: 0, y: 64), controlPoint1: CGPoint(x: -64, y: 35.35), controlPoint2: CGPoint(x: -35.35, y: 64))
+            gearPath.addCurve(to: CGPoint(x: 64, y: 0), controlPoint1: CGPoint(x: 35.35, y: 64), controlPoint2: CGPoint(x: 64, y: 35.35))
+            gearPath.addCurve(to: CGPoint(x: 0, y: -64), controlPoint1: CGPoint(x: 64, y: -35.35), controlPoint2: CGPoint(x: 35.35, y: -64))
+            gearPath.close()
+            
+            //transform to work for us
+            gearPath.apply(CGAffineTransform.init(scaleX: 0.13, y: -0.13))
+            
+            let shape = SKShapeNode.init(path: gearPath.cgPath)
+            
+            shape.fillColor = SKColor.init(hexString: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            self.addChild(shape)
+        }
     }
     
     static func descriptionForType(_ nodeType: GearTypes) -> String {
         var typeDescription = ""
         
-        if (nodeType == .Big)  { typeDescription = "Big" }
+        if (nodeType == .Big)  { typeDescription = "Big Mechanical" }
+        if (nodeType == .Small)  { typeDescription = "Small Mechanical" }
         
         if (nodeType == .None)  { typeDescription = "None" }
         
