@@ -89,7 +89,7 @@ extension UIImage {
     }
     
     static func getImageFor(imageName: String) -> UIImage? {
-        debugPrint("looking getImagePath: " + getImagePath(imageName: imageName))
+        //debugPrint("looking getImagePath: " + getImagePath(imageName: imageName))
         let fileManager = FileManager.default
         // check if the image is stored already
         
