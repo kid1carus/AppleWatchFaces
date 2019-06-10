@@ -6579,7 +6579,7 @@
                         "handAnimation" : "MinuteHandMovementStep",
                         "handType" : "MinuteHandTypeSquaredHole"
                     },
-                    "alpha" : "0.30000043",
+                    "alpha" : "0.2",
                     "angleOffset" : "0.0",
                     "horizontalPosition" : "0.025",
                     "scale" : "1.0"
@@ -6616,7 +6616,7 @@
                     },
                     "desiredThemeColorIndex" : 3,
                     "angleOffset" : "0.0",
-                    "alpha" : "0.30000043",
+                    "alpha" : "0.2",
                     "scale" : "1.0",
                     "verticalPosition" : "-0.025",
                     "horizontalPosition" : "0.025"
