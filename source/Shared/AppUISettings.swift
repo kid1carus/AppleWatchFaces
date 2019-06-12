@@ -106,7 +106,7 @@ class AppUISettings: NSObject {
     static let originalsFolder = "originals"
     static let backgroundFileName = "-customBackground"
     
-    static let layerSettingsScaleMax:Float = 2.0 //how much things can be scaled up ( should be at least 1.0 )
+    static let layerSettingsScaleMax:Float = 4.0 //how much things can be scaled up ( should be at least 1.0 )
     
     static var colorList : [String] = []
     
