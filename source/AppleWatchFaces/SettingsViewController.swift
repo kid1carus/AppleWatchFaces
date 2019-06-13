@@ -84,7 +84,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBAction func adjustAngleForLayerItem( sender: UIButton) {
         
         var scaleAdjust:CGFloat = 0.0
-        let nudgeAmt:CGFloat = CGFloat.pi / 8
+        let nudgeAmt:CGFloat = AppUISettings.layerSettingsAngleIncrement
         
         if sender == angleLessButton { scaleAdjust = -nudgeAmt }
         if sender == angleMoreButton { scaleAdjust = nudgeAmt }
@@ -97,7 +97,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBAction func adjustScaleForLayerItem( sender: UIButton) {
         
         var scaleAdjust:CGFloat = 0.0
-        let nudgeAmt:CGFloat = 0.025
+        let nudgeAmt = CGFloat(AppUISettings.layerSettingsScaleIncrement)
         
         if sender == scaleLessButton { scaleAdjust = -nudgeAmt }
         if sender == scaleMoreButton { scaleAdjust = nudgeAmt }
@@ -110,7 +110,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBAction func adjustAlphaForLayerItem( sender: UIButton) {
         
         var alphaAdjust:CGFloat = 0.0
-        let nudgeAmt:CGFloat = 0.025
+        let nudgeAmt = CGFloat(AppUISettings.layerSettingsAlphaIncrement)
         
         if sender == alphaLessButton { alphaAdjust = -nudgeAmt }
         if sender == alphaMoreButton { alphaAdjust = nudgeAmt }
@@ -125,7 +125,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         var xDirection:CGFloat = 0
         var yDirection:CGFloat = 0
         
-        let nudgeAmt:CGFloat = 0.025
+        let nudgeAmt = CGFloat(AppUISettings.layerSettingsPositionIncrement)
         
         if sender == nudgeLButton { xDirection = -nudgeAmt }
         if sender == nudgeRButton { xDirection = nudgeAmt }

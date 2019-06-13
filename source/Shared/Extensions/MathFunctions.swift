@@ -27,6 +27,10 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 class MathFunctions: NSObject {
     
+    static func snapToGrid( valueToSnap: Float, gridSize: Float) -> Float {
+        return round(valueToSnap / gridSize) * gridSize
+    }
+    
     static func deg2rad(_ number: CGFloat) -> CGFloat {
         return number * .pi / 180
     }

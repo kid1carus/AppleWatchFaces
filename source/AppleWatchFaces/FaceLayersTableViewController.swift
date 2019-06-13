@@ -56,7 +56,7 @@ class FaceLayersTableViewController: UITableViewController {
                 SettingsViewController.addToUndoStack()
                 settingsViewVC.setUndoRedoButtonStatus()
                 
-                layerSettings.angleOffset = clampedVal
+                layerSettings.angleOffset = MathFunctions.snapToGrid(valueToSnap: clampedVal, gridSize: Float(AppUISettings.layerSettingsAngleIncrement))
                 reload = true
             }
         }
@@ -68,7 +68,7 @@ class FaceLayersTableViewController: UITableViewController {
                 SettingsViewController.addToUndoStack()
                 settingsViewVC.setUndoRedoButtonStatus()
                 
-                layerSettings.scale = clampedVal
+                layerSettings.scale = MathFunctions.snapToGrid(valueToSnap: clampedVal, gridSize: AppUISettings.layerSettingsScaleIncrement)
                 reload = true
             }
         }
@@ -80,7 +80,7 @@ class FaceLayersTableViewController: UITableViewController {
                 SettingsViewController.addToUndoStack()
                 settingsViewVC.setUndoRedoButtonStatus()
                 
-                layerSettings.alpha = clampedVal
+                layerSettings.alpha = MathFunctions.snapToGrid(valueToSnap: clampedVal, gridSize: AppUISettings.layerSettingsAlphaIncrement)
                 reload = true
             }
         }
@@ -108,12 +108,14 @@ class FaceLayersTableViewController: UITableViewController {
         
         //set the position in the layer
         if absoluteX == 0 {
-            layerSettings.horizontalPosition = layerSettings.horizontalPosition + Float(xDirection)
+            let newPos = layerSettings.horizontalPosition + Float(xDirection)
+            layerSettings.horizontalPosition = MathFunctions.snapToGrid(valueToSnap: newPos, gridSize: AppUISettings.layerSettingsPositionIncrement)
         } else {
             layerSettings.horizontalPosition = Float(absoluteX)
         }
         if absoluteY == 0 {
-            layerSettings.verticalPosition = layerSettings.verticalPosition + Float(yDirection)
+            let newPos = layerSettings.verticalPosition + Float(yDirection)
+            layerSettings.verticalPosition = MathFunctions.snapToGrid(valueToSnap: newPos, gridSize: AppUISettings.layerSettingsPositionIncrement)
         } else {
             layerSettings.verticalPosition = Float(absoluteY)
         }
