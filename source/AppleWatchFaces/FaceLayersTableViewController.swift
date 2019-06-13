@@ -340,11 +340,15 @@ class FaceLayersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //debugPrint("selected cell:" + indexPath.description)
         
-        // animate to show new heights when selected
-        tableView.beginUpdates()
-        tableView.endUpdates()
+//        // animate to show new heights when selected
+//        tableView.beginUpdates()
+//        tableView.endUpdates()
+        
         
         if let settingsVC = settingsViewController {
+            //show layer in preview
+            settingsVC.highlightLayer(index: indexPath.row)
+            //draw layer options UI
             settingsVC.drawUIForSelectedLayer(selectedLayer: indexPath.row, section: .All)
         }
     }

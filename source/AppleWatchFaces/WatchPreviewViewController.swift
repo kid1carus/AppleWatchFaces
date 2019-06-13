@@ -23,6 +23,11 @@ class WatchPreviewViewController: UIViewController {
     
     static let settingsSelectedLayerNotificationName = Notification.Name("settingsSelectedLayer")
     
+    func highlightLayer(index: Int) {
+        guard let watchNode = skView.scene?.childNode(withName: "watchFaceNode") as? WatchFaceNode else { return }
+        watchNode.highlightLayer(index: index)
+    }
+    
     @IBAction func respondToTapGesture(gesture: UITapGestureRecognizer) {
         //determine which layer is highlighted
         guard gesture.state == .ended else { return }

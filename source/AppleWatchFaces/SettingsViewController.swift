@@ -137,6 +137,12 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         }
     }
     
+    func highlightLayer( index: Int) {
+        if watchPreviewViewController != nil {
+            watchPreviewViewController?.highlightLayer(index: index)
+        }
+    }
+    
     func addNewItem( layerType: FaceLayerTypes) {
         //TODO: copy some things from last item for convenience
         
