@@ -637,6 +637,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //was killing all buttons along the left side
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
         WatchSessionManager.sharedManager.delegate = self
         SettingsViewController.clearUndoStack()
         
