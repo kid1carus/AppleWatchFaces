@@ -60,6 +60,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     var currentFaceIndex = 0
     static var undoArray = [FaceSetting]()
     static var redoArray = [FaceSetting]()
+    var buttonRepeatTimer = Timer()
     
     //values for re-usable UIActionSheets
     static var actionsTitle:String = ""
@@ -73,6 +74,73 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
     static let settingsExitingNotificationName = Notification.Name("settingsExiting")
     static let settingsCallActionSheet = Notification.Name("settingsCallActionSheet")
+    
+    func longPressAction(gesture: UILongPressGestureRecognizer, sender: UIButton) {
+        if gesture.state == .began {
+            //debugPrint("long press start")
+            buttonRepeatTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                //debugPrint("Timer fired!")
+                if sender == self.alphaLessButton || sender == self.alphaMoreButton {
+                    self.adjustAlphaForLayerItem(sender: sender)
+                }
+                if sender == self.nudgeUButton || sender == self.nudgeDButton || sender == self.nudgeLButton || sender == self.nudgeRButton {
+                    self.nudgeLayerItem(sender: sender)
+                }
+                if sender == self.angleLessButton || sender == self.angleMoreButton {
+                    self.adjustAngleForLayerItem(sender: sender)
+                }
+                if sender == self.scaleLessButton || sender == self.scaleMoreButton {
+                    self.adjustScaleForLayerItem(sender: sender)
+                }
+            }
+        }
+        if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
+            //debugPrint("long press end")
+            buttonRepeatTimer.invalidate()
+        }
+    }
+    
+    @IBAction func respondToLongPressGestureAlphaLess(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: alphaLessButton)
+    }
+    
+    @IBAction func respondToLongPressGestureAlphaMore(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: alphaMoreButton)
+    }
+    
+    @IBAction func respondToLongPressGesturePositionUp(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: nudgeUButton)
+    }
+    
+    @IBAction func respondToLongPressGesturePositionDown(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: nudgeDButton)
+    }
+    
+    @IBAction func respondToLongPressGesturePositionLeft(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: nudgeLButton)
+    }
+    
+    @IBAction func respondToLongPressGesturePositionRight(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: nudgeRButton)
+    }
+    
+    @IBAction func respondToLongPressGestureAngleLess(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: angleLessButton)
+    }
+    
+    @IBAction func respondToLongPressGestureAngleMore(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: angleMoreButton)
+    }
+    
+    @IBAction func respondToLongPressGestureSizeLess(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: scaleLessButton)
+    }
+    
+    @IBAction func respondToLongPressGestureSizeMore(gesture: UILongPressGestureRecognizer) {
+        longPressAction(gesture: gesture, sender: scaleMoreButton)
+    }
+    
+    
     
     @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
         //forward time travel hangler

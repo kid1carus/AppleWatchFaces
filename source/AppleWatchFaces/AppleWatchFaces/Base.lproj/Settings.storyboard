@@ -2366,6 +2366,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sl3-qy-7sh">
                                         <rect key="frame" x="0.0" y="41" width="30" height="39"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="phh-Kh-c8G"/>
                                             <constraint firstAttribute="width" constant="30" id="ua7-d8-Zug"/>
@@ -2376,10 +2377,12 @@
                                         </state>
                                         <connections>
                                             <action selector="nudgeLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lhM-Mt-Q58"/>
+                                            <outletCollection property="gestureRecognizers" destination="Hf3-JV-2lg" appends="YES" id="KUN-67-CUG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnh-nr-bWR">
                                         <rect key="frame" x="47" y="41" width="30" height="39"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="Bln-db-Lst"/>
                                             <constraint firstAttribute="width" constant="30" id="gv2-w1-qvz"/>
@@ -2390,6 +2393,7 @@
                                         </state>
                                         <connections>
                                             <action selector="nudgeLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yVd-zY-Y3E"/>
+                                            <outletCollection property="gestureRecognizers" destination="6hz-fB-IWi" appends="YES" id="Ywv-F9-kYU"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbQ-Pt-Ees">
@@ -2422,6 +2426,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjV-Ne-1Ms">
                                         <rect key="frame" x="22" y="67" width="30" height="39"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="LSh-RU-e0F"/>
                                             <constraint firstAttribute="width" constant="30" id="dSB-bY-hV6"/>
@@ -2432,10 +2437,12 @@
                                         </state>
                                         <connections>
                                             <action selector="nudgeLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Trk-bH-UX6"/>
+                                            <outletCollection property="gestureRecognizers" destination="Wse-OJ-Vki" appends="YES" id="HT2-9v-14Z"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWU-Lo-pBb">
                                         <rect key="frame" x="22" y="14" width="30" height="39"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="WQS-EU-SvT"/>
                                             <constraint firstAttribute="width" constant="30" id="fKn-2Q-IP3"/>
@@ -2446,6 +2453,7 @@
                                         </state>
                                         <connections>
                                             <action selector="nudgeLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JlJ-l4-GUK"/>
+                                            <outletCollection property="gestureRecognizers" destination="Gm3-ay-jhi" appends="YES" id="85d-kb-9R4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2512,6 +2520,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7W-UA-jBp">
                                         <rect key="frame" x="23" y="11" width="30" height="39"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="X6F-tP-cn9"/>
                                             <constraint firstAttribute="height" constant="39" id="dkg-ez-QPD"/>
@@ -2522,10 +2531,12 @@
                                         </state>
                                         <connections>
                                             <action selector="adjustAngleForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZGW-Sm-yEm"/>
+                                            <outletCollection property="gestureRecognizers" destination="E6D-j1-NQ1" appends="YES" id="b9w-NE-aAG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bz6-S4-Fz2">
                                         <rect key="frame" x="66" y="11" width="30" height="39"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="cWA-x9-NMP"/>
                                             <constraint firstAttribute="width" constant="30" id="jeV-3i-qL6"/>
@@ -2536,6 +2547,7 @@
                                         </state>
                                         <connections>
                                             <action selector="adjustAngleForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="51i-fU-Ug2"/>
+                                            <outletCollection property="gestureRecognizers" destination="SIf-eV-taJ" appends="YES" id="KZl-yh-HIg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2581,6 +2593,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdn-8L-cUg">
                                         <rect key="frame" x="66" y="11" width="30" height="39"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="rzG-F5-a2r"/>
                                             <constraint firstAttribute="width" constant="30" id="uG6-wu-X11"/>
@@ -2591,36 +2604,37 @@
                                         </state>
                                         <connections>
                                             <action selector="adjustScaleForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j3N-e6-BdE"/>
+                                            <outletCollection property="gestureRecognizers" destination="OyB-mg-SgL" appends="YES" id="Qi5-zR-OS4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjU-YD-V5W">
-                                        <rect key="frame" x="23" y="11" width="30" height="39"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="ZOy-M9-mAg"/>
-                                            <constraint firstAttribute="height" constant="39" id="h8i-E8-AXO"/>
-                                        </constraints>
+                                        <rect key="frame" x="23" y="11" width="30" height="38"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="-">
                                             <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="adjustScaleForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lgN-8G-xKZ"/>
+                                            <outletCollection property="gestureRecognizers" destination="GeR-rB-LaH" appends="YES" id="RFx-Ma-8XI"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.24677870530000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="YjU-YD-V5W" firstAttribute="baseline" secondItem="Wdn-8L-cUg" secondAttribute="baseline" id="7qd-8G-qlY"/>
                                     <constraint firstItem="8hr-cl-Gjx" firstAttribute="leading" secondItem="MYe-fh-Ovn" secondAttribute="leading" constant="23" id="AqY-kE-Y2P"/>
                                     <constraint firstAttribute="trailing" secondItem="8hr-cl-Gjx" secondAttribute="trailing" id="BbW-sf-Sud"/>
                                     <constraint firstAttribute="height" constant="60" id="DA8-9Z-Bej"/>
+                                    <constraint firstItem="YjU-YD-V5W" firstAttribute="top" secondItem="MYe-fh-Ovn" secondAttribute="top" constant="11" id="GXI-Yj-Z5k"/>
                                     <constraint firstItem="9aL-mv-aw7" firstAttribute="leading" secondItem="MYe-fh-Ovn" secondAttribute="leading" constant="23" id="GdY-4m-vpy"/>
                                     <constraint firstAttribute="trailing" secondItem="9aL-mv-aw7" secondAttribute="trailing" id="HCc-Cm-E4O"/>
                                     <constraint firstItem="9aL-mv-aw7" firstAttribute="top" secondItem="MYe-fh-Ovn" secondAttribute="top" id="PRL-aD-KqR"/>
                                     <constraint firstItem="Wdn-8L-cUg" firstAttribute="top" secondItem="MYe-fh-Ovn" secondAttribute="top" constant="11" id="Rbi-ia-WDw"/>
-                                    <constraint firstItem="YjU-YD-V5W" firstAttribute="leading" secondItem="MYe-fh-Ovn" secondAttribute="leading" constant="23" id="Vwb-P6-Vik"/>
+                                    <constraint firstItem="YjU-YD-V5W" firstAttribute="centerY" secondItem="MYe-fh-Ovn" secondAttribute="centerY" id="UBV-Dd-goD"/>
                                     <constraint firstAttribute="width" constant="98" id="bzX-TY-bHr"/>
                                     <constraint firstAttribute="bottom" secondItem="8hr-cl-Gjx" secondAttribute="bottom" id="jAL-dN-WWi"/>
-                                    <constraint firstItem="YjU-YD-V5W" firstAttribute="top" secondItem="MYe-fh-Ovn" secondAttribute="top" constant="11" id="yPD-WX-1nf"/>
+                                    <constraint firstItem="YjU-YD-V5W" firstAttribute="leading" secondItem="8hr-cl-Gjx" secondAttribute="leading" id="lQC-Lx-qYb"/>
                                     <constraint firstAttribute="trailing" secondItem="Wdn-8L-cUg" secondAttribute="trailing" constant="2" id="z72-KK-jRd"/>
                                 </constraints>
                             </view>
@@ -2629,6 +2643,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-NG-dcM">
                                         <rect key="frame" x="3" y="11" width="30" height="39"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="Ehs-UA-ij8"/>
                                             <constraint firstAttribute="width" constant="30" id="Ves-Eg-o7f"/>
@@ -2639,6 +2654,7 @@
                                         </state>
                                         <connections>
                                             <action selector="adjustAlphaForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TY9-Ji-kSX"/>
+                                            <outletCollection property="gestureRecognizers" destination="ZOq-fM-ogA" appends="YES" id="DNL-Cv-d6v"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="st2-KQ-E84">
@@ -2653,6 +2669,7 @@
                                         </state>
                                         <connections>
                                             <action selector="adjustAlphaForLayerItemWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7wc-KC-ZmO"/>
+                                            <outletCollection property="gestureRecognizers" destination="Avd-Z8-BdH" appends="YES" id="Clg-ME-Tf5"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alpha" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIl-k4-xQ7">
@@ -2793,6 +2810,56 @@
                         <action selector="respondToPanGestureWithGesture:" destination="BYZ-38-t0r" id="quX-4u-H5f"/>
                     </connections>
                 </panGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ZOq-fM-ogA">
+                    <connections>
+                        <action selector="respondToLongPressGestureAlphaLessWithGesture:" destination="BYZ-38-t0r" id="Dgm-us-SzU"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Avd-Z8-BdH">
+                    <connections>
+                        <action selector="respondToLongPressGestureAlphaMoreWithGesture:" destination="BYZ-38-t0r" id="ywJ-Cl-eil"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Wse-OJ-Vki">
+                    <connections>
+                        <action selector="respondToLongPressGesturePositionDownWithGesture:" destination="BYZ-38-t0r" id="EjB-yA-8YJ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Hf3-JV-2lg">
+                    <connections>
+                        <action selector="respondToLongPressGesturePositionLeftWithGesture:" destination="BYZ-38-t0r" id="ptu-FV-f7r"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="6hz-fB-IWi">
+                    <connections>
+                        <action selector="respondToLongPressGesturePositionRightWithGesture:" destination="BYZ-38-t0r" id="d2B-0Z-92k"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Gm3-ay-jhi">
+                    <connections>
+                        <action selector="respondToLongPressGesturePositionUpWithGesture:" destination="BYZ-38-t0r" id="7Cz-6z-Bcr"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="E6D-j1-NQ1">
+                    <connections>
+                        <action selector="respondToLongPressGestureAngleLessWithGesture:" destination="BYZ-38-t0r" id="dTE-F6-cvy"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="SIf-eV-taJ">
+                    <connections>
+                        <action selector="respondToLongPressGestureAngleMoreWithGesture:" destination="BYZ-38-t0r" id="4nR-Uy-NE1"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="GeR-rB-LaH">
+                    <connections>
+                        <action selector="respondToLongPressGestureSizeLessWithGesture:" destination="BYZ-38-t0r" id="tet-Ui-fq1"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="OyB-mg-SgL">
+                    <connections>
+                        <action selector="respondToLongPressGestureSizeMoreWithGesture:" destination="BYZ-38-t0r" id="7Fo-6x-75t"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="808.69565217391312" y="129.61956521739131"/>
         </scene>
