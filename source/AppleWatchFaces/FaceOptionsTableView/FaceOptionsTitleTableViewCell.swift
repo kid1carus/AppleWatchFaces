@@ -21,7 +21,11 @@ class FaceOptionsTitleTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //hello!
-        let newTitle = textField.text ?? ""
+        let fullSet = CharacterSet.alphanumerics.union(CharacterSet.whitespaces)
+        let cleanedText = textField.text?.components(separatedBy: fullSet.inverted).joined()
+        let newTitle = cleanedText ?? ""
+        
+        titleTextField.text = newTitle
         
         //add to undo stack for actions to be able to undo
         SettingsViewController.addToUndoStack()
