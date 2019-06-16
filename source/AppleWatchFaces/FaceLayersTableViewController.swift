@@ -162,11 +162,13 @@ class FaceLayersTableViewController: UITableViewController {
             
             self.tableView.selectRow(at: selectedRow, animated: true, scrollPosition: .top)
             
-            delay(0.35) {
-                // animate to show new heights when selected
-                self.tableView.beginUpdates()
-                self.tableView.endUpdates()
-            }
+            //TODO: this is the one thats crashing, tested commenting the beginupdates after delay 6/16/19
+            //  -- try checking for row cell before selecting if it keeps crashing here?
+//            delay(0.35) {
+//                // animate to show new heights when selected
+//                self.tableView.beginUpdates()
+//                self.tableView.endUpdates()
+//            }
     
             if let settingsVC = settingsViewController {
                 settingsVC.drawUIForSelectedLayer(selectedLayer: rowIndex, section: .All)
