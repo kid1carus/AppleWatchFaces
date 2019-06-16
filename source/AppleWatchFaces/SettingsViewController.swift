@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBOutlet var layerTableContainer: UIView!
     @IBOutlet var colorsTableContainer: UIView!
     
+    @IBOutlet var addNewColorButton: UIButton!
+    
     @IBOutlet var undoButton: UIBarButtonItem!
     @IBOutlet var redoButton: UIBarButtonItem!
     @IBOutlet var sendSettingButton: UIButton!
@@ -208,6 +210,19 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     func highlightLayer( index: Int) {
         if watchPreviewViewController != nil {
             watchPreviewViewController?.highlightLayer(index: index)
+        }
+    }
+    
+    @IBAction func newColor() {
+        let newColor = "#FFFFFFFF"
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        setUndoRedoButtonStatus()
+        
+        SettingsViewController.currentFaceSetting.faceColors.append(newColor)
+        
+        if let fcVC = faceColorsTableViewController {
+            fcVC.addNewItem()
         }
     }
     
@@ -422,6 +437,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     @IBAction func groupChangeAction(sender: UISegmentedControl) {
         //show / hide the tableViews
         
+        var highlightColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
+        
         if sender.selectedSegmentIndex == 0 { //main
             hideLayerControls()
             
@@ -430,6 +447,9 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             optionsTableContainer.isHidden = false
             
             addNewLayerButton.isHidden = true
+            addNewColorButton.isHidden = true
+            
+            highlightColor = SKColor.init(hexString: "#3A9FBF")
         }
         if sender.selectedSegmentIndex == 1 { // layers
             colorsTableContainer.isHidden = true
@@ -437,11 +457,14 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             layerTableContainer.isHidden = false
             
             addNewLayerButton.isHidden = false
+            addNewColorButton.isHidden = true
             
             // reload layers because colors and other things may have changes
             if let faceLayersTableViewController = faceLayersTableViewController {
                 faceLayersTableViewController.reload()
             }
+            
+            highlightColor = SKColor.orange
         }
         if sender.selectedSegmentIndex == 2 { // colors
             hideLayerControls()
@@ -451,7 +474,15 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             optionsTableContainer.isHidden = true
             
             addNewLayerButton.isHidden = true
+            addNewColorButton.isHidden = false
+            
+            highlightColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
         }
+        
+        groupSegmentControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 20)!,
+            NSAttributedString.Key.foregroundColor: highlightColor
+            ], for: .selected)
     }
     
     //MARK: ** draw UI **
@@ -647,6 +678,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         SettingsViewController.clearUndoStack()
         
         colorsTableContainer.isHidden = true
+        addNewColorButton.isHidden = true
         optionsTableContainer.isHidden = true
         
         numControlsView.layer.cornerRadius = AppUISettings.watchControlsCornerRadius

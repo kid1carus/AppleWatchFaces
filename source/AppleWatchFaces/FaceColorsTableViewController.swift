@@ -11,6 +11,28 @@ import UIKit
 class FaceColorsTableViewController: UITableViewController {
     
     weak var settingsViewController:SettingsViewController?
+    
+    func addNewItem() {
+        let indexPath = IndexPath(row: SettingsViewController.currentFaceSetting.faceColors.count-1, section: 0)
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        self.tableView.endUpdates()
+        
+        //get the cell, tell is to select its current item ( knows its own type to be able to select it )
+        if let currentcell = self.tableView.cellForRow(at: indexPath) as? FaceColorSettingsTableViewCell {
+            currentcell.chooseSetting(animated: true)
+        }
+        
+//        delay(0.1) {
+//            self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+//        }
+//
+//        delay(0.3) {
+//            self.tableView.beginUpdates()
+//            self.tableView.endUpdates()
+//        }
+        
+    }
 
     func selectCurrentSettings(animated: Bool) {
         //loop through the cells and tell them to select their collectionView current item
@@ -64,7 +86,6 @@ class FaceColorsTableViewController: UITableViewController {
             return false
         }
     }
-    
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

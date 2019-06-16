@@ -1925,7 +1925,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cK-pv-Dfd">
-                                            <rect key="frame" x="132" y="98" width="272" height="30"/>
+                                            <rect key="frame" x="132" y="98.333333333333329" width="272" height="29.999999999999986"/>
                                             <state key="normal">
                                                 <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
@@ -2361,6 +2361,17 @@
                                     <action selector="newItem" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ap-Ji-0iI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asJ-b1-C6C">
+                                <rect key="frame" x="0.0" y="230" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1dD-LC-0Ab"/>
+                                    <constraint firstAttribute="width" constant="40" id="rsu-Bq-GJ0"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="newColor" destination="BYZ-38-t0r" eventType="touchUpInside" id="zz4-h2-Kfh"/>
+                                </connections>
+                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4en-eN-ezb">
                                 <rect key="frame" x="338" y="27" width="98" height="120"/>
                                 <subviews>
@@ -2737,6 +2748,7 @@
                             <constraint firstItem="nz5-A2-kCi" firstAttribute="leading" secondItem="DN7-J7-N45" secondAttribute="trailing" constant="-18" id="D9A-q7-3Xk"/>
                             <constraint firstItem="rk1-nK-qHQ" firstAttribute="top" secondItem="jDK-Qz-PpH" secondAttribute="bottom" constant="27" id="FOd-pG-v5n"/>
                             <constraint firstItem="jnB-h9-aWW" firstAttribute="top" secondItem="MYe-fh-Ovn" secondAttribute="bottom" constant="3" id="Hey-F4-QR8"/>
+                            <constraint firstItem="asJ-b1-C6C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hqb-pX-VbP"/>
                             <constraint firstItem="nz5-A2-kCi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="34" id="Hvk-Gk-Uum"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Iah-bI-LvK"/>
                             <constraint firstAttribute="trailing" secondItem="fZ0-ba-Jns" secondAttribute="trailing" constant="-22" id="Jpq-3U-5yO"/>
@@ -2757,6 +2769,7 @@
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="top" secondItem="P23-UF-T1a" secondAttribute="bottom" id="rLu-fc-rTo"/>
                             <constraint firstItem="76T-g5-ywR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rP3-OY-3xe"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rdI-0N-KmZ"/>
+                            <constraint firstItem="asJ-b1-C6C" firstAttribute="top" secondItem="MYe-fh-Ovn" secondAttribute="bottom" constant="3" id="uEJ-XG-C8X"/>
                             <constraint firstItem="4qh-Lb-N0o" firstAttribute="top" secondItem="DN7-J7-N45" secondAttribute="bottom" constant="9" id="uGR-AZ-Lmr"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="top" secondItem="L09-xH-or1" secondAttribute="bottom" id="v7q-wl-H5k"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xoy-rP-Xwp"/>
@@ -2774,6 +2787,7 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="addNewColorButton" destination="asJ-b1-C6C" id="36i-9e-Ovc"/>
                         <outlet property="addNewLayerButton" destination="jnB-h9-aWW" id="aya-Ic-DSQ"/>
                         <outlet property="alphaControlsView" destination="fZ0-ba-Jns" id="2Ay-m1-ggv"/>
                         <outlet property="alphaLabel" destination="7kQ-WF-BJh" id="9kV-pP-qkK"/>
