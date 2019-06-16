@@ -91,6 +91,7 @@ class FaceSetting: NSObject {
     
     func filename()->String {
         let newName = self.title.components(separatedBy: CharacterSet.alphanumerics.inverted).joined().lowercased()
+        //debugPrint("title:" + self.title + " filename:" + self.title )
         return newName
     }
     
