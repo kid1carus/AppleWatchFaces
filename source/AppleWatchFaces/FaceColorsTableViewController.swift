@@ -9,6 +9,8 @@
 import UIKit
 
 class FaceColorsTableViewController: UITableViewController {
+    
+    weak var settingsViewController:SettingsViewController?
 
     func selectCurrentSettings(animated: Bool) {
         //loop through the cells and tell them to select their collectionView current item
@@ -19,7 +21,6 @@ class FaceColorsTableViewController: UITableViewController {
             if let currentcell = self.tableView.cellForRow(at: indexPath) as? FaceColorSettingsTableViewCell {
                 currentcell.chooseSetting(animated: animated)
             }
-            
         }
     }
     
@@ -62,17 +63,21 @@ class FaceColorsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            guard let settingsViewVC = settingsViewController else { return }
+            SettingsViewController.addToUndoStack()
+            settingsViewVC.setUndoRedoButtonStatus()
+            
+            let sourceRow = indexPath.row;
+            //let trashedSetting = clockSettings.ringSettings[sourceRow]
+            SettingsViewController.currentFaceSetting.faceColors.remove(at: sourceRow)
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":"faceColors"])
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -80,14 +85,25 @@ class FaceColorsTableViewController: UITableViewController {
 
     }
     */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard let settingsViewVC = settingsViewController else { return }
+        
+        let sourceRow = sourceIndexPath.row;
+        let destRow = destinationIndexPath.row;
+        
+        if (sourceRow != destRow) {
+            SettingsViewController.addToUndoStack()
+            settingsViewVC.setUndoRedoButtonStatus()
+            debugPrint("moving cells src:" + sourceRow.description + " dest:" + destRow.description)
+            
+            let object = SettingsViewController.currentFaceSetting.faceColors[sourceRow]
+            SettingsViewController.currentFaceSetting.faceColors.remove(at: sourceRow)
+            SettingsViewController.currentFaceSetting.faceColors.insert(object, at: destRow)
+            
+            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":"faceColors"])
+        }
     }
-    */
 
     /*
     // MARK: - Navigation
@@ -105,6 +121,11 @@ class FaceColorsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //important only select one at a time
+        self.tableView.allowsMultipleSelection = false
+        self.tableView.allowsSelectionDuringEditing = true
+        self.setEditing(true, animated: true)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

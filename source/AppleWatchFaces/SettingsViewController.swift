@@ -603,6 +603,7 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         if segue.destination is FaceColorsTableViewController {
             let vc = segue.destination as? FaceColorsTableViewController
             faceColorsTableViewController = vc
+            vc?.settingsViewController = self
         }
         if segue.destination is FaceOptionsTableViewController {
             let vc = segue.destination as? FaceOptionsTableViewController

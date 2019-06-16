@@ -56,7 +56,9 @@ class FaceLayerTableViewCell: UITableViewCell {
     func selectColorForColorCollectionView( colorCollectionView: UICollectionView, desiredIndex: Int) {
         //select current item
         let indexPath = IndexPath.init(row: desiredIndex, section: 0)
-        colorCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        if colorCollectionView.cellForItem(at: indexPath) != nil { //may be a recently deleted color
+            colorCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        }
     }
     
     override func awakeFromNib() {
