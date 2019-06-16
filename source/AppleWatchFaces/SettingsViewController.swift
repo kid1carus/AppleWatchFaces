@@ -345,10 +345,12 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
                 SettingsViewController.currentFaceSetting.faceLayers[layerIndex].filenameForImage = fileName
             
                 layerOptions.backgroundType = .FaceBackgroundTypeFilled
+                
+                NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+                NotificationCenter.default.post(name: FaceLayersTableViewController.reloadLayerNotificationName, object: nil, userInfo:["layerIndex":layerIndex])
             }
 
-            NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
-            NotificationCenter.default.post(name: FaceLayersTableViewController.reloadLayerNotificationName, object: nil, userInfo:["layerIndex":layerIndex])
+            
         }
         
         CameraHandler.shared.showActionSheet(vc: self)
