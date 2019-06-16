@@ -14,6 +14,18 @@ class FaceColorSettingsTableViewCell: UITableViewCell, UICollectionViewDataSourc
     @IBOutlet var faceColorSelectionCollectionView: UICollectionView!
     var colorIndex = 0
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        if selected == true {
+            //self.contentView.backgroundColor = UIColor.blue
+            self.backgroundColor = UIColor.init(white: 0.1, alpha: 1.0)
+        } else {
+            //self.contentView.backgroundColor = UIColor.black
+            self.backgroundColor = UIColor.init(white: 0.0, alpha: 1.0)
+        }
+    }
+    
     func chooseSetting( animated: Bool ) {
         //debugPrint("** FaceBackgroundColorSettingTableViewCell called: " + SettingsViewController.currentFaceSetting.faceColors[colorIndex])
         

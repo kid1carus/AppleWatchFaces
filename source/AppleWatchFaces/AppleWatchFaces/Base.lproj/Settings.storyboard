@@ -14,42 +14,40 @@
         <scene sceneID="GAs-9q-W6l">
             <objects>
                 <tableViewController id="TvC-dO-JE2" customClass="FaceOptionsTableViewController" customModule="AppleWatchFaces" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9cb-lo-sgH">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9cb-lo-sgH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="424"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="titleCellID" rowHeight="100" id="WfJ-cv-6VI" customClass="FaceOptionsTitleTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="titleCellID" rowHeight="60" id="WfJ-cv-6VI" customClass="FaceOptionsTitleTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WfJ-cv-6VI" id="K60-Px-U0a">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2s-yu-qD0">
-                                            <rect key="frame" x="20" y="11" width="37" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="Dsy-c4-y69"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="sfW-ND-dWr"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title |" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2s-yu-qD0">
+                                            <rect key="frame" x="20" y="18.666666666666668" width="47" height="20.000000000000004"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="untitled" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jnY-kI-cP7">
-                                            <rect key="frame" x="20" y="40" width="374" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="untitled" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jnY-kI-cP7">
+                                            <rect key="frame" x="75" y="16" width="319" height="25"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" textContentType="name"/>
                                             <connections>
                                                 <outlet property="delegate" destination="K60-Px-U0a" id="Jcz-H6-Ul5"/>
                                             </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="B2s-yu-qD0" firstAttribute="leading" secondItem="K60-Px-U0a" secondAttribute="leadingMargin" id="ogW-r2-8qO"/>
-                                        <constraint firstItem="B2s-yu-qD0" firstAttribute="top" secondItem="K60-Px-U0a" secondAttribute="topMargin" id="xiM-JN-ZCm"/>
+                                        <constraint firstItem="B2s-yu-qD0" firstAttribute="leading" secondItem="K60-Px-U0a" secondAttribute="leadingMargin" id="PCZ-4n-U0p"/>
+                                        <constraint firstItem="jnY-kI-cP7" firstAttribute="leading" secondItem="B2s-yu-qD0" secondAttribute="trailing" constant="8" symbolic="YES" id="RAz-Fr-N2e"/>
+                                        <constraint firstItem="jnY-kI-cP7" firstAttribute="trailing" secondItem="K60-Px-U0a" secondAttribute="trailingMargin" id="YPv-Df-RBy"/>
+                                        <constraint firstItem="jnY-kI-cP7" firstAttribute="top" secondItem="K60-Px-U0a" secondAttribute="topMargin" constant="5" id="bmP-C5-sQj"/>
+                                        <constraint firstItem="jnY-kI-cP7" firstAttribute="centerY" secondItem="B2s-yu-qD0" secondAttribute="centerY" id="qcA-vv-Tkk"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

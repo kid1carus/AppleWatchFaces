@@ -12,6 +12,13 @@ class FaceOptionsTitleTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet var titleTextField: UITextField!
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        //force to always black
+        self.contentView.backgroundColor = self.backgroundColor
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         //hello!
         let newTitle = textField.text ?? ""
@@ -35,12 +42,6 @@ class FaceOptionsTitleTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
         titleTextField.delegate = self
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
