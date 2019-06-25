@@ -10,13 +10,14 @@ import SpriteKit
 
 enum HourHandTypes: String {
     case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeImageMoon,
-        HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypeArrow, HourHandTypeCapeCod, HourHandTypeCapeCodFilled,
+        HourHandTypeImageNumbers, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypeArrow, HourHandTypeCapeCod, HourHandTypeCapeCodFilled,
     HourHandTypePacMan, HourHandTypeMsPacMan, HourHandTypeNone
     
     static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRadar, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeThinDial, HourHandTypeNone]
     static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeCapeCod, HourHandTypeCapeCodFilled, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeImageMoon,
-        HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypePacMan, HourHandTypeMsPacMan,
-                                       HourHandTypeNone]
+        HourHandTypeImageNumbers, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypePacMan,
+        HourHandTypeMsPacMan,
+        HourHandTypeNone]
     
     static func random() -> HourHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -75,6 +76,7 @@ class HourHandNode: SKSpriteNode {
         if (nodeType == .HourHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
         if (nodeType == .HourHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
         if (nodeType == .HourHandTypeImageMoon) { typeDescription = "Image: Moon" }
+        if (nodeType == .HourHandTypeImageNumbers) { typeDescription = "Image: Numbers" }
         
         return typeDescription
     }
@@ -191,6 +193,24 @@ class HourHandNode: SKSpriteNode {
             }
             
             addArcNode( endAngle: CGFloat.pi * 0.5)
+        }
+        
+        if (hourHandType == .HourHandTypeImageNumbers) {
+            let im = UIImage.init(named: "hourHand-Numbers.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                textureNode.setScale(0.4)
+                //textureNode.anchorPoint = CGPoint.init(x: 0.53, y: 0.1235)   //how far from center of image
+                textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                
+                let phy = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 30, height: 70), center: CGPoint.init(x: 0, y: 35))
+                phy.isDynamic = false
+                textureNode.physicsBody = phy
+                
+                self.addChild(textureNode)
+            }
         }
         
         if (hourHandType == .HourHandTypeImageMoon) {

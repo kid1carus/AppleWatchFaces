@@ -12,10 +12,10 @@ import SceneKit
 
 enum SecondHandTypes: String {
     case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandRadar,
-        SecondHandTypeImageMoon,
+        SecondHandTypeImageMoon, SecondHandTypeImageNumbers,
         SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandTypeImageMoon,
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandTypeImageMoon, SecondHandTypeImageNumbers,
         SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
@@ -78,6 +78,7 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == .SecondHandTypeFancyRed)  { typeDescription = "Image: Fancy Red" }
         if (nodeType == .SecondHandTieFighter)  { typeDescription = "Image: Tie Fighter" }
         if (nodeType == .SecondHandTypeImageMoon)  { typeDescription = "Image: Moon" }
+        if (nodeType == .SecondHandTypeImageNumbers)  { typeDescription = "Image: Numbers" }
         
         if (nodeType == .SecondHandNodeTypeNone)  { typeDescription = "None" }
         
@@ -348,6 +349,29 @@ class SecondHandNode: SKSpriteNode {
             }
             
             addArcNode( endAngle: CGFloat.pi * 0.5)
+        }
+        
+        if (secondHandType == .SecondHandTypeImageNumbers) {
+            let im = UIImage.init(named: "secondHand-Numbers.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                textureNode.setScale(0.4)  //1.43
+                //textureNode.anchorPoint = CGPoint.init(x: 0.57, y: 0.09)   //how far from center of image
+                textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                
+                let h = 220
+                let phy = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 3, height: h), center: CGPoint.init(x: 0, y: h/2))
+                phy.isDynamic = false
+                textureNode.physicsBody = phy
+                
+                //needed to affect the physics fields
+                addPhysicsField(fieldType: fieldType, node: textureNode, position: CGPoint.init(x: 0, y: h), itemStrength: itemStrength)
+                
+                self.addChild(textureNode)
+            }
+            
         }
         
         if (secondHandType == .SecondHandTypeImageMoon) {
