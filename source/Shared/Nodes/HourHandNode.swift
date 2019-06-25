@@ -69,8 +69,10 @@ class HourHandNode: SKSpriteNode {
         
         if (nodeType == .HourHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == .HourHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        if (nodeType == .HourHandTypeRadar)  { typeDescription = "Radar" }
         if (nodeType == .HourHandTypePacMan)  { typeDescription = "Dot Eater" }
         if (nodeType == .HourHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
+        
         
         //image ex
         if (nodeType == .HourHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
