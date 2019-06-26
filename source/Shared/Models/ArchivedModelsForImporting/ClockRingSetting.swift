@@ -24,21 +24,21 @@ import SpriteKit
 //}
 
 //position types for statically positioned items like date, digital time
-//enum RingVerticalPositionTypes: String {
-//    case Top,
-//    Centered,
-//    Bottom,
-//    Numeric,
-//    None
-//}
-//
-//enum RingHorizontalPositionTypes: String {
-//    case Left,
-//    Centered,
-//    Right,
-//    Numeric,
-//    None
-//}
+enum RingVerticalPositionTypes: String {
+    case Top,
+    Centered,
+    Bottom,
+    Numeric,
+    None
+}
+
+enum RingHorizontalPositionTypes: String {
+    case Left,
+    Centered,
+    Right,
+    Numeric,
+    None
+}
 
 class ClockRingSetting: NSObject {
     

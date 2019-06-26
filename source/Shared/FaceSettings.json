@@ -3,6 +3,199 @@
         {
             "faceLayers" : [
                 {
+                    "scale" : "1.0",
+                    "horizontalPosition" : "0.0",
+                    "desiredThemeColorIndex" : 0,
+                    "filenameForImage" : "",
+                    "alpha" : "1.0",
+                    "layerOptions" : {
+                        "hasTransparency" : false,
+                        "filename" : "NumbersFace.png",
+                        "backgroundType" : "FaceBackgroundTypeFilled",
+                        "anglePerSec" : 0
+                    },
+                    "layerType" : "ImageTexture",
+                    "angleOffset" : "0.0",
+                    "verticalPosition" : "0.0"
+                },
+                {
+                    "horizontalPosition" : "0.288",
+                    "desiredThemeColorIndex" : 0,
+                    "angleOffset" : "0.0",
+                    "scale" : "1.0500001",
+                    "filenameForImage" : "",
+                    "verticalPosition" : "0.52",
+                    "alpha" : "1.0",
+                    "layerType" : "DateTimeLabel",
+                    "layerOptions" : {
+                        "fontType" : "NumberTextTypeDigitalMono",
+                        "justificationType" : "Right",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "effectType" : "None",
+                        "outlineWidth" : "0.0",
+                        "formatType" : "HH"
+                    }
+                },
+                {
+                    "filenameForImage" : "",
+                    "layerOptions" : {
+                        "effectType" : "None",
+                        "justificationType" : "Right",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "fontType" : "NumberTextTypeDigitalMono",
+                        "outlineWidth" : "0.0",
+                        "formatType" : "MM"
+                    },
+                    "layerType" : "DateTimeLabel",
+                    "verticalPosition" : "-0.545",
+                    "angleOffset" : "0.0",
+                    "alpha" : "1.0",
+                    "desiredThemeColorIndex" : 0,
+                    "horizontalPosition" : "0.3",
+                    "scale" : "1.0500001"
+                },
+                {
+                    "horizontalPosition" : "0.769",
+                    "alpha" : "1.0",
+                    "filenameForImage" : "",
+                    "layerType" : "DateTimeLabel",
+                    "verticalPosition" : "0.395",
+                    "scale" : "0.65000004",
+                    "desiredThemeColorIndex" : 0,
+                    "layerOptions" : {
+                        "effectType" : "None",
+                        "justificationType" : "Right",
+                        "formatType" : "SS",
+                        "outlineWidth" : "0.0",
+                        "fontType" : "NumberTextTypeDigitalMono",
+                        "desiredThemeColorIndexForOutline" : "0"
+                    },
+                    "angleOffset" : "0.0"
+                },
+                {
+                    "layerType" : "DateTimeLabel",
+                    "angleOffset" : "0.0",
+                    "verticalPosition" : "0.4",
+                    "alpha" : "1.0",
+                    "scale" : "0.65000004",
+                    "horizontalPosition" : "-0.45000002",
+                    "desiredThemeColorIndex" : 0,
+                    "filenameForImage" : "",
+                    "layerOptions" : {
+                        "justificationType" : "Right",
+                        "outlineWidth" : "0.0",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "formatType" : "BatteryNum",
+                        "effectType" : "None",
+                        "fontType" : "NumberTextTypeDigitalMono"
+                    }
+                },
+                {
+                    "layerOptions" : {
+                        "formatType" : "MO",
+                        "effectType" : "None",
+                        "justificationType" : "Right",
+                        "fontType" : "NumberTextTypeDigitalMono",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "outlineWidth" : "0.0"
+                    },
+                    "layerType" : "DateTimeLabel",
+                    "desiredThemeColorIndex" : 0,
+                    "scale" : "0.625",
+                    "angleOffset" : "0.0",
+                    "horizontalPosition" : "0.856",
+                    "verticalPosition" : "-0.405",
+                    "alpha" : "1.0",
+                    "filenameForImage" : ""
+                },
+                {
+                    "angleOffset" : "0.0",
+                    "horizontalPosition" : "-0.425",
+                    "alpha" : "1.0",
+                    "desiredThemeColorIndex" : 0,
+                    "filenameForImage" : "",
+                    "layerOptions" : {
+                        "justificationType" : "Right",
+                        "fontType" : "NumberTextTypeDigitalMono",
+                        "outlineWidth" : "0.0",
+                        "desiredThemeColorIndexForOutline" : "0",
+                        "effectType" : "None",
+                        "formatType" : "DD"
+                    },
+                    "verticalPosition" : "-0.395",
+                    "scale" : "0.625",
+                    "layerType" : "DateTimeLabel"
+                },
+                {
+                    "layerOptions" : {
+                        "desiredThemeColorIndexForOutline" : "1",
+                        "effectsStrength" : "0.0",
+                        "handType" : "HourHandTypeImageNumbers",
+                        "handImage" : "",
+                        "outlineWidth" : "0.0"
+                    },
+                    "scale" : "1.0",
+                    "filenameForImage" : "",
+                    "alpha" : "1.0",
+                    "verticalPosition" : "0.0",
+                    "angleOffset" : "0.0",
+                    "horizontalPosition" : "0.0",
+                    "layerType" : "HourHand",
+                    "desiredThemeColorIndex" : 1
+                },
+                {
+                    "layerType" : "MinuteHand",
+                    "verticalPosition" : "0.0",
+                    "alpha" : "1.0",
+                    "layerOptions" : {
+                        "handType" : "MinuteHandTypeImageNumbers",
+                        "outlineWidth" : "0.0",
+                        "handAnimation" : "MinuteHandMovementStep",
+                        "effectsStrength" : "0.0",
+                        "handImage" : "",
+                        "desiredThemeColorIndexForOutline" : "1"
+                    },
+                    "horizontalPosition" : "0.0",
+                    "desiredThemeColorIndex" : 1,
+                    "filenameForImage" : "",
+                    "angleOffset" : "0.0",
+                    "scale" : "1.0"
+                },
+                {
+                    "horizontalPosition" : "0.0",
+                    "angleOffset" : "0.0",
+                    "layerOptions" : {
+                        "effectsStrength" : "0.0",
+                        "handType" : "SecondHandTypeImageNumbers",
+                        "outlineWidth" : "0.0",
+                        "physicFieldStrength" : "2.0",
+                        "physicsFieldType" : "Spring",
+                        "handAnimation" : "SecondHandMovementSmooth",
+                        "desiredThemeColorIndexForOutline" : "1",
+                        "handImage" : ""
+                    },
+                    "alpha" : "1.0",
+                    "verticalPosition" : "0.0",
+                    "layerType" : "SecondHand",
+                    "desiredThemeColorIndex" : 1,
+                    "filenameForImage" : "",
+                    "scale" : "1.0"
+                }
+            ],
+            "title" : "Numbers",
+            "faceColors" : [
+                "#38bcffff",
+                "#ffffffff",
+                "#ff7f00ff",
+                "#545454ff",
+                "#1c1c1cff",
+                "#000000ff"
+            ],
+            "uniqueID" : "E0D3EFE8-EA95-4B73-BBE9-33847C14A598"
+        },
+        {
+            "faceLayers" : [
+                {
                     "alpha" : "1.0",
                     "angleOffset" : "0.0",
                     "layerOptions" : {

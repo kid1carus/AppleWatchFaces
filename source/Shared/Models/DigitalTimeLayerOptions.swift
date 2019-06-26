@@ -11,6 +11,7 @@ import Foundation
 class DigitalTimeLayerOptions: FaceLayerOptions {
     var fontType: NumberTextTypes
     var formatType: DigitalTimeFormats
+    var justificationType: HorizontalPositionTypes
     var effectType: DigitalTimeEffects
     var outlineWidth: Float
     var desiredThemeColorIndexForOutline: Int
@@ -36,6 +37,12 @@ class DigitalTimeLayerOptions: FaceLayerOptions {
         } else {
             self.effectType = .None
         }
+        let justificationTypeString = jsonObj["justificationType"].stringValue
+        if let justificationType = HorizontalPositionTypes(rawValue: justificationTypeString) {
+            self.justificationType = justificationType
+        } else {
+            self.justificationType = .Centered
+        }
         
         self.outlineWidth = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "outlineWidth")
         self.desiredThemeColorIndexForOutline = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndexForOutline")
@@ -49,6 +56,7 @@ class DigitalTimeLayerOptions: FaceLayerOptions {
         self.effectType = .None
         self.outlineWidth = 0.0
         self.desiredThemeColorIndexForOutline = 0
+        self.justificationType = .Centered
         
         super.init()
     }
@@ -59,6 +67,7 @@ class DigitalTimeLayerOptions: FaceLayerOptions {
         serializedDict[ "fontType" ] = self.fontType.rawValue as AnyObject
         serializedDict[ "formatType" ] = self.formatType.rawValue as AnyObject
         serializedDict[ "effectType" ] = self.effectType.rawValue as AnyObject
+        serializedDict[ "justificationType" ] = self.justificationType.rawValue as AnyObject
         
         serializedDict[ "outlineWidth" ] = self.outlineWidth.description as AnyObject
         serializedDict[ "desiredThemeColorIndexForOutline" ] = self.desiredThemeColorIndexForOutline.description as AnyObject

@@ -234,7 +234,7 @@ class FaceLayersTableViewController: UITableViewController {
                 case .NumberRing:
                     cellHeight = 335.0
                 case .DateTimeLabel:
-                    cellHeight = 250.0
+                    cellHeight = 285.0
                 case .ParticleField:
                     cellHeight = 180.0
                 }

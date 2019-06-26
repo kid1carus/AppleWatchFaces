@@ -32,6 +32,7 @@ enum DigitalTimeFormats: String {
     DD,
     DL,
     Battery,
+    BatteryNum,
     Colon,
     Slash,
     None
@@ -52,6 +53,7 @@ enum DigitalTimeFormats: String {
         SS,
         PM,
         Battery,
+        BatteryNum,
         Colon,
         Slash
     ]
@@ -82,6 +84,19 @@ enum DigitalTimeEffects: String {
         None
     ]
 }
+
+enum HorizontalPositionTypes: String {
+    case Left,
+    Centered,
+    Right
+    
+    static let userSelectableValues = [
+        Left,
+        Centered,
+        Right
+    ]
+}
+
 
 class DigitalTimeNode: SKNode {
     var timeFormat: DigitalTimeFormats = .DD
@@ -123,7 +138,7 @@ class DigitalTimeNode: SKNode {
     
     func  getTimeString() -> String {
         
-        if timeFormat == .Battery {
+        if timeFormat == .Battery || timeFormat == .BatteryNum {
             
             var batteryPercent:Float = 100
             
@@ -143,8 +158,11 @@ class DigitalTimeNode: SKNode {
             if batteryPercent < 0.0 {
                 batteryPercent = 0.0
             }
-            
-            return Int(batteryPercent * 100).description + "%"
+            var batteryLevel = Int(batteryPercent * 100).description
+            if timeFormat == .Battery {
+                batteryLevel = batteryLevel + "%"
+            }
+            return batteryLevel
         }
         
         func timeStringWithoutAMPM( dateFormatterTime: DateFormatter)->String {
@@ -240,7 +258,7 @@ class DigitalTimeNode: SKNode {
     }
     
     //used when generating node for digital time ( a mini digital clock )
-    init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, effect: DigitalTimeEffects, horizontalPosition: RingHorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor?, lineWidth: Float ) {
+    init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, effect: DigitalTimeEffects, horizontalPosition: HorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor?, lineWidth: Float ) {
     
         super.init()
 
@@ -466,6 +484,8 @@ class DigitalTimeNode: SKNode {
         switch format {
         case .Battery:
             description = "Battery %"
+        case .BatteryNum:
+            description = "Battery"
         case .DA:
             description = "Tue - Day Short"
         case .DL:
@@ -556,6 +576,30 @@ class DigitalTimeNode: SKNode {
         var typeDescriptionsArray = [String]()
         for nodeType in DigitalTimeEffects.userSelectableValues {
             typeDescriptionsArray.append(descriptionForTimeEffects(nodeType))
+        }
+        
+        return typeDescriptionsArray
+    }
+    
+    static func descriptionForPositionTypes(_ format: HorizontalPositionTypes) -> String {
+        var description = ""
+        
+        switch format {
+        case .Left:
+            description = "Left"
+        case .Centered:
+            description = "Centered"
+        case .Right:
+            description = "Right"
+        }
+        
+        return description
+    }
+    
+    static func positionTypesDescriptions() -> [String] {
+        var typeDescriptionsArray = [String]()
+        for nodeType in HorizontalPositionTypes.userSelectableValues {
+            typeDescriptionsArray.append(descriptionForPositionTypes(nodeType))
         }
         
         return typeDescriptionsArray

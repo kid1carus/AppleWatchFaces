@@ -23,6 +23,8 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
     
     @IBOutlet var outlineWidthSlider: UISlider!
     
+    @IBOutlet var justificationTypeSegment: UISegmentedControl!
+    
     let settingTypeString = "dateTimeLabel"
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -105,6 +107,18 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
         }
     }
     
+    @IBAction func justificationTypeSegmentDidChange(sender: UISegmentedControl ) {
+        let faceLayer = myFaceLayer()
+        guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
+        layerOptions.justificationType = HorizontalPositionTypes.userSelectableValues[sender.selectedSegmentIndex]
+        NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":settingTypeString ,"layerIndex":myLayerIndex()!])
+    }
+    
     override func setupUIForFaceLayer(faceLayer: FaceLayer) {
         super.setupUIForFaceLayer(faceLayer: faceLayer) // needs title outlet to function
         
@@ -116,6 +130,15 @@ class FaceLayerDateTimeLabelTableViewCell: FaceLayerTableViewCell, UICollectionV
         
         redrawColorsForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView)
         guard let layerOptions = faceLayer.layerOptions as? DigitalTimeLayerOptions else { return }
+        
+        justificationTypeSegment.removeAllSegments()
+        for (index,descr) in DigitalTimeNode.positionTypesDescriptions().enumerated() {
+            justificationTypeSegment.insertSegment(withTitle: descr, at: index, animated: false)
+        }
+        if let pathIndex = HorizontalPositionTypes.userSelectableValues.index(of: layerOptions.justificationType) {
+            self.justificationTypeSegment.selectedSegmentIndex = pathIndex
+        }
+        
         selectColorForColorCollectionView( colorCollectionView: outlineColorSelectionCollectionView, desiredIndex: layerOptions.desiredThemeColorIndexForOutline)
         
         fontNameLabel.text = NumberTextNode.descriptionForType(layerOptions.fontType)
