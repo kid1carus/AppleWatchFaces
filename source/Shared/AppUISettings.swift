@@ -50,6 +50,10 @@ class AppUISettings: NSObject {
         "CasioF91OG.png", "CasioF91Gold.png", "CasioF91White.png", "NumbersFace.png"
         ]
     
+    static let overlayMaterialFiles = [
+        "networkDisplay.png", "grungeOverlay2.png", "grungeOverlay.png", "scanLines.png"
+    ]
+    
     static func materialIsColor( materialName: String ) -> Bool {
         if (materialName.lengthOfBytes(using: String.Encoding.utf8) > 0) {
             let index = materialName.index(materialName.startIndex, offsetBy: 1)

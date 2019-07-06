@@ -104,11 +104,9 @@ class FaceBackgroundNode: SKSpriteNode {
         return typeDescriptionsArray
     }
     
-    static func filledShapeNode(material: String) -> SKShapeNode {
-        let screenSize = AppUISettings.getScreenBoundsForImages()
-        let xBounds = (screenSize.width / 2.0).rounded()
-        let yBounds = (screenSize.height / 2.0).rounded()
-        
+    static func filledShapeNode(material: String, size: CGSize) -> SKShapeNode {
+        let xBounds = size.width
+        let yBounds = size.height
         //rect != shape from path, so draw it from path
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: -xBounds, y: yBounds))
@@ -123,6 +121,15 @@ class FaceBackgroundNode: SKSpriteNode {
         shape.lineWidth = 0.0
         shape.setMaterial(material: material)
         return shape
+    }
+    
+    static func filledShapeNode(material: String) -> SKShapeNode {
+        let screenSize = AppUISettings.getScreenBoundsForImages()
+        let xBounds = (screenSize.width / 2.0).rounded()
+        let yBounds = (screenSize.height / 2.0).rounded()
+        
+        let newShapeSize = CGSize.init(width: xBounds, height: yBounds)
+        return filledShapeNode(material: material, size: newShapeSize)
     }
     
     func positionHands( min: CGFloat, hour: CGFloat, force: Bool ) {
@@ -149,8 +156,18 @@ class FaceBackgroundNode: SKSpriteNode {
         let yBounds = (screenSize.height / 2.0).rounded()
         
         func getImageNode( material: String) -> SKNode? {
+            return getImageNode(material: material, tryBundle: false)
+        }
+        
+        func getImageNode( material: String, tryBundle: Bool) -> SKNode? {
+            
+            var customImage = UIImage.getImageFor(imageName: material)
+            if (tryBundle) {
+                customImage = UIImage.init(named: material)
+            }
+            
             //load image
-            if let image = UIImage.getImageFor(imageName: material)  {
+            if let image = customImage  {
                 let texture = SKTexture.init(image: image)
                 let scaledSize = CGSize.init(width: image.size.width * image.scale, height: image.size.height * image.scale)
                 let imageNode = SKSpriteNode.init(texture: texture, size: scaledSize)
@@ -162,10 +179,17 @@ class FaceBackgroundNode: SKSpriteNode {
         func maskImageIntoShape( materialToUse: String, shapeNode: SKShapeNode) -> SKNode {
             
             var imageNode = SKNode()
+            var checkInBundle = false
             
-            if let cameraImage = getImageNode(material: material) {
+            if AppUISettings.overlayMaterialFiles.contains(materialToUse) {
+                checkInBundle = true
+            }
+            
+            if let cameraImage = getImageNode(material: material, tryBundle: checkInBundle) {
+                //wont fill to baxkground size (best for pngs / overlays )
                 imageNode = cameraImage
             } else {
+                //will fill perfectly to size ( for backgrounds )
                 imageNode = FaceBackgroundNode.filledShapeNode(material: materialToUse)
             }
             
@@ -215,6 +239,8 @@ class FaceBackgroundNode: SKSpriteNode {
                 shape.lineWidth = lineWidth
                 self.addChild(shape)
             } else {
+                
+                //for pngs force to bundle
                 
                 if let imageNode = getImageNode(material: material) {
                     // imported camera image, dont bound to fill size

@@ -25,6 +25,8 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     
     let settingTypeString = "imageBackground"
     
+    let materialFiles = AppUISettings.materialFiles + AppUISettings.overlayMaterialFiles
+    
     @IBAction func hasTransparencySwitchFlipped( sender: UISwitch ) {
         let faceLayer = myFaceLayer()
         guard let layerOptions = faceLayer.layerOptions as? ImageBackgroundLayerOptions else { return }
@@ -83,7 +85,7 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AppUISettings.materialFiles.count
+        return materialFiles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,10 +96,10 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
         let corner:CGFloat = CGFloat(Int(buffer / 2))
         cell.circleView.frame = CGRect.init(x: corner, y: corner, width: cell.frame.size.width-buffer, height: cell.frame.size.height-buffer)
         
-        if let image = UIImage.init(named: AppUISettings.materialFiles[indexPath.row] ) {
+        if let image = UIImage.init(named: materialFiles[indexPath.row] ) {
             cell.circleView.layer.cornerRadius = 0
             //TODO: if this idea sticks, resize this on app start and cache them so they arent built on-demand
-            let scaledImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: cell.frame.size.width-buffer, height: cell.frame.size.height-buffer))
+            let scaledImage = AppUISettings.imageWithImage(image: image, fitToSize: CGSize.init(width: cell.frame.size.width-buffer, height: cell.frame.size.height-buffer))
             cell.circleView.backgroundColor = SKColor.init(patternImage: scaledImage)
         }
         
@@ -118,7 +120,13 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
 //        if layerOptions.backgroundType == .FaceBackgroundTypeImage {
 //            layerOptions.backgroundType = .FaceBackgroundTypeFilled
 //        }
-        layerOptions.filename = AppUISettings.materialFiles[indexPath.row]
+        layerOptions.filename = materialFiles[indexPath.row]
+        
+        if AppUISettings.overlayMaterialFiles.contains(layerOptions.filename) {
+            layerOptions.hasTransparency = true
+        } else {
+            layerOptions.hasTransparency = false
+        }
         //filenameLabel.text = layerOptions.filename
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:["settingType":settingTypeString,"layerIndex":myLayerIndex()!])
@@ -209,14 +217,14 @@ class FaceLayerImageBackgroundTableViewCell: FaceLayerTableViewCell, UICollectio
             //filenameLabel.text = faceLayer.filenameForImage
             imageSelectionCollectionView.deselectAll(animated: true)
             if let cameraImage = UIImage.getImageFor(imageName: faceLayer.filenameForImage) {
-                let resizedImage = AppUISettings.imageWithImage(image: cameraImage, scaledToSize: cameraButton.frame.size)
+                let resizedImage = AppUISettings.imageWithImage(image: cameraImage, fitToSize: cameraButton.frame.size)
                 cameraButton.setBackgroundImage(resizedImage, for: UIControl.State.normal)
             }
             selectCameraButton()
         } else {
             unSelectCameraButton()
             
-            if let meterialsIndex = AppUISettings.materialFiles.index(of: layerOptions.filename) {
+            if let meterialsIndex = materialFiles.index(of: layerOptions.filename) {
                 //filenameLabel.text = layerOptions.filename
                 let indexPath = IndexPath.init(row: meterialsIndex, section: 0)
                 imageSelectionCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
