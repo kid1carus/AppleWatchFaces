@@ -51,7 +51,7 @@ class AppUISettings: NSObject {
         ]
     
     static let overlayMaterialFiles = [
-        "networkDisplay.png", "grungeOverlay2.png", "grungeOverlay.png", "scanLines.png"
+        "batteryHalfFull.png", "networkDisplay.png", "grungeOverlay2.png", "grungeOverlay.png", "scanLines.png"
     ]
     
     static func materialIsColor( materialName: String ) -> Bool {
