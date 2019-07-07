@@ -9,6 +9,25 @@
 import Foundation
 import SpriteKit
 
+#if os(watchOS)
+import WatchKit
+import ClockKit
+#endif
+
+enum BatteryIndicatorTypes: String {
+    case normal
+
+    static let userSelectableValues = [normal]
+    
+    static let randomizableValues = userSelectableValues
+    
+    static func random() -> BatteryIndicatorTypes {
+        let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
+        return randomizableValues[randomIndex]
+    }
+}
+
+
 class BatteryNode: SKShapeNode {
     
     static func getLevel() -> Float {
@@ -34,7 +53,7 @@ class BatteryNode: SKShapeNode {
         return batteryPercent
     }
     
-    init(percent: CGFloat, batteryfillColor: SKColor?, backgroundColor: SKColor, strokeColor: SKColor, lineWidth: CGFloat, innerPadding: CGFloat) {
+    init(type: BatteryIndicatorTypes, percent: CGFloat, batteryfillColor: SKColor?, backgroundColor: SKColor, strokeColor: SKColor, lineWidth: CGFloat, innerPadding: CGFloat) {
         
         super.init()
         

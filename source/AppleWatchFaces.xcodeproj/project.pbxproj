@@ -157,6 +157,9 @@
 		3176F14522D24E0B00582A1A /* BatteryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14422D24E0B00582A1A /* BatteryNode.swift */; };
 		3176F14622D24EEB00582A1A /* BatteryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14422D24E0B00582A1A /* BatteryNode.swift */; };
 		3176F14722D24EEB00582A1A /* BatteryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14422D24E0B00582A1A /* BatteryNode.swift */; };
+		3176F14922D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */; };
+		3176F14A22D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */; };
+		3176F14B22D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
 		318808D3217815E600585AB1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D2217815E600585AB1 /* SettingsViewController.swift */; };
 		318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808D4217815E600585AB1 /* FaceChooser.storyboard */; };
@@ -416,6 +419,7 @@
 		31706A11229C5DAB003F83FC /* ClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockSetting.swift; sourceTree = "<group>"; };
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
 		3176F14422D24E0B00582A1A /* BatteryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryNode.swift; sourceTree = "<group>"; };
+		3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIndicatorOptions.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		318808D2217815E600585AB1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -803,6 +807,7 @@
 				315AAB8522997C2F00B3A3E9 /* ParticleFieldLayerOptions.swift */,
 				312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */,
 				31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */,
+				3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1124,6 +1129,7 @@
 				31706A13229C5DAB003F83FC /* ClockFaceSetting.swift in Sources */,
 				31090FDD223421AA00D6CAA7 /* PongGameNode.swift in Sources */,
 				315AAB8922997FCB00B3A3E9 /* ClockColorTheme.swift in Sources */,
+				3176F14922D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */,
 				31FD61E921891B5000E15DEA /* SwiftyJSON.swift in Sources */,
 				313BB888227DEDB2005BE9C5 /* FaceLayer.swift in Sources */,
 				312D4C08218BCDDB008504D2 /* HourHandNode.swift in Sources */,
@@ -1191,6 +1197,7 @@
 				314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */,
 				3176F14622D24EEB00582A1A /* BatteryNode.swift in Sources */,
 				315AAB8D22997FEB00B3A3E9 /* ClockDecoratorTheme.swift in Sources */,
+				3176F14A22D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */,
 				3105333E225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */,
 				311B7CAF227F6A8E0073C4C9 /* ShapeLayerOptions.swift in Sources */,
 				31F4F1CF219A60230050177A /* AppUISettings.swift in Sources */,
@@ -1269,6 +1276,7 @@
 				31C86B1122374D0200EF4186 /* RoundedButton.swift in Sources */,
 				31C86B6322374E7200EF4186 /* FaceChooserCollectionViewCell.swift in Sources */,
 				310920772251A92E0032D3AB /* WatchSessionManager.swift in Sources */,
+				3176F14B22D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */,
 				31C86B6222374E7200EF4186 /* FaceChooserTableViewCell.swift in Sources */,
 				31C86B6022374E7200EF4186 /* FaceChooserEditTableViewController.swift in Sources */,
 				31F7D19522595D8700A1A27E /* OptionsViewController.swift in Sources */,
