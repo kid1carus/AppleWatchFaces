@@ -154,6 +154,9 @@
 		31706A16229C5DAB003F83FC /* ClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31706A11229C5DAB003F83FC /* ClockSetting.swift */; };
 		31724A6521FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
 		31724A6621FA91B400D3F599 /* ArcNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31724A6421FA91B400D3F599 /* ArcNode.swift */; };
+		3176F14522D24E0B00582A1A /* BatteryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14422D24E0B00582A1A /* BatteryNode.swift */; };
+		3176F14622D24EEB00582A1A /* BatteryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14422D24E0B00582A1A /* BatteryNode.swift */; };
+		3176F14722D24EEB00582A1A /* BatteryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14422D24E0B00582A1A /* BatteryNode.swift */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
 		318808D3217815E600585AB1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D2217815E600585AB1 /* SettingsViewController.swift */; };
 		318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808D4217815E600585AB1 /* FaceChooser.storyboard */; };
@@ -412,6 +415,7 @@
 		31706A10229C5DAB003F83FC /* ClockRingSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRingSetting.swift; sourceTree = "<group>"; };
 		31706A11229C5DAB003F83FC /* ClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockSetting.swift; sourceTree = "<group>"; };
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
+		3176F14422D24E0B00582A1A /* BatteryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryNode.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		318808D2217815E600585AB1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -591,6 +595,7 @@
 				31724A6421FA91B400D3F599 /* ArcNode.swift */,
 				31090FDC223421AA00D6CAA7 /* PongGameNode.swift */,
 				314FEC8022A4FA270030DAE0 /* GearNode.swift */,
+				3176F14422D24E0B00582A1A /* BatteryNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -1078,6 +1083,7 @@
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
 				31FF20D72290A9A80023F8A5 /* DigitalTimeLayerOptions.swift in Sources */,
 				3109D1E321A9A2C600561F13 /* FaceChooserEditTableViewController.swift in Sources */,
+				3176F14522D24E0B00582A1A /* BatteryNode.swift in Sources */,
 				31EF99A421A2072C00BB54E7 /* FaceChooserCollectionViewCell.swift in Sources */,
 				31B5E8CD218BD26B00DE6429 /* MinuteHandNode.swift in Sources */,
 				315878DA228793A9008FFC76 /* FaceLayerColorBackgroundTableViewCell.swift in Sources */,
@@ -1183,6 +1189,7 @@
 				31061F332192730A00EF511B /* SKColor.swift in Sources */,
 				3103A446229364A500E7B10A /* NumberRingLayerOptions.swift in Sources */,
 				314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */,
+				3176F14622D24EEB00582A1A /* BatteryNode.swift in Sources */,
 				315AAB8D22997FEB00B3A3E9 /* ClockDecoratorTheme.swift in Sources */,
 				3105333E225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */,
 				311B7CAF227F6A8E0073C4C9 /* ShapeLayerOptions.swift in Sources */,
@@ -1206,6 +1213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3176F14722D24EEB00582A1A /* BatteryNode.swift in Sources */,
 				312E6B6B2241C7A400BB0D05 /* PhysicsNode.swift in Sources */,
 				314FEC8322A4FA270030DAE0 /* GearNode.swift in Sources */,
 				3103A447229364A600E7B10A /* NumberRingLayerOptions.swift in Sources */,

@@ -139,25 +139,8 @@ class DigitalTimeNode: SKNode {
     func  getTimeString() -> String {
         
         if timeFormat == .Battery || timeFormat == .BatteryNum {
-            
-            var batteryPercent:Float = 100
-            
-            #if os(watchOS)
-                WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
-                batteryPercent = WKInterfaceDevice.current().batteryLevel
-                //var batteryState = WKInterfaceDevice.current().batteryState
-                WKInterfaceDevice.current().isBatteryMonitoringEnabled = false
-            #else
-                UIDevice.current.isBatteryMonitoringEnabled = true
-                batteryPercent = UIDevice.current.batteryLevel
-            #endif
-            
-            if batteryPercent > 1.0 {
-                batteryPercent = 1.0
-            }
-            if batteryPercent < 0.0 {
-                batteryPercent = 0.0
-            }
+            let batteryPercent = BatteryNode.getLevel()
+           
             var batteryLevel = Int(batteryPercent * 100).description
             if timeFormat == .Battery {
                 batteryLevel = batteryLevel + "%"
