@@ -31,26 +31,31 @@ enum BatteryIndicatorTypes: String {
 class BatteryNode: SKShapeNode {
     
     static func getLevel() -> Float {
-        var batteryPercent:Float = 100
-        
-        #if os(watchOS)
-        WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
-        batteryPercent = WKInterfaceDevice.current().batteryLevel
-        //var batteryState = WKInterfaceDevice.current().batteryState
-        WKInterfaceDevice.current().isBatteryMonitoringEnabled = false
+        //just return full in sim
+        #if targetEnvironment(simulator)
+            return 1.0
         #else
-        UIDevice.current.isBatteryMonitoringEnabled = true
-        batteryPercent = UIDevice.current.batteryLevel
+            var batteryPercent:Float = 1.0
+        
+            #if os(watchOS)
+                WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
+                batteryPercent = WKInterfaceDevice.current().batteryLevel
+                //var batteryState = WKInterfaceDevice.current().batteryState
+                WKInterfaceDevice.current().isBatteryMonitoringEnabled = false
+            #else //phone & iPad
+                UIDevice.current.isBatteryMonitoringEnabled = true
+                batteryPercent = UIDevice.current.batteryLevel
+            #endif
+        
+            if batteryPercent > 1.0 {
+                batteryPercent = 1.0
+            }
+            if batteryPercent < 0.0 {
+                batteryPercent = 0.0
+            }
+        
+            return batteryPercent
         #endif
-        
-        if batteryPercent > 1.0 {
-            batteryPercent = 1.0
-        }
-        if batteryPercent < 0.0 {
-            batteryPercent = 0.0
-        }
-        
-        return batteryPercent
     }
     
     init(type: BatteryIndicatorTypes, percent: CGFloat, batteryfillColor: SKColor?, backgroundColor: SKColor, strokeColor: SKColor, lineWidth: CGFloat, innerPadding: CGFloat) {
@@ -130,9 +135,11 @@ class BatteryNode: SKShapeNode {
         batteryShapeNode.xScale = scaleMult
         batteryShapeNode.yScale = scaleMult
         
+        batteryShapeNode.name = "batteryShape"
+        
         self.addChild(batteryShapeNode)
         
-        //check to see if we need to update time every second
+        //check to see if we need to update time every minute
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForMinutesChanged(notification:)), name: ClockTimer.timeChangedMinuteNotificationName, object: nil)
         //force update time if needed ( after restart )
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForForceUpdateTime(notification:)), name: SKWatchScene.timeForceUpdateNotificationName, object: nil)
@@ -147,7 +154,7 @@ class BatteryNode: SKShapeNode {
     }
     
     func setToTime() {
-        if let percFullIndicator = self.childNode(withName: "percFullIndicator") {
+        if let batteryShapeNode = self.childNode(withName: "batteryShape"), let percFullIndicator = batteryShapeNode.childNode(withName: "percFullIndicator") {
             let batPercent = BatteryNode.getLevel()
             percFullIndicator.xScale = CGFloat(batPercent)
         }

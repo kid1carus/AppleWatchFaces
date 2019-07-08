@@ -178,7 +178,6 @@ class DigitalTimeNode: SKNode {
         //let month = CGFloat(calendar.component(.month, from: date))
         let day = CGFloat(calendar.component(.day, from: date))
         
-        let hour = CGFloat(calendar.component(.hour, from: date))
         let minutes = CGFloat(calendar.component(.minute, from: date))
         let seconds = CGFloat(calendar.component(.second, from: date))
 
@@ -192,7 +191,10 @@ class DigitalTimeNode: SKNode {
         dateFormatterTime.dateStyle = .none
         dateFormatterTime.timeStyle = .short
         
-        let hourString = String(format: "%02d", Int(hour))
+        let hour12formatter = DateFormatter()
+        hour12formatter.dateFormat = "hh"
+        
+        let hourString = hour12formatter.string(from: date)
         let minString = String(format: "%02d", Int(minutes))
         let secString = String(format: "%02d", Int(seconds))
         

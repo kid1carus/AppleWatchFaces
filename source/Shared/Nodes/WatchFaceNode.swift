@@ -174,6 +174,7 @@ class WatchFaceNode: SKShapeNode {
                 
                 let batteryNode = BatteryNode.init(type: .normal, percent: 1.0, batteryfillColor: batteryFillColor, backgroundColor: SKColor.clear, strokeColor: strokeColor, lineWidth: CGFloat(layerOptions.outlineWidth), innerPadding: CGFloat(layerOptions.innerPadding))
                 batteryNode.name = "battery"
+                batteryNode.setToTime() //set initial percent correctly
                 
                 setLayerProps(layerNode: batteryNode, faceLayer: faceLayer)
                 batteryNode.zPosition = CGFloat(layerIndex)
