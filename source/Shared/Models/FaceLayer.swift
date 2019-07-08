@@ -160,6 +160,7 @@ class FaceLayer: NSObject {
         if (layerType == .GradientTexture)  { typeDescription = "Gradient Texture" }
         
         if (layerType == .Gear) { typeDescription = "Gear" }
+        if (layerType == .BatteryIndicator) { typeDescription = "Battery Indicator" }
         
         if (layerType == .ParticleField)  { typeDescription = "Particle Field" }
         
