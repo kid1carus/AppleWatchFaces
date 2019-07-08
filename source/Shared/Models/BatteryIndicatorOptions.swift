@@ -21,26 +21,29 @@ class BatteryIndicatorOptions: FaceLayerOptions {
     
     //init from JSON, ( in from txt files )
     init(jsonObj: JSON ) {
+        
+        let defaultOptions = BatteryIndicatorOptions.init(defaults: true)
+        
         let typeString = jsonObj["indicatorType"].stringValue
         if let indicatorType = BatteryIndicatorTypes(rawValue: typeString) {
             self.indicatorType = indicatorType
         } else {
-            self.indicatorType = .normal
+            self.indicatorType = defaultOptions.indicatorType
         }
-        self.innerPadding = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "innerPadding")
-        self.outlineWidth = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: 0.0, key: "outlineWidth")
-        self.desiredThemeColorIndexForOutline = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndexForOutline")
-        self.desiredThemeColorIndexForBatteryLevel = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: 0, key: "desiredThemeColorIndexForBatteryLevel")
+        self.innerPadding = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: defaultOptions.innerPadding, key: "innerPadding")
+        self.outlineWidth = NSObject.floatValueForJSONObj(jsonObj: jsonObj, defaultVal: defaultOptions.outlineWidth, key: "outlineWidth")
+        self.desiredThemeColorIndexForOutline = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: defaultOptions.desiredThemeColorIndexForOutline, key: "desiredThemeColorIndexForOutline")
+        self.desiredThemeColorIndexForBatteryLevel = NSObject.intValueForJSONObj(jsonObj: jsonObj, defaultVal: defaultOptions.desiredThemeColorIndexForBatteryLevel, key: "desiredThemeColorIndexForBatteryLevel")
         
-        self.autoBatteryColor = NSObject.boolValueForJSONObj(jsonObj: jsonObj, defaultVal: true, key: "autoBatteryColor")
+        self.autoBatteryColor = NSObject.boolValueForJSONObj(jsonObj: jsonObj, defaultVal: defaultOptions.autoBatteryColor, key: "autoBatteryColor")
         
         super.init()
     }
     
     init(defaults: Bool ) {
         self.indicatorType = .normal
-        self.innerPadding = 0.0
-        self.outlineWidth = 0.0
+        self.innerPadding = 5.0
+        self.outlineWidth = 3.0
         self.desiredThemeColorIndexForOutline = 0
         self.desiredThemeColorIndexForBatteryLevel = 0
         self.autoBatteryColor = true
