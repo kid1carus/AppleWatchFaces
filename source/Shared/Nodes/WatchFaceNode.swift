@@ -166,9 +166,13 @@ class WatchFaceNode: SKShapeNode {
                 guard let layerOptions = faceLayer.layerOptions as? BatteryIndicatorOptions else { return }
                 
                 let strokeColor = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForOutline)
-                let batteryFillColor = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForBatteryLevel)
+                var batteryFillColor:SKColor? = colorForDesiredIndex(index: layerOptions.desiredThemeColorIndexForBatteryLevel)
                 
-                let batteryNode = BatteryNode.init(type: .normal, percent: 1.0, batteryfillColor: SKColor.green, backgroundColor: SKColor.clear, strokeColor: SKColor.black, lineWidth: CGFloat(layerOptions.outlineWidth), innerPadding: CGFloat(layerOptions.innerPadding))
+                if (layerOptions.autoBatteryColor) {
+                    batteryFillColor = nil
+                }
+                
+                let batteryNode = BatteryNode.init(type: .normal, percent: 1.0, batteryfillColor: batteryFillColor, backgroundColor: SKColor.clear, strokeColor: strokeColor, lineWidth: CGFloat(layerOptions.outlineWidth), innerPadding: CGFloat(layerOptions.innerPadding))
                 batteryNode.name = "battery"
                 
                 setLayerProps(layerNode: batteryNode, faceLayer: faceLayer)

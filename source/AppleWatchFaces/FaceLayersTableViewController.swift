@@ -289,6 +289,10 @@ class FaceLayersTableViewController: UITableViewController {
         else if (faceLayer.layerType == .Gear) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerGearID", for: indexPath) as! FaceLayerGearTableViewCell
         }
+        else if (faceLayer.layerType == .BatteryIndicator) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerBatteryID", for: indexPath) as! FaceLayerBatteryIndicatorTableViewCell
+        }
+            
         else if (faceLayer.layerType == .ParticleField) {
             cell = tableView.dequeueReusableCell(withIdentifier: "faceLayerFieldID", for: indexPath) as! FaceLayerFieldTableViewCell
         }

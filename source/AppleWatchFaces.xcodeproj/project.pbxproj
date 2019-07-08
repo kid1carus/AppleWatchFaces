@@ -160,6 +160,7 @@
 		3176F14922D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */; };
 		3176F14A22D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */; };
 		3176F14B22D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */; };
+		3176F14D22D2DCEA00582A1A /* FaceLayerBatteryIndicatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176F14C22D2DCEA00582A1A /* FaceLayerBatteryIndicatorTableViewCell.swift */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
 		318808D3217815E600585AB1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D2217815E600585AB1 /* SettingsViewController.swift */; };
 		318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808D4217815E600585AB1 /* FaceChooser.storyboard */; };
@@ -420,6 +421,7 @@
 		31724A6421FA91B400D3F599 /* ArcNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcNode.swift; sourceTree = "<group>"; };
 		3176F14422D24E0B00582A1A /* BatteryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryNode.swift; sourceTree = "<group>"; };
 		3176F14822D2529900582A1A /* BatteryIndicatorOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIndicatorOptions.swift; sourceTree = "<group>"; };
+		3176F14C22D2DCEA00582A1A /* FaceLayerBatteryIndicatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceLayerBatteryIndicatorTableViewCell.swift; sourceTree = "<group>"; };
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		318808D2217815E600585AB1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 				310D922F227E700B007A5808 /* FaceLayerShapeTableViewCell.swift */,
 				3103A4482293858900E7B10A /* FaceLayerNumberRingTableViewCell.swift */,
 				315878DD2287AF5B008FFC76 /* FaceLayerDateTimeLabelTableViewCell.swift */,
+				3176F14C22D2DCEA00582A1A /* FaceLayerBatteryIndicatorTableViewCell.swift */,
 			);
 			path = FaceLayerTableView;
 			sourceTree = "<group>";
@@ -1143,6 +1146,7 @@
 				31D8633D21E5954B005BCB6F /* NumberTextNode.swift in Sources */,
 				31706A14229C5DAB003F83FC /* ClockOverlaySetting.swift in Sources */,
 				318808D1217815E600585AB1 /* AppDelegate.swift in Sources */,
+				3176F14D22D2DCEA00582A1A /* FaceLayerBatteryIndicatorTableViewCell.swift in Sources */,
 				315AAB8C22997FEB00B3A3E9 /* ClockDecoratorTheme.swift in Sources */,
 				31FF20D5228FB96B0023F8A5 /* ColorCollectionDataSource.swift in Sources */,
 				31706A12229C5DAB003F83FC /* UserClockSetting.swift in Sources */,

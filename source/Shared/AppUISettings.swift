@@ -77,6 +77,10 @@ class AppUISettings: NSObject {
     static let imageRotationSpeedSettigsSliderMin:Float = -15
     static let imageRotationSpeedSettigsSliderMax:Float = 15
     
+    //battery indicator padding slider
+    static let batteryIndicatorLevelPaddingMin:Float = 0
+    static let batteryIndicatorLevelPaddingMax:Float = 20
+
     //hand effect spacer slider
     static let handEffectSettigsSliderSpacerMin:Float = 0
     static let handEffectSettigsSliderSpacerMax:Float = 8.0
