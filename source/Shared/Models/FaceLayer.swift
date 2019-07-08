@@ -20,10 +20,11 @@ enum FaceLayerTypes: String {
     DateTimeLabel,
     ShapeRing,
     NumberRing,
-    Gear
+    Gear,
+    BatteryIndicator
     
     static let userSelectableValues = [
-        SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, DateTimeLabel, ShapeRing, NumberRing, Gear, ParticleField]
+        SecondHand, MinuteHand, HourHand, ImageTexture, ColorTexture, GradientTexture, DateTimeLabel, ShapeRing, NumberRing, Gear, BatteryIndicator, ParticleField]
 }
 
 class FaceLayerOptions: NSObject {
@@ -110,6 +111,8 @@ class FaceLayer: NSObject {
             self.layerOptions = ImageBackgroundLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         case .Gear:
             self.layerOptions = GearLayerOptions.init(jsonObj: jsonObj["layerOptions"])
+        case .BatteryIndicator:
+            self.layerOptions = BatteryIndicatorOptions.init(jsonObj: jsonObj["layerOptions"])
         case .ParticleField:
             self.layerOptions = ParticleFieldLayerOptions.init(jsonObj: jsonObj["layerOptions"])
         //default:

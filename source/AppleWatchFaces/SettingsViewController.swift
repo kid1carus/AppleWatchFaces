@@ -231,6 +231,8 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         var faceLayerOptions = FaceLayerOptions()
         switch layerType {
+        case .BatteryIndicator:
+            faceLayerOptions = BatteryIndicatorOptions.init(defaults: true)
         case .Gear:
             faceLayerOptions = GearLayerOptions.init(defaults: true)
         case .ShapeRing:

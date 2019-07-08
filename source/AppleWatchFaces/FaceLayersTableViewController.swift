@@ -215,6 +215,8 @@ class FaceLayersTableViewController: UITableViewController {
             //debugPrint("selectedpath:" + selectedPath.description + indexPath.description)
             //if selectedPath.row == indexPath.row {
                 switch faceLayer.layerType {
+                case .BatteryIndicator:
+                    cellHeight = 230.0
                 case .Gear:
                     cellHeight = 230.0
                 case .ImageTexture:
