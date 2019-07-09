@@ -11,11 +11,11 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandRadar,
+    case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandRadar, SecondHandTrails,
         SecondHandTypeImageMoon, SecondHandTypeImageNumbers,
         SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandTypeImageMoon, SecondHandTypeImageNumbers,
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTrails, SecondHandTieFighter, SecondHandTypeImageMoon, SecondHandTypeImageNumbers,
         SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
@@ -56,6 +56,9 @@ class SecondHandNode: SKSpriteNode {
     var innerRadius:CGFloat = 0.0
     var outerRadius:CGFloat = 0.0
     
+    //used for trails
+    var lastPositionInParent = CGPoint()
+    
     static func descriptionForType(_ nodeType: SecondHandTypes) -> String {
         var typeDescription = ""
         
@@ -73,6 +76,7 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == .SecondHandTypePacMan)  { typeDescription = "Dot Eater" }
         if (nodeType == .SecondHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
         if (nodeType == .SecondHandRadar) { typeDescription = "Radar Pointer" }
+        if (nodeType == .SecondHandTrails) { typeDescription = "Fading Trails" }
         
         // IMAGE BASED EXAMPLES
         if (nodeType == .SecondHandTypeFancyRed)  { typeDescription = "Image: Fancy Red" }
@@ -258,6 +262,35 @@ class SecondHandNode: SKSpriteNode {
         
     }
     
+    @objc func onNotificationForSlowFrameUpdate(notification:Notification) {
+        
+        let lineTrailFadeDuration = 10.0
+        
+        //add in trails
+        if self.secondHandType != .SecondHandTrails { return }
+        
+        if let parent = parent, let trailShape = self.childNode(withName: "trailShape") {
+            let newPosition = trailShape.convert(position, to:parent)
+            //debugPrint(newPosition.debugDescription)
+            let path = CGMutablePath()
+            path.move(to: lastPositionInParent)
+            path.addLine(to: newPosition)
+            
+            let lineSeg = SKShapeNode(path: path)
+            lineSeg.strokeColor = strokeColor
+            lineSeg.fillColor = SKColor.clear
+            lineSeg.lineWidth = lineWidth + 0.5
+            lineSeg.glowWidth = glowWidth
+            if lastPositionInParent.x != 0 { // dont add first line
+                parent.addChild(lineSeg)
+                lineSeg.run(SKAction.sequence([SKAction.fadeOut(withDuration: lineTrailFadeDuration), SKAction.removeFromParent()]))
+            }
+            
+            lastPositionInParent = newPosition
+        }
+        
+    }
+    
     init(secondHandType: SecondHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat, glowWidth: CGFloat, fieldType: PhysicsFieldTypes, itemStrength: CGFloat) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize())
@@ -271,6 +304,29 @@ class SecondHandNode: SKSpriteNode {
         
         if (secondHandType == SecondHandTypes.SecondHandNodeTypeNone) {
             //none :-)
+        }
+        
+        if (secondHandType == SecondHandTypes.SecondHandTrails) {
+            let shape = SKShapeNode.init(circleOfRadius: 2)
+            shape.position = CGPoint.init(x: 0, y: 89.0)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            shape.glowWidth = glowWidth
+            
+            let phy = SKPhysicsBody.init(circleOfRadius: 4)
+            phy.isDynamic = false
+            shape.physicsBody = phy
+            
+            //needed to affect the physics fields
+            addPhysicsField(fieldType: fieldType, node: shape, position: CGPoint.init(x: 0, y: 0), itemStrength: itemStrength)
+            
+            shape.name = "trailShape"
+            self.addChild(shape)
+            //self.pivot = SCNMatrix4MakeTranslation(0.0, -0.89, 0)
+            
+            //respond to slow frame updates
+            NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSlowFrameUpdate(notification:)), name: SKWatchScene.sceneSlowFrameUpdateNotificationName, object: nil)
         }
         
         if (secondHandType == .SecondHandRadar) {

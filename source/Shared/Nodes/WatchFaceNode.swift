@@ -106,7 +106,6 @@ class WatchFaceNode: SKShapeNode {
                 
                 layerNode.zRotation = rotateAmount * CGFloat(imageOptions.anglePerSec) - CGFloat(faceLayer.angleOffset)
             }
-            
         }
     }
     
