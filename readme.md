@@ -30,7 +30,7 @@ To see what type of default faces it comes with, browse the [thumbnails folder](
 
 Not very well depending on the watchOS version. Current known issues:
 - May not install to watch (b3)
-- May not sync faces properyl (b2)
+- May not sync faces properly (b2)
 - Will show digital time in upper right corner (all betas)
 
 
