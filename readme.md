@@ -26,7 +26,7 @@ To see what type of default faces it comes with, browse the [thumbnails folder](
 
 ## Frequently Asked Questions
 
-1. **Does this work on WatchOS6 beta**
+1. **Does this work on WatchOS6 beta ?** 
 
 Not really, current known issues:
     1. May not install to watch (b3)
