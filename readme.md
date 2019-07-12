@@ -26,7 +26,14 @@ To see what type of default faces it comes with, browse the [thumbnails folder](
 
 ## Frequently Asked Questions
 
-1. **Can I download this from the app store ?**
+1. **Does this work on WatchOS6 beta**
+
+Not really, current known issues:
+    1. May not install to watch (b3)
+    2. May not sync faces properyl (b2)
+    3. Will show digital time in upper right corner (all betas)
+
+2. **Can I download this from the app store ?**
 
 At this time, Apple is not ready for developer created watch faces -- **Typical response from Apple if you submit an iOS app that has a watch face:**
 
@@ -38,47 +45,47 @@ The native clock app already allows users to customize how time is displayed on 
 
 We encourage you to review your Apple Watch app concept and incorporate different content and features that are in compliance with the [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/), as well as the [watchOS Human Interface Guidelines](https://developer.apple.com/watchos/human-interface-guidelines/). If you want to show the time in your Apple Watch app, you may use the specialized Date Labels to display time-related values on Apple Watch.
 
-2. **Can I join your testFlight and help you beta test?**
+3. **Can I join your testFlight and help you beta test?**
 
 Yes, I am accepting testers for beta testing.  DM an email to [@orffy](https://twitter.com/orffy) to send a testFlight invite.   It does not need to be an appleID email, just any email you can check. Someone will notify you on twitter whem you have been invited, then check the email provided for a link from apple testFlight.  Follow the instructions in that email.
 
-3. **How do I get this on my phone / watch?**
+4. **How do I get this on my phone / watch?**
 
 Join the beta test or follow the installation instructions below to compile from the source and you can *side load* this application onto your phone and watch.
 
-4. **How can I create my own watch hands?**
+5. **How can I create my own watch hands?**
 
   Currently the watch hands are using UIKit paths and has support for PNGs.  See the example **SecondHandTypes.SecondHandTypeFancyRed** in Shared/Nodes/MinuteHand.swift.  The code will attempt to tint the PNG pixels with the chosen hand color.  White pixels will colorize to the chosen color, and black will not tint at all.  Colors in between will blend.  Import your PNG assets into the /Shared/Media.xcassets folder. 
   
   There has been many requests for the app to allow adding PNG hands inside the app.  I am investigating this for a future build.
   
-5. **Can I use my own background images from my phone in the app?**
+6. **Can I use my own background images from my phone in the app?**
 
   Yes, tap on the camera icon in the background color picker to pull an image off the phone's camera or gallery.
 
-6. **How can I add my own images for use as a background in the watch faces ?**
+7. **How can I add my own images for use as a background in the watch faces ?**
 
     1. Crop the image to a square at approximately 312x390 pixels ( 72 ppi )
     2. Drop it into the **/Shared/Resources/Materials** folder ( add to the project )
     3. Add it into the /Shared/AppUISettings file materialFiles array
     
-7. **Which versions of apple watches does this work with ?**
+8. **Which versions of apple watches does this work with ?**
 
 Any watchOS that can run spriteKit should be fine. Tested with watchOS 5 on a device and 4.2/4.3 in the simulator.
 
-8. **Are you planning to do complications ?**
+9. **Are you planning to do complications ?**
 
 Currently the app supports date/time and battery "decorators" that do their best to stay out of the way of the other items that make up the watch face rings.
 
-9. **Are all the designs round  ?**
+10. **Are all the designs round  ?**
 
 In [PR 11](https://github.com/orff/AppleWatchFaces/pull/11) support for rounded rectangle designs was added. It it not a perfect solution for watch designs:  While it does postiion the items along a rounded rectangle path, it evenly distributes them which does not perfectly line up with the watch hands.  Also box / square shapes look weird just rotated to face the center vs. a "true" watch design which would mask the edges.  
 
-10. **What about digital clocks  ?**
+11. **What about digital clocks  ?**
 
 In [PR 18](https://github.com/orff/AppleWatchFaces/pull/18) added support for date/time labels as "indicators" in the iOS editor app.  Add them and edit settings appropriately.
 
-11. **Can I back up, edit, or restore my faces?**
+12. **Can I back up, edit, or restore my faces?**
 
 See Back-Up / Restore in the Usage section below.
 
