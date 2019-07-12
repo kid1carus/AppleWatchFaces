@@ -28,7 +28,7 @@ To see what type of default faces it comes with, browse the [thumbnails folder](
 
 1. **Does this work on WatchOS6 beta ?** 
 
-Not really, current known issues:
+Not very well depending on the veta version. Current known issues:
     1. May not install to watch (b3)
     2. May not sync faces properyl (b2)
     3. Will show digital time in upper right corner (all betas)
