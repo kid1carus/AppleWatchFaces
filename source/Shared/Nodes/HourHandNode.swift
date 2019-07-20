@@ -15,9 +15,7 @@ enum HourHandTypes: String {
     
     static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRadar, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeThinDial, HourHandTypeNone]
     static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeArrow, HourHandTypeCapeCod, HourHandTypeCapeCodFilled, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeImageLightSaber, HourHandTypeImageMoon,
-        HourHandTypeImageNumbers, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar, HourHandTypePacMan,
-        HourHandTypeMsPacMan,
-        HourHandTypeNone]
+        HourHandTypeImageNumbers, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeRadar]
     
     static func random() -> HourHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
