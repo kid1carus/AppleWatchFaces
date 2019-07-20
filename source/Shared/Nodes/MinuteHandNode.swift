@@ -13,13 +13,12 @@ import SpriteKit
 enum MinuteHandTypes: String {
     case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeCapeCod, MinuteHandTypeCapeCodFilled, MinuteHandTypeSphere,
         MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber,
-        MinuteHandTypeImageMoon, MinuteHandTypeImageNumbers,
+        MinuteHandTypeImageMoon,
         MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar,
         MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeCapeCod, MinuteHandTypeCapeCodFilled, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeImageMoon,
-        MinuteHandTypeImageNumbers, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar, MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeCapeCod, MinuteHandTypeCapeCodFilled, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeImageMoon, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -83,13 +82,12 @@ class MinuteHandNode: SKSpriteNode {
         if (nodeType == .MinuteHandTypeRadar)  { typeDescription = "Radar Pointer" }
         
         if (nodeType == .MinuteHandTypePacMan)  { typeDescription = "Dot Eater" }
-        if (nodeType == .MinuteHandTypePacMan)  { typeDescription = "Ms Dot Eater" }
+        if (nodeType == .MinuteHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
+        if (nodeType == .MinuteHandTypePacMan)  { typeDescription = "Dot Eater" }
         
         //image based example
         if (nodeType == .MinuteHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
         if (nodeType == .MinuteHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
-        if (nodeType == .MinuteHandTypeImageNumbers)  { typeDescription = "Image: Numbers" }
-        
         if (nodeType == .MinuteHandTypeImageMoon) { typeDescription = "Image: Moon" }
         
         return typeDescription
@@ -338,24 +336,6 @@ class MinuteHandNode: SKSpriteNode {
                 textureNode.colorBlendFactor = 1.0
                 
                 let phy = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 30, height: 70), center: CGPoint.init(x: 0, y: 34))
-                phy.isDynamic = false
-                textureNode.physicsBody = phy
-                
-                self.addChild(textureNode)
-            }
-        }
-        
-        if (minuteHandType == .MinuteHandTypeImageNumbers) {
-            let im = UIImage.init(named: "minuteHand-Numbers.png")
-            if let textureImage = im {
-                let texture = SKTexture.init(image: textureImage)
-                let textureNode = SKSpriteNode.init(texture: texture)
-                textureNode.setScale(0.4)
-                //textureNode.anchorPoint = CGPoint.init(x: 0.5, y: 0.1)   //how far from center of image
-                textureNode.color = SKColor.init(hexString: material)
-                textureNode.colorBlendFactor = 1.0
-                
-                let phy = SKPhysicsBody.init(rectangleOf: CGSize.init(width: 30, height: 90), center: CGPoint.init(x: 0, y: 45))
                 phy.isDynamic = false
                 textureNode.physicsBody = phy
                 
@@ -791,4 +771,5 @@ class MinuteHandNode: SKSpriteNode {
     }
     
 }
+
 
