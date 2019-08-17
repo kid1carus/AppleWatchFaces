@@ -2430,6 +2430,193 @@
             ]
         },
         {
+            "uniqueID" : "F2C24F18-AF03-499A-89F9-12A3B313A12A",
+            "faceColors" : [
+                "#ffffffff",
+                "#008ed6ff",
+                "#ffc082ff",
+                "#00000000",
+                "#1c1c1cff",
+                "#000000ff"
+            ],
+            "title" : "Brass Tax",
+            "faceLayers" : [
+                {
+                    "filenameForImage" : "",
+                    "angleOffset" : "0.0",
+                    "verticalPosition" : "0.0",
+                    "layerType" : "GradientTexture",
+                    "layerOptions" : {
+                        "directionType" : "Horizontal",
+                        "desiredThemeColorIndexForDestination" : "4"
+                    },
+                    "horizontalPosition" : "0.0",
+                    "alpha" : "1.0",
+                    "scale" : "1.0",
+                    "desiredThemeColorIndex" : 4
+                },
+                {
+                    "angleOffset" : "0.0",
+                    "desiredThemeColorIndex" : 2,
+                    "horizontalPosition" : "0.0",
+                    "verticalPosition" : "0.0",
+                    "filenameForImage" : "",
+                    "layerOptions" : {
+                        "anglePerSec" : -2,
+                        "gearType" : "Big",
+                        "outlineWidth" : "3.0",
+                        "desiredThemeColorIndexForOutline" : "5"
+                    },
+                    "layerType" : "Gear",
+                    "alpha" : "1.0",
+                    "scale" : "0.55"
+                },
+                {
+                    "layerOptions" : {
+                        "backgroundType" : "FaceBackgroundTypeRoundedCircleCutout",
+                        "hasTransparency" : false,
+                        "anglePerSec" : 0,
+                        "filename" : ""
+                    },
+                    "angleOffset" : "0.0",
+                    "verticalPosition" : "-0.05",
+                    "horizontalPosition" : "0.05",
+                    "desiredThemeColorIndex" : 5,
+                    "alpha" : "0.3",
+                    "layerType" : "ColorTexture",
+                    "scale" : "1.075",
+                    "filenameForImage" : ""
+                },
+                {
+                    "angleOffset" : "0.0",
+                    "layerType" : "Gear",
+                    "filenameForImage" : "",
+                    "verticalPosition" : "-0.3",
+                    "horizontalPosition" : "0.5",
+                    "alpha" : "1.0",
+                    "layerOptions" : {
+                        "desiredThemeColorIndexForOutline" : "5",
+                        "anglePerSec" : 6,
+                        "outlineWidth" : "4.0",
+                        "gearType" : "Small"
+                    },
+                    "scale" : "0.4",
+                    "desiredThemeColorIndex" : 2
+                },
+                {
+                    "horizontalPosition" : "0.0",
+                    "alpha" : "1.0",
+                    "desiredThemeColorIndex" : 0,
+                    "scale" : "1.0",
+                    "verticalPosition" : "0.0",
+                    "layerType" : "ImageTexture",
+                    "layerOptions" : {
+                        "filename" : "brass.jpg",
+                        "backgroundType" : "FaceBackgroundTypeRoundedCircleCutout",
+                        "anglePerSec" : 0,
+                        "hasTransparency" : false
+                    },
+                    "angleOffset" : "0.0",
+                    "filenameForImage" : ""
+                },
+                {
+                    "filenameForImage" : "",
+                    "layerType" : "NumberRing",
+                    "angleOffset" : "0.0",
+                    "verticalPosition" : "0.0",
+                    "horizontalPosition" : "-0.025",
+                    "scale" : "1.15",
+                    "alpha" : "1.0",
+                    "layerOptions" : {
+                        "outlineWidth" : "0.0",
+                        "desiredThemeColorIndexForOutline" : "5",
+                        "patternArray" : [
+                            1
+                        ],
+                        "textSize" : "0.52",
+                        "patternTotal" : "12",
+                        "isRotating" : false,
+                        "fontType" : "NumberTextTypeModernInteger",
+                        "pathShape" : "RingRenderShapeCircle"
+                    },
+                    "desiredThemeColorIndex" : 5
+                },
+                {
+                    "horizontalPosition" : "0.0",
+                    "desiredThemeColorIndex" : 4,
+                    "scale" : "0.375",
+                    "verticalPosition" : "0.375",
+                    "layerOptions" : {
+                        "effectType" : "None",
+                        "formatType" : "MMDD",
+                        "justificationType" : "Centered",
+                        "outlineWidth" : "0.0",
+                        "fontType" : "NumberTextTypeModernInteger",
+                        "desiredThemeColorIndexForOutline" : "4"
+                    },
+                    "angleOffset" : "0.0",
+                    "alpha" : "1.0",
+                    "layerType" : "DateTimeLabel",
+                    "filenameForImage" : ""
+                },
+                {
+                    "horizontalPosition" : "0.0",
+                    "scale" : "1.0",
+                    "layerType" : "MinuteHand",
+                    "layerOptions" : {
+                        "outlineWidth" : "1.0",
+                        "desiredThemeColorIndexForOutline" : "5",
+                        "handAnimation" : "MinuteHandMovementStep",
+                        "effectsStrength" : "0.0",
+                        "handType" : "MinuteHandTypeBoxy",
+                        "handImage" : ""
+                    },
+                    "verticalPosition" : "0.0",
+                    "desiredThemeColorIndex" : 1,
+                    "filenameForImage" : "",
+                    "alpha" : "1.0",
+                    "angleOffset" : "0.0"
+                },
+                {
+                    "scale" : "1.0",
+                    "angleOffset" : "0.0",
+                    "layerType" : "HourHand",
+                    "verticalPosition" : "0.0",
+                    "layerOptions" : {
+                        "outlineWidth" : "1.0",
+                        "handImage" : "",
+                        "handType" : "HourHandTypeBoxy",
+                        "effectsStrength" : "0.0",
+                        "desiredThemeColorIndexForOutline" : "5"
+                    },
+                    "desiredThemeColorIndex" : 1,
+                    "filenameForImage" : "",
+                    "horizontalPosition" : "0.0",
+                    "alpha" : "1.0"
+                },
+                {
+                    "verticalPosition" : "0.0",
+                    "horizontalPosition" : "0.0",
+                    "alpha" : "1.0",
+                    "filenameForImage" : "",
+                    "desiredThemeColorIndex" : 2,
+                    "layerOptions" : {
+                        "effectsStrength" : "0.0",
+                        "handImage" : "",
+                        "outlineWidth" : "1.0",
+                        "physicFieldStrength" : "2.0",
+                        "handType" : "SecondHandTypeRail",
+                        "handAnimation" : "SecondHandMovementStepOver",
+                        "desiredThemeColorIndexForOutline" : "5",
+                        "physicsFieldType" : "Spring"
+                    },
+                    "scale" : "1.0",
+                    "angleOffset" : "0.0",
+                    "layerType" : "SecondHand"
+                }
+            ]
+        },
+        {
             "title" : "Digital Grunge Red",
             "faceColors" : [
                 "#ffffffff",
