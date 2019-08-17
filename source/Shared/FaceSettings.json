@@ -8717,6 +8717,7 @@
             ]
         },
         {
+            "title" : "PONG II",
             "faceColors" : [
                 "#000000ff",
                 "#00ff00ff",
@@ -8725,75 +8726,92 @@
                 "#ff7f00ff",
                 "#FFD700FF"
             ],
+            "uniqueID" : "CFC250CB-AFEE-40A1-9C10-CBD304449F57",
             "faceLayers" : [
                 {
-                    "layerType" : "ColorTexture",
-                    "alpha" : "1.0",
                     "filenameForImage" : "",
+                    "alpha" : "1.0",
                     "scale" : "1.0",
                     "angleOffset" : "0.0",
-                    "verticalPosition" : "0.0",
-                    "horizontalPosition" : "0.0",
-                    "desiredThemeColorIndex" : 0,
+                    "layerType" : "ColorTexture",
                     "layerOptions" : {
                         "anglePerSec" : 0,
                         "hasTransparency" : false,
                         "backgroundType" : "FaceBackgroundTypeFilled",
                         "filename" : ""
-                    }
+                    },
+                    "verticalPosition" : "0.0",
+                    "horizontalPosition" : "0.0",
+                    "desiredThemeColorIndex" : 0
+                },
+                {
+                    "horizontalPosition" : "0.0",
+                    "layerType" : "ParticleField",
+                    "scale" : "1.0",
+                    "verticalPosition" : "0.0",
+                    "desiredThemeColorIndex" : 2,
+                    "angleOffset" : "0.0",
+                    "layerOptions" : {
+                        "itemSize" : "0.0",
+                        "nodeType" : "AnimatedPong",
+                        "shapeType" : "Circle"
+                    },
+                    "filenameForImage" : "",
+                    "alpha" : "1.0"
                 },
                 {
                     "filenameForImage" : "",
-                    "scale" : "1.0",
-                    "layerType" : "ParticleField",
-                    "angleOffset" : "0.0",
-                    "desiredThemeColorIndex" : 2,
-                    "horizontalPosition" : "0.0",
-                    "alpha" : "1.0",
                     "layerOptions" : {
-                        "nodeType" : "AnimatedPong",
-                        "shapeType" : "Circle",
-                        "itemSize" : "0.0"
-                    },
-                    "verticalPosition" : "0.0"
-                },
-                {
-                    "verticalPosition" : "-0.8465769",
-                    "layerType" : "DateTimeLabel",
-                    "angleOffset" : "0.0",
-                    "layerOptions" : {
-                        "fontType" : "NumberTextPixellated",
+                        "outlineWidth" : "0.0",
                         "desiredThemeColorIndexForOutline" : "0",
                         "effectType" : "None",
+                        "fontType" : "NumberTextPixellated",
                         "formatType" : "DA",
-                        "outlineWidth" : "0.0"
+                        "justificationType" : "Centered"
                     },
-                    "filenameForImage" : "",
                     "horizontalPosition" : "-0.70132214",
-                    "alpha" : "1.0",
+                    "layerType" : "DateTimeLabel",
+                    "angleOffset" : "0.0",
                     "scale" : "0.592",
-                    "desiredThemeColorIndex" : 1
+                    "desiredThemeColorIndex" : 1,
+                    "alpha" : "1.0",
+                    "verticalPosition" : "-0.8465769"
                 },
                 {
-                    "alpha" : "1.0",
                     "verticalPosition" : "-0.84508973",
-                    "layerType" : "DateTimeLabel",
-                    "desiredThemeColorIndex" : 1,
                     "angleOffset" : "0.0",
                     "scale" : "0.61050004",
-                    "filenameForImage" : "",
-                    "horizontalPosition" : "0.6989183",
                     "layerOptions" : {
+                        "effectType" : "None",
                         "formatType" : "DD",
-                        "fontType" : "NumberTextPixellated",
                         "desiredThemeColorIndexForOutline" : "0",
+                        "fontType" : "NumberTextPixellated",
                         "outlineWidth" : "0.0",
-                        "effectType" : "None"
-                    }
+                        "justificationType" : "Centered"
+                    },
+                    "filenameForImage" : "",
+                    "desiredThemeColorIndex" : 1,
+                    "alpha" : "1.0",
+                    "layerType" : "DateTimeLabel",
+                    "horizontalPosition" : "0.6989183"
+                },
+                {
+                    "filenameForImage" : "",
+                    "layerOptions" : {
+                        "filename" : "scanLines.png",
+                        "anglePerSec" : 0,
+                        "backgroundType" : "FaceBackgroundTypeFilled",
+                        "hasTransparency" : true
+                    },
+                    "desiredThemeColorIndex" : 0,
+                    "layerType" : "ImageTexture",
+                    "angleOffset" : "0.0",
+                    "verticalPosition" : "0.0",
+                    "alpha" : "0.6",
+                    "horizontalPosition" : "0.0",
+                    "scale" : "1.0"
                 }
-            ],
-            "title" : "PONG II",
-            "uniqueID" : "CFC250CB-AFEE-40A1-9C10-CBD304449F57"
+            ]
         },
         {
             "uniqueID" : "52581702-0CAE-4CEA-AADD-BCF6609B72BC",
