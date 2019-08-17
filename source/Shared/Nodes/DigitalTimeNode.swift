@@ -159,13 +159,15 @@ class DigitalTimeNode: SKNode {
         }
         
         func timeStringAMPM( dateFormatterTime: DateFormatter)->String {
-            let timeStr = dateFormatterTime.string(from: ClockTimer.currentDate)
-            var ampmStr = ""
-            if let rng = timeStr.range(of: dateFormatterTime.amSymbol) {
-                ampmStr = dateFormatterTime.amSymbol
+            let forcedFormatter = dateFormatterTime
+            forcedFormatter.locale = Locale.init(identifier: "us")
+            let timeStr = forcedFormatter.string(from: ClockTimer.currentDate)
+            var ampmStr = " "
+            if let rng = timeStr.range(of: forcedFormatter.amSymbol) {
+                ampmStr = forcedFormatter.amSymbol
                 _ = rng.description
-            } else if let rng = timeStr.range(of: dateFormatterTime.pmSymbol) {
-                ampmStr = dateFormatterTime.pmSymbol
+            } else if let rng = timeStr.range(of: forcedFormatter.pmSymbol) {
+                ampmStr = forcedFormatter.pmSymbol
                 _ = rng.description
             }
             return ampmStr
