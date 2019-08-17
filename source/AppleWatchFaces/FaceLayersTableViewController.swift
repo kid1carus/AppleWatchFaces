@@ -179,10 +179,12 @@ class FaceLayersTableViewController: UITableViewController {
         //ignore this if layers isnt selected
         guard let settingsVC = settingsViewController else { return }
         guard settingsVC.isLayersSelected() else { return }
+        guard let data = notification.userInfo as? [String: Int] else { return }
+        guard let rowIndex = data["faceLayerIndex"] else { return }
         
-        if let data = notification.userInfo as? [String: Int], let rowIndex = data["faceLayerIndex"] {
-            let selectedRow = IndexPath.init(row: rowIndex, section: 0)
-            
+        let selectedRow = IndexPath.init(row: rowIndex, section: 0)
+        
+        if self.tableView.numberOfRows(inSection: 0) >= rowIndex {
             self.tableView.selectRow(at: selectedRow, animated: true, scrollPosition: .top)
             
             //TODO: this is the one thats crashing, tested commenting the beginupdates after delay 6/16/19
