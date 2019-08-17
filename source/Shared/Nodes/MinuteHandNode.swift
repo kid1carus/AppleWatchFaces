@@ -13,12 +13,12 @@ import SpriteKit
 enum MinuteHandTypes: String {
     case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeCapeCod, MinuteHandTypeCapeCodFilled, MinuteHandTypeSphere,
         MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber,
-        MinuteHandTypeImageMoon,
+        MinuteHandTypeImageMoon, MinuteHandTypeImageNumbers,
         MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar,
         MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeCapeCod, MinuteHandTypeCapeCodFilled, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeImageMoon, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeCapeCod, MinuteHandTypeCapeCodFilled, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeImageMoon, MinuteHandTypeImageNumbers, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
