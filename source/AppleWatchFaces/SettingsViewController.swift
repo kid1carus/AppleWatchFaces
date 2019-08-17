@@ -261,21 +261,40 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         let newLayer = FaceLayer.init(layerType: layerType, alpha: 1.0, horizontalPosition: 0, verticalPosition:0, scale: 1.0,
                                       angleOffset: 0, desiredThemeColorIndex: 0, layerOptions: faceLayerOptions, filenameForImage: "")
+        
         //add to undo stack for actions to be able to undo
         SettingsViewController.addToUndoStack()
         setUndoRedoButtonStatus()
         
         SettingsViewController.currentFaceSetting.faceLayers.append(newLayer)
+        
+        let newLayerNum = SettingsViewController.currentFaceSetting.faceLayers.count - 1
+        redrawForNewLayer(newLayer: newLayer, layerNum: newLayerNum)
+    }
+    
+    func duplicateLayer( layerNumber: Int) {
+        let faceLayer = SettingsViewController.currentFaceSetting.faceLayers[layerNumber]
+        if let newLayer = faceLayer.clone() {
+            //add to undo stack for actions to be able to undo
+            SettingsViewController.addToUndoStack()
+            setUndoRedoButtonStatus()
+            
+            SettingsViewController.currentFaceSetting.faceLayers.insert(newLayer, at: layerNumber+1)
+            
+            redrawForNewLayer(newLayer: newLayer, layerNum: layerNumber+1)
+        }
+    }
+    
+    func redrawForNewLayer(newLayer: FaceLayer, layerNum: Int) {
         redrawPreviewClock()
         
         //turn on layer controls in case this is the first layer
-        drawUIForSelectedLayer(selectedLayer: SettingsViewController.currentFaceSetting.faceLayers.count - 1, section: .All)
+        drawUIForSelectedLayer(selectedLayer: layerNum, section: .All)
         showLayerControls()
-
-        if let flVC = faceLayersTableViewController {
-            flVC.addNewItem(layerType: layerType)
-        }
         
+        if let flVC = faceLayersTableViewController {
+            flVC.addNewItem(layerNum: layerNum)
+        }
     }
     
     @IBAction func newItem() {

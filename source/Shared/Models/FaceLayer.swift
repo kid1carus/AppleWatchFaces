@@ -166,4 +166,25 @@ class FaceLayer: NSObject {
         
         return typeDescription
     }
+    
+    func clone() -> FaceLayer? {
+        let settingsDict = self.serializedSettings()
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: settingsDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+            let jsonObj = try! JSON(data: jsonData)
+            
+            if jsonObj != JSON.null {
+                let newSetting = FaceLayer.init(jsonObj: jsonObj)
+                return newSetting
+            } else {
+                print("could not get json from clone, make sure that contains valid json.")
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        print("could not get json from clone, make sure that contains valid json.")
+        return nil
+    }
 }

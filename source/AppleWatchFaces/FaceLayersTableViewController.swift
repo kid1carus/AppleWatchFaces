@@ -126,8 +126,9 @@ class FaceLayersTableViewController: UITableViewController {
                                         userInfo:["faceLayerIndex":selectedRow.row ])
     }
 
-    func addNewItem( layerType: FaceLayerTypes) {
-        let indexPath = IndexPath(row: SettingsViewController.currentFaceSetting.faceLayers.count-1, section: 0)
+    func addNewItem( layerNum: Int) {
+        //SettingsViewController.currentFaceSetting.faceLayers.count-1
+        let indexPath = IndexPath(row: layerNum, section: 0)
         self.tableView.beginUpdates()
         self.tableView.insertRows(at: [indexPath], with: .automatic)
         self.tableView.endUpdates()
@@ -151,11 +152,33 @@ class FaceLayersTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    func duplicateLayerItem(layerNumber: Int) {
+        debugPrint("duplicating layer" + layerNumber.description)
+        
+        guard let settingsVC = settingsViewController else { return }
+        settingsVC.duplicateLayer(layerNumber: layerNumber)
+    }
+    
+    func longPressMenu(layerNumber: Int) {
+        let optionMenu = UIAlertController(title: nil, message: "Layer Actions", preferredStyle: .actionSheet)
+        optionMenu.view.tintColor = UIColor.black
+        
+        let newActionDescription = "Copy to new layer"
+        let newAction = UIAlertAction(title: newActionDescription, style: .default, handler: { action in
+            self.duplicateLayerItem(layerNumber: layerNumber)
+        } )
+        optionMenu.addAction(newAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
     @objc func onSettingsLayerSelectedNotification(notification:Notification) {
         //ignore this if layers isnt selected
         guard let settingsVC = settingsViewController else { return }
         guard settingsVC.isLayersSelected() else { return }
-        
         
         if let data = notification.userInfo as? [String: Int], let rowIndex = data["faceLayerIndex"] {
             let selectedRow = IndexPath.init(row: rowIndex, section: 0)
@@ -183,8 +206,27 @@ class FaceLayersTableViewController: UITableViewController {
         self.tableView.reloadRows(at: [IndexPath.init(row: layerIndex, section: 0)], with: UITableView.RowAnimation.automatic)
     }
     
+    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer){
+        if gestureRecognizer.state == .ended {
+            let touchPoint = gestureRecognizer.location(in: self.tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                debugPrint("long press on item" + indexPath.row.description)
+                longPressMenu(layerNumber: indexPath.row)
+            }
+        }
+    }
+    
+    func setupLongPressGesture() {
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        //longPressGesture.minimumPressDuration = 1.0 // 1 second press
+        //longPressGesture.delegate = self
+        self.tableView.addGestureRecognizer(longPressGesture)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupLongPressGesture()
         
         //important only select one at a time
         self.tableView.allowsMultipleSelection = false
@@ -201,7 +243,9 @@ class FaceLayersTableViewController: UITableViewController {
                                                name: WatchPreviewViewController.settingsSelectedLayerNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onReloadLayerNotification(notification:)), name: FaceLayersTableViewController.reloadLayerNotificationName, object: nil)
     }
-
+    
+    // MARK: - Table view data source
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         var cellHeight:CGFloat = 80
@@ -212,41 +256,39 @@ class FaceLayersTableViewController: UITableViewController {
         
         //if selected show
         //if let selectedPath = tableView.indexPathForSelectedRow {
-            //debugPrint("selectedpath:" + selectedPath.description + indexPath.description)
-            //if selectedPath.row == indexPath.row {
-                switch faceLayer.layerType {
-                case .BatteryIndicator:
-                    cellHeight = 230.0
-                case .Gear:
-                    cellHeight = 230.0
-                case .ImageTexture:
-                    cellHeight = 225.0
-                case .ColorTexture:
-                    cellHeight = 105.0
-                case .GradientTexture:
-                    cellHeight = 145.0
-                case .HourHand:
-                    cellHeight = 220.0
-                case .MinuteHand:
-                    cellHeight = 250.0
-                case .SecondHand:
-                    cellHeight = 290.0
-                case .ShapeRing:
-                    cellHeight = 255.0
-                case .NumberRing:
-                    cellHeight = 335.0
-                case .DateTimeLabel:
-                    cellHeight = 285.0
-                case .ParticleField:
-                    cellHeight = 180.0
-                }
-            //}
+        //debugPrint("selectedpath:" + selectedPath.description + indexPath.description)
+        //if selectedPath.row == indexPath.row {
+        switch faceLayer.layerType {
+        case .BatteryIndicator:
+            cellHeight = 230.0
+        case .Gear:
+            cellHeight = 230.0
+        case .ImageTexture:
+            cellHeight = 225.0
+        case .ColorTexture:
+            cellHeight = 105.0
+        case .GradientTexture:
+            cellHeight = 145.0
+        case .HourHand:
+            cellHeight = 220.0
+        case .MinuteHand:
+            cellHeight = 250.0
+        case .SecondHand:
+            cellHeight = 290.0
+        case .ShapeRing:
+            cellHeight = 255.0
+        case .NumberRing:
+            cellHeight = 335.0
+        case .DateTimeLabel:
+            cellHeight = 285.0
+        case .ParticleField:
+            cellHeight = 180.0
+        }
+        //}
         //}
         
         return cellHeight
     }
-    
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
