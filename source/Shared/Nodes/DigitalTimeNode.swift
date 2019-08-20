@@ -60,10 +60,11 @@ enum DigitalTimeFormats: String {
 }
 
 enum DigitalTimeEffects: String {
-    case  innerShadow,
+    case innerShadow,
     darkInnerShadow,
     lightInnerShadow,
     dropShadow,
+    flipClock,
     digital8,
     digital8Light,
     frame,
@@ -76,6 +77,7 @@ enum DigitalTimeEffects: String {
         darkInnerShadow,
         lightInnerShadow,
         dropShadow,
+        flipClock,
         digital8,
         digital8Light,
         frame,
@@ -243,7 +245,7 @@ class DigitalTimeNode: SKNode {
         
         return timeString
     }
-    
+
     //used when generating node for digital time ( a mini digital clock )
     init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, effect: DigitalTimeEffects, horizontalPosition: HorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor?, lineWidth: Float ) {
     
@@ -298,6 +300,33 @@ class DigitalTimeNode: SKNode {
         //re-use an expanded frame
         let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
         let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
+        
+        if (effect == .flipClock) {
+            let testText = SKLabelNode.init(text: hourString)
+            testText.attributedText = NSAttributedString(string: "8", attributes: attributes)
+            let charFrame = testText.calculateAccumulatedFrame()
+            var shapeRect = CGRect.zero
+            let expandAmount:CGFloat = 4.0
+            shapeRect.size = CGSize.init(width: charFrame.size.width + expandAmount, height: charFrame.size.height + expandAmount)
+
+            let gapSizeX:CGFloat = 4.0
+        
+            let totalFrameSize = CGSize.init(width: (shapeRect.size.width + gapSizeX) * CGFloat(hourString.characters.count), height: shapeRect.size.height)
+            
+            if isFormatANumber(format: timeFormat) {
+                for (index, digit) in hourString.characters.enumerated() {
+                    let charLabel = SKLabelNode.init(text: String(digit) )
+                    charLabel.verticalAlignmentMode = .center
+                    charLabel.attributedText = NSAttributedString(string: String(digit), attributes: attributes)
+                    
+                    let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, fillColor: fillColor, strokeColor: strokeColor, lineWidth: lineWidth)
+                    let xPos = -totalFrameSize.width/2 + CGFloat(index)*(shapeRect.size.width+gapSizeX)
+                    let yPos = -totalFrameSize.height/2
+                    newFlipChar.position = CGPoint.init(x: xPos, y: yPos)
+                    self.addChild(newFlipChar)
+                }
+            }
+        }
 
         if (effect == .frame || effect == .darkFrame) {
             let frameNode = SKShapeNode.init(rect: expandedRect)
@@ -441,7 +470,9 @@ class DigitalTimeNode: SKNode {
             
         }
         
-        self.addChild(timeText)
+        if (effect != .flipClock) {
+            self.addChild(timeText)
+        }
         
         //check to see if we need to update time every second
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: ClockTimer.timeChangedSecondNotificationName, object: nil)
@@ -465,6 +496,10 @@ class DigitalTimeNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func isFormatANumber(format: DigitalTimeFormats) -> Bool {
+        return (format == .DD || format == .HH || format == .MM || format == .SS)
+    }
+
     static func descriptionForTimeFormats(_ format: DigitalTimeFormats) -> String {
         var description = ""
         
@@ -542,6 +577,8 @@ class DigitalTimeNode: SKNode {
             description = "Light Inner Shadow"
         case .dropShadow:
             description = "Drop Shadow"
+        case .flipClock:
+            description = "Flip Clock"
         case .digital8:
             description = "Digital 8s"
         case .digital8Light:
