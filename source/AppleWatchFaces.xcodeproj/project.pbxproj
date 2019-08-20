@@ -190,6 +190,9 @@
 		31B5E8E0218CE03200DE6429 /* MinuteHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8CC218BD26B00DE6429 /* MinuteHandNode.swift */; };
 		31B5E8E1218CE03500DE6429 /* HourHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C07218BCDDB008504D2 /* HourHandNode.swift */; };
 		31B5E8E2218CE08E00DE6429 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */; };
+		31BE6C12230B75A60018C315 /* FlipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE6C11230B75A60018C315 /* FlipNode.swift */; };
+		31BE6C13230B7A110018C315 /* FlipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE6C11230B75A60018C315 /* FlipNode.swift */; };
+		31BE6C14230B7A120018C315 /* FlipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE6C11230B75A60018C315 /* FlipNode.swift */; };
 		31C05DA521A712BD0021AEAB /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */; };
 		31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AE72237493600EF4186 /* AppDelegate.swift */; };
 		31C86AEA2237493600EF4186 /* ScreenSaverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AE92237493600EF4186 /* ScreenSaverController.swift */; };
@@ -451,6 +454,7 @@
 		31B3F8C6218F22EF00AD22A5 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		31B5E8CC218BD26B00DE6429 /* MinuteHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandNode.swift; sourceTree = "<group>"; };
 		31B5E8D1218BD63E00DE6429 /* FaceIndicatorNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FaceIndicatorNode.swift; path = Shared/FaceIndicatorNode.swift; sourceTree = SOURCE_ROOT; };
+		31BE6C11230B75A60018C315 /* FlipNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipNode.swift; sourceTree = "<group>"; };
 		31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
 		31C86AE52237493600EF4186 /* Clockology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clockology.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C86AE72237493600EF4186 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -593,6 +597,7 @@
 				310725DE223D7083008030A2 /* PhysicsNode.swift */,
 				313AE3DF221A777E00C02462 /* DotsNode.swift */,
 				31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */,
+				31BE6C11230B75A60018C315 /* FlipNode.swift */,
 				31D8633A21E5954B005BCB6F /* NumberTextNode.swift */,
 				31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */,
 				31B5E8D1218BD63E00DE6429 /* FaceIndicatorNode.swift */,
@@ -1086,6 +1091,7 @@
 				31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */,
 				31FF20CD228E6EFA0023F8A5 /* SettingsViewController+Undo.swift in Sources */,
 				314FEC8522A4FDC30030DAE0 /* GearLayerOptions.swift in Sources */,
+				31BE6C12230B75A60018C315 /* FlipNode.swift in Sources */,
 				315878D222877B4E008FFC76 /* FaceColorsTableViewController.swift in Sources */,
 				311B7CB2227F9D0A0073C4C9 /* HandLayerOptions.swift in Sources */,
 				31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */,
@@ -1202,6 +1208,7 @@
 				3176F14622D24EEB00582A1A /* BatteryNode.swift in Sources */,
 				315AAB8D22997FEB00B3A3E9 /* ClockDecoratorTheme.swift in Sources */,
 				3176F14A22D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */,
+				31BE6C13230B7A110018C315 /* FlipNode.swift in Sources */,
 				3105333E225A753F004282E5 /* NSObject+JSONHelpers.swift in Sources */,
 				311B7CAF227F6A8E0073C4C9 /* ShapeLayerOptions.swift in Sources */,
 				31F4F1CF219A60230050177A /* AppUISettings.swift in Sources */,
@@ -1281,6 +1288,7 @@
 				31C86B6322374E7200EF4186 /* FaceChooserCollectionViewCell.swift in Sources */,
 				310920772251A92E0032D3AB /* WatchSessionManager.swift in Sources */,
 				3176F14B22D2529900582A1A /* BatteryIndicatorOptions.swift in Sources */,
+				31BE6C14230B7A120018C315 /* FlipNode.swift in Sources */,
 				31C86B6222374E7200EF4186 /* FaceChooserTableViewCell.swift in Sources */,
 				31C86B6022374E7200EF4186 /* FaceChooserEditTableViewController.swift in Sources */,
 				31F7D19522595D8700A1A27E /* OptionsViewController.swift in Sources */,

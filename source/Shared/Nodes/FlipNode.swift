@@ -10,6 +10,8 @@ import Foundation
 import SpriteKit
 
 class FlipNode: SKSpriteNode {
+    //used when updating
+    var currentText = ""
     
     //alterable vars
     var cardRect = CGRect.init(x: 0, y: 0, width: 220, height: 300)
@@ -70,7 +72,12 @@ class FlipNode: SKSpriteNode {
         return SKSpriteNode.init()
     }
     
-    func updateToDigit(newLabel: SKLabelNode) {
+    func updateToDigit(newLabel: SKLabelNode, newText: String) {
+        //exit early if its the same text
+        guard  self.currentText != newText else { return }
+        self.currentText = newText
+        
+        //new text, lets update
         guard let effectsNodeWrapper = self.childNode(withName: "effectsNodeWrapper") else { return }
         guard let oldCropNodeTop = effectsNodeWrapper.childNode(withName: "cropNodeTop") else { return }
         guard let oldCropNodeTopShadow = oldCropNodeTop.childNode(withName: "shadowNode") else { return }
@@ -176,12 +183,13 @@ class FlipNode: SKSpriteNode {
         
     }
     
-    init(label: SKLabelNode, rect: CGRect, fillColor: SKColor, strokeColor: SKColor?, lineWidth: Float) {
+    init(label: SKLabelNode, rect: CGRect, text: String, fillColor: SKColor, strokeColor: SKColor?, lineWidth: Float) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize())
         
         self.name = "flipText"
         self.cardRect = rect
+        self.currentText = text
         
         let frameNode = getFlipClockCard(labelNode: label )
         

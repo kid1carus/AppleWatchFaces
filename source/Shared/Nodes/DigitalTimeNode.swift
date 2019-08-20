@@ -102,8 +102,23 @@ enum HorizontalPositionTypes: String {
 
 class DigitalTimeNode: SKNode {
     var timeFormat: DigitalTimeFormats = .DD
+    var effect: DigitalTimeEffects = .None
+    var attributes: [NSAttributedString.Key : Any] = [:]
     
     func updateTime( timeString: String ) {
+        
+        if self.effect == .flipClock {
+            if isFormatANumber(format: timeFormat) {
+                for (index, digit) in timeString.characters.enumerated() {
+                    let charLabel = getFlipCharLabel(text: String(digit) )
+                    
+                    if let oldFlipNode = self.childNode(withName: "flipChar" + String(index)) as? FlipNode {
+                        oldFlipNode.updateToDigit(newLabel: charLabel, newText: String(digit))
+                    }
+                }
+            }
+        }
+        
         if let timeText = self.childNode(withName: "timeTextNode") as? SKLabelNode {
             let mutableAttributedText = timeText.attributedText!.mutableCopy() as! NSMutableAttributedString
             mutableAttributedText.mutableString.setString(timeString)
@@ -245,6 +260,14 @@ class DigitalTimeNode: SKNode {
         
         return timeString
     }
+    
+    func getFlipCharLabel(text: String) -> SKLabelNode {
+        let charLabel = SKLabelNode.init(text: text )
+        charLabel.verticalAlignmentMode = .center
+        charLabel.attributedText = NSAttributedString(string: text, attributes: self.attributes)
+        
+        return charLabel
+    }
 
     //used when generating node for digital time ( a mini digital clock )
     init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, effect: DigitalTimeEffects, horizontalPosition: HorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor?, lineWidth: Float ) {
@@ -253,6 +276,7 @@ class DigitalTimeNode: SKNode {
 
         self.name = "digitalTimeNode"
         self.timeFormat = timeFormat
+        self.effect = effect
     
         //let textScale = Float(0.0175)
         let fontSize:CGFloat = 64.0
@@ -273,7 +297,7 @@ class DigitalTimeNode: SKNode {
         
         let fontName = NumberTextNode.fontNameForNumberTextType(digitalTimeTextType)
 
-        var attributes: [NSAttributedString.Key : Any] = [
+        self.attributes = [
                 .foregroundColor: fillColor,
                 .font: UIFont.init(name: fontName, size: fontSize )!
             ]
@@ -315,11 +339,10 @@ class DigitalTimeNode: SKNode {
             
             if isFormatANumber(format: timeFormat) {
                 for (index, digit) in hourString.characters.enumerated() {
-                    let charLabel = SKLabelNode.init(text: String(digit) )
-                    charLabel.verticalAlignmentMode = .center
-                    charLabel.attributedText = NSAttributedString(string: String(digit), attributes: attributes)
-                    
-                    let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, fillColor: fillColor, strokeColor: strokeColor, lineWidth: lineWidth)
+                    let charLabel = getFlipCharLabel(text: String(digit) )
+                
+                    let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, text: String(digit), fillColor: fillColor, strokeColor: strokeColor, lineWidth: lineWidth)
+                    newFlipChar.name = "flipChar" + String(index)
                     let xPos = -totalFrameSize.width/2 + CGFloat(index)*(shapeRect.size.width+gapSizeX)
                     let yPos = -totalFrameSize.height/2
                     newFlipChar.position = CGPoint.init(x: xPos, y: yPos)
