@@ -116,6 +116,12 @@ class DigitalTimeNode: SKNode {
                         oldFlipNode.updateToDigit(newLabel: charLabel, newText: String(digit))
                     }
                 }
+            } else {
+                let charLabel = getFlipCharLabel(text: timeString )
+                
+                if let oldFlipNode = self.childNode(withName: "flipChar") as? FlipNode {
+                    oldFlipNode.updateToDigit(newLabel: charLabel, newText:timeString )
+                }
             }
         }
         
@@ -327,7 +333,11 @@ class DigitalTimeNode: SKNode {
         
         if (effect == .flipClock) {
             let testText = SKLabelNode.init(text: hourString)
-            testText.attributedText = NSAttributedString(string: "8", attributes: attributes)
+            if isFormatANumber(format: timeFormat) {
+                testText.attributedText = NSAttributedString(string: "8", attributes: attributes)
+            } else {
+                testText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
+            }
             let charFrame = testText.calculateAccumulatedFrame()
             var shapeRect = CGRect.zero
             let expandAmount:CGFloat = 4.0
@@ -335,7 +345,14 @@ class DigitalTimeNode: SKNode {
 
             let gapSizeX:CGFloat = 4.0
         
-            let totalFrameSize = CGSize.init(width: (shapeRect.size.width + gapSizeX) * CGFloat(hourString.characters.count), height: shapeRect.size.height)
+            var cnt:CGFloat = 0
+            if isFormatANumber(format: timeFormat) {
+                cnt = CGFloat(hourString.characters.count)
+            } else {
+                cnt = 1.0
+            }
+            let gapSize = gapSizeX * (cnt-1.0)
+            let totalFrameSize = CGSize.init(width: (shapeRect.size.width * cnt) + gapSize, height: shapeRect.size.height)
             
             if isFormatANumber(format: timeFormat) {
                 for (index, digit) in hourString.characters.enumerated() {
@@ -348,6 +365,14 @@ class DigitalTimeNode: SKNode {
                     newFlipChar.position = CGPoint.init(x: xPos, y: yPos)
                     self.addChild(newFlipChar)
                 }
+            } else {
+                let charLabel = getFlipCharLabel(text: hourString )
+                let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, text: hourString, fillColor: fillColor, strokeColor: strokeColor, lineWidth: lineWidth)
+                newFlipChar.name = "flipChar"
+                let xPos = -totalFrameSize.width/2
+                let yPos = -totalFrameSize.height/2
+                newFlipChar.position = CGPoint.init(x: xPos, y: yPos)
+                self.addChild(newFlipChar)
             }
         }
 
