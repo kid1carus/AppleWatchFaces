@@ -84,6 +84,21 @@ class FlipNode: SKSpriteNode {
         guard let oldCropNodeBottom = effectsNodeWrapper.childNode(withName: "cropNodeBottom") else { return }
         guard let oldCropNodeBottomShadow = oldCropNodeBottom.childNode(withName: "shadowNode") else { return }
         
+        //remove any leftovers just in case ( if remove action was skipped )
+        if let oldCropNodeTop = effectsNodeWrapper.childNode(withName: "oldCropNodeTop") {
+            oldCropNodeTop.removeAllActions()
+            oldCropNodeTop.removeFromParent()
+        }
+        if let oldCropNodeBottom = effectsNodeWrapper.childNode(withName: "oldCropNodeBottom") {
+            oldCropNodeBottom.removeAllActions()
+            oldCropNodeBottom.removeFromParent()
+        }
+        
+        oldCropNodeTop.name = "oldCropNodeTop"
+        oldCropNodeBottom.name = "oldCropNodeBottom"
+        
+        
+        
         let cropNodeBottom = SKCropNode()
         cropNodeBottom.name = "cropNodeBottom"
         
