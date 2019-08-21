@@ -96,10 +96,10 @@ class FlipNode: SKSpriteNode {
             oldCropNodeTop.removeAllActions()
             oldCropNodeTop.removeFromParent()
         }
-        if let oldCropNodeBottom = effectsNodeWrapper.childNode(withName: "oldCropNodeBottom") {
-            oldCropNodeBottom.removeAllActions()
-            oldCropNodeBottom.removeFromParent()
-        }
+//        if let oldCropNodeBottom = effectsNodeWrapper.childNode(withName: "oldCropNodeBottom") {
+//            oldCropNodeBottom.removeAllActions()
+//            oldCropNodeBottom.removeFromParent()
+//        }
         
         oldCropNodeTop.name = "oldCropNodeTop"
         oldCropNodeBottom.name = "oldCropNodeBottom"
