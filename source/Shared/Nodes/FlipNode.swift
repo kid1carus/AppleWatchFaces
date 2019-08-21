@@ -12,6 +12,9 @@ import SpriteKit
 class FlipNode: SKSpriteNode {
     //used when updating
     var currentText = ""
+    var fillColor: SKColor = SKColor.darkGray
+    var strokeColor: SKColor? = SKColor.white
+    var lineWidth: Float = 1.0
     
     //alterable vars
     var cardRect = CGRect.init(x: 0, y: 0, width: 220, height: 300)
@@ -27,7 +30,11 @@ class FlipNode: SKSpriteNode {
     
     func getFlipClockCard(labelNode: SKLabelNode) -> SKShapeNode {
         let frameNode = SKShapeNode.init(rect: cardRect, cornerRadius: 10.0)
-        frameNode.fillColor = SKColor.darkGray
+        frameNode.fillColor = fillColor
+        if let strokeColor = self.strokeColor {
+            frameNode.strokeColor = strokeColor
+            frameNode.lineWidth = CGFloat(lineWidth)
+        }
         
         labelNode.position = CGPoint.init(x: cardRect.size.width/2, y: cardRect.size.height/2)
         
@@ -96,8 +103,6 @@ class FlipNode: SKSpriteNode {
         
         oldCropNodeTop.name = "oldCropNodeTop"
         oldCropNodeBottom.name = "oldCropNodeBottom"
-        
-        
         
         let cropNodeBottom = SKCropNode()
         cropNodeBottom.name = "cropNodeBottom"
@@ -205,6 +210,10 @@ class FlipNode: SKSpriteNode {
         self.name = "flipText"
         self.cardRect = rect
         self.currentText = text
+        
+        self.fillColor = fillColor
+        self.strokeColor = strokeColor
+        self.lineWidth = lineWidth
         
         let frameNode = getFlipClockCard(labelNode: label )
         

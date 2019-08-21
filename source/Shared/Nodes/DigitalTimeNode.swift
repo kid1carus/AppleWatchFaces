@@ -64,7 +64,9 @@ enum DigitalTimeEffects: String {
     darkInnerShadow,
     lightInnerShadow,
     dropShadow,
-    flipClock,
+    flipClockGrey,
+    flipClockBlack,
+    flipClockWhite,
     digital8,
     digital8Light,
     frame,
@@ -77,7 +79,9 @@ enum DigitalTimeEffects: String {
         darkInnerShadow,
         lightInnerShadow,
         dropShadow,
-        flipClock,
+        flipClockGrey,
+        flipClockBlack,
+        flipClockWhite,
         digital8,
         digital8Light,
         frame,
@@ -107,7 +111,7 @@ class DigitalTimeNode: SKNode {
     
     func updateTime( timeString: String ) {
         
-        if self.effect == .flipClock {
+        if isFlipClock(effect: self.effect) {
             if isFormatANumber(format: timeFormat) {
                 for (index, digit) in timeString.characters.enumerated() {
                     let charLabel = getFlipCharLabel(text: String(digit) )
@@ -267,6 +271,10 @@ class DigitalTimeNode: SKNode {
         return timeString
     }
     
+    func isFlipClock(effect: DigitalTimeEffects) -> Bool {
+        return (effect == .flipClockBlack || effect == .flipClockGrey || effect == .flipClockWhite)
+    }
+    
     func getFlipCharLabel(text: String) -> SKLabelNode {
         let charLabel = SKLabelNode.init(text: text )
         charLabel.verticalAlignmentMode = .center
@@ -331,7 +339,7 @@ class DigitalTimeNode: SKNode {
         let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
         let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
         
-        if (effect == .flipClock) {
+        if isFlipClock(effect: self.effect) {
             let testText = SKLabelNode.init(text: hourString)
             if isFormatANumber(format: timeFormat) {
                 testText.attributedText = NSAttributedString(string: "8", attributes: attributes)
@@ -354,11 +362,27 @@ class DigitalTimeNode: SKNode {
             let gapSize = gapSizeX * (cnt-1.0)
             let totalFrameSize = CGSize.init(width: (shapeRect.size.width * cnt) + gapSize, height: shapeRect.size.height)
             
+            var flipFillColor = SKColor.darkGray
+            var flipLineWidth:Float = 1.0
+            var flipStrokeColor = SKColor.white
+            
+            if effect == .flipClockBlack {
+                flipFillColor = SKColor.black
+                flipLineWidth = 1.0
+                flipStrokeColor = SKColor.white
+            }
+            
+            if effect == .flipClockWhite {
+                flipFillColor = SKColor.white
+                flipLineWidth = 1.0
+                flipStrokeColor = SKColor.black
+            }
+            
             if isFormatANumber(format: timeFormat) {
                 for (index, digit) in hourString.characters.enumerated() {
                     let charLabel = getFlipCharLabel(text: String(digit) )
                 
-                    let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, text: String(digit), fillColor: fillColor, strokeColor: strokeColor, lineWidth: lineWidth)
+                    let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, text: String(digit), fillColor: flipFillColor, strokeColor: flipStrokeColor, lineWidth: flipLineWidth)
                     newFlipChar.name = "flipChar" + String(index)
                     let xPos = -totalFrameSize.width/2 + CGFloat(index)*(shapeRect.size.width+gapSizeX)
                     let yPos = -totalFrameSize.height/2
@@ -367,7 +391,7 @@ class DigitalTimeNode: SKNode {
                 }
             } else {
                 let charLabel = getFlipCharLabel(text: hourString )
-                let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, text: hourString, fillColor: fillColor, strokeColor: strokeColor, lineWidth: lineWidth)
+                let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, text: hourString, fillColor: flipFillColor, strokeColor: flipStrokeColor, lineWidth: flipLineWidth)
                 newFlipChar.name = "flipChar"
                 let xPos = -totalFrameSize.width/2
                 let yPos = -totalFrameSize.height/2
@@ -518,7 +542,7 @@ class DigitalTimeNode: SKNode {
             
         }
         
-        if (effect != .flipClock) {
+        if !isFlipClock(effect: effect) {
             self.addChild(timeText)
         }
         
@@ -625,8 +649,12 @@ class DigitalTimeNode: SKNode {
             description = "Light Inner Shadow"
         case .dropShadow:
             description = "Drop Shadow"
-        case .flipClock:
-            description = "Flip Clock"
+        case .flipClockGrey:
+            description = "Flip Clock Grey"
+        case .flipClockBlack:
+            description = "Flip Clock Black"
+        case .flipClockWhite:
+            description = "Flip Clock White"
         case .digital8:
             description = "Digital 8s"
         case .digital8Light:
