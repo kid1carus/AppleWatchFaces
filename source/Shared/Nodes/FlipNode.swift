@@ -20,7 +20,7 @@ class FlipNode: SKSpriteNode {
     var cardRect = CGRect.init(x: 0, y: 0, width: 220, height: 300)
     let middleGap:CGFloat = 1.0
     
-    let animationDuration = 0.5
+    let animationDuration = 0.45
     let waitDuration = 1.0
     
     let shadowFullAlpha:CGFloat = 0.8
