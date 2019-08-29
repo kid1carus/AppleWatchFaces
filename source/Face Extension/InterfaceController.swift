@@ -285,13 +285,16 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
     override func didAppear() {
         super.didAppear() // important for removing digital time display hack
         
-        hideDigitalTime()
+        if #available(watchOS 6,*) {
+            hideDigitalTimeFor6()
+        } else {
+            hideDigitalTime()
+        }
         
         //focus the crown to us at last possible moment
         crownSequencer.focus()
     }
 
-    
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
@@ -314,6 +317,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
 
 // Hack in order to disable the digital time on the screen
 extension WKInterfaceController{
+    
+    func hideDigitalTimeFor6() {
+        //super secret :-)
+    }
+    
     func hideDigitalTime(){
         guard let cls = NSClassFromString("SPFullScreenView") else {return}
         let viewControllers = (((NSClassFromString("UIApplication")?.value(forKey:"sharedApplication") as? NSObject)?.value(forKey: "keyWindow") as? NSObject)?.value(forKey:"rootViewController") as? NSObject)?.value(forKey:"viewControllers") as? [NSObject]
