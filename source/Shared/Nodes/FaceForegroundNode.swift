@@ -8,7 +8,6 @@
 
 import SpriteKit
 import SceneKit
-import WatchKit
 import UIKit
 
 enum PhysicsFieldTypes: String {

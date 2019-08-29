@@ -8,7 +8,9 @@
 
 import Foundation
 
+#if os(watchOS)
 import WatchKit
+#endif
 import SpriteKit
 
 class AppUISettings: NSObject {
