@@ -113,7 +113,7 @@ class DigitalTimeNode: SKNode {
         
         if isFlipClock(effect: self.effect) {
             if isFormatANumber(format: timeFormat) {
-                for (index, digit) in timeString.characters.enumerated() {
+                for (index, digit) in timeString.enumerated() {
                     let charLabel = getFlipCharLabel(text: String(digit) )
                     
                     if let oldFlipNode = self.childNode(withName: "flipChar" + String(index)) as? FlipNode {
@@ -355,7 +355,7 @@ class DigitalTimeNode: SKNode {
         
             var cnt:CGFloat = 0
             if isFormatANumber(format: timeFormat) {
-                cnt = CGFloat(hourString.characters.count)
+                cnt = CGFloat(hourString.count)
             } else {
                 cnt = 1.0
             }
@@ -379,7 +379,7 @@ class DigitalTimeNode: SKNode {
             }
             
             if isFormatANumber(format: timeFormat) {
-                for (index, digit) in hourString.characters.enumerated() {
+                for (index, digit) in hourString.enumerated() {
                     let charLabel = getFlipCharLabel(text: String(digit) )
                 
                     let newFlipChar = FlipNode.init(label: charLabel, rect: shapeRect, text: String(digit), fillColor: flipFillColor, strokeColor: flipStrokeColor, lineWidth: flipLineWidth)
