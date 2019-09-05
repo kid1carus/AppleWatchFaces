@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Photos
 
 class CameraHandler: NSObject{
     static let shared = CameraHandler()
@@ -41,7 +41,43 @@ class CameraHandler: NSObject{
         
     }
     
+    func askPermissions() -> Bool {
+        var ret = false
+        PHPhotoLibrary.requestAuthorization() { (status) -> Void in
+            switch status {
+            case .authorized:
+                ret = true
+            // as above
+            case .denied, .restricted:
+                ret =  false
+            // as above
+            case .notDetermined:
+                break
+            }
+        }
+        return ret
+    }
+    
+    func checkPermissions() -> Bool {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            return true
+        case .denied, .restricted :
+            return false
+        //handle denied status
+        case .notDetermined:
+            // ask for permissions
+            return askPermissions()
+        }
+    }
+    
     func showActionSheet(vc: UIViewController) {
+        
+        if !checkPermissions() {
+            return
+        }
+        
         currentVC = vc
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -59,6 +95,8 @@ class CameraHandler: NSObject{
     }
     
 }
+
+
 
 
 extension CameraHandler: UIImagePickerControllerDelegate, UINavigationControllerDelegate{

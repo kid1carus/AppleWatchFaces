@@ -36,6 +36,8 @@ extension UIColor {
     }
 }
 
+/*
+#if os(iOS)
 #if canImport(SwiftUI)
 
 import SwiftUI
@@ -48,5 +50,6 @@ extension Color {
     }
     
 }
-
 #endif
+#endif
+*/
