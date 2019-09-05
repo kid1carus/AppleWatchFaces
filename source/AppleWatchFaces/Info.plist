@@ -38,17 +38,17 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>35</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>App needs access to photo library to load images of watch faces </string>
 	<key>NSCameraUsageDescription</key>
 	<string>App Needs to use camera to take watch face background pictures</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>App needs access to photo library to same images of watch faces </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App needs access to photo library to load images of watch faces </string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>CAPECOD.OTF</string>
