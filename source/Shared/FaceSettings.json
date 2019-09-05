@@ -1,6 +1,247 @@
 {
     "faceSettings" : [
         {
+          "title" : "Dee Jay",
+          "faceLayers" : [
+            {
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "0.0",
+              "layerType" : "ImageTexture",
+              "layerOptions" : {
+                "filename" : "vinylAlbum.jpg",
+                "hasTransparency" : false,
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "anglePerSec" : 4.6999998092651367
+              },
+              "alpha" : "1.0",
+              "desiredThemeColorIndex" : 0,
+              "filenameForImage" : "",
+              "scale" : "1.6",
+              "angleOffset" : "0.0"
+            },
+            {
+              "scale" : "1.25",
+              "filenameForImage" : "",
+              "alpha" : "0.2",
+              "verticalPosition" : "-0.025",
+              "layerType" : "ShapeRing",
+              "desiredThemeColorIndex" : 5,
+              "horizontalPosition" : "0.025",
+              "layerOptions" : {
+                "indicatorType" : "FaceIndicatorTypeFatBox",
+                "indicatorSize" : "0.2",
+                "patternTotal" : "12",
+                "patternArray" : [
+                  0,
+                  1,
+                  1
+                ],
+                "pathShape" : "RingRenderShapeRoundedRect"
+              },
+              "angleOffset" : "0.0"
+            },
+            {
+              "angleOffset" : "0.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 3,
+              "alpha" : "1.0",
+              "scale" : "1.25",
+              "layerOptions" : {
+                "patternTotal" : "12",
+                "patternArray" : [
+                  0,
+                  1,
+                  1
+                ],
+                "pathShape" : "RingRenderShapeRoundedRect",
+                "indicatorType" : "FaceIndicatorTypeFatBox",
+                "indicatorSize" : "0.2"
+              },
+              "verticalPosition" : "0.0",
+              "layerType" : "ShapeRing",
+              "filenameForImage" : ""
+            },
+            {
+              "filenameForImage" : "",
+              "layerType" : "NumberRing",
+              "alpha" : "0.2",
+              "horizontalPosition" : "0.025",
+              "verticalPosition" : "-0.025",
+              "scale" : "1.2",
+              "desiredThemeColorIndex" : 5,
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "5",
+                "textSize" : "0.48",
+                "outlineWidth" : "8.0",
+                "fontType" : "NumberTextTypeDINPro",
+                "patternArray" : [
+                  1
+                ],
+                "pathShape" : "RingRenderShapeOval",
+                "isRotating" : false,
+                "patternTotal" : "4"
+              }
+            },
+            {
+              "angleOffset" : "0.0",
+              "alpha" : "1.0",
+              "desiredThemeColorIndex" : 0,
+              "layerOptions" : {
+                "patternTotal" : "4",
+                "patternArray" : [
+                  1
+                ],
+                "isRotating" : false,
+                "textSize" : "0.48",
+                "desiredThemeColorIndexForOutline" : "0",
+                "pathShape" : "RingRenderShapeOval",
+                "fontType" : "NumberTextTypeDINPro",
+                "outlineWidth" : "2.0"
+              },
+              "verticalPosition" : "0.0",
+              "filenameForImage" : "",
+              "scale" : "1.2",
+              "layerType" : "NumberRing",
+              "horizontalPosition" : "0.0"
+            },
+            {
+              "scale" : "2.6000001",
+              "desiredThemeColorIndex" : 2,
+              "layerOptions" : {
+                "handType" : "HourHandTypeBoxy",
+                "handImage" : "",
+                "outlineWidth" : "1.0",
+                "effectsStrength" : "0.0",
+                "desiredThemeColorIndexForOutline" : "0"
+              },
+              "filenameForImage" : "",
+              "layerType" : "HourHand",
+              "verticalPosition" : "0.0",
+              "alpha" : "1.0",
+              "angleOffset" : "0.0",
+              "horizontalPosition" : "0.0"
+            },
+            {
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "0",
+                "handAnimation" : "MinuteHandMovementStep",
+                "handType" : "MinuteHandTypeFatBoxy",
+                "effectsStrength" : "0.0",
+                "handImage" : "",
+                "outlineWidth" : "0.0"
+              },
+              "verticalPosition" : "0.0",
+              "horizontalPosition" : "0.0",
+              "alpha" : "1.0",
+              "scale" : "1.875",
+              "layerType" : "MinuteHand",
+              "angleOffset" : "0.0",
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 0
+            },
+            {
+              "desiredThemeColorIndex" : 4,
+              "filenameForImage" : "",
+              "verticalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "horizontalPosition" : "0.0",
+              "alpha" : "0.90000004",
+              "layerType" : "ColorTexture",
+              "scale" : "0.725",
+              "layerOptions" : {
+                "anglePerSec" : 0,
+                "filename" : "",
+                "backgroundType" : "FaceBackgroundTypeRoundedRect",
+                "hasTransparency" : false
+              }
+            },
+            {
+              "verticalPosition" : "0.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 3,
+              "scale" : "0.6",
+              "layerType" : "SecondHand",
+              "layerOptions" : {
+                "handImage" : "",
+                "physicsFieldType" : "None",
+                "outlineWidth" : "2.0",
+                "physicFieldStrength" : "2.0",
+                "handAnimation" : "SecondHandMovementStep",
+                "effectsStrength" : "0.0",
+                "handType" : "SecondHandTypeThinDial",
+                "desiredThemeColorIndexForOutline" : "0"
+              },
+              "alpha" : "0.275",
+              "angleOffset" : "0.0",
+              "filenameForImage" : ""
+            },
+            {
+              "desiredThemeColorIndex" : 0,
+              "angleOffset" : "0.0",
+              "alpha" : "1.0",
+              "horizontalPosition" : "0.0",
+              "scale" : "1.0",
+              "verticalPosition" : "0.32500002",
+              "layerType" : "DateTimeLabel",
+              "layerOptions" : {
+                "fontType" : "NumberTextTypeDINPro",
+                "effectType" : "flipClockGrey",
+                "formatType" : "HH",
+                "justificationType" : "Centered",
+                "desiredThemeColorIndexForOutline" : "4",
+                "outlineWidth" : "2.0"
+              },
+              "filenameForImage" : ""
+            },
+            {
+              "layerOptions" : {
+                "fontType" : "NumberTextTypeDINPro",
+                "outlineWidth" : "2.0",
+                "justificationType" : "Centered",
+                "desiredThemeColorIndexForOutline" : "4",
+                "effectType" : "flipClockGrey",
+                "formatType" : "MM"
+              },
+              "verticalPosition" : "-0.32500002",
+              "layerType" : "DateTimeLabel",
+              "alpha" : "1.0",
+              "filenameForImage" : "",
+              "scale" : "1.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 0,
+              "angleOffset" : "0.0"
+            },
+            {
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 0,
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "0",
+                "fontType" : "NumberTextTypeDINPro",
+                "outlineWidth" : "2.0",
+                "formatType" : "SS",
+                "effectType" : "None",
+                "justificationType" : "Centered"
+              },
+              "verticalPosition" : "0.0",
+              "filenameForImage" : "",
+              "angleOffset" : "0.0",
+              "alpha" : "1.0",
+              "layerType" : "DateTimeLabel",
+              "scale" : "0.375"
+            }
+          ],
+          "uniqueID" : "00DEF4BD-D605-4D16-9387-811B422B3786",
+          "faceColors" : [
+/Users/michaelhill/cocoaApps/AppleWatchFaces/source/Shared/Themes.json            "#FFFFFFFF",
+            "#c6c6c6ff",
+            "#8e8e8eff",
+            "#545454ff",
+            "#1c1c1cff",
+            "#000000ff"
+          ]
+        },
+        {
             "faceLayers" : [
                 {
                     "horizontalPosition" : "0.0",
