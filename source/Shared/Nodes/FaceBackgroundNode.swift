@@ -11,7 +11,10 @@ import SceneKit
 import UIKit
 
 enum FaceBackgroundTypes: String {
-    case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit,
+    case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
+        FaceBackgroundTypeCircle,
+        FaceBackgroundTypeRoundedRect,
+        FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit,
         FaceBackgroundTypeFaceCircleCutout,
         FaceBackgroundTypeRoundedCircleCutout,
         FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient,
@@ -20,6 +23,7 @@ enum FaceBackgroundTypes: String {
     static var userSelectableValues = [
         FaceBackgroundTypeCircle,
         FaceBackgroundTypeFilled,
+        FaceBackgroundTypeRoundedRect,
         FaceBackgroundTypeDiagonalSplit,
         FaceBackgroundTypeVerticalSplit,
         FaceBackgroundTypeHorizontalSplit,
@@ -50,6 +54,7 @@ class FaceBackgroundNode: SKSpriteNode {
         
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeCircle)  { typeDescription = "Circle" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeFilled)  { typeDescription = "Filled" }
+        if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeRoundedRect)  { typeDescription = "Rounded Rectangle" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit)  { typeDescription = "Split Diagonal" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalSplit)  { typeDescription = "Vertical Split" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalSplit)  { typeDescription = "Horizontal Split" }
@@ -326,6 +331,22 @@ class FaceBackgroundNode: SKSpriteNode {
             bezierPath.apply(CGAffineTransform.init(scaleX: 0.71, y: -0.71))
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+                self.addChild( maskImageIntoShape(materialToUse: material, shapeNode: shape) )
+            }
+        }
+        
+        if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeRoundedRect) {
+            let rectanglePath = UIBezierPath(roundedRect: CGRect(x: -131, y: -163, width: 262, height: 326), cornerRadius: 47)
+            rectanglePath.apply(CGAffineTransform.init(scaleX: 0.8, y: 0.8))  //scale/stratch
+            
+            let shape = SKShapeNode.init(path: rectanglePath.cgPath)
             
             if AppUISettings.materialIsColor(materialName: material) {
                 shape.fillColor = SKColor.init(hexString: material)
