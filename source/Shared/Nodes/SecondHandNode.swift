@@ -364,7 +364,7 @@ class SecondHandNode: SKSpriteNode {
         if (secondHandType == SecondHandTypes.SecondHandTypePacMan) {
             let dotsW:CGFloat = 158
             let dotsH:CGFloat = 189
-            let pathNode = DotsNode.init(pathHeight: dotsH, pathWidth: dotsW, material: "#ffb8ae", strokeColor: SKColor.init(hexString: "#ffb8ae"), lineWidth: 1.0, numDots: 66, secondHandType: secondHandType)
+            let pathNode = DotsNode.init(pathHeight: dotsH, pathWidth: dotsW, material: "#ffb8aeff", strokeColor: SKColor.init(hexString: "#ffb8aeff"), lineWidth: 1.0, numDots: 66, secondHandType: secondHandType)
             pathNode.name = "dotsNode"
             pathNode.zPosition = 2.0
             
@@ -379,7 +379,7 @@ class SecondHandNode: SKSpriteNode {
         if (secondHandType == SecondHandTypes.SecondHandTypeMsPacMan) {
             let dotsW:CGFloat = 197
             let dotsH:CGFloat = 169
-            let pathNode = DotsNode.init(pathHeight: dotsH, pathWidth: dotsW, material: "#dcdcfd", strokeColor: SKColor.init(hexString: "#dcdcfd"), lineWidth: 0.5, numDots: 78, secondHandType: secondHandType)
+            let pathNode = DotsNode.init(pathHeight: dotsH, pathWidth: dotsW, material: "#dcdcfdff", strokeColor: SKColor.init(hexString: "#dcdcfdff"), lineWidth: 0.5, numDots: 78, secondHandType: secondHandType)
             pathNode.name = "dotsNode"
             pathNode.zPosition = 2.0
             
