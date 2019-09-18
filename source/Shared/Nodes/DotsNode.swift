@@ -41,7 +41,7 @@ class PacNode: SKNode {
         super.init()
         
         let circleNode = SKShapeNode.init(circleOfRadius: radius)
-        circleNode.fillColor = SKColor.init(hexString: "#ffff04")
+        circleNode.fillColor = SKColor.init(hexString: "#ffff04ff")
         
         //add the bow
         if secondHandType == .SecondHandTypeMsPacMan {
