@@ -433,6 +433,13 @@ class WatchFaceNode: SKShapeNode {
         
         for (index,layer) in self.faceSettings.faceLayers.enumerated() {
             
+            //if force, tell timeLabels to force time also
+            //for devices starting after a background event
+            if force && layer.layerType == .DateTimeLabel, let dateTimeNode = self.children[index] as?
+                DigitalTimeNode {
+                dateTimeNode.setToTime(force: true)
+            }
+             
             if layer.layerType == .SecondHand, let secondHandNode = self.children[index] as?
                 SecondHandNode {
                     guard let layerOptions = layer.layerOptions as? SecondHandLayerOptions else { return }
