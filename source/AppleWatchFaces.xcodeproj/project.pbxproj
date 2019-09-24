@@ -193,6 +193,9 @@
 		31BE6C12230B75A60018C315 /* FlipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE6C11230B75A60018C315 /* FlipNode.swift */; };
 		31BE6C13230B7A110018C315 /* FlipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE6C11230B75A60018C315 /* FlipNode.swift */; };
 		31BE6C14230B7A120018C315 /* FlipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE6C11230B75A60018C315 /* FlipNode.swift */; };
+		31BF7CA52339B82600DD8A5C /* BezierPath+CircleSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF7CA42339B82600DD8A5C /* BezierPath+CircleSegment.swift */; };
+		31BF7CA62339B82A00DD8A5C /* BezierPath+CircleSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF7CA42339B82600DD8A5C /* BezierPath+CircleSegment.swift */; };
+		31BF7CA72339B82E00DD8A5C /* BezierPath+CircleSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF7CA42339B82600DD8A5C /* BezierPath+CircleSegment.swift */; };
 		31C05DA521A712BD0021AEAB /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */; };
 		31C86AE82237493600EF4186 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AE72237493600EF4186 /* AppDelegate.swift */; };
 		31C86AEA2237493600EF4186 /* ScreenSaverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C86AE92237493600EF4186 /* ScreenSaverController.swift */; };
@@ -455,6 +458,7 @@
 		31B5E8CC218BD26B00DE6429 /* MinuteHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandNode.swift; sourceTree = "<group>"; };
 		31B5E8D1218BD63E00DE6429 /* FaceIndicatorNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FaceIndicatorNode.swift; path = Shared/FaceIndicatorNode.swift; sourceTree = SOURCE_ROOT; };
 		31BE6C11230B75A60018C315 /* FlipNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipNode.swift; sourceTree = "<group>"; };
+		31BF7CA42339B82600DD8A5C /* BezierPath+CircleSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+CircleSegment.swift"; sourceTree = "<group>"; };
 		31C05DA421A712BD0021AEAB /* UIView+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
 		31C86AE52237493600EF4186 /* Clockology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clockology.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C86AE72237493600EF4186 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -777,6 +781,7 @@
 		31F56F9E21857A5E00455FC6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				31BF7CA42339B82600DD8A5C /* BezierPath+CircleSegment.swift */,
 				319095F921CC898100F71BC6 /* BezierPath+Length.swift */,
 				319095FA21CC898100F71BC6 /* PathElement.swift */,
 				31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */,
@@ -1168,6 +1173,7 @@
 				312E853822239740001C450B /* Double+Rounded.swift in Sources */,
 				31FF20CA228E6E870023F8A5 /* SettingsViewController+WatchDelegate.swift in Sources */,
 				31A5F7EF21966CED000F1677 /* MathFunctions.swift in Sources */,
+				31BF7CA52339B82600DD8A5C /* BezierPath+CircleSegment.swift in Sources */,
 				315AAB8F22998A3C00B3A3E9 /* ParticleFieldLayerOptions.swift in Sources */,
 				31706A15229C5DAB003F83FC /* ClockRingSetting.swift in Sources */,
 			);
@@ -1216,6 +1222,7 @@
 				313BB88D227DF5DB005BE9C5 /* UserFaceSetting.swift in Sources */,
 				31B5E8E1218CE03500DE6429 /* HourHandNode.swift in Sources */,
 				312E2D6A21F2D69F00C2F17F /* SKWatchScene.swift in Sources */,
+				31BF7CA62339B82A00DD8A5C /* BezierPath+CircleSegment.swift in Sources */,
 				318808FC2178166B00585AB1 /* ExtensionDelegate.swift in Sources */,
 				31EF999721A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
 				31D8633C21E5954B005BCB6F /* DigitalTimeNode.swift in Sources */,
@@ -1298,6 +1305,7 @@
 				31C86B2522374DA000EF4186 /* MathFunctions.swift in Sources */,
 				31C86AF922374CB700EF4186 /* SettingsViewController.swift in Sources */,
 				31C86B2322374DA000EF4186 /* PathElement.swift in Sources */,
+				31BF7CA72339B82E00DD8A5C /* BezierPath+CircleSegment.swift in Sources */,
 				31FF20D92290ABBD0023F8A5 /* DigitalTimeLayerOptions.swift in Sources */,
 				31C86B5C22374E0000EF4186 /* WatchPreviewViewController.swift in Sources */,
 			);

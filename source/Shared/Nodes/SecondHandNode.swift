@@ -11,11 +11,14 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandRadar, SecondHandTrails,
+    case SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandTieFighter, SecondHandRadar, SecondHandTrails,  SecondHandCircleSegment,
+        SecondHandCircleSegmentInverted,
         SecondHandTypeImageMoon, SecondHandTypeImageNumbers,
         SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTrails, SecondHandTieFighter, SecondHandTypeImageMoon, SecondHandTypeImageNumbers,
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondhandTypeSwissCircle, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeArrow, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandRadar, SecondHandTrails,
+        SecondHandCircleSegment, SecondHandCircleSegmentInverted,
+        SecondHandTieFighter, SecondHandTypeImageMoon, SecondHandTypeImageNumbers,
         SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
@@ -26,7 +29,7 @@ enum SecondHandTypes: String {
     }
     
     static func isDialType(type: SecondHandTypes) -> Bool {
-        return ([SecondHandTypeFlatDial, SecondHandTypeThinDial].lastIndex(of: type) != nil)
+        return ([SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandCircleSegment, SecondHandCircleSegmentInverted].lastIndex(of: type) != nil)
     }
 }
 
@@ -77,6 +80,8 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == .SecondHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
         if (nodeType == .SecondHandRadar) { typeDescription = "Radar Pointer" }
         if (nodeType == .SecondHandTrails) { typeDescription = "Fading Trails" }
+        if (nodeType == .SecondHandCircleSegment) { typeDescription = "Pie Chart" }
+        if (nodeType == .SecondHandCircleSegmentInverted) { typeDescription = "Pie Chart Inverted" }
         
         // IMAGE BASED EXAMPLES
         if (nodeType == .SecondHandTypeFancyRed)  { typeDescription = "Image: Fancy Red" }
@@ -137,11 +142,31 @@ class SecondHandNode: SKSpriteNode {
         return typeKeysArray
     }
     
-    func addArcNode(endAngle: CGFloat) {
-        let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius, endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
-        newNode.name = "arcNode"
+    func addArcNode(type: SecondHandTypes, endAngle: CGFloat) {
         
-        self.addChild(newNode)
+        if type == .SecondHandCircleSegment || type == .SecondHandCircleSegmentInverted {
+            //is a pie chart
+            
+            let clockWiseRendering:Bool = (type == .SecondHandCircleSegmentInverted) ? true : false
+            
+            let centerPt = CGPoint.zero
+            let bezierPath = UIBezierPath(circleSegmentCenter: centerPt, radius: 300.0, startAngle: CGFloat.pi/2, endAngle: endAngle + CGFloat.pi/2, clockwise: clockWiseRendering)
+            
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            shape.glowWidth = glowWidth
+                    
+            self.addChild(shape)
+            
+        } else {
+            //is a dial
+            let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius, endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
+            newNode.name = "arcNode"
+            
+            self.addChild(newNode)
+        }
     }
     
     //position from main watch node
@@ -159,7 +184,7 @@ class SecondHandNode: SKSpriteNode {
         
         if SecondHandTypes.isDialType(type: secondHandType) {
             self.removeAllChildren() //removing by name wasny cleaing up the init one *shrug*
-            addArcNode(endAngle: newZAngle)
+            addArcNode(type: secondHandType, endAngle: newZAngle)
             
             //EXIT
             return
@@ -329,6 +354,10 @@ class SecondHandNode: SKSpriteNode {
             NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSlowFrameUpdate(notification:)), name: SKWatchScene.sceneSlowFrameUpdateNotificationName, object: nil)
         }
         
+        if (secondHandType == .SecondHandCircleSegment) {
+            addArcNode( type: secondHandType, endAngle: CGFloat.pi * 0.5)
+        }
+        
         if (secondHandType == .SecondHandRadar) {
             let outerRingNode = SKShapeNode.init(circleOfRadius: 100.0)
             outerRingNode.fillColor = SKColor.clear
@@ -404,7 +433,7 @@ class SecondHandNode: SKSpriteNode {
                 outerRadius = radiusCenter + ArcNode.skinnyRadiusWidth/2
             }
             
-            addArcNode( endAngle: CGFloat.pi * 0.5)
+            addArcNode( type: secondHandType, endAngle: CGFloat.pi * 0.5)
         }
         
         if (secondHandType == .SecondHandTypeImageNumbers) {

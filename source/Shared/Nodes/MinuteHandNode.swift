@@ -15,10 +15,12 @@ enum MinuteHandTypes: String {
         MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber,
         MinuteHandTypeImageMoon, MinuteHandTypeImageNumbers,
         MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar,
+        MinuteHandCircleSegment, MinuteHandCircleSegmentInverted,
         MinuteHandTypePacMan, MinuteHandTypeMsPacMan, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeCapeCod, MinuteHandTypeCapeCodFilled, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeImageMoon, MinuteHandTypeImageNumbers, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeRadar]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeArrow, MinuteHandTypeCapeCod, MinuteHandTypeCapeCodFilled, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeImageLightSaber, MinuteHandTypeImageMoon, MinuteHandTypeImageNumbers, MinuteHandTypeFlatDial,
+        MinuteHandTypeThinDial, MinuteHandTypeRadar, MinuteHandCircleSegment, MinuteHandCircleSegmentInverted]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -26,7 +28,7 @@ enum MinuteHandTypes: String {
     }
     
     static func isDialType(type: MinuteHandTypes) -> Bool {
-        return ([MinuteHandTypeFlatDial, MinuteHandTypeThinDial].lastIndex(of: type) != nil)
+        return ([MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandCircleSegment, MinuteHandCircleSegmentInverted].lastIndex(of: type) != nil)
     }
 }
 
@@ -80,6 +82,8 @@ class MinuteHandNode: SKSpriteNode {
         if (nodeType == .MinuteHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == .MinuteHandTypeThinDial)  { typeDescription = "Thin Dial" }
         if (nodeType == .MinuteHandTypeRadar)  { typeDescription = "Radar Pointer" }
+        if (nodeType == .MinuteHandCircleSegment)  { typeDescription = "Pie Chart" }
+        if (nodeType == .MinuteHandCircleSegmentInverted)  { typeDescription = "Pie Chart Inverted" }
         
         if (nodeType == .MinuteHandTypePacMan)  { typeDescription = "Dot Eater" }
         if (nodeType == .MinuteHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
@@ -89,6 +93,7 @@ class MinuteHandNode: SKSpriteNode {
         if (nodeType == .MinuteHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
         if (nodeType == .MinuteHandTypeImageLightSaber)  { typeDescription = "Image: Light Saber" }
         if (nodeType == .MinuteHandTypeImageMoon) { typeDescription = "Image: Moon" }
+        if (nodeType == .MinuteHandTypeImageNumbers) { typeDescription = "Image: Numbers" }
         
         return typeDescription
     }
@@ -134,11 +139,30 @@ class MinuteHandNode: SKSpriteNode {
         shape.lineWidth = 1.0
     }
     
-    func addArcNode(endAngle: CGFloat) {
-        let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
-                                   endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
-        newNode.name = "arcNode"
-        self.addChild(newNode)
+    func addArcNode(type: MinuteHandTypes,endAngle: CGFloat) {
+        
+        if type == .MinuteHandCircleSegment || type == .MinuteHandCircleSegmentInverted {
+            //is a pie chart
+            let clockWiseRendering:Bool = (type == .MinuteHandCircleSegmentInverted) ? true : false
+            
+            let centerPt = CGPoint.zero
+            let bezierPath = UIBezierPath(circleSegmentCenter: centerPt, radius: 300.0, startAngle: CGFloat.pi/2, endAngle: endAngle + CGFloat.pi/2, clockwise: clockWiseRendering)
+            
+            let shape = SKShapeNode.init(path: bezierPath.cgPath)
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            shape.glowWidth = glowWidth
+                    
+            self.addChild(shape)
+            
+        } else {
+            //is a dial
+            let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
+                                       endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth, glowWidth: glowWidth)
+            newNode.name = "arcNode"
+            self.addChild(newNode)
+        }
     }
     
     func positionHands( sec: CGFloat, min: CGFloat, minuteHandMovement: MinuteHandMovements, force: Bool ) {
@@ -175,7 +199,7 @@ class MinuteHandNode: SKSpriteNode {
         
         if MinuteHandTypes.isDialType(type: minuteHandType) {
             self.removeAllChildren() //removing by name wasny cleaing up the init one *shrug*
-            addArcNode(endAngle: newZAngle)
+            addArcNode(type: minuteHandType, endAngle: newZAngle)
             
             //EXIT
             return
@@ -237,7 +261,7 @@ class MinuteHandNode: SKSpriteNode {
                 outerRadius = radiusCenter + ArcNode.skinnyRadiusWidth/2
             }
             
-            addArcNode( endAngle: CGFloat.pi * 0.5)
+            addArcNode( type: minuteHandType, endAngle: CGFloat.pi * 0.5)
         }
         
         if (minuteHandType == .MinuteHandTypeRadar) {
