@@ -299,7 +299,15 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
     
     @IBAction func newItem() {
         let optionMenu = UIAlertController(title: nil, message: "New Item", preferredStyle: .actionSheet)
+        
         optionMenu.view.tintColor = UIColor.black
+        
+        //dark mode hack
+        if #available(iOS 13, *) {
+                if traitCollection.userInterfaceStyle == .dark {
+                    optionMenu.view.tintColor = UIColor.white
+                }
+        }
         
         for layerType in FaceLayerTypes.userSelectableValues {
             let newActionDescription = FaceLayer.descriptionForType(layerType)
