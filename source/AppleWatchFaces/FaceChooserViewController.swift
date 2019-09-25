@@ -202,6 +202,13 @@ class FaceChooserViewController: UIViewController, WatchSessionManagerDelegate {
         }))
         alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
         
+        //dark mode hack
+        if #available(iOS 13, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                    alert.view.tintColor = UIColor.white
+            }
+        }
+        
         self.present(alert, animated: true)
     }
     

@@ -302,13 +302,6 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         optionMenu.view.tintColor = UIColor.black
         
-        //dark mode hack
-        if #available(iOS 13, *) {
-                if traitCollection.userInterfaceStyle == .dark {
-                    optionMenu.view.tintColor = UIColor.white
-                }
-        }
-        
         for layerType in FaceLayerTypes.userSelectableValues {
             let newActionDescription = FaceLayer.descriptionForType(layerType)
             let newAction = UIAlertAction(title: newActionDescription, style: .default, handler: { action in
@@ -319,6 +312,14 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         optionMenu.addAction(cancelAction)
+        
+        
+        //dark mode hack
+        if #available(iOS 13, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                    optionMenu.view.tintColor = UIColor.white
+            }
+        }
         
         self.present(optionMenu, animated: true, completion: nil)
 
@@ -421,6 +422,13 @@ class SettingsViewController: UIViewController, WatchSessionManagerDelegate {
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             optionMenu.addAction(cancelAction)
+            
+            //dark mode hack
+            if #available(iOS 13, *) {
+                if self.traitCollection.userInterfaceStyle == .dark {
+                        optionMenu.view.tintColor = UIColor.white
+                }
+            }
             
             self.present(optionMenu, animated: true, completion: nil)
         }

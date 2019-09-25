@@ -91,6 +91,13 @@ class CameraHandler: NSObject{
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
+        //dark mode hack
+        if #available(iOS 13, *) {
+            if vc.traitCollection.userInterfaceStyle == .dark {
+                    actionSheet.view.tintColor = UIColor.white
+            }
+        }
+        
         vc.present(actionSheet, animated: true, completion: nil)
     }
     

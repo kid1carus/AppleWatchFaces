@@ -172,6 +172,13 @@ class FaceLayersTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         optionMenu.addAction(cancelAction)
         
+        //dark mode hack
+        if #available(iOS 13, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                    optionMenu.view.tintColor = UIColor.white
+            }
+        }
+        
         self.present(optionMenu, animated: true, completion: nil)
     }
     
