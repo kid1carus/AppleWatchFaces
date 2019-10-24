@@ -1,6 +1,1386 @@
 {
     "faceSettings" : [
         {
+          "faceLayers" : [
+            {
+              "alpha" : "0.7",
+              "layerType" : "ImageTexture",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 0,
+              "horizontalPosition" : "0.15",
+              "verticalPosition" : "-1.9250001",
+              "scale" : "1.6",
+              "layerOptions" : {
+                "filename" : "",
+                "hasTransparency" : true,
+                "anglePerSec" : 0,
+                "backgroundType" : "FaceBackgroundTypeFilled"
+              },
+              "filenameForImage" : "259361E2-51BA-4678-98BD-0460A6F53306.png"
+            },
+            {
+              "layerOptions" : {
+                "anglePerSec" : 0,
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "hasTransparency" : false,
+                "filename" : "GreyDots.jpg"
+              },
+              "filenameForImage" : "",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 0,
+              "alpha" : "0.5",
+              "horizontalPosition" : "0.0",
+              "scale" : "1.0",
+              "verticalPosition" : "0.0",
+              "layerType" : "ImageTexture"
+            },
+            {
+              "layerOptions" : {
+                "handAnimation" : "SecondHandMovementStep",
+                "physicFieldStrength" : "2.0",
+                "outlineWidth" : "0.0",
+                "handImage" : "",
+                "desiredThemeColorIndexForOutline" : "0",
+                "handType" : "SecondHandCircleSegment",
+                "physicsFieldType" : "None",
+                "effectsStrength" : "0.0"
+              },
+              "horizontalPosition" : "0.0",
+              "alpha" : "0.6",
+              "desiredThemeColorIndex" : 5,
+              "verticalPosition" : "0.0",
+              "filenameForImage" : "",
+              "layerType" : "SecondHand",
+              "angleOffset" : "0.0",
+              "scale" : "1.0"
+            },
+            {
+              "scale" : "0.425",
+              "verticalPosition" : "0.875",
+              "layerType" : "DateTimeLabel",
+              "filenameForImage" : "",
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "justificationType" : "Right",
+                "outlineWidth" : "0.0",
+                "desiredThemeColorIndexForOutline" : "0",
+                "effectType" : "dropShadow",
+                "formatType" : "HHMM",
+                "fontType" : "NumberTextTypeHelvicaNeueBold"
+              },
+              "alpha" : "1.0",
+              "horizontalPosition" : "0.85",
+              "desiredThemeColorIndex" : 0
+            },
+            {
+              "angleOffset" : "0.0",
+              "scale" : "0.425",
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 0,
+              "alpha" : "1.0",
+              "verticalPosition" : "-0.85",
+              "layerType" : "DateTimeLabel",
+              "horizontalPosition" : "-0.90000004",
+              "layerOptions" : {
+                "effectType" : "dropShadow",
+                "justificationType" : "Left",
+                "fontType" : "NumberTextTypeHelvicaNeueBold",
+                "desiredThemeColorIndexForOutline" : "0",
+                "formatType" : "MMDD",
+                "outlineWidth" : "0.0"
+              }
+            },
+            {
+              "layerOptions" : {
+                "outlineWidth" : "3.0",
+                "handImage" : "",
+                "handType" : "HourHandTypeCapeCod",
+                "effectsStrength" : "0.0",
+                "desiredThemeColorIndexForOutline" : "5"
+              },
+              "filenameForImage" : "",
+              "alpha" : "1.0",
+              "verticalPosition" : "0.0",
+              "scale" : "1.0",
+              "angleOffset" : "0.0",
+              "layerType" : "HourHand",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 0
+            },
+            {
+              "scale" : "1.0",
+              "layerOptions" : {
+                "outlineWidth" : "3.0",
+                "handImage" : "",
+                "handAnimation" : "MinuteHandMovementStep",
+                "effectsStrength" : "0.0",
+                "handType" : "MinuteHandTypeCapeCod",
+                "desiredThemeColorIndexForOutline" : "5"
+              },
+              "filenameForImage" : "",
+              "angleOffset" : "0.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 0,
+              "alpha" : "1.0",
+              "verticalPosition" : "0.0",
+              "layerType" : "MinuteHand"
+            },
+            {
+              "layerOptions" : {
+                "outlineWidth" : "3.0",
+                "desiredThemeColorIndexForOutline" : "4",
+                "handType" : "SecondHandTypeSphere",
+                "physicsFieldType" : "None",
+                "physicFieldStrength" : "2.0",
+                "handImage" : "",
+                "handAnimation" : "SecondHandMovementStep",
+                "effectsStrength" : "0.0"
+              },
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 0,
+              "horizontalPosition" : "0.0",
+              "scale" : "0.90000004",
+              "alpha" : "1.0",
+              "filenameForImage" : "",
+              "layerType" : "SecondHand",
+              "verticalPosition" : "0.0"
+            }
+          ],
+          "title" : "Disco Stars",
+          "faceColors" : [
+            "#FFFFFFFF",
+            "#c6c6c6ff",
+            "#8e8e8eff",
+            "#545454ff",
+            "#0044ccff",
+            "#000000ff"
+          ],
+          "uniqueID" : "19AB94D2-730D-4D23-9A83-9A5443C59FEA"
+        },
+        {
+          "uniqueID" : "4ABA0A5F-C923-4E4E-B0AB-9B4A1DDADB29",
+          "faceLayers" : [
+            {
+              "layerType" : "ColorTexture",
+              "layerOptions" : {
+                "filename" : "",
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "hasTransparency" : false,
+                "anglePerSec" : 0
+              },
+              "filenameForImage" : "",
+              "alpha" : "0.2",
+              "verticalPosition" : "0.0",
+              "scale" : "1.0",
+              "horizontalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 3
+            },
+            {
+              "desiredThemeColorIndex" : 0,
+              "angleOffset" : "0.0",
+              "layerType" : "ImageTexture",
+              "horizontalPosition" : "0.0",
+              "layerOptions" : {
+                "filename" : "brushedsteel.jpg",
+                "anglePerSec" : 0,
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "hasTransparency" : false
+              },
+              "alpha" : "0.85",
+              "scale" : "1.0",
+              "verticalPosition" : "0.0",
+              "filenameForImage" : ""
+            },
+            {
+              "angleOffset" : "0.0",
+              "verticalPosition" : "0.0",
+              "filenameForImage" : "",
+              "scale" : "1.35",
+              "alpha" : "1.0",
+              "layerOptions" : {
+                "indicatorType" : "FaceIndicatorTypeTube",
+                "patternTotal" : "4",
+                "pathShape" : "RingRenderShapeRoundedRect",
+                "patternArray" : [
+                  1
+                ],
+                "indicatorSize" : "0.44"
+              },
+              "horizontalPosition" : "0.0",
+              "layerType" : "ShapeRing",
+              "desiredThemeColorIndex" : 5
+            },
+            {
+              "verticalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "scale" : "1.3000001",
+              "desiredThemeColorIndex" : 5,
+              "horizontalPosition" : "0.0",
+              "layerType" : "ShapeRing",
+              "layerOptions" : {
+                "patternArray" : [
+                  1
+                ],
+                "pathShape" : "RingRenderShapeRoundedRect",
+                "indicatorType" : "FaceIndicatorTypeMediumBox",
+                "patternTotal" : "24",
+                "indicatorSize" : "0.08"
+              },
+              "filenameForImage" : "",
+              "alpha" : "1.0"
+            },
+            {
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 3,
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "0",
+                "effectsStrength" : "0.0",
+                "handType" : "MinuteHandCircleSegmentInverted",
+                "handImage" : "",
+                "outlineWidth" : "0.0",
+                "handAnimation" : "MinuteHandMovementStep"
+              },
+              "verticalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "alpha" : "0.15",
+              "scale" : "1.0",
+              "filenameForImage" : "",
+              "layerType" : "MinuteHand"
+            },
+            {
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 3,
+              "filenameForImage" : "",
+              "alpha" : "0.05",
+              "horizontalPosition" : "0.0",
+              "layerType" : "HourHand",
+              "scale" : "1.0",
+              "verticalPosition" : "0.0",
+              "layerOptions" : {
+                "handImage" : "",
+                "effectsStrength" : "0.0",
+                "outlineWidth" : "0.0",
+                "desiredThemeColorIndexForOutline" : "0",
+                "handType" : "HourHandCircleSegmentInverted"
+              }
+            },
+            {
+              "scale" : "0.925",
+              "layerType" : "NumberRing",
+              "horizontalPosition" : "0.0",
+              "layerOptions" : {
+                "pathShape" : "RingRenderShapeCircle",
+                "patternArray" : [
+                  0,
+                  1
+                ],
+                "fontType" : "NumberTextTypeModernInteger",
+                "textSize" : "0.78",
+                "desiredThemeColorIndexForOutline" : "2",
+                "outlineWidth" : "2.0",
+                "patternTotal" : "4",
+                "isRotating" : false
+              },
+              "filenameForImage" : "",
+              "verticalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 1,
+              "alpha" : "1.0"
+            },
+            {
+              "alpha" : "1.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 1,
+              "verticalPosition" : "0.0",
+              "layerOptions" : {
+                "isRotating" : false,
+                "outlineWidth" : "1.0",
+                "pathShape" : "RingRenderShapeCircle",
+                "fontType" : "NumberTextTypeModernInteger",
+                "desiredThemeColorIndexForOutline" : "2",
+                "textSize" : "0.9",
+                "patternArray" : [
+                  1,
+                  0
+                ],
+                "patternTotal" : "2"
+              },
+              "layerType" : "NumberRing",
+              "angleOffset" : "0.0",
+              "filenameForImage" : "",
+              "scale" : "1.15"
+            },
+            {
+              "filenameForImage" : "",
+              "scale" : "0.275",
+              "horizontalPosition" : "0.0",
+              "layerType" : "DateTimeLabel",
+              "alpha" : "0.7",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 5,
+              "verticalPosition" : "-0.75",
+              "layerOptions" : {
+                "outlineWidth" : "0.0",
+                "formatType" : "DD",
+                "fontType" : "NumberTextTypeSystem",
+                "effectType" : "darkFrame",
+                "justificationType" : "Centered",
+                "desiredThemeColorIndexForOutline" : "0"
+              }
+            },
+            {
+              "scale" : "1.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 1,
+              "filenameForImage" : "",
+              "layerOptions" : {
+                "handAnimation" : "MinuteHandMovementStep",
+                "desiredThemeColorIndexForOutline" : "3",
+                "handImage" : "",
+                "handType" : "MinuteHandTypeBoxy",
+                "outlineWidth" : "0.0",
+                "effectsStrength" : "0.0"
+              },
+              "alpha" : "1.0",
+              "angleOffset" : "0.0",
+              "layerType" : "MinuteHand",
+              "verticalPosition" : "0.0"
+            },
+            {
+              "alpha" : "1.0",
+              "verticalPosition" : "0.0",
+              "desiredThemeColorIndex" : 1,
+              "layerType" : "HourHand",
+              "scale" : "1.0",
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "effectsStrength" : "0.0",
+                "handType" : "HourHandTypeBoxy",
+                "handImage" : "",
+                "outlineWidth" : "0.0",
+                "desiredThemeColorIndexForOutline" : "0"
+              },
+              "filenameForImage" : "",
+              "horizontalPosition" : "0.0"
+            },
+            {
+              "alpha" : "0.15",
+              "scale" : "1.0",
+              "horizontalPosition" : "0.025",
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "5",
+                "physicFieldStrength" : "2.0",
+                "effectsStrength" : "1.4",
+                "physicsFieldType" : "None",
+                "handAnimation" : "SecondHandMovementSmooth",
+                "handImage" : "",
+                "outlineWidth" : "1.0",
+                "handType" : "SecondHandTypeBlocky"
+              },
+              "layerType" : "SecondHand",
+              "angleOffset" : "0.0",
+              "verticalPosition" : "-0.025",
+              "desiredThemeColorIndex" : 5,
+              "filenameForImage" : ""
+            },
+            {
+              "layerOptions" : {
+                "handAnimation" : "SecondHandMovementSmooth",
+                "desiredThemeColorIndexForOutline" : "0",
+                "outlineWidth" : "0.0",
+                "handType" : "SecondHandTypeBlocky",
+                "effectsStrength" : "0.0",
+                "handImage" : "",
+                "physicFieldStrength" : "2.0",
+                "physicsFieldType" : "None"
+              },
+              "scale" : "1.0",
+              "layerType" : "SecondHand",
+              "alpha" : "1.0",
+              "filenameForImage" : "",
+              "verticalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 5
+            }
+          ],
+          "faceColors" : [
+            "#FFFFFFFF",
+            "#700000ff",
+            "#000000ff",
+            "#332600ff",
+            "#d8fff8ff",
+            "#000000ff"
+          ],
+          "title" : "Steele Days"
+        },
+        {
+          "faceColors" : [
+            "#FFFFFFFF",
+            "#c6c6c6ff",
+            "#8e8e8eff",
+            "#ff7f00ff",
+            "#568effff",
+            "#000000ff"
+          ],
+          "title" : "Sky Bound",
+          "uniqueID" : "80552924-4E69-4E1E-B28C-FCA842363520",
+          "faceLayers" : [
+            {
+              "layerOptions" : {
+                "anglePerSec" : 0,
+                "filename" : "brushedsteel.jpg",
+                "hasTransparency" : false,
+                "backgroundType" : "FaceBackgroundTypeFilled"
+              },
+              "scale" : "1.0",
+              "layerType" : "ImageTexture",
+              "verticalPosition" : "0.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 0,
+              "filenameForImage" : "",
+              "alpha" : "0.5",
+              "angleOffset" : "0.0"
+            },
+            {
+              "scale" : "1.0",
+              "layerOptions" : {
+                "outlineWidth" : "0.0",
+                "handType" : "SecondHandCircleSegment",
+                "handAnimation" : "SecondHandMovementStep",
+                "desiredThemeColorIndexForOutline" : "0",
+                "physicsFieldType" : "None",
+                "effectsStrength" : "0.0",
+                "physicFieldStrength" : "2.0",
+                "handImage" : ""
+              },
+              "alpha" : "1.0",
+              "verticalPosition" : "0.0",
+              "horizontalPosition" : "0.0",
+              "layerType" : "SecondHand",
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 5,
+              "angleOffset" : "0.0"
+            },
+            {
+              "verticalPosition" : "0.0",
+              "filenameForImage" : "",
+              "layerType" : "ImageTexture",
+              "angleOffset" : "0.0",
+              "scale" : "1.0",
+              "layerOptions" : {
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "filename" : "BlueSky.jpg",
+                "hasTransparency" : false,
+                "anglePerSec" : 0
+              },
+              "desiredThemeColorIndex" : 0,
+              "alpha" : "0.8",
+              "horizontalPosition" : "0.0"
+            },
+            {
+              "layerOptions" : {
+                "handType" : "MinuteHandCircleSegment",
+                "effectsStrength" : "0.0",
+                "handImage" : "",
+                "desiredThemeColorIndexForOutline" : "0",
+                "handAnimation" : "MinuteHandMovementStep",
+                "outlineWidth" : "0.0"
+              },
+              "verticalPosition" : "0.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 4,
+              "filenameForImage" : "",
+              "scale" : "1.0",
+              "alpha" : "0.175",
+              "angleOffset" : "0.0",
+              "layerType" : "MinuteHand"
+            },
+            {
+              "layerOptions" : {
+                "handImage" : "",
+                "effectsStrength" : "0.0",
+                "desiredThemeColorIndexForOutline" : "0",
+                "outlineWidth" : "0.0",
+                "handType" : "HourHandCircleSegment"
+              },
+              "layerType" : "HourHand",
+              "angleOffset" : "0.0",
+              "verticalPosition" : "0.0",
+              "filenameForImage" : "",
+              "scale" : "1.0",
+              "alpha" : "0.3",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 5
+            },
+            {
+              "verticalPosition" : "-0.7",
+              "alpha" : "0.55",
+              "horizontalPosition" : "-0.025",
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 5,
+              "angleOffset" : "0.0",
+              "scale" : "1.45",
+              "layerType" : "DateTimeLabel",
+              "layerOptions" : {
+                "formatType" : "HHMM",
+                "effectType" : "None",
+                "justificationType" : "Centered",
+                "outlineWidth" : "3.0",
+                "desiredThemeColorIndexForOutline" : "0",
+                "fontType" : "NumberTextTypeUltraCondensedSerif"
+              }
+            },
+            {
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 3,
+              "layerOptions" : {
+                "physicFieldStrength" : "2.0",
+                "effectsStrength" : "0.0",
+                "desiredThemeColorIndexForOutline" : "0",
+                "handImage" : "",
+                "handType" : "SecondHandTypeSphere",
+                "outlineWidth" : "0.0",
+                "handAnimation" : "SecondHandMovementStep",
+                "physicsFieldType" : "None"
+              },
+              "angleOffset" : "0.0",
+              "alpha" : "1.0",
+              "horizontalPosition" : "0.0",
+              "layerType" : "SecondHand",
+              "verticalPosition" : "0.0",
+              "scale" : "1.0"
+            },
+            {
+              "layerType" : "MinuteHand",
+              "filenameForImage" : "",
+              "alpha" : "1.0",
+              "scale" : "1.0",
+              "desiredThemeColorIndex" : 4,
+              "layerOptions" : {
+                "effectsStrength" : "0.0",
+                "handType" : "MinuteHandTypeBoxy",
+                "outlineWidth" : "0.0",
+                "handImage" : "",
+                "handAnimation" : "MinuteHandMovementStep",
+                "desiredThemeColorIndexForOutline" : "0"
+              },
+              "horizontalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "verticalPosition" : "0.0"
+            },
+            {
+              "alpha" : "1.0",
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "effectsStrength" : "0.0",
+                "handType" : "HourHandTypeBoxy",
+                "desiredThemeColorIndexForOutline" : "0",
+                "outlineWidth" : "0.0",
+                "handImage" : ""
+              },
+              "verticalPosition" : "0.0",
+              "scale" : "1.0",
+              "desiredThemeColorIndex" : 4,
+              "layerType" : "HourHand",
+              "filenameForImage" : "",
+              "horizontalPosition" : "0.0"
+            }
+          ]
+        },
+        {
+          "faceColors" : [
+            "#ffd456ff",
+            "#997200ff",
+            "#cc9900ff",
+            "#545454ff",
+            "#1c1c1cff",
+            "#000000ff"
+          ],
+          "uniqueID" : "935C1C31-7D3B-4162-A138-9F9ED160DC1F",
+          "title" : "Simple Analogue",
+          "faceLayers" : [
+            {
+              "horizontalPosition" : "0.85",
+              "verticalPosition" : "-0.075",
+              "layerType" : "ImageTexture",
+              "alpha" : "0.4",
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "hasTransparency" : false,
+                "filename" : "",
+                "anglePerSec" : 0
+              },
+              "filenameForImage" : "3B7F39E5-5327-41B5-960A-897A40A742D3.jp2",
+              "desiredThemeColorIndex" : 0,
+              "scale" : "1.15"
+            },
+            {
+              "desiredThemeColorIndex" : 1,
+              "layerOptions" : {
+                "outlineWidth" : "4.0",
+                "gearType" : "Small",
+                "anglePerSec" : -6,
+                "desiredThemeColorIndexForOutline" : "5"
+              },
+              "verticalPosition" : "0.4",
+              "alpha" : "1.0",
+              "layerType" : "Gear",
+              "horizontalPosition" : "0.175",
+              "angleOffset" : "0.0",
+              "filenameForImage" : "",
+              "scale" : "0.3"
+            },
+            {
+              "alpha" : "1.0",
+              "scale" : "0.32500002",
+              "angleOffset" : "0.0",
+              "verticalPosition" : "0.025",
+              "horizontalPosition" : "-0.32500002",
+              "filenameForImage" : "",
+              "layerType" : "Gear",
+              "desiredThemeColorIndex" : 3,
+              "layerOptions" : {
+                "anglePerSec" : -6,
+                "gearType" : "Small",
+                "outlineWidth" : "4.0",
+                "desiredThemeColorIndexForOutline" : "5"
+              }
+            },
+            {
+              "alpha" : "1.0",
+              "scale" : "0.3",
+              "desiredThemeColorIndex" : 1,
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "5",
+                "outlineWidth" : "3.0",
+                "anglePerSec" : 4.9000000953674316,
+                "gearType" : "Big"
+              },
+              "filenameForImage" : "",
+              "layerType" : "Gear",
+              "angleOffset" : "0.0",
+              "verticalPosition" : "0.15",
+              "horizontalPosition" : "0.0"
+            },
+            {
+              "angleOffset" : "0.0",
+              "layerType" : "ColorTexture",
+              "alpha" : "0.1",
+              "layerOptions" : {
+                "backgroundType" : "FaceBackgroundTypeCircle",
+                "hasTransparency" : false,
+                "filename" : "",
+                "anglePerSec" : 0
+              },
+              "verticalPosition" : "0.15",
+              "scale" : "0.975",
+              "horizontalPosition" : "0.0",
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 0
+            },
+            {
+              "verticalPosition" : "-0.175",
+              "layerOptions" : {
+                "anglePerSec" : 0,
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "hasTransparency" : true,
+                "filename" : "grungeOverlay2.png"
+              },
+              "alpha" : "0.6",
+              "horizontalPosition" : "0.175",
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 0,
+              "layerType" : "ImageTexture",
+              "angleOffset" : "-0.7853982",
+              "scale" : "1.4250001"
+            },
+            {
+              "layerOptions" : {
+                "patternTotal" : "60",
+                "indicatorSize" : "0.02",
+                "patternArray" : [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "indicatorType" : "FaceIndicatorTypeBox",
+                "pathShape" : "RingRenderShapeCircle"
+              },
+              "filenameForImage" : "",
+              "angleOffset" : "0.0",
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "0.15",
+              "desiredThemeColorIndex" : 2,
+              "scale" : "1.25",
+              "alpha" : "1.0",
+              "layerType" : "ShapeRing"
+            },
+            {
+              "layerOptions" : {
+                "patternTotal" : "12",
+                "pathShape" : "RingRenderShapeCircle",
+                "indicatorSize" : "0.26",
+                "patternArray" : [
+                  1
+                ],
+                "indicatorType" : "FaceIndicatorTypeTube"
+              },
+              "horizontalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "alpha" : "1.0",
+              "layerType" : "ShapeRing",
+              "scale" : "1.1750001",
+              "desiredThemeColorIndex" : 0,
+              "verticalPosition" : "0.15",
+              "filenameForImage" : ""
+            },
+            {
+              "desiredThemeColorIndex" : 5,
+              "layerType" : "MinuteHand",
+              "verticalPosition" : "0.125",
+              "scale" : "1.0",
+              "filenameForImage" : "",
+              "horizontalPosition" : "0.025",
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "5",
+                "effectsStrength" : "3.08",
+                "handImage" : "",
+                "outlineWidth" : "1.0",
+                "handType" : "MinuteHandTypeCapeCod",
+                "handAnimation" : "MinuteHandMovementStep"
+              },
+              "alpha" : "0.5"
+            },
+            {
+              "angleOffset" : "0.0",
+              "layerType" : "MinuteHand",
+              "desiredThemeColorIndex" : 1,
+              "alpha" : "1.0",
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "0.15",
+              "filenameForImage" : "",
+              "scale" : "1.0",
+              "layerOptions" : {
+                "outlineWidth" : "3.0",
+                "handImage" : "",
+                "handType" : "MinuteHandTypeCapeCod",
+                "effectsStrength" : "0.0",
+                "handAnimation" : "MinuteHandMovementStep",
+                "desiredThemeColorIndexForOutline" : "5"
+              }
+            },
+            {
+              "angleOffset" : "0.0",
+              "scale" : "1.0",
+              "alpha" : "0.5",
+              "verticalPosition" : "0.125",
+              "desiredThemeColorIndex" : 5,
+              "layerOptions" : {
+                "effectsStrength" : "3.68",
+                "handType" : "HourHandTypeCapeCod",
+                "handImage" : "",
+                "desiredThemeColorIndexForOutline" : "5",
+                "outlineWidth" : "1.0"
+              },
+              "horizontalPosition" : "0.025",
+              "layerType" : "HourHand",
+              "filenameForImage" : ""
+            },
+            {
+              "verticalPosition" : "0.15",
+              "scale" : "1.0",
+              "layerType" : "HourHand",
+              "desiredThemeColorIndex" : 1,
+              "layerOptions" : {
+                "handType" : "HourHandTypeCapeCod",
+                "outlineWidth" : "3.0",
+                "desiredThemeColorIndexForOutline" : "5",
+                "effectsStrength" : "0.0",
+                "handImage" : ""
+              },
+              "horizontalPosition" : "0.0",
+              "alpha" : "1.0",
+              "filenameForImage" : "",
+              "angleOffset" : "0.0"
+            },
+            {
+              "verticalPosition" : "0.125",
+              "filenameForImage" : "",
+              "scale" : "1.0",
+              "layerType" : "SecondHand",
+              "desiredThemeColorIndex" : 1,
+              "horizontalPosition" : "0.025",
+              "angleOffset" : "0.0",
+              "alpha" : "0.3",
+              "layerOptions" : {
+                "outlineWidth" : "2.0",
+                "physicsFieldType" : "None",
+                "desiredThemeColorIndexForOutline" : "5",
+                "physicFieldStrength" : "2.0",
+                "handAnimation" : "SecondHandMovementSmooth",
+                "handImage" : "",
+                "handType" : "SecondHandTypeRail",
+                "effectsStrength" : "2.94"
+              }
+            },
+            {
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 1,
+              "filenameForImage" : "",
+              "scale" : "1.0",
+              "angleOffset" : "0.0",
+              "layerType" : "SecondHand",
+              "verticalPosition" : "0.15",
+              "alpha" : "1.0",
+              "layerOptions" : {
+                "effectsStrength" : "0.0",
+                "physicsFieldType" : "None",
+                "handImage" : "",
+                "outlineWidth" : "1.0",
+                "handType" : "SecondHandTypeRail",
+                "physicFieldStrength" : "2.0",
+                "handAnimation" : "SecondHandMovementSmooth",
+                "desiredThemeColorIndexForOutline" : "4"
+              }
+            },
+            {
+              "scale" : "0.55",
+              "alpha" : "1.0",
+              "verticalPosition" : "-0.85",
+              "filenameForImage" : "",
+              "layerOptions" : {
+                "justificationType" : "Centered",
+                "formatType" : "HHMM",
+                "desiredThemeColorIndexForOutline" : "0",
+                "outlineWidth" : "0.0",
+                "effectType" : "None",
+                "fontType" : "NumberTextTypeDINPro"
+              },
+              "layerType" : "DateTimeLabel",
+              "horizontalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 0
+            },
+            {
+              "desiredThemeColorIndex" : 1,
+              "layerType" : "DateTimeLabel",
+              "layerOptions" : {
+                "outlineWidth" : "2.0",
+                "fontType" : "NumberTextTypeDINPro",
+                "effectType" : "None",
+                "desiredThemeColorIndexForOutline" : "0",
+                "formatType" : "MO",
+                "justificationType" : "Left"
+              },
+              "angleOffset" : "0.0",
+              "alpha" : "1.0",
+              "scale" : "0.35",
+              "filenameForImage" : "",
+              "verticalPosition" : "-0.825",
+              "horizontalPosition" : "-0.925"
+            },
+            {
+              "filenameForImage" : "",
+              "horizontalPosition" : "0.925",
+              "layerType" : "DateTimeLabel",
+              "verticalPosition" : "-0.825",
+              "alpha" : "1.0",
+              "layerOptions" : {
+                "formatType" : "DD",
+                "justificationType" : "Right",
+                "desiredThemeColorIndexForOutline" : "0",
+                "effectType" : "None",
+                "outlineWidth" : "2.0",
+                "fontType" : "NumberTextTypeDINPro"
+              },
+              "scale" : "0.35",
+              "desiredThemeColorIndex" : 1,
+              "angleOffset" : "0.0"
+            }
+          ]
+        },
+        {
+          "faceColors" : [
+            "#003d5bff",
+            "#ffffffff",
+            "#e2e2e2ff",
+            "#8e8e8eff",
+            "#d10000ff",
+            "#000000ff",
+            "#ff7f00ff",
+            "#00000000"
+          ],
+          "uniqueID" : "C6D6EE81-8D79-49BA-9411-C4B74FA02BE1",
+          "title" : "Glass House Blue",
+          "faceLayers" : [
+            {
+              "layerOptions" : {
+                "anglePerSec" : 0,
+                "hasTransparency" : false,
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "filename" : ""
+              },
+              "alpha" : "1.0",
+              "scale" : "1.0",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 0,
+              "verticalPosition" : "0.0",
+              "horizontalPosition" : "0.0",
+              "filenameForImage" : "",
+              "layerType" : "ColorTexture"
+            },
+            {
+              "alpha" : "0.1",
+              "layerOptions" : {
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "hasTransparency" : true,
+                "anglePerSec" : 0,
+                "filename" : "scanLines.png"
+              },
+              "angleOffset" : "1.5707964",
+              "desiredThemeColorIndex" : 0,
+              "scale" : "1.625",
+              "layerType" : "ImageTexture",
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "0.0",
+              "filenameForImage" : ""
+            },
+            {
+              "alpha" : "1.0",
+              "scale" : "0.375",
+              "layerOptions" : {
+                "outlineWidth" : "0.0",
+                "justificationType" : "Centered",
+                "desiredThemeColorIndexForOutline" : "1",
+                "fontType" : "NumberTextTypeHelvicaNeueBold",
+                "effectType" : "None",
+                "formatType" : "DADD"
+              },
+              "angleOffset" : "0.0",
+              "layerType" : "DateTimeLabel",
+              "desiredThemeColorIndex" : 1,
+              "filenameForImage" : "",
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "-0.52500004"
+            },
+            {
+              "filenameForImage" : "",
+              "angleOffset" : "0.0",
+              "horizontalPosition" : "0.0",
+              "scale" : "1.125",
+              "layerType" : "NumberRing",
+              "verticalPosition" : "0.0",
+              "alpha" : "1.0",
+              "desiredThemeColorIndex" : 1,
+              "layerOptions" : {
+                "patternTotal" : "4",
+                "patternArray" : [
+                  0,
+                  1
+                ],
+                "isRotating" : false,
+                "desiredThemeColorIndexForOutline" : "1",
+                "fontType" : "NumberTextTypeHelvica",
+                "outlineWidth" : "0.0",
+                "textSize" : "0.54",
+                "pathShape" : "RingRenderShapeRoundedRect"
+
+              }
+            },
+            {
+              "desiredThemeColorIndex" : 1,
+              "layerType" : "NumberRing",
+              "verticalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "scale" : "1.125",
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "1",
+                "patternArray" : [
+                  1
+                ],
+                "textSize" : "0.76",
+                "isRotating" : false,
+                "outlineWidth" : "3.0",
+                "patternTotal" : "2",
+                "pathShape" : "RingRenderShapeRoundedRect",
+                "fontType" : "NumberTextTypeHelvicaNeueBold"
+              },
+              "filenameForImage" : "",
+              "horizontalPosition" : "0.0",
+              "alpha" : "1.0"
+            },
+            {
+              "filenameForImage" : "",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 5,
+              "scale" : "0.7",
+              "layerOptions" : {
+                "filename" : "",
+                "backgroundType" : "FaceBackgroundTypeRoundedRect",
+                "hasTransparency" : false,
+                "anglePerSec" : 0
+              },
+              "layerType" : "ColorTexture",
+              "verticalPosition" : "0.0",
+              "alpha" : "0.2",
+              "horizontalPosition" : "0.0"
+            },
+            {
+              "layerOptions" : {
+                "anglePerSec" : 0,
+                "backgroundType" : "FaceBackgroundTypeRoundedRect",
+                "filename" : "brushedsteel.jpg",
+                "hasTransparency" : false
+              },
+              "filenameForImage" : "",
+              "angleOffset" : "0.0",
+              "verticalPosition" : "0.0",
+              "scale" : "0.675",
+              "horizontalPosition" : "0.0",
+              "alpha" : "0.4",
+              "layerType" : "ImageTexture",
+              "desiredThemeColorIndex" : 0
+            },
+            {
+              "desiredThemeColorIndex" : 0,
+              "layerOptions" : {
+                "desiredThemeColorIndexForBatteryLevel" : "0",
+                "innerPadding" : "5.0",
+                "outlineWidth" : "3.0",
+                "desiredThemeColorIndexForOutline" : "1",
+                "autoBatteryColor" : false,
+                "indicatorType" : "normal"
+              },
+              "filenameForImage" : "",
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "0.52500004",
+              "alpha" : "1.0",
+              "layerType" : "BatteryIndicator",
+              "angleOffset" : "0.0",
+              "scale" : "1.0"
+            },
+            {
+              "verticalPosition" : "0.0",
+              "layerOptions" : {
+                "handType" : "SecondhandTypeSwissCircle",
+                "desiredThemeColorIndexForOutline" : "0",
+                "outlineWidth" : "0.0",
+                "effectsStrength" : "0.0",
+                "physicsFieldType" : "None",
+                "physicFieldStrength" : "2.0",
+                "handAnimation" : "SecondHandMovementStep",
+                "handImage" : ""
+              },
+              "layerType" : "SecondHand",
+              "desiredThemeColorIndex" : 4,
+              "angleOffset" : "0.0",
+              "scale" : "1.0",
+              "alpha" : "1.0",
+              "horizontalPosition" : "0.0",
+              "filenameForImage" : ""
+            },
+            {
+              "layerOptions" : {
+                "handImage" : "",
+                "desiredThemeColorIndexForOutline" : "1",
+                "effectsStrength" : "0.0",
+                "handAnimation" : "MinuteHandMovementStep",
+                "outlineWidth" : "1.0",
+                "handType" : "MinuteHandTypeCapeCod"
+              },
+              "layerType" : "MinuteHand",
+              "scale" : "1.0",
+              "alpha" : "1.0",
+              "angleOffset" : "0.0",
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 7,
+              "verticalPosition" : "0.0",
+              "filenameForImage" : ""
+            },
+            {
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "handType" : "HourHandTypeCapeCod",
+                "desiredThemeColorIndexForOutline" : "1",
+                "outlineWidth" : "1.0",
+                "effectsStrength" : "0.0",
+                "handImage" : ""
+              },
+              "horizontalPosition" : "0.0",
+              "layerType" : "HourHand",
+              "desiredThemeColorIndex" : 7,
+              "scale" : "1.0",
+              "verticalPosition" : "0.0",
+              "alpha" : "1.0",
+              "filenameForImage" : ""
+            },
+            {
+              "horizontalPosition" : "0.025",
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "5",
+                "effectsStrength" : "2.98",
+                "handAnimation" : "SecondHandMovementStep",
+                "physicsFieldType" : "None",
+                "outlineWidth" : "0.0",
+                "physicFieldStrength" : "2.0",
+                "handImage" : "",
+                "handType" : "SecondhandTypeSwissCircle"
+              },
+              "alpha" : "0.2",
+              "angleOffset" : "0.0",
+              "filenameForImage" : "",
+              "verticalPosition" : "-0.025",
+              "layerType" : "SecondHand",
+              "scale" : "1.0",
+              "desiredThemeColorIndex" : 5
+            },
+            {
+              "verticalPosition" : "0.0",
+              "scale" : "1.275",
+              "layerOptions" : {
+                "patternArray" : [
+                  0,
+                  1,
+                  1
+                ],
+                "patternTotal" : "12",
+                "indicatorSize" : "0.24",
+                "indicatorType" : "FaceIndicatorTypeSphere",
+                "pathShape" : "RingRenderShapeOval"
+              },
+              "horizontalPosition" : "0.0",
+              "alpha" : "1.0",
+              "angleOffset" : "0.0",
+              "desiredThemeColorIndex" : 2,
+              "layerType" : "ShapeRing",
+              "filenameForImage" : ""
+            }
+          ]
+        },
+        {
+          "faceColors" : [
+            "#FFFFFFFF",
+            "#c6c6c6ff",
+            "#8e8e8eff",
+            "#545454ff",
+            "#d10000ff",
+            "#000000ff",
+            "#ff7f00ff"
+          ],
+          "title" : "Glass House",
+          "uniqueID" : "03712314-E764-49D5-AFCA-6B16AD5E13D7",
+          "faceLayers" : [
+            {
+              "alpha" : "1.0",
+              "scale" : "1.0",
+              "angleOffset" : "0.0",
+              "verticalPosition" : "0.0",
+              "layerType" : "ColorTexture",
+              "layerOptions" : {
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "filename" : "",
+                "hasTransparency" : false,
+                "anglePerSec" : 0
+              },
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 0,
+              "horizontalPosition" : "0.0"
+            },
+            {
+              "layerOptions" : {
+                "hasTransparency" : true,
+                "backgroundType" : "FaceBackgroundTypeFilled",
+                "filename" : "scanLines.png",
+                "anglePerSec" : 0
+              },
+              "layerType" : "ImageTexture",
+              "alpha" : "0.05",
+              "angleOffset" : "1.5707964",
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "0.0",
+              "scale" : "1.625",
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 0
+            },
+            {
+              "filenameForImage" : "",
+              "verticalPosition" : "-0.52500004",
+              "alpha" : "1.0",
+              "layerType" : "DateTimeLabel",
+              "horizontalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "justificationType" : "Centered",
+                "fontType" : "NumberTextTypeHelvicaNeueBold",
+                "effectType" : "None",
+                "desiredThemeColorIndexForOutline" : "5",
+                "formatType" : "DADD",
+                "outlineWidth" : "4.0"
+              },
+              "scale" : "0.375",
+              "desiredThemeColorIndex" : 5
+            },
+            {
+              "horizontalPosition" : "0.0",
+              "desiredThemeColorIndex" : 1,
+              "verticalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "layerType" : "NumberRing",
+              "filenameForImage" : "",
+              "alpha" : "1.0",
+              "scale" : "1.125",
+              "layerOptions" : {
+                "isRotating" : false,
+                "textSize" : "0.64",
+                "outlineWidth" : "3.0",
+                "fontType" : "NumberTextTypeHelvicaNeueBold",
+                "patternArray" : [
+                  0,
+                  1
+                ],
+                "patternTotal" : "4",
+                "desiredThemeColorIndexForOutline" : "5",
+                "pathShape" : "RingRenderShapeRoundedRect"
+              }
+            },
+            {
+              "layerType" : "NumberRing",
+              "filenameForImage" : "",
+              "alpha" : "1.0",
+              "layerOptions" : {
+                "outlineWidth" : "3.0",
+                "fontType" : "NumberTextTypeHelvicaNeueBold",
+                "textSize" : "0.64",
+                "pathShape" : "RingRenderShapeRoundedRect",
+                "patternTotal" : "2",
+                "desiredThemeColorIndexForOutline" : "5",
+                "patternArray" : [
+                  1
+                ],
+                "isRotating" : false
+              },
+              "angleOffset" : "0.0",
+              "verticalPosition" : "0.0",
+              "horizontalPosition" : "0.0",
+              "scale" : "1.125",
+              "desiredThemeColorIndex" : 0
+            },
+            {
+              "angleOffset" : "0.0",
+              "alpha" : "0.2",
+              "scale" : "0.7",
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "0.0",
+              "layerType" : "ColorTexture",
+              "desiredThemeColorIndex" : 5,
+              "layerOptions" : {
+                "filename" : "",
+                "anglePerSec" : 0,
+                "backgroundType" : "FaceBackgroundTypeRoundedRect",
+                "hasTransparency" : false
+              },
+              "filenameForImage" : ""
+            },
+            {
+              "alpha" : "0.4",
+              "desiredThemeColorIndex" : 0,
+              "layerOptions" : {
+                "anglePerSec" : 0,
+                "hasTransparency" : false,
+                "filename" : "brushedsteel.jpg",
+                "backgroundType" : "FaceBackgroundTypeRoundedRect"
+              },
+              "filenameForImage" : "",
+              "scale" : "0.675",
+              "horizontalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "layerType" : "ImageTexture",
+              "verticalPosition" : "0.0"
+            },
+            {
+              "horizontalPosition" : "0.0",
+              "layerType" : "SecondHand",
+              "desiredThemeColorIndex" : 4,
+              "filenameForImage" : "",
+              "verticalPosition" : "0.0",
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "physicsFieldType" : "None",
+                "handAnimation" : "SecondHandMovementStep",
+                "effectsStrength" : "0.0",
+                "desiredThemeColorIndexForOutline" : "0",
+                "handType" : "SecondhandTypeSwissCircle",
+                "outlineWidth" : "0.0",
+                "handImage" : "",
+                "physicFieldStrength" : "2.0"
+              },
+              "scale" : "1.0",
+              "alpha" : "1.0"
+            },
+            {
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "0",
+                "effectsStrength" : "0.0",
+                "handImage" : "",
+                "outlineWidth" : "0.0",
+                "handType" : "MinuteHandTypeRounded",
+                "handAnimation" : "MinuteHandMovementStep"
+              },
+              "alpha" : "1.0",
+              "desiredThemeColorIndex" : 5,
+              "layerType" : "MinuteHand",
+              "scale" : "1.0",
+              "horizontalPosition" : "0.0",
+              "verticalPosition" : "0.0",
+              "filenameForImage" : "",
+              "angleOffset" : "0.0"
+            },
+            {
+              "desiredThemeColorIndex" : 5,
+              "angleOffset" : "0.0",
+              "layerOptions" : {
+                "outlineWidth" : "0.0",
+                "handImage" : "",
+                "desiredThemeColorIndexForOutline" : "0",
+                "effectsStrength" : "0.0",
+                "handType" : "HourHandTypeRounded"
+              },
+              "scale" : "1.0",
+              "verticalPosition" : "0.0",
+              "layerType" : "HourHand",
+              "filenameForImage" : "",
+              "horizontalPosition" : "0.0",
+              "alpha" : "1.0"
+            },
+            {
+              "alpha" : "0.2",
+              "angleOffset" : "0.0",
+              "layerType" : "SecondHand",
+              "layerOptions" : {
+                "desiredThemeColorIndexForOutline" : "5",
+                "handType" : "SecondhandTypeSwissCircle",
+                "physicsFieldType" : "None",
+                "effectsStrength" : "2.98",
+                "handImage" : "",
+                "physicFieldStrength" : "2.0",
+                "handAnimation" : "SecondHandMovementStep",
+                "outlineWidth" : "0.0"
+              },
+              "scale" : "1.0",
+              "filenameForImage" : "",
+              "desiredThemeColorIndex" : 5,
+              "verticalPosition" : "-0.025",
+              "horizontalPosition" : "0.025"
+            }
+          ]
+        },
+        {
           "title" : "Dee Jay",
           "faceLayers" : [
             {
