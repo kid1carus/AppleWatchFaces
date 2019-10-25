@@ -26,13 +26,9 @@ To see what type of default faces it comes with, browse the [thumbnails folder](
 
 ## Frequently Asked Questions
 
-1. **Does this work on WatchOS6 beta ?** 
+1. **Does this work on WatchOS6 ?** 
 
-Not very well depending on the watchOS version. Current known issues:
-- May not install to watch (b3)
-- May not sync faces properly (b2)
-- Will show digital time in upper right corner (all betas)
-
+Yes, working well now on public releases ( including hiding the apple digital time )
 
 2. **Can I download this from the app store ?**
 
