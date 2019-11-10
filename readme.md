@@ -44,7 +44,7 @@ We encourage you to review your Apple Watch app concept and incorporate differen
 
 3. **Can I join your testFlight and help you beta test?**
 
-Yes, I am accepting testers for beta testing.  DM an email to [@orffy](https://twitter.com/orffy) to send a testFlight invite.   It does not need to be an appleID email, just any email you can check. Someone will notify you on twitter whem you have been invited, then check the email provided for a link from apple testFlight.  Follow the instructions in that email.
+Yes, I am accepting testers for beta testing.  DM an email to [@orffy](https://twitter.com/orffy) to send a testFlight invite.   It does not need to be an appleID email, just any email you can check. Someone will notify you on twitter when you have been invited, then check the email provided for a link from apple testFlight.  Follow the instructions in that email.
 
 4. **How do I get this on my phone / watch?**
 
